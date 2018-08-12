@@ -1,7 +1,7 @@
 // Import the to a variable
 %bootstrap {
     // Office Fabric-UI JavaScript Components
-    @import "../node_modules/bootstrap/scss/bootstrap.scss";
+    @import "~bootstrap/scss/bootstrap";
 }
 
 .bs {
