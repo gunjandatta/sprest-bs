@@ -1,12 +1,13 @@
 const path = require("path");
-const webpack = require("webpack");
 
 module.exports = (env, argv) => {
+    var isDev = argv.mode === "development";
+
     return {
         entry: "./src/index.ts",
         output: {
             path: path.resolve(__dirname, "dist"),
-            filename: "gd-bs.js"
+            filename: "gd-bs" + (isDev ? "" : ".min") + ".js"
         },
         resolve: {
             extensions: [".scss", ".css", ".ts", ".js"]

@@ -4,7 +4,8 @@
   "description": "SharePoint webcomponents utilizing bootstrap.",
   "main": "src/index.tsx",
   "scripts": {
-    "build": "webpack --mode=development"
+    "build": "webpack --mode=development",
+    "prod": "webpack --mode=production"
   },
   "repository": {
     "type": "git",
