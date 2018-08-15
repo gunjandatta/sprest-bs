@@ -1,3 +1,5 @@
+import * as $ from "jquery";
+
 /**
  * Modal Properties
  */
@@ -19,7 +21,7 @@ export interface IModalProps {
  * Modal
  * @param props The modal properties.
  */
-export const Modal = (props: IModalProps) => {
+export const Modal = (props: IModalProps): Element | string => {
     // Set the class names
     let classNames = ["modal"];
     props.className ? classNames.push(props.className) : null;
@@ -69,6 +71,9 @@ export const Modal = (props: IModalProps) => {
         // Execute the events
         props.onRenderBody ? props.onRenderBody(props.el.querySelector(".modal-body")) : null;
         props.onRenderFooter ? props.onRenderFooter(props.el.querySelector(".modal-footer")) : null;
+
+        // Return the element
+        return $(props.el.children[0]);
     } else {
         // Return the html
         return html;

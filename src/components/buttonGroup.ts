@@ -1,3 +1,4 @@
+import $ from "jquery";
 import { Button, IButtonProps } from "./button";
 
 /**
@@ -5,6 +6,7 @@ import { Button, IButtonProps } from "./button";
  */
 export interface IButtonGroupProps {
     buttons?: Array<IButtonProps>;
+    buttonType?: number;
     className?: string;
     el?: Element | HTMLElement;
     id?: string;
@@ -18,7 +20,7 @@ export interface IButtonGroupProps {
  * Button Group
  * @property props - The button group properties.
  */
-export const ButtonGroup = (props: IButtonGroupProps) => {
+export const ButtonGroup = (props: IButtonGroupProps): Element | string => {
     let html = [];
 
     // Set the class names
@@ -41,8 +43,13 @@ export const ButtonGroup = (props: IButtonGroupProps) => {
     // Parse the buttons and generate the html
     let buttons = props.buttons || [];
     for (let i = 0; i < buttons.length; i++) {
+        let button = buttons[i];
+
+        // Set the property
+        button.type = button.type || typeof (props.buttonType) === "number" ? props.buttonType : button.type;
+
         // Add the button html
-        html.push(Button(buttons[i]));
+        html.push(Button(button));
     }
 
     // Add the ending tag
@@ -55,6 +62,21 @@ export const ButtonGroup = (props: IButtonGroupProps) => {
 
         // Set the html
         props.el.innerHTML = html.join('\n');
+
+        // Parse the buttons
+        let elButtons = props.el.querySelectorAll(".btn-group > .btn");
+        for (let i = 0; i < elButtons.length; i++) {
+            let button = props.buttons[i];
+
+            // See if there is a click event
+            if (button.onClick) {
+                // Set the click event
+                elButtons[i].addEventListener("click", button.onClick);
+            }
+        }
+
+        // Return the element
+        return $(props.el.children[0]);
     } else {
         // Return the html
         return html.join('\n');

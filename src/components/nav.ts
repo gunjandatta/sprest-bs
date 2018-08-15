@@ -1,3 +1,5 @@
+import * as $ from "jquery";
+
 /**
  * Navigation Properties
  */
@@ -21,6 +23,7 @@ export interface INavLink {
     isActive?: boolean;
     isDisabled?: boolean;
     href?: string;
+    onClick?: (ev: Event) => void;
     onRenderTab?: (el: HTMLDivElement) => void;
     tabContent?: string;
     title?: string;
@@ -30,7 +33,7 @@ export interface INavLink {
  * Navigation
  * @param props - The navigation properties.
  */
-export const Navigation = (props: INavProps) => {
+export const Navigation = (props: INavProps): Element | string => {
     let html = [];
     let renderTabContent = false;
 
@@ -114,6 +117,19 @@ export const Navigation = (props: INavProps) => {
         // Set the html
         props.el.innerHTML = html.join('\n');
 
+        // Get the nav items
+        let elNavItems = props.el.querySelectorAll(".nav-item");
+        for (let i = 0; i < elNavItems.length; i++) {
+            let elNavItem = elNavItems[i];
+            let item = props.items[i];
+
+            // See if a click event exists
+            if (item.onClick) {
+                // Add a click event
+                elNavItem.addEventListener("click", item.onClick);
+            }
+        }
+
         // Get the tab content elements
         let elTabContent = props.el.querySelectorAll(".tab-pane");
         for (let i = 0; i < elTabContent.length; i++) {
@@ -122,6 +138,9 @@ export const Navigation = (props: INavProps) => {
             // Call the event
             item.onRenderTab ? item.onRenderTab(elTabContent[i] as any) : null;
         }
+
+        // Return the element
+        return $(props.el.children[0]);
     } else {
         // Return the html
         return html.join('\n');

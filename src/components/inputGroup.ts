@@ -1,3 +1,5 @@
+import * as $ from "jquery";
+
 /**
  * Input Group Properties
  */
@@ -18,7 +20,7 @@ export interface IInputGroupProps {
  * Input Group
  * @param props The input group properties.
  */
-export const InputGroup = (props: IInputGroupProps) => {
+export const InputGroup = (props: IInputGroupProps): Element | string => {
     let html = [];
 
     // Set the class names
@@ -73,6 +75,9 @@ export const InputGroup = (props: IInputGroupProps) => {
 
         // Set the html
         props.el.innerHTML = html.join('\n');
+
+        // Return the element
+        return $(props.el.children[0]);
     } else {
         // Return the html
         return html.join('\n');

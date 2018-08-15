@@ -1,16 +1,18 @@
+import * as $ from "jquery";
+
 /**
  * Button Types
  */
 export enum ButtonTypes {
-    Danger = 0,
-    Dark = 1,
-    Info = 2,
-    Light = 3,
-    Link = 4,
-    Primary = 5,
-    Secondary = 6,
-    Success = 7,
-    Warning = 8
+    Danger = 1,
+    Dark = 2,
+    Info = 3,
+    Light = 4,
+    Link = 5,
+    Primary = 6,
+    Secondary = 7,
+    Success = 8,
+    Warning = 9
 }
 
 /**
@@ -25,6 +27,7 @@ export interface IButtonProps {
     isLarge?: boolean;
     isOutline?: boolean;
     isSmall?: boolean;
+    onClick?: (ev: Event) => void;
     target?: string;
     text?: string;
     toggle?: string;
@@ -35,7 +38,7 @@ export interface IButtonProps {
  * Button
  * @param props The button properties.
  */
-export const Button = (props: IButtonProps) => {
+export const Button = (props: IButtonProps): Element | string => {
     // Set the class names
     let classNames = ["btn"];
     props.className ? classNames.push(props.className) : null;
@@ -107,6 +110,15 @@ export const Button = (props: IButtonProps) => {
 
         // Set the html
         props.el.innerHTML = html;
+
+        // See if there is a click event
+        if (props.onClick) {
+            // Add a click event
+            props.el.querySelector(".btn").addEventListener("click", props.onClick);
+        }
+
+        // Return the element
+        return $(props.el.children[0]);
     } else {
         // Return the html
         return html;
