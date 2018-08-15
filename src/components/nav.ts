@@ -1,0 +1,129 @@
+/**
+ * Navigation Properties
+ */
+export interface INavProps {
+    className?: string;
+    el?: Element | HTMLElement;
+    enableFade?: boolean;
+    enableFill?: boolean;
+    id?: string;
+    items?: Array<INavLink>;
+    isJustified?: boolean;
+    isPills?: boolean;
+    isTabs?: boolean;
+    isVertical?: boolean;
+}
+
+/**
+ * Navigation Links
+ */
+export interface INavLink {
+    isActive?: boolean;
+    isDisabled?: boolean;
+    href?: string;
+    onRenderTab?: (el: HTMLDivElement) => void;
+    tabContent?: string;
+    title?: string;
+}
+
+/**
+ * Navigation
+ * @param props - The navigation properties.
+ */
+export const Navigation = (props: INavProps) => {
+    let html = [];
+    let renderTabContent = false;
+
+    // Set the class names
+    let classNames = ["nav"];
+    props.className ? classNames.push(props.className) : null;
+    props.enableFill ? classNames.push("nav-fill") : null;
+    props.isJustified ? classNames.push("nav-justified") : null;
+    props.isPills ? classNames.push("nav-pills") : null;
+    props.isTabs ? classNames.push("nav-tabs") : null;
+    props.isVertical ? classNames.push("flex-column") : null;
+
+    // Set the attributes
+    let attributes = [
+        props.id ? 'id="' + props.id + '"' : '',
+        'class="' + classNames.join(' ') + '"',
+        props.isTabs ? 'role="tablist"' : null
+    ]
+
+    // Set the starting tag
+    html.push('<ul ' + attributes.join(' ') + '>');
+
+    // Parse the navigation items
+    let items = props.items || [];
+    for (let i = 0; i < items.length; i++) {
+        let item = items[i];
+
+        // Set the link class names
+        let linkClassNames = ["navItem"];
+        item.isActive ? linkClassNames.push("active") : null;
+        item.isDisabled ? linkClassNames.push("disabled") : null;
+
+        // See if tab content exists
+        if (item.tabContent) {
+            // Set the flag
+            renderTabContent = true;
+        }
+
+        // Add the navigation item
+        html.push([
+            '<li class="nav-item">',
+            '<a class="' + linkClassNames.join(' ') + '">' + (item.title || '') + '</a>',
+            '</li>'
+        ].join('\n'));
+    }
+
+    // Set the ending tag
+    html.push('</ul>');
+
+    // See if we are rendering tab content
+    if (renderTabContent) {
+        // Add the starting tag
+        html.push('<div class="tab-content">')
+
+        // Parse the items
+        for (let i = 0; i < items.length; i++) {
+            let item = items[i];
+
+            // Set the tab class names
+            let tabClassNames = ["tab-pane"];
+            props.enableFade ? tabClassNames.push("fade") : null;
+            item.isActive ? tabClassNames.push("active show") : null;
+
+            // Add the tab content
+            html.push([
+                '<div class="' + tabClassNames.join(' ') + '">',
+                item.tabContent || "",
+                '</div>'
+            ].join('\n'));
+        }
+
+        // Add the ending tag
+        html.push('</div>');
+    }
+
+    // See if the element exists
+    if (props.el) {
+        // Set the class
+        props.el.classList.add("bs");
+
+        // Set the html
+        props.el.innerHTML = html.join('\n');
+
+        // Get the tab content elements
+        let elTabContent = props.el.querySelectorAll(".tab-pane");
+        for (let i = 0; i < elTabContent.length; i++) {
+            let item = props.items[i];
+
+            // Call the event
+            item.onRenderTab ? item.onRenderTab(elTabContent[i] as any) : null;
+        }
+    } else {
+        // Return the html
+        return html.join('\n');
+    }
+}

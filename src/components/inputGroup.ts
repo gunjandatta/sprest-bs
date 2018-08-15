@@ -75,6 +75,6 @@ export const InputGroup = (props: IInputGroupProps) => {
         props.el.innerHTML = html.join('\n');
     } else {
         // Return the html
-        return html;
+        return html.join('\n');
     }
 }
