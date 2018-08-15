@@ -2,10 +2,17 @@
  * Modal Properties
  */
 export interface IModalProps {
-    el: Element | HTMLElement;
+    className?: string;
+    el?: Element | HTMLElement;
+    disableFade?: boolean;
+    hideCloseButton?: boolean;
     id?: string;
+    isCentered?: boolean;
+    isLarge?: boolean;
+    isSmall?: boolean;
+    onRenderBody?: (el: HTMLDivElement) => void;
+    onRenderFooter?: (el: HTMLDivElement) => void;
     title?: string;
-    visible?: boolean;
 }
 
 /**
@@ -13,28 +20,57 @@ export interface IModalProps {
  * @param props The modal properties.
  */
 export const Modal = (props: IModalProps) => {
-    // Set the class
-    props.el.classList.add("bs");
+    // Set the class names
+    let classNames = ["modal"];
+    props.className ? classNames.push(props.className) : null;
+    props.disableFade ? null : classNames.push("fade");
 
-    // Render the element
-    props.el.innerHTML =
-        `<div class="modal fade" role="dialog" id="` + (props.id || "") + `" aria-hidden="` + (props.visible ? "true" : "false") + `">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">` + (props.title || "") + `</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-            ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>`;
+    // Set the attributes
+    let attributes = [
+        'role="dialog"',
+        'class="' + classNames.join(' ') + '"',
+        props.id ? 'id="' + props.id + '"' : null
+    ].join(' ').replace(/  /g, " ");
+
+    // Set the dialog class names
+    let dialogClassNames = ["modal-dialog"];
+    props.isCentered ? dialogClassNames.push("modal-dialog-centered") : null;
+    props.isLarge ? dialogClassNames.push("modal-lg") : null;
+    props.isSmall ? dialogClassNames.push("modal-sm") : null;
+
+    // Generate the html
+    let html = [
+        '<div ' + attributes + '>',
+        '<div class="' + dialogClassNames.join(' ') + '" role="document">',
+        '<div class="modal-content">',
+        '<div class="modal-header">',
+        '<div class="modal-title">' + (props.title || "") + '</div>',
+        props.hideCloseButton ? '' : [
+            '<button type="button" class="close" data-dismiss="modal" aria-label="Close">',
+            '<span aria-hidden="true">&times;</span>',
+            '</button>'
+        ].join('\n'),
+        '</div>',
+        '<div class="modal-body"></div>',
+        '<div class="modal-footer"></div>',
+        '</div>',
+        '</div>',
+        '</div>'
+    ].join('\n')
+
+    // See if the element exists
+    if (props.el) {
+        // Set the class
+        props.el.classList.add("bs");
+
+        // Set the html
+        props.el.innerHTML = html;
+
+        // Execute the events
+        props.onRenderBody ? props.onRenderBody(props.el.querySelector(".modal-body")) : null;
+        props.onRenderFooter ? props.onRenderFooter(props.el.querySelector(".modal-footer")) : null;
+    } else {
+        // Return the html
+        return html;
+    }
 }
