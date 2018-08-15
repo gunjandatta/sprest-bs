@@ -4,6 +4,7 @@
   "description": "SharePoint webcomponents utilizing bootstrap.",
   "main": "src/index.tsx",
   "scripts": {
+    "all": "npm run build && npm run prod",
     "build": "webpack --mode=development",
     "prod": "webpack --mode=production"
   },
