@@ -105,7 +105,7 @@ export const Navigation = (props: INavProps): Element | string => {
             ].join('\n'));
         }
 
-        // Add the ending tag
+        // Add the closing tag
         html.push('</div>');
     }
 

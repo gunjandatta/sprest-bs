@@ -40,7 +40,7 @@ export const ButtonGroup = (props: IButtonGroupProps): Element | string => {
     // Set the starting tag
     html.push("<div " + attributes + ">");
 
-    // Parse the buttons and generate the html
+    // Parse the buttons
     let buttons = props.buttons || [];
     for (let i = 0; i < buttons.length; i++) {
         let button = buttons[i];
@@ -52,7 +52,7 @@ export const ButtonGroup = (props: IButtonGroupProps): Element | string => {
         html.push(Button(button));
     }
 
-    // Add the ending tag
+    // Add the closing tag
     html.push("</div>");
 
     // See if the element exists
