@@ -5,7 +5,7 @@ import * as Components from "./components";
 import * as WebParts from "./webparts";
 
 // Set the global variable
-let GD = {
+export {
     $,
     Components,
     WebParts
@@ -14,11 +14,12 @@ let GD = {
 // See if the window exists
 if (window) {
     // Set the global variable
-    window["GD"] = GD;
+    window["GD"] = {
+        $,
+        Components,
+        WebParts
+    };
 
     // Notify waiting scripts
     window["SP"] ? window["SP"].SOD.notifyScriptLoadedAndExecuteWaitingJobs("gd-sprest-bs") : null;
 }
-
-// Set the default export
-export default GD;
