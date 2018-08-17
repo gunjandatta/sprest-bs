@@ -2,39 +2,48 @@
 
 <head>
     <script src="dist/gd-bs.js"></script>
+    <script src="wc/www/build/app.js"></script>
 </head>
 
-<body class="bs">
-    <div id="ddl"></div>
-    <div id="button"></div>
-    <div id="modal"></div>
-    <script type="text/javascript">
-        document.querySelector("#ddl").innerHTML = GD.Components.Dropdown({
-            label: "My Dropdown",
-            type: GD.Components.DropdownTypes.Secondary,
-            items: [
-                { text: "Item 1" },
-                { text: "Item 2" },
-                { text: "Item 3" },
-                { text: "Item 4" },
-                { text: "Item 5" },
-                { text: "Item 6" },
-                { text: "Item 7" },
-                { text: "Item 8" },
-                { text: "Item 9" },
-                { text: "Item 10" }
-            ]
-        });
-        document.querySelector("#button").innerHTML = GD.Components.Button({
-            text: "Modal",
-            toggle: "modal",
-            target: "#myModal"
-        });
-        document.querySelector("#modal").innerHTML = GD.Components.Modal({
-            id: "myModal",
-            title: "My Modal"
-        });
-    </script>
+<body>
+    <h1>Library</h1>
+    <div class="bs">
+        <div id="ddl"></div>
+        <div id="button"></div>
+        <div id="modal"></div>
+        <script type="text/javascript">
+            document.querySelector("#ddl").innerHTML = GD.Components.Dropdown({
+                label: "My Dropdown",
+                type: GD.Components.DropdownTypes.Secondary,
+                items: [
+                    { text: "Item 1" },
+                    { text: "Item 2" },
+                    { text: "Item 3" },
+                    { text: "Item 4" },
+                    { text: "Item 5" },
+                    { text: "Item 6" },
+                    { text: "Item 7" },
+                    { text: "Item 8" },
+                    { text: "Item 9" },
+                    { text: "Item 10" }
+                ]
+            });
+            document.querySelector("#button").innerHTML = GD.Components.Button({
+                text: "Modal",
+                toggle: "modal",
+                target: "#myModal"
+            });
+            document.querySelector("#modal").innerHTML = GD.Components.Modal({
+                id: "myModal",
+                title: "My Modal"
+            });
+        </script>
+    </div>
+
+    <h1>Web Components</h1>
+    <bs-button
+        text="My Button"
+    />
 </body>
 
 </html>

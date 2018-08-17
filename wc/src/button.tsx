@@ -1,13 +1,14 @@
 import { Component, Prop } from "@stencil/core";
-import { Components } from "../../src";
+declare var GD;
 
 @Component({
     tag: "bs-button"
 })
 export class Button {
+    el: HTMLElement;
+
     // Button Properties
     @Prop() className: string;
-    @Prop() el: Element | HTMLElement;
     @Prop() id: string;
     @Prop() isBlock: boolean;
     @Prop() isDisabled: boolean;
@@ -20,10 +21,11 @@ export class Button {
     @Prop() toggle: string;
     @Prop() type: number;
 
-    // Render the button
-    render() {
-        // Return the button
-        return Components.Button({
+    // Component loaded event
+    componentDidLoad() {
+        debugger;
+        // Render the button
+        return GD.Components.Button({
             className: this.className,
             el: this.el,
             id: this.id,
@@ -38,5 +40,12 @@ export class Button {
             toggle: this.toggle,
             type: this.type
         });
+    }
+
+    // Render the button
+    render() {
+        return (
+            <div ref={el => this.el = el} />
+        );
     }
 }

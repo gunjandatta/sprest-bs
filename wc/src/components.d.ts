@@ -26,7 +26,6 @@ declare global {
 
     interface BsButton {
       'className': string;
-      'el': Element | HTMLElement;
       'id': string;
       'isBlock': boolean;
       'isDisabled': boolean;
@@ -60,7 +59,6 @@ declare global {
 
     export interface BsButtonAttributes extends HTMLAttributes {
       'className'?: string;
-      'el'?: Element | HTMLElement;
       'id'?: string;
       'isBlock'?: boolean;
       'isDisabled'?: boolean;
