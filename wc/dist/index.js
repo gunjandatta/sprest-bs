@@ -1,0 +1,1 @@
+// GdSprestBs: CommonJS Main

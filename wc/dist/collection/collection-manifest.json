@@ -1,0 +1,75 @@
+{
+  "components": [
+    {
+      "tag": "bs-button",
+      "dependencies": [],
+      "componentClass": "Button",
+      "componentPath": "button.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "attr": "id"
+        },
+        {
+          "name": "isBlock",
+          "type": "Boolean",
+          "attr": "is-block"
+        },
+        {
+          "name": "isDisabled",
+          "type": "Boolean",
+          "attr": "is-disabled"
+        },
+        {
+          "name": "isLarge",
+          "type": "Boolean",
+          "attr": "is-large"
+        },
+        {
+          "name": "isOutline",
+          "type": "Boolean",
+          "attr": "is-outline"
+        },
+        {
+          "name": "isSmall",
+          "type": "Boolean",
+          "attr": "is-small"
+        },
+        {
+          "name": "target",
+          "type": "String",
+          "attr": "target"
+        },
+        {
+          "name": "text",
+          "type": "String",
+          "attr": "text"
+        },
+        {
+          "name": "toggle",
+          "type": "String",
+          "attr": "toggle"
+        },
+        {
+          "name": "type",
+          "type": "Number",
+          "attr": "type"
+        }
+      ]
+    }
+  ],
+  "collections": [],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "0.11.4",
+    "typescriptVersion": "2.9.2"
+  },
+  "bundles": []
+}

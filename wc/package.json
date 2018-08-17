@@ -2,7 +2,13 @@
   "name": "wc",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "dist/"
+  ],
+  "module": "dist/esm/index.js",
   "scripts": {
     "build": "stencil build --prerender",
     "start": "stencil build --dev --watch --serve"

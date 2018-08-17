@@ -1,8 +1,7 @@
 <html>
 
 <head>
-    <script src="https://raw.github.com/gunjandatta/sprest-bs/master/dist/gd-bs.js"></script>
-    <script src="https://raw.github.com/gunjandatta/sprest-bs/master/wc/www/build/app.js"></script>
+    <script src="wc/dist/gd-sprest-bs.js"></script>
 </head>
 
 <body>
@@ -12,7 +11,7 @@
         <div id="button"></div>
         <div id="modal"></div>
         <script type="text/javascript">
-            document.addEventListener("load", function () {
+            window.addEventListener("load", function () {
                 document.querySelector("#ddl").innerHTML = GD.Components.Dropdown({
                     label: "My Dropdown",
                     type: GD.Components.DropdownTypes.Secondary,

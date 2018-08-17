@@ -1075,6 +1075,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar 
 
 /***/ }),
 
+/***/ "./src/gd.ts":
+/*!*******************!*\
+  !*** ./src/gd.ts ***!
+  \*******************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nexports.$ = $;\nvar Components = __webpack_require__(/*! ./components */ \"./src/components/index.ts\");\nexports.Components = Components;\nvar WebParts = __webpack_require__(/*! ./webparts */ \"./src/webparts/index.ts\");\nexports.WebParts = WebParts;\n\n//# sourceURL=webpack:///./src/gd.ts?");
+
+/***/ }),
+
 /***/ "./src/index.ts":
 /*!**********************!*\
   !*** ./src/index.ts ***!
@@ -1083,7 +1095,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nexports.$ = $;\n__webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.js\");\n__webpack_require__(/*! ./styles.scss */ \"./src/styles.scss\");\nvar Components = __webpack_require__(/*! ./components */ \"./src/components/index.ts\");\nexports.Components = Components;\nvar WebParts = __webpack_require__(/*! ./webparts */ \"./src/webparts/index.ts\");\nexports.WebParts = WebParts;\n// See if the window exists\nif (window) {\n    // Set the global variable\n    window[\"GD\"] = {\n        $: $,\n        Components: Components,\n        WebParts: WebParts\n    };\n    // Notify waiting scripts\n    window[\"SP\"] ? window[\"SP\"].SOD.notifyScriptLoadedAndExecuteWaitingJobs(\"gd-sprest-bs\") : null;\n}\n\n//# sourceURL=webpack:///./src/index.ts?");
+eval("\n\nfunction __export(m) {\n    for (var p in m) {\n        if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n    }\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.js\");\n__webpack_require__(/*! ./styles.scss */ \"./src/styles.scss\");\nvar GD = __webpack_require__(/*! ./gd */ \"./src/gd.ts\");\n__export(__webpack_require__(/*! ./gd */ \"./src/gd.ts\"));\n// See if the window exists\nif (window) {\n    // Set the global variable\n    window[\"GD\"] = GD;\n    // Notify waiting scripts\n    window[\"SP\"] ? window[\"SP\"].SOD.notifyScriptLoadedAndExecuteWaitingJobs(\"gd-sprest-bs\") : null;\n}\n__webpack_require__(/*! ../wc/dist/gd-sprest-bs.js */ \"./wc/dist/gd-sprest-bs.js\");\n\n//# sourceURL=webpack:///./src/index.ts?");
 
 /***/ }),
 
@@ -1155,6 +1167,17 @@ eval("\n\nfunction __export(m) {\n    for (var p in m) {\n        if (!exports.h
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\n\n//# sourceURL=webpack:///./src/webparts/types/index.ts?");
+
+/***/ }),
+
+/***/ "./wc/dist/gd-sprest-bs.js":
+/*!*********************************!*\
+  !*** ./wc/dist/gd-sprest-bs.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("/*!\n * Built with http://stenciljs.com\n * 2018-07-17T16:40:41\n */\n!function(e,t,s,r,n,i,o,c,a,l,u,d,p,m){for((u=e.GdSprestBs=e.GdSprestBs||{}).components=a,(p=a.filter(function(e){return e[2]}).map(function(e){return e[0]})).length&&((d=t.createElement(\"style\")).innerHTML=p.join()+\"{visibility:hidden}.hydrated{visibility:inherit}\",d.setAttribute(\"data-styles\",\"\"),t.head.insertBefore(d,t.head.firstChild)),function(e,t,s){(e[\"s-apps\"]=e[\"s-apps\"]||[]).push(\"GdSprestBs\"),s.componentOnReady||(s.componentOnReady=function(){var t=this;function s(s){if(t.nodeName.indexOf(\"-\")>0){for(var r=e[\"s-apps\"],n=0,i=0;i<r.length;i++)if(e[r[i]].componentOnReady){if(e[r[i]].componentOnReady(t,s))return;n++}if(n<r.length)return void(e[\"s-cr\"]=e[\"s-cr\"]||[]).push([t,s])}s(null)}return e.Promise?new e.Promise(s):{then:s}})}(e,0,l),n=n||u.resourcesUrl,d=(p=t.querySelectorAll(\"script\")).length-1;d>=0&&!(m=p[d]).src&&!m.hasAttribute(\"data-resources-url\");d--);p=m.getAttribute(\"data-resources-url\"),!n&&p&&(n=p),!n&&m.src&&(n=(p=m.src.split(\"/\").slice(0,-1)).join(\"/\")+(p.length?\"/\":\"\")+\"gd-sprest-bs/\"),d=t.createElement(\"script\"),function(e,t,s,r){return!(t.search.indexOf(\"core=esm\")>0)&&(!(!(t.search.indexOf(\"core=es5\")>0||\"file:\"===t.protocol)&&e.customElements&&e.customElements.define&&e.fetch&&e.CSS&&e.CSS.supports&&e.CSS.supports(\"color\",\"var(--c)\")&&\"noModule\"in s)||function(e){try{return new Function('import(\"\")'),!1}catch(e){}return!0}())}(e,e.location,d)?d.src=n+\"gd-sprest-bs.1kenufqe.js\":(d.src=n+\"gd-sprest-bs.myvzhmpf.js\",d.setAttribute(\"type\",\"module\"),d.setAttribute(\"crossorigin\",!0)),d.setAttribute(\"data-resources-url\",n),d.setAttribute(\"data-namespace\",\"gd-sprest-bs\"),t.head.appendChild(d)}(window,document,0,0,0,0,0,0,[[\"bs-button\",\"9miwjayz\",0,[[\"className\",1,0,\"class-name\",2],[\"id\",1,0,1,2],[\"isBlock\",1,0,\"is-block\",3],[\"isDisabled\",1,0,\"is-disabled\",3],[\"isLarge\",1,0,\"is-large\",3],[\"isOutline\",1,0,\"is-outline\",3],[\"isSmall\",1,0,\"is-small\",3],[\"target\",1,0,1,2],[\"text\",1,0,1,2],[\"toggle\",1,0,1,2],[\"type\",1,0,1,4]]]],HTMLElement.prototype);\n\n//# sourceURL=webpack:///./wc/dist/gd-sprest-bs.js?");
 
 /***/ })
 

@@ -11,3 +11,5 @@ if (window) {
     // Notify waiting scripts
     window["SP"] ? window["SP"].SOD.notifyScriptLoadedAndExecuteWaitingJobs("gd-sprest-bs") : null;
 }
+
+import "../wc/dist/gd-sprest-bs.js";
