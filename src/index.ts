@@ -1,24 +1,12 @@
-import * as $ from "jquery";
 import "bootstrap";
 import "./styles.scss";
-import * as Components from "./components";
-import * as WebParts from "./webparts";
-
-// Set the global variable
-export {
-    $,
-    Components,
-    WebParts
-};
+import * as GD from "./gd";
+export * from "./gd";
 
 // See if the window exists
 if (window) {
     // Set the global variable
-    window["GD"] = {
-        $,
-        Components,
-        WebParts
-    };
+    window["GD"] = GD;
 
     // Notify waiting scripts
     window["SP"] ? window["SP"].SOD.notifyScriptLoadedAndExecuteWaitingJobs("gd-sprest-bs") : null;
