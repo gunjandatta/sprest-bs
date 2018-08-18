@@ -5,6 +5,7 @@ import * as $ from "jquery";
  */
 export interface IDropdownItem {
     href?: string;
+    isSelected?: boolean;
     onClick?: (ev: Event) => void;
     text?: string;
     value?: any;
@@ -20,6 +21,7 @@ export interface IDropdownProps {
     id?: string;
     label?: string;
     type?: number;
+    value?: Array<any>;
 }
 
 /**
@@ -92,9 +94,33 @@ export const Dropdown = (props: IDropdownProps): Element | string => {
     for (let i = 0; i < items.length; i++) {
         let item = items[i];
 
+        // Set the class names
+        let classNames = ["dropdown-item"];
+
+        // See if this item is selected
+        if (item.isSelected) {
+            // Select the item
+            classNames.push("active");
+        }
+        // Else, see if a value exists
+        else if (props.value) {
+            // Ensure it's an array
+            let values = props.value.length ? props.value : [props.value];
+
+            // Parse the values
+            for (let j = 0; j < values.length; j++) {
+                // See if this item is selected
+                if (item.value == values[j]) {
+                    // Select this item
+                    classNames.push("active");
+                    break;
+                }
+            }
+        }
+
         // Set the item attributes
         let attributes = [
-            'class="dropdown-item"',
+            'class="' + classNames.join(' ') + '"',
             'href="' + (item.href || '#') + '"',
             item.value ? 'data-value="' + JSON.stringify(item.value) + '"' : ''
         ].join(' ');
@@ -121,6 +147,20 @@ export const Dropdown = (props: IDropdownProps): Element | string => {
         let elItems = props.el.querySelectorAll(".dropdown-item");
         for (let i = 0; i < elItems.length; i++) {
             let item = props.items[i];
+
+            // Set the click event for selecting the item
+            elItems[i].addEventListener("click", ev => {
+                let item = ev.currentTarget as HTMLElement;
+
+                // See if this item is selected
+                if (item.classList.contains("active")) {
+                    // Unselect this item
+                    item.classList.remove("active");
+                } else {
+                    // Select this item
+                    item.classList.add("active");
+                }
+            });
 
             // See if a click event exists
             if (item.onClick) {

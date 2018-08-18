@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <script src="wc/dist/gd-sprest-bs.js"></script>
+    <script src="dist/gd-bs.js"></script>
 </head>
 
 <body>
@@ -12,7 +12,8 @@
         <div id="modal"></div>
         <script type="text/javascript">
             window.addEventListener("load", function () {
-                document.querySelector("#ddl").innerHTML = GD.Components.Dropdown({
+                GD.Components.Dropdown({
+                    el: document.querySelector("#ddl"),
                     label: "My Dropdown",
                     type: GD.Components.DropdownTypes.Secondary,
                     items: [
@@ -28,12 +29,14 @@
                         { text: "Item 10" }
                     ]
                 });
-                document.querySelector("#button").innerHTML = GD.Components.Button({
+                GD.Components.Button({
+                    el: document.querySelector("#button"),
                     text: "Modal",
                     toggle: "modal",
                     target: "#myModal"
                 });
-                document.querySelector("#modal").innerHTML = GD.Components.Modal({
+                GD.Components.Modal({
+                    el: document.querySelector("#modal"),
                     id: "myModal",
                     title: "My Modal"
                 });
