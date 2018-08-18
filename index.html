@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <script src="dist/gd-bs.js"></script>
+    <script src="dist/gd-sprest-bs.js"></script>
 </head>
 
 <body>
@@ -12,10 +12,10 @@
         <div id="modal"></div>
         <script type="text/javascript">
             window.addEventListener("load", function () {
-                GD.Components.Dropdown({
+                $REST.BS.Components.Dropdown({
                     el: document.querySelector("#ddl"),
                     label: "My Dropdown",
-                    type: GD.Components.DropdownTypes.Secondary,
+                    type: $REST.BS.Components.DropdownTypes.Secondary,
                     items: [
                         { text: "Item 1" },
                         { text: "Item 2" },
@@ -29,13 +29,13 @@
                         { text: "Item 10" }
                     ]
                 });
-                GD.Components.Button({
+                $REST.BS.Components.Button({
                     el: document.querySelector("#button"),
                     text: "Modal",
                     toggle: "modal",
                     target: "#myModal"
                 });
-                GD.Components.Modal({
+                $REST.BS.Components.Modal({
                     el: document.querySelector("#modal"),
                     id: "myModal",
                     title: "My Modal"
@@ -43,9 +43,6 @@
             });
         </script>
     </div>
-
-    <h1>Web Components</h1>
-    <bs-button text="My Button" />
 </body>
 
 </html>

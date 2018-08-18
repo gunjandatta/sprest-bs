@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
         entry: "./src/index.ts",
         output: {
             path: path.resolve(__dirname, "dist"),
-            filename: "gd-bs" + (isDev ? "" : ".min") + ".js"
+            filename: "gd-sprest-bs" + (isDev ? "" : ".min") + ".js"
         },
         resolve: {
             extensions: [".scss", ".css", ".ts", ".js"]
