@@ -20,6 +20,7 @@ export interface IDropdownProps {
     el?: Element | HTMLElement;
     id?: string;
     label?: string;
+    multi?: boolean;
     type?: number;
     value?: Array<any>;
 }
@@ -42,6 +43,7 @@ export enum DropdownTypes {
  */
 export const Dropdown = (props: IDropdownProps): Element | string => {
     let html = [];
+    let isMulti = props.multi || false;
 
     // Set the class names
     let classNames = ["dropdown"];
@@ -122,6 +124,7 @@ export const Dropdown = (props: IDropdownProps): Element | string => {
         let attributes = [
             'class="' + classNames.join(' ') + '"',
             'href="' + (item.href || '#') + '"',
+            'data-idx="' + i + '"',
             item.value ? 'data-value="' + JSON.stringify(item.value) + '"' : ''
         ].join(' ');
 
@@ -150,15 +153,31 @@ export const Dropdown = (props: IDropdownProps): Element | string => {
 
             // Set the click event for selecting the item
             elItems[i].addEventListener("click", ev => {
-                let item = ev.currentTarget as HTMLElement;
+                let elItem = ev.currentTarget as HTMLElement;
+                let item: IDropdownItem = props.items[elItem.getAttribute("data-idx")] || {};
+
+                // See if we are not allowing multiple selections
+                if (!isMulti) {
+                    // Parse the selected items
+                    let selectedItems = props.el.querySelectorAll(".dropdown-item.active");
+                    for (let i = 0; i < selectedItems.length; i++) {
+                        let selectedItem = selectedItems[i] as HTMLElement;
+
+                        // Skip this item
+                        if (item.text == selectedItem.innerText) { continue; }
+
+                        // Unselect the item
+                        selectedItems[i].classList.remove("active")
+                    }
+                }
 
                 // See if this item is selected
-                if (item.classList.contains("active")) {
+                if (elItem.classList.contains("active")) {
                     // Unselect this item
-                    item.classList.remove("active");
+                    elItem.classList.remove("active");
                 } else {
                     // Select this item
-                    item.classList.add("active");
+                    elItem.classList.add("active");
                 }
             });
 
