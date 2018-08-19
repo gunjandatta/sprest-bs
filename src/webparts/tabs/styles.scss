@@ -1,0 +1,33 @@
+/**
+ * WebPart Tabs
+ */
+
+/** Hide the webpart */
+.wp-tabs > .is-hidden, .wp-tabs .ms-rte-wpbox.is-hidden {
+    left: -1000vw;
+    position: absolute;
+    overflow: hidden;
+}
+
+/** Remove the spacing around the webparts */
+.wp-tabs {
+    border-spacing: 0px;
+}
+
+/** Hide the titles of the webparts */
+.wp-tabs .ms-webpart-chrome-title {
+    display: none;
+}
+
+/** Remove the spacing */
+.wp-tabs .wp-tab {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+/** Hide the vertical spacing */
+.wp-tabs .wp-tab .ms-PartSpacingVertical {
+    display: none;
+}

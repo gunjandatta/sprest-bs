@@ -62,7 +62,7 @@ export const Navigation = (props: INavProps): Element | string => {
         let item = items[i];
 
         // Set the link class names
-        let linkClassNames = ["navItem"];
+        let linkClassNames = ["nav-link"];
         item.isActive ? linkClassNames.push("active") : null;
         item.isDisabled ? linkClassNames.push("disabled") : null;
 
@@ -125,6 +125,28 @@ export const Navigation = (props: INavProps): Element | string => {
 
             // Set the index
             elNavItem.setAttribute("data-idx", i.toString());
+
+            // See if we are rendering tabs
+            if (props.isTabs) {
+                // Add a click event
+                elNavItem.addEventListener("click", ev => {
+                    // Parse the selected tabs
+                    let selectedTabs = props.el.querySelectorAll(".nav-link.active");
+                    for (let i = 0; i < selectedTabs.length; i++) {
+                        let selectedTab = selectedTabs[i];
+
+                        // Unselect this tab
+                        selectedTab.classList.remove("active");
+                    }
+
+                    // Get the navigation link
+                    let elTab = (ev.currentTarget as HTMLElement).querySelector(".nav-link");
+                    if (elTab) {
+                        // Select this tab
+                        elTab.classList.add("active");
+                    }
+                });
+            }
 
             // See if a click event exists
             if (item.onClick) {

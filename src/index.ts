@@ -9,5 +9,5 @@ if (window) {
     window["$REST"] = $REST;
 
     // Notify waiting scripts
-    window["SP"] ? window["SP"].SOD.notifyScriptLoadedAndExecuteWaitingJobs("gd-sprest-bs") : null;
+    window["SP"] ? window["SP"].SOD.notifyScriptLoadedAndExecuteWaitingJobs("gd-sprest-bs.js") : null;
 }

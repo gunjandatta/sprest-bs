@@ -1,6 +1,7 @@
 import { Navigation, INavLink } from "../../components";
 import { WebPart } from "../base";
 import { IWebPartInfo, IWPTabs, IWPTabsProps } from "../types";
+import { $ } from "../../rest";
 
 /**
  * Web Part Tabs
@@ -150,7 +151,7 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
     }
 
     // Method to update the visibility of the webparts
-    let updateWebParts = (tab?: INavLink) => {
+    let updateWebParts = (tab?: INavLink, ev?: Event) => {
         let selectedTabId = 0;
 
         // See if the tab exists
