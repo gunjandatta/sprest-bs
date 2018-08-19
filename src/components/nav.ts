@@ -23,7 +23,7 @@ export interface INavLink {
     isActive?: boolean;
     isDisabled?: boolean;
     href?: string;
-    onClick?: (ev: Event) => void;
+    onClick?: (item: INavLink, ev?: Event) => void;
     onRenderTab?: (el: HTMLDivElement) => void;
     tabContent?: string;
     title?: string;
@@ -123,10 +123,18 @@ export const Navigation = (props: INavProps): Element | string => {
             let elNavItem = elNavItems[i];
             let item = props.items[i];
 
+            // Set the index
+            elNavItem.setAttribute("data-idx", i.toString());
+
             // See if a click event exists
             if (item.onClick) {
                 // Add a click event
-                elNavItem.addEventListener("click", item.onClick);
+                elNavItem.addEventListener("click", ev => {
+                    let elItem = ev.currentTarget as HTMLDivElement;
+
+                    // Call the click event
+                    item.onClick(props.items[elItem.getAttribute("data-idx")], ev);
+                });
             }
         }
 
