@@ -2,6 +2,11 @@
  * WebPart Tabs
  */
 
+/** Display a cursor for the nav items */
+.wp-tabs .nav > .nav-item {
+    cursor: pointer;
+}
+
 /** Hide the webpart */
 .wp-tabs > .is-hidden, .wp-tabs .ms-rte-wpbox.is-hidden {
     left: -1000vw;

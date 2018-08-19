@@ -8,4 +8,6 @@ export interface IWPTabs extends IWebPart { }
 /**
  * WebPart Tabs Properties
  */
-export interface IWPTabsProps extends IWebPartProps { }
+export interface IWPTabsProps extends IWebPartProps {
+    type?: number;
+}
