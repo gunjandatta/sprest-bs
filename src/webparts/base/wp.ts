@@ -227,8 +227,8 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
         // Get the webpart element
         let elWebPart = _wp.wpId ? document.querySelector("div[webpartid='" + _wp.wpId + "']") : null;
         if (elWebPart) {
-            // Add the default fabric class name
-            elWebPart.className += " fabric " + (props.wpClassName || "");
+            // Add the default bootstrap class name
+            elWebPart.className += " bs " + (props.wpClassName || "");
         }
 
         // See if a class name exists
@@ -239,6 +239,7 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
 
         // See if the page is being edited
         let returnVal = null;
+        debugger;
         if (isEditMode()) {
             // Add the help link
             addHelpLink();
@@ -379,7 +380,7 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
                 // See if the render footer event exists
                 if (_editForm.onRenderFooter) {
                     // Call the event
-                    _editForm.onRenderFooter(_modal.querySelector(".modal-footer"), _wp);
+                    _editForm.onRenderFooter(_wp.el.querySelector(".modal-footer"), _wp);
                 }
             }
         });

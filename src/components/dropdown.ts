@@ -22,7 +22,7 @@ export interface IDropdownProps {
     label?: string;
     multi?: boolean;
     type?: number;
-    value?: Array<any>;
+    value?: any;
 }
 
 /**
