@@ -127,7 +127,7 @@ export const Navigation = (props: INavProps): Element | string => {
             elNavItem.setAttribute("data-idx", i.toString());
 
             // See if we are rendering tabs
-            if (props.isTabs) {
+            if (props.isPills || props.isTabs) {
                 // Add a click event
                 elNavItem.addEventListener("click", ev => {
                     // Parse the selected tabs
