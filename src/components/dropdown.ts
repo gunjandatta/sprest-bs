@@ -6,7 +6,7 @@ import * as $ from "jquery";
 export interface IDropdownItem {
     href?: string;
     isSelected?: boolean;
-    onClick?: (ev: Event) => void;
+    onChange?: (item: IDropdownItem | Array<IDropdownItem>, ev: Event) => void;
     text?: string;
     value?: any;
 }
@@ -15,7 +15,8 @@ export interface IDropdownItem {
  * Dropdown Properties
  */
 export interface IDropdownProps {
-    items?: Array<IDropdownItem>;
+    items: Array<IDropdownItem>;
+    onChange?: (item: IDropdownItem | Array<IDropdownItem>, ev: Event) => void;
     className?: string;
     el?: Element | HTMLElement;
     id?: string;
@@ -154,20 +155,25 @@ export const Dropdown = (props: IDropdownProps): Element | string => {
             // Set the click event for selecting the item
             elItems[i].addEventListener("click", ev => {
                 let elItem = ev.currentTarget as HTMLElement;
-                let item: IDropdownItem = props.items[elItem.getAttribute("data-idx")] || {};
+                let item: IDropdownItem = props.items[elItem.getAttribute("data-idx")];
+                let items: Array<IDropdownItem> = [];
 
-                // See if we are not allowing multiple selections
-                if (!isMulti) {
-                    // Parse the selected items
-                    let selectedItems = props.el.querySelectorAll(".dropdown-item.active");
-                    for (let i = 0; i < selectedItems.length; i++) {
-                        let selectedItem = selectedItems[i] as HTMLElement;
+                // Parse the selected items
+                let elSelectedItems = props.el.querySelectorAll(".dropdown-item.active");
+                for (let i = 0; i < elSelectedItems.length; i++) {
+                    let elSelectedItem = elSelectedItems[i] as HTMLElement;
+                    let selectedItem = props.items[elSelectedItem.getAttribute("data-idx")];
 
-                        // Skip this item
-                        if (item.text == selectedItem.innerText) { continue; }
+                    // Skip this item
+                    if (item.text == selectedItem.text) { continue; }
 
+                    // See if this is a multi-select
+                    if (isMulti) {
+                        // Add the item
+                        items.push(selectedItem);
+                    } else {
                         // Unselect the item
-                        selectedItems[i].classList.remove("active")
+                        elSelectedItem.classList.remove("active")
                     }
                 }
 
@@ -178,14 +184,30 @@ export const Dropdown = (props: IDropdownProps): Element | string => {
                 } else {
                     // Select this item
                     elItem.classList.add("active");
+
+                    // Add the item
+                    items.push(item);
+                }
+
+                // Sort the items
+                items = items.sort((a, b) => {
+                    if (a.text < b.text) { return -1; }
+                    if (a.text > b.text) { return 1; }
+                    return 0;
+                });
+
+                // See if a change event exists
+                if (item.onChange) {
+                    // Call the change event
+                    item.onChange(isMulti ? items : items[0], ev);
+                }
+
+                // See if a global change event exists
+                if (props.onChange) {
+                    // Call the change event
+                    props.onChange(isMulti ? items : items[0], ev);
                 }
             });
-
-            // See if a click event exists
-            if (item.onClick) {
-                // Set the event
-                elItems[i].addEventListener("click", item.onClick);
-            }
         }
 
         // Return the element

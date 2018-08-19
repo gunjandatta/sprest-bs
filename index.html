@@ -50,14 +50,17 @@
                                     control: {
                                         label: "First Name",
                                         name: "FName",
-                                        type: 8
+                                        type: 9,
+                                        onChange: function (value) {
+                                            console.log("New First Name: " + value);
+                                        }
                                     }
                                 },
                                 {
                                     control: {
                                         label: "Last Name",
                                         name: "LName",
-                                        type: 8
+                                        type: 9
                                     }
                                 },
                                 {
@@ -71,7 +74,50 @@
                                     control: {
                                         label: "Password",
                                         name: "Password",
-                                        type: 4
+                                        type: 5
+                                    }
+                                },
+                                {
+                                    control: {
+                                        label: "Jobs",
+                                        name: "Jobs",
+                                        type: 2,
+                                        items: [
+                                            { text: "Job 1" },
+                                            { text: "Job 2" },
+                                            { text: "Job 3" },
+                                            { text: "Job 4" },
+                                            { text: "Job 5" },
+                                            { text: "Job 6" },
+                                            { text: "Job 7" },
+                                            { text: "Job 8" },
+                                            { text: "Job 9" }
+                                        ],
+                                        onChange: function (item) {
+                                            console.log("Selected Item: " + (item ? item.text : ""));
+                                        }
+                                    }
+                                },
+                                {
+                                    control: {
+                                        label: "Multi Jobs",
+                                        name: "Jobs",
+                                        type: 4,
+                                        items: [
+                                            { text: "Job 1" },
+                                            { text: "Job 2" },
+                                            { text: "Job 3" },
+                                            { text: "Job 4" },
+                                            { text: "Job 5" },
+                                            { text: "Job 6" },
+                                            { text: "Job 7" },
+                                            { text: "Job 8" },
+                                            { text: "Job 9" }
+                                        ],
+                                        onChange: function (items) {
+                                            console.log("Selected Items: ");
+                                            console.log(items)
+                                        }
                                     }
                                 }
                             ],
