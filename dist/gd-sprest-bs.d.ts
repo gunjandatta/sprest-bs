@@ -71,6 +71,21 @@ declare module 'gd-sprest-bs/components/types/button' {
             toggle?: string;
             type?: number;
     }
+    
+    /**
+        * Button Types
+        */
+    export const ButtonTypes: {
+            Danger: number;
+            Dark: number;
+            Info: number;
+            Light: number;
+            Link: number;
+            Primary: number;
+            Secondary: number;
+            Success: number;
+            Warning: number;
+    }
 }
 
 declare module 'gd-sprest-bs/components/types/buttonGroup' {
@@ -127,6 +142,18 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
             multi?: boolean;
             type?: number;
             value?: any;
+    }
+    
+    /**
+        * Dropdown Types
+        */
+    export const DropdownTypes: {
+            Danger: number;
+            Info: number;
+            Primary: number;
+            Secondary: number;
+            Success: number;
+            Warning: number;
     }
 }
 
@@ -197,6 +224,22 @@ declare module 'gd-sprest-bs/components/types/form' {
             }>;
             value?: any;
     }
+    
+    /**
+        * Form Control Type
+        */
+    export const FormControlTypes: {
+            CheckBox: number;
+            Email: number;
+            Dropdown: number;
+            File: number;
+            MultiDropdown: number;
+            Password: number;
+            Range: number;
+            Readonly: number;
+            TextArea: number;
+            TextField: number;
+    }
 }
 
 declare module 'gd-sprest-bs/components/types/inputGroup' {
@@ -222,6 +265,17 @@ declare module 'gd-sprest-bs/components/types/inputGroup' {
             prependedLabel?: string;
             type?: number;
             value?: string;
+    }
+    
+    /**
+        * Input Group Types
+        */
+    export const InputGroupTypes: {
+            Email: number;
+            File: number;
+            Password: number;
+            TextArea: number;
+            TextField: number;
     }
 }
 
@@ -592,6 +646,14 @@ declare module 'gd-sprest-bs/webparts/types/wpTabs' {
         */
     export interface IWPTabsProps extends IWebPartProps {
             type?: number;
+    }
+    
+    /**
+        * Web Part Tab Types
+        */
+    export const WPTabTypes: {
+            Pillars: number;
+            Tabs: number;
     }
 }
 

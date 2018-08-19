@@ -21,3 +21,18 @@ export interface IButtonProps {
     toggle?: string;
     type?: number;
 }
+
+/**
+ * Button Types
+ */
+export const ButtonTypes: {
+    Danger: number;
+    Dark: number;
+    Info: number;
+    Light: number;
+    Link: number;
+    Primary: number;
+    Secondary: number;
+    Success: number;
+    Warning: number;
+}

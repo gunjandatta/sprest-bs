@@ -21,3 +21,14 @@ export interface IInputGroupProps {
     type?: number;
     value?: string;
 }
+
+/**
+ * Input Group Types
+ */
+export const InputGroupTypes: {
+    Email: number;
+    File: number;
+    Password: number;
+    TextArea: number;
+    TextField: number;
+}

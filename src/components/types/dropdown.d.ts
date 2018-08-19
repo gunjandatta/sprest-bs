@@ -28,3 +28,15 @@ export interface IDropdownProps {
     type?: number;
     value?: any;
 }
+
+/**
+ * Dropdown Types
+ */
+export const DropdownTypes: {
+    Danger: number;
+    Info: number;
+    Primary: number;
+    Secondary: number;
+    Success: number;
+    Warning: number;
+}

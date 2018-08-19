@@ -1,11 +1,11 @@
 {
   "name": "gd-sprest-bs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "SharePoint components utilizing bootstrap.",
   "main": "dist/gd-sprest-bs.js",
   "typings": "dist/gd-sprest-bs.d.ts",
   "scripts": {
-    "all": "npm run build && npm run prod",
+    "all": "npm run build && npm run prod && npm run typings",
     "build": "webpack --mode=development",
     "prod": "webpack --mode=production",
     "typings": "dts-bundle --out ../dist/gd-sprest-bs.d.ts --name gd-sprest-bs --main ./src/typings.d.ts"

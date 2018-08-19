@@ -64,3 +64,19 @@ export interface IFormProps {
     }>;
     value?: any;
 }
+
+/**
+ * Form Control Type
+ */
+export const FormControlTypes: {
+    CheckBox: number;
+    Email: number;
+    Dropdown: number;
+    File: number;
+    MultiDropdown: number;
+    Password: number;
+    Range: number;
+    Readonly: number;
+    TextArea: number;
+    TextField: number;
+}
