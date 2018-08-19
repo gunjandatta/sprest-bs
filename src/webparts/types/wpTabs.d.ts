@@ -1,6 +1,11 @@
 import { IWebPart, IWebPartProps } from "./wp";
 
 /**
+ * Web Part Tabs
+ */
+export const WPTabs: (props: IWPTabsProps) => IWPTabs;
+
+/**
  * WebPart Tabs
  */
 export interface IWPTabs extends IWebPart { }

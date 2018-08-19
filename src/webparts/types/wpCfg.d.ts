@@ -1,6 +1,11 @@
 /**
  * WebPart Configuration
  */
+export const WPCfg: IWPCfg;
+
+/**
+ * WebPart Configuration
+ */
 export interface IWPCfg {
     /**
      * Method to get the webpart

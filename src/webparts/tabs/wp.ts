@@ -1,4 +1,5 @@
-import { Navigation, INavLink } from "../../components";
+import { Navigation } from "../../components";
+import { INavLink } from "../../components/types";
 import { WebPart } from "../base";
 import { IWebPartInfo, IWPTabs, IWPTabsProps } from "../types";
 

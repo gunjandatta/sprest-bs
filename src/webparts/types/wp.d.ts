@@ -1,4 +1,9 @@
-import { IButtonProps } from "../../components";
+import { IButtonProps } from "../../components/types";
+
+/**
+ * Web Part
+ */
+export const WebPart: (props: IWebPartProps) => IWebPart;
 
 /**
  * WebPart

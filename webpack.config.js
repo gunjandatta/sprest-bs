@@ -3,6 +3,7 @@ const path = require("path");
 module.exports = (env, argv) => {
     var isDev = argv.mode === "development";
 
+    // Return the configuration
     return {
         entry: "./src/index.ts",
         output: {

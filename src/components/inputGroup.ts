@@ -1,23 +1,5 @@
 import * as $ from "jquery";
-
-/**
- * Input Group Properties
- */
-export interface IInputGroupProps {
-    appendedLabel?: string;
-    className?: string;
-    description?: string;
-    el?: Element | HTMLElement;
-    id?: string;
-    isLarge?: boolean;
-    isSmall?: boolean;
-    label?: string;
-    onChange?: (value: string) => void;
-    placeholder?: string;
-    prependedLabel?: string;
-    type?: number;
-    value?: string;
-}
+import { IInputGroupProps } from "./types/inputGroup";
 
 /**
  * Input Group Types

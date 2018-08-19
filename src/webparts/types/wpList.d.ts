@@ -3,6 +3,11 @@ import { IWebPart, IWebPartInfo, IWebPartProps } from "./wp";
 import { IWPListCfg, IWPListEditForm } from "./wpListCfg";
 
 /**
+ * List WebPart
+ */
+export const WPList: (props: IWPListProps) => IWPList;
+
+/**
  * WebPart List
  */
 export interface IWPList extends IWebPart {

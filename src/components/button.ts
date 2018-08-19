@@ -1,4 +1,5 @@
 import * as $ from "jquery";
+import { IButtonProps } from "./types/button";
 
 /**
  * Button Types
@@ -13,25 +14,6 @@ export enum ButtonTypes {
     Secondary = 7,
     Success = 8,
     Warning = 9
-}
-
-/**
- * Button Properties
- */
-export interface IButtonProps {
-    className?: string;
-    el?: Element | HTMLElement;
-    id?: string;
-    isBlock?: boolean;
-    isDisabled?: boolean;
-    isLarge?: boolean;
-    isOutline?: boolean;
-    isSmall?: boolean;
-    onClick?: (ev: Event) => void;
-    target?: string;
-    text?: string;
-    toggle?: string;
-    type?: number;
 }
 
 /**

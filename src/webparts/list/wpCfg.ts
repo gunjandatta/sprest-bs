@@ -1,5 +1,6 @@
 import { Types, Web } from "gd-sprest";
-import { Dropdown, IDropdownItem, InputGroup } from "../../components";
+import { Dropdown, InputGroup } from "../../components";
+import { IDropdownItem } from "../../components/types";
 import { IWPListCfg, IWPListEditForm, IWPListInfo } from "../types";
 
 /**

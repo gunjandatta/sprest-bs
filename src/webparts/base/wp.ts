@@ -1,9 +1,7 @@
-import { ContextInfo } from "gd-sprest";
-import * as $ from "jquery";
-import { Button, ButtonGroup, ButtonTypes, IButtonProps, Modal } from "../../components";
-import { IWebPart, IWebPartCfg, IWebPartEditForm, IWebPartInfo, IWebPartObject, IWebPartProps } from "../types";
+import { Button, ButtonGroup, ButtonTypes, Modal } from "../../components";
+import { IButtonProps } from "../../components/types/button";
+import { IWebPart, IWebPartCfg, IWebPartEditForm, IWebPartInfo, IWebPartProps } from "../types";
 import { WPCfg } from "./wpCfg";
-declare var SP;
 declare var MSOWebPartPageFormName;
 
 /**

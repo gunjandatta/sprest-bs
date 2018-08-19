@@ -1,20 +1,6 @@
 import * as $ from "jquery";
-import { Button, IButtonProps } from "./button";
-
-/**
- * Button Group Properties
- */
-export interface IButtonGroupProps {
-    buttons?: Array<IButtonProps>;
-    buttonType?: number;
-    className?: string;
-    el?: Element | HTMLElement;
-    id?: string;
-    isLarge?: boolean;
-    isSmall?: boolean;
-    isVertical?: boolean;
-    label?: string;
-}
+import { Button } from "./button";
+import { IButtonGroupProps } from "./types/buttonGroup";
 
 /**
  * Button Group

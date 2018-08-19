@@ -1,50 +1,8 @@
+import { Dropdown, InputGroup, InputGroupTypes } from ".";
 import {
-    Dropdown, IDropdownItem,
-    InputGroup, InputGroupTypes
-} from ".";
-
-/**
- * Form
- */
-export interface IForm {
-    form: HTMLFormElement,
-    getValues: () => { [key: string]: any };
-}
-
-/**
- * Form Control
- */
-export interface IFormControl {
-    description?: string;
-    isSmall?: boolean;
-    isLarge?: boolean;
-    label?: string;
-    name?: string;
-    type?: number;
-}
-
-/**
- * Form Control - Checkbox
- */
-export interface IFormControlCheckbox extends IFormControl { }
-
-/**
- * Form Control - Dropdown
- */
-export interface IFormControlDropdown extends IFormControl {
-    items?: Array<IDropdownItem>;
-    onChange?: (item: IDropdownItem) => void;
-    placeholder?: string;
-    type?: number;
-}
-
-/**
- * Form Control - TextField
- */
-export interface IFormControlTextField extends IFormControl {
-    onChange?: (value: string) => void;
-    placeholder?: string;
-}
+    IForm, IFormProps,
+    IFormControl, IFormControlDropdown, IFormControlTextField
+} from "./types/form";
 
 /**
  * Form Control Type
@@ -60,23 +18,6 @@ export enum FormControlTypes {
     Readonly = 7,
     TextArea = 8,
     TextField = 9
-}
-
-/**
- * Form Properties
- */
-export interface IFormProps {
-    el: Element | HTMLElement,
-    rows: Array<{
-        isAutoSized?: boolean;
-        isCentered?: boolean;
-        control?: IFormControl;
-        columns?: Array<{
-            control: IFormControl;
-            size?: number;
-        }>
-    }>;
-    value?: any;
 }
 
 /**

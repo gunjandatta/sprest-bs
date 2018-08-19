@@ -1,16 +1,8 @@
-import { $REST as CoreLib, IREST } from "gd-sprest";
+import { $REST as CoreLib } from "gd-sprest";
 import * as $ from "jquery";
 import * as Components from "./components";
 import * as WebParts from "./webparts";
-
-// Extend the REST library
-export interface IRESTBS extends IREST {
-    BS: {
-        $,
-        Components,
-        WebParts
-    }
-}
+import { IRESTBS } from "./rest.d";
 
 // Set the bootstrap library
 export const $REST: IRESTBS = CoreLib as any;

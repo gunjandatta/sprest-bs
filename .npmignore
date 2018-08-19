@@ -1,0 +1,5 @@
+src
+*.log*
+*-lock.json
+tsconfig.json
+webpack.*.js
