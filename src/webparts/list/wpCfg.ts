@@ -144,7 +144,6 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
     */
 
     // Return the edit panel
-    debugger;
     return {
         /*
         menuLeftCommands,

@@ -1,7 +1,6 @@
 export class Button {
     // Component loaded event
     componentDidLoad() {
-        debugger;
         // Render the button
         return GD.Components.Button({
             className: this.className,

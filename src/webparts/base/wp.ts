@@ -239,7 +239,6 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
 
         // See if the page is being edited
         let returnVal = null;
-        debugger;
         if (isEditMode()) {
             // Add the help link
             addHelpLink();
