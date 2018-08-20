@@ -214,15 +214,7 @@ declare module 'gd-sprest-bs/components/types/form' {
         */
     export interface IFormProps {
             el: Element | HTMLElement,
-            rows: Array<{
-                    isAutoSized?: boolean;
-                    isCentered?: boolean;
-                    control?: IFormControl;
-                    columns?: Array<{
-                            control: IFormControl;
-                            size?: number;
-                    }>
-            }>;
+            rows: Array<IFormRow>;
             value?: any;
     }
     
@@ -240,6 +232,19 @@ declare module 'gd-sprest-bs/components/types/form' {
             Readonly: number;
             TextArea: number;
             TextField: number;
+    }
+    
+    /**
+        * Form Row
+        */
+    export interface IFormRow {
+            isAutoSized?: boolean;
+            isCentered?: boolean;
+            control?: IFormControl;
+            columns?: Array<{
+                    control: IFormControl;
+                    size?: number;
+            }>
     }
 }
 
@@ -492,7 +497,7 @@ declare module 'gd-sprest-bs/webparts/types/wp' {
 }
 
 declare module 'gd-sprest-bs/webparts/types/wpCfg' {
-    import { IButtonProps } from "gd-sprest-bs/components/types";
+    import { IButtonProps, IFormControl } from "gd-sprest-bs/components/types";
     import { IWebPartInfo, IWebPartProps } from "gd-sprest-bs/webparts/types/wp";
     
     /**
@@ -515,11 +520,8 @@ declare module 'gd-sprest-bs/webparts/types/wpCfg' {
             /** The form action buttons displayed in the footer of the modal. */
             actions?: Array<IButtonProps>;
     
-            /** The render footer event. */
-            onRenderFooter?: (el: HTMLDivElement, wpInfo: IWebPartInfo) => void;
-    
             /** The render form event. */
-            onRenderForm?: (el: HTMLDivElement, wpInfo: IWebPartInfo) => void;
+            onRenderForm?: (wpInfo: IWebPartInfo) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
     
             /** The save event. */
             onSave?: (wpCfg: IWebPartCfg) => IWebPartCfg;
@@ -596,6 +598,7 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
 
 declare module 'gd-sprest-bs/webparts/types/wpListCfg' {
     import { Types } from "gd-sprest";
+    import { IFormControl } from "gd-sprest-bs/components/types/form";
     import { IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/types/wpCfg";
     import { IWPListInfo } from "gd-sprest-bs/webparts/types/wpList";
     
@@ -623,16 +626,13 @@ declare module 'gd-sprest-bs/webparts/types/wpListCfg' {
             listQuery?: Types.SP.ODataQuery;
     
             /** The list changed event. */
-            onListChanged?: (wpInfo: IWPListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => void;
+            onListChanged?: (wpInfo: IWPListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
     
             /** The lists rendering event. */
             onListsRendering?: (wpInfo: IWPListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
     
-            /** The render footer event. */
-            onRenderFooter?: (el: HTMLDivElement, wpInfo: IWPListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => void;
-    
-            /** The render header event. */
-            onRenderHeader?: (el: HTMLDivElement, wpInfo: IWPListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => void;
+            /** The render form event. */
+            onRenderForm?: (wpInfo: IWPListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
     
             /** The save event. */
             onSave?: (wpCfg: IWPListCfg) => IWebPartCfg;

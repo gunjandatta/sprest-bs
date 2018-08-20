@@ -1,4 +1,4 @@
-import { IButtonProps } from "../../components/types";
+import { IButtonProps, IFormControl } from "../../components/types";
 import { IWebPartInfo, IWebPartProps } from "./wp";
 
 /**
@@ -21,11 +21,8 @@ export interface IWebPartEditForm {
     /** The form action buttons displayed in the footer of the modal. */
     actions?: Array<IButtonProps>;
 
-    /** The render footer event. */
-    onRenderFooter?: (el: HTMLDivElement, wpInfo: IWebPartInfo) => void;
-
     /** The render form event. */
-    onRenderForm?: (el: HTMLDivElement, wpInfo: IWebPartInfo) => void;
+    onRenderForm?: (wpInfo: IWebPartInfo) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
 
     /** The save event. */
     onSave?: (wpCfg: IWebPartCfg) => IWebPartCfg;

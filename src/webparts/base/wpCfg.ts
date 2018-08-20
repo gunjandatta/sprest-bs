@@ -1,5 +1,6 @@
-import { Button, ButtonGroup, ButtonTypes, Modal } from "../../components";
+import { Button, ButtonGroup, ButtonTypes, Form, Modal } from "../../components";
 import { IButtonProps } from "../../components/types/button";
+import { IFormControl, IFormRow } from "../../components/types/form";
 import { IWebPartCfg, IWebPartEditForm, IWebPartInfo, IWebPartProps } from "../types";
 import { Helper } from "./helper";
 declare var MSOWebPartPageFormName;
@@ -53,19 +54,37 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
             isLarge: true,
             title: "Configuration Panel",
             onRenderBody: el => {
-                // Render the template
-                el.innerHTML = "<div></div><div></div>";
+                let formControls = null;
+
+                // Render the Form
+                let renderForm = (formControls: Array<IFormControl> = []) => {
+                    let rows: Array<IFormRow> = [];
+
+                    // Parse the controls
+                    for (let i = 0; i < formControls.length; i++) {
+                        // Add the control
+                        rows.push({ control: formControls[i] });
+                    }
+
+                    // Render the form
+                    Form({ el, rows });
+                }
 
                 // See if the render form event exists
                 if (_editForm.onRenderForm) {
                     // Call the event
-                    _editForm.onRenderForm(el.children[0] as any, wp);
+                    formControls = _editForm.onRenderForm(wp) || [];
                 }
 
-                // See if the render footer event exists
-                if (_editForm.onRenderFooter) {
-                    // Call the event
-                    _editForm.onRenderFooter(el.children[1] as any, wp);
+                // See if there is a promise
+                if (formControls["then"]) {
+                    // Wait for the promise to be resolved
+                    formControls["then"](renderForm);
+                }
+                // Ensure it's an array
+                else {
+                    // Render the form
+                    renderForm(formControls);
                 }
             },
             onRenderFooter: el => {

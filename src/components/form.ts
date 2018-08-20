@@ -184,6 +184,7 @@ export const Form = (props: IFormProps): IForm | string => {
     }
 
     // Render the form
+    debugger;
     renderForm();
 
     // See if the element exists

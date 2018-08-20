@@ -53,15 +53,7 @@ export interface IFormControlTextField extends IFormControl {
  */
 export interface IFormProps {
     el: Element | HTMLElement,
-    rows: Array<{
-        isAutoSized?: boolean;
-        isCentered?: boolean;
-        control?: IFormControl;
-        columns?: Array<{
-            control: IFormControl;
-            size?: number;
-        }>
-    }>;
+    rows: Array<IFormRow>;
     value?: any;
 }
 
@@ -79,4 +71,17 @@ export const FormControlTypes: {
     Readonly: number;
     TextArea: number;
     TextField: number;
+}
+
+/**
+ * Form Row
+ */
+export interface IFormRow {
+    isAutoSized?: boolean;
+    isCentered?: boolean;
+    control?: IFormControl;
+    columns?: Array<{
+        control: IFormControl;
+        size?: number;
+    }>
 }

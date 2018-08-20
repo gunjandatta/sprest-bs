@@ -1,122 +1,120 @@
 import { Types, Web } from "gd-sprest";
-import { Dropdown, InputGroup } from "../../components";
-import { IDropdownItem, IButtonProps } from "../../components/types";
+import { FormControlTypes } from "../../components";
+import { IDropdownItem, IButtonProps, IFormControl, IFormControlTextField, IFormControlDropdown } from "../../components/types";
 import { IWPListCfg, IWPListEditForm, IWPListInfo } from "../types";
 
 /**
  * List WebPart Edit Form
  */
 export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => {
-    let _elFooter: HTMLDivElement = null;
-    let _elList: HTMLDivElement = null;
-    let _elWebUrl: HTMLDivElement = null;
-    let _lists: Array<Types.SP.IListQueryResult | Types.SP.IListResult> = null;
     let _wpInfo: IWPListInfo = null;
 
     // Method to load the lists
-    let loadLists = (webUrl?: string) => {
-        // Set the query
-        let query: Types.SP.ODataQuery = props.listQuery || {};
+    let loadLists = (webUrl?: string): PromiseLike<Array<IFormControl>> => {
+        // Return a promise
+        return new Promise((resolve, reject) => {
+            // Set the query
+            let query: Types.SP.ODataQuery = props.listQuery || {};
 
-        // Render a loading message
-        _elList.innerHTML = "Loading the lists...";
+            // Get the web
+            Web(webUrl)
+                // Get the lists
+                .Lists()
+                // Include the fields
+                .query(query)
+                // Execute the request
+                .execute(lists => {
+                    let controls: Array<IFormControl> = [];
+                    let items: Array<IDropdownItem> = [];
 
-        // Get the web
-        Web(webUrl)
-            // Get the lists
-            .Lists()
-            // Include the fields
-            .query(query)
-            // Execute the request
-            .execute(lists => {
-                // Save the lists
-                _lists = lists.results;
+                    // Call the list rendering event
+                    let listValues: Array<any> = (props.onListsRendering ? props.onListsRendering(_wpInfo, lists.results) as any : null) || lists.results;
 
-                // Call the list rendering event
-                _lists = (props.onListsRendering ? props.onListsRendering(_wpInfo, _lists) : null) || _lists;
-
-                // Render the list dropdown
-                renderListDDL();
-            });
-    }
-
-    // Method to render the configuration
-    let renderConfiguration = (el: HTMLDivElement, wpInfo: IWPListInfo) => {
-        // Render the panel contents
-        el.innerHTML = [
-            '<div></div>',
-            '<div></div>'
-        ].join('\n');
-        _elWebUrl = el.children[0] as any;
-        _elList = el.children[1] as any;
-
-        // Render the web url textbox
-        let webUrl = _wpInfo && _wpInfo.cfg ? _wpInfo.cfg.WebUrl : "";
-        InputGroup({
-            el: _elWebUrl,
-            label: "Relative Web Url:",
-            description: "The web containing the list. If blank, the current web is used.",
-            value: webUrl,
-            onChange: (value) => {
-                // Update the configuration
-                _wpInfo.cfg.WebUrl = value;
-            }
-        });
-
-        // Load the lists
-        loadLists(webUrl);
-    };
-
-    // Method to render the lists dropdown
-    let renderListDDL = () => {
-        let selectedList = null;
-        let items: Array<IDropdownItem> = [];
-
-        // Parse the lists
-        for (let i = 0; i < _lists.length; i++) {
-            let list = _lists[i];
-
-            // Add the item
-            items.push({
-                text: list.Title,
-                value: list.Title
-            });
-
-            // See if this is the selected list
-            if (list.Title == _wpInfo.cfg.ListName) {
-                // Select this list
-                selectedList = list;
-            }
-        }
-
-        // Render the dropdown
-        Dropdown({
-            el: _elList,
-            label: "List:",
-            items,
-            value: _wpInfo && _wpInfo.cfg ? _wpInfo.cfg.ListName : null,
-            onChange: (item: IDropdownItem) => {
-                if (item) {
-                    // Parse the list
-                    for (let i = 0; i < _lists.length; i++) {
-                        let list = _lists[i];
-
-                        // See if this is the target list
-                        if (list.Title == item.text) {
+                    // Add the web url
+                    controls.push({
+                        label: "Relative Web Url:",
+                        description: "The web containing the list. If blank, the current web is used.",
+                        type: FormControlTypes.TextField,
+                        value: webUrl,
+                        onChange: (value) => {
                             // Update the configuration
-                            _wpInfo.cfg.ListName = item.value;
+                            _wpInfo.cfg.WebUrl = value;
+                        }
+                    } as IFormControlTextField);
 
-                            // Call the change event
-                            props.onListChanged ? props.onListChanged(_wpInfo, list) : null;
-                            break;
+                    // Parse the lists
+                    let selectedList = null;
+                    for (let i = 0; i < listValues.length; i++) {
+                        let list = listValues[i];
+
+                        // Add the item
+                        items.push({
+                            text: list.Title,
+                            value: list.Title
+                        });
+
+                        // See if this is the selected list
+                        if (list.Title == _wpInfo.cfg.ListName) {
+                            // Select this list
+                            selectedList = list;
                         }
                     }
-                }
-            }
-        });
 
-        // Call the render footer event
-        props.onRenderFooter ? props.onRenderFooter(_elFooter, _wpInfo, selectedList) : null;
+                    // Add the dropdown
+                    controls.push({
+                        label: "List:",
+                        items,
+                        type: FormControlTypes.Dropdown,
+                        value: _wpInfo && _wpInfo.cfg ? _wpInfo.cfg.ListName : null,
+                        onChange: (item: IDropdownItem) => {
+                            if (item) {
+                                // Parse the list
+                                for (let i = 0; i < listValues.length; i++) {
+                                    let list = listValues[i];
+
+                                    // See if this is the target list
+                                    if (list.Title == item.text) {
+                                        // Update the configuration
+                                        _wpInfo.cfg.ListName = item.value;
+
+                                        // Call the change event
+                                        props.onListChanged ? props.onListChanged(_wpInfo, list) : null;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    } as IFormControlDropdown);
+
+                    // Call the render form event
+                    let returnVal: any = props.onRenderForm ? props.onRenderForm(_wpInfo, selectedList) : null;
+                    if (returnVal) {
+                        // See if this is a promise
+                        if (returnVal.then) {
+                            // Wait for the promise to complete
+                            returnVal.then((formControls = []) => {
+                                // Add the form controls
+                                controls = controls.concat(returnVal);
+
+                                // Resolve the promise
+                                resolve(controls);
+                            });
+                        }
+                        // Else, see if the form controls exist
+                        else if (returnVal.length > 0) {
+                            // Add the form controls
+                            controls = controls.concat(returnVal);
+
+                            // Resolve the promise
+                            resolve(controls);
+                        }
+                        // Else, resolve the promise
+                        else { resolve(controls); }
+                    }
+                    // Else, resolve the promise
+                    else { resolve(controls); }
+                });
+        });
     }
 
     // Create the form action buttons
@@ -139,18 +137,13 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
     // Return the edit panel
     return {
         actions: actionButtons,
-        onRenderHeader: props.onRenderHeader,
         showSaveButton: props.showSaveButton,
-        onRenderFooter: (el, wpInfo) => {
+        onRenderForm: (wpInfo, list) => {
             // Save the webpart information
             _wpInfo = wpInfo;
 
-            // Render the template
-            el.innerHTML = "<div></div><div></div>";
-            _elFooter = el.children[1] as any;
-
-            // Render the configuration
-            renderConfiguration(el.children[0] as any, wpInfo);
+            // Load the lists
+            return loadLists(_wpInfo && _wpInfo.cfg ? _wpInfo.cfg.WebUrl : "");
         },
         onSave: (cfg: IWPListCfg) => {
             // Update the configuration
