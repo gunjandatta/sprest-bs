@@ -10,31 +10,19 @@ export const WPList: (props: IWPListProps) => IWPList;
 /**
  * WebPart List
  */
-export interface IWPList extends IWebPart {
-    /** The webpart configuration. */
-    cfg: IWPListCfg;
-
-    /** The webpart information. */
-    info: IWPListInfo;
-}
+export interface IWPList extends IWebPart<IWPListCfg, IWPListInfo> { }
 
 /**
  * WebPart List Information
  */
-export interface IWPListInfo extends IWebPartInfo {
-    /** The webpart information. */
-    cfg: IWPListCfg;
-}
+export interface IWPListInfo extends IWebPartInfo<IWPListCfg> { }
 
 /**
  * WebPart List Properties
  */
-export interface IWPListProps extends IWebPartProps {
+export interface IWPListProps extends IWebPartProps<IWPListInfo, IWPListEditForm> {
     /** The caml query. */
     camlQuery?: string;
-
-    /** The edit form. */
-    editForm?: IWPListEditForm;
 
     /** The odata query. */
     odataQuery?: Types.SP.ODataQuery;
@@ -45,18 +33,6 @@ export interface IWPListProps extends IWebPartProps {
     /** The executing odata query event. */
     onExecutingODATAQuery?: (wpInfo: IWPListInfo, odata: Types.SP.ODataQuery) => Types.SP.ODataQuery;
 
-    /** The on post render event. */
-    onPostRender?: (wpInfo: IWPListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => void;
-
-    /** The render event triggered when the page is in 'Display' mode */
-    onRenderDisplay?: (wp: IWPListInfo) => any;
-
-    /** The render event triggered when the page is in 'Edit' mode */
-    onRenderEdit?: (wp: IWPListInfo) => any;
-
     /** The on render items event. */
     onRenderItems?: (wpInfo: IWPListInfo, items: Array<Types.SP.IListItemQueryResult | Types.SP.IListItemResult>) => void;
-
-    /** The save configuration event. */
-    onSave?: (cfg: IWPListCfg) => IWPListCfg;
 }

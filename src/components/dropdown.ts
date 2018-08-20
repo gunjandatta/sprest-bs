@@ -41,10 +41,31 @@ export const Dropdown = (props: IDropdownProps): Element | string => {
             let attributes = [
                 'data-idx="' + i + '"',
                 item.value ? 'data-value="' + JSON.stringify(item.value) + '"' : ''
-            ].join(' ');
+            ];
+
+            // See if the item is selected
+            if (item.isSelected) {
+                // Add the selected attribute
+                attributes.push("selected");
+            }
+            // Else, see if a value exists
+            else if (props.value) {
+                // Ensure it's an array
+                let values = props.value.length && typeof (props.value) !== "string" ? props.value : [props.value];
+
+                // Parse the values
+                for (let j = 0; j < values.length; j++) {
+                    // See if this item is selected
+                    if (item.value == values[j]) {
+                        // Add the selected attribute
+                        attributes.push("selected");
+                        break;
+                    }
+                }
+            }
 
             // Add the option
-            html.push("<option " + attributes + ">" + item.text + "</option>");
+            html.push("<option " + attributes.join(' ') + ">" + item.text + "</option>");
         }
 
         // Add the select ending tag
@@ -111,7 +132,7 @@ export const Dropdown = (props: IDropdownProps): Element | string => {
             // Else, see if a value exists
             else if (props.value) {
                 // Ensure it's an array
-                let values = props.value.length ? props.value : [props.value];
+                let values = props.value.length && typeof (props.value) !== "string" ? props.value : [props.value];
 
                 // Parse the values
                 for (let j = 0; j < values.length; j++) {

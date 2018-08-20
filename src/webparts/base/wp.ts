@@ -1,3 +1,4 @@
+import { IFormControl } from "../../components/types/form";
 import { IWebPart, IWebPartCfg, IWebPartInfo, IWebPartProps } from "../types";
 import { WPCfg } from "./wpCfg";
 declare var MSOWebPartPageFormName;
@@ -8,7 +9,6 @@ declare var MSOWebPartPageFormName;
 export const WebPart = (props: IWebPartProps): IWebPart => {
     let _cfg: IWebPartCfg = {};
     let _wp: IWebPartInfo = null;
-    let _wpCfg = null;
 
     /**
      * Method to add the help link to a script part editor.

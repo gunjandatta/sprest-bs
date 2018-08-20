@@ -1,6 +1,5 @@
 import { Button, ButtonGroup, ButtonTypes, Form, Modal } from "../../components";
 import { IButtonProps } from "../../components/types/button";
-import { IFormControl, IFormRow } from "../../components/types/form";
 import { IWebPartCfg, IWebPartEditForm, IWebPartInfo, IWebPartProps } from "../types";
 import { Helper } from "./helper";
 declare var MSOWebPartPageFormName;
@@ -54,21 +53,10 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
             isLarge: true,
             title: "Configuration Panel",
             onRenderBody: el => {
-                let formControls = null;
+                let formControls: any = null;
 
-                // Render the Form
-                let renderForm = (formControls: Array<IFormControl> = []) => {
-                    let rows: Array<IFormRow> = [];
-
-                    // Parse the controls
-                    for (let i = 0; i < formControls.length; i++) {
-                        // Add the control
-                        rows.push({ control: formControls[i] });
-                    }
-
-                    // Render the form
-                    Form({ el, rows });
-                }
+                // Set the class name
+                el.classList.add("wp-cfg-form");
 
                 // See if the render form event exists
                 if (_editForm.onRenderForm) {
@@ -77,15 +65,15 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
                 }
 
                 // See if there is a promise
-                if (formControls["then"]) {
+                if (formControls.then) {
                     // Wait for the promise to be resolved
-                    formControls["then"](renderForm);
+                    formControls.then(formControls => {
+                        // Render the edit form
+                        Helper.renderEditForm(wp, formControls);
+                    });
                 }
-                // Ensure it's an array
-                else {
-                    // Render the form
-                    renderForm(formControls);
-                }
+                // Else, render the edit form
+                else { Helper.renderEditForm(wp, formControls); }
             },
             onRenderFooter: el => {
                 let actionButtons: Array<IButtonProps> = [];

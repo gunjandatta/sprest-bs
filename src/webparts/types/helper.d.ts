@@ -1,3 +1,6 @@
+import { IFormControl } from "../../components/types/form";
+import { IWebPartInfo } from "gd-sprest/build/helper/types";
+
 /**
  * Helper Methods
  */
@@ -18,6 +21,13 @@ export interface IHelper {
      * @param el - The target element.
      */
     getWebPartId(el: HTMLElement): string;
+
+    /**
+     * Method to render the edit form.
+     * @param wpInfo - The webpart information.
+     * @param formControls - The form controls to render.
+     */
+    renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<IFormControl>) => void;
 
     /**
      * Method to save the webpart configuration.

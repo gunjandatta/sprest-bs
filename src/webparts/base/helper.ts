@@ -1,5 +1,8 @@
 import { ContextInfo, } from "gd-sprest";
+import { Form } from "../../components/form";
+import { IFormControl, IFormRow } from "../../components/types/form";
 import { IHelper, IWPInstance } from "../types";
+import { IWebPartInfo } from "gd-sprest/build/helper/types";
 declare var SP;
 
 /**
@@ -58,6 +61,24 @@ export const Helper: IHelper = {
 
         // Unable to detect
         return "";
+    },
+
+    // Method to render the edit form
+    renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<IFormControl> = []) => {
+        let rows: Array<IFormRow> = [];
+
+        // Parse the controls
+        for (let i = 0; i < formControls.length; i++) {
+            // Add the control
+            rows.push({ control: formControls[i] });
+        }
+
+        // Render the form
+        Form({
+            el: wpInfo.el.querySelector(".wp-cfg-form"),
+            rows,
+            value: wpInfo.cfg
+        });
     },
 
     // Method to save the webpart configuration

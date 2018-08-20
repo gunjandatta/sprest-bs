@@ -22,7 +22,7 @@ export interface IWPListCfg extends IWebPartCfg {
 /**
  * WebPart List Edit Form
  */
-export interface IWPListEditForm extends IWebPartEditForm {
+export interface IWPListEditForm extends IWebPartEditForm<IWPListCfg, IWPListInfo> {
     /** The odata list query. */
     listQuery?: Types.SP.ODataQuery;
 
@@ -34,7 +34,4 @@ export interface IWPListEditForm extends IWebPartEditForm {
 
     /** The render form event. */
     onRenderForm?: (wpInfo: IWPListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
-
-    /** The save event. */
-    onSave?: (wpCfg: IWPListCfg) => IWebPartCfg;
 }

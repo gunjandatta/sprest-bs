@@ -1,5 +1,5 @@
 import { Types, Web } from "gd-sprest";
-import { FormControlTypes } from "../../components";
+import { FormControlTypes } from "../../components/form";
 import { IDropdownItem, IButtonProps, IFormControl, IFormControlTextField, IFormControlDropdown } from "../../components/types";
 import { IWPListCfg, IWPListEditForm, IWPListInfo } from "../types";
 
@@ -94,7 +94,7 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                             // Wait for the promise to complete
                             returnVal.then((formControls = []) => {
                                 // Add the form controls
-                                controls = controls.concat(returnVal);
+                                controls = controls.concat(formControls);
 
                                 // Resolve the promise
                                 resolve(controls);
@@ -138,7 +138,7 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
     return {
         actions: actionButtons,
         showSaveButton: props.showSaveButton,
-        onRenderForm: (wpInfo, list) => {
+        onRenderForm: (wpInfo) => {
             // Save the webpart information
             _wpInfo = wpInfo;
 

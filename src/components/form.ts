@@ -193,6 +193,9 @@ export const Form = (props: IFormProps): IForm | string => {
         // Set the class name
         props.el.classList.add("bs");
 
+        // Clear the element content
+        props.el.innerHTML = "";
+
         // Append the form
         props.el.appendChild(elForm);
 

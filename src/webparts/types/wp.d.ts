@@ -1,3 +1,4 @@
+import { IFormControl } from "../../components/types/form";
 import { IWebPartCfg, IWebPartEditForm } from "./wpCfg";
 
 /**
@@ -8,20 +9,23 @@ export const WebPart: (props: IWebPartProps) => IWebPart;
 /**
  * WebPart
  */
-export interface IWebPart {
+export interface IWebPart<IWPCfg = IWebPartCfg, IWPInfo = IWebPartInfo> {
     /** The webpart configuration. */
-    cfg: IWebPartCfg;
+    cfg: IWPCfg;
 
     /** The webpart information. */
-    info: IWebPartInfo;
+    info: IWPInfo;
+
+    /** Method to update the edit form. */
+    updateEditForm?: (formControls: Array<IFormControl>) => void;
 }
 
 /**
  * WebPart Information
  */
-export interface IWebPartInfo {
+export interface IWebPartInfo<IWPCfg = IWebPartCfg> {
     /** The configuration */
-    cfg: IWebPartCfg;
+    cfg: IWPCfg;
 
     /** The element to render the webpart to */
     el: HTMLElement;
@@ -53,7 +57,7 @@ export interface IWebPartObject {
 /**
  * WebPart Properties
  */
-export interface IWebPartProps {
+export interface IWebPartProps<IWPInfo = IWebPartInfo, IWPEditForm = IWebPartEditForm> {
     /** The optional configuration element id */
     cfgElementId?: string;
 
@@ -64,7 +68,7 @@ export interface IWebPartProps {
     elementId?: string;
 
     /** The edit form */
-    editForm?: IWebPartEditForm;
+    editForm?: IWPEditForm;
 
     /** The optional help link properties */
     helpProps?: {
@@ -76,13 +80,13 @@ export interface IWebPartProps {
     };
 
     /** The post render event */
-    onPostRender?: (wp: IWebPartInfo, ...args) => void;
+    onPostRender?: (wp: IWPInfo, ...args) => void;
 
     /** The render event triggered when the page is in 'Display' mode */
-    onRenderDisplay?: (wp: IWebPartInfo) => any;
+    onRenderDisplay?: (wp: IWPInfo) => any;
 
     /** The render event triggered when the page is in 'Edit' mode */
-    onRenderEdit?: (wp: IWebPartInfo) => any;
+    onRenderEdit?: (wp: IWPInfo) => any;
 
     /** The webpart class name */
     wpClassName?: string;
