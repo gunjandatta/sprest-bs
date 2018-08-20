@@ -9,7 +9,7 @@ export const Dropdown: (props: IDropdownProps) => Element | string;
 export interface IDropdownItem {
     href?: string;
     isSelected?: boolean;
-    onChange?: (item: IDropdownItem | Array<IDropdownItem>, ev: Event) => void;
+    onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
     text?: string;
     value?: any;
 }
@@ -19,7 +19,7 @@ export interface IDropdownItem {
  */
 export interface IDropdownProps {
     items: Array<IDropdownItem>;
-    onChange?: (item: IDropdownItem | Array<IDropdownItem>, ev: Event) => void;
+    onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
     className?: string;
     el?: Element | HTMLElement;
     id?: string;

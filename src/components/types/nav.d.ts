@@ -26,7 +26,7 @@ export interface INavLink {
     isActive?: boolean;
     isDisabled?: boolean;
     href?: string;
-    onClick?: (item: INavLink, ev?: Event) => void;
+    onClick?: (item?: INavLink, ev?: Event) => void;
     onRenderTab?: (el: HTMLDivElement) => void;
     tabContent?: string;
     title?: string;

@@ -15,7 +15,7 @@ export interface IInputGroupProps {
     isLarge?: boolean;
     isSmall?: boolean;
     label?: string;
-    onChange?: (value: string) => void;
+    onChange?: (value?: string, ev?: Event) => void;
     placeholder?: string;
     prependedLabel?: string;
     type?: number;

@@ -40,6 +40,7 @@ declare module 'gd-sprest-bs/components/types' {
 }
 
 declare module 'gd-sprest-bs/webparts/types' {
+    export * from "gd-sprest-bs/webparts/types/helper";
     export * from "gd-sprest-bs/webparts/types/wp";
     export * from "gd-sprest-bs/webparts/types/wpCfg";
     export * from "gd-sprest-bs/webparts/types/wpList";
@@ -65,7 +66,7 @@ declare module 'gd-sprest-bs/components/types/button' {
             isLarge?: boolean;
             isOutline?: boolean;
             isSmall?: boolean;
-            onClick?: (ev: Event) => void;
+            onClick?: (ev?: Event) => void;
             target?: string;
             text?: string;
             toggle?: string;
@@ -124,7 +125,7 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
     export interface IDropdownItem {
             href?: string;
             isSelected?: boolean;
-            onChange?: (item: IDropdownItem | Array<IDropdownItem>, ev: Event) => void;
+            onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             text?: string;
             value?: any;
     }
@@ -134,7 +135,7 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
         */
     export interface IDropdownProps {
             items: Array<IDropdownItem>;
-            onChange?: (item: IDropdownItem | Array<IDropdownItem>, ev: Event) => void;
+            onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             className?: string;
             el?: Element | HTMLElement;
             id?: string;
@@ -260,7 +261,7 @@ declare module 'gd-sprest-bs/components/types/inputGroup' {
             isLarge?: boolean;
             isSmall?: boolean;
             label?: string;
-            onChange?: (value: string) => void;
+            onChange?: (value?: string, ev?: Event) => void;
             placeholder?: string;
             prependedLabel?: string;
             type?: number;
@@ -332,15 +333,74 @@ declare module 'gd-sprest-bs/components/types/nav' {
             isActive?: boolean;
             isDisabled?: boolean;
             href?: string;
-            onClick?: (item: INavLink, ev?: Event) => void;
+            onClick?: (item?: INavLink, ev?: Event) => void;
             onRenderTab?: (el: HTMLDivElement) => void;
             tabContent?: string;
             title?: string;
     }
 }
 
+declare module 'gd-sprest-bs/webparts/types/helper' {
+    /**
+        * Helper Methods
+        */
+    export const Helper: IHelper;
+    
+    /**
+        * Helper Methods
+        */
+    export interface IHelper {
+            /**
+                * Method to get the webpart
+                * @param wpId - The webpart id.
+                */
+            getWebPart(wpId: string): PromiseLike<IWPInstance>;
+    
+            /**
+                * Method to get the webpart id for a specified element
+                * @param el - The target element.
+                */
+            getWebPartId(el: HTMLElement): string;
+    
+            /**
+                * Method to save the webpart configuration.
+                * This method may execute a postback, based on the page type.
+                * @param wpId - The webpart id.
+                * @param cfgId: The configuration element id.
+                * @param wpCfg - The webpart configuration.
+                */
+            saveConfiguration(wpId: string, cfgId?: string, wpCfg?: any): PromiseLike<void>;
+    
+            /**
+                * Method to update the configuration element
+                * @param cfgId: The configuration element id.
+                * @param elTarget - The target element.
+                * @param wpCfg - The webpart configuration.
+                */
+            updateConfigurationInElement(cfgId: string, elTarget: HTMLInputElement, wpCfg);
+    
+            /**
+                * Method to update the webpart content elements
+                * @param wpId - The webpart id.
+                * @param cfgId: The configuration element id.
+                * @param wpCfg - The webpart configuration.
+                */
+            updateWebPartContentElements(wpId: string, cfgId?: string, wpCfg?: any): boolean;
+    }
+    
+    /**
+        * WebPart Information
+        */
+    export interface IWPInstance {
+            Context: any;
+            Properties: any;
+            WebPart: any;
+            WebPartDefinition: any;
+    }
+}
+
 declare module 'gd-sprest-bs/webparts/types/wp' {
-    import { IButtonProps } from "gd-sprest-bs/components/types";
+    import { IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/types/wpCfg";
     
     /**
         * Web Part
@@ -356,34 +416,6 @@ declare module 'gd-sprest-bs/webparts/types/wp' {
     
             /** The webpart information. */
             info: IWebPartInfo;
-    }
-    
-    /**
-        * WebPart Configuration
-        */
-    export interface IWebPartCfg {
-            /** The webpart id */
-            WebPartId?: string;
-    }
-    
-    /**
-        * WebPart Edit Form
-        */
-    export interface IWebPartEditForm {
-            /** Menu Buttons */
-            menuButtons?: Array<IButtonProps>;
-    
-            /** The render footer event. */
-            onRenderFooter?: (el: HTMLDivElement, wpInfo: IWebPartInfo) => void;
-    
-            /** The render form event. */
-            onRenderForm?: (el: HTMLDivElement, wpInfo: IWebPartInfo) => void;
-    
-            /** The save event. */
-            onSave?: (wpCfg: IWebPartCfg) => IWebPartCfg;
-    
-            /** True to hide the save button. */
-            showSaveButton?: boolean;
     }
     
     /**
@@ -460,61 +492,40 @@ declare module 'gd-sprest-bs/webparts/types/wp' {
 }
 
 declare module 'gd-sprest-bs/webparts/types/wpCfg' {
-    /**
-        * WebPart Configuration
-        */
-    export const WPCfg: IWPCfg;
+    import { IButtonProps } from "gd-sprest-bs/components/types";
+    import { IWebPartInfo, IWebPartProps } from "gd-sprest-bs/webparts/types/wp";
     
     /**
         * WebPart Configuration
         */
-    export interface IWPCfg {
-            /**
-                * Method to get the webpart
-                * @param wpId - The webpart id.
-                */
-            getWebPart(wpId: string): PromiseLike<IWPInstance>;
+    export const WPCfg: (cfg: IWebPartCfg, props: IWebPartProps) => void;
     
-            /**
-                * Method to get the webpart id for a specified element
-                * @param el - The target element.
-                */
-            getWebPartId(el: HTMLElement): string;
-    
-            /**
-                * Method to save the webpart configuration.
-                * This method may execute a postback, based on the page type.
-                * @param wpId - The webpart id.
-                * @param cfgId: The configuration element id.
-                * @param wpCfg - The webpart configuration.
-                */
-            saveConfiguration(wpId: string, cfgId?: string, wpCfg?: any): PromiseLike<void>;
-    
-            /**
-                * Method to update the configuration element
-                * @param cfgId: The configuration element id.
-                * @param elTarget - The target element.
-                * @param wpCfg - The webpart configuration.
-                */
-            updateConfigurationInElement(cfgId: string, elTarget: HTMLInputElement, wpCfg);
-    
-            /**
-                * Method to update the webpart content elements
-                * @param wpId - The webpart id.
-                * @param cfgId: The configuration element id.
-                * @param wpCfg - The webpart configuration.
-                */
-            updateWebPartContentElements(wpId: string, cfgId?: string, wpCfg?: any): boolean;
+    /**
+        * WebPart Configuration
+        */
+    export interface IWebPartCfg {
+            /** The webpart id */
+            WebPartId?: string;
     }
     
     /**
-        * WebPart Information
+        * WebPart Edit Form
         */
-    export interface IWPInstance {
-            Context: any;
-            Properties: any;
-            WebPart: any;
-            WebPartDefinition: any;
+    export interface IWebPartEditForm {
+            /** The form action buttons displayed in the footer of the modal. */
+            actions?: Array<IButtonProps>;
+    
+            /** The render footer event. */
+            onRenderFooter?: (el: HTMLDivElement, wpInfo: IWebPartInfo) => void;
+    
+            /** The render form event. */
+            onRenderForm?: (el: HTMLDivElement, wpInfo: IWebPartInfo) => void;
+    
+            /** The save event. */
+            onSave?: (wpCfg: IWebPartCfg) => IWebPartCfg;
+    
+            /** True to hide the save button. */
+            showSaveButton?: boolean;
     }
 }
 
@@ -585,7 +596,7 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
 
 declare module 'gd-sprest-bs/webparts/types/wpListCfg' {
     import { Types } from "gd-sprest";
-    import { IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/types/wp";
+    import { IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/types/wpCfg";
     import { IWPListInfo } from "gd-sprest-bs/webparts/types/wpList";
     
     /**

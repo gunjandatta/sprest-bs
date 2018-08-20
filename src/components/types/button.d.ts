@@ -15,7 +15,7 @@ export interface IButtonProps {
     isLarge?: boolean;
     isOutline?: boolean;
     isSmall?: boolean;
-    onClick?: (ev: Event) => void;
+    onClick?: (ev?: Event) => void;
     target?: string;
     text?: string;
     toggle?: string;

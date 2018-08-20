@@ -125,7 +125,7 @@ export const InputGroup = (props: IInputGroupProps): Element | string => {
                     callbackValue = tb.value;
 
                     // Call the change event
-                    props.onChange(callbackValue);
+                    props.onChange(callbackValue, ev);
                 }
             });
 
@@ -150,7 +150,7 @@ export const InputGroup = (props: IInputGroupProps): Element | string => {
                                 callbackValue = currentValue;
 
                                 // Call the change event
-                                props.onChange(callbackValue);
+                                props.onChange(callbackValue, ev);
                             }
                         }
                     }, 1);

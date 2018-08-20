@@ -1,56 +1,35 @@
-/**
- * WebPart Configuration
- */
-export const WPCfg: IWPCfg;
+import { IButtonProps } from "../../components/types";
+import { IWebPartInfo, IWebPartProps } from "./wp";
 
 /**
  * WebPart Configuration
  */
-export interface IWPCfg {
-    /**
-     * Method to get the webpart
-     * @param wpId - The webpart id.
-     */
-    getWebPart(wpId: string): PromiseLike<IWPInstance>;
+export const WPCfg: (cfg: IWebPartCfg, props: IWebPartProps) => void;
 
-    /**
-     * Method to get the webpart id for a specified element
-     * @param el - The target element.
-     */
-    getWebPartId(el: HTMLElement): string;
-
-    /**
-     * Method to save the webpart configuration.
-     * This method may execute a postback, based on the page type.
-     * @param wpId - The webpart id.
-     * @param cfgId: The configuration element id.
-     * @param wpCfg - The webpart configuration.
-     */
-    saveConfiguration(wpId: string, cfgId?: string, wpCfg?: any): PromiseLike<void>;
-
-    /**
-     * Method to update the configuration element
-     * @param cfgId: The configuration element id.
-     * @param elTarget - The target element.
-     * @param wpCfg - The webpart configuration.
-     */
-    updateConfigurationInElement(cfgId: string, elTarget: HTMLInputElement, wpCfg);
-
-    /**
-     * Method to update the webpart content elements
-     * @param wpId - The webpart id.
-     * @param cfgId: The configuration element id.
-     * @param wpCfg - The webpart configuration.
-     */
-    updateWebPartContentElements(wpId: string, cfgId?: string, wpCfg?: any): boolean;
+/**
+ * WebPart Configuration
+ */
+export interface IWebPartCfg {
+    /** The webpart id */
+    WebPartId?: string;
 }
 
 /**
- * WebPart Information
+ * WebPart Edit Form
  */
-export interface IWPInstance {
-    Context: any;
-    Properties: any;
-    WebPart: any;
-    WebPartDefinition: any;
+export interface IWebPartEditForm {
+    /** The form action buttons displayed in the footer of the modal. */
+    actions?: Array<IButtonProps>;
+
+    /** The render footer event. */
+    onRenderFooter?: (el: HTMLDivElement, wpInfo: IWebPartInfo) => void;
+
+    /** The render form event. */
+    onRenderForm?: (el: HTMLDivElement, wpInfo: IWebPartInfo) => void;
+
+    /** The save event. */
+    onSave?: (wpCfg: IWebPartCfg) => IWebPartCfg;
+
+    /** True to hide the save button. */
+    showSaveButton?: boolean;
 }

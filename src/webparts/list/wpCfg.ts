@@ -1,6 +1,6 @@
 import { Types, Web } from "gd-sprest";
 import { Dropdown, InputGroup } from "../../components";
-import { IDropdownItem } from "../../components/types";
+import { IDropdownItem, IButtonProps } from "../../components/types";
 import { IWPListCfg, IWPListEditForm, IWPListInfo } from "../types";
 
 /**
@@ -55,14 +55,12 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
         InputGroup({
             el: _elWebUrl,
             label: "Relative Web Url:",
-            //description: "The web containing the list. If blank, the current web is used.",
+            description: "The web containing the list. If blank, the current web is used.",
             value: webUrl,
-            /*
             onChange: (value) => {
                 // Update the configuration
                 _wpInfo.cfg.WebUrl = value;
             }
-            */
         });
 
         // Load the lists
@@ -92,23 +90,21 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
         }
 
         // Render the dropdown
-        let ddl = Dropdown({
+        Dropdown({
             el: _elList,
             label: "List:",
             items,
-            value: _wpInfo && _wpInfo.cfg ? _wpInfo.cfg.ListName : null
-            /*
-            onChange: (options: Array<IDropdownItem>) => {
-                let option = options[0];
-                if (option) {
+            value: _wpInfo && _wpInfo.cfg ? _wpInfo.cfg.ListName : null,
+            onChange: (item: IDropdownItem) => {
+                if (item) {
                     // Parse the list
                     for (let i = 0; i < _lists.length; i++) {
                         let list = _lists[i];
 
                         // See if this is the target list
-                        if (list.Title == option.text) {
+                        if (list.Title == item.text) {
                             // Update the configuration
-                            _wpInfo.cfg.ListName = option.value;
+                            _wpInfo.cfg.ListName = item.value;
 
                             // Call the change event
                             props.onListChanged ? props.onListChanged(_wpInfo, list) : null;
@@ -117,18 +113,15 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                     }
                 }
             }
-            */
         });
 
         // Call the render footer event
         props.onRenderFooter ? props.onRenderFooter(_elFooter, _wpInfo, selectedList) : null;
     }
 
-    /*
-    // Create the menu commands
-    let menuLeftCommands: Array<Fabric.Types.ICommandButtonProps> = [
+    // Create the form action buttons
+    let actionButtons: Array<IButtonProps> = [
         {
-            icon: "Refresh",
             text: "Refresh",
             onClick: () => {
                 // Load the lists
@@ -137,19 +130,15 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
         }
     ];
 
-    // See if custom commands exist
-    if (props.menuLeftCommands) {
+    // See if custom actions exist
+    if (props.actions) {
         // Add the custom commands
-        menuLeftCommands = menuLeftCommands.concat(props.menuLeftCommands);
+        actionButtons = actionButtons.concat(props.actions);
     }
-    */
 
     // Return the edit panel
     return {
-        /*
-        menuLeftCommands,
-        menuRightCommands: props.menuRightCommands,
-        */
+        actions: actionButtons,
         onRenderHeader: props.onRenderHeader,
         showSaveButton: props.showSaveButton,
         onRenderFooter: (el, wpInfo) => {

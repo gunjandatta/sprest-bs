@@ -1,5 +1,5 @@
 import { Types } from "gd-sprest";
-import { IWebPartCfg, IWebPartEditForm } from "./wp";
+import { IWebPartCfg, IWebPartEditForm } from "./wpCfg";
 import { IWPListInfo } from "./wpList";
 
 /**

@@ -1,4 +1,4 @@
-import { IButtonProps } from "../../components/types";
+import { IWebPartCfg, IWebPartEditForm } from "./wpCfg";
 
 /**
  * Web Part
@@ -14,34 +14,6 @@ export interface IWebPart {
 
     /** The webpart information. */
     info: IWebPartInfo;
-}
-
-/**
- * WebPart Configuration
- */
-export interface IWebPartCfg {
-    /** The webpart id */
-    WebPartId?: string;
-}
-
-/**
- * WebPart Edit Form
- */
-export interface IWebPartEditForm {
-    /** Menu Buttons */
-    menuButtons?: Array<IButtonProps>;
-
-    /** The render footer event. */
-    onRenderFooter?: (el: HTMLDivElement, wpInfo: IWebPartInfo) => void;
-
-    /** The render form event. */
-    onRenderForm?: (el: HTMLDivElement, wpInfo: IWebPartInfo) => void;
-
-    /** The save event. */
-    onSave?: (wpCfg: IWebPartCfg) => IWebPartCfg;
-
-    /** True to hide the save button. */
-    showSaveButton?: boolean;
 }
 
 /**

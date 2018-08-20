@@ -1,6 +1,4 @@
-import { Button, ButtonGroup, ButtonTypes, Modal } from "../../components";
-import { IButtonProps } from "../../components/types/button";
-import { IWebPart, IWebPartCfg, IWebPartEditForm, IWebPartInfo, IWebPartProps } from "../types";
+import { IWebPart, IWebPartCfg, IWebPartInfo, IWebPartProps } from "../types";
 import { WPCfg } from "./wpCfg";
 declare var MSOWebPartPageFormName;
 
@@ -8,8 +6,6 @@ declare var MSOWebPartPageFormName;
  * Web Part
  */
 export const WebPart = (props: IWebPartProps): IWebPart => {
-    let _editForm: IWebPartEditForm = props.editForm || {};
-    let _modal = null;
     let _cfg: IWebPartCfg = {};
     let _wp: IWebPartInfo = null;
 
@@ -189,23 +185,6 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
     }
 
     /**
-     * Method to detect if the wiki page is being edited
-     */
-    let isWikiPageInEdit = () => {
-        let wikiPageMode = null;
-
-        // Get the form
-        let form = document.forms[MSOWebPartPageFormName];
-        if (form) {
-            // Get the wiki page mode
-            wikiPageMode = form._wikiPageMode ? form._wikiPageMode.value : null;
-        }
-
-        // Determine if this wiki page is being edited
-        return wikiPageMode == "Edit";
-    }
-
-    /**
      * Method to render the webpart
      */
     let render = () => {
@@ -252,7 +231,7 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
             // See if we are displaying the default edit form
             else if (props.editForm) {
                 // Display the edit form
-                renderEditForm();
+                WPCfg(_cfg, _wp, props);
             }
         } else {
             // See if the configuration is defined, but has no value
@@ -276,111 +255,6 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
             // Execute the post render event
             props.onPostRender ? props.onPostRender(_wp) : null;
         }
-    }
-
-    // The default render method when the page is edited
-    let renderEditForm = () => {
-        // Ensure we need to render this
-        if (_editForm == null) { return; }
-
-        // Render the template
-        _wp.el.innerHTML = [
-            '<div></div>',
-            '<div></div>'
-        ].join('\n');
-
-        // Render the button to toggle the modal
-        Button({
-            el: _wp.el.children[0],
-            target: "#" + props.elementId + "_modal",
-            text: "Configure WebPart",
-            toggle: "modal",
-            type: ButtonTypes.Secondary
-        });
-
-        // Render the modal
-        let modal = Modal({
-            el: _wp.el.children[1],
-            id: props.elementId + "_modal",
-            isCentered: true,
-            isLarge: true,
-            title: "Configuration Panel",
-            onRenderBody: el => {
-                let menuButtons: Array<IButtonProps> = [];
-
-                // Render the template
-                el.innerHTML = "<div></div><div></div>";
-                let elMenu = el.children[0] as HTMLDivElement;
-                let elForm = el.children[1] as HTMLDivElement;
-
-                /**
-                 * Menu
-                 */
-
-                // Render the template
-                elMenu.innerHTML = "<div></div><div></div>";
-
-                // See if this is a wiki page
-                let disableSaveButton = isWikiPageInEdit();
-                if (disableSaveButton) {
-                    // Get the webpart manager key name
-                    let elWPMgrKeyName = document.getElementById("MSOSPWebPartManager_OldSelectedStorageKeyName") as HTMLInputElement;
-
-                    // Set the flag
-                    disableSaveButton = elWPMgrKeyName == null || elWPMgrKeyName.value.indexOf(_cfg.WebPartId) < 0;
-                    if (disableSaveButton) {
-                        // Show a message
-                        elMenu.children[1].innerHTML = "<label>You must edit the webpart in order to save changes.</label>";
-                    }
-                }
-
-                // See if we are adding the save button
-                if (_editForm.showSaveButton != false) {
-                    // Add the save button
-                    menuButtons.push({
-                        isDisabled: disableSaveButton,
-                        text: "Save",
-                        onClick: ev => {
-                            // Call the save event and set the configuration
-                            let cfg = _editForm.onSave ? _editForm.onSave(_wp.cfg) : null;
-                            cfg = cfg ? cfg : _wp.cfg;
-
-                            // Save the configuration
-                            WPCfg.saveConfiguration(_wp.wpId, props.cfgElementId, cfg).then(() => {
-                                // Close the modal
-                                modal["toggle"]();
-                            });
-                        }
-                    });
-                }
-
-                // See if custom menu buttons exist
-                if (_editForm.menuButtons) {
-                    // Add the buttons
-                    menuButtons = menuButtons.concat(_editForm.menuButtons);
-                }
-
-                // Render the menu buttons
-                ButtonGroup({
-                    buttons: menuButtons,
-                    buttonType: ButtonTypes.Secondary,
-                    el: elMenu.children[0],
-                    isSmall: true
-                });
-
-                // See if the render form event exists
-                if (_editForm.onRenderForm) {
-                    // Call the event
-                    _editForm.onRenderForm(elForm, _wp);
-                }
-
-                // See if the render footer event exists
-                if (_editForm.onRenderFooter) {
-                    // Call the event
-                    _editForm.onRenderFooter(_wp.el.querySelector(".modal-footer"), _wp);
-                }
-            }
-        });
     }
 
     // Add a load event
