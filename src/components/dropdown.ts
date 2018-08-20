@@ -20,99 +20,128 @@ export enum DropdownTypes {
 export const Dropdown = (props: IDropdownProps): Element | string => {
     let html = [];
     let isMulti = props.multi || false;
-
-    // Set the class names
-    let classNames = ["dropdown"];
-    props.className ? classNames.push(props.className) : null;
-
-    // Set the button class names
-    let btnClassNames = ["btn", "dropdown-toggle"];
-    switch (props.type) {
-        // Danger
-        case DropdownTypes.Danger:
-            btnClassNames.push("btn-danger");
-            break;
-        // Info
-        case DropdownTypes.Info:
-            btnClassNames.push("btn-info");
-            break;
-        // Secondary
-        case DropdownTypes.Secondary:
-            btnClassNames.push("btn-secondary");
-            break;
-        // Success
-        case DropdownTypes.Success:
-            btnClassNames.push("btn-success");
-            break;
-        // Warning
-        case DropdownTypes.Warning:
-            btnClassNames.push("btn-warning");
-            break;
-        // Default - Primary
-        default:
-            btnClassNames.push("btn-primary");
-            break;
-    }
-
-    // Set the starting tag
-    html.push('<div class="' + classNames.join(' ') + '">');
-
-    // Add the button
-    html.push([
-        '<button class="' + btnClassNames.join(' ') + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">',
-        props.label || "",
-        '</button>'
-    ].join('\n'));
-
-    // Add the menu
-    html.push('<div class="dropdown-menu"' + (props.id ? 'aria-labelledby="' + props.id + '"' : '') + '>')
-
-    // Parse the items
     let items = props.items || [];
-    for (let i = 0; i < items.length; i++) {
-        let item = items[i];
 
-        // Set the class names
-        let classNames = ["dropdown-item"];
-
-        // See if this item is selected
-        if (item.isSelected) {
-            // Select the item
-            classNames.push("active");
+    // See if we are rendering this in a form
+    if (props.formFl) {
+        // See if there is a label
+        if (props.label) {
+            // Add the label
+            html.push("<label>" + props.label + "</label>");
         }
-        // Else, see if a value exists
-        else if (props.value) {
-            // Ensure it's an array
-            let values = props.value.length ? props.value : [props.value];
 
-            // Parse the values
-            for (let j = 0; j < values.length; j++) {
-                // See if this item is selected
-                if (item.value == values[j]) {
-                    // Select this item
-                    classNames.push("active");
-                    break;
+        // Add the select starting tag
+        html.push('<select class="form-control">');
+
+        // Parse the items
+        for (let i = 0; i < items.length; i++) {
+            let item = items[i];
+
+            // Set the attributes
+            let attributes = [
+                'data-idx="' + i + '"',
+                item.value ? 'data-value="' + JSON.stringify(item.value) + '"' : ''
+            ].join(' ');
+
+            // Add the option
+            html.push("<option " + attributes + ">" + item.text + "</option>");
+        }
+
+        // Add the select ending tag
+        html.push("</select>");
+    } else {
+        // Set the class names
+        let classNames = ["dropdown"];
+        props.className ? classNames.push(props.className) : null;
+
+        // Set the button class names
+        let btnClassNames = ["btn", "dropdown-toggle"];
+        switch (props.type) {
+            // Danger
+            case DropdownTypes.Danger:
+                btnClassNames.push("btn-danger");
+                break;
+            // Info
+            case DropdownTypes.Info:
+                btnClassNames.push("btn-info");
+                break;
+            // Secondary
+            case DropdownTypes.Secondary:
+                btnClassNames.push("btn-secondary");
+                break;
+            // Success
+            case DropdownTypes.Success:
+                btnClassNames.push("btn-success");
+                break;
+            // Warning
+            case DropdownTypes.Warning:
+                btnClassNames.push("btn-warning");
+                break;
+            // Default - Primary
+            default:
+                btnClassNames.push("btn-primary");
+                break;
+        }
+
+        // Set the starting tag
+        html.push('<div class="' + classNames.join(' ') + '">');
+
+        // Add the button
+        html.push([
+            '<button class="' + btnClassNames.join(' ') + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">',
+            props.label || "",
+            '</button>'
+        ].join('\n'));
+
+        // Add the menu
+        html.push('<div class="dropdown-menu"' + (props.id ? 'aria-labelledby="' + props.id + '"' : '') + '>')
+
+        // Parse the items
+        for (let i = 0; i < items.length; i++) {
+            let item = items[i];
+
+            // Set the class names
+            let classNames = ["dropdown-item"];
+
+            // See if this item is selected
+            if (item.isSelected) {
+                // Select the item
+                classNames.push("active");
+            }
+            // Else, see if a value exists
+            else if (props.value) {
+                // Ensure it's an array
+                let values = props.value.length ? props.value : [props.value];
+
+                // Parse the values
+                for (let j = 0; j < values.length; j++) {
+                    // See if this item is selected
+                    if (item.value == values[j]) {
+                        // Select this item
+                        classNames.push("active");
+                        break;
+                    }
                 }
             }
+
+            // Set the item attributes
+            let attributes = [
+                'class="' + classNames.join(' ') + '"',
+                'href="' + (item.href || '#') + '"',
+                'data-idx="' + i + '"',
+                item.value ? 'data-value="' + JSON.stringify(item.value) + '"' : ''
+            ].join(' ');
+
+            // Add the button html
+            html.push('<a ' + attributes + '>' + item.text + '</a>');
         }
 
-        // Set the item attributes
-        let attributes = [
-            'class="' + classNames.join(' ') + '"',
-            'href="' + (item.href || '#') + '"',
-            'data-idx="' + i + '"',
-            item.value ? 'data-value="' + JSON.stringify(item.value) + '"' : ''
-        ].join(' ');
+        // Add the menu closing tag
+        html.push("</div>");
 
-        // Add the button html
-        html.push('<a ' + attributes + '>' + item.text + '</a>');
+        // Add the closing tag
+        html.push("</div>");
     }
-
-    // Add the menu closing tag
-    html.push("</div>");
-
-    // Add the closing tag
-    html.push("</div>");
 
     // See if the element exists
     if (props.el) {
@@ -123,7 +152,7 @@ export const Dropdown = (props: IDropdownProps): Element | string => {
         props.el.innerHTML = html.join('\n');
 
         // Parse the items
-        let elItems = props.el.querySelectorAll(".dropdown-item");
+        let elItems = props.el.querySelectorAll(props.formFl ? "option" : ".dropdown-item");
         for (let i = 0; i < elItems.length; i++) {
             let item = props.items[i];
 

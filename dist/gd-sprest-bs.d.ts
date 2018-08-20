@@ -138,6 +138,7 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
             onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             className?: string;
             el?: Element | HTMLElement;
+            formFl?: boolean;
             id?: string;
             label?: string;
             multi?: boolean;

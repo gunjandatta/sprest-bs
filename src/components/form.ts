@@ -42,6 +42,7 @@ export const Form = (props: IFormProps): IForm | string => {
             case FormControlTypes.Dropdown:
                 Dropdown({
                     el,
+                    formFl: true,
                     items: (control as IFormControlDropdown).items,
                     label: (control as IFormControlDropdown).label,
                     onChange: (control as IFormControlDropdown).onChange,
@@ -76,6 +77,7 @@ export const Form = (props: IFormProps): IForm | string => {
             case FormControlTypes.MultiDropdown:
                 Dropdown({
                     el,
+                    formFl: true,
                     items: (control as IFormControlDropdown).items,
                     label: (control as IFormControlDropdown).label,
                     multi: true,
@@ -184,7 +186,6 @@ export const Form = (props: IFormProps): IForm | string => {
     }
 
     // Render the form
-    debugger;
     renderForm();
 
     // See if the element exists
