@@ -30,8 +30,14 @@ export const Dropdown = (props: IDropdownProps): Element | string => {
             html.push("<label>" + props.label + "</label>");
         }
 
+        // Set the attirbutes
+        let attributes = [
+            'class="form-control"',
+            props.multi ? "multiple" : ""
+        ];
+
         // Add the select starting tag
-        html.push('<select class="form-control">');
+        html.push('<select ' + attributes.join(' ') + '>');
 
         // Parse the items
         for (let i = 0; i < items.length; i++) {

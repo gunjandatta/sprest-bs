@@ -10,17 +10,17 @@ export const WPList: (props: IWPListProps) => IWPList;
 /**
  * WebPart List
  */
-export interface IWPList extends IWebPart<IWPListCfg, IWPListInfo> { }
+export interface IWPList<IListCfg = IWPListCfg, IListInfo = IWPListInfo> extends IWebPart<IListCfg, IListInfo> { }
 
 /**
  * WebPart List Information
  */
-export interface IWPListInfo extends IWebPartInfo<IWPListCfg> { }
+export interface IWPListInfo<IListCfg = IWPListCfg> extends IWebPartInfo<IListCfg> { }
 
 /**
  * WebPart List Properties
  */
-export interface IWPListProps extends IWebPartProps<IWPListInfo, IWPListEditForm> {
+export interface IWPListProps<IListInfo=IWPListInfo, IListEditForm=IWPListEditForm> extends IWebPartProps<IListInfo, IListEditForm> {
     /** The caml query. */
     camlQuery?: string;
 
@@ -28,11 +28,11 @@ export interface IWPListProps extends IWebPartProps<IWPListInfo, IWPListEditForm
     odataQuery?: Types.SP.ODataQuery;
 
     /** The executing caml query event. */
-    onExecutingCAMLQuery?: (wpInfo: IWPListInfo, caml: string) => string;
+    onExecutingCAMLQuery?: (wpInfo: IListInfo, caml: string) => string;
 
     /** The executing odata query event. */
-    onExecutingODATAQuery?: (wpInfo: IWPListInfo, odata: Types.SP.ODataQuery) => Types.SP.ODataQuery;
+    onExecutingODATAQuery?: (wpInfo: IListInfo, odata: Types.SP.ODataQuery) => Types.SP.ODataQuery;
 
     /** The on render items event. */
-    onRenderItems?: (wpInfo: IWPListInfo, items: Array<Types.SP.IListItemQueryResult | Types.SP.IListItemResult>) => void;
+    onRenderItems?: (wpInfo: IListInfo, items: Array<Types.SP.IListItemQueryResult | Types.SP.IListItemResult>) => void;
 }

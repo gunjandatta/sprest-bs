@@ -7,6 +7,7 @@ export const Dropdown: (props: IDropdownProps) => Element | string;
  * Dropdown Item
  */
 export interface IDropdownItem {
+    data?: any;
     href?: string;
     isSelected?: boolean;
     onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;

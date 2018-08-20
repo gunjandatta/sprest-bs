@@ -22,16 +22,16 @@ export interface IWPListCfg extends IWebPartCfg {
 /**
  * WebPart List Edit Form
  */
-export interface IWPListEditForm extends IWebPartEditForm<IWPListCfg, IWPListInfo> {
+export interface IWPListEditForm<IListCfg = IWPListCfg, IListInfo = IWPListInfo> extends IWebPartEditForm<IListCfg, IListInfo> {
     /** The odata list query. */
     listQuery?: Types.SP.ODataQuery;
 
     /** The list changed event. */
-    onListChanged?: (wpInfo: IWPListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
+    onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
 
     /** The lists rendering event. */
-    onListsRendering?: (wpInfo: IWPListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
+    onListsRendering?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
 
     /** The render form event. */
-    onRenderForm?: (wpInfo: IWPListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
+    onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
 }

@@ -46,6 +46,8 @@ declare module 'gd-sprest-bs/webparts/types' {
     export * from "gd-sprest-bs/webparts/types/wpCfg";
     export * from "gd-sprest-bs/webparts/types/wpList";
     export * from "gd-sprest-bs/webparts/types/wpListCfg";
+    export * from "gd-sprest-bs/webparts/types/wpSearch";
+    export * from "gd-sprest-bs/webparts/types/wpSearchCfg";
     export * from "gd-sprest-bs/webparts/types/wpTabs";
     export * from "gd-sprest-bs/webparts/types/wpTaxonomy";
     export * from "gd-sprest-bs/webparts/types/wpTaxonomyCfg";
@@ -126,6 +128,7 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
         * Dropdown Item
         */
     export interface IDropdownItem {
+            data?: any;
             href?: string;
             isSelected?: boolean;
             onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
@@ -200,7 +203,7 @@ declare module 'gd-sprest-bs/components/types/form' {
         */
     export interface IFormControlDropdown extends IFormControl {
             items?: Array<IDropdownItem>;
-            onChange?: (item: IDropdownItem) => void;
+            onChange?: (item: IDropdownItem | Array<IDropdownItem>) => void;
             placeholder?: string;
             type?: number;
     }
@@ -565,17 +568,17 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
     /**
         * WebPart List
         */
-    export interface IWPList extends IWebPart<IWPListCfg, IWPListInfo> { }
+    export interface IWPList<IListCfg = IWPListCfg, IListInfo = IWPListInfo> extends IWebPart<IListCfg, IListInfo> { }
     
     /**
         * WebPart List Information
         */
-    export interface IWPListInfo extends IWebPartInfo<IWPListCfg> { }
+    export interface IWPListInfo<IListCfg = IWPListCfg> extends IWebPartInfo<IListCfg> { }
     
     /**
         * WebPart List Properties
         */
-    export interface IWPListProps extends IWebPartProps<IWPListInfo, IWPListEditForm> {
+    export interface IWPListProps<IListInfo=IWPListInfo, IListEditForm=IWPListEditForm> extends IWebPartProps<IListInfo, IListEditForm> {
             /** The caml query. */
             camlQuery?: string;
     
@@ -583,13 +586,13 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
             odataQuery?: Types.SP.ODataQuery;
     
             /** The executing caml query event. */
-            onExecutingCAMLQuery?: (wpInfo: IWPListInfo, caml: string) => string;
+            onExecutingCAMLQuery?: (wpInfo: IListInfo, caml: string) => string;
     
             /** The executing odata query event. */
-            onExecutingODATAQuery?: (wpInfo: IWPListInfo, odata: Types.SP.ODataQuery) => Types.SP.ODataQuery;
+            onExecutingODATAQuery?: (wpInfo: IListInfo, odata: Types.SP.ODataQuery) => Types.SP.ODataQuery;
     
             /** The on render items event. */
-            onRenderItems?: (wpInfo: IWPListInfo, items: Array<Types.SP.IListItemQueryResult | Types.SP.IListItemResult>) => void;
+            onRenderItems?: (wpInfo: IListInfo, items: Array<Types.SP.IListItemQueryResult | Types.SP.IListItemResult>) => void;
     }
 }
 
@@ -618,19 +621,69 @@ declare module 'gd-sprest-bs/webparts/types/wpListCfg' {
     /**
         * WebPart List Edit Form
         */
-    export interface IWPListEditForm extends IWebPartEditForm<IWPListCfg, IWPListInfo> {
+    export interface IWPListEditForm<IListCfg = IWPListCfg, IListInfo = IWPListInfo> extends IWebPartEditForm<IListCfg, IListInfo> {
             /** The odata list query. */
             listQuery?: Types.SP.ODataQuery;
     
             /** The list changed event. */
-            onListChanged?: (wpInfo: IWPListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
+            onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
     
             /** The lists rendering event. */
-            onListsRendering?: (wpInfo: IWPListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
+            onListsRendering?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
     
             /** The render form event. */
-            onRenderForm?: (wpInfo: IWPListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
+            onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
     }
+}
+
+declare module 'gd-sprest-bs/webparts/types/wpSearch' {
+    import { Types } from "gd-sprest";
+    import { IWPList, IWPListInfo, IWPListProps } from "gd-sprest-bs/webparts/types/wpList";
+    import { IWPSearchCfg, IWPSearchEditForm } from "gd-sprest-bs/webparts/types/wpSearchCfg";
+    
+    /**
+        * Search WebPart
+        */
+    export const WPSearch: (props: IWPListProps) => IWPList;
+    
+    /**
+        * WebPart Search
+        */
+    export interface IWPSearch extends IWPList<IWPSearchCfg, IWPSearchInfo> {
+            /** The filter items method. */
+            filterItems: (filterText: string) => Array<Types.SP.IListItemQueryResult | Types.SP.IListItemResult>;
+    }
+    
+    /**
+        * WebPart Search Information
+        */
+    export interface IWPSearchInfo extends IWPListInfo<IWPSearchCfg> { }
+    
+    /**
+        * WebPart Search Properties
+        */
+    export interface IWPSearchProps extends IWPListProps<IWPSearchInfo, IWPSearchEditForm> {
+            /** The internal field names to be used for search. These will be appended to the configuration fields. */
+            searchFields?: Array<{ name: string, type: string }>;
+    }
+}
+
+declare module 'gd-sprest-bs/webparts/types/wpSearchCfg' {
+    import { IWPListCfg, IWPListEditForm } from "gd-sprest-bs/webparts/types/wpListCfg";
+    import { IWPSearchInfo } from "gd-sprest-bs/webparts/types/wpSearch";
+    
+    /**
+        * WebPart Search Configuration
+        */
+    export interface IWPSearchCfg extends IWPListCfg {
+            /** The searchable fields. */
+            Fields: Array<{ name: string, type: string }>;
+    }
+    
+    /**
+        * WebPart Search Edit Form
+        */
+    export interface IWPSearchEditForm extends IWPListEditForm<IWPSearchCfg, IWPSearchInfo> { }
 }
 
 declare module 'gd-sprest-bs/webparts/types/wpTabs' {

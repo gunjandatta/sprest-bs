@@ -25,7 +25,10 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                 // Execute the request
                 .execute(lists => {
                     let controls: Array<IFormControl> = [];
-                    let items: Array<IDropdownItem> = [];
+                    let items: Array<IDropdownItem> = [{
+                        text: "",
+                        value: ""
+                    }];
 
                     // Call the list rendering event
                     let listValues: Array<any> = (props.onListsRendering ? props.onListsRendering(_wpInfo, lists.results) as any : null) || lists.results;
@@ -34,6 +37,7 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                     controls.push({
                         label: "Relative Web Url:",
                         description: "The web containing the list. If blank, the current web is used.",
+                        name: "WebUrl",
                         type: FormControlTypes.TextField,
                         value: webUrl,
                         onChange: (value) => {
@@ -63,6 +67,7 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                     // Add the dropdown
                     controls.push({
                         label: "List:",
+                        name: "ListName",
                         items,
                         type: FormControlTypes.Dropdown,
                         value: _wpInfo && _wpInfo.cfg ? _wpInfo.cfg.ListName : null,

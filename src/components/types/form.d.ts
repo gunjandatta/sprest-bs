@@ -35,7 +35,7 @@ export interface IFormControlCheckbox extends IFormControl { }
  */
 export interface IFormControlDropdown extends IFormControl {
     items?: Array<IDropdownItem>;
-    onChange?: (item: IDropdownItem) => void;
+    onChange?: (item: IDropdownItem | Array<IDropdownItem>) => void;
     placeholder?: string;
     type?: number;
 }
