@@ -8,17 +8,17 @@ import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } 
 export const WPList: (props: IWPListProps) => IWPList;
 
 /**
- * WebPart List
+ * List WebPart
  */
 export interface IWPList<IListCfg = IWPListCfg, IListInfo = IWPListInfo> extends IWebPart<IListCfg, IListInfo> { }
 
 /**
- * WebPart List Information
+ * List WebPart Information
  */
 export interface IWPListInfo<IListCfg = IWPListCfg> extends IWebPartInfo<IListCfg> { }
 
 /**
- * WebPart List Properties
+ * List WebPart Properties
  */
 export interface IWPListProps<IListInfo=IWPListInfo, IListEditForm=IWPListEditForm> extends IWebPartProps<IListInfo, IListEditForm> {
     /** The caml query. */
@@ -38,12 +38,12 @@ export interface IWPListProps<IListInfo=IWPListInfo, IListEditForm=IWPListEditFo
 }
 
 /**
- * List WebPart Edit Form
+ * WebPart List Edit Form
  */
 export const WPListEditForm: (props: IWPListEditForm) => IWPListEditForm;
 
 /**
- * WebPart List Configuration
+ * List WebPart Configuration
  */
 export interface IWPListCfg extends IWebPartCfg {
     /** The list name */

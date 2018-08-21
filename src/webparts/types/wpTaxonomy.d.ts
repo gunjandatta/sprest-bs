@@ -2,17 +2,22 @@ import { Helper } from "gd-sprest";
 import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "./wp";
 
 /**
- * WebPart Taxonomy
+ * Taxonomy WebPart
+ */
+export const WPTaxonomy: (props: IWPTaxonomyProps) => IWPTaxonomy;
+
+/**
+ * Taxonomy WebPart
  */
 export interface IWPTaxonomy extends IWebPart<IWPTaxonomyCfg, IWPTaxonomyInfo> { }
 
 /**
- * WebPart Taxonomy Information
+ * Taxonomy WebPart Information
  */
 export interface IWPTaxonomyInfo extends IWebPartInfo<IWPTaxonomyCfg> { }
 
 /**
- * WebPart Taxonomy Properties
+ * Taxonomy WebPart Properties
  */
 export interface IWPTaxonomyProps extends IWebPartProps<IWPTaxonomyInfo, IWPTaxonomyEditForm> {
     /** The on render term set event. */
@@ -24,24 +29,9 @@ export interface IWPTaxonomyProps extends IWebPartProps<IWPTaxonomyInfo, IWPTaxo
     /** The on render term set terms event. */
     onRenderTermSetTerms?: (wpInfo: IWPTaxonomyInfo, terms: Array<Helper.Types.ITermInfo>) => void;
 }
-/**
- * Term Group Info
- */
-interface ITermGroupInfo {
-    id: string;
-    name: string;
-}
 
 /**
- * Term Info
- */
-interface ITermInfo {
-    id: string;
-    name: string;
-}
-
-/**
- * WebPart Taxonomy Configuration
+ * Taxonomy WebPart Configuration
  */
 export interface IWPTaxonomyCfg extends IWebPartCfg {
     /** The term group id. */
@@ -64,7 +54,7 @@ export interface IWPTaxonomyCfg extends IWebPartCfg {
 }
 
 /**
- * WebPart Taxonomy Edit Form
+ * Taxonomy WebPart Edit Form
  */
 export interface IWPTaxonomyEditForm extends IWebPartEditForm<IWPTaxonomyCfg, IWPTaxonomyInfo> {
     /** The term group changed event. */
@@ -78,4 +68,20 @@ export interface IWPTaxonomyEditForm extends IWebPartEditForm<IWPTaxonomyCfg, IW
 
     /** Flag to display the term set terms. */
     showTermSetTerms?: boolean;
+}
+
+/**
+ * Term Group Info
+ */
+interface ITermGroupInfo {
+    id: string;
+    name: string;
+}
+
+/**
+ * Term Info
+ */
+interface ITermInfo {
+    id: string;
+    name: string;
 }

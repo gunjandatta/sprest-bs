@@ -556,17 +556,17 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
     export const WPList: (props: IWPListProps) => IWPList;
     
     /**
-        * WebPart List
+        * List WebPart
         */
     export interface IWPList<IListCfg = IWPListCfg, IListInfo = IWPListInfo> extends IWebPart<IListCfg, IListInfo> { }
     
     /**
-        * WebPart List Information
+        * List WebPart Information
         */
     export interface IWPListInfo<IListCfg = IWPListCfg> extends IWebPartInfo<IListCfg> { }
     
     /**
-        * WebPart List Properties
+        * List WebPart Properties
         */
     export interface IWPListProps<IListInfo=IWPListInfo, IListEditForm=IWPListEditForm> extends IWebPartProps<IListInfo, IListEditForm> {
             /** The caml query. */
@@ -586,12 +586,12 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
     }
     
     /**
-        * List WebPart Edit Form
+        * WebPart List Edit Form
         */
     export const WPListEditForm: (props: IWPListEditForm) => IWPListEditForm;
     
     /**
-        * WebPart List Configuration
+        * List WebPart Configuration
         */
     export interface IWPListCfg extends IWebPartCfg {
             /** The list name */
@@ -630,7 +630,7 @@ declare module 'gd-sprest-bs/webparts/types/wpSearch' {
     export const WPSearch: (props: IWPListProps) => IWPSearch;
     
     /**
-        * WebPart Search
+        * Search WebPart
         */
     export interface IWPSearch extends IWPList<IWPSearchCfg, IWPSearchInfo> {
             /** The filter items method. */
@@ -638,12 +638,12 @@ declare module 'gd-sprest-bs/webparts/types/wpSearch' {
     }
     
     /**
-        * WebPart Search Information
+        * Search WebPart Information
         */
     export interface IWPSearchInfo extends IWPListInfo<IWPSearchCfg> { }
     
     /**
-        * WebPart Search Properties
+        * Search WebPart Properties
         */
     export interface IWPSearchProps extends IWPListProps<IWPSearchInfo, IWPSearchEditForm> {
             /** The internal field names to be used for search. These will be appended to the configuration fields. */
@@ -651,7 +651,7 @@ declare module 'gd-sprest-bs/webparts/types/wpSearch' {
     }
     
     /**
-        * WebPart Search Configuration
+        * Search WebPart Configuration
         */
     export interface IWPSearchCfg extends IWPListCfg {
             /** The searchable fields. */
@@ -659,7 +659,7 @@ declare module 'gd-sprest-bs/webparts/types/wpSearch' {
     }
     
     /**
-        * WebPart Search Edit Form
+        * Search WebPart Edit Form
         */
     export interface IWPSearchEditForm extends IWPListEditForm<IWPSearchCfg, IWPSearchInfo> { }
 }
@@ -668,7 +668,7 @@ declare module 'gd-sprest-bs/webparts/types/wpTabs' {
     import { IWebPart, IWebPartProps } from "gd-sprest-bs/webparts/types/wp";
     
     /**
-        * Web Part Tabs
+        * WebPart Tabs
         */
     export const WPTabs: (props: IWPTabsProps) => IWPTabs;
     
@@ -685,7 +685,7 @@ declare module 'gd-sprest-bs/webparts/types/wpTabs' {
     }
     
     /**
-        * Web Part Tab Types
+        * WebPart Tab Types
         */
     export const WPTabTypes: {
             Pillars: number;
@@ -698,17 +698,22 @@ declare module 'gd-sprest-bs/webparts/types/wpTaxonomy' {
     import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/types/wp";
     
     /**
-        * WebPart Taxonomy
+        * Taxonomy WebPart
+        */
+    export const WPTaxonomy: (props: IWPTaxonomyProps) => IWPTaxonomy;
+    
+    /**
+        * Taxonomy WebPart
         */
     export interface IWPTaxonomy extends IWebPart<IWPTaxonomyCfg, IWPTaxonomyInfo> { }
     
     /**
-        * WebPart Taxonomy Information
+        * Taxonomy WebPart Information
         */
     export interface IWPTaxonomyInfo extends IWebPartInfo<IWPTaxonomyCfg> { }
     
     /**
-        * WebPart Taxonomy Properties
+        * Taxonomy WebPart Properties
         */
     export interface IWPTaxonomyProps extends IWebPartProps<IWPTaxonomyInfo, IWPTaxonomyEditForm> {
             /** The on render term set event. */
@@ -720,24 +725,9 @@ declare module 'gd-sprest-bs/webparts/types/wpTaxonomy' {
             /** The on render term set terms event. */
             onRenderTermSetTerms?: (wpInfo: IWPTaxonomyInfo, terms: Array<Helper.Types.ITermInfo>) => void;
     }
-    /**
-        * Term Group Info
-        */
-    interface ITermGroupInfo {
-            id: string;
-            name: string;
-    }
     
     /**
-        * Term Info
-        */
-    interface ITermInfo {
-            id: string;
-            name: string;
-    }
-    
-    /**
-        * WebPart Taxonomy Configuration
+        * Taxonomy WebPart Configuration
         */
     export interface IWPTaxonomyCfg extends IWebPartCfg {
             /** The term group id. */
@@ -760,7 +750,7 @@ declare module 'gd-sprest-bs/webparts/types/wpTaxonomy' {
     }
     
     /**
-        * WebPart Taxonomy Edit Form
+        * Taxonomy WebPart Edit Form
         */
     export interface IWPTaxonomyEditForm extends IWebPartEditForm<IWPTaxonomyCfg, IWPTaxonomyInfo> {
             /** The term group changed event. */
@@ -774,6 +764,22 @@ declare module 'gd-sprest-bs/webparts/types/wpTaxonomy' {
     
             /** Flag to display the term set terms. */
             showTermSetTerms?: boolean;
+    }
+    
+    /**
+        * Term Group Info
+        */
+    interface ITermGroupInfo {
+            id: string;
+            name: string;
+    }
+    
+    /**
+        * Term Info
+        */
+    interface ITermInfo {
+            id: string;
+            name: string;
     }
 }
 

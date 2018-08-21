@@ -1,7 +1,7 @@
 import { IWebPart, IWebPartProps } from "./wp";
 
 /**
- * Web Part Tabs
+ * WebPart Tabs
  */
 export const WPTabs: (props: IWPTabsProps) => IWPTabs;
 
@@ -18,7 +18,7 @@ export interface IWPTabsProps extends IWebPartProps {
 }
 
 /**
- * Web Part Tab Types
+ * WebPart Tab Types
  */
 export const WPTabTypes: {
     Pillars: number;

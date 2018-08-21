@@ -8,7 +8,7 @@ import { IWPListCfg, IWPListEditForm } from "./wpList";
 export const WPSearch: (props: IWPListProps) => IWPSearch;
 
 /**
- * WebPart Search
+ * Search WebPart
  */
 export interface IWPSearch extends IWPList<IWPSearchCfg, IWPSearchInfo> {
     /** The filter items method. */
@@ -16,12 +16,12 @@ export interface IWPSearch extends IWPList<IWPSearchCfg, IWPSearchInfo> {
 }
 
 /**
- * WebPart Search Information
+ * Search WebPart Information
  */
 export interface IWPSearchInfo extends IWPListInfo<IWPSearchCfg> { }
 
 /**
- * WebPart Search Properties
+ * Search WebPart Properties
  */
 export interface IWPSearchProps extends IWPListProps<IWPSearchInfo, IWPSearchEditForm> {
     /** The internal field names to be used for search. These will be appended to the configuration fields. */
@@ -29,7 +29,7 @@ export interface IWPSearchProps extends IWPListProps<IWPSearchInfo, IWPSearchEdi
 }
 
 /**
- * WebPart Search Configuration
+ * Search WebPart Configuration
  */
 export interface IWPSearchCfg extends IWPListCfg {
     /** The searchable fields. */
@@ -37,6 +37,6 @@ export interface IWPSearchCfg extends IWPListCfg {
 }
 
 /**
- * WebPart Search Edit Form
+ * Search WebPart Edit Form
  */
 export interface IWPSearchEditForm extends IWPListEditForm<IWPSearchCfg, IWPSearchInfo> { }
