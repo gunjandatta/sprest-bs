@@ -1,8 +1,7 @@
 import { ContextInfo, } from "gd-sprest";
 import { Form } from "../../components/form";
 import { IFormControl, IFormRow } from "../../components/types/form";
-import { IHelper, IWPInstance } from "../types";
-import { IWebPartInfo } from "gd-sprest/build/helper/types";
+import { IHelper, IWebPartInfo, IWPInstance } from "../types";
 declare var SP;
 
 /**

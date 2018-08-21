@@ -1,6 +1,6 @@
-import { Button, ButtonGroup, ButtonTypes, Form, Modal } from "../../components";
+import { Button, ButtonGroup, ButtonTypes, Modal } from "../../components";
 import { IButtonProps } from "../../components/types/button";
-import { IWebPartCfg, IWebPartEditForm, IWebPartInfo, IWebPartProps } from "../types";
+import { IWebPartCfg, IWebPartEditForm, IWebPartInfo, IWebPartProps } from "../types/wp";
 import { Helper } from "./helper";
 declare var MSOWebPartPageFormName;
 

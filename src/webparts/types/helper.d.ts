@@ -1,5 +1,5 @@
 import { IFormControl } from "../../components/types/form";
-import { IWebPartInfo } from "gd-sprest/build/helper/types";
+import { IWebPartInfo } from "./wp";
 
 /**
  * Helper Methods

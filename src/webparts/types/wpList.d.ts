@@ -1,6 +1,6 @@
 import { Types } from "gd-sprest";
-import { IWebPart, IWebPartInfo, IWebPartProps } from "./wp";
-import { IWPListCfg, IWPListEditForm } from "./wpListCfg";
+import { IFormControl } from "../../components/types/form";
+import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "./wp";
 
 /**
  * List WebPart
@@ -35,4 +35,37 @@ export interface IWPListProps<IListInfo=IWPListInfo, IListEditForm=IWPListEditFo
 
     /** The on render items event. */
     onRenderItems?: (wpInfo: IListInfo, items: Array<Types.SP.IListItemQueryResult | Types.SP.IListItemResult>) => void;
+}
+
+/**
+ * List WebPart Edit Form
+ */
+export const WPListEditForm: (props: IWPListEditForm) => IWPListEditForm;
+
+/**
+ * WebPart List Configuration
+ */
+export interface IWPListCfg extends IWebPartCfg {
+    /** The list name */
+    ListName?: string;
+
+    /** The relative web url */
+    WebUrl?: string;
+}
+
+/**
+ * WebPart List Edit Form
+ */
+export interface IWPListEditForm<IListCfg = IWPListCfg, IListInfo = IWPListInfo> extends IWebPartEditForm<IListCfg, IListInfo> {
+    /** The odata list query. */
+    listQuery?: Types.SP.ODataQuery;
+
+    /** The list changed event. */
+    onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
+
+    /** The lists rendering event. */
+    onListsRendering?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
+
+    /** The render form event. */
+    onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
 }

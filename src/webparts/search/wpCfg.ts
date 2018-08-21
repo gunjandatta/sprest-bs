@@ -1,8 +1,8 @@
 import { SPTypes, Types } from "gd-sprest";
 import { IDropdownItem } from "../../components/types/dropdown";
-import { IFormControlDropdown } from "../../components/types/form";
 import { FormControlTypes } from "../../components/form";
-import { IWPSearchCfg, IWPSearchEditForm, IWPSearchInfo } from "../types";
+import { IFormControlDropdown } from "../../components/types/form";
+import { IWPSearchCfg, IWPSearchEditForm, IWPSearchInfo } from "../types/wpSearch";
 
 /**
  * Search WebPart Edit Form

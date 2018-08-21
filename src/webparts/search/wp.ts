@@ -1,6 +1,6 @@
 import { Types } from "gd-sprest";
-import { WPList } from "../list";
-import { IWPSearch, IWPSearchInfo, IWPSearchProps } from "../types";
+import { WPList } from "../list/wp";
+import { IWPSearch, IWPSearchInfo, IWPSearchProps } from "../types/wpSearch";
 import { WPSearchEditForm } from "./wpCfg";
 
 /**

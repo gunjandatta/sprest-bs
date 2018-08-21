@@ -3,8 +3,7 @@ import { FormControlTypes } from "../../components";
 import { IDropdownItem } from "../../components/types/dropdown";
 import { IFormControlDropdown } from "../../components/types/form";
 import { Helper as WPHelper } from "../base/helper";
-import { IWPTaxonomyInfo } from "../types/wpTaxonomy";
-import { IWPTaxonomyEditForm, IWPTaxonomyCfg } from "../types/wpTaxonomyCfg";
+import { IWPTaxonomyInfo, IWPTaxonomyEditForm, IWPTaxonomyCfg } from "../types/wpTaxonomy";
 
 /**
  * Taxonomy WebPart Edit Form

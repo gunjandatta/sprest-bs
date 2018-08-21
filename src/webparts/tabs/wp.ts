@@ -1,7 +1,8 @@
 import { Navigation } from "../../components";
 import { INavLink } from "../../components/types";
 import { WebPart } from "../base";
-import { IWebPartInfo, IWPTabs, IWPTabsProps } from "../types";
+import { IWebPartInfo } from "../types/wp";
+import { IWPTabs, IWPTabsProps } from "../types/wpTabs";
 
 /**
  * Web Part Tab Types

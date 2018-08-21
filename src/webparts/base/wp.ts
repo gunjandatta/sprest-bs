@@ -1,4 +1,3 @@
-import { IFormControl } from "../../components/types/form";
 import { IWebPart, IWebPartCfg, IWebPartInfo, IWebPartProps } from "../types";
 import { WPCfg } from "./wpCfg";
 declare var MSOWebPartPageFormName;

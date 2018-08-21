@@ -1,6 +1,6 @@
 import { ContextInfo, Web, Types } from "gd-sprest";
-import { WebPart } from "../base";
-import { IWPList, IWPListInfo, IWPListProps } from "../types";
+import { WebPart } from "../base/wp";
+import { IWPList, IWPListInfo, IWPListProps } from "../types/wpList";
 import { WPListEditForm } from "./wpCfg";
 
 /**

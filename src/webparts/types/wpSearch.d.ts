@@ -1,6 +1,6 @@
 import { Types } from "gd-sprest";
 import { IWPList, IWPListInfo, IWPListProps } from "./wpList";
-import { IWPSearchCfg, IWPSearchEditForm } from "./wpSearchCfg";
+import { IWPListCfg, IWPListEditForm } from "./wpList";
 
 /**
  * Search WebPart
@@ -27,3 +27,16 @@ export interface IWPSearchProps extends IWPListProps<IWPSearchInfo, IWPSearchEdi
     /** The internal field names to be used for search. These will be appended to the configuration fields. */
     searchFields?: Array<{ name: string, type: string }>;
 }
+
+/**
+ * WebPart Search Configuration
+ */
+export interface IWPSearchCfg extends IWPListCfg {
+    /** The searchable fields. */
+    Fields: Array<{ name: string, type: string }>;
+}
+
+/**
+ * WebPart Search Edit Form
+ */
+export interface IWPSearchEditForm extends IWPListEditForm<IWPSearchCfg, IWPSearchInfo> { }
