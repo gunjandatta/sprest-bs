@@ -1,4 +1,5 @@
 src
+wc
 *.log*
 *-lock.json
 tsconfig.json
