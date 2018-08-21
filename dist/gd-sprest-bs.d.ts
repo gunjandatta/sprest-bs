@@ -76,7 +76,7 @@ declare module 'gd-sprest-bs/components/types/button' {
     /**
         * Button Types
         */
-    export const ButtonTypes: {
+    export type ButtonTypes = {
             Danger: number;
             Dark: number;
             Info: number;
@@ -150,7 +150,7 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
     /**
         * Dropdown Types
         */
-    export const DropdownTypes: {
+    export type DropdownTypes = {
             Danger: number;
             Info: number;
             Primary: number;
@@ -223,7 +223,7 @@ declare module 'gd-sprest-bs/components/types/form' {
     /**
         * Form Control Type
         */
-    export const FormControlTypes: {
+    export type FormControlTypes = {
             CheckBox: number;
             Email: number;
             Dropdown: number;
@@ -278,7 +278,7 @@ declare module 'gd-sprest-bs/components/types/inputGroup' {
     /**
         * Input Group Types
         */
-    export const InputGroupTypes: {
+    export type InputGroupTypes = {
             Email: number;
             File: number;
             Password: number;
@@ -692,7 +692,7 @@ declare module 'gd-sprest-bs/webparts/types/wpTabs' {
     /**
         * WebPart Tab Types
         */
-    export const WPTabTypes: {
+    export type WPTabTypes = {
             Pillars: number;
             Tabs: number;
     }

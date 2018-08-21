@@ -34,7 +34,7 @@ export interface IDropdownProps {
 /**
  * Dropdown Types
  */
-export const DropdownTypes: {
+export type DropdownTypes = {
     Danger: number;
     Info: number;
     Primary: number;

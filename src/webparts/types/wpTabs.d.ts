@@ -20,7 +20,7 @@ export interface IWPTabsProps extends IWebPartProps {
 /**
  * WebPart Tab Types
  */
-export const WPTabTypes: {
+export type WPTabTypes = {
     Pillars: number;
     Tabs: number;
 }

@@ -25,7 +25,7 @@ export interface IInputGroupProps {
 /**
  * Input Group Types
  */
-export const InputGroupTypes: {
+export type InputGroupTypes = {
     Email: number;
     File: number;
     Password: number;

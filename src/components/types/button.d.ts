@@ -25,7 +25,7 @@ export interface IButtonProps {
 /**
  * Button Types
  */
-export const ButtonTypes: {
+export type ButtonTypes = {
     Danger: number;
     Dark: number;
     Info: number;

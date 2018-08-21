@@ -60,7 +60,7 @@ export interface IFormProps {
 /**
  * Form Control Type
  */
-export const FormControlTypes: {
+export type FormControlTypes = {
     CheckBox: number;
     Email: number;
     Dropdown: number;
