@@ -7,6 +7,11 @@ import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } 
 export const WPTaxonomy: (props: IWPTaxonomyProps) => IWPTaxonomy;
 
 /**
+ * Taxonomy WebPart Edit Form
+ */
+export const WPTaxonomyEditForm: (props: IWPTaxonomyEditForm) => IWPTaxonomyEditForm;
+
+/**
  * Taxonomy WebPart
  */
 export interface IWPTaxonomy extends IWebPart<IWPTaxonomyCfg, IWPTaxonomyInfo> { }

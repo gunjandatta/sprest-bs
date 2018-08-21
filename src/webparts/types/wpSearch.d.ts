@@ -8,6 +8,11 @@ import { IWPListCfg, IWPListEditForm } from "./wpList";
 export const WPSearch: (props: IWPListProps) => IWPSearch;
 
 /**
+ * Search WebPart Edit Form
+ */
+export const WPSearchEditForm: (props: IWPSearchEditForm) => IWPSearchEditForm;
+
+/**
  * Search WebPart
  */
 export interface IWPSearch extends IWPList<IWPSearchCfg, IWPSearchInfo> {

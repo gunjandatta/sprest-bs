@@ -556,6 +556,11 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
     export const WPList: (props: IWPListProps) => IWPList;
     
     /**
+        * List WebPart Edit Form
+        */
+    export const WPListEditForm: (props: IWPListEditForm) => IWPListEditForm;
+    
+    /**
         * List WebPart
         */
     export interface IWPList<IListCfg = IWPListCfg, IListInfo = IWPListInfo> extends IWebPart<IListCfg, IListInfo> { }
@@ -586,11 +591,6 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
     }
     
     /**
-        * WebPart List Edit Form
-        */
-    export const WPListEditForm: (props: IWPListEditForm) => IWPListEditForm;
-    
-    /**
         * List WebPart Configuration
         */
     export interface IWPListCfg extends IWebPartCfg {
@@ -602,7 +602,7 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
     }
     
     /**
-        * WebPart List Edit Form
+        * List WebPart Edit Form
         */
     export interface IWPListEditForm<IListCfg = IWPListCfg, IListInfo = IWPListInfo> extends IWebPartEditForm<IListCfg, IListInfo> {
             /** The odata list query. */
@@ -628,6 +628,11 @@ declare module 'gd-sprest-bs/webparts/types/wpSearch' {
         * Search WebPart
         */
     export const WPSearch: (props: IWPListProps) => IWPSearch;
+    
+    /**
+        * Search WebPart Edit Form
+        */
+    export const WPSearchEditForm: (props: IWPSearchEditForm) => IWPSearchEditForm;
     
     /**
         * Search WebPart
@@ -701,6 +706,11 @@ declare module 'gd-sprest-bs/webparts/types/wpTaxonomy' {
         * Taxonomy WebPart
         */
     export const WPTaxonomy: (props: IWPTaxonomyProps) => IWPTaxonomy;
+    
+    /**
+        * Taxonomy WebPart Edit Form
+        */
+    export const WPTaxonomyEditForm: (props: IWPTaxonomyEditForm) => IWPTaxonomyEditForm;
     
     /**
         * Taxonomy WebPart

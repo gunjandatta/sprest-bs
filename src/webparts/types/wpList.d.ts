@@ -8,6 +8,11 @@ import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } 
 export const WPList: (props: IWPListProps) => IWPList;
 
 /**
+ * List WebPart Edit Form
+ */
+export const WPListEditForm: (props: IWPListEditForm) => IWPListEditForm;
+
+/**
  * List WebPart
  */
 export interface IWPList<IListCfg = IWPListCfg, IListInfo = IWPListInfo> extends IWebPart<IListCfg, IListInfo> { }
@@ -38,11 +43,6 @@ export interface IWPListProps<IListInfo=IWPListInfo, IListEditForm=IWPListEditFo
 }
 
 /**
- * WebPart List Edit Form
- */
-export const WPListEditForm: (props: IWPListEditForm) => IWPListEditForm;
-
-/**
  * List WebPart Configuration
  */
 export interface IWPListCfg extends IWebPartCfg {
@@ -54,7 +54,7 @@ export interface IWPListCfg extends IWebPartCfg {
 }
 
 /**
- * WebPart List Edit Form
+ * List WebPart Edit Form
  */
 export interface IWPListEditForm<IListCfg = IWPListCfg, IListInfo = IWPListInfo> extends IWebPartEditForm<IListCfg, IListInfo> {
     /** The odata list query. */

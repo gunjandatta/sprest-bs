@@ -1,6 +1,6 @@
 {
   "name": "gd-sprest-bs",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "SharePoint components utilizing bootstrap.",
   "main": "dist/gd-sprest-bs.js",
   "typings": "dist/gd-sprest-bs.d.ts",
