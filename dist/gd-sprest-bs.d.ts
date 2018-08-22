@@ -19,7 +19,7 @@ declare module 'gd-sprest-bs/rest' {
     import * as WebParts from "gd-sprest-bs/webparts/types";
     
     export interface IRESTBS extends IREST {
-        BS: {
+        BS?: {
             $: any,
             Components,
             WebParts

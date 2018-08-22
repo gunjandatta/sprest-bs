@@ -4,7 +4,7 @@ import * as WebParts from "./webparts/types";
 
 // $REST Global Variable
 export interface IRESTBS extends IREST {
-    BS: {
+    BS?: {
         $: any,
         Components,
         WebParts

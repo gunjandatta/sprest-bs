@@ -5,12 +5,12 @@ import * as WebParts from "./webparts";
 import { IRESTBS } from "./rest.d";
 
 // Set the bootstrap library
-export const $REST: IRESTBS = CoreLib as any;
+export const $REST: IRESTBS = CoreLib;
 $REST.BS = {
     $,
     Components,
     WebParts
-} as any;
+};
 
 // Set the global variable
 export {
