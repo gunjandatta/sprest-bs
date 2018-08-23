@@ -4,6 +4,11 @@
 export const InputGroup: (props: IInputGroupProps) => Element | string;
 
 /**
+ * Input Group Types
+ */
+export const InputGroupTypes: IInputGroupTypes;
+
+/**
  * Input Group Properties
  */
 export interface IInputGroupProps {
@@ -25,7 +30,7 @@ export interface IInputGroupProps {
 /**
  * Input Group Types
  */
-export type InputGroupTypes = {
+export type IInputGroupTypes = {
     Email: number;
     File: number;
     Password: number;

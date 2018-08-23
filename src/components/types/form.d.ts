@@ -3,15 +3,20 @@ import { IDropdownItem } from "./dropdown";
 /**
  * Form
  */
-export interface IForm {
-    form: HTMLFormElement,
-    getValues: () => { [key: string]: any };
-}
+export const Form: (props: IFormProps) => IForm;
+
+/**
+ * Form Control Types
+ */
+export const FormControlTypes:IFormControlTypes;
 
 /**
  * Form
  */
-export const Form: (props: IFormProps) => IForm;
+export interface IForm {
+    form: HTMLFormElement,
+    getValues: () => { [key: string]: any };
+}
 
 /**
  * Form Control
@@ -58,9 +63,9 @@ export interface IFormProps {
 }
 
 /**
- * Form Control Type
+ * Form Control Types
  */
-export type FormControlTypes = {
+export type IFormControlTypes = {
     CheckBox: number;
     Email: number;
     Dropdown: number;

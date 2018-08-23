@@ -55,6 +55,11 @@ declare module 'gd-sprest-bs/components/types/button' {
     export const Button: (props: IButtonProps) => Element | string;
     
     /**
+        * Button Types
+        */
+    export const ButtonTypes: IButtonTypes;
+    
+    /**
         * Button Properties
         */
     export interface IButtonProps {
@@ -76,7 +81,7 @@ declare module 'gd-sprest-bs/components/types/button' {
     /**
         * Button Types
         */
-    export type ButtonTypes = {
+    export type IButtonTypes = {
             Danger: number;
             Dark: number;
             Info: number;
@@ -120,6 +125,11 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
     export const Dropdown: (props: IDropdownProps) => Element | string;
     
     /**
+        * Dropdown Types
+        */
+    export const DropdownTypes: IDropdownTypes;
+    
+    /**
         * Dropdown Item
         */
     export interface IDropdownItem {
@@ -150,7 +160,7 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
     /**
         * Dropdown Types
         */
-    export type DropdownTypes = {
+    export type IDropdownTypes = {
             Danger: number;
             Info: number;
             Primary: number;
@@ -166,15 +176,20 @@ declare module 'gd-sprest-bs/components/types/form' {
     /**
         * Form
         */
-    export interface IForm {
-            form: HTMLFormElement,
-            getValues: () => { [key: string]: any };
-    }
+    export const Form: (props: IFormProps) => IForm;
+    
+    /**
+        * Form Control Types
+        */
+    export const FormControlTypes:IFormControlTypes;
     
     /**
         * Form
         */
-    export const Form: (props: IFormProps) => IForm;
+    export interface IForm {
+            form: HTMLFormElement,
+            getValues: () => { [key: string]: any };
+    }
     
     /**
         * Form Control
@@ -221,9 +236,9 @@ declare module 'gd-sprest-bs/components/types/form' {
     }
     
     /**
-        * Form Control Type
+        * Form Control Types
         */
-    export type FormControlTypes = {
+    export type IFormControlTypes = {
             CheckBox: number;
             Email: number;
             Dropdown: number;
@@ -257,6 +272,11 @@ declare module 'gd-sprest-bs/components/types/inputGroup' {
     export const InputGroup: (props: IInputGroupProps) => Element | string;
     
     /**
+        * Input Group Types
+        */
+    export const InputGroupTypes: IInputGroupTypes;
+    
+    /**
         * Input Group Properties
         */
     export interface IInputGroupProps {
@@ -278,7 +298,7 @@ declare module 'gd-sprest-bs/components/types/inputGroup' {
     /**
         * Input Group Types
         */
-    export type InputGroupTypes = {
+    export type IInputGroupTypes = {
             Email: number;
             File: number;
             Password: number;
@@ -678,6 +698,11 @@ declare module 'gd-sprest-bs/webparts/types/wpTabs' {
     export const WPTabs: (props: IWPTabsProps) => IWPTabs;
     
     /**
+        * WebPart Tab Types
+        */
+    export const WPTabTypes: IWPTabTypes;
+    
+    /**
         * WebPart Tabs
         */
     export interface IWPTabs extends IWebPart { }
@@ -692,7 +717,7 @@ declare module 'gd-sprest-bs/webparts/types/wpTabs' {
     /**
         * WebPart Tab Types
         */
-    export type WPTabTypes = {
+    export type IWPTabTypes = {
             Pillars: number;
             Tabs: number;
     }

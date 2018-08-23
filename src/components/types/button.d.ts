@@ -4,6 +4,11 @@
 export const Button: (props: IButtonProps) => Element | string;
 
 /**
+ * Button Types
+ */
+export const ButtonTypes: IButtonTypes;
+
+/**
  * Button Properties
  */
 export interface IButtonProps {
@@ -25,7 +30,7 @@ export interface IButtonProps {
 /**
  * Button Types
  */
-export type ButtonTypes = {
+export type IButtonTypes = {
     Danger: number;
     Dark: number;
     Info: number;
