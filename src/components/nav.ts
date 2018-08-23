@@ -1,11 +1,11 @@
 import * as $ from "jquery";
-import { INavProps } from "./types/nav";
+import { INavigation, INavProps } from "./types/nav";
 
 /**
  * Navigation
  * @param props - The navigation properties.
  */
-export const Navigation = (props: INavProps): Element | string => {
+export const Navigation = (props: INavProps): INavigation | string => {
     let html = [];
     let renderTabContent = false;
 
@@ -142,7 +142,12 @@ export const Navigation = (props: INavProps): Element | string => {
         }
 
         // Return the element
-        return $(props.el.children[0]);
+        let nav = $(props.el.children[0]);
+        return {
+            dispose: () => { nav.tab("dispose"); },
+            el: nav,
+            show: (selector: string) => { nav.querySelector(selector).tab("show"); }
+        };
     } else {
         // Return the html
         return html.join('\n');

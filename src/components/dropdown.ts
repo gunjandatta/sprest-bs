@@ -1,5 +1,5 @@
 import * as $ from "jquery";
-import { IDropdownItem, IDropdownProps } from "./types/dropdown";
+import { IDropdown, IDropdownItem, IDropdownProps } from "./types/dropdown";
 
 /**
  * Dropdown Types
@@ -17,7 +17,7 @@ export enum DropdownTypes {
  * Dropdown
  * @property props - The dropdown properties.
  */
-export const Dropdown = (props: IDropdownProps): Element | string => {
+export const Dropdown = (props: IDropdownProps): IDropdown | string => {
     let html = [];
     let isMulti = props.multi || false;
     let items = props.items || [];
@@ -241,8 +241,14 @@ export const Dropdown = (props: IDropdownProps): Element | string => {
             });
         }
 
-        // Return the element
-        return $(props.el.children[0]);
+        // Return the dropdown
+        let ddl = $(props.el.children[0]);
+        return {
+            dispose: () => { ddl.dropdown("dispose") },
+            el: ddl,
+            toggle: () => { ddl.dropdown("toggle") },
+            update: () => { ddl.dropdown("update") }
+        };
     } else {
         // Return the html
         return html.join('\n');

@@ -1,12 +1,29 @@
 /**
  * Dropdown
  */
-export const Dropdown: (props: IDropdownProps) => Element | string;
+export const Dropdown: (props: IDropdownProps) => IDropdown | string;
 
 /**
  * Dropdown Types
  */
 export const DropdownTypes: IDropdownTypes;
+
+/**
+ * Dropdown
+ */
+export interface IDropdown {
+    /** Destroys an element’s dropdown. */
+    dispose: () => void;
+
+    /** The element. */
+    el: Element;
+
+    /** Toggles the dropdown menu of a given navbar or tabbed navigation. */
+    toggle: () => void;
+
+    /** Updates the position of an element’s dropdown. */
+    update: () => void;
+}
 
 /**
  * Dropdown Item

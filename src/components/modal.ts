@@ -1,11 +1,11 @@
 import * as $ from "jquery";
-import { IModalProps } from "./types/modal";
+import { IModal, IModalProps } from "./types/modal";
 
 /**
  * Modal
  * @param props The modal properties.
  */
-export const Modal = (props: IModalProps): Element | string => {
+export const Modal = (props: IModalProps): IModal | string => {
     // Set the class names
     let classNames = ["modal"];
     props.className ? classNames.push(props.className) : null;
@@ -57,7 +57,16 @@ export const Modal = (props: IModalProps): Element | string => {
         props.onRenderFooter ? props.onRenderFooter(props.el.querySelector(".modal-footer")) : null;
 
         // Return the element
-        return $(props.el.children[0]);
+        let modal = $(props.el.children[0]);
+        return {
+            dispose: () => { modal.modal("dispose"); },
+            el: modal,
+            handleUpdate: () => { modal.modal("dispose"); },
+            hide: () => { modal.modal("dispose"); },
+            modal: () => { modal.modal("dispose"); },
+            show: () => { modal.modal("dispose"); },
+            toggle: () => { modal.modal("dispose"); }
+        };
     } else {
         // Return the html
         return html;

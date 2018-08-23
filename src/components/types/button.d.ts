@@ -1,12 +1,26 @@
 /**
  * Button
  */
-export const Button: (props: IButtonProps) => Element | string;
+export const Button: (props: IButtonProps) => IButton | string;
 
 /**
  * Button Types
  */
 export const ButtonTypes: IButtonTypes;
+
+/**
+ * Button
+ */
+export interface IButton {
+    /** Destroys an element’s button. */
+    dispose: () => void;
+
+    /** The element. */
+    el: Element;
+
+    /** Toggles push state. Gives the button the appearance that it has been activated. */
+    toggle: () => void;
+}
 
 /**
  * Button Properties

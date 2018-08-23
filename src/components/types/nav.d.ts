@@ -1,7 +1,24 @@
 /**
  * Navigation
  */
-export const Navigation: (props: INavProps) => Element | string;
+export const Navigation: (props: INavProps) => INavigation | string;
+
+/**
+ * Navigation
+ */
+export interface INavigation {
+    /** Destroys an element’s tab. */
+    dispose: () => void;
+
+    /** The element. */
+    el: Element;
+
+    /**
+     * Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden.
+     * @prop selector - The query selector.
+     */
+    show: (selector: string) => void;
+}
 
 /**
  * Navigation Properties

@@ -1,5 +1,5 @@
 import * as $ from "jquery";
-import { IButtonProps } from "./types/button";
+import { IButton, IButtonProps } from "./types/button";
 
 /**
  * Button Types
@@ -20,7 +20,7 @@ export enum ButtonTypes {
  * Button
  * @param props The button properties.
  */
-export const Button = (props: IButtonProps): Element | string => {
+export const Button = (props: IButtonProps): IButton | string => {
     // Set the class names
     let classNames = ["btn"];
     props.className ? classNames.push(props.className) : null;
@@ -99,8 +99,13 @@ export const Button = (props: IButtonProps): Element | string => {
             props.el.querySelector(".btn").addEventListener("click", props.onClick);
         }
 
-        // Return the element
-        return $(props.el.children[0]);
+        // Return the button
+        let btn = $(props.el.children[0]);
+        return {
+            dispose: () => { btn.button("dispose"); },
+            el: btn,
+            toggle: () => { btn.button("toggle"); }
+        };
     } else {
         // Return the html
         return html;

@@ -61,12 +61,26 @@ declare module 'gd-sprest-bs/components/types/button' {
     /**
         * Button
         */
-    export const Button: (props: IButtonProps) => Element | string;
+    export const Button: (props: IButtonProps) => IButton | string;
     
     /**
         * Button Types
         */
     export const ButtonTypes: IButtonTypes;
+    
+    /**
+        * Button
+        */
+    export interface IButton {
+            /** Destroys an element’s button. */
+            dispose: () => void;
+    
+            /** The element. */
+            el: Element;
+    
+            /** Toggles push state. Gives the button the appearance that it has been activated. */
+            toggle: () => void;
+    }
     
     /**
         * Button Properties
@@ -131,12 +145,29 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
     /**
         * Dropdown
         */
-    export const Dropdown: (props: IDropdownProps) => Element | string;
+    export const Dropdown: (props: IDropdownProps) => IDropdown | string;
     
     /**
         * Dropdown Types
         */
     export const DropdownTypes: IDropdownTypes;
+    
+    /**
+        * Dropdown
+        */
+    export interface IDropdown {
+            /** Destroys an element’s dropdown. */
+            dispose: () => void;
+    
+            /** The element. */
+            el: Element;
+    
+            /** Toggles the dropdown menu of a given navbar or tabbed navigation. */
+            toggle: () => void;
+    
+            /** Updates the position of an element’s dropdown. */
+            update: () => void;
+    }
     
     /**
         * Dropdown Item
@@ -320,7 +351,50 @@ declare module 'gd-sprest-bs/components/types/modal' {
     /**
         * Modal
         */
-    export const Modal: (props: IModalProps) => Element | string;
+    export const Modal: (props: IModalProps) => IModal | string;
+    
+    /**
+        * Modal
+        */
+    export interface IModal {
+            /** Destroys an element’s modal. */
+            dispose: () => void;
+    
+            /** The element. */
+            el: Element,
+    
+            /** Manually readjust the modal’s position if the height of a modal changes while it is open (i.e. in case a scrollbar appears). */
+            handleUpdate: () => void;
+    
+            /** Manually hides a modal. */
+            hide: () => void;
+    
+            /** Activates your content as a modal. */
+            modal: (options: IModalOptions) => void;
+    
+            /** Manually opens a modal. */
+            show: () => void;
+    
+            /** Manually toggles a modal. */
+            toggle: () => void;
+    }
+    
+    /**
+        * Modal Options
+        */
+    export interface IModalOptions {
+            /** Includes a modal-backdrop element. Alternatively, specify static for a backdrop which doesn't close the modal on click. */
+            backdrop: boolean | string;
+    
+            /** Puts the focus on the modal when initialized. */
+            focus: boolean;
+    
+            /** Closes the modal when escape key is pressed. */
+            keyboard: boolean;
+    
+            /** Shows the modal when initialized. */
+            show: boolean;
+    }
     
     /**
         * Modal Properties
@@ -344,7 +418,24 @@ declare module 'gd-sprest-bs/components/types/nav' {
     /**
         * Navigation
         */
-    export const Navigation: (props: INavProps) => Element | string;
+    export const Navigation: (props: INavProps) => INavigation | string;
+    
+    /**
+        * Navigation
+        */
+    export interface INavigation {
+            /** Destroys an element’s tab. */
+            dispose: () => void;
+    
+            /** The element. */
+            el: Element;
+    
+            /**
+                * Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden.
+                * @prop selector - The query selector.
+                */
+            show: (selector: string) => void;
+    }
     
     /**
         * Navigation Properties
