@@ -1,6 +1,6 @@
 {
   "name": "gd-sprest-bs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "SharePoint components utilizing bootstrap.",
   "main": "dist/gd-sprest-bs.js",
   "typings": "dist/gd-sprest-bs.d.ts",
@@ -21,21 +21,20 @@
     "url": "https://github.com/gunjandatta/sprest-bs/issues"
   },
   "homepage": "https://github.com/gunjandatta/sprest-bs#readme",
-  "dependencies": {
-    "bootstrap": "^4.1.3",
-    "gd-sprest": "^4.2.0",
-    "jquery": "^3.3.1",
-    "popper.js": "^1.14.4"
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^9.1.0",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
+    "bootstrap": "^4.1.3",
     "css-loader": "^1.0.0",
     "dts-bundle": "^0.7.3",
+    "gd-sprest": "^4.2.0",
+    "jquery": "^3.3.1",
     "node-sass": "^4.9.3",
+    "popper.js": "^1.14.4",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.22.1",

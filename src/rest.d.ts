@@ -1,15 +1,10 @@
-import { IREST } from "gd-sprest";
+import * as $ from "jquery";
 import * as Components from "./components/types";
 import * as WebParts from "./webparts/types";
 
-// $REST Global Variable
-export interface IRESTBS extends IREST {
-    BS?: {
-        $: any,
-        Components,
-        WebParts
-    }
+export * from "gd-sprest";
+export {
+    $,
+    Components,
+    WebParts
 }
-
-// $REST Global Variable
-export var $REST: IRESTBS;
