@@ -1,12 +1,12 @@
-import * as $ from "jquery";
+import * as jQuery from "jquery";
 import { Button } from "./button";
-import { IButtonGroupProps } from "./types/buttonGroup";
+import { IButtonGroup, IButtonGroupProps } from "./types/buttonGroup";
 
 /**
  * Button Group
  * @property props - The button group properties.
  */
-export const ButtonGroup = (props: IButtonGroupProps): Element | string => {
+export const ButtonGroup = (props: IButtonGroupProps): IButtonGroup | string => {
     let html = [];
 
     // Set the class names
@@ -61,8 +61,11 @@ export const ButtonGroup = (props: IButtonGroupProps): Element | string => {
             }
         }
 
-        // Return the element
-        return $(props.el.children[0]);
+        // Return the button group
+        let buttonGroup = jQuery(props.el.children[0]);
+        return {
+            el: buttonGroup
+        };
     } else {
         // Return the html
         return html.join('\n');

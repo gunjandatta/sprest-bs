@@ -26,6 +26,8 @@ export interface IButton {
  * Button Properties
  */
 export interface IButtonProps {
+    badgeType?: number;
+    badgeValue?: string;
     className?: string;
     el?: Element | HTMLElement;
     id?: string;

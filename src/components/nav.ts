@@ -1,4 +1,4 @@
-import * as $ from "jquery";
+import * as jQuery from "jquery";
 import { INavigation, INavProps } from "./types/nav";
 
 /**
@@ -142,7 +142,7 @@ export const Navigation = (props: INavProps): INavigation | string => {
         }
 
         // Return the element
-        let nav = $(props.el.children[0]);
+        let nav = jQuery(props.el.children[0]);
         return {
             dispose: () => { nav.tab("dispose"); },
             el: nav,

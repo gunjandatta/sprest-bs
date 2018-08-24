@@ -1,4 +1,4 @@
-import * as $ from "jquery";
+import * as jQuery from "jquery";
 import { IModal, IModalProps } from "./types/modal";
 
 /**
@@ -57,7 +57,7 @@ export const Modal = (props: IModalProps): IModal | string => {
         props.onRenderFooter ? props.onRenderFooter(props.el.querySelector(".modal-footer")) : null;
 
         // Return the element
-        let modal = $(props.el.children[0]);
+        let modal = jQuery(props.el.children[0]);
         return {
             dispose: () => { modal.modal("dispose"); },
             el: modal,

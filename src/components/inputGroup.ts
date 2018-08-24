@@ -1,5 +1,5 @@
-import * as $ from "jquery";
-import { IInputGroupProps } from "./types/inputGroup";
+import * as jQuery from "jquery";
+import { IInputGroup, IInputGroupProps } from "./types/inputGroup";
 
 /**
  * Input Group Types
@@ -16,7 +16,7 @@ export enum InputGroupTypes {
  * Input Group
  * @param props The input group properties.
  */
-export const InputGroup = (props: IInputGroupProps): Element | string => {
+export const InputGroup = (props: IInputGroupProps): IInputGroup | string => {
     let html = [];
 
     // Set the class names
@@ -158,8 +158,11 @@ export const InputGroup = (props: IInputGroupProps): Element | string => {
             }
         }
 
-        // Return the element
-        return $(props.el.children[0]);
+        // Return the input group
+        let inputGroup = jQuery(props.el.children[0]);
+        return {
+            el: inputGroup
+        };
     } else {
         // Return the html
         return html.join('\n');

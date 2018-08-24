@@ -1,5 +1,6 @@
-import * as $ from "jquery";
-import { IButton, IButtonProps } from "./types/button";
+import * as jQuery from "jquery";
+import { Badge, BadgeTypes } from "./badge";
+import { IButton, IButtonProps } from "./types";
 
 /**
  * Button Types
@@ -28,7 +29,7 @@ export const Button = (props: IButtonProps): IButton | string => {
     props.isLarge ? classNames.push("btn-lg") : null;
     props.isSmall ? classNames.push("btn-sm") : null;
 
-    // Set the type
+    // Read the type
     switch (props.type) {
         // Danger
         case ButtonTypes.Danger:
@@ -82,6 +83,7 @@ export const Button = (props: IButtonProps): IButton | string => {
     let html = [
         '<button ' + attributes + '>',
         props.text || "",
+        props.badgeValue ? Badge({ content: props.badgeValue, type: props.badgeType || BadgeTypes.Light }) : '',
         '</button>'
     ].join('\n');
 
@@ -100,7 +102,7 @@ export const Button = (props: IButtonProps): IButton | string => {
         }
 
         // Return the button
-        let btn = $(props.el.children[0]);
+        let btn = jQuery(props.el.children[0]);
         return {
             dispose: () => { btn.button("dispose"); },
             el: btn,

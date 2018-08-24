@@ -1,11 +1,11 @@
 import { IREST } from "gd-sprest";
-import * as $ from "jquery";
+import * as jQuery from "jquery";
 import * as Components from "./components/types";
 import * as WebParts from "./webparts/types";
 
 export * from "gd-sprest";
 export {
-    $,
+    jQuery,
     Components,
     WebParts
 }
@@ -15,7 +15,7 @@ export {
  */
 export const $REST:IRESTBS;
 export interface IRESTBS extends IREST {
-    $,
+    jQuery,
     Components
     WebParts
 }

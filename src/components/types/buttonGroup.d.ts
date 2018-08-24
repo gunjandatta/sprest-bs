@@ -3,7 +3,15 @@ import { IButtonProps } from ".";
 /**
  * Button Group
  */
-export const ButtonGroup: (props: IButtonGroupProps) => Element | string;
+export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup | string;
+
+/**
+ * Button Group
+ */
+export interface IButtonGroup {
+    /** The element. */
+    el: Element;
+}
 
 /**
  * Button Group Properties

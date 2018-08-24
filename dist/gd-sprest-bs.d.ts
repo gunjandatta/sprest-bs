@@ -16,13 +16,13 @@ declare module 'gd-sprest-bs' {
 
 declare module 'gd-sprest-bs/rest' {
     import { IREST } from "gd-sprest";
-    import * as $ from "jquery";
+    import * as jQuery from "jquery";
     import * as Components from "gd-sprest-bs/components/types";
     import * as WebParts from "gd-sprest-bs/webparts/types";
     
     export * from "gd-sprest";
     export {
-        $,
+        jQuery,
         Components,
         WebParts
     }
@@ -32,13 +32,15 @@ declare module 'gd-sprest-bs/rest' {
       */
     export const $REST:IRESTBS;
     export interface IRESTBS extends IREST {
-        $,
+        jQuery,
         Components
         WebParts
     }
 }
 
 declare module 'gd-sprest-bs/components/types' {
+    export * from "gd-sprest-bs/components/types/alert";
+    export * from "gd-sprest-bs/components/types/badge";
     export * from "gd-sprest-bs/components/types/button";
     export * from "gd-sprest-bs/components/types/buttonGroup";
     export * from "gd-sprest-bs/components/types/dropdown";
@@ -55,6 +57,106 @@ declare module 'gd-sprest-bs/webparts/types' {
     export * from "gd-sprest-bs/webparts/types/wpSearch";
     export * from "gd-sprest-bs/webparts/types/wpTabs";
     export * from "gd-sprest-bs/webparts/types/wpTaxonomy";
+}
+
+declare module 'gd-sprest-bs/components/types/alert' {
+    /**
+        * Alert
+        */
+    export const Alert: (props: IAlertProps) => IAlert | string;
+    
+    /**
+        * Alert Types
+        */
+    export const AlertTypes: IAlertTypes;
+    
+    /**
+        * Alert
+        */
+    export interface IAlert {
+            /** Closes an alert by removing it from the DOM. */
+            close: () => void;
+    
+            /** Destroys an element’s alert. */
+            dispose: () => void;
+    
+            /** The element. */
+            el: Element;
+    }
+    
+    /**
+        * Alert Properties
+        */
+    export interface IAlertProps {
+            className?: string;
+            content?: string;
+            el?: Element | HTMLElement;
+            header?: string;
+            isDismissible?: boolean;
+            type?: number;
+    }
+    
+    /**
+        * Alert Types
+        */
+    export type IAlertTypes = {
+            Danger: number;
+            Dark: number;
+            Info: number;
+            Light: number;
+            Primary: number;
+            Secondary: number;
+            Success: number;
+            Warning: number;
+    }
+}
+
+declare module 'gd-sprest-bs/components/types/badge' {
+    /**
+        * Badge
+        */
+    export const Badge: (props: IBadgeProps) => IBadge | string;
+    
+    /**
+        * Badge Types
+        */
+    export const BadgeTypes: IBadgeTypes;
+    
+    /**
+        * Badge
+        */
+    export interface IBadge {
+            /** The element. */
+            el: Element;
+    }
+    
+    /**
+        * Badge Properties
+        */
+    export interface IBadgeProps {
+            className?: string;
+            content?: string;
+            el?: Element | HTMLElement;
+            header?: string;
+            href?: string;
+            isPill?: boolean;
+            type?: number;
+    }
+    
+    
+    /**
+        * Badge Types
+        */
+    export type IBadgeTypes = {
+            Danger: number;
+            Dark: number;
+            Info: number;
+            Light: number;
+            Primary: number;
+            Secondary: number;
+            Success: number;
+            Warning: number;
+    }
 }
 
 declare module 'gd-sprest-bs/components/types/button' {
@@ -86,6 +188,8 @@ declare module 'gd-sprest-bs/components/types/button' {
         * Button Properties
         */
     export interface IButtonProps {
+            badgeType?: number;
+            badgeValue?: string;
             className?: string;
             el?: Element | HTMLElement;
             id?: string;
@@ -123,7 +227,15 @@ declare module 'gd-sprest-bs/components/types/buttonGroup' {
     /**
         * Button Group
         */
-    export const ButtonGroup: (props: IButtonGroupProps) => Element | string;
+    export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup | string;
+    
+    /**
+        * Button Group
+        */
+    export interface IButtonGroup {
+            /** The element. */
+            el: Element;
+    }
     
     /**
         * Button Group Properties
@@ -309,7 +421,15 @@ declare module 'gd-sprest-bs/components/types/inputGroup' {
     /**
         * Input Group
         */
-    export const InputGroup: (props: IInputGroupProps) => Element | string;
+    export const InputGroup: (props: IInputGroupProps) => IInputGroup | string;
+    
+    /**
+        * Button Group
+        */
+    export interface IInputGroup {
+            /** The element. */
+            el: Element;
+    }
     
     /**
         * Input Group Types

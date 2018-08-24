@@ -1,7 +1,15 @@
 /**
  * Input Group
  */
-export const InputGroup: (props: IInputGroupProps) => Element | string;
+export const InputGroup: (props: IInputGroupProps) => IInputGroup | string;
+
+/**
+ * Button Group
+ */
+export interface IInputGroup {
+    /** The element. */
+    el: Element;
+}
 
 /**
  * Input Group Types

@@ -1,4 +1,4 @@
-import * as $ from "jquery";
+import * as jQuery from "jquery";
 import { IDropdown, IDropdownItem, IDropdownProps } from "./types/dropdown";
 
 /**
@@ -242,7 +242,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
         }
 
         // Return the dropdown
-        let ddl = $(props.el.children[0]);
+        let ddl = jQuery(props.el.children[0]);
         return {
             dispose: () => { ddl.dropdown("dispose") },
             el: ddl,
