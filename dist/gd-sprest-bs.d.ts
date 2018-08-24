@@ -191,9 +191,11 @@ declare module 'gd-sprest-bs/components/types/button' {
             badgeType?: number;
             badgeValue?: string;
             className?: string;
+            controls?: Array<string>;
             el?: Element | HTMLElement;
             id?: string;
             isBlock?: boolean;
+            isExpanded?: boolean;
             isDisabled?: boolean;
             isLarge?: boolean;
             isOutline?: boolean;

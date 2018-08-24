@@ -76,7 +76,9 @@ export const Button = (props: IButtonProps): IButton | string => {
         'class="' + classNames.join(' ') + '"',
         props.isDisabled ? "disabled" : "",
         props.target ? 'data-target="' + props.target + '"' : "",
-        props.toggle ? 'data-toggle="' + props.toggle + '"' : ""
+        props.toggle ? 'data-toggle="' + props.toggle + '"' : "",
+        typeof (props.isExpanded) === "boolean" ? 'aria-expanded="' + (props.isExpanded ? "true" : "false") + '"' : '',
+        props.controls ? 'aria-controls="' + props.controls.join(' ') + '"' : ''
     ].join(' ').replace(/  /g, " ");
 
     // Generate the html
