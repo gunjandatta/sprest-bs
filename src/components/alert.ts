@@ -79,8 +79,8 @@ export const Alert = (props: IAlertProps): IAlert | string => {
         // Return the alert
         let alert = jQuery(props.el.children[0]);
         return {
-            close: () => { alert.button("toggle"); },
-            dispose: () => { alert.button("dispose"); },
+            close: () => { alert.alert("toggle"); },
+            dispose: () => { alert.alert("dispose"); },
             el: alert
         };
     } else {

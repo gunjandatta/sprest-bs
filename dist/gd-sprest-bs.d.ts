@@ -43,6 +43,8 @@ declare module 'gd-sprest-bs/components/types' {
     export * from "gd-sprest-bs/components/types/badge";
     export * from "gd-sprest-bs/components/types/button";
     export * from "gd-sprest-bs/components/types/buttonGroup";
+    export * from "gd-sprest-bs/components/types/card";
+    export * from "gd-sprest-bs/components/types/cardGroup";
     export * from "gd-sprest-bs/components/types/dropdown";
     export * from "gd-sprest-bs/components/types/form";
     export * from "gd-sprest-bs/components/types/inputGroup";
@@ -252,6 +254,86 @@ declare module 'gd-sprest-bs/components/types/buttonGroup' {
             isSmall?: boolean;
             isVertical?: boolean;
             label?: string;
+    }
+}
+
+declare module 'gd-sprest-bs/components/types/card' {
+    import { IButtonProps } from "gd-sprest-bs/components/types/button";
+    import { INavProps } from "gd-sprest-bs/components/types/nav";
+    
+    /**
+        * Card
+        */
+    export const Card: (props: ICardProps) => ICard | string;
+    
+    /**
+        * Card
+        */
+    export interface ICard {
+            /** Destroys an element’s button. */
+            dispose: () => void;
+    
+            /** The element. */
+            el: Element;
+    }
+    
+    /**
+        * Card Properties
+        */
+    export interface ICardProps {
+            body?: [{
+                    actions?: Array<{
+                            buttonType?: number;
+                            href?: string;
+                            text?: string;
+                    }>;
+                    className?: string;
+                    content?: string;
+                    subTitle?: string;
+                    text?: string;
+                    title?: string;
+            }];
+            footer?: string;
+            className?: string;
+            header?: {
+                    content?: string;
+                    nav?: INavProps;
+            };
+            el?: Element | HTMLElement;
+            imgBottom: {
+                    alt?: string;
+                    src?: string;
+            }
+            imgTop: {
+                    alt?: string;
+                    src?: string;
+            };
+    }
+}
+
+declare module 'gd-sprest-bs/components/types/cardGroup' {
+    import { ICardProps } from "gd-sprest-bs/components/types";
+    
+    /**
+        * Card Group
+        */
+    export const CardGroup: (props: ICardGroupProps) => ICardGroup | string;
+    
+    /**
+        * Card Group
+        */
+    export interface ICardGroup {
+            /** The element. */
+            el: Element;
+    }
+    
+    /**
+        * Card Group Properties
+        */
+    export interface ICardGroupProps {
+            cards?: Array<ICardProps>;
+            className?: string;
+            el?: Element | HTMLElement;
     }
 }
 
