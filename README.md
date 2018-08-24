@@ -2,4 +2,4 @@
 
 ## SharePoint Bootstrap Library
 
-This library extends the [Bootstrap Library](https://dev.office.com/fabric-js), to help create modern components in SharePoint 2013/Online (Classic) environments. Reference the [Bootstrap library](https://gunjandatta.github.io/bs) for information on this library, or [SharePoint REST Framework](https://gunjandatta.github.io) for a full overview of the framework.
+This library extends the [Bootstrap Library](https://getbootstrap.com/), to help create modern components in SharePoint 2013/Online (Classic) environments. Reference the [SharePoint REST Bootstrap library](https://gunjandatta.github.io/bs) for information on this library, or [SharePoint REST Framework](https://gunjandatta.github.io) for a full overview of the framework.
