@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <script src="dist/gd-sprest-bs.js"></script>
+    <script src="https://rawgit.com/gunjandatta/sprest-bs/master/wc/dist/gd-sprest-bs.js"></script>
 </head>
 
 <body>
@@ -14,10 +14,10 @@
         <div id="multi-textbox"></div>
         <script type="text/javascript">
             window.addEventListener("load", function () {
-                $REST.BS.Components.Dropdown({
+                $REST.Components.Dropdown({
                     el: document.querySelector("#ddl"),
                     label: "My Dropdown",
-                    type: $REST.BS.Components.DropdownTypes.Secondary,
+                    type: $REST.Components.DropdownTypes.Secondary,
                     items: [
                         { text: "Item 1" },
                         { text: "Item 2" },
@@ -31,19 +31,19 @@
                         { text: "Item 10" }
                     ]
                 });
-                $REST.BS.Components.Button({
+                $REST.Components.Button({
                     el: document.querySelector("#button"),
                     text: "Modal",
                     toggle: "modal",
                     target: "#myModal"
                 });
-                $REST.BS.Components.Modal({
+                $REST.Components.Modal({
                     el: document.querySelector("#modal"),
                     id: "myModal",
                     title: "My Modal",
                     onRenderBody: function (el) {
                         // Render a form
-                        $REST.BS.Components.Form({
+                        $REST.Components.Form({
                             el: el,
                             rows: [
                                 {
@@ -130,7 +130,7 @@
                         })
                     }
                 });
-                $REST.BS.Components.InputGroup({
+                $REST.Components.InputGroup({
                     el: document.querySelector("#textbox"),
                     description: "This is a single line textbox.",
                     prependedLabel: "First Name",
@@ -139,12 +139,12 @@
                         console.log("Value changed to: " + val);
                     }
                 });
-                $REST.BS.Components.InputGroup({
+                $REST.Components.InputGroup({
                     appendedLabel: "Optional",
                     el: document.querySelector("#multi-textbox"),
                     description: "This is a multi-line textbox.",
                     label: "Address:",
-                    type: $REST.BS.Components.InputGroupTypes.TextArea,
+                    type: $REST.Components.InputGroupTypes.TextArea,
                     value: "This is a long value. It's supposed to go in a text area.\n\nHopefully this will be on a new line...",
                     onChange: function (val) {
                         console.log("Multi value changed to: " + val);
@@ -153,6 +153,11 @@
             });
         </script>
     </div>
+
+    <h1>Web Components</h1>
+    <bs-button
+        text="My Button"
+    />
 </body>
 
 </html>

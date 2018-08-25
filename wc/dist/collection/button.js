@@ -2,7 +2,7 @@ export class Button {
     // Component loaded event
     componentDidLoad() {
         // Render the button
-        return GD.Components.Button({
+        return $REST.Components.Button({
             className: this.className,
             el: this.el,
             id: this.id,

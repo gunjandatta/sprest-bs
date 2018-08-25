@@ -1,5 +1,5 @@
 import { Component, Prop } from "@stencil/core";
-declare var GD;
+declare var $REST;
 
 @Component({
     tag: "bs-button"
@@ -24,7 +24,7 @@ export class Button {
     // Component loaded event
     componentDidLoad() {
         // Render the button
-        return GD.Components.Button({
+        return $REST.Components.Button({
             className: this.className,
             el: this.el,
             id: this.id,
