@@ -3,32 +3,34 @@ import { Component, Prop } from "@stencil/core";
 declare var $REST;
 
 @Component({
-    tag: "bs-alert"
+    tag: "bs-badge"
 })
-export class Alert {
+export class Badge {
     el: HTMLElement;
 
-    // Alert Properties
+    // Badge Properties
     @Prop() className: string;
     @Prop() content: string;
     @Prop() header: string;
-    @Prop() isDismissible: boolean;
+    @Prop() href: string;
+    @Prop() isPill: boolean;
     @Prop() type: number;
 
     // Component loaded event
     componentDidLoad() {
-        // Render the alert
-        return $REST.Components.Alert({
+        // Render the badge
+        return $REST.Components.Badge({
             className: this.className,
             content: this.content,
             el: this.el,
             header: this.header,
-            isDismissible: this.isDismissible,
+            href: this.href,
+            isPill: this.isPill,
             type: this.type
         });
     }
 
-    // Render the alert
+    // Render the badge
     render() {
         return (
             <div ref={el => this.el = el} />

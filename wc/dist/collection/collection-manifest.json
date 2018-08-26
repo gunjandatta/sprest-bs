@@ -35,6 +35,45 @@
       ]
     },
     {
+      "tag": "bs-badge",
+      "dependencies": [],
+      "componentClass": "Badge",
+      "componentPath": "badge.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "content",
+          "type": "String",
+          "attr": "content"
+        },
+        {
+          "name": "header",
+          "type": "String",
+          "attr": "header"
+        },
+        {
+          "name": "href",
+          "type": "String",
+          "attr": "href"
+        },
+        {
+          "name": "isPill",
+          "type": "Boolean",
+          "attr": "is-pill"
+        },
+        {
+          "name": "type",
+          "type": "Number",
+          "attr": "type"
+        }
+      ]
+    },
+    {
       "tag": "bs-button",
       "dependencies": [],
       "componentClass": "Button",

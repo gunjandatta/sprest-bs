@@ -33,6 +33,15 @@ declare global {
       'type': number;
     }
 
+    interface BsBadge {
+      'className': string;
+      'content': string;
+      'header': string;
+      'href': string;
+      'isPill': boolean;
+      'type': number;
+    }
+
     interface BsButton {
       'badgeType': number;
       'badgeValue': string;
@@ -61,6 +70,14 @@ declare global {
     };
     
 
+    interface HTMLBsBadgeElement extends StencilComponents.BsBadge, HTMLStencilElement {}
+
+    var HTMLBsBadgeElement: {
+      prototype: HTMLBsBadgeElement;
+      new (): HTMLBsBadgeElement;
+    };
+    
+
     interface HTMLBsButtonElement extends StencilComponents.BsButton, HTMLStencilElement {}
 
     var HTMLBsButtonElement: {
@@ -73,6 +90,7 @@ declare global {
     interface Element {}
     export interface IntrinsicElements {
     'bs-alert': JSXElements.BsAlertAttributes;
+    'bs-badge': JSXElements.BsBadgeAttributes;
     'bs-button': JSXElements.BsButtonAttributes;
     }
   }
@@ -84,6 +102,15 @@ declare global {
       'content'?: string;
       'header'?: string;
       'isDismissible'?: boolean;
+      'type'?: number;
+    }
+
+    export interface BsBadgeAttributes extends HTMLAttributes {
+      'className'?: string;
+      'content'?: string;
+      'header'?: string;
+      'href'?: string;
+      'isPill'?: boolean;
       'type'?: number;
     }
 
@@ -108,11 +135,13 @@ declare global {
 
   interface HTMLElementTagNameMap {
     'bs-alert': HTMLBsAlertElement
+    'bs-badge': HTMLBsBadgeElement
     'bs-button': HTMLBsButtonElement
   }
 
   interface ElementTagNameMap {
     'bs-alert': HTMLBsAlertElement;
+    'bs-badge': HTMLBsBadgeElement;
     'bs-button': HTMLBsButtonElement;
   }
 }
