@@ -1,16 +1,17 @@
 export class Alert {
     // Component loaded event
     componentDidLoad() {
-        // Render the button
+        // Render the alert
         return $REST.Components.Alert({
             className: this.className,
             content: this.content,
+            el: this.el,
             header: this.header,
             isDismissible: this.isDismissible,
             type: this.type
         });
     }
-    // Render the button
+    // Render the alert
     render() {
         return (h("div", { ref: el => this.el = el }));
     }
