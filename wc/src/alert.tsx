@@ -7,6 +7,7 @@ declare var $REST;
 })
 export class Alert {
     el: HTMLElement;
+    debugger;
 
     // Alert Properties
     @Prop() className: string;

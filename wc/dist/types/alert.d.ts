@@ -1,6 +1,7 @@
 import './stencil.core';
 export declare class Alert {
     el: HTMLElement;
+    debugger: any;
     className: string;
     content: string;
     header: string;
