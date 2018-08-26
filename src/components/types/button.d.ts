@@ -33,8 +33,8 @@ export interface IButtonProps {
     el?: Element | HTMLElement;
     id?: string;
     isBlock?: boolean;
-    isExpanded?: boolean;
     isDisabled?: boolean;
+    isExpanded?: boolean;
     isLarge?: boolean;
     isOutline?: boolean;
     isSmall?: boolean;

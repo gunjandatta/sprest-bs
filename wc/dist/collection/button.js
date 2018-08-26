@@ -3,11 +3,15 @@ export class Button {
     componentDidLoad() {
         // Render the button
         return $REST.Components.Button({
+            badgeType: this.badgeType,
+            badgeValue: this.badgeValue,
             className: this.className,
+            controls: this.controls,
             el: this.el,
             id: this.id,
             isBlock: this.isBlock,
             isDisabled: this.isDisabled,
+            isExpanded: this.isExpanded,
             isLarge: this.isLarge,
             isOutline: this.isOutline,
             isSmall: this.isSmall,
@@ -24,9 +28,21 @@ export class Button {
     }
     static get is() { return "bs-button"; }
     static get properties() { return {
+        "badgeType": {
+            "type": Number,
+            "attr": "badge-type"
+        },
+        "badgeValue": {
+            "type": String,
+            "attr": "badge-value"
+        },
         "className": {
             "type": String,
             "attr": "class-name"
+        },
+        "controls": {
+            "type": "Any",
+            "attr": "controls"
         },
         "id": {
             "type": String,
@@ -39,6 +55,10 @@ export class Button {
         "isDisabled": {
             "type": Boolean,
             "attr": "is-disabled"
+        },
+        "isExpanded": {
+            "type": Boolean,
+            "attr": "is-expanded"
         },
         "isLarge": {
             "type": Boolean,

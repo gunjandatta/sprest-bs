@@ -25,11 +25,23 @@ declare global {
 
   namespace StencilComponents {
 
-    interface BsButton {
+    interface BsAlert {
       'className': string;
+      'content': string;
+      'header': string;
+      'isDismissible': boolean;
+      'type': number;
+    }
+
+    interface BsButton {
+      'badgeType': number;
+      'badgeValue': string;
+      'className': string;
+      'controls': Array<string>;
       'id': string;
       'isBlock': boolean;
       'isDisabled': boolean;
+      'isExpanded': boolean;
       'isLarge': boolean;
       'isOutline': boolean;
       'isSmall': boolean;
@@ -40,6 +52,14 @@ declare global {
     }
   }
 
+
+    interface HTMLBsAlertElement extends StencilComponents.BsAlert, HTMLStencilElement {}
+
+    var HTMLBsAlertElement: {
+      prototype: HTMLBsAlertElement;
+      new (): HTMLBsAlertElement;
+    };
+    
 
     interface HTMLBsButtonElement extends StencilComponents.BsButton, HTMLStencilElement {}
 
@@ -52,17 +72,30 @@ declare global {
   namespace JSX {
     interface Element {}
     export interface IntrinsicElements {
+    'bs-alert': JSXElements.BsAlertAttributes;
     'bs-button': JSXElements.BsButtonAttributes;
     }
   }
 
   namespace JSXElements {
 
-    export interface BsButtonAttributes extends HTMLAttributes {
+    export interface BsAlertAttributes extends HTMLAttributes {
       'className'?: string;
+      'content'?: string;
+      'header'?: string;
+      'isDismissible'?: boolean;
+      'type'?: number;
+    }
+
+    export interface BsButtonAttributes extends HTMLAttributes {
+      'badgeType'?: number;
+      'badgeValue'?: string;
+      'className'?: string;
+      'controls'?: Array<string>;
       'id'?: string;
       'isBlock'?: boolean;
       'isDisabled'?: boolean;
+      'isExpanded'?: boolean;
       'isLarge'?: boolean;
       'isOutline'?: boolean;
       'isSmall'?: boolean;
@@ -74,10 +107,12 @@ declare global {
   }
 
   interface HTMLElementTagNameMap {
+    'bs-alert': HTMLBsAlertElement
     'bs-button': HTMLBsButtonElement
   }
 
   interface ElementTagNameMap {
+    'bs-alert': HTMLBsAlertElement;
     'bs-button': HTMLBsButtonElement;
   }
 }

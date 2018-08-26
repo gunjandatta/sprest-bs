@@ -1,6 +1,40 @@
 {
   "components": [
     {
+      "tag": "bs-alert",
+      "dependencies": [],
+      "componentClass": "Alert",
+      "componentPath": "alert.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "content",
+          "type": "String",
+          "attr": "content"
+        },
+        {
+          "name": "header",
+          "type": "String",
+          "attr": "header"
+        },
+        {
+          "name": "isDismissible",
+          "type": "Boolean",
+          "attr": "is-dismissible"
+        },
+        {
+          "name": "type",
+          "type": "Number",
+          "attr": "type"
+        }
+      ]
+    },
+    {
       "tag": "bs-button",
       "dependencies": [],
       "componentClass": "Button",
@@ -8,9 +42,23 @@
       "styles": {},
       "props": [
         {
+          "name": "badgeType",
+          "type": "Number",
+          "attr": "badge-type"
+        },
+        {
+          "name": "badgeValue",
+          "type": "String",
+          "attr": "badge-value"
+        },
+        {
           "name": "className",
           "type": "String",
           "attr": "class-name"
+        },
+        {
+          "name": "controls",
+          "attr": "controls"
         },
         {
           "name": "id",
@@ -26,6 +74,11 @@
           "name": "isDisabled",
           "type": "Boolean",
           "attr": "is-disabled"
+        },
+        {
+          "name": "isExpanded",
+          "type": "Boolean",
+          "attr": "is-expanded"
         },
         {
           "name": "isLarge",

@@ -1,10 +1,14 @@
 import './stencil.core';
 export declare class Button {
     el: HTMLElement;
+    badgeType: number;
+    badgeValue: string;
     className: string;
+    controls: Array<string>;
     id: string;
     isBlock: boolean;
     isDisabled: boolean;
+    isExpanded: boolean;
     isLarge: boolean;
     isOutline: boolean;
     isSmall: boolean;

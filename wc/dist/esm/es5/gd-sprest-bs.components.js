@@ -1,3 +1,5 @@
 // GdSprestBs: Host Data, ES Module/ES5 Target
 
-export var Button = ["bs-button",function(){return(import("./eohgjtqt.js")).then(function(m){return m.BsButton})},0,[["className",1,0,"class-name",2],["id",1,0,1,2],["isBlock",1,0,"is-block",3],["isDisabled",1,0,"is-disabled",3],["isLarge",1,0,"is-large",3],["isOutline",1,0,"is-outline",3],["isSmall",1,0,"is-small",3],["target",1,0,1,2],["text",1,0,1,2],["toggle",1,0,1,2],["type",1,0,1,4]]];
+export var Alert = ["bs-alert",function(){return(import("./ssitwige.js")).then(function(m){return m.BsAlert})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["header",1,0,1,2],["isDismissible",1,0,"is-dismissible",3],["type",1,0,1,4]]];
+
+export var Button = ["bs-button",function(){return(import("./6mzzbykv.js")).then(function(m){return m.BsButton})},0,[["badgeType",1,0,"badge-type",4],["badgeValue",1,0,"badge-value",2],["className",1,0,"class-name",2],["controls",1],["id",1,0,1,2],["isBlock",1,0,"is-block",3],["isDisabled",1,0,"is-disabled",3],["isExpanded",1,0,"is-expanded",3],["isLarge",1,0,"is-large",3],["isOutline",1,0,"is-outline",3],["isSmall",1,0,"is-small",3],["target",1,0,1,2],["text",1,0,1,2],["toggle",1,0,1,2],["type",1,0,1,4]]];
