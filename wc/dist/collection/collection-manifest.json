@@ -74,6 +74,25 @@
       ]
     },
     {
+      "tag": "bs-breadcrumb",
+      "dependencies": [],
+      "componentClass": "Breadcrumb",
+      "componentPath": "breadcrumb.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "items",
+          "type": "String",
+          "attr": "items"
+        }
+      ]
+    },
+    {
       "tag": "bs-button",
       "dependencies": [],
       "componentClass": "Button",
