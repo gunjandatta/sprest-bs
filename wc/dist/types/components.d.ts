@@ -89,6 +89,17 @@ declare global {
       'cards': string;
       'className': string;
     }
+
+    interface BsDropdown {
+      'className': string;
+      'formFl': boolean;
+      'id': string;
+      'items': string;
+      'label': string;
+      'multi': boolean;
+      'type': number;
+      'value': string;
+    }
   }
 
 
@@ -148,6 +159,14 @@ declare global {
     };
     
 
+    interface HTMLBsDropdownElement extends StencilComponents.BsDropdown, HTMLStencilElement {}
+
+    var HTMLBsDropdownElement: {
+      prototype: HTMLBsDropdownElement;
+      new (): HTMLBsDropdownElement;
+    };
+    
+
   namespace JSX {
     interface Element {}
     export interface IntrinsicElements {
@@ -158,6 +177,7 @@ declare global {
     'bs-buttonGroup': JSXElements.BsButtongroupAttributes;
     'bs-card': JSXElements.BsCardAttributes;
     'bs-cardGroup': JSXElements.BsCardgroupAttributes;
+    'bs-dropdown': JSXElements.BsDropdownAttributes;
     }
   }
 
@@ -227,6 +247,17 @@ declare global {
       'cards'?: string;
       'className'?: string;
     }
+
+    export interface BsDropdownAttributes extends HTMLAttributes {
+      'className'?: string;
+      'formFl'?: boolean;
+      'id'?: string;
+      'items'?: string;
+      'label'?: string;
+      'multi'?: boolean;
+      'type'?: number;
+      'value'?: string;
+    }
   }
 
   interface HTMLElementTagNameMap {
@@ -237,6 +268,7 @@ declare global {
     'bs-buttonGroup': HTMLBsButtongroupElement
     'bs-card': HTMLBsCardElement
     'bs-cardGroup': HTMLBsCardgroupElement
+    'bs-dropdown': HTMLBsDropdownElement
   }
 
   interface ElementTagNameMap {
@@ -247,6 +279,7 @@ declare global {
     'bs-buttonGroup': HTMLBsButtongroupElement;
     'bs-card': HTMLBsCardElement;
     'bs-cardGroup': HTMLBsCardgroupElement;
+    'bs-dropdown': HTMLBsDropdownElement;
   }
 }
 declare global { namespace JSX { interface StencilJSX {} } }

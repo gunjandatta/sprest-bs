@@ -279,6 +279,55 @@
           "attr": "class-name"
         }
       ]
+    },
+    {
+      "tag": "bs-dropdown",
+      "dependencies": [],
+      "componentClass": "Dropdown",
+      "componentPath": "dropdown.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "formFl",
+          "type": "Boolean",
+          "attr": "form-fl"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "attr": "id"
+        },
+        {
+          "name": "items",
+          "type": "String",
+          "attr": "items"
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "attr": "label"
+        },
+        {
+          "name": "multi",
+          "type": "Boolean",
+          "attr": "multi"
+        },
+        {
+          "name": "type",
+          "type": "Number",
+          "attr": "type"
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "attr": "value"
+        }
+      ]
     }
   ],
   "collections": [],
