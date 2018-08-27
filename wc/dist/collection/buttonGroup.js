@@ -9,6 +9,9 @@ export class ButtonGroup {
             }
             catch (_a) {
                 buttons = [];
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.buttons);
             }
         }
         // Render the button group

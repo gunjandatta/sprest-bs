@@ -24,7 +24,13 @@ export class ButtonGroup {
         let buttons = [];
         if (this.buttons) {
             try { buttons = JSON.parse(this.buttons); }
-            catch { buttons = []; }
+            catch {
+                buttons = [];
+
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.buttons);
+            }
         }
 
         // Render the button group

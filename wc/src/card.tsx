@@ -22,7 +22,13 @@ export class Card {
         let body = [];
         if (this.body) {
             try { body = JSON.parse(this.body); }
-            catch { body = []; }
+            catch {
+                body = [];
+
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.body);
+            }
         }
 
         console.log("Body Property: " + this.body);

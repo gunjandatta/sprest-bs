@@ -260,6 +260,25 @@
           "attr": "img-top"
         }
       ]
+    },
+    {
+      "tag": "bs-cardgroup",
+      "dependencies": [],
+      "componentClass": "CardGroup",
+      "componentPath": "cardGroup.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "cards",
+          "type": "String",
+          "attr": "cards"
+        },
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        }
+      ]
     }
   ],
   "collections": [],

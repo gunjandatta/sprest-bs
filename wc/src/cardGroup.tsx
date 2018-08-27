@@ -3,39 +3,39 @@ import { Component, Prop } from "@stencil/core";
 declare var $REST;
 
 @Component({
-    tag: "bs-breadcrumb"
+    tag: "bs-cardGroup"
 })
-export class Breadcrumb {
+export class CardGroup {
     el: HTMLElement;
 
-    // Breadcrumb Properties
+    // Card Group Properties
+    @Prop() cards: string;
     @Prop() className: string;
-    @Prop() items: string;
 
     // Component loaded event
     componentDidLoad() {
-        // Get the items property
-        let items = [];
-        if (this.items) {
-            try { items = JSON.parse(this.items); }
+        // Get the cards property
+        let cards = [];
+        if (this.cards) {
+            try { cards = JSON.parse(this.cards); }
             catch {
-                items = [];
+                cards = [];
 
                 // Log an error
                 console.log("Error parsing the JSON string.");
-                console.log(this.items);
+                console.log(this.cards);
             }
         }
 
-        // Render the breadcrumb
-        return $REST.Components.Breadcrumb({
+        // Render the card group
+        return $REST.Components.CardGroup({
+            cards: cards,
             className: this.className,
-            el: this.el,
-            items: items
+            el: this.el
         });
     }
 
-    // Render the breadcrumb
+    // Render the card group
     render() {
         return (
             <div ref={el => this.el = el} />

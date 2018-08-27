@@ -9,6 +9,9 @@ export class Card {
             }
             catch (_a) {
                 body = [];
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.body);
             }
         }
         console.log("Body Property: " + this.body);

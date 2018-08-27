@@ -84,6 +84,11 @@ declare global {
       'imgBottom': object;
       'imgTop': object;
     }
+
+    interface BsCardgroup {
+      'cards': string;
+      'className': string;
+    }
   }
 
 
@@ -135,6 +140,14 @@ declare global {
     };
     
 
+    interface HTMLBsCardgroupElement extends StencilComponents.BsCardgroup, HTMLStencilElement {}
+
+    var HTMLBsCardgroupElement: {
+      prototype: HTMLBsCardgroupElement;
+      new (): HTMLBsCardgroupElement;
+    };
+    
+
   namespace JSX {
     interface Element {}
     export interface IntrinsicElements {
@@ -144,6 +157,7 @@ declare global {
     'bs-button': JSXElements.BsButtonAttributes;
     'bs-buttonGroup': JSXElements.BsButtongroupAttributes;
     'bs-card': JSXElements.BsCardAttributes;
+    'bs-cardGroup': JSXElements.BsCardgroupAttributes;
     }
   }
 
@@ -208,6 +222,11 @@ declare global {
       'imgBottom'?: object;
       'imgTop'?: object;
     }
+
+    export interface BsCardgroupAttributes extends HTMLAttributes {
+      'cards'?: string;
+      'className'?: string;
+    }
   }
 
   interface HTMLElementTagNameMap {
@@ -217,6 +236,7 @@ declare global {
     'bs-button': HTMLBsButtonElement
     'bs-buttonGroup': HTMLBsButtongroupElement
     'bs-card': HTMLBsCardElement
+    'bs-cardGroup': HTMLBsCardgroupElement
   }
 
   interface ElementTagNameMap {
@@ -226,6 +246,7 @@ declare global {
     'bs-button': HTMLBsButtonElement;
     'bs-buttonGroup': HTMLBsButtongroupElement;
     'bs-card': HTMLBsCardElement;
+    'bs-cardGroup': HTMLBsCardgroupElement;
   }
 }
 declare global { namespace JSX { interface StencilJSX {} } }

@@ -6,7 +6,8 @@ import {
   Breadcrumb,
   Button,
   ButtonGroup,
-  Card
+  Card,
+  CardGroup
 } from './gd-sprest-bs.components.js';
 
 export function defineCustomElements(window, opts) {
@@ -16,6 +17,7 @@ export function defineCustomElements(window, opts) {
     Breadcrumb,
     Button,
     ButtonGroup,
-    Card
+    Card,
+    CardGroup
   ], opts);
 }

@@ -9,6 +9,9 @@ export class Breadcrumb {
             }
             catch (_a) {
                 items = [];
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.items);
             }
         }
         // Render the breadcrumb
