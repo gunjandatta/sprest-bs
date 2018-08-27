@@ -27,9 +27,9 @@ export const Breadcrumb = (props: IBreadcrumbProps): IBreadcrumb | string => {
 
         // Set the attributes
         let attributes = [
-            'class="' + classNames.join(' ') + '"',
+            'class="' + itemClassNames.join(' ') + '"',
             isActive ? 'aria-current="page"' : null
-        ];
+        ].join(' ');
 
         // Add the item
         html.push([
