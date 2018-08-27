@@ -10,7 +10,7 @@ export const Card: (props: ICardProps) => ICard | string;
  * Card
  */
 export interface ICard {
-    /** Destroys an element’s button. */
+    /** Destroys an element’s card. */
     dispose: () => void;
 
     /** The element. */
@@ -33,13 +33,13 @@ export interface ICardProps {
         text?: string;
         title?: string;
     }];
-    footer?: string;
     className?: string;
+    el?: Element | HTMLElement;
+    footer?: string;
     header?: {
         content?: string;
         nav?: INavProps;
     };
-    el?: Element | HTMLElement;
     imgBottom: {
         alt?: string;
         src?: string;

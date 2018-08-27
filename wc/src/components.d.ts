@@ -74,6 +74,15 @@ declare global {
       'isVertical': boolean;
       'label': string;
     }
+
+    interface BsCard {
+      'body': string;
+      'className': string;
+      'footer': string;
+      'header': string;
+      'imgBottom': object;
+      'imgTop': object;
+    }
   }
 
 
@@ -117,6 +126,14 @@ declare global {
     };
     
 
+    interface HTMLBsCardElement extends StencilComponents.BsCard, HTMLStencilElement {}
+
+    var HTMLBsCardElement: {
+      prototype: HTMLBsCardElement;
+      new (): HTMLBsCardElement;
+    };
+    
+
   namespace JSX {
     interface Element {}
     export interface IntrinsicElements {
@@ -125,6 +142,7 @@ declare global {
     'bs-breadcrumb': JSXElements.BsBreadcrumbAttributes;
     'bs-button': JSXElements.BsButtonAttributes;
     'bs-buttonGroup': JSXElements.BsButtongroupAttributes;
+    'bs-card': JSXElements.BsCardAttributes;
     }
   }
 
@@ -180,6 +198,15 @@ declare global {
       'isVertical'?: boolean;
       'label'?: string;
     }
+
+    export interface BsCardAttributes extends HTMLAttributes {
+      'body'?: string;
+      'className'?: string;
+      'footer'?: string;
+      'header'?: string;
+      'imgBottom'?: object;
+      'imgTop'?: object;
+    }
   }
 
   interface HTMLElementTagNameMap {
@@ -188,6 +215,7 @@ declare global {
     'bs-breadcrumb': HTMLBsBreadcrumbElement
     'bs-button': HTMLBsButtonElement
     'bs-buttonGroup': HTMLBsButtongroupElement
+    'bs-card': HTMLBsCardElement
   }
 
   interface ElementTagNameMap {
@@ -196,6 +224,7 @@ declare global {
     'bs-breadcrumb': HTMLBsBreadcrumbElement;
     'bs-button': HTMLBsButtonElement;
     'bs-buttonGroup': HTMLBsButtongroupElement;
+    'bs-card': HTMLBsCardElement;
   }
 }
 declare global { namespace JSX { interface StencilJSX {} } }

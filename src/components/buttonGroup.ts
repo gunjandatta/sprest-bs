@@ -29,13 +29,13 @@ export const ButtonGroup = (props: IButtonGroupProps): IButtonGroup | string => 
     // Parse the buttons
     let buttons = props.buttons || [];
     for (let i = 0; i < buttons.length; i++) {
-        let button = buttons[i];
+        let buttonProps = buttons[i];
 
         // Set the property
-        button.type = button.type || typeof (props.buttonType) === "number" ? props.buttonType : button.type;
+        buttonProps.type = buttonProps.type || props.buttonType;
 
         // Add the button html
-        html.push(Button(button));
+        html.push(Button(buttonProps));
     }
 
     // Add the closing tag

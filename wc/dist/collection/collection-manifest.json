@@ -223,6 +223,43 @@
           "attr": "label"
         }
       ]
+    },
+    {
+      "tag": "bs-card",
+      "dependencies": [],
+      "componentClass": "Card",
+      "componentPath": "card.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "body",
+          "type": "String",
+          "attr": "body"
+        },
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "footer",
+          "type": "String",
+          "attr": "footer"
+        },
+        {
+          "name": "header",
+          "type": "String",
+          "attr": "header"
+        },
+        {
+          "name": "imgBottom",
+          "attr": "img-bottom"
+        },
+        {
+          "name": "imgTop",
+          "attr": "img-top"
+        }
+      ]
     }
   ],
   "collections": [],

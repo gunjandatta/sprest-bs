@@ -24,7 +24,7 @@ export class ButtonGroup {
         let buttons = [];
         if (this.buttons) {
             try { buttons = JSON.parse(this.buttons); }
-            catch{ buttons = []; }
+            catch { buttons = []; }
         }
 
         // Render the button group

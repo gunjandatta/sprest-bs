@@ -120,7 +120,7 @@ export const Card = (props: ICardProps): ICard | string => {
             '<div class="' + classNames + '">',
             item.title ? '<h5 class="card-title">' + item.title + '</h5>' : '',
             item.subTitle ? '<h5 class="card-subtitle"' + item.subTitle + '</h6>' : '',
-            item.text ? '<p class="card-text"' + item.text + '</p>' : '',
+            item.text ? '<p class="card-text">' + item.text + '</p>' : '',
             item.content || '',
             buttons.join(''),
             '</div>'

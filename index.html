@@ -158,8 +158,32 @@
     <h1>Web Components</h1>
     <h3>Alert</h3>
     <bs-alert content="This is an alert"></bs-alert>
+    <h3>Badge</h3>
+    <bs-badge class-name="badge-secondary" content="Badge"></bs-badge>
+    <h3>Breadcrumb</h3>
+    <bs-breadcrumb items='[
+        { "text": "Root", "href": "/" }, 
+        { "text": "Web 1", "href": "/web" }, 
+        { "text": "Web 1-1", "href": "/web/1"}
+    ]'></bs-breadcrumb>
     <h3>Button</h3>
     <bs-button text="My Button"></bs-button>
+    <h3>Button Group</h3>
+    <bs-buttonGroup button-type='7' buttons='[
+        { "text": "Left" },
+        { "text": "Middle" },
+        { "text": "Right" }
+    ]'></bs-buttonGroup>
+    <h3>Card</h3>
+    <bs-card body='[
+        {
+            "title": "Card Title",
+            "text": "This is the card contents.",
+            "actions": [
+                { "text": "Card Action", "buttonType": 7 }
+            ]
+        }
+    ]'></bs-card>
 </body>
 
 </html>

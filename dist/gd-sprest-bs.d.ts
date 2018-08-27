@@ -270,7 +270,7 @@ declare module 'gd-sprest-bs/components/types/card' {
         * Card
         */
     export interface ICard {
-            /** Destroys an element’s button. */
+            /** Destroys an element’s card. */
             dispose: () => void;
     
             /** The element. */
@@ -293,13 +293,13 @@ declare module 'gd-sprest-bs/components/types/card' {
                     text?: string;
                     title?: string;
             }];
-            footer?: string;
             className?: string;
+            el?: Element | HTMLElement;
+            footer?: string;
             header?: {
                     content?: string;
                     nav?: INavProps;
             };
-            el?: Element | HTMLElement;
             imgBottom: {
                     alt?: string;
                     src?: string;
