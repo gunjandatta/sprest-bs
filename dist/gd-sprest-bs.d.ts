@@ -381,14 +381,14 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
         * Dropdown Properties
         */
     export interface IDropdownProps {
-            items: Array<IDropdownItem>;
-            onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             className?: string;
             el?: Element | HTMLElement;
             formFl?: boolean;
             id?: string;
+            items: Array<IDropdownItem>;
             label?: string;
             multi?: boolean;
+            onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             type?: number;
             value?: any;
     }

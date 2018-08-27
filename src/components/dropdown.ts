@@ -189,6 +189,9 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
                 let item: IDropdownItem = props.items[elItem.getAttribute("data-idx")];
                 let items: Array<IDropdownItem> = [];
 
+                // Cancel the events, if this isn't a link
+                item && item.href ? null : ev.preventDefault();
+
                 // Parse the selected items
                 let elSelectedItems = props.el.querySelectorAll(".dropdown-item.active");
                 for (let i = 0; i < elSelectedItems.length; i++) {

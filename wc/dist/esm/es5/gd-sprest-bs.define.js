@@ -8,7 +8,8 @@ import {
   ButtonGroup,
   Card,
   CardGroup,
-  Dropdown
+  Dropdown,
+  Form
 } from './gd-sprest-bs.components.js';
 
 export function defineCustomElements(window, opts) {
@@ -20,6 +21,7 @@ export function defineCustomElements(window, opts) {
     ButtonGroup,
     Card,
     CardGroup,
-    Dropdown
+    Dropdown,
+    Form
   ], opts);
 }

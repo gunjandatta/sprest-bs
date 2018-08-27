@@ -100,6 +100,17 @@ declare global {
       'type': number;
       'value': string;
     }
+
+    interface BsForm {
+      'className': string;
+      'formFl': boolean;
+      'id': string;
+      'items': string;
+      'label': string;
+      'multi': boolean;
+      'type': number;
+      'value': string;
+    }
   }
 
 
@@ -167,6 +178,14 @@ declare global {
     };
     
 
+    interface HTMLBsFormElement extends StencilComponents.BsForm, HTMLStencilElement {}
+
+    var HTMLBsFormElement: {
+      prototype: HTMLBsFormElement;
+      new (): HTMLBsFormElement;
+    };
+    
+
   namespace JSX {
     interface Element {}
     export interface IntrinsicElements {
@@ -178,6 +197,7 @@ declare global {
     'bs-card': JSXElements.BsCardAttributes;
     'bs-cardGroup': JSXElements.BsCardgroupAttributes;
     'bs-dropdown': JSXElements.BsDropdownAttributes;
+    'bs-form': JSXElements.BsFormAttributes;
     }
   }
 
@@ -258,6 +278,17 @@ declare global {
       'type'?: number;
       'value'?: string;
     }
+
+    export interface BsFormAttributes extends HTMLAttributes {
+      'className'?: string;
+      'formFl'?: boolean;
+      'id'?: string;
+      'items'?: string;
+      'label'?: string;
+      'multi'?: boolean;
+      'type'?: number;
+      'value'?: string;
+    }
   }
 
   interface HTMLElementTagNameMap {
@@ -269,6 +300,7 @@ declare global {
     'bs-card': HTMLBsCardElement
     'bs-cardGroup': HTMLBsCardgroupElement
     'bs-dropdown': HTMLBsDropdownElement
+    'bs-form': HTMLBsFormElement
   }
 
   interface ElementTagNameMap {
@@ -280,6 +312,7 @@ declare global {
     'bs-card': HTMLBsCardElement;
     'bs-cardGroup': HTMLBsCardgroupElement;
     'bs-dropdown': HTMLBsDropdownElement;
+    'bs-form': HTMLBsFormElement;
   }
 }
 declare global { namespace JSX { interface StencilJSX {} } }
