@@ -10,10 +10,10 @@ export var Button = ["bs-button",function(){return(import("./6mzzbykv.js")).then
 
 export var ButtonGroup = ["bs-buttonGroup",function(){return(import("./1tkz3syl.js")).then(function(m){return m.BsButtongroup})},0,[["buttonType",1,0,"button-type",4],["buttons",1,0,1,2],["className",1,0,"class-name",2],["id",1,0,1,2],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3],["isVertical",1,0,"is-vertical",3],["label",1,0,1,2]]];
 
-export var Card = ["bs-card",function(){return(import("./lj2i6aqb.js")).then(function(m){return m.BsCard})},0,[["body",1,0,1,2],["className",1,0,"class-name",2],["footer",1,0,1,2],["header",1,0,1,2],["imgBottom",1],["imgTop",1]]];
+export var Card = ["bs-card",function(){return(import("./t2ryb0z4.js")).then(function(m){return m.BsCard})},0,[["body",1,0,1,2],["className",1,0,"class-name",2],["footer",1,0,1,2],["header",1,0,1,2],["imgBottom",1],["imgTop",1]]];
 
 export var CardGroup = ["bs-cardGroup",function(){return(import("./7fs9hpz8.js")).then(function(m){return m.BsCardgroup})},0,[["cards",1,0,1,2],["className",1,0,"class-name",2]]];
 
 export var Dropdown = ["bs-dropdown",function(){return(import("./nh8fwd7i.js")).then(function(m){return m.BsDropdown})},0,[["className",1,0,"class-name",2],["formFl",1,0,"form-fl",3],["id",1,0,1,2],["items",1,0,1,2],["label",1,0,1,2],["multi",1,0,1,3],["type",1,0,1,4],["value",1,0,1,2]]];
 
-export var Form = ["bs-form",function(){return(import("./zpumiqbm.js")).then(function(m){return m.BsForm})},0,[["className",1,0,"class-name",2],["formFl",1,0,"form-fl",3],["id",1,0,1,2],["items",1,0,1,2],["label",1,0,1,2],["multi",1,0,1,3],["type",1,0,1,4],["value",1,0,1,2]]];
+export var Form = ["bs-form",function(){return(import("./dsabqv1z.js")).then(function(m){return m.BsForm})},0,[["rows",1,0,1,2],["value",1,0,1,2]]];

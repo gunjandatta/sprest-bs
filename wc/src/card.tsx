@@ -31,7 +31,6 @@ export class Card {
             }
         }
 
-        console.log("Body Property: " + this.body);
         // Render the card
         return $REST.Components.Card({
             body: body,

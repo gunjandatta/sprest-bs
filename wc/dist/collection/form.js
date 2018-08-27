@@ -1,29 +1,37 @@
 export class Form {
     // Component loaded event
     componentDidLoad() {
-        let items = [];
-        if (this.items) {
+        // Get the rows
+        let rows = [];
+        if (this.rows) {
             try {
-                items = JSON.parse(this.items);
+                rows = JSON.parse(this.rows);
             }
             catch (_a) {
-                items = [];
+                rows = [];
                 // Log an error
                 console.log("Error parsing the JSON string.");
-                console.log(this.items);
+                console.log(this.rows);
+            }
+        }
+        // Get the value
+        let value = null;
+        if (this.value) {
+            try {
+                value = JSON.parse(this.value);
+            }
+            catch (_b) {
+                value = null;
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.value);
             }
         }
         // Render the form
         return $REST.Components.Form({
-            className: this.className,
             el: this.el,
-            formFl: this.formFl,
-            id: this.id,
-            items: items,
-            label: this.label,
-            multi: this.multi,
-            type: this.type,
-            value: this.value
+            rows: rows,
+            value: value
         });
     }
     // Render the form
@@ -32,33 +40,9 @@ export class Form {
     }
     static get is() { return "bs-form"; }
     static get properties() { return {
-        "className": {
+        "rows": {
             "type": String,
-            "attr": "class-name"
-        },
-        "formFl": {
-            "type": Boolean,
-            "attr": "form-fl"
-        },
-        "id": {
-            "type": String,
-            "attr": "id"
-        },
-        "items": {
-            "type": String,
-            "attr": "items"
-        },
-        "label": {
-            "type": String,
-            "attr": "label"
-        },
-        "multi": {
-            "type": Boolean,
-            "attr": "multi"
-        },
-        "type": {
-            "type": Number,
-            "attr": "type"
+            "attr": "rows"
         },
         "value": {
             "type": String,

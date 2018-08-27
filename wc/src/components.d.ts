@@ -101,13 +101,7 @@ declare global {
     }
 
     interface BsForm {
-      'className': string;
-      'formFl': boolean;
-      'id': string;
-      'items': string;
-      'label': string;
-      'multi': boolean;
-      'type': number;
+      'rows': string;
       'value': string;
     }
   }
@@ -279,13 +273,7 @@ declare global {
     }
 
     export interface BsFormAttributes extends HTMLAttributes {
-      'className'?: string;
-      'formFl'?: boolean;
-      'id'?: string;
-      'items'?: string;
-      'label'?: string;
-      'multi'?: boolean;
-      'type'?: number;
+      'rows'?: string;
       'value'?: string;
     }
   }

@@ -337,39 +337,9 @@
       "styles": {},
       "props": [
         {
-          "name": "className",
+          "name": "rows",
           "type": "String",
-          "attr": "class-name"
-        },
-        {
-          "name": "formFl",
-          "type": "Boolean",
-          "attr": "form-fl"
-        },
-        {
-          "name": "id",
-          "type": "String",
-          "attr": "id"
-        },
-        {
-          "name": "items",
-          "type": "String",
-          "attr": "items"
-        },
-        {
-          "name": "label",
-          "type": "String",
-          "attr": "label"
-        },
-        {
-          "name": "multi",
-          "type": "Boolean",
-          "attr": "multi"
-        },
-        {
-          "name": "type",
-          "type": "Number",
-          "attr": "type"
+          "attr": "rows"
         },
         {
           "name": "value",
