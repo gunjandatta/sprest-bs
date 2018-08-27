@@ -197,8 +197,8 @@ declare module 'gd-sprest-bs/components/types/button' {
             el?: Element | HTMLElement;
             id?: string;
             isBlock?: boolean;
-            isExpanded?: boolean;
             isDisabled?: boolean;
+            isExpanded?: boolean;
             isLarge?: boolean;
             isOutline?: boolean;
             isSmall?: boolean;
