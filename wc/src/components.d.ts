@@ -63,6 +63,17 @@ declare global {
       'toggle': string;
       'type': number;
     }
+
+    interface BsButtongroup {
+      'buttonType': number;
+      'buttons': string;
+      'className': string;
+      'id': string;
+      'isLarge': boolean;
+      'isSmall': boolean;
+      'isVertical': boolean;
+      'label': string;
+    }
   }
 
 
@@ -98,6 +109,14 @@ declare global {
     };
     
 
+    interface HTMLBsButtongroupElement extends StencilComponents.BsButtongroup, HTMLStencilElement {}
+
+    var HTMLBsButtongroupElement: {
+      prototype: HTMLBsButtongroupElement;
+      new (): HTMLBsButtongroupElement;
+    };
+    
+
   namespace JSX {
     interface Element {}
     export interface IntrinsicElements {
@@ -105,6 +124,7 @@ declare global {
     'bs-badge': JSXElements.BsBadgeAttributes;
     'bs-breadcrumb': JSXElements.BsBreadcrumbAttributes;
     'bs-button': JSXElements.BsButtonAttributes;
+    'bs-buttonGroup': JSXElements.BsButtongroupAttributes;
     }
   }
 
@@ -149,6 +169,17 @@ declare global {
       'toggle'?: string;
       'type'?: number;
     }
+
+    export interface BsButtongroupAttributes extends HTMLAttributes {
+      'buttonType'?: number;
+      'buttons'?: string;
+      'className'?: string;
+      'id'?: string;
+      'isLarge'?: boolean;
+      'isSmall'?: boolean;
+      'isVertical'?: boolean;
+      'label'?: string;
+    }
   }
 
   interface HTMLElementTagNameMap {
@@ -156,6 +187,7 @@ declare global {
     'bs-badge': HTMLBsBadgeElement
     'bs-breadcrumb': HTMLBsBreadcrumbElement
     'bs-button': HTMLBsButtonElement
+    'bs-buttonGroup': HTMLBsButtongroupElement
   }
 
   interface ElementTagNameMap {
@@ -163,6 +195,7 @@ declare global {
     'bs-badge': HTMLBsBadgeElement;
     'bs-breadcrumb': HTMLBsBreadcrumbElement;
     'bs-button': HTMLBsButtonElement;
+    'bs-buttonGroup': HTMLBsButtongroupElement;
   }
 }
 declare global { namespace JSX { interface StencilJSX {} } }
