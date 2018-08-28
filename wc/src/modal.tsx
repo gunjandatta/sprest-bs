@@ -22,6 +22,9 @@ export class Modal {
 
     // Component loaded event
     componentDidLoad() {
+        // Remove the id attribute
+        this.el.parentElement.removeAttribute("id");
+
         // Render the modal
         return $REST.Components.Modal({
             className: this.className,
