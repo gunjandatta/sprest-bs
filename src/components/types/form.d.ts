@@ -23,8 +23,6 @@ export interface IForm {
  */
 export interface IFormControl {
     description?: string;
-    isSmall?: boolean;
-    isLarge?: boolean;
     label?: string;
     name?: string;
     type?: number;

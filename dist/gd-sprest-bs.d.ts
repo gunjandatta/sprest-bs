@@ -432,8 +432,6 @@ declare module 'gd-sprest-bs/components/types/form' {
         */
     export interface IFormControl {
             description?: string;
-            isSmall?: boolean;
-            isLarge?: boolean;
             label?: string;
             name?: string;
             type?: number;
