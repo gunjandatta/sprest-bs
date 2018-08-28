@@ -347,6 +347,173 @@
           "attr": "value"
         }
       ]
+    },
+    {
+      "tag": "bs-inputgroup",
+      "dependencies": [],
+      "componentClass": "InputGroup",
+      "componentPath": "inputGroup.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "appendedLabel",
+          "type": "String",
+          "attr": "appended-label"
+        },
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "attr": "description"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "attr": "id"
+        },
+        {
+          "name": "isLarge",
+          "type": "Boolean",
+          "attr": "is-large"
+        },
+        {
+          "name": "isSmall",
+          "type": "Boolean",
+          "attr": "is-small"
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "attr": "label"
+        },
+        {
+          "name": "placeholder",
+          "type": "String",
+          "attr": "placeholder"
+        },
+        {
+          "name": "prependedLabel",
+          "type": "String",
+          "attr": "prepended-label"
+        },
+        {
+          "name": "type",
+          "type": "Number",
+          "attr": "type"
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "attr": "value"
+        }
+      ]
+    },
+    {
+      "tag": "bs-modal",
+      "dependencies": [],
+      "componentClass": "Modal",
+      "componentPath": "modal.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "disableFade",
+          "type": "Boolean",
+          "attr": "disable-fade"
+        },
+        {
+          "name": "hideCloseButton",
+          "type": "Boolean",
+          "attr": "hide-close-button"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "attr": "id"
+        },
+        {
+          "name": "isCentered",
+          "type": "Boolean",
+          "attr": "is-centered"
+        },
+        {
+          "name": "isLarge",
+          "type": "Boolean",
+          "attr": "is-large"
+        },
+        {
+          "name": "isSmall",
+          "type": "Boolean",
+          "attr": "is-small"
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "attr": "title"
+        }
+      ]
+    },
+    {
+      "tag": "bs-navigation",
+      "dependencies": [],
+      "componentClass": "Navigation",
+      "componentPath": "nav.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "enableFade",
+          "type": "Boolean",
+          "attr": "enable-fade"
+        },
+        {
+          "name": "enableFill",
+          "type": "Boolean",
+          "attr": "enable-fill"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "attr": "id"
+        },
+        {
+          "name": "isJustified",
+          "type": "String",
+          "attr": "is-justified"
+        },
+        {
+          "name": "isPill",
+          "type": "Boolean",
+          "attr": "is-pill"
+        },
+        {
+          "name": "isTabs",
+          "type": "Boolean",
+          "attr": "is-tabs"
+        },
+        {
+          "name": "isVertical",
+          "type": "Boolean",
+          "attr": "is-vertical"
+        },
+        {
+          "name": "items",
+          "type": "String",
+          "attr": "items"
+        }
+      ]
     }
   ],
   "collections": [],

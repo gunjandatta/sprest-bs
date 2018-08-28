@@ -7,3 +7,6 @@ export * from "./card";
 export * from "./cardGroup";
 export * from "./dropdown";
 export * from "./form";
+export * from "./inputGroup";
+export * from "./modal";
+export * from "./nav";

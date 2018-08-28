@@ -9,7 +9,10 @@ import {
   Card,
   CardGroup,
   Dropdown,
-  Form
+  Form,
+  InputGroup,
+  Modal,
+  Navigation
 } from './gd-sprest-bs.components.js';
 
 export function defineCustomElements(window, opts) {
@@ -22,6 +25,9 @@ export function defineCustomElements(window, opts) {
     Card,
     CardGroup,
     Dropdown,
-    Form
+    Form,
+    InputGroup,
+    Modal,
+    Navigation
   ], opts);
 }

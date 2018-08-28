@@ -104,6 +104,43 @@ declare global {
       'rows': string;
       'value': string;
     }
+
+    interface BsInputgroup {
+      'appendedLabel': string;
+      'className': string;
+      'description': string;
+      'id': string;
+      'isLarge': boolean;
+      'isSmall': boolean;
+      'label': string;
+      'placeholder': string;
+      'prependedLabel': string;
+      'type': number;
+      'value': string;
+    }
+
+    interface BsModal {
+      'className': string;
+      'disableFade': boolean;
+      'hideCloseButton': boolean;
+      'id': string;
+      'isCentered': boolean;
+      'isLarge': boolean;
+      'isSmall': boolean;
+      'title': string;
+    }
+
+    interface BsNavigation {
+      'className': string;
+      'enableFade': boolean;
+      'enableFill': boolean;
+      'id': string;
+      'isJustified': string;
+      'isPill': boolean;
+      'isTabs': boolean;
+      'isVertical': boolean;
+      'items': string;
+    }
   }
 
 
@@ -179,6 +216,30 @@ declare global {
     };
     
 
+    interface HTMLBsInputgroupElement extends StencilComponents.BsInputgroup, HTMLStencilElement {}
+
+    var HTMLBsInputgroupElement: {
+      prototype: HTMLBsInputgroupElement;
+      new (): HTMLBsInputgroupElement;
+    };
+    
+
+    interface HTMLBsModalElement extends StencilComponents.BsModal, HTMLStencilElement {}
+
+    var HTMLBsModalElement: {
+      prototype: HTMLBsModalElement;
+      new (): HTMLBsModalElement;
+    };
+    
+
+    interface HTMLBsNavigationElement extends StencilComponents.BsNavigation, HTMLStencilElement {}
+
+    var HTMLBsNavigationElement: {
+      prototype: HTMLBsNavigationElement;
+      new (): HTMLBsNavigationElement;
+    };
+    
+
   namespace JSX {
     interface Element {}
     export interface IntrinsicElements {
@@ -191,6 +252,9 @@ declare global {
     'bs-cardGroup': JSXElements.BsCardgroupAttributes;
     'bs-dropdown': JSXElements.BsDropdownAttributes;
     'bs-form': JSXElements.BsFormAttributes;
+    'bs-inputGroup': JSXElements.BsInputgroupAttributes;
+    'bs-modal': JSXElements.BsModalAttributes;
+    'bs-navigation': JSXElements.BsNavigationAttributes;
     }
   }
 
@@ -276,6 +340,43 @@ declare global {
       'rows'?: string;
       'value'?: string;
     }
+
+    export interface BsInputgroupAttributes extends HTMLAttributes {
+      'appendedLabel'?: string;
+      'className'?: string;
+      'description'?: string;
+      'id'?: string;
+      'isLarge'?: boolean;
+      'isSmall'?: boolean;
+      'label'?: string;
+      'placeholder'?: string;
+      'prependedLabel'?: string;
+      'type'?: number;
+      'value'?: string;
+    }
+
+    export interface BsModalAttributes extends HTMLAttributes {
+      'className'?: string;
+      'disableFade'?: boolean;
+      'hideCloseButton'?: boolean;
+      'id'?: string;
+      'isCentered'?: boolean;
+      'isLarge'?: boolean;
+      'isSmall'?: boolean;
+      'title'?: string;
+    }
+
+    export interface BsNavigationAttributes extends HTMLAttributes {
+      'className'?: string;
+      'enableFade'?: boolean;
+      'enableFill'?: boolean;
+      'id'?: string;
+      'isJustified'?: string;
+      'isPill'?: boolean;
+      'isTabs'?: boolean;
+      'isVertical'?: boolean;
+      'items'?: string;
+    }
   }
 
   interface HTMLElementTagNameMap {
@@ -288,6 +389,9 @@ declare global {
     'bs-cardGroup': HTMLBsCardgroupElement
     'bs-dropdown': HTMLBsDropdownElement
     'bs-form': HTMLBsFormElement
+    'bs-inputGroup': HTMLBsInputgroupElement
+    'bs-modal': HTMLBsModalElement
+    'bs-navigation': HTMLBsNavigationElement
   }
 
   interface ElementTagNameMap {
@@ -300,6 +404,9 @@ declare global {
     'bs-cardGroup': HTMLBsCardgroupElement;
     'bs-dropdown': HTMLBsDropdownElement;
     'bs-form': HTMLBsFormElement;
+    'bs-inputGroup': HTMLBsInputgroupElement;
+    'bs-modal': HTMLBsModalElement;
+    'bs-navigation': HTMLBsNavigationElement;
   }
 }
 declare global { namespace JSX { interface StencilJSX {} } }

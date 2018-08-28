@@ -17,3 +17,9 @@ export var CardGroup = ["bs-cardGroup",function(){return(import("./7fs9hpz8.js")
 export var Dropdown = ["bs-dropdown",function(){return(import("./nh8fwd7i.js")).then(function(m){return m.BsDropdown})},0,[["className",1,0,"class-name",2],["formFl",1,0,"form-fl",3],["id",1,0,1,2],["items",1,0,1,2],["label",1,0,1,2],["multi",1,0,1,3],["type",1,0,1,4],["value",1,0,1,2]]];
 
 export var Form = ["bs-form",function(){return(import("./dsabqv1z.js")).then(function(m){return m.BsForm})},0,[["rows",1,0,1,2],["value",1,0,1,2]]];
+
+export var InputGroup = ["bs-inputGroup",function(){return(import("./itqxrval.js")).then(function(m){return m.BsInputgroup})},0,[["appendedLabel",1,0,"appended-label",2],["className",1,0,"class-name",2],["description",1,0,1,2],["id",1,0,1,2],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3],["label",1,0,1,2],["placeholder",1,0,1,2],["prependedLabel",1,0,"prepended-label",2],["type",1,0,1,4],["value",1,0,1,2]]];
+
+export var Modal = ["bs-modal",function(){return(import("./lk48vne9.js")).then(function(m){return m.BsModal})},0,[["className",1,0,"class-name",2],["disableFade",1,0,"disable-fade",3],["hideCloseButton",1,0,"hide-close-button",3],["id",1,0,1,2],["isCentered",1,0,"is-centered",3],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3],["title",1,0,1,2]]];
+
+export var Navigation = ["bs-navigation",function(){return(import("./qcgje4ur.js")).then(function(m){return m.BsNavigation})},0,[["className",1,0,"class-name",2],["enableFade",1,0,"enable-fade",3],["enableFill",1,0,"enable-fill",3],["id",1,0,1,2],["isJustified",1,0,"is-justified",2],["isPill",1,0,"is-pill",3],["isTabs",1,0,"is-tabs",3],["isVertical",1,0,"is-vertical",3],["items",1,0,1,2]]];
