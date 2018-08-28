@@ -8,16 +8,16 @@ import {
  * Form Control Type
  */
 export enum FormControlTypes {
-    CheckBox = 0,
-    Email = 1,
-    Dropdown = 2,
-    File = 3,
-    MultiDropdown = 4,
-    Password = 5,
-    Range = 6,
-    Readonly = 7,
-    TextArea = 8,
-    TextField = 9
+    CheckBox = 1,
+    Email = 2,
+    Dropdown = 3,
+    File = 4,
+    MultiDropdown = 5,
+    Password = 6,
+    Range = 7,
+    Readonly = 8,
+    TextArea = 9,
+    TextField = 10
 }
 
 /**
@@ -201,7 +201,7 @@ export const Form = (props: IFormProps): IForm | string => {
 
         // Return the form
         return {
-            form: elForm,
+            el: elForm,
             getValues: () => {
                 let values = {};
 

@@ -423,7 +423,7 @@ declare module 'gd-sprest-bs/components/types/form' {
         * Form
         */
     export interface IForm {
-            form: HTMLFormElement,
+            el: HTMLFormElement,
             getValues: () => { [key: string]: any };
     }
     

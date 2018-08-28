@@ -14,7 +14,7 @@ export const FormControlTypes:IFormControlTypes;
  * Form
  */
 export interface IForm {
-    form: HTMLFormElement,
+    el: HTMLFormElement,
     getValues: () => { [key: string]: any };
 }
 

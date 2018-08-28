@@ -51,7 +51,7 @@
                                     control: {
                                         label: "First Name",
                                         name: "FName",
-                                        type: 9,
+                                        type: $REST.Components.FormControlTypes.TextField,
                                         onChange: function (value) {
                                             console.log("New First Name: " + value);
                                         }
@@ -61,28 +61,28 @@
                                     control: {
                                         label: "Last Name",
                                         name: "LName",
-                                        type: 9
+                                        type: $REST.Components.FormControlTypes.TextField,
                                     }
                                 },
                                 {
                                     control: {
                                         label: "EMail",
                                         name: "Email",
-                                        type: 1
+                                        type: $REST.Components.FormControlTypes.Email,
                                     }
                                 },
                                 {
                                     control: {
                                         label: "Password",
                                         name: "Password",
-                                        type: 5
+                                        type: $REST.Components.FormControlTypes.Password,
                                     }
                                 },
                                 {
                                     control: {
                                         label: "Jobs",
                                         name: "Jobs",
-                                        type: 2,
+                                        type: $REST.Components.FormControlTypes.Dropdown,
                                         items: [
                                             { text: "Job 1" },
                                             { text: "Job 2" },
@@ -103,7 +103,7 @@
                                     control: {
                                         label: "Multi Jobs",
                                         name: "Jobs",
-                                        type: 4,
+                                        type: $REST.Components.FormControlTypes.MultiDropdown,
                                         items: [
                                             { text: "Job 1" },
                                             { text: "Job 2" },
@@ -213,21 +213,21 @@
             "control": {
                 "label": "First Name:",
                 "name": "FName",
-                "type": 9
+                "type": 10
             }
         },
         {
             "control": {
                 "label": "Last Name:",
                 "name": "LName",
-                "type": 9
+                "type": 10
             }
         },
         {
             "control": {
                 "label": "Choices:",
                 "name": "Choice",
-                "type": 2,
+                "type": 3,
                 "items": [
                     { "text": "Choice 1", "value": "1" },
                     { "text": "Choice 2", "value": "2" },
