@@ -1,6 +1,8 @@
 export class InputGroup {
     // Component loaded event
     componentDidLoad() {
+        // Remove the id attribute
+        this.el.parentElement.removeAttribute("id");
         // Render the inputGroup
         return $REST.Components.InputGroup({
             appendedLabel: this.appendedLabel,

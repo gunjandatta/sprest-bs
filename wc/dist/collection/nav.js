@@ -1,6 +1,9 @@
 export class Navigation {
     // Component loaded event
     componentDidLoad() {
+        // Remove the id attribute
+        this.el.parentElement.removeAttribute("id");
+        // Get the items
         let items = [];
         if (this.items) {
             try {

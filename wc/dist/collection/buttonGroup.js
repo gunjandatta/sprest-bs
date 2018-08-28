@@ -1,6 +1,8 @@
 export class ButtonGroup {
     // Component loaded event
     componentDidLoad() {
+        // Remove the id attribute
+        this.el.parentElement.removeAttribute("id");
         // Get the buttons property
         let buttons = [];
         if (this.buttons) {

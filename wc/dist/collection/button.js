@@ -1,6 +1,8 @@
 export class Button {
     // Component loaded event
     componentDidLoad() {
+        // Remove the id attribute
+        this.el.parentElement.removeAttribute("id");
         // Render the button
         return $REST.Components.Button({
             badgeType: this.badgeType,
