@@ -602,9 +602,11 @@ declare module 'gd-sprest-bs/components/types/modal' {
         * Modal Properties
         */
     export interface IModalProps {
+            body?: string;
             className?: string;
             el?: Element | HTMLElement;
             disableFade?: boolean;
+            footer?: string;
             hideCloseButton?: boolean;
             id?: string;
             isCentered?: boolean;

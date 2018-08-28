@@ -37,8 +37,8 @@ export const Modal = (props: IModalProps): IModal | string => {
             '</button>'
         ].join('\n'),
         '</div>',
-        '<div class="modal-body"></div>',
-        '<div class="modal-footer"></div>',
+        '<div class="modal-body">' + (props.body || "") + '</div>',
+        '<div class="modal-footer">' + (props.footer || "") + '</div>',
         '</div>',
         '</div>',
         '</div>'
