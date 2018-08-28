@@ -420,6 +420,11 @@
       "styles": {},
       "props": [
         {
+          "name": "body",
+          "type": "String",
+          "attr": "body"
+        },
+        {
           "name": "className",
           "type": "String",
           "attr": "class-name"
@@ -428,6 +433,11 @@
           "name": "disableFade",
           "type": "Boolean",
           "attr": "disable-fade"
+        },
+        {
+          "name": "footer",
+          "type": "String",
+          "attr": "footer"
         },
         {
           "name": "hideCloseButton",

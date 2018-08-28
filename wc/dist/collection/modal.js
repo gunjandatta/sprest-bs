@@ -5,9 +5,11 @@ export class Modal {
         this.el.parentElement.removeAttribute("id");
         // Render the modal
         return $REST.Components.Modal({
+            body: this.body,
             className: this.className,
             disableFade: this.disableFade,
             el: this.el,
+            footer: this.footer,
             hideCloseButton: this.hideCloseButton,
             id: this.id,
             isCentered: this.isCentered,
@@ -22,6 +24,10 @@ export class Modal {
     }
     static get is() { return "bs-modal"; }
     static get properties() { return {
+        "body": {
+            "type": String,
+            "attr": "body"
+        },
         "className": {
             "type": String,
             "attr": "class-name"
@@ -29,6 +35,10 @@ export class Modal {
         "disableFade": {
             "type": Boolean,
             "attr": "disable-fade"
+        },
+        "footer": {
+            "type": String,
+            "attr": "footer"
         },
         "hideCloseButton": {
             "type": Boolean,

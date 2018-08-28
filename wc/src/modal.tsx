@@ -9,8 +9,10 @@ export class Modal {
     el: HTMLElement;
 
     // Modal Properties
+    @Prop() body: string;
     @Prop() className: string;
     @Prop() disableFade: boolean;
+    @Prop() footer: string;
     @Prop() hideCloseButton: boolean;
     @Prop() id: string;
     @Prop() isCentered: boolean;
@@ -27,9 +29,11 @@ export class Modal {
 
         // Render the modal
         return $REST.Components.Modal({
+            body: this.body,
             className: this.className,
             disableFade: this.disableFade,
             el: this.el,
+            footer: this.footer,
             hideCloseButton: this.hideCloseButton,
             id: this.id,
             isCentered: this.isCentered,

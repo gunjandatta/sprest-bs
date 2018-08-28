@@ -121,8 +121,10 @@ declare global {
     }
 
     interface BsModal {
+      'body': string;
       'className': string;
       'disableFade': boolean;
+      'footer': string;
       'hideCloseButton': boolean;
       'id': string;
       'isCentered': boolean;
@@ -357,8 +359,10 @@ declare global {
     }
 
     export interface BsModalAttributes extends HTMLAttributes {
+      'body'?: string;
       'className'?: string;
       'disableFade'?: boolean;
+      'footer'?: string;
       'hideCloseButton'?: boolean;
       'id'?: string;
       'isCentered'?: boolean;
