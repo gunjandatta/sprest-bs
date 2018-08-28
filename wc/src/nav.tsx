@@ -15,7 +15,7 @@ export class Navigation {
     @Prop() id: string;
     @Prop() items: string;
     @Prop() isJustified: string;
-    @Prop() isPill: boolean;
+    @Prop() isPills: boolean;
     @Prop() isTabs: boolean;
     @Prop() isVertical: boolean;
 
@@ -46,7 +46,7 @@ export class Navigation {
             id: this.id,
             items: items,
             isJustified: this.isJustified,
-            isPill: this.isPill,
+            isPills: this.isPills,
             isTabs: this.isTabs,
             isVertical: this.isVertical
         });

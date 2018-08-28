@@ -504,9 +504,9 @@
           "attr": "is-justified"
         },
         {
-          "name": "isPill",
+          "name": "isPills",
           "type": "Boolean",
-          "attr": "is-pill"
+          "attr": "is-pills"
         },
         {
           "name": "isTabs",

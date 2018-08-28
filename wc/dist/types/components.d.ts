@@ -139,7 +139,7 @@ declare global {
       'enableFill': boolean;
       'id': string;
       'isJustified': string;
-      'isPill': boolean;
+      'isPills': boolean;
       'isTabs': boolean;
       'isVertical': boolean;
       'items': string;
@@ -377,7 +377,7 @@ declare global {
       'enableFill'?: boolean;
       'id'?: string;
       'isJustified'?: string;
-      'isPill'?: boolean;
+      'isPills'?: boolean;
       'isTabs'?: boolean;
       'isVertical'?: boolean;
       'items'?: string;

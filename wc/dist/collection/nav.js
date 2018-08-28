@@ -25,7 +25,7 @@ export class Navigation {
             id: this.id,
             items: items,
             isJustified: this.isJustified,
-            isPill: this.isPill,
+            isPills: this.isPills,
             isTabs: this.isTabs,
             isVertical: this.isVertical
         });
@@ -56,9 +56,9 @@ export class Navigation {
             "type": String,
             "attr": "is-justified"
         },
-        "isPill": {
+        "isPills": {
             "type": Boolean,
-            "attr": "is-pill"
+            "attr": "is-pills"
         },
         "isTabs": {
             "type": Boolean,

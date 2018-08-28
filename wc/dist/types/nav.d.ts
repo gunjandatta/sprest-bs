@@ -7,7 +7,7 @@ export declare class Navigation {
     id: string;
     items: string;
     isJustified: string;
-    isPill: boolean;
+    isPills: boolean;
     isTabs: boolean;
     isVertical: boolean;
     componentDidLoad(): any;
