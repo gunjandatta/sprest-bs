@@ -1,3 +1,5 @@
+import { IButtonProps } from "./button";
+
 /**
  * Modal
  */
@@ -51,6 +53,7 @@ export interface IModalOptions {
  */
 export interface IModalProps {
     body?: string;
+    button?: IButtonProps;
     className?: string;
     el?: Element | HTMLElement;
     disableFade?: boolean;

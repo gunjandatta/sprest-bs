@@ -425,6 +425,11 @@
           "attr": "body"
         },
         {
+          "name": "button",
+          "type": "String",
+          "attr": "button"
+        },
+        {
           "name": "className",
           "type": "String",
           "attr": "class-name"

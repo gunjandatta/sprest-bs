@@ -3,9 +3,23 @@ export class Modal {
     componentDidLoad() {
         // Remove the id attribute
         this.el.parentElement.removeAttribute("id");
+        // Get the button properties
+        let buttonProps = {};
+        if (this.button) {
+            try {
+                buttonProps = JSON.parse(this.button);
+            }
+            catch (_a) {
+                buttonProps = {};
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.button);
+            }
+        }
         // Render the modal
         return $REST.Components.Modal({
             body: this.body,
+            button: buttonProps,
             className: this.className,
             disableFade: this.disableFade,
             el: this.el,
@@ -41,6 +55,10 @@ export class Modal {
         "body": {
             "type": String,
             "attr": "body"
+        },
+        "button": {
+            "type": String,
+            "attr": "button"
         },
         "className": {
             "type": String,

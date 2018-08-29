@@ -550,6 +550,8 @@ declare module 'gd-sprest-bs/components/types/inputGroup' {
 }
 
 declare module 'gd-sprest-bs/components/types/modal' {
+    import { IButtonProps } from "gd-sprest-bs/components/types/button";
+    
     /**
         * Modal
         */
@@ -603,6 +605,7 @@ declare module 'gd-sprest-bs/components/types/modal' {
         */
     export interface IModalProps {
             body?: string;
+            button?: IButtonProps;
             className?: string;
             el?: Element | HTMLElement;
             disableFade?: boolean;

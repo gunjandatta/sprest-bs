@@ -2,6 +2,7 @@ import './stencil.core';
 export declare class Modal {
     el: HTMLElement;
     body: string;
+    button: string;
     className: string;
     disableFade: boolean;
     footer: string;

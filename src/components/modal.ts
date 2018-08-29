@@ -1,11 +1,26 @@
 import * as jQuery from "jquery";
 import { IModal, IModalProps } from "./types/modal";
+import { Button } from "./button";
 
 /**
  * Modal
  * @param props The modal properties.
  */
 export const Modal = (props: IModalProps): IModal | string => {
+    let html = [];
+
+    // See if we are rendering a button
+    if (props.button) {
+        let btnProps = props.button;
+
+        // Set the properties
+        props.id ? btnProps.target = "#" + props.id : null
+        btnProps.toggle = "modal";
+
+        // Render a button
+        html.push(Button(btnProps));
+    }
+
     // Set the class names
     let classNames = ["modal"];
     props.className ? classNames.push(props.className) : null;
@@ -25,7 +40,7 @@ export const Modal = (props: IModalProps): IModal | string => {
     props.isSmall ? dialogClassNames.push("modal-sm") : null;
 
     // Generate the html
-    let html = [
+    html.push([
         '<div ' + attributes + '>',
         '<div class="' + dialogClassNames.join(' ') + '" role="document">',
         '<div class="modal-content">',
@@ -42,7 +57,7 @@ export const Modal = (props: IModalProps): IModal | string => {
         '</div>',
         '</div>',
         '</div>'
-    ].join('\n')
+    ].join('\n'));
 
     // See if the element exists
     if (props.el) {
@@ -50,7 +65,7 @@ export const Modal = (props: IModalProps): IModal | string => {
         props.el.classList.add("bs");
 
         // Set the html
-        props.el.innerHTML = html;
+        props.el.innerHTML = html.join('\n');
 
         // Execute the events
         props.onRenderBody ? props.onRenderBody(props.el.querySelector(".modal-body")) : null;
@@ -69,6 +84,6 @@ export const Modal = (props: IModalProps): IModal | string => {
         };
     } else {
         // Return the html
-        return html;
+        return html.join('\n');
     }
 }
