@@ -18,8 +18,8 @@ export class Modal {
     @Prop() isCentered: boolean;
     @Prop() isLarge: boolean;
     @Prop() isSmall: boolean;
-    //@Prop() onRenderBody: (el:Element) => void;
-    //@Prop() onRenderFooter: (el:Element) => void;
+    @Prop() onRenderBody: string;
+    @Prop() onRenderFooter: string;
     @Prop() title: string;
 
     // Component loaded event
@@ -39,7 +39,21 @@ export class Modal {
             isCentered: this.isCentered,
             isLarge: this.isLarge,
             isSmall: this.isSmall,
-            title: this.title
+            title: this.title,
+            onRenderBody: (...args) => {
+                // See if a render body event exists
+                if (this.onRenderBody && window[this.onRenderBody]) {
+                    // Call the event
+                    window[this.onRenderBody].apply(this, args);
+                }
+            },
+            onRenderFooter: (...args) => {
+                // See if a render footer event exists
+                if (this.onRenderFooter && window[this.onRenderFooter]) {
+                    // Call the event
+                    window[this.onRenderFooter].apply(this, args);
+                }
+            }
         });
     }
 

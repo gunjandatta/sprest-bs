@@ -14,7 +14,7 @@ export var Card = ["bs-card",function(){return(import("./t2ryb0z4.js")).then(fun
 
 export var CardGroup = ["bs-cardGroup",function(){return(import("./7fs9hpz8.js")).then(function(m){return m.BsCardgroup})},0,[["cards",1,0,1,2],["className",1,0,"class-name",2]]];
 
-export var Dropdown = ["bs-dropdown",function(){return(import("./nkleelwv.js")).then(function(m){return m.BsDropdown})},0,[["className",1,0,"class-name",2],["formFl",1,0,"form-fl",3],["id",1,0,1,2],["items",1,0,1,2],["label",1,0,1,2],["multi",1,0,1,3],["type",1,0,1,4],["value",1,0,1,2]]];
+export var Dropdown = ["bs-dropdown",function(){return(import("./jvtkwrte.js")).then(function(m){return m.BsDropdown})},0,[["className",1,0,"class-name",2],["formFl",1,0,"form-fl",3],["id",1,0,1,2],["items",1,0,1,2],["label",1,0,1,2],["multi",1,0,1,3],["type",1,0,1,4],["value",1,0,1,2]]];
 
 export var Form = ["bs-form",function(){return(import("./dsabqv1z.js")).then(function(m){return m.BsForm})},0,[["rows",1,0,1,2],["value",1,0,1,2]]];
 

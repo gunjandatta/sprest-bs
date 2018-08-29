@@ -15,12 +15,14 @@ export class Dropdown {
     @Prop() items: string;
     @Prop() label: string;
     @Prop() multi: boolean;
-    //@Prop() onClick: (ev: Event) => void;
     @Prop() type: number;
     @Prop() value: string;
 
     // Component loaded event
     componentDidLoad() {
+        // Get the onclick attribute
+        let onChange = this.el.parentElement.getAttribute("onChange");
+
         // Remove the id attribute
         this.el.parentElement.removeAttribute("id");
 
@@ -47,7 +49,14 @@ export class Dropdown {
             label: this.label,
             multi: this.multi,
             type: this.type,
-            value: this.value
+            value: this.value,
+            onChange: (...args) => {
+                // See if a change event exists
+                if(onChange && window[onChange]) {
+                    // Call the event
+                    window[onChange].apply(this, args);
+                }
+            }
         });
     }
 

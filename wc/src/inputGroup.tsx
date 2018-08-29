@@ -23,6 +23,9 @@ export class InputGroup {
 
     // Component loaded event
     componentDidLoad() {
+        // Get the onclick attribute
+        let onChange = this.el.parentElement.getAttribute("onChange");
+
         // Remove the id attribute
         this.el.parentElement.removeAttribute("id");
 
@@ -39,7 +42,14 @@ export class InputGroup {
             placeholder: this.placeholder,
             prependedLabel: this.prependedLabel,
             type: this.type,
-            value: this.value
+            value: this.value,
+            onChange: (...args) => {
+                // See if a change event exists
+                if (onChange && window[onChange]) {
+                    // Call the event
+                    window[onChange].apply(this, args);
+                }
+            }
         });
     }
 

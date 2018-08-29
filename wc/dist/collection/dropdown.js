@@ -1,6 +1,8 @@
 export class Dropdown {
     // Component loaded event
     componentDidLoad() {
+        // Get the onclick attribute
+        let onChange = this.el.parentElement.getAttribute("onChange");
         // Remove the id attribute
         this.el.parentElement.removeAttribute("id");
         // Get the items
@@ -26,7 +28,14 @@ export class Dropdown {
             label: this.label,
             multi: this.multi,
             type: this.type,
-            value: this.value
+            value: this.value,
+            onChange: (...args) => {
+                // See if a change event exists
+                if (onChange && window[onChange]) {
+                    // Call the event
+                    window[onChange].apply(this, args);
+                }
+            }
         });
     }
     // Render the dropdown
