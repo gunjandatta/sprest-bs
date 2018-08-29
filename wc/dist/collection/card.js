@@ -18,7 +18,7 @@ export class Card {
         return $REST.Components.Card({
             body: body,
             className: this.className,
-            el: this.el,
+            el: this.el.children[0],
             footer: this.footer,
             header: this.header,
             imgBottom: this.imgBottom,
@@ -27,7 +27,7 @@ export class Card {
     }
     // Render the card
     render() {
-        return (h("div", { ref: el => this.el = el }));
+        return (h("div", null));
     }
     static get is() { return "bs-card"; }
     static get properties() { return {
@@ -38,6 +38,9 @@ export class Card {
         "className": {
             "type": String,
             "attr": "class-name"
+        },
+        "el": {
+            "elementRef": true
         },
         "footer": {
             "type": String,

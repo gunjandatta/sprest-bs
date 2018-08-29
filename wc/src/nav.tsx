@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Element, Prop } from "@stencil/core";
 //import { $REST } from "../../src/rest.d";
 declare var $REST;
 
@@ -6,7 +6,7 @@ declare var $REST;
     tag: "bs-navigation"
 })
 export class Navigation {
-    el: HTMLElement;
+    @Element() private el: HTMLElement;
 
     // Navigation Properties
     @Prop() className: string;
@@ -22,7 +22,7 @@ export class Navigation {
     // Component loaded event
     componentDidLoad() {
         // Remove the id attribute
-        this.el.parentElement.removeAttribute("id");
+        this.el.removeAttribute("id");
 
         // Get the items
         let items = [];
@@ -40,7 +40,7 @@ export class Navigation {
         // Render the navigation
         return $REST.Components.Navigation({
             className: this.className,
-            el: this.el,
+            el: this.el.children[0],
             enableFade: this.enableFade,
             enableFill: this.enableFill,
             id: this.id,
@@ -55,7 +55,7 @@ export class Navigation {
     // Render the navigation
     render() {
         return (
-            <div ref={el => this.el = el} />
+            <div />
         );
     }
 }

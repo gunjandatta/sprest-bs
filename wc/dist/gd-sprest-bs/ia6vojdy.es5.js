@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("ia6vojdy",["exports","./chunk-931c76a5.js"],function(e,d){window.GdSprestBs.h,e.BsAlert=d.Alert,Object.defineProperty(e,"__esModule",{value:!0})});

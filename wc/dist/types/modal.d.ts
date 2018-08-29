@@ -1,6 +1,6 @@
 import './stencil.core';
 export declare class Modal {
-    el: HTMLElement;
+    private el;
     body: string;
     button: string;
     className: string;
@@ -13,7 +13,6 @@ export declare class Modal {
     isSmall: boolean;
     onRenderBody: string;
     onRenderFooter: string;
-    title: string;
     componentDidLoad(): any;
     render(): JSX.Element;
 }

@@ -5,7 +5,7 @@ export class Badge {
         return $REST.Components.Badge({
             className: this.className,
             content: this.content,
-            el: this.el,
+            el: this.el.children[0],
             header: this.header,
             href: this.href,
             isPill: this.isPill,
@@ -14,7 +14,7 @@ export class Badge {
     }
     // Render the badge
     render() {
-        return (h("div", { ref: el => this.el = el }));
+        return (h("div", null));
     }
     static get is() { return "bs-badge"; }
     static get properties() { return {
@@ -25,6 +25,9 @@ export class Badge {
         "content": {
             "type": String,
             "attr": "content"
+        },
+        "el": {
+            "elementRef": true
         },
         "header": {
             "type": String,

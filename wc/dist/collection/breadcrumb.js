@@ -17,19 +17,22 @@ export class Breadcrumb {
         // Render the breadcrumb
         return $REST.Components.Breadcrumb({
             className: this.className,
-            el: this.el,
+            el: this.el.children[0],
             items: items
         });
     }
     // Render the breadcrumb
     render() {
-        return (h("div", { ref: el => this.el = el }));
+        return (h("div", null));
     }
     static get is() { return "bs-breadcrumb"; }
     static get properties() { return {
         "className": {
             "type": String,
             "attr": "class-name"
+        },
+        "el": {
+            "elementRef": true
         },
         "items": {
             "type": String,

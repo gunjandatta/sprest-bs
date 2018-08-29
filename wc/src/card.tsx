@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Element, Prop } from "@stencil/core";
 //import { $REST } from "../../src/rest.d";
 declare var $REST;
 
@@ -6,7 +6,7 @@ declare var $REST;
     tag: "bs-card"
 })
 export class Card {
-    el: HTMLElement;
+    @Element() private el: HTMLElement;
 
     // Card Properties
     @Prop() body: string;
@@ -35,7 +35,7 @@ export class Card {
         return $REST.Components.Card({
             body: body,
             className: this.className,
-            el: this.el,
+            el: this.el.children[0],
             footer: this.footer,
             header: this.header,
             imgBottom: this.imgBottom,
@@ -46,7 +46,7 @@ export class Card {
     // Render the card
     render() {
         return (
-            <div ref={el => this.el = el} />
+            <div />
         );
     }
 }

@@ -1,6 +1,6 @@
 import './stencil.core';
 export declare class Card {
-    el: HTMLElement;
+    private el;
     body: string;
     className: string;
     footer: string;

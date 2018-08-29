@@ -1,6 +1,6 @@
 import './stencil.core';
 export declare class Navigation {
-    el: HTMLElement;
+    private el;
     className: string;
     enableFade: boolean;
     enableFill: boolean;

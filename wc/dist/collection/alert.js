@@ -5,7 +5,7 @@ export class Alert {
         return $REST.Components.Alert({
             className: this.className,
             content: this.content,
-            el: this.el,
+            el: this.el.children[0],
             header: this.header,
             isDismissible: this.isDismissible,
             type: this.type
@@ -13,7 +13,7 @@ export class Alert {
     }
     // Render the alert
     render() {
-        return (h("div", { ref: el => this.el = el }));
+        return (h("div", null));
     }
     static get is() { return "bs-alert"; }
     static get properties() { return {
@@ -24,6 +24,9 @@ export class Alert {
         "content": {
             "type": String,
             "attr": "content"
+        },
+        "el": {
+            "elementRef": true
         },
         "header": {
             "type": String,

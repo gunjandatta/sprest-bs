@@ -1,6 +1,6 @@
 import './stencil.core';
 export declare class CardGroup {
-    el: HTMLElement;
+    private el;
     cards: string;
     className: string;
     componentDidLoad(): any;

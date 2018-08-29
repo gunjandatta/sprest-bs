@@ -1,6 +1,6 @@
 import './stencil.core';
 export declare class ButtonGroup {
-    el: HTMLElement;
+    private el;
     buttons: string;
     buttonType: number;
     className: string;

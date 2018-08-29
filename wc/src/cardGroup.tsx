@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Element, Prop } from "@stencil/core";
 //import { $REST } from "../../src/rest.d";
 declare var $REST;
 
@@ -6,7 +6,7 @@ declare var $REST;
     tag: "bs-cardGroup"
 })
 export class CardGroup {
-    el: HTMLElement;
+    @Element() private el: HTMLElement;
 
     // Card Group Properties
     @Prop() cards: string;
@@ -31,14 +31,14 @@ export class CardGroup {
         return $REST.Components.CardGroup({
             cards: cards,
             className: this.className,
-            el: this.el
+            el: this.el.children[0]
         });
     }
 
     // Render the card group
     render() {
         return (
-            <div ref={el => this.el = el} />
+            <div />
         );
     }
 }

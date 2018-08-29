@@ -2,7 +2,7 @@ export class Modal {
     // Component loaded event
     componentDidLoad() {
         // Remove the id attribute
-        this.el.parentElement.removeAttribute("id");
+        this.el.removeAttribute("id");
         // Get the button properties
         let buttonProps = {};
         if (this.button) {
@@ -22,14 +22,14 @@ export class Modal {
             button: buttonProps,
             className: this.className,
             disableFade: this.disableFade,
-            el: this.el,
+            el: this.el.children[0],
             footer: this.footer,
             hideCloseButton: this.hideCloseButton,
             id: this.id,
             isCentered: this.isCentered,
             isLarge: this.isLarge,
             isSmall: this.isSmall,
-            title: this.title,
+            title: this.el.getAttribute("title"),
             onRenderBody: (...args) => {
                 // See if a render body event exists
                 if (this.onRenderBody && window[this.onRenderBody]) {
@@ -48,7 +48,7 @@ export class Modal {
     }
     // Render the modal
     render() {
-        return (h("div", { ref: el => this.el = el }));
+        return (h("div", null));
     }
     static get is() { return "bs-modal"; }
     static get properties() { return {
@@ -67,6 +67,9 @@ export class Modal {
         "disableFade": {
             "type": Boolean,
             "attr": "disable-fade"
+        },
+        "el": {
+            "elementRef": true
         },
         "footer": {
             "type": String,
@@ -99,10 +102,6 @@ export class Modal {
         "onRenderFooter": {
             "type": String,
             "attr": "on-render-footer"
-        },
-        "title": {
-            "type": String,
-            "attr": "title"
         }
     }; }
 }

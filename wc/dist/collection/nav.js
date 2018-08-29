@@ -2,7 +2,7 @@ export class Navigation {
     // Component loaded event
     componentDidLoad() {
         // Remove the id attribute
-        this.el.parentElement.removeAttribute("id");
+        this.el.removeAttribute("id");
         // Get the items
         let items = [];
         if (this.items) {
@@ -19,7 +19,7 @@ export class Navigation {
         // Render the navigation
         return $REST.Components.Navigation({
             className: this.className,
-            el: this.el,
+            el: this.el.children[0],
             enableFade: this.enableFade,
             enableFill: this.enableFill,
             id: this.id,
@@ -32,13 +32,16 @@ export class Navigation {
     }
     // Render the navigation
     render() {
-        return (h("div", { ref: el => this.el = el }));
+        return (h("div", null));
     }
     static get is() { return "bs-navigation"; }
     static get properties() { return {
         "className": {
             "type": String,
             "attr": "class-name"
+        },
+        "el": {
+            "elementRef": true
         },
         "enableFade": {
             "type": Boolean,

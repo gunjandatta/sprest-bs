@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("x6x1rcab",["exports","./chunk-7ea3771e.js"],function(e,o){window.GdSprestBs.h,e.BsButtongroup=o.ButtonGroup,Object.defineProperty(e,"__esModule",{value:!0})});

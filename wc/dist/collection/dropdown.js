@@ -2,9 +2,9 @@ export class Dropdown {
     // Component loaded event
     componentDidLoad() {
         // Get the onclick attribute
-        let onChange = this.el.parentElement.getAttribute("onChange");
+        let onChange = this.el.getAttribute("onChange");
         // Remove the id attribute
-        this.el.parentElement.removeAttribute("id");
+        this.el.removeAttribute("id");
         // Get the items
         let items = [];
         if (this.items) {
@@ -24,7 +24,7 @@ export class Dropdown {
             dropLeft: this.dropLeft,
             dropRight: this.dropRight,
             dropUp: this.dropUp,
-            el: this.el,
+            el: this.el.children[0],
             formFl: this.formFl,
             id: this.id,
             isSplit: this.isSplit,
@@ -44,7 +44,7 @@ export class Dropdown {
     }
     // Render the dropdown
     render() {
-        return (h("div", { ref: el => this.el = el }));
+        return (h("div", null));
     }
     static get is() { return "bs-dropdown"; }
     static get properties() { return {
@@ -63,6 +63,9 @@ export class Dropdown {
         "dropUp": {
             "type": Boolean,
             "attr": "drop-up"
+        },
+        "el": {
+            "elementRef": true
         },
         "formFl": {
             "type": Boolean,

@@ -32,7 +32,10 @@
           "type": "Number",
           "attr": "type"
         }
-      ]
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     },
     {
       "tag": "bs-badge",
@@ -71,7 +74,10 @@
           "type": "Number",
           "attr": "type"
         }
-      ]
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     },
     {
       "tag": "bs-breadcrumb",
@@ -90,7 +96,10 @@
           "type": "String",
           "attr": "items"
         }
-      ]
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     },
     {
       "tag": "bs-button",
@@ -173,7 +182,10 @@
           "type": "Number",
           "attr": "type"
         }
-      ]
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     },
     {
       "tag": "bs-buttongroup",
@@ -222,7 +234,10 @@
           "type": "String",
           "attr": "label"
         }
-      ]
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     },
     {
       "tag": "bs-card",
@@ -259,7 +274,10 @@
           "name": "imgTop",
           "attr": "img-top"
         }
-      ]
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     },
     {
       "tag": "bs-cardgroup",
@@ -278,7 +296,10 @@
           "type": "String",
           "attr": "class-name"
         }
-      ]
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     },
     {
       "tag": "bs-dropdown",
@@ -347,7 +368,10 @@
           "type": "String",
           "attr": "value"
         }
-      ]
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     },
     {
       "tag": "bs-form",
@@ -366,7 +390,10 @@
           "type": "String",
           "attr": "value"
         }
-      ]
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     },
     {
       "tag": "bs-inputgroup",
@@ -430,7 +457,10 @@
           "type": "String",
           "attr": "value"
         }
-      ]
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     },
     {
       "tag": "bs-modal",
@@ -498,13 +528,11 @@
           "name": "onRenderFooter",
           "type": "String",
           "attr": "on-render-footer"
-        },
-        {
-          "name": "title",
-          "type": "String",
-          "attr": "title"
         }
-      ]
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     },
     {
       "tag": "bs-navigation",
@@ -558,13 +586,16 @@
           "type": "String",
           "attr": "items"
         }
-      ]
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     }
   ],
   "collections": [],
   "compiler": {
     "name": "@stencil/core",
-    "version": "0.11.4",
+    "version": "0.12.2",
     "typescriptVersion": "2.9.2"
   },
   "bundles": []

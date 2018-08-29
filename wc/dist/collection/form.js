@@ -29,17 +29,20 @@ export class Form {
         }
         // Render the form
         return $REST.Components.Form({
-            el: this.el,
+            el: this.el.children[0],
             rows: rows,
             value: value
         });
     }
     // Render the form
     render() {
-        return (h("div", { ref: el => this.el = el }));
+        return (h("div", null));
     }
     static get is() { return "bs-form"; }
     static get properties() { return {
+        "el": {
+            "elementRef": true
+        },
         "rows": {
             "type": String,
             "attr": "rows"

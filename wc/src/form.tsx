@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Element, Prop } from "@stencil/core";
 //import { $REST } from "../../src/rest.d";
 declare var $REST;
 
@@ -6,7 +6,7 @@ declare var $REST;
     tag: "bs-form"
 })
 export class Form {
-    el: HTMLElement;
+    @Element() private el: HTMLElement;
 
     // Form Properties
     @Prop() rows: string;
@@ -42,7 +42,7 @@ export class Form {
 
         // Render the form
         return $REST.Components.Form({
-            el: this.el,
+            el: this.el.children[0],
             rows: rows,
             value: value
         });
@@ -51,7 +51,7 @@ export class Form {
     // Render the form
     render() {
         return (
-            <div ref={el => this.el = el} />
+            <div />
         );
     }
 }

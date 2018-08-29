@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Element, Prop } from "@stencil/core";
 //import { $REST } from "../../src/rest.d";
 declare var $REST;
 
@@ -6,7 +6,7 @@ declare var $REST;
     tag: "bs-modal"
 })
 export class Modal {
-    el: HTMLElement;
+    @Element() private el: HTMLElement;
 
     // Modal Properties
     @Prop() body: string;
@@ -21,12 +21,11 @@ export class Modal {
     @Prop() isSmall: boolean;
     @Prop() onRenderBody: string;
     @Prop() onRenderFooter: string;
-    @Prop() title: string;
 
     // Component loaded event
     componentDidLoad() {
         // Remove the id attribute
-        this.el.parentElement.removeAttribute("id");
+        this.el.removeAttribute("id");
 
         // Get the button properties
         let buttonProps = {};
@@ -47,14 +46,14 @@ export class Modal {
             button: buttonProps,
             className: this.className,
             disableFade: this.disableFade,
-            el: this.el,
+            el: this.el.children[0],
             footer: this.footer,
             hideCloseButton: this.hideCloseButton,
             id: this.id,
             isCentered: this.isCentered,
             isLarge: this.isLarge,
             isSmall: this.isSmall,
-            title: this.title,
+            title: this.el.getAttribute("title"),
             onRenderBody: (...args) => {
                 // See if a render body event exists
                 if (this.onRenderBody && window[this.onRenderBody]) {
@@ -75,7 +74,7 @@ export class Modal {
     // Render the modal
     render() {
         return (
-            <div ref={el => this.el = el} />
+            <div />
         );
     }
 }

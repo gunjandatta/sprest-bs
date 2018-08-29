@@ -2,15 +2,15 @@ export class InputGroup {
     // Component loaded event
     componentDidLoad() {
         // Get the onclick attribute
-        let onChange = this.el.parentElement.getAttribute("onChange");
+        let onChange = this.el.getAttribute("onChange");
         // Remove the id attribute
-        this.el.parentElement.removeAttribute("id");
+        this.el.removeAttribute("id");
         // Render the inputGroup
         return $REST.Components.InputGroup({
             appendedLabel: this.appendedLabel,
             className: this.className,
             description: this.description,
-            el: this.el,
+            el: this.el.children[0],
             id: this.id,
             isLarge: this.isLarge,
             isSmall: this.isSmall,
@@ -30,7 +30,7 @@ export class InputGroup {
     }
     // Render the inputGroup
     render() {
-        return (h("div", { ref: el => this.el = el }));
+        return (h("div", null));
     }
     static get is() { return "bs-inputGroup"; }
     static get properties() { return {
@@ -45,6 +45,9 @@ export class InputGroup {
         "description": {
             "type": String,
             "attr": "description"
+        },
+        "el": {
+            "elementRef": true
         },
         "id": {
             "type": String,

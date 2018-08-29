@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Element, Prop } from "@stencil/core";
 //import { $REST } from "../../src/rest.d";
 declare var $REST;
 
@@ -6,7 +6,7 @@ declare var $REST;
     tag: "bs-breadcrumb"
 })
 export class Breadcrumb {
-    el: HTMLElement;
+    @Element() private el: HTMLElement;
 
     // Breadcrumb Properties
     @Prop() className: string;
@@ -30,7 +30,7 @@ export class Breadcrumb {
         // Render the breadcrumb
         return $REST.Components.Breadcrumb({
             className: this.className,
-            el: this.el,
+            el: this.el.children[0],
             items: items
         });
     }
@@ -38,7 +38,7 @@ export class Breadcrumb {
     // Render the breadcrumb
     render() {
         return (
-            <div ref={el => this.el = el} />
+            <div />
         );
     }
 }

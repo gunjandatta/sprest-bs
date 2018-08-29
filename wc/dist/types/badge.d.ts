@@ -1,6 +1,6 @@
 import './stencil.core';
 export declare class Badge {
-    el: HTMLElement;
+    private el;
     className: string;
     content: string;
     header: string;

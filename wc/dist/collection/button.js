@@ -2,16 +2,16 @@ export class Button {
     // Component loaded event
     componentDidLoad() {
         // Get the onclick attribute
-        let onClick = this.el.parentElement.getAttribute("onClick");
+        let onClick = this.el.getAttribute("onClick");
         // Remove the id attribute
-        this.el.parentElement.removeAttribute("id");
+        this.el.removeAttribute("id");
         // Render the button
         return $REST.Components.Button({
             badgeType: this.badgeType,
             badgeValue: this.badgeValue,
             className: this.className,
             controls: this.controls,
-            el: this.el,
+            el: this.el.children[0],
             id: this.id,
             isBlock: this.isBlock,
             isDisabled: this.isDisabled,
@@ -34,7 +34,7 @@ export class Button {
     }
     // Render the button
     render() {
-        return (h("div", { ref: el => this.el = el }));
+        return (h("div", null));
     }
     static get is() { return "bs-button"; }
     static get properties() { return {
@@ -53,6 +53,9 @@ export class Button {
         "controls": {
             "type": "Any",
             "attr": "controls"
+        },
+        "el": {
+            "elementRef": true
         },
         "id": {
             "type": String,

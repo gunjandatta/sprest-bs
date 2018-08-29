@@ -18,12 +18,12 @@ export class CardGroup {
         return $REST.Components.CardGroup({
             cards: cards,
             className: this.className,
-            el: this.el
+            el: this.el.children[0]
         });
     }
     // Render the card group
     render() {
-        return (h("div", { ref: el => this.el = el }));
+        return (h("div", null));
     }
     static get is() { return "bs-cardGroup"; }
     static get properties() { return {
@@ -34,6 +34,9 @@ export class CardGroup {
         "className": {
             "type": String,
             "attr": "class-name"
+        },
+        "el": {
+            "elementRef": true
         }
     }; }
 }

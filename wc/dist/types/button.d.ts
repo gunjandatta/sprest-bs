@@ -1,6 +1,6 @@
 import './stencil.core';
 export declare class Button {
-    el: HTMLElement;
+    private el;
     badgeType: number;
     badgeValue: string;
     className: string;

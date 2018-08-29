@@ -1,6 +1,6 @@
 import './stencil.core';
 export declare class Dropdown {
-    el: HTMLElement;
+    private el;
     className: string;
     dropLeft: boolean;
     dropRight: boolean;

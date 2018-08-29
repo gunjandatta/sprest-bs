@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Element, Prop } from "@stencil/core";
 //import { $REST } from "../../src/rest.d";
 declare var $REST;
 
@@ -6,7 +6,7 @@ declare var $REST;
     tag: "bs-badge"
 })
 export class Badge {
-    el: HTMLElement;
+    @Element() private el: HTMLElement;
 
     // Badge Properties
     @Prop() className: string;
@@ -22,7 +22,7 @@ export class Badge {
         return $REST.Components.Badge({
             className: this.className,
             content: this.content,
-            el: this.el,
+            el: this.el.children[0],
             header: this.header,
             href: this.href,
             isPill: this.isPill,
@@ -33,7 +33,7 @@ export class Badge {
     // Render the badge
     render() {
         return (
-            <div ref={el => this.el = el} />
+            <div />
         );
     }
 }

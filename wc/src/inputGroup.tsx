@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Element, Prop } from "@stencil/core";
 //import { $REST } from "../../src/rest.d";
 declare var $REST;
 
@@ -6,7 +6,7 @@ declare var $REST;
     tag: "bs-inputGroup"
 })
 export class InputGroup {
-    el: HTMLElement;
+    @Element() private el: HTMLElement;
 
     // InputGroup Properties
     @Prop() appendedLabel: string;
@@ -24,17 +24,17 @@ export class InputGroup {
     // Component loaded event
     componentDidLoad() {
         // Get the onclick attribute
-        let onChange = this.el.parentElement.getAttribute("onChange");
+        let onChange = this.el.getAttribute("onChange");
 
         // Remove the id attribute
-        this.el.parentElement.removeAttribute("id");
+        this.el.removeAttribute("id");
 
         // Render the inputGroup
         return $REST.Components.InputGroup({
             appendedLabel: this.appendedLabel,
             className: this.className,
             description: this.description,
-            el: this.el,
+            el: this.el.children[0],
             id: this.id,
             isLarge: this.isLarge,
             isSmall: this.isSmall,
@@ -56,7 +56,7 @@ export class InputGroup {
     // Render the inputGroup
     render() {
         return (
-            <div ref={el => this.el = el} />
+            <div />
         );
     }
 }

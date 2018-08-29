@@ -1,6 +1,6 @@
 import './stencil.core';
 export declare class Breadcrumb {
-    el: HTMLElement;
+    private el;
     className: string;
     items: string;
     componentDidLoad(): any;

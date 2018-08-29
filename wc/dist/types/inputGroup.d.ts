@@ -1,6 +1,6 @@
 import './stencil.core';
 export declare class InputGroup {
-    el: HTMLElement;
+    private el;
     appendedLabel: string;
     className: string;
     description: string;

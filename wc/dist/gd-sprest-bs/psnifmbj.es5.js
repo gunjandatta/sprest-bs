@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("psnifmbj",["exports","./chunk-c9c62a97.js"],function(e,d){window.GdSprestBs.h,e.BsBreadcrumb=d.Breadcrumb,Object.defineProperty(e,"__esModule",{value:!0})});

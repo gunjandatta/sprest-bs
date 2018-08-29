@@ -1,6 +1,6 @@
 import './stencil.core';
 export declare class Form {
-    el: HTMLElement;
+    private el;
     rows: string;
     value: string;
     componentDidLoad(): any;

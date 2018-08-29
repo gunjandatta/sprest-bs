@@ -2,7 +2,7 @@ export class ButtonGroup {
     // Component loaded event
     componentDidLoad() {
         // Remove the id attribute
-        this.el.parentElement.removeAttribute("id");
+        this.el.removeAttribute("id");
         // Get the buttons property
         let buttons = [];
         if (this.buttons) {
@@ -21,7 +21,7 @@ export class ButtonGroup {
             buttons: buttons,
             buttonType: this.buttonType,
             className: this.className,
-            el: this.el,
+            el: this.el.children[0],
             id: this.id,
             isLarge: this.isLarge,
             isSmall: this.isSmall,
@@ -31,7 +31,7 @@ export class ButtonGroup {
     }
     // Render the button group
     render() {
-        return (h("div", { ref: el => this.el = el }));
+        return (h("div", null));
     }
     static get is() { return "bs-buttonGroup"; }
     static get properties() { return {
@@ -46,6 +46,9 @@ export class ButtonGroup {
         "className": {
             "type": String,
             "attr": "class-name"
+        },
+        "el": {
+            "elementRef": true
         },
         "id": {
             "type": String,

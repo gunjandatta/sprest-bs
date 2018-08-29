@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Element, Prop } from "@stencil/core";
 //import { $REST } from "../../src/rest.d";
 declare var $REST;
 
@@ -6,7 +6,7 @@ declare var $REST;
     tag: "bs-dropdown"
 })
 export class Dropdown {
-    el: HTMLElement;
+    @Element() private el: HTMLElement;
 
     // Dropdown Properties
     @Prop() className: string;
@@ -25,10 +25,10 @@ export class Dropdown {
     // Component loaded event
     componentDidLoad() {
         // Get the onclick attribute
-        let onChange = this.el.parentElement.getAttribute("onChange");
+        let onChange = this.el.getAttribute("onChange");
 
         // Remove the id attribute
-        this.el.parentElement.removeAttribute("id");
+        this.el.removeAttribute("id");
 
         // Get the items
         let items = [];
@@ -49,7 +49,7 @@ export class Dropdown {
             dropLeft: this.dropLeft,
             dropRight: this.dropRight,
             dropUp: this.dropUp,
-            el: this.el,
+            el: this.el.children[0],
             formFl: this.formFl,
             id: this.id,
             isSplit: this.isSplit,
@@ -71,7 +71,7 @@ export class Dropdown {
     // Render the dropdown
     render() {
         return (
-            <div ref={el => this.el = el} />
+            <div />
         );
     }
 }

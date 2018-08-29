@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Element, Prop } from "@stencil/core";
 //import { $REST } from "../../src/rest.d";
 declare var $REST;
 
@@ -6,7 +6,7 @@ declare var $REST;
     tag: "bs-buttonGroup"
 })
 export class ButtonGroup {
-    el: HTMLElement;
+    @Element() private el: HTMLElement;
 
     // Button Group Properties
     @Prop() buttons: string;
@@ -21,7 +21,7 @@ export class ButtonGroup {
     // Component loaded event
     componentDidLoad() {
         // Remove the id attribute
-        this.el.parentElement.removeAttribute("id");
+        this.el.removeAttribute("id");
 
         // Get the buttons property
         let buttons = [];
@@ -41,7 +41,7 @@ export class ButtonGroup {
             buttons: buttons,
             buttonType: this.buttonType,
             className: this.className,
-            el: this.el,
+            el: this.el.children[0],
             id: this.id,
             isLarge: this.isLarge,
             isSmall: this.isSmall,
@@ -53,7 +53,7 @@ export class ButtonGroup {
     // Render the button group
     render() {
         return (
-            <div ref={el => this.el = el} />
+            <div />
         );
     }
 }

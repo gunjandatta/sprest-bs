@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Element, Prop } from "@stencil/core";
 //import { $REST } from "../../src/rest.d";
 declare var $REST;
 
@@ -6,7 +6,7 @@ declare var $REST;
     tag: "bs-alert"
 })
 export class Alert {
-    el: HTMLElement;
+    @Element() private el: HTMLElement;
 
     // Alert Properties
     @Prop() className: string;
@@ -21,7 +21,7 @@ export class Alert {
         return $REST.Components.Alert({
             className: this.className,
             content: this.content,
-            el: this.el,
+            el: this.el.children[0],
             header: this.header,
             isDismissible: this.isDismissible,
             type: this.type
@@ -31,7 +31,7 @@ export class Alert {
     // Render the alert
     render() {
         return (
-            <div ref={el => this.el = el} />
+            <div />
         );
     }
 }
