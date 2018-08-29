@@ -22,7 +22,6 @@ export class Dropdown {
     componentDidLoad() {
         // Get the onclick attribute
         let onChange = this.el.parentElement.getAttribute("onChange");
-        console.log("onChange event: " + onChange);
 
         // Remove the id attribute
         this.el.parentElement.removeAttribute("id");
