@@ -1,5 +1,6 @@
 export * from "./alert";
 export * from "./badge";
+export * from "./breadcrumb";
 export * from "./button";
 export * from "./buttonGroup";
 export * from "./card";
@@ -7,5 +8,6 @@ export * from "./cardGroup";
 export * from "./dropdown";
 export * from "./form";
 export * from "./inputGroup";
+export * from "./jumbotron";
 export * from "./modal";
 export * from "./nav";

@@ -30,10 +30,6 @@ export interface IBadgeProps {
 }
 
 /**
- * Badge Size
- */
-
-/**
  * Badge Types
  */
 export type IBadgeTypes = {

@@ -463,6 +463,38 @@
       }
     },
     {
+      "tag": "bs-jumbotron",
+      "dependencies": [],
+      "componentClass": "Jumbotron",
+      "componentPath": "jumbotron.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "content",
+          "type": "String",
+          "attr": "content"
+        },
+        {
+          "name": "isFluid",
+          "type": "Boolean",
+          "attr": "is-fluid"
+        },
+        {
+          "name": "lead",
+          "type": "String",
+          "attr": "lead"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
       "tag": "bs-modal",
       "dependencies": [],
       "componentClass": "Modal",

@@ -41,6 +41,7 @@ declare module 'gd-sprest-bs/rest' {
 declare module 'gd-sprest-bs/components/types' {
     export * from "gd-sprest-bs/components/types/alert";
     export * from "gd-sprest-bs/components/types/badge";
+    export * from "gd-sprest-bs/components/types/breadcrumb";
     export * from "gd-sprest-bs/components/types/button";
     export * from "gd-sprest-bs/components/types/buttonGroup";
     export * from "gd-sprest-bs/components/types/card";
@@ -48,6 +49,7 @@ declare module 'gd-sprest-bs/components/types' {
     export * from "gd-sprest-bs/components/types/dropdown";
     export * from "gd-sprest-bs/components/types/form";
     export * from "gd-sprest-bs/components/types/inputGroup";
+    export * from "gd-sprest-bs/components/types/jumbotron";
     export * from "gd-sprest-bs/components/types/modal";
     export * from "gd-sprest-bs/components/types/nav";
 }
@@ -145,7 +147,6 @@ declare module 'gd-sprest-bs/components/types/badge' {
             type?: number;
     }
     
-    
     /**
         * Badge Types
         */
@@ -158,6 +159,38 @@ declare module 'gd-sprest-bs/components/types/badge' {
             Secondary: number;
             Success: number;
             Warning: number;
+    }
+}
+
+declare module 'gd-sprest-bs/components/types/breadcrumb' {
+    /**
+        * Breadcrumb
+        */
+    export const Breadcrumb: (props: IBreadcrumbProps) => IBreadcrumb | string;
+    
+    /**
+        * Breadcrumb
+        */
+    export interface IBreadcrumb {
+            /** The element. */
+            el: Element;
+    }
+    
+    /**
+        * Breadcrumb Item
+        */
+    export interface IBreadcrumbItem {
+            href?: string;
+            text?: string;
+    }
+    
+    /**
+        * Breadcrumb Properties
+        */
+    export interface IBreadcrumbProps {
+            className?: string;
+            el?: Element | HTMLElement;
+            items?: Array<IBreadcrumbItem>
     }
 }
 
@@ -552,6 +585,34 @@ declare module 'gd-sprest-bs/components/types/inputGroup' {
             Password: number;
             TextArea: number;
             TextField: number;
+    }
+}
+
+declare module 'gd-sprest-bs/components/types/jumbotron' {
+    /**
+        * Jumbotron
+        */
+    export const Jumbotron: (props: IJumbotronProps) => IJumbotron | string;
+    
+    /**
+        * Jumbotron
+        */
+    export interface IJumbotron {
+            /** The element. */
+            el: Element;
+    }
+    
+    /**
+        * Jumbotron Properties
+        */
+    export interface IJumbotronProps {
+            className?: string;
+            content?: string;
+            el?: Element | HTMLElement;
+            isFluid?: boolean;
+            lead?: string;
+            onRenderContent?: (el?: HTMLElement) => void;
+            title?: string;
     }
 }
 

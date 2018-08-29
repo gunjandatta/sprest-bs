@@ -199,6 +199,19 @@ export namespace Components {
     'value'?: string;
   }
 
+  interface BsJumbotron {
+    'className': string;
+    'content': string;
+    'isFluid': boolean;
+    'lead': string;
+  }
+  interface BsJumbotronAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+    'content'?: string;
+    'isFluid'?: boolean;
+    'lead'?: string;
+  }
+
   interface BsModal {
     'body': string;
     'button': string;
@@ -264,6 +277,7 @@ declare global {
     'BsDropdown': Components.BsDropdown;
     'BsForm': Components.BsForm;
     'BsInputgroup': Components.BsInputgroup;
+    'BsJumbotron': Components.BsJumbotron;
     'BsModal': Components.BsModal;
     'BsNavigation': Components.BsNavigation;
   }
@@ -279,6 +293,7 @@ declare global {
     'bs-dropdown': Components.BsDropdownAttributes;
     'bs-form': Components.BsFormAttributes;
     'bs-inputGroup': Components.BsInputgroupAttributes;
+    'bs-jumbotron': Components.BsJumbotronAttributes;
     'bs-modal': Components.BsModalAttributes;
     'bs-navigation': Components.BsNavigationAttributes;
   }
@@ -344,6 +359,12 @@ declare global {
     new (): HTMLBsInputgroupElement;
   };
 
+  interface HTMLBsJumbotronElement extends Components.BsJumbotron, HTMLStencilElement {}
+  var HTMLBsJumbotronElement: {
+    prototype: HTMLBsJumbotronElement;
+    new (): HTMLBsJumbotronElement;
+  };
+
   interface HTMLBsModalElement extends Components.BsModal, HTMLStencilElement {}
   var HTMLBsModalElement: {
     prototype: HTMLBsModalElement;
@@ -367,6 +388,7 @@ declare global {
     'bs-dropdown': HTMLBsDropdownElement
     'bs-form': HTMLBsFormElement
     'bs-inputGroup': HTMLBsInputgroupElement
+    'bs-jumbotron': HTMLBsJumbotronElement
     'bs-modal': HTMLBsModalElement
     'bs-navigation': HTMLBsNavigationElement
   }
@@ -382,6 +404,7 @@ declare global {
     'bs-dropdown': HTMLBsDropdownElement;
     'bs-form': HTMLBsFormElement;
     'bs-inputGroup': HTMLBsInputgroupElement;
+    'bs-jumbotron': HTMLBsJumbotronElement;
     'bs-modal': HTMLBsModalElement;
     'bs-navigation': HTMLBsNavigationElement;
   }

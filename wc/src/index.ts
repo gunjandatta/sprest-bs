@@ -8,5 +8,6 @@ export * from "./cardGroup";
 export * from "./dropdown";
 export * from "./form";
 export * from "./inputGroup";
+export * from "./jumbotron";
 export * from "./modal";
 export * from "./nav";
