@@ -293,6 +293,21 @@
           "attr": "class-name"
         },
         {
+          "name": "dropLeft",
+          "type": "Boolean",
+          "attr": "drop-left"
+        },
+        {
+          "name": "dropRight",
+          "type": "Boolean",
+          "attr": "drop-right"
+        },
+        {
+          "name": "dropUp",
+          "type": "Boolean",
+          "attr": "drop-up"
+        },
+        {
           "name": "formFl",
           "type": "Boolean",
           "attr": "form-fl"

@@ -384,6 +384,9 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
         */
     export interface IDropdownProps {
             className?: string;
+            dropLeft?: boolean;
+            dropRight?: boolean;
+            dropUp?: boolean;
             el?: Element | HTMLElement;
             formFl?: boolean;
             id?: string;

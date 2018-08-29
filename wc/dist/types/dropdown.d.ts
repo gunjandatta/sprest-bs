@@ -2,6 +2,9 @@ import './stencil.core';
 export declare class Dropdown {
     el: HTMLElement;
     className: string;
+    dropLeft: boolean;
+    dropRight: boolean;
+    dropUp: boolean;
     formFl: boolean;
     id: string;
     isSplit: boolean;

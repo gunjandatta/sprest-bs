@@ -92,6 +92,9 @@ declare global {
 
     interface BsDropdown {
       'className': string;
+      'dropLeft': boolean;
+      'dropRight': boolean;
+      'dropUp': boolean;
       'formFl': boolean;
       'id': string;
       'isSplit': boolean;
@@ -334,6 +337,9 @@ declare global {
 
     export interface BsDropdownAttributes extends HTMLAttributes {
       'className'?: string;
+      'dropLeft'?: boolean;
+      'dropRight'?: boolean;
+      'dropUp'?: boolean;
       'formFl'?: boolean;
       'id'?: string;
       'isSplit'?: boolean;

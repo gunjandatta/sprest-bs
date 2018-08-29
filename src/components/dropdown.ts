@@ -80,6 +80,9 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
         // Set the class names
         let classNames = [props.isSplit ? "btn-group" : "dropdown"];
         props.className ? classNames.push(props.className) : null;
+        props.dropLeft ? classNames.push("dropleft") : null;
+        props.dropRight ? classNames.push("dropright") : null;
+        props.dropUp ? classNames.push("dropup") : null;
 
         let btnType = "";
         switch (props.type) {

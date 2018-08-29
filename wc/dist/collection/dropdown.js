@@ -21,6 +21,9 @@ export class Dropdown {
         // Render the dropdown
         return $REST.Components.Dropdown({
             className: this.className,
+            dropLeft: this.dropLeft,
+            dropRight: this.dropRight,
+            dropUp: this.dropUp,
             el: this.el,
             formFl: this.formFl,
             id: this.id,
@@ -48,6 +51,18 @@ export class Dropdown {
         "className": {
             "type": String,
             "attr": "class-name"
+        },
+        "dropLeft": {
+            "type": Boolean,
+            "attr": "drop-left"
+        },
+        "dropRight": {
+            "type": Boolean,
+            "attr": "drop-right"
+        },
+        "dropUp": {
+            "type": Boolean,
+            "attr": "drop-up"
         },
         "formFl": {
             "type": Boolean,

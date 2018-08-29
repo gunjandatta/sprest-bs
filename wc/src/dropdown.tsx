@@ -10,6 +10,9 @@ export class Dropdown {
 
     // Dropdown Properties
     @Prop() className: string;
+    @Prop() dropLeft: boolean;
+    @Prop() dropRight: boolean;
+    @Prop() dropUp: boolean;
     @Prop() formFl: boolean;
     @Prop() id: string;
     @Prop() isSplit: boolean;
@@ -43,6 +46,9 @@ export class Dropdown {
         // Render the dropdown
         return $REST.Components.Dropdown({
             className: this.className,
+            dropLeft: this.dropLeft,
+            dropRight: this.dropRight,
+            dropUp: this.dropUp,
             el: this.el,
             formFl: this.formFl,
             id: this.id,
@@ -54,7 +60,7 @@ export class Dropdown {
             value: this.value,
             onChange: (...args) => {
                 // See if a change event exists
-                if(onChange && window[onChange]) {
+                if (onChange && window[onChange]) {
                     // Call the event
                     window[onChange].apply(this, args);
                 }
