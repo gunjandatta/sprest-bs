@@ -10,6 +10,8 @@ export declare class Modal {
     isCentered: boolean;
     isLarge: boolean;
     isSmall: boolean;
+    onRenderBody: string;
+    onRenderFooter: string;
     title: string;
     componentDidLoad(): any;
     render(): JSX.Element;

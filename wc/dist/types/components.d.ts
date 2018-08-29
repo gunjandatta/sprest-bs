@@ -130,6 +130,8 @@ declare global {
       'isCentered': boolean;
       'isLarge': boolean;
       'isSmall': boolean;
+      'onRenderBody': string;
+      'onRenderFooter': string;
       'title': string;
     }
 
@@ -368,6 +370,8 @@ declare global {
       'isCentered'?: boolean;
       'isLarge'?: boolean;
       'isSmall'?: boolean;
+      'onRenderBody'?: string;
+      'onRenderFooter'?: string;
       'title'?: string;
     }
 

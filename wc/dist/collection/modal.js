@@ -15,7 +15,21 @@ export class Modal {
             isCentered: this.isCentered,
             isLarge: this.isLarge,
             isSmall: this.isSmall,
-            title: this.title
+            title: this.title,
+            onRenderBody: (...args) => {
+                // See if a render body event exists
+                if (this.onRenderBody && window[this.onRenderBody]) {
+                    // Call the event
+                    window[this.onRenderBody].apply(this, args);
+                }
+            },
+            onRenderFooter: (...args) => {
+                // See if a render footer event exists
+                if (this.onRenderFooter && window[this.onRenderFooter]) {
+                    // Call the event
+                    window[this.onRenderFooter].apply(this, args);
+                }
+            }
         });
     }
     // Render the modal
@@ -59,6 +73,14 @@ export class Modal {
         "isSmall": {
             "type": Boolean,
             "attr": "is-small"
+        },
+        "onRenderBody": {
+            "type": String,
+            "attr": "on-render-body"
+        },
+        "onRenderFooter": {
+            "type": String,
+            "attr": "on-render-footer"
         },
         "title": {
             "type": String,
