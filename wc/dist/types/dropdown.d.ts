@@ -4,6 +4,7 @@ export declare class Dropdown {
     className: string;
     formFl: boolean;
     id: string;
+    isSplit: boolean;
     items: string;
     label: string;
     multi: boolean;

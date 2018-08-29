@@ -387,6 +387,7 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
             el?: Element | HTMLElement;
             formFl?: boolean;
             id?: string;
+            isSplit?: boolean;
             items: Array<IDropdownItem>;
             label?: string;
             multi?: boolean;

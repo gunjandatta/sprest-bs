@@ -12,6 +12,7 @@ export class Dropdown {
     @Prop() className: string;
     @Prop() formFl: boolean;
     @Prop() id: string;
+    @Prop() isSplit: boolean;
     @Prop() items: string;
     @Prop() label: string;
     @Prop() multi: boolean;
@@ -45,6 +46,7 @@ export class Dropdown {
             el: this.el,
             formFl: this.formFl,
             id: this.id,
+            isSplit: this.isSplit,
             items: items,
             label: this.label,
             multi: this.multi,

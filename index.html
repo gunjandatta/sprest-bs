@@ -20,6 +20,7 @@
                     label: "My Dropdown",
                     type: $REST.Components.DropdownTypes.Secondary,
                     onChange: ddlOnChange,
+                    isSplit: "true",
                     items: [
                         { text: "Item 1" },
                         { text: "Item 2" },
@@ -203,7 +204,7 @@
     ]'></bs-cardGroup>
     <h3>Dropdown</h3>
     <script>function ddlOnChange(item, ev) { alert("Selected Item: " + item.text); }</script>
-    <bs-dropdown label="Select a Choice" onChange="ddlOnChange" items='[
+    <bs-dropdown is-split="true" label="Select a Choice" onChange="ddlOnChange" items='[
         { "text": "Choice 1", "value": "1" },
         { "text": "Choice 2", "value": "2" },
         { "text": "Choice 3", "value": "3" },

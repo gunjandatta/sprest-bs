@@ -78,45 +78,56 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
         html.push("</select>");
     } else {
         // Set the class names
-        let classNames = ["dropdown"];
+        let classNames = [props.isSplit ? "btn-group" : "dropdown"];
         props.className ? classNames.push(props.className) : null;
 
-        // Set the button class names
-        let btnClassNames = ["btn", "dropdown-toggle"];
+        let btnType = "";
         switch (props.type) {
             // Danger
             case DropdownTypes.Danger:
-                btnClassNames.push("btn-danger");
+                btnType = "btn-danger";
                 break;
             // Info
             case DropdownTypes.Info:
-                btnClassNames.push("btn-info");
+                btnType = "btn-info";
                 break;
             // Secondary
             case DropdownTypes.Secondary:
-                btnClassNames.push("btn-secondary");
+                btnType = "btn-secondary";
                 break;
             // Success
             case DropdownTypes.Success:
-                btnClassNames.push("btn-success");
+                btnType = "btn-success";
                 break;
             // Warning
             case DropdownTypes.Warning:
-                btnClassNames.push("btn-warning");
+                btnType = "btn-warning";
                 break;
             // Default - Primary
             default:
-                btnClassNames.push("btn-primary");
+                btnType = "btn-primary";
                 break;
         }
+
+        // Set the button class names
+        let btnClassNames = ["btn", "dropdown-toggle", btnType];
+        props.isSplit ? btnClassNames.push("dropdown-toggle-split") : null;
 
         // Set the starting tag
         html.push('<div class="' + classNames.join(' ') + '">');
 
+        // See if this is a split button
+        if (props.isSplit) {
+            // Add a button
+            html.push([
+                '<button class="button ' + btnType + '">' + (props.label || "") + '</button>'
+            ]);
+        }
+
         // Add the button
         html.push([
             '<button class="' + btnClassNames.join(' ') + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">',
-            props.label || "",
+            props.isSplit ? '<span class="sr-only">Toggle Dropdown</span>' : props.label || "",
             '</button>'
         ].join('\n'));
 

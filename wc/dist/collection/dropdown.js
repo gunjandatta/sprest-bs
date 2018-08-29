@@ -24,6 +24,7 @@ export class Dropdown {
             el: this.el,
             formFl: this.formFl,
             id: this.id,
+            isSplit: this.isSplit,
             items: items,
             label: this.label,
             multi: this.multi,
@@ -55,6 +56,10 @@ export class Dropdown {
         "id": {
             "type": String,
             "attr": "id"
+        },
+        "isSplit": {
+            "type": Boolean,
+            "attr": "is-split"
         },
         "items": {
             "type": String,

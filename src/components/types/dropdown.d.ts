@@ -47,6 +47,7 @@ export interface IDropdownProps {
     el?: Element | HTMLElement;
     formFl?: boolean;
     id?: string;
+    isSplit?: boolean;
     items: Array<IDropdownItem>;
     label?: string;
     multi?: boolean;

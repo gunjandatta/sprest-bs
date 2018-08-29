@@ -303,6 +303,11 @@
           "attr": "id"
         },
         {
+          "name": "isSplit",
+          "type": "Boolean",
+          "attr": "is-split"
+        },
+        {
           "name": "items",
           "type": "String",
           "attr": "items"
