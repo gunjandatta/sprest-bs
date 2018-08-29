@@ -127,8 +127,16 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
         for (let i = 0; i < items.length; i++) {
             let item = items[i];
 
+            // See if this is a divider
+            if (item.isDivider) {
+                // Add the divider
+                html.push('<div class="dropdown-divider"></div>');
+                continue;
+            }
+
             // Set the class names
             let classNames = ["dropdown-item"];
+            item.isHeader ? classNames.push("dropdown-header") : null;
 
             // See if this item is selected
             if (item.isSelected) {
