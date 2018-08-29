@@ -167,7 +167,8 @@
         { "text": "Web 1-1", "href": "/web/1"}
     ]'></bs-breadcrumb>
     <h3>Button</h3>
-    <bs-button text="My Button"></bs-button>
+    <script>function btnClickEvent() { alert("You clicked the web component button."); }</script>
+    <bs-button text="My Button" onClick="btnClickEvent"></bs-button>
     <h3>Button Group</h3>
     <bs-buttonGroup button-type='7' buttons='[
         { "text": "Left" },

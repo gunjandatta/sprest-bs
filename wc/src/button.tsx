@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Event, EventEmitter, Prop } from "@stencil/core";
 //import { $REST } from "../../src/rest.d";
 declare var $REST;
 
@@ -20,7 +20,6 @@ export class Button {
     @Prop() isLarge: boolean;
     @Prop() isOutline: boolean;
     @Prop() isSmall: boolean;
-    //@Prop() onClick: (ev: Event) => void;
     @Prop() target: string;
     @Prop() text: string;
     @Prop() toggle: string;
@@ -28,6 +27,9 @@ export class Button {
 
     // Component loaded event
     componentDidLoad() {
+        // Get the onclick attribute
+        let onClick = this.el.parentElement.getAttribute("onClick");
+
         // Remove the id attribute
         this.el.parentElement.removeAttribute("id");
 
@@ -45,11 +47,17 @@ export class Button {
             isLarge: this.isLarge,
             isOutline: this.isOutline,
             isSmall: this.isSmall,
-            //onClick: this.onClick,
             target: this.target,
             text: this.text,
             toggle: this.toggle,
-            type: this.type
+            type: this.type,
+            onClick: (...args) => {
+                // See if a click event exists
+                if(onClick && window[onClick]) {
+                    // Call the event
+                    window[onClick].apply(this, args);
+                }
+            }
         });
     }
 

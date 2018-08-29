@@ -1,6 +1,8 @@
 export class Button {
     // Component loaded event
     componentDidLoad() {
+        // Get the onclick attribute
+        let onClick = this.el.parentElement.getAttribute("onClick");
         // Remove the id attribute
         this.el.parentElement.removeAttribute("id");
         // Render the button
@@ -17,11 +19,17 @@ export class Button {
             isLarge: this.isLarge,
             isOutline: this.isOutline,
             isSmall: this.isSmall,
-            //onClick: this.onClick,
             target: this.target,
             text: this.text,
             toggle: this.toggle,
-            type: this.type
+            type: this.type,
+            onClick: (...args) => {
+                // See if a click event exists
+                if (onClick && window[onClick]) {
+                    // Call the event
+                    window[onClick].apply(this, args);
+                }
+            }
         });
     }
     // Render the button

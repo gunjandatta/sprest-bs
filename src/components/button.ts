@@ -99,6 +99,7 @@ export const Button = (props: IButtonProps): IButton | string => {
 
         // See if there is a click event
         if (props.onClick) {
+            debugger;
             // Add a click event
             props.el.querySelector(".btn").addEventListener("click", props.onClick);
         }
