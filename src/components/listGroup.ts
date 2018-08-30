@@ -113,7 +113,7 @@ export const ListGroup = (props: IListGroupProps): IListGroup | string => {
             // Add the link
             html.push([
                 '<a ' + attributes + '>',
-                item.content || "",
+                (props.isTabs ? item.tabName : item.content) || "",
                 item.badge ? Badge(item.badge) : "",
                 '</a>'
             ].join('\n'));

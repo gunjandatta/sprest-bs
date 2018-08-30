@@ -157,6 +157,7 @@
                 });
                 $REST.Components.ListGroup({
                     el: document.querySelector("#tabs"),
+                    colWidth: 4,
                     isTabs: true,
                     items: [
                         { tabName: "Tab 1", content: "This is the content for tab 1.", isActive: true },
@@ -265,7 +266,7 @@
     <h3>Jumbotron</h3>
     <bs-jumbotron title="Web Components" lead="These are easy to use."></bs-jumbotron>
     <h3>List Group</h3>
-    <bs-listGroup is-tabs="true" items='[
+    <bs-listGroup is-tabs="true" col-width="3" items='[
         { "tabName": "Tab 1", "content": "This is the content for tab 1.", "isActive": true },
         { "tabName": "Tab 2", "content": "This is the content for tab 2.", "badge": { "content": "10", "type": 4 } },
         { "tabName": "Tab 3", "content": "This is the content for tab 3." },
