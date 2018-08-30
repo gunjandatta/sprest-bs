@@ -4,6 +4,9 @@
     <!--script src="https://rawgit.com/gunjandatta/sprest-bs/master/wc/dist/gd-sprest-bs.js"></script-->
     <!--script src="dist/gd-sprest-bs.js"></script-->
     <script src="wc/dist/gd-sprest-bs.js"></script>
+    <style>
+        .carousel { max-width: 400px; }
+    </style>
 </head>
 
 <body>
@@ -16,6 +19,7 @@
         <div id="multi-textbox"></div>
         <div id="tabs"></div>
         <div id="popover"></div>
+        <div id="carousel"></div>
         <script type="text/javascript">
             window.addEventListener("load", function () {
                 $REST.Components.Dropdown({
@@ -178,6 +182,30 @@
                         title: "My Popover",
                     }
                 });
+                $REST.Components.Carousel({
+                    el: document.querySelector("#carousel"),
+                    enableControls: true,
+                    enableIndicators: true,
+                    id: "demoCarousel",
+                    items: [
+                        {
+                            captions: "<h5>First Slide</h5>",
+                            imageUrl: "https://via.placeholder.com/400x200",
+                            imageAlt: "First Slide",
+                            isActive: true
+                        },
+                        {
+                            captions: "<h5>Second Slide</h5>",
+                            imageUrl: "https://via.placeholder.com/400x200",
+                            imageAlt: "Second Slide"
+                        },
+                        {
+                            captions: "<h5>Third Slide</h5>",
+                            imageUrl: "https://via.placeholder.com/400x200",
+                            imageAlt: "Third Slide"
+                        }
+                    ]
+                });
             });
         </script>
     </div>
@@ -227,6 +255,25 @@
             "text": "This is the third card."
         }]}
     ]'></bs-cardGroup>
+    <h3>Carousel</h3>
+    <bs-carousel enable-controls="true" enable-indicators="true" items='[
+        {
+            "captions": "<h5>First Slide</h5>",
+            "imageUrl": "https://via.placeholder.com/400x200",
+            "imageAlt": "First Slide",
+            "isActive": true
+        },
+        {
+            "captions": "<h5>Second Slide</h5>",
+            "imageUrl": "https://via.placeholder.com/400x200",
+            "imageAlt": "Second Slide"
+        },
+        {
+            "captions": "<h5>Third Slide</h5>",
+            "imageUrl": "https://via.placeholder.com/400x200",
+            "imageAlt": "Third Slide"
+        }
+    ]'></bs-carousel>
     <h3>Dropdown</h3>
     <script>function ddlOnChange(item, ev) { alert("Selected Item: " + item.text); }</script>
     <bs-dropdown is-split="true" label="Select a Choice" onChange="ddlOnChange" items='[

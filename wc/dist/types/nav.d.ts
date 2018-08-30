@@ -6,7 +6,7 @@ export declare class Navigation {
     enableFill: boolean;
     id: string;
     items: string;
-    isJustified: string;
+    isJustified: boolean;
     isPills: boolean;
     isTabs: boolean;
     isVertical: boolean;

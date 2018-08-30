@@ -134,6 +134,25 @@ export namespace Components {
     'className'?: string;
   }
 
+  interface BsCarousel {
+    'className': string;
+    'enableControls': boolean;
+    'enableCrossfade': boolean;
+    'enableIndicators': boolean;
+    'id': string;
+    'items': string;
+    'options': string;
+  }
+  interface BsCarouselAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+    'enableControls'?: boolean;
+    'enableCrossfade'?: boolean;
+    'enableIndicators'?: boolean;
+    'id'?: string;
+    'items'?: string;
+    'options'?: string;
+  }
+
   interface BsDropdown {
     'className': string;
     'dropLeft': boolean;
@@ -263,7 +282,7 @@ export namespace Components {
     'enableFade': boolean;
     'enableFill': boolean;
     'id': string;
-    'isJustified': string;
+    'isJustified': boolean;
     'isPills': boolean;
     'isTabs': boolean;
     'isVertical': boolean;
@@ -274,7 +293,7 @@ export namespace Components {
     'enableFade'?: boolean;
     'enableFill'?: boolean;
     'id'?: string;
-    'isJustified'?: string;
+    'isJustified'?: boolean;
     'isPills'?: boolean;
     'isTabs'?: boolean;
     'isVertical'?: boolean;
@@ -306,6 +325,7 @@ declare global {
     'BsButtongroup': Components.BsButtongroup;
     'BsCard': Components.BsCard;
     'BsCardgroup': Components.BsCardgroup;
+    'BsCarousel': Components.BsCarousel;
     'BsDropdown': Components.BsDropdown;
     'BsForm': Components.BsForm;
     'BsInputgroup': Components.BsInputgroup;
@@ -324,6 +344,7 @@ declare global {
     'bs-buttonGroup': Components.BsButtongroupAttributes;
     'bs-card': Components.BsCardAttributes;
     'bs-cardGroup': Components.BsCardgroupAttributes;
+    'bs-carousel': Components.BsCarouselAttributes;
     'bs-dropdown': Components.BsDropdownAttributes;
     'bs-form': Components.BsFormAttributes;
     'bs-inputGroup': Components.BsInputgroupAttributes;
@@ -375,6 +396,12 @@ declare global {
   var HTMLBsCardgroupElement: {
     prototype: HTMLBsCardgroupElement;
     new (): HTMLBsCardgroupElement;
+  };
+
+  interface HTMLBsCarouselElement extends Components.BsCarousel, HTMLStencilElement {}
+  var HTMLBsCarouselElement: {
+    prototype: HTMLBsCarouselElement;
+    new (): HTMLBsCarouselElement;
   };
 
   interface HTMLBsDropdownElement extends Components.BsDropdown, HTMLStencilElement {}
@@ -433,6 +460,7 @@ declare global {
     'bs-buttonGroup': HTMLBsButtongroupElement
     'bs-card': HTMLBsCardElement
     'bs-cardGroup': HTMLBsCardgroupElement
+    'bs-carousel': HTMLBsCarouselElement
     'bs-dropdown': HTMLBsDropdownElement
     'bs-form': HTMLBsFormElement
     'bs-inputGroup': HTMLBsInputgroupElement
@@ -451,6 +479,7 @@ declare global {
     'bs-buttonGroup': HTMLBsButtongroupElement;
     'bs-card': HTMLBsCardElement;
     'bs-cardGroup': HTMLBsCardgroupElement;
+    'bs-carousel': HTMLBsCarouselElement;
     'bs-dropdown': HTMLBsDropdownElement;
     'bs-form': HTMLBsFormElement;
     'bs-inputGroup': HTMLBsInputgroupElement;

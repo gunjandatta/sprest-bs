@@ -17,7 +17,7 @@ var Navigation = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Navigation, "properties", {
-        get: function () { return { className: { type: String, attr: "class-name" }, el: { elementRef: !0 }, enableFade: { type: Boolean, attr: "enable-fade" }, enableFill: { type: Boolean, attr: "enable-fill" }, id: { type: String, attr: "id" }, isJustified: { type: String, attr: "is-justified" }, isPills: { type: Boolean, attr: "is-pills" }, isTabs: { type: Boolean, attr: "is-tabs" }, isVertical: { type: Boolean, attr: "is-vertical" }, items: { type: String, attr: "items" } }; },
+        get: function () { return { className: { type: String, attr: "class-name" }, el: { elementRef: !0 }, enableFade: { type: Boolean, attr: "enable-fade" }, enableFill: { type: Boolean, attr: "enable-fill" }, id: { type: String, attr: "id" }, isJustified: { type: Boolean, attr: "is-justified" }, isPills: { type: Boolean, attr: "is-pills" }, isTabs: { type: Boolean, attr: "is-tabs" }, isVertical: { type: Boolean, attr: "is-vertical" }, items: { type: String, attr: "items" } }; },
         enumerable: true,
         configurable: true
     });

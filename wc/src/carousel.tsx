@@ -3,21 +3,19 @@ import { Component, Element, Prop } from "@stencil/core";
 declare var $REST;
 
 @Component({
-    tag: "bs-navigation"
+    tag: "bs-carousel"
 })
-export class Navigation {
+export class Carousel {
     @Element() private el: HTMLElement;
 
-    // Navigation Properties
+    // Carousel Properties
     @Prop() className: string;
-    @Prop() enableFade: boolean;
-    @Prop() enableFill: boolean;
+    @Prop() enableControls: boolean;
+    @Prop() enableCrossfade: boolean;
+    @Prop() enableIndicators: boolean;
     @Prop() id: string;
     @Prop() items: string;
-    @Prop() isJustified: boolean;
-    @Prop() isPills: boolean;
-    @Prop() isTabs: boolean;
-    @Prop() isVertical: boolean;
+    @Prop() options: string;
 
     // Component loaded event
     componentDidLoad() {
@@ -37,22 +35,33 @@ export class Navigation {
             }
         }
 
-        // Render the navigation
-        return $REST.Components.Navigation({
+        // Get the options
+        let options = {};
+        if (this.options) {
+            try { options = JSON.parse(this.options); }
+            catch {
+                options = {};
+
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.options);
+            }
+        }
+
+        // Render the carousel
+        return $REST.Components.Carousel({
             className: this.className,
             el: this.el.children[0],
-            enableFade: this.enableFade,
-            enableFill: this.enableFill,
+            enableControls: this.enableControls,
+            enableCrossfade: this.enableCrossfade,
+            enableIndicators: this.enableIndicators,
             id: this.id,
             items,
-            isJustified: this.isJustified,
-            isPills: this.isPills,
-            isTabs: this.isTabs,
-            isVertical: this.isVertical
+            options
         });
     }
 
-    // Render the navigation
+    // Render the carousel
     render() {
         return (
             <div />

@@ -302,6 +302,53 @@
       }
     },
     {
+      "tag": "bs-carousel",
+      "dependencies": [],
+      "componentClass": "Carousel",
+      "componentPath": "carousel.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "enableControls",
+          "type": "Boolean",
+          "attr": "enable-controls"
+        },
+        {
+          "name": "enableCrossfade",
+          "type": "Boolean",
+          "attr": "enable-crossfade"
+        },
+        {
+          "name": "enableIndicators",
+          "type": "Boolean",
+          "attr": "enable-indicators"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "attr": "id"
+        },
+        {
+          "name": "items",
+          "type": "String",
+          "attr": "items"
+        },
+        {
+          "name": "options",
+          "type": "String",
+          "attr": "options"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
       "tag": "bs-dropdown",
       "dependencies": [],
       "componentClass": "Dropdown",
@@ -637,7 +684,7 @@
         },
         {
           "name": "isJustified",
-          "type": "String",
+          "type": "Boolean",
           "attr": "is-justified"
         },
         {

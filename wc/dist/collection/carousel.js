@@ -1,4 +1,4 @@
-export class Navigation {
+export class Carousel {
     // Component loaded event
     componentDidLoad() {
         // Remove the id attribute
@@ -16,25 +16,36 @@ export class Navigation {
                 console.log(this.items);
             }
         }
-        // Render the navigation
-        return $REST.Components.Navigation({
+        // Get the options
+        let options = {};
+        if (this.options) {
+            try {
+                options = JSON.parse(this.options);
+            }
+            catch (_b) {
+                options = {};
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.options);
+            }
+        }
+        // Render the carousel
+        return $REST.Components.Carousel({
             className: this.className,
             el: this.el.children[0],
-            enableFade: this.enableFade,
-            enableFill: this.enableFill,
+            enableControls: this.enableControls,
+            enableCrossfade: this.enableCrossfade,
+            enableIndicators: this.enableIndicators,
             id: this.id,
             items,
-            isJustified: this.isJustified,
-            isPills: this.isPills,
-            isTabs: this.isTabs,
-            isVertical: this.isVertical
+            options
         });
     }
-    // Render the navigation
+    // Render the carousel
     render() {
         return (h("div", null));
     }
-    static get is() { return "bs-navigation"; }
+    static get is() { return "bs-carousel"; }
     static get properties() { return {
         "className": {
             "type": String,
@@ -43,37 +54,29 @@ export class Navigation {
         "el": {
             "elementRef": true
         },
-        "enableFade": {
+        "enableControls": {
             "type": Boolean,
-            "attr": "enable-fade"
+            "attr": "enable-controls"
         },
-        "enableFill": {
+        "enableCrossfade": {
             "type": Boolean,
-            "attr": "enable-fill"
+            "attr": "enable-crossfade"
+        },
+        "enableIndicators": {
+            "type": Boolean,
+            "attr": "enable-indicators"
         },
         "id": {
             "type": String,
             "attr": "id"
         },
-        "isJustified": {
-            "type": Boolean,
-            "attr": "is-justified"
-        },
-        "isPills": {
-            "type": Boolean,
-            "attr": "is-pills"
-        },
-        "isTabs": {
-            "type": Boolean,
-            "attr": "is-tabs"
-        },
-        "isVertical": {
-            "type": Boolean,
-            "attr": "is-vertical"
-        },
         "items": {
             "type": String,
             "attr": "items"
+        },
+        "options": {
+            "type": String,
+            "attr": "options"
         }
     }; }
 }
