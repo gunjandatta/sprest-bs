@@ -212,6 +212,21 @@ export namespace Components {
     'lead'?: string;
   }
 
+  interface BsListgroup {
+    'className': string;
+    'enableFade': boolean;
+    'isFlush': boolean;
+    'isTabs': boolean;
+    'items': string;
+  }
+  interface BsListgroupAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+    'enableFade'?: boolean;
+    'isFlush'?: boolean;
+    'isTabs'?: boolean;
+    'items'?: string;
+  }
+
   interface BsModal {
     'body': string;
     'button': string;
@@ -278,6 +293,7 @@ declare global {
     'BsForm': Components.BsForm;
     'BsInputgroup': Components.BsInputgroup;
     'BsJumbotron': Components.BsJumbotron;
+    'BsListgroup': Components.BsListgroup;
     'BsModal': Components.BsModal;
     'BsNavigation': Components.BsNavigation;
   }
@@ -294,6 +310,7 @@ declare global {
     'bs-form': Components.BsFormAttributes;
     'bs-inputgroup': Components.BsInputgroupAttributes;
     'bs-jumbotron': Components.BsJumbotronAttributes;
+    'bs-listgroup': Components.BsListgroupAttributes;
     'bs-modal': Components.BsModalAttributes;
     'bs-navigation': Components.BsNavigationAttributes;
   }
@@ -365,6 +382,12 @@ declare global {
     new (): HTMLBsJumbotronElement;
   };
 
+  interface HTMLBsListgroupElement extends Components.BsListgroup, HTMLStencilElement {}
+  var HTMLBsListgroupElement: {
+    prototype: HTMLBsListgroupElement;
+    new (): HTMLBsListgroupElement;
+  };
+
   interface HTMLBsModalElement extends Components.BsModal, HTMLStencilElement {}
   var HTMLBsModalElement: {
     prototype: HTMLBsModalElement;
@@ -389,6 +412,7 @@ declare global {
     'bs-form': HTMLBsFormElement
     'bs-inputgroup': HTMLBsInputgroupElement
     'bs-jumbotron': HTMLBsJumbotronElement
+    'bs-listgroup': HTMLBsListgroupElement
     'bs-modal': HTMLBsModalElement
     'bs-navigation': HTMLBsNavigationElement
   }
@@ -405,6 +429,7 @@ declare global {
     'bs-form': HTMLBsFormElement;
     'bs-inputgroup': HTMLBsInputgroupElement;
     'bs-jumbotron': HTMLBsJumbotronElement;
+    'bs-listgroup': HTMLBsListgroupElement;
     'bs-modal': HTMLBsModalElement;
     'bs-navigation': HTMLBsNavigationElement;
   }

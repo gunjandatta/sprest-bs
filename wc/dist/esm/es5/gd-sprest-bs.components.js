@@ -22,6 +22,8 @@ export var InputGroup = ["bs-inputGroup",function(o){return(import("./drzuoxmo.j
 
 export var Jumbotron = ["bs-jumbotron",function(){return(import("./hm7lwtrx.js")).then(function(m){return m.BsJumbotron})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["isFluid",1,0,"is-fluid",3],["lead",1,0,1,2]]];
 
+export var ListGroup = ["bs-listGroup",function(){return(import("./ugkksppx.js")).then(function(m){return m.BsListgroup})},0,[["className",1,0,"class-name",2],["el",7],["enableFade",1,0,"enable-fade",3],["isFlush",1,0,"is-flush",3],["isTabs",1,0,"is-tabs",3],["items",1,0,1,2]]];
+
 export var Modal = ["bs-modal",function(){return(import("./i5wupj2p.js")).then(function(m){return m.BsModal})},0,[["body",1,0,1,2],["button",1,0,1,2],["className",1,0,"class-name",2],["disableFade",1,0,"disable-fade",3],["el",7],["footer",1,0,1,2],["hideCloseButton",1,0,"hide-close-button",3],["id",1,0,1,2],["isCentered",1,0,"is-centered",3],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3],["onRenderBody",1,0,"on-render-body",2],["onRenderFooter",1,0,"on-render-footer",2]]];
 
 export var Navigation = ["bs-navigation",function(){return(import("./smuidl1d.js")).then(function(m){return m.BsNavigation})},0,[["className",1,0,"class-name",2],["el",7],["enableFade",1,0,"enable-fade",3],["enableFill",1,0,"enable-fill",3],["id",1,0,1,2],["isJustified",1,0,"is-justified",2],["isPills",1,0,"is-pills",3],["isTabs",1,0,"is-tabs",3],["isVertical",1,0,"is-vertical",3],["items",1,0,1,2]]];

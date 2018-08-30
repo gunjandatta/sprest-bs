@@ -12,6 +12,7 @@ import {
   Form,
   InputGroup,
   Jumbotron,
+  ListGroup,
   Modal,
   Navigation
 } from './gd-sprest-bs.components.js';
@@ -29,6 +30,7 @@ export function defineCustomElements(window, opts) {
     Form,
     InputGroup,
     Jumbotron,
+    ListGroup,
     Modal,
     Navigation
   ], opts);

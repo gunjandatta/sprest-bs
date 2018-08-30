@@ -50,6 +50,7 @@ declare module 'gd-sprest-bs/components/types' {
     export * from "gd-sprest-bs/components/types/form";
     export * from "gd-sprest-bs/components/types/inputGroup";
     export * from "gd-sprest-bs/components/types/jumbotron";
+    export * from "gd-sprest-bs/components/types/listGroup";
     export * from "gd-sprest-bs/components/types/modal";
     export * from "gd-sprest-bs/components/types/nav";
 }
@@ -613,6 +614,74 @@ declare module 'gd-sprest-bs/components/types/jumbotron' {
             lead?: string;
             onRenderContent?: (el?: HTMLElement) => void;
             title?: string;
+    }
+}
+
+declare module 'gd-sprest-bs/components/types/listGroup' {
+    import { IBadgeProps } from "gd-sprest-bs/components/types/badge";
+    
+    /**
+        * List Group
+        */
+    export const ListGroup: (props: IListGroupProps) => IListGroup | string;
+    
+    /**
+        * List Group Item Types
+        */
+    export const ListGroupItemTypes: IListGroupItemTypes;
+    
+    /**
+        * List Group
+        */
+    export interface IListGroup {
+            /** The element. */
+            el: Element;
+    
+            /**
+                * Shows the tab content.
+                * @prop elId - The tab id.
+                */
+            show: (tabId: string) => void;
+    }
+    
+    /**
+        * List Group Item
+        */
+    export interface IListGroupItem {
+            badge?: IBadgeProps;
+            className?: string;
+            content?: string;
+            href?: string;
+            isActive?: boolean;
+            isDisabled?: boolean;
+            tabName?: string;
+            type?: number;
+    }
+    
+    /**
+        * List Group Properties
+        */
+    export interface IListGroupProps {
+            className?: string;
+            el?: Element | HTMLElement;
+            enableFade?: boolean;
+            isFlush?: boolean;
+            isTabs?: boolean;
+            items?: Array<IListGroupItem>;
+    }
+    
+    /**
+        * List Group Item Types
+        */
+    export type IListGroupItemTypes = {
+            Danger: number;
+            Dark: number;
+            Info: number;
+            Light: number;
+            Primary: number;
+            Secondary: number;
+            Success: number;
+            Warning: number;
     }
 }
 

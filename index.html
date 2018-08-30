@@ -2,6 +2,7 @@
 
 <head>
     <!--script src="https://rawgit.com/gunjandatta/sprest-bs/master/wc/dist/gd-sprest-bs.js"></script-->
+    <!--script src="dist/gd-sprest-bs.js"></script-->
     <script src="wc/dist/gd-sprest-bs.js"></script>
 </head>
 
@@ -13,6 +14,7 @@
         <div id="modal"></div>
         <div id="textbox"></div>
         <div id="multi-textbox"></div>
+        <div id="tabs"></div>
         <script type="text/javascript">
             window.addEventListener("load", function () {
                 $REST.Components.Dropdown({
@@ -153,6 +155,17 @@
                         console.log("Multi value changed to: " + val);
                     }
                 });
+                $REST.Components.ListGroup({
+                    el: document.querySelector("#tabs"),
+                    isTabs: true,
+                    items: [
+                        { tabName: "Tab 1", content: "This is the content for tab 1.", isActive: true },
+                        { tabName: "Tab 2", content: "This is the content for tab 2.", badge: { content: "10", type: 4 } },
+                        { tabName: "Tab 3", content: "This is the content for tab 3." },
+                        { tabName: "Tab 4", content: "This is the content for tab 4." },
+                        { tabName: "Tab 5", content: "This is the content for tab 5." }
+                    ]
+                });
             });
         </script>
     </div>
@@ -251,6 +264,15 @@
     <bs-inputGroup label="Multi-Line Text Field:" type="4"></bs-inputGroup>
     <h3>Jumbotron</h3>
     <bs-jumbotron title="Web Components" lead="These are easy to use."></bs-jumbotron>
+    <h3>List Group</h3>
+    <bs-listGroup is-tabs="true" items='[
+        { "tabName": "Tab 1", "content": "This is the content for tab 1.", "isActive": true },
+        { "tabName": "Tab 2", "content": "This is the content for tab 2.", "badge": { "content": "10", "type": 4 } },
+        { "tabName": "Tab 3", "content": "This is the content for tab 3." },
+        { "tabName": "Tab 4", "content": "This is the content for tab 4." },
+        { "tabName": "Tab 5", "content": "This is the content for tab 5." }
+    ]'></bs-listGroup>
+
     <h3>Modal</h3>
     <bs-modal id="wcModalDemo" title="Modal Demo" body="This is the body of the modal." button='{ "text": "Open Modal" }'></bs-modal>
     <h3>Navigation</h3>

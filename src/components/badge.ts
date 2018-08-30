@@ -5,14 +5,14 @@ import { IBadge, IBadgeProps } from "./types/badge";
  * Badge Types
  */
 export enum BadgeTypes {
-    Danger = 0,
-    Dark = 1,
-    Info = 2,
-    Light = 3,
-    Primary = 4,
-    Secondary = 5,
-    Success = 6,
-    Warning = 7
+    Danger = 1,
+    Dark = 2,
+    Info = 3,
+    Light = 4,
+    Primary = 5,
+    Secondary = 6,
+    Success = 7,
+    Warning = 8
 }
 
 /**
