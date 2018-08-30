@@ -931,12 +931,12 @@ declare module 'gd-sprest-bs/components/types/nav' {
     /**
         * Navigation
         */
-    export const Navigation: (props: INavProps) => INavigation | string;
+    export const Nav: (props: INavProps) => INav | string;
     
     /**
         * Navigation
         */
-    export interface INavigation {
+    export interface INav {
             /** Destroys an element’s tab. */
             dispose: () => void;
     

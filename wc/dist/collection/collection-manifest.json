@@ -720,7 +720,7 @@
       }
     },
     {
-      "tag": "bs-navigation",
+      "tag": "bs-nav",
       "dependencies": [],
       "componentClass": "Navigation",
       "componentPath": "nav.js",

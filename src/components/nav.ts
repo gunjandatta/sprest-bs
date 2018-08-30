@@ -1,11 +1,11 @@
 import * as jQuery from "jquery";
-import { INavigation, INavProps } from "./types/nav";
+import { INav, INavProps } from "./types/nav";
 
 /**
  * Navigation
  * @param props - The navigation properties.
  */
-export const Navigation = (props: INavProps): INavigation | string => {
+export const Nav = (props: INavProps): INav | string => {
     let html = [];
     let renderTabContent = false;
 

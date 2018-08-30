@@ -1,7 +1,7 @@
 import * as jQuery from "jquery";
 import { ButtonTypes } from "./button";
 import { ICard, ICardProps } from "./types/card";
-import { Navigation } from "./nav";
+import { Nav } from "./nav";
 
 /**
  * Card
@@ -43,7 +43,7 @@ export const Card = (props: ICardProps): ICard | string => {
             ].join(' ');
 
             // Render the navigation
-            html.push(Navigation(navProps) as string);
+            html.push(Nav(navProps) as string);
         }
     }
 

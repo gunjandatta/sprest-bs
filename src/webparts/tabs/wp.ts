@@ -1,4 +1,4 @@
-import { Navigation } from "../../components";
+import { Nav } from "../../components";
 import { INavLink } from "../../components/types";
 import { WebPart } from "../base";
 import { IWebPartInfo } from "../types/wp";
@@ -258,7 +258,7 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
             }
 
             // Render the navigation
-            let nav = Navigation({
+            let nav = Nav({
                 className: props.className,
                 el: wpInfo.el,
                 isPills: props.type == WPTabTypes.Pillars,

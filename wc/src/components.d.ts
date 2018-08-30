@@ -303,7 +303,7 @@ export namespace Components {
     'onRenderFooter'?: string;
   }
 
-  interface BsNavigation {
+  interface BsNav {
     'className': string;
     'enableFade': boolean;
     'enableFill': boolean;
@@ -314,7 +314,7 @@ export namespace Components {
     'isVertical': boolean;
     'items': string;
   }
-  interface BsNavigationAttributes extends StencilHTMLAttributes {
+  interface BsNavAttributes extends StencilHTMLAttributes {
     'className'?: string;
     'enableFade'?: boolean;
     'enableFill'?: boolean;
@@ -360,7 +360,7 @@ declare global {
     'BsJumbotron': Components.BsJumbotron;
     'BsListgroup': Components.BsListgroup;
     'BsModal': Components.BsModal;
-    'BsNavigation': Components.BsNavigation;
+    'BsNav': Components.BsNav;
     'BsPopover': Components.BsPopover;
   }
 
@@ -381,7 +381,7 @@ declare global {
     'bs-jumbotron': Components.BsJumbotronAttributes;
     'bs-listGroup': Components.BsListgroupAttributes;
     'bs-modal': Components.BsModalAttributes;
-    'bs-navigation': Components.BsNavigationAttributes;
+    'bs-nav': Components.BsNavAttributes;
     'bs-popover': Components.BsPopoverAttributes;
   }
 
@@ -482,10 +482,10 @@ declare global {
     new (): HTMLBsModalElement;
   };
 
-  interface HTMLBsNavigationElement extends Components.BsNavigation, HTMLStencilElement {}
-  var HTMLBsNavigationElement: {
-    prototype: HTMLBsNavigationElement;
-    new (): HTMLBsNavigationElement;
+  interface HTMLBsNavElement extends Components.BsNav, HTMLStencilElement {}
+  var HTMLBsNavElement: {
+    prototype: HTMLBsNavElement;
+    new (): HTMLBsNavElement;
   };
 
   interface HTMLBsPopoverElement extends Components.BsPopover, HTMLStencilElement {}
@@ -511,7 +511,7 @@ declare global {
     'bs-jumbotron': HTMLBsJumbotronElement
     'bs-listGroup': HTMLBsListgroupElement
     'bs-modal': HTMLBsModalElement
-    'bs-navigation': HTMLBsNavigationElement
+    'bs-nav': HTMLBsNavElement
     'bs-popover': HTMLBsPopoverElement
   }
 
@@ -532,7 +532,7 @@ declare global {
     'bs-jumbotron': HTMLBsJumbotronElement;
     'bs-listGroup': HTMLBsListgroupElement;
     'bs-modal': HTMLBsModalElement;
-    'bs-navigation': HTMLBsNavigationElement;
+    'bs-nav': HTMLBsNavElement;
     'bs-popover': HTMLBsPopoverElement;
   }
 

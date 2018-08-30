@@ -3,16 +3,16 @@ import { h } from "./gd-sprest-bs.core.js";
 var Navigation = /** @class */ (function () {
     function Navigation() {
     }
-    Navigation.prototype.componentDidLoad = function () { this.el.removeAttribute("id"); var t = []; if (this.items)
+    Navigation.prototype.componentDidLoad = function () { this.el.removeAttribute("id"); var e = []; if (this.items)
         try {
-            t = JSON.parse(this.items);
+            e = JSON.parse(this.items);
         }
-        catch (e) {
-            t = [], console.log("Error parsing the JSON string."), console.log(this.items);
-        } return $REST.Components.Navigation({ className: this.className, el: this.el.children[0], enableFade: this.enableFade, enableFill: this.enableFill, id: this.id, items: t, isJustified: this.isJustified, isPills: this.isPills, isTabs: this.isTabs, isVertical: this.isVertical }); };
+        catch (t) {
+            e = [], console.log("Error parsing the JSON string."), console.log(this.items);
+        } return $REST.Components.Nav({ className: this.className, el: this.el.children[0], enableFade: this.enableFade, enableFill: this.enableFill, id: this.id, items: e, isJustified: this.isJustified, isPills: this.isPills, isTabs: this.isTabs, isVertical: this.isVertical }); };
     Navigation.prototype.render = function () { return h("div", null); };
     Object.defineProperty(Navigation, "is", {
-        get: function () { return "bs-navigation"; },
+        get: function () { return "bs-nav"; },
         enumerable: true,
         configurable: true
     });

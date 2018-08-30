@@ -3,7 +3,7 @@ import { Component, Element, Prop } from "@stencil/core";
 declare var $REST;
 
 @Component({
-    tag: "bs-navigation"
+    tag: "bs-nav"
 })
 export class Navigation {
     @Element() private el: HTMLElement;
@@ -38,7 +38,7 @@ export class Navigation {
         }
 
         // Render the navigation
-        return $REST.Components.Navigation({
+        return $REST.Components.Nav({
             className: this.className,
             el: this.el.children[0],
             enableFade: this.enableFade,
