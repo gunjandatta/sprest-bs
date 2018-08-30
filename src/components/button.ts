@@ -75,18 +75,20 @@ export const Button = (props: IButtonProps): IButton | string => {
         'type="button"',
         'class="' + classNames.join(' ') + '"',
         props.isDisabled ? "disabled" : "",
+        props.isLink ? 'role="button"' : "",
         props.target ? 'data-target="' + props.target + '"' : "",
         props.toggle ? 'data-toggle="' + props.toggle + '"' : "",
+        props.trigger ? 'data-trigger="' + props.trigger + '"' : "",
         typeof (props.isExpanded) === "boolean" ? 'aria-expanded="' + (props.isExpanded ? "true" : "false") + '"' : '',
         props.controls ? 'aria-controls="' + props.controls.join(' ') + '"' : ''
     ].join(' ').replace(/  /g, " ");
 
     // Generate the html
     let html = [
-        '<button ' + attributes + '>',
+        '<' + (props.isLink ? 'a' : 'button') + ' ' + attributes + '>',
         props.text || "",
         props.badgeValue ? Badge({ content: props.badgeValue, type: props.badgeType || BadgeTypes.Light }) : '',
-        '</button>'
+        '</' + (props.isLink ? 'a' : 'button') + '>'
     ].join('\n');
 
     // See if the element exists

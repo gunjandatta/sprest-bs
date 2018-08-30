@@ -664,6 +664,43 @@
       "hostElement": {
         "name": "el"
       }
+    },
+    {
+      "tag": "bs-popover",
+      "dependencies": [],
+      "componentClass": "Popover",
+      "componentPath": "popover.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "btnProps",
+          "type": "String",
+          "attr": "btn-props"
+        },
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "isDismissible",
+          "type": "Boolean",
+          "attr": "is-dismissible"
+        },
+        {
+          "name": "options",
+          "type": "String",
+          "attr": "options"
+        },
+        {
+          "name": "type",
+          "type": "Number",
+          "attr": "type"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     }
   ],
   "collections": [],

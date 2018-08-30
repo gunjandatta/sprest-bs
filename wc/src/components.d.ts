@@ -280,6 +280,21 @@ export namespace Components {
     'isVertical'?: boolean;
     'items'?: string;
   }
+
+  interface BsPopover {
+    'btnProps': string;
+    'className': string;
+    'isDismissible': boolean;
+    'options': string;
+    'type': number;
+  }
+  interface BsPopoverAttributes extends StencilHTMLAttributes {
+    'btnProps'?: string;
+    'className'?: string;
+    'isDismissible'?: boolean;
+    'options'?: string;
+    'type'?: number;
+  }
 }
 
 declare global {
@@ -298,6 +313,7 @@ declare global {
     'BsListgroup': Components.BsListgroup;
     'BsModal': Components.BsModal;
     'BsNavigation': Components.BsNavigation;
+    'BsPopover': Components.BsPopover;
   }
 
   interface StencilIntrinsicElements {
@@ -315,6 +331,7 @@ declare global {
     'bs-listGroup': Components.BsListgroupAttributes;
     'bs-modal': Components.BsModalAttributes;
     'bs-navigation': Components.BsNavigationAttributes;
+    'bs-popover': Components.BsPopoverAttributes;
   }
 
 
@@ -402,6 +419,12 @@ declare global {
     new (): HTMLBsNavigationElement;
   };
 
+  interface HTMLBsPopoverElement extends Components.BsPopover, HTMLStencilElement {}
+  var HTMLBsPopoverElement: {
+    prototype: HTMLBsPopoverElement;
+    new (): HTMLBsPopoverElement;
+  };
+
   interface HTMLElementTagNameMap {
     'bs-alert': HTMLBsAlertElement
     'bs-badge': HTMLBsBadgeElement
@@ -417,6 +440,7 @@ declare global {
     'bs-listGroup': HTMLBsListgroupElement
     'bs-modal': HTMLBsModalElement
     'bs-navigation': HTMLBsNavigationElement
+    'bs-popover': HTMLBsPopoverElement
   }
 
   interface ElementTagNameMap {
@@ -434,6 +458,7 @@ declare global {
     'bs-listGroup': HTMLBsListgroupElement;
     'bs-modal': HTMLBsModalElement;
     'bs-navigation': HTMLBsNavigationElement;
+    'bs-popover': HTMLBsPopoverElement;
   }
 
 

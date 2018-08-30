@@ -36,12 +36,14 @@ export interface IButtonProps {
     isDisabled?: boolean;
     isExpanded?: boolean;
     isLarge?: boolean;
+    isLink?: boolean;
     isOutline?: boolean;
     isSmall?: boolean;
     onClick?: (ev?: Event) => void;
     target?: string;
     text?: string;
     toggle?: string;
+    trigger?: string;
     type?: number;
 }
 

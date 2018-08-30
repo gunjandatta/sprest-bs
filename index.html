@@ -15,6 +15,7 @@
         <div id="textbox"></div>
         <div id="multi-textbox"></div>
         <div id="tabs"></div>
+        <div id="popover"></div>
         <script type="text/javascript">
             window.addEventListener("load", function () {
                 $REST.Components.Dropdown({
@@ -167,6 +168,16 @@
                         { tabName: "Tab 5", content: "This is the content for tab 5." }
                     ]
                 });
+                $REST.Components.Popover({
+                    el: document.querySelector("#popover"),
+                    btnProps: { text: "Popover Demo" },
+                    isDismissible: true,
+                    options: {
+                        container: "body",
+                        content: "This is the popover content.",
+                        title: "My Popover",
+                    }
+                });
             });
         </script>
     </div>
@@ -284,6 +295,14 @@
         { "title": "Nav 4" },
         { "title": "Nav 5" }
     ]'></bs-navigation>
+    <h3>Popover</h3>
+    <bs-popover is-dismissible="true" btn-props='{
+        "text": "Popover Demo"
+    }' options='{
+        "container": "body",
+        "content": "This is the popover content.",
+        "title": "My Popover"
+    }'></bs-popover>
 </body>
 
 </html>
