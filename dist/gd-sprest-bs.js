@@ -1002,6 +1002,18 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 
 /***/ }),
 
+/***/ "./src/components/accordion.ts":
+/*!*************************************!*\
+  !*** ./src/components/accordion.ts ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar jQuery = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nvar button_1 = __webpack_require__(/*! ./button */ \"./src/components/button.ts\");\n/**\r\n * Accordion\r\n */\nexports.Accordion = function (props) {\n    var id = props.id || \"accordion\";\n    // Set the class names\n    var classNames = [\"accordion\"];\n    props.className ? classNames.push(props.className) : null;\n    // Add the starting tag\n    var html = ['<div id=\"' + id + '\" class=\"' + classNames.join(' ') + '\">'];\n    // Parse the items\n    var items = props.items || [];\n    for (var i = 0; i < items.length; i++) {\n        var item = items[i];\n        var itemId = id + \"_\" + i;\n        // Set the button properties\n        var btnProps = item.btnProps || {};\n        typeof btnProps.type == null ? btnProps.type = button_1.ButtonTypes.Link : null;\n        //btnProps.isLink = true;\n        btnProps.target = '#collapse_' + itemId;\n        btnProps.toggle = \"collapse\";\n        // Add the collapse\n        html.push(['<div class=\"card\">', '<div class=\"card-header\" id=\"' + itemId + '\">', button_1.Button(btnProps), '</div>', '<div id=\"' + ('collapse_' + itemId) + '\" class=\"collapse\" aria-labelledby=\"' + itemId + '\" data-parent=\"#' + id + '\">', '<div class=\"card-body\">' + (item.content || \"\") + '</div>', '</div>', '</div>'].join('\\n'));\n    }\n    // Add the closing tag\n    html.push('</div>');\n    // See if the element exists\n    if (props.el) {\n        // Set the class\n        props.el.classList.add(\"bs\");\n        // Set the html\n        props.el.innerHTML = html.join('\\n');\n        // Initialize the collapse items\n        jQuery(props.el.children[0].querySelectorAll(\".collapse\")).collapse();\n        // Return the accordion\n        var accordion = jQuery(props.el.children[0]);\n        return {\n            el: accordion\n        };\n    } else {\n        // Return the html\n        return html.join('\\n');\n    }\n};\n\n//# sourceURL=webpack:///./src/components/accordion.ts?");
+
+/***/ }),
+
 /***/ "./src/components/alert.ts":
 /*!*********************************!*\
   !*** ./src/components/alert.ts ***!
@@ -1098,6 +1110,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar 
 
 /***/ }),
 
+/***/ "./src/components/collapse.ts":
+/*!************************************!*\
+  !*** ./src/components/collapse.ts ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar jQuery = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/**\r\n * Collapse\r\n */\nexports.Collapse = function (props) {\n    // Set the class names\n    var classNames = [\"collapse\"];\n    props.className ? classNames.push(props.className) : null;\n    props.isMulti ? classNames.push(\"multi-collapse\") : null;\n    // Set the attributes\n    var attributes = ['class=\"' + classNames.join(' ') + '\"', props.id ? 'id=\"' + props.id + '\"' : ''].join(' ');\n    // Generate the html\n    var html = ['<div ' + attributes + '>', '<div class=\"card card-body\">', props.content || \"\", '</div>', '</div>'].join('\\n');\n    // See if the element exists\n    if (props.el) {\n        // Set the class\n        props.el.classList.add(\"bs\");\n        // Set the html\n        props.el.innerHTML = html;\n        // Return the collapse\n        var collapse_1 = jQuery(props.el.children[0]);\n        return {\n            dispose: function dispose() {\n                collapse_1.collapse(\"dispose\");\n            },\n            el: collapse_1,\n            hide: function hide() {\n                collapse_1.collapse(\"hide\");\n            },\n            show: function show() {\n                collapse_1.collapse(\"show\");\n            },\n            toggle: function toggle() {\n                collapse_1.collapse(\"toggle\");\n            }\n        };\n    } else {\n        // Return the html\n        return html;\n    }\n};\n\n//# sourceURL=webpack:///./src/components/collapse.ts?");
+
+/***/ }),
+
 /***/ "./src/components/dropdown.ts":
 /*!************************************!*\
   !*** ./src/components/dropdown.ts ***!
@@ -1130,7 +1154,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nfunction __export(m) {\n    for (var p in m) {\n        if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n    }\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(/*! ./alert */ \"./src/components/alert.ts\"));\n__export(__webpack_require__(/*! ./badge */ \"./src/components/badge.ts\"));\n__export(__webpack_require__(/*! ./breadcrumb */ \"./src/components/breadcrumb.ts\"));\n__export(__webpack_require__(/*! ./button */ \"./src/components/button.ts\"));\n__export(__webpack_require__(/*! ./buttonGroup */ \"./src/components/buttonGroup.ts\"));\n__export(__webpack_require__(/*! ./card */ \"./src/components/card.ts\"));\n__export(__webpack_require__(/*! ./cardGroup */ \"./src/components/cardGroup.ts\"));\n__export(__webpack_require__(/*! ./carousel */ \"./src/components/carousel.ts\"));\n__export(__webpack_require__(/*! ./dropdown */ \"./src/components/dropdown.ts\"));\n__export(__webpack_require__(/*! ./form */ \"./src/components/form.ts\"));\n__export(__webpack_require__(/*! ./inputGroup */ \"./src/components/inputGroup.ts\"));\n__export(__webpack_require__(/*! ./jumbotron */ \"./src/components/jumbotron.ts\"));\n__export(__webpack_require__(/*! ./listGroup */ \"./src/components/listGroup.ts\"));\n__export(__webpack_require__(/*! ./modal */ \"./src/components/modal.ts\"));\n__export(__webpack_require__(/*! ./nav */ \"./src/components/nav.ts\"));\n__export(__webpack_require__(/*! ./popover */ \"./src/components/popover.ts\"));\n\n//# sourceURL=webpack:///./src/components/index.ts?");
+eval("\n\nfunction __export(m) {\n    for (var p in m) {\n        if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n    }\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(/*! ./accordion */ \"./src/components/accordion.ts\"));\n__export(__webpack_require__(/*! ./alert */ \"./src/components/alert.ts\"));\n__export(__webpack_require__(/*! ./badge */ \"./src/components/badge.ts\"));\n__export(__webpack_require__(/*! ./breadcrumb */ \"./src/components/breadcrumb.ts\"));\n__export(__webpack_require__(/*! ./button */ \"./src/components/button.ts\"));\n__export(__webpack_require__(/*! ./buttonGroup */ \"./src/components/buttonGroup.ts\"));\n__export(__webpack_require__(/*! ./card */ \"./src/components/card.ts\"));\n__export(__webpack_require__(/*! ./cardGroup */ \"./src/components/cardGroup.ts\"));\n__export(__webpack_require__(/*! ./carousel */ \"./src/components/carousel.ts\"));\n__export(__webpack_require__(/*! ./collapse */ \"./src/components/collapse.ts\"));\n__export(__webpack_require__(/*! ./dropdown */ \"./src/components/dropdown.ts\"));\n__export(__webpack_require__(/*! ./form */ \"./src/components/form.ts\"));\n__export(__webpack_require__(/*! ./inputGroup */ \"./src/components/inputGroup.ts\"));\n__export(__webpack_require__(/*! ./jumbotron */ \"./src/components/jumbotron.ts\"));\n__export(__webpack_require__(/*! ./listGroup */ \"./src/components/listGroup.ts\"));\n__export(__webpack_require__(/*! ./modal */ \"./src/components/modal.ts\"));\n__export(__webpack_require__(/*! ./nav */ \"./src/components/nav.ts\"));\n__export(__webpack_require__(/*! ./popover */ \"./src/components/popover.ts\"));\n\n//# sourceURL=webpack:///./src/components/index.ts?");
 
 /***/ }),
 

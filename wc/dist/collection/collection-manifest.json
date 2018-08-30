@@ -1,6 +1,33 @@
 {
   "components": [
     {
+      "tag": "bs-accordion",
+      "dependencies": [],
+      "componentClass": "Accordion",
+      "componentPath": "accordion.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "attr": "id"
+        },
+        {
+          "name": "items",
+          "type": "String",
+          "attr": "items"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
       "tag": "bs-alert",
       "dependencies": [],
       "componentClass": "Alert",
@@ -337,6 +364,43 @@
           "name": "items",
           "type": "String",
           "attr": "items"
+        },
+        {
+          "name": "options",
+          "type": "String",
+          "attr": "options"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
+      "tag": "bs-collapse",
+      "dependencies": [],
+      "componentClass": "Collapse",
+      "componentPath": "collapse.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "content",
+          "type": "String",
+          "attr": "content"
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "attr": "id"
+        },
+        {
+          "name": "isMulti",
+          "type": "Boolean",
+          "attr": "is-multi"
         },
         {
           "name": "options",

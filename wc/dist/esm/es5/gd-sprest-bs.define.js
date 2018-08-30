@@ -1,6 +1,7 @@
 // GdSprestBs: Custom Elements Define Library, ES Module/ES5 Target
 import { defineCustomElement } from './gd-sprest-bs.core.js';
 import {
+  Accordion,
   Alert,
   Badge,
   Breadcrumb,
@@ -9,6 +10,7 @@ import {
   Card,
   CardGroup,
   Carousel,
+  Collapse,
   Dropdown,
   Form,
   InputGroup,
@@ -21,6 +23,7 @@ import {
 
 export function defineCustomElements(window, opts) {
   defineCustomElement(window, [
+    Accordion,
     Alert,
     Badge,
     Breadcrumb,
@@ -29,6 +32,7 @@ export function defineCustomElements(window, opts) {
     Card,
     CardGroup,
     Carousel,
+    Collapse,
     Dropdown,
     Form,
     InputGroup,

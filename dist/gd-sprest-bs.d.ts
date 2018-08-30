@@ -39,6 +39,7 @@ declare module 'gd-sprest-bs/rest' {
 }
 
 declare module 'gd-sprest-bs/components/types' {
+    export * from "gd-sprest-bs/components/types/accordion";
     export * from "gd-sprest-bs/components/types/alert";
     export * from "gd-sprest-bs/components/types/badge";
     export * from "gd-sprest-bs/components/types/breadcrumb";
@@ -47,6 +48,7 @@ declare module 'gd-sprest-bs/components/types' {
     export * from "gd-sprest-bs/components/types/card";
     export * from "gd-sprest-bs/components/types/cardGroup";
     export * from "gd-sprest-bs/components/types/carousel";
+    export * from "gd-sprest-bs/components/types/collapse";
     export * from "gd-sprest-bs/components/types/dropdown";
     export * from "gd-sprest-bs/components/types/form";
     export * from "gd-sprest-bs/components/types/inputGroup";
@@ -64,6 +66,41 @@ declare module 'gd-sprest-bs/webparts/types' {
     export * from "gd-sprest-bs/webparts/types/wpSearch";
     export * from "gd-sprest-bs/webparts/types/wpTabs";
     export * from "gd-sprest-bs/webparts/types/wpTaxonomy";
+}
+
+declare module 'gd-sprest-bs/components/types/accordion' {
+    import { IButtonProps } from "gd-sprest-bs/components/types/button";
+    
+    /**
+        * Accordion
+        */
+    export const Accordion: (props: IAccordionProps) => IAccordion | string;
+    
+    /**
+        * Accordion
+        */
+    export interface IAccordion {
+            /** The element. */
+            el: Element;
+    }
+    
+    /**
+        * Accordion Item
+        */
+    export interface IAccordionItem {
+            btnProps?: IButtonProps;
+            content?: string;
+    }
+    
+    /**
+        * Accordion Properties
+        */
+    export interface IAccordionProps {
+            className?: string;
+            el?: Element | HTMLElement;
+            id?: string;
+            items?: Array<IAccordionItem>;
+    }
 }
 
 declare module 'gd-sprest-bs/components/types/alert' {
@@ -453,6 +490,53 @@ declare module 'gd-sprest-bs/components/types/carousel' {
             pause?: string | boolean;
             ride?: string;
             wrap?: boolean;
+    }
+}
+
+declare module 'gd-sprest-bs/components/types/collapse' {
+    /**
+        * Collapse
+        */
+    export const Collapse: (props: ICollapseProps) => ICollapse | string;
+    
+    /**
+        * Collapse
+        */
+    export interface ICollapse {
+            /** Destroys an element’s collapse. */
+            dispose: () => void;
+    
+            /** The element. */
+            el: Element;
+    
+            /** Hides a collapsible element. */
+            hide: () => void;
+    
+            /** Shows a collapsible element. */
+            show: () => void;
+    
+            /** Toggles the collapsible element on invocation. */
+            toggle: () => void;
+    }
+    
+    /**
+        * Collapse Options
+        */
+    export interface ICollapseOptions {
+            parent?: string;
+            toggle?: string;
+    }
+    
+    /**
+        * Collapse Properties
+        */
+    export interface ICollapseProps {
+            className?: string;
+            content?: string;
+            el?: Element | HTMLElement;
+            id?: string;
+            isMulti?: boolean;
+            options?: ICollapseOptions;
     }
 }
 

@@ -5,7 +5,9 @@
     <!--script src="dist/gd-sprest-bs.js"></script-->
     <script src="wc/dist/gd-sprest-bs.js"></script>
     <style>
-        .carousel { max-width: 400px; }
+        .carousel {
+            max-width: 400px;
+        }
     </style>
 </head>
 
@@ -20,6 +22,9 @@
         <div id="tabs"></div>
         <div id="popover"></div>
         <div id="carousel"></div>
+        <div id="btnCollapse"></div>
+        <div id="collapse"></div>
+        <div id="accordion"></div>
         <script type="text/javascript">
             window.addEventListener("load", function () {
                 $REST.Components.Dropdown({
@@ -206,11 +211,55 @@
                         }
                     ]
                 });
+                $REST.Components.Button({
+                    el: document.querySelector("#btnCollapse"),
+                    target: "#collapseDemo",
+                    toggle: "collapse",
+                    text: "Collapse Demo"
+                });
+                $REST.Components.Collapse({
+                    el: document.querySelector("#collapse"),
+                    id: "collapseDemo",
+                    content: "This is the content to be collapsed."
+                });
+                $REST.Components.Accordion({
+                    el: document.querySelector("#accordion"),
+                    id: "accordionDemo",
+                    items: [
+                        {
+                            btnProps: { text: "Item 1" },
+                            content: "This is the content for item 1."
+                        },
+                        {
+                            btnProps: { text: "Item 2" },
+                            content: "This is the content for item 2."
+                        },
+                        {
+                            btnProps: { text: "Item 3" },
+                            content: "This is the content for item 3."
+                        }
+                    ]
+                });
             });
         </script>
     </div>
 
     <h1>Web Components</h1>
+    <h3>Accordion</h3>
+    <bs-accordion id="wcAccordionDemo" items='[
+        {
+            "btnProps": { "text": "Item 1" },
+            "content": "This is the content for item 1."
+        },
+        {
+            "btnProps": { "text": "Item 2" },
+            "content": "This is the content for item 2."
+        },
+        {
+            "btnProps": { "text": "Item 3" },
+            "content": "This is the content for item 3."
+        }
+    ]'></bs-accordion>
     <h3>Alert</h3>
     <bs-alert content="This is an alert"></bs-alert>
     <h3>Badge</h3>
@@ -256,7 +305,7 @@
         }]}
     ]'></bs-cardGroup>
     <h3>Carousel</h3>
-    <bs-carousel enable-controls="true" enable-indicators="true" items='[
+    <bs-carousel id="wcCarouselDemo" enable-controls="true" enable-indicators="true" items='[
         {
             "captions": "<h5>First Slide</h5>",
             "imageUrl": "https://via.placeholder.com/400x200",
@@ -274,6 +323,9 @@
             "imageAlt": "Third Slide"
         }
     ]'></bs-carousel>
+    <h3>Collapse</h3>
+    <bs-button target="#wcCollapseDemo" toggle="collapse" text="Collapse Demo"></bs-button>
+    <bs-collapse id="wcCollapseDemo" content="This is the content to be collapsed."></bs-collapse>
     <h3>Dropdown</h3>
     <script>function ddlOnChange(item, ev) { alert("Selected Item: " + item.text); }</script>
     <bs-dropdown is-split="true" label="Select a Choice" onChange="ddlOnChange" items='[

@@ -11,6 +11,17 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface BsAccordion {
+    'className': string;
+    'id': string;
+    'items': string;
+  }
+  interface BsAccordionAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+    'id'?: string;
+    'items'?: string;
+  }
+
   interface BsAlert {
     'className': string;
     'content': string;
@@ -150,6 +161,21 @@ export namespace Components {
     'enableIndicators'?: boolean;
     'id'?: string;
     'items'?: string;
+    'options'?: string;
+  }
+
+  interface BsCollapse {
+    'className': string;
+    'content': string;
+    'id': string;
+    'isMulti': boolean;
+    'options': string;
+  }
+  interface BsCollapseAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+    'content'?: string;
+    'id'?: string;
+    'isMulti'?: boolean;
     'options'?: string;
   }
 
@@ -318,6 +344,7 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'BsAccordion': Components.BsAccordion;
     'BsAlert': Components.BsAlert;
     'BsBadge': Components.BsBadge;
     'BsBreadcrumb': Components.BsBreadcrumb;
@@ -326,6 +353,7 @@ declare global {
     'BsCard': Components.BsCard;
     'BsCardgroup': Components.BsCardgroup;
     'BsCarousel': Components.BsCarousel;
+    'BsCollapse': Components.BsCollapse;
     'BsDropdown': Components.BsDropdown;
     'BsForm': Components.BsForm;
     'BsInputgroup': Components.BsInputgroup;
@@ -337,6 +365,7 @@ declare global {
   }
 
   interface StencilIntrinsicElements {
+    'bs-accordion': Components.BsAccordionAttributes;
     'bs-alert': Components.BsAlertAttributes;
     'bs-badge': Components.BsBadgeAttributes;
     'bs-breadcrumb': Components.BsBreadcrumbAttributes;
@@ -345,6 +374,7 @@ declare global {
     'bs-card': Components.BsCardAttributes;
     'bs-cardGroup': Components.BsCardgroupAttributes;
     'bs-carousel': Components.BsCarouselAttributes;
+    'bs-collapse': Components.BsCollapseAttributes;
     'bs-dropdown': Components.BsDropdownAttributes;
     'bs-form': Components.BsFormAttributes;
     'bs-inputGroup': Components.BsInputgroupAttributes;
@@ -355,6 +385,12 @@ declare global {
     'bs-popover': Components.BsPopoverAttributes;
   }
 
+
+  interface HTMLBsAccordionElement extends Components.BsAccordion, HTMLStencilElement {}
+  var HTMLBsAccordionElement: {
+    prototype: HTMLBsAccordionElement;
+    new (): HTMLBsAccordionElement;
+  };
 
   interface HTMLBsAlertElement extends Components.BsAlert, HTMLStencilElement {}
   var HTMLBsAlertElement: {
@@ -402,6 +438,12 @@ declare global {
   var HTMLBsCarouselElement: {
     prototype: HTMLBsCarouselElement;
     new (): HTMLBsCarouselElement;
+  };
+
+  interface HTMLBsCollapseElement extends Components.BsCollapse, HTMLStencilElement {}
+  var HTMLBsCollapseElement: {
+    prototype: HTMLBsCollapseElement;
+    new (): HTMLBsCollapseElement;
   };
 
   interface HTMLBsDropdownElement extends Components.BsDropdown, HTMLStencilElement {}
@@ -453,6 +495,7 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'bs-accordion': HTMLBsAccordionElement
     'bs-alert': HTMLBsAlertElement
     'bs-badge': HTMLBsBadgeElement
     'bs-breadcrumb': HTMLBsBreadcrumbElement
@@ -461,6 +504,7 @@ declare global {
     'bs-card': HTMLBsCardElement
     'bs-cardGroup': HTMLBsCardgroupElement
     'bs-carousel': HTMLBsCarouselElement
+    'bs-collapse': HTMLBsCollapseElement
     'bs-dropdown': HTMLBsDropdownElement
     'bs-form': HTMLBsFormElement
     'bs-inputGroup': HTMLBsInputgroupElement
@@ -472,6 +516,7 @@ declare global {
   }
 
   interface ElementTagNameMap {
+    'bs-accordion': HTMLBsAccordionElement;
     'bs-alert': HTMLBsAlertElement;
     'bs-badge': HTMLBsBadgeElement;
     'bs-breadcrumb': HTMLBsBreadcrumbElement;
@@ -480,6 +525,7 @@ declare global {
     'bs-card': HTMLBsCardElement;
     'bs-cardGroup': HTMLBsCardgroupElement;
     'bs-carousel': HTMLBsCarouselElement;
+    'bs-collapse': HTMLBsCollapseElement;
     'bs-dropdown': HTMLBsDropdownElement;
     'bs-form': HTMLBsFormElement;
     'bs-inputGroup': HTMLBsInputgroupElement;

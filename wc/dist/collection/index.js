@@ -1,3 +1,4 @@
+export * from "./accordion";
 export * from "./alert";
 export * from "./badge";
 export * from "./breadcrumb";
@@ -6,6 +7,7 @@ export * from "./buttonGroup";
 export * from "./card";
 export * from "./cardGroup";
 export * from "./carousel";
+export * from "./collapse";
 export * from "./dropdown";
 export * from "./form";
 export * from "./inputGroup";

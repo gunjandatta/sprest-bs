@@ -1,3 +1,4 @@
+export { a as Accordion } from "./chunk-8343bc3f.js";
 export { a as Alert } from "./chunk-07df65e5.js";
 export { a as Badge } from "./chunk-6177d96d.js";
 export { a as Breadcrumb } from "./chunk-912609a1.js";
@@ -6,6 +7,7 @@ export { a as ButtonGroup } from "./chunk-396b9a00.js";
 export { a as Card } from "./chunk-27d0653b.js";
 export { a as CardGroup } from "./chunk-79f31a12.js";
 export { a as Carousel } from "./chunk-3421b115.js";
+export { a as Collapse } from "./chunk-c17eeefa.js";
 export { a as Dropdown } from "./chunk-5ea5c810.js";
 export { a as Form } from "./chunk-a0fc0358.js";
 export { a as InputGroup } from "./chunk-4fc8e440.js";
