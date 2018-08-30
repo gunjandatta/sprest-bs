@@ -118,7 +118,7 @@ export const ListGroup = (props: IListGroupProps): IListGroup | string => {
 
             // Set the attributes
             let attributes = [
-                'class="tab-pane' + (item.isActive ? ' active' : '') + '"',
+                'class="tab-pane' + (item.isActive ? ' active' : '') + (props.enableFade ? ' fade' : '') + '"',
                 'id="' + item.tabName.replace(/[^a-zA-Z0-9]/, "") + '"',
                 'role="tabpanel"'
             ].join(' ');
