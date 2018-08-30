@@ -17,6 +17,7 @@ export class ListGroup {
         // Render the list group
         return $REST.Components.ListGroup({
             className: this.className,
+            colWidth: this.colWidth,
             el: this.el.children[0],
             enableFade: this.enableFade,
             isFlush: this.isFlush,
@@ -33,6 +34,10 @@ export class ListGroup {
         "className": {
             "type": String,
             "attr": "class-name"
+        },
+        "colWidth": {
+            "type": Number,
+            "attr": "col-width"
         },
         "el": {
             "elementRef": true

@@ -23,6 +23,27 @@ export enum ListGroupItemTypes {
 export const ListGroup = (props: IListGroupProps): IListGroup | string => {
     let html = [];
 
+    // See if we the column width is defined
+    let renderColumns = false;
+    if (props.colWidth) {
+        // Validate the value
+        if (props.colWidth > 0 && props.colWidth < 12) {
+            // Set the flag
+            renderColumns = true;
+        } else {
+            // Log
+            console.log("The column width value must be between 1-11");
+        }
+    }
+
+    // See if we are rendering columns
+    if (renderColumns) {
+        html.push([
+            '<div class="row">',
+            '<div class="col-' + props.colWidth + '">'
+        ].join('\n'));
+    }
+
     // Set the class names
     let classNames = ["list-group"];
     props.className ? classNames.push(props.className) : null;
@@ -107,8 +128,14 @@ export const ListGroup = (props: IListGroupProps): IListGroup | string => {
     // Add the list group closing tag
     html.push("</div>");
 
+    // Render the closing column tag
+    renderColumns ? html.push("</div>") : null;
+
     // See if we are rendering tabs
     if (props.isTabs) {
+        // See if we are rendering columns
+        renderColumns ? html.push('<div class="col-' + (12 - props.colWidth) + '">') : null;
+
         // Add the tab pane starting tag
         html.push('<div class="tab-content">');
 
@@ -131,8 +158,11 @@ export const ListGroup = (props: IListGroupProps): IListGroup | string => {
             ].join('\n'));
         }
 
-        // Add the tab pane starting tag
+        // Add the tab pane closing tag
         html.push("</div>");
+
+        // Render the closing column tag
+        renderColumns ? html.push("</div>") : null;
     }
 
     // See if the element exists

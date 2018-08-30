@@ -214,6 +214,7 @@ export namespace Components {
 
   interface BsListgroup {
     'className': string;
+    'colWidth': number;
     'enableFade': boolean;
     'isFlush': boolean;
     'isTabs': boolean;
@@ -221,6 +222,7 @@ export namespace Components {
   }
   interface BsListgroupAttributes extends StencilHTMLAttributes {
     'className'?: string;
+    'colWidth'?: number;
     'enableFade'?: boolean;
     'isFlush'?: boolean;
     'isTabs'?: boolean;

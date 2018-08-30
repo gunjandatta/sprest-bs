@@ -507,6 +507,11 @@
           "attr": "class-name"
         },
         {
+          "name": "colWidth",
+          "type": "Number",
+          "attr": "col-width"
+        },
+        {
           "name": "enableFade",
           "type": "Boolean",
           "attr": "enable-fade"

@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("ugkksppx",["exports","./chunk-89736119.js"],function(e,s){window.GdSprestBs.h,e.BsListgroup=s.ListGroup,Object.defineProperty(e,"__esModule",{value:!0})});

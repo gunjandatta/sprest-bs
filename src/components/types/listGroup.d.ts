@@ -43,6 +43,7 @@ export interface IListGroupItem {
  */
 export interface IListGroupProps {
     className?: string;
+    colWidth?: number;
     el?: Element | HTMLElement;
     enableFade?: boolean;
     isFlush?: boolean;

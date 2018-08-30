@@ -663,6 +663,7 @@ declare module 'gd-sprest-bs/components/types/listGroup' {
         */
     export interface IListGroupProps {
             className?: string;
+            colWidth?: number;
             el?: Element | HTMLElement;
             enableFade?: boolean;
             isFlush?: boolean;

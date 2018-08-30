@@ -10,6 +10,7 @@ export class ListGroup {
 
     // List Group Properties
     @Prop() className: string;
+    @Prop() colWidth: number;
     @Prop() enableFade: boolean;
     @Prop() isFlush: boolean;
     @Prop() isTabs: boolean;
@@ -33,6 +34,7 @@ export class ListGroup {
         // Render the list group
         return $REST.Components.ListGroup({
             className: this.className,
+            colWidth: this.colWidth,
             el: this.el.children[0],
             enableFade: this.enableFade,
             isFlush: this.isFlush,
