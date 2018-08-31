@@ -32,7 +32,7 @@ export var ListGroup = ["bs-listGroup",function(){return(import("./xpe5lh4p.js")
 
 export var Modal = ["bs-modal",function(){return(import("./i5wupj2p.js")).then(function(m){return m.BsModal})},0,[["body",1,0,1,2],["button",1,0,1,2],["className",1,0,"class-name",2],["disableFade",1,0,"disable-fade",3],["el",7],["footer",1,0,1,2],["hideCloseButton",1,0,"hide-close-button",3],["id",1,0,1,2],["isCentered",1,0,"is-centered",3],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3],["onRenderBody",1,0,"on-render-body",2],["onRenderFooter",1,0,"on-render-footer",2]]];
 
-export var Navigation = ["bs-nav",function(){return(import("./an8twbq8.js")).then(function(m){return m.BsNav})},0,[["className",1,0,"class-name",2],["el",7],["enableFade",1,0,"enable-fade",3],["enableFill",1,0,"enable-fill",3],["id",1,0,1,2],["isJustified",1,0,"is-justified",3],["isPills",1,0,"is-pills",3],["isTabs",1,0,"is-tabs",3],["isVertical",1,0,"is-vertical",3],["items",1,0,1,2]]];
+export var Nav = ["bs-nav",function(){return(import("./bjmyc12p.js")).then(function(m){return m.BsNav})},0,[["className",1,0,"class-name",2],["el",7],["enableFade",1,0,"enable-fade",3],["enableFill",1,0,"enable-fill",3],["id",1,0,1,2],["isJustified",1,0,"is-justified",3],["isPills",1,0,"is-pills",3],["isTabs",1,0,"is-tabs",3],["isVertical",1,0,"is-vertical",3],["items",1,0,1,2]]];
 
 export var Pagination = ["bs-pagination",function(){return(import("./okfupbcw.js")).then(function(m){return m.BsPagination})},0,[["alignment",1,0,1,4],["className",1,0,"class-name",2],["el",7],["icon",1,0,1,2],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3],["label",1,0,1,2],["numberOfPages",1,0,"number-of-pages",4]]];
 

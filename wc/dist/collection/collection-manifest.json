@@ -722,7 +722,7 @@
     {
       "tag": "bs-nav",
       "dependencies": [],
-      "componentClass": "Navigation",
+      "componentClass": "Nav",
       "componentPath": "nav.js",
       "styles": {},
       "props": [

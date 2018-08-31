@@ -17,7 +17,7 @@ import {
   Jumbotron,
   ListGroup,
   Modal,
-  Navigation,
+  Nav,
   Pagination,
   Popover
 } from './gd-sprest-bs.components.js';
@@ -40,7 +40,7 @@ export function defineCustomElements(window, opts) {
     Jumbotron,
     ListGroup,
     Modal,
-    Navigation,
+    Nav,
     Pagination,
     Popover
   ], opts);

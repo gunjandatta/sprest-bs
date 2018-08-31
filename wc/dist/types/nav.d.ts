@@ -1,5 +1,5 @@
 import './stencil.core';
-export declare class Navigation {
+export declare class Nav {
     private el;
     className: string;
     enableFade: boolean;

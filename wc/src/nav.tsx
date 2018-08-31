@@ -5,7 +5,7 @@ declare var $REST;
 @Component({
     tag: "bs-nav"
 })
-export class Navigation {
+export class Nav {
     @Element() private el: HTMLElement;
 
     // Navigation Properties

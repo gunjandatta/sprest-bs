@@ -1,4 +1,4 @@
-export class Navigation {
+export class Nav {
     // Component loaded event
     componentDidLoad() {
         // Remove the id attribute
