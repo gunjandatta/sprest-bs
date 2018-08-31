@@ -19,7 +19,9 @@ import {
   Modal,
   Nav,
   Pagination,
-  Popover
+  Popover,
+  Progress,
+  ProgressGroup
 } from './gd-sprest-bs.components.js';
 
 export function defineCustomElements(window, opts) {
@@ -42,6 +44,8 @@ export function defineCustomElements(window, opts) {
     Modal,
     Nav,
     Pagination,
-    Popover
+    Popover,
+    Progress,
+    ProgressGroup
   ], opts);
 }

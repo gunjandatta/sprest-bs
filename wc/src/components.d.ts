@@ -359,6 +359,36 @@ export namespace Components {
     'options'?: string;
     'type'?: number;
   }
+
+  interface BsProgress {
+    'className': string;
+    'isAnimated': boolean;
+    'isStriped': boolean;
+    'label': string;
+    'max': number;
+    'min': number;
+    'size': number;
+  }
+  interface BsProgressAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+    'isAnimated'?: boolean;
+    'isStriped'?: boolean;
+    'label'?: string;
+    'max'?: number;
+    'min'?: number;
+    'size'?: number;
+  }
+
+  interface BsProgressgroup {
+    'className': string;
+    'isMultiple': boolean;
+    'progressbars': string;
+  }
+  interface BsProgressgroupAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+    'isMultiple'?: boolean;
+    'progressbars'?: string;
+  }
 }
 
 declare global {
@@ -382,6 +412,8 @@ declare global {
     'BsNav': Components.BsNav;
     'BsPagination': Components.BsPagination;
     'BsPopover': Components.BsPopover;
+    'BsProgress': Components.BsProgress;
+    'BsProgressgroup': Components.BsProgressgroup;
   }
 
   interface StencilIntrinsicElements {
@@ -404,6 +436,8 @@ declare global {
     'bs-nav': Components.BsNavAttributes;
     'bs-pagination': Components.BsPaginationAttributes;
     'bs-popover': Components.BsPopoverAttributes;
+    'bs-progress': Components.BsProgressAttributes;
+    'bs-progressGroup': Components.BsProgressgroupAttributes;
   }
 
 
@@ -521,6 +555,18 @@ declare global {
     new (): HTMLBsPopoverElement;
   };
 
+  interface HTMLBsProgressElement extends Components.BsProgress, HTMLStencilElement {}
+  var HTMLBsProgressElement: {
+    prototype: HTMLBsProgressElement;
+    new (): HTMLBsProgressElement;
+  };
+
+  interface HTMLBsProgressgroupElement extends Components.BsProgressgroup, HTMLStencilElement {}
+  var HTMLBsProgressgroupElement: {
+    prototype: HTMLBsProgressgroupElement;
+    new (): HTMLBsProgressgroupElement;
+  };
+
   interface HTMLElementTagNameMap {
     'bs-accordion': HTMLBsAccordionElement
     'bs-alert': HTMLBsAlertElement
@@ -541,6 +587,8 @@ declare global {
     'bs-nav': HTMLBsNavElement
     'bs-pagination': HTMLBsPaginationElement
     'bs-popover': HTMLBsPopoverElement
+    'bs-progress': HTMLBsProgressElement
+    'bs-progressGroup': HTMLBsProgressgroupElement
   }
 
   interface ElementTagNameMap {
@@ -563,6 +611,8 @@ declare global {
     'bs-nav': HTMLBsNavElement;
     'bs-pagination': HTMLBsPaginationElement;
     'bs-popover': HTMLBsPopoverElement;
+    'bs-progress': HTMLBsProgressElement;
+    'bs-progressGroup': HTMLBsProgressgroupElement;
   }
 
 

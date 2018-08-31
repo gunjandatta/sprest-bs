@@ -1,0 +1,50 @@
+import { Component, Element, Prop } from "@stencil/core";
+//import { $REST } from "../../src/rest.d";
+declare var $REST;
+
+@Component({
+    tag: "bs-progressGroup"
+})
+export class ProgressGroup {
+    @Element() private el: HTMLElement;
+
+    // Progress Properties
+    @Prop() className: string;
+    @Prop() isMultiple: boolean;
+    @Prop() progressbars: string;
+
+    // Component loaded event
+    componentDidLoad() {
+        // Set the progress bars
+        let progressbars = [];
+        if (this.progressbars) {
+            try { progressbars = JSON.parse(this.progressbars); }
+            catch {
+                progressbars = [];
+
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.progressbars);
+            }
+        }
+
+        for (let i = 0; i < progressbars.length; i++) {
+            console.log(progressbars[i]);
+        }
+
+        // Render the progress group
+        return $REST.Components.ProgressGroup({
+            className: this.className,
+            el: this.el.children[0],
+            isMultiple: this.isMultiple,
+            progressbars
+        });
+    }
+
+    // Render the progress
+    render() {
+        return (
+            <div />
+        );
+    }
+}

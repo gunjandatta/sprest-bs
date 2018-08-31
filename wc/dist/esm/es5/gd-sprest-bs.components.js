@@ -37,3 +37,7 @@ export var Nav = ["bs-nav",function(){return(import("./bjmyc12p.js")).then(funct
 export var Pagination = ["bs-pagination",function(){return(import("./okfupbcw.js")).then(function(m){return m.BsPagination})},0,[["alignment",1,0,1,4],["className",1,0,"class-name",2],["el",7],["icon",1,0,1,2],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3],["label",1,0,1,2],["numberOfPages",1,0,"number-of-pages",4]]];
 
 export var Popover = ["bs-popover",function(){return(import("./veiafayi.js")).then(function(m){return m.BsPopover})},0,[["btnProps",1,0,"btn-props",2],["className",1,0,"class-name",2],["el",7],["isDismissible",1,0,"is-dismissible",3],["options",1,0,1,2],["type",1,0,1,4]]];
+
+export var Progress = ["bs-progress",function(){return(import("./ugxo8boj.js")).then(function(m){return m.BsProgress})},0,[["className",1,0,"class-name",2],["el",7],["isAnimated",1,0,"is-animated",3],["isStriped",1,0,"is-striped",3],["label",1,0,1,2],["max",1,0,1,4],["min",1,0,1,4],["size",1,0,1,4]]];
+
+export var ProgressGroup = ["bs-progressGroup",function(){return(import("./k58o2eoj.js")).then(function(m){return m.BsProgressgroup})},0,[["className",1,0,"class-name",2],["el",7],["isMultiple",1,0,"is-multiple",3],["progressbars",1,0,1,2]]];

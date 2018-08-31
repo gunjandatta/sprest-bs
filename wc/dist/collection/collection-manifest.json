@@ -859,6 +859,80 @@
       "hostElement": {
         "name": "el"
       }
+    },
+    {
+      "tag": "bs-progress",
+      "dependencies": [],
+      "componentClass": "Progress",
+      "componentPath": "progress.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "isAnimated",
+          "type": "Boolean",
+          "attr": "is-animated"
+        },
+        {
+          "name": "isStriped",
+          "type": "Boolean",
+          "attr": "is-striped"
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "attr": "label"
+        },
+        {
+          "name": "max",
+          "type": "Number",
+          "attr": "max"
+        },
+        {
+          "name": "min",
+          "type": "Number",
+          "attr": "min"
+        },
+        {
+          "name": "size",
+          "type": "Number",
+          "attr": "size"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
+      "tag": "bs-progressgroup",
+      "dependencies": [],
+      "componentClass": "ProgressGroup",
+      "componentPath": "progressGroup.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "isMultiple",
+          "type": "Boolean",
+          "attr": "is-multiple"
+        },
+        {
+          "name": "progressbars",
+          "type": "String",
+          "attr": "progressbars"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     }
   ],
   "collections": [],

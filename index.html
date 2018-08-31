@@ -26,6 +26,8 @@
         <div id="collapse"></div>
         <div id="accordion"></div>
         <div id="paging"></div>
+        <div id="progress"></div>
+        <div id="progressGroup"></div>
         <script type="text/javascript">
             window.addEventListener("load", function () {
                 $REST.Components.Dropdown({
@@ -245,6 +247,27 @@
                     el: document.querySelector("#paging"),
                     numberOfPages: 5
                 });
+                $REST.Components.Progress({
+                    el: document.querySelector("#progress"),
+                    size: 25,
+                    label: "25%"
+                });
+                $REST.Components.ProgressGroup({
+                    el: document.querySelector("#progressGroup"),
+                    progressbars: [
+                        {
+                            size: 25,
+                            isStriped: true,
+                            label: "25%"
+                        },
+                        {
+                            size: 50,
+                            isAnimated: true,
+                            isStriped: true,
+                            label: "50%"
+                        }
+                    ]
+                });
             });
         </script>
     </div>
@@ -401,10 +424,10 @@
     ]'></bs-nav>
     <h3>Pagination</h3>
     <script type="text/javascript">
-    function onPaginationClick(index, ev) {
-        // Log the index
-        console.log("The page number selected is: " + index);
-    }
+        function onPaginationClick(index, ev) {
+            // Log the index
+            console.log("The page number selected is: " + index);
+        }
     </script>
     <bs-pagination number-of-pages="5" onClick="onPaginationClick"></bs-pagination>
     <h3>Popover</h3>
@@ -415,6 +438,20 @@
         "content": "This is the popover content.",
         "title": "My Popover"
     }'></bs-popover>
+    <bs-progress is-striped="true" label="25%" size="25"></bs-progress>
+    <bs-progressGroup progressbars='[
+    {
+        "size": 25,
+        "isStriped": true,
+        "label": "25%"
+    },
+    {
+        "size": 50,
+        "isAnimated": true,
+        "isStriped": true,
+        "label": "50%"
+    }
+]'></bs-progressGroup>
 </body>
 
 </html>

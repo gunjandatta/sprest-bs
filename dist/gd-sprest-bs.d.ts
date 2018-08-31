@@ -58,6 +58,8 @@ declare module 'gd-sprest-bs/components/types' {
     export * from "gd-sprest-bs/components/types/nav";
     export * from "gd-sprest-bs/components/types/pagination";
     export * from "gd-sprest-bs/components/types/popover";
+    export * from "gd-sprest-bs/components/types/progress";
+    export * from "gd-sprest-bs/components/types/progressGroup";
 }
 
 declare module 'gd-sprest-bs/webparts/types' {
@@ -1104,6 +1106,62 @@ declare module 'gd-sprest-bs/components/types/popover' {
             Left: number;
             Right: number;
             Top: number;
+    }
+}
+
+declare module 'gd-sprest-bs/components/types/progress' {
+    /**
+        * Progress
+        */
+    export const Progress: (props: IProgressProps) => IProgress | string;
+    
+    /**
+        * Progress
+        */
+    export interface IProgress {
+            /** The element. */
+            el: Element;
+    }
+    
+    /**
+        * Progress Properties
+        */
+    export interface IProgressProps {
+            className?: string;
+            el?: Element | HTMLElement;
+            isAnimated?: boolean;
+            isStriped?: boolean;
+            label?: string;
+            max?: number;
+            min?: number;
+            size?: number;
+    }
+}
+
+declare module 'gd-sprest-bs/components/types/progressGroup' {
+    import { IProgressProps } from "gd-sprest-bs/components/types/progress";
+    
+    /**
+        * Progress Group
+        */
+    export const ProgressGroup: (props: IProgressGroupProps) => IProgressGroup | string;
+    
+    /**
+        * Progress Group
+        */
+    export interface IProgressGroup {
+            /** The element. */
+            el: Element;
+    }
+    
+    /**
+        * Progress Group Properties
+        */
+    export interface IProgressGroupProps {
+            className?: string;
+            el?: Element | HTMLElement;
+            isMultiple?: boolean;
+            progressbars?: Array<IProgressProps>;
     }
 }
 
