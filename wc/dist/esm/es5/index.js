@@ -19,3 +19,4 @@ export { a as Pagination } from "./chunk-0a666e61.js";
 export { a as Popover } from "./chunk-235ea17b.js";
 export { a as Progress } from "./chunk-84155f82.js";
 export { a as ProgressGroup } from "./chunk-75064561.js";
+export { a as Tooltip } from "./chunk-ba8d0a08.js";

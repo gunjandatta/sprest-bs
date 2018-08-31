@@ -389,6 +389,19 @@ export namespace Components {
     'isMultiple'?: boolean;
     'progressbars'?: string;
   }
+
+  interface BsTooltip {
+    'btnProps': string;
+    'className': string;
+    'options': string;
+    'type': number;
+  }
+  interface BsTooltipAttributes extends StencilHTMLAttributes {
+    'btnProps'?: string;
+    'className'?: string;
+    'options'?: string;
+    'type'?: number;
+  }
 }
 
 declare global {
@@ -414,6 +427,7 @@ declare global {
     'BsPopover': Components.BsPopover;
     'BsProgress': Components.BsProgress;
     'BsProgressgroup': Components.BsProgressgroup;
+    'BsTooltip': Components.BsTooltip;
   }
 
   interface StencilIntrinsicElements {
@@ -438,6 +452,7 @@ declare global {
     'bs-popover': Components.BsPopoverAttributes;
     'bs-progress': Components.BsProgressAttributes;
     'bs-progressgroup': Components.BsProgressgroupAttributes;
+    'bs-tooltip': Components.BsTooltipAttributes;
   }
 
 
@@ -567,6 +582,12 @@ declare global {
     new (): HTMLBsProgressgroupElement;
   };
 
+  interface HTMLBsTooltipElement extends Components.BsTooltip, HTMLStencilElement {}
+  var HTMLBsTooltipElement: {
+    prototype: HTMLBsTooltipElement;
+    new (): HTMLBsTooltipElement;
+  };
+
   interface HTMLElementTagNameMap {
     'bs-accordion': HTMLBsAccordionElement
     'bs-alert': HTMLBsAlertElement
@@ -589,6 +610,7 @@ declare global {
     'bs-popover': HTMLBsPopoverElement
     'bs-progress': HTMLBsProgressElement
     'bs-progressgroup': HTMLBsProgressgroupElement
+    'bs-tooltip': HTMLBsTooltipElement
   }
 
   interface ElementTagNameMap {
@@ -613,6 +635,7 @@ declare global {
     'bs-popover': HTMLBsPopoverElement;
     'bs-progress': HTMLBsProgressElement;
     'bs-progressgroup': HTMLBsProgressgroupElement;
+    'bs-tooltip': HTMLBsTooltipElement;
   }
 
 

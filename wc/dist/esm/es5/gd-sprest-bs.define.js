@@ -21,7 +21,8 @@ import {
   Pagination,
   Popover,
   Progress,
-  ProgressGroup
+  ProgressGroup,
+  Tooltip
 } from './gd-sprest-bs.components.js';
 
 export function defineCustomElements(window, opts) {
@@ -46,6 +47,7 @@ export function defineCustomElements(window, opts) {
     Pagination,
     Popover,
     Progress,
-    ProgressGroup
+    ProgressGroup,
+    Tooltip
   ], opts);
 }

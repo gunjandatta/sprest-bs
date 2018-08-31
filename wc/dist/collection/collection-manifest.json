@@ -933,6 +933,38 @@
       "hostElement": {
         "name": "el"
       }
+    },
+    {
+      "tag": "bs-tooltip",
+      "dependencies": [],
+      "componentClass": "Tooltip",
+      "componentPath": "toggle.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "btnProps",
+          "type": "String",
+          "attr": "btn-props"
+        },
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "options",
+          "type": "String",
+          "attr": "options"
+        },
+        {
+          "name": "type",
+          "type": "Number",
+          "attr": "type"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     }
   ],
   "collections": [],

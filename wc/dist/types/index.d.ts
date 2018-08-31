@@ -19,3 +19,4 @@ export * from "./pagination";
 export * from "./popover";
 export * from "./progress";
 export * from "./progressGroup";
+export * from "./toggle";

@@ -41,3 +41,5 @@ export var Popover = ["bs-popover",function(){return(import("./veiafayi.js")).th
 export var Progress = ["bs-progress",function(){return(import("./ugxo8boj.js")).then(function(m){return m.BsProgress})},0,[["className",1,0,"class-name",2],["el",7],["isAnimated",1,0,"is-animated",3],["isStriped",1,0,"is-striped",3],["label",1,0,1,2],["max",1,0,1,4],["min",1,0,1,4],["size",1,0,1,4]]];
 
 export var ProgressGroup = ["bs-progressGroup",function(){return(import("./u2htaubq.js")).then(function(m){return m.BsProgressgroup})},0,[["className",1,0,"class-name",2],["el",7],["isMultiple",1,0,"is-multiple",3],["progressbars",1,0,1,2]]];
+
+export var Tooltip = ["bs-tooltip",function(){return(import("./2fchqmeq.js")).then(function(m){return m.BsTooltip})},0,[["btnProps",1,0,"btn-props",2],["className",1,0,"class-name",2],["el",7],["options",1,0,1,2],["type",1,0,1,4]]];
