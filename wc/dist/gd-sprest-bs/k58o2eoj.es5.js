@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("k58o2eoj",["exports","./chunk-f18acf3c.js"],function(e,s){window.GdSprestBs.h,e.BsProgressgroup=s.ProgressGroup,Object.defineProperty(e,"__esModule",{value:!0})});

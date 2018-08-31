@@ -18,7 +18,6 @@ export const ProgressGroup = (props: IProgressGroupProps): IProgressGroup | stri
     let progressbars = props.progressbars || [];
     for (let i = 0; i < progressbars.length; i++) {
         // Add the progress bar
-        console.log(progressbars[i]);
         html.push(Progress(progressbars[i]) as string);
     }
 

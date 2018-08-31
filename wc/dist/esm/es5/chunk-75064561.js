@@ -9,8 +9,7 @@ var ProgressGroup = /** @class */ (function () {
         }
         catch (r) {
             s = [], console.log("Error parsing the JSON string."), console.log(this.progressbars);
-        } for (var r = 0; r < s.length; r++)
-        console.log(s[r]); return $REST.Components.ProgressGroup({ className: this.className, el: this.el.children[0], isMultiple: this.isMultiple, progressbars: s }); };
+        } return $REST.Components.ProgressGroup({ className: this.className, el: this.el.children[0], isMultiple: this.isMultiple, progressbars: s }); };
     ProgressGroup.prototype.render = function () { return h("div", null); };
     Object.defineProperty(ProgressGroup, "is", {
         get: function () { return "bs-progressGroup"; },

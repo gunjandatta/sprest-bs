@@ -28,10 +28,6 @@ export class ProgressGroup {
             }
         }
 
-        for (let i = 0; i < progressbars.length; i++) {
-            console.log(progressbars[i]);
-        }
-
         // Render the progress group
         return $REST.Components.ProgressGroup({
             className: this.className,
