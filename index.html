@@ -25,6 +25,7 @@
         <div id="btnCollapse"></div>
         <div id="collapse"></div>
         <div id="accordion"></div>
+        <div id="paging"></div>
         <script type="text/javascript">
             window.addEventListener("load", function () {
                 $REST.Components.Dropdown({
@@ -240,6 +241,10 @@
                         }
                     ]
                 });
+                $REST.Components.Pagination({
+                    el: document.querySelector("#paging"),
+                    numberOfPages: 5
+                });
             });
         </script>
     </div>
@@ -394,6 +399,14 @@
         { "title": "Nav 4" },
         { "title": "Nav 5" }
     ]'></bs-nav>
+    <h3>Pagination</h3>
+    <script type="text/javascript">
+    function onPaginationClick(index, ev) {
+        // Log the index
+        console.log("The page number selected is: " + index);
+    }
+    </script>
+    <bs-pagination number-of-pages="5" onClick="onPaginationClick"></bs-pagination>
     <h3>Popover</h3>
     <bs-popover is-dismissible="true" btn-props='{
         "text": "Popover Demo"

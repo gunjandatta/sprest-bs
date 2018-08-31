@@ -15,4 +15,5 @@ export * from "./jumbotron";
 export * from "./listGroup";
 export * from "./modal";
 export * from "./nav";
+export * from "./pagination";
 export * from "./popover";

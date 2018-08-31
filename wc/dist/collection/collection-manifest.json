@@ -777,6 +777,53 @@
       }
     },
     {
+      "tag": "bs-pagination",
+      "dependencies": [],
+      "componentClass": "Pagination",
+      "componentPath": "pagination.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "alignment",
+          "type": "Number",
+          "attr": "alignment"
+        },
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "icon",
+          "type": "String",
+          "attr": "icon"
+        },
+        {
+          "name": "isLarge",
+          "type": "Boolean",
+          "attr": "is-large"
+        },
+        {
+          "name": "isSmall",
+          "type": "Boolean",
+          "attr": "is-small"
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "attr": "label"
+        },
+        {
+          "name": "numberOfPages",
+          "type": "Number",
+          "attr": "number-of-pages"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
       "tag": "bs-popover",
       "dependencies": [],
       "componentClass": "Popover",

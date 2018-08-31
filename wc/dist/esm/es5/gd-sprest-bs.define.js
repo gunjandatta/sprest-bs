@@ -18,6 +18,7 @@ import {
   ListGroup,
   Modal,
   Navigation,
+  Pagination,
   Popover
 } from './gd-sprest-bs.components.js';
 
@@ -40,6 +41,7 @@ export function defineCustomElements(window, opts) {
     ListGroup,
     Modal,
     Navigation,
+    Pagination,
     Popover
   ], opts);
 }

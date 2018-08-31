@@ -15,4 +15,5 @@ export { a as Jumbotron } from "./chunk-cdc10596.js";
 export { a as ListGroup } from "./chunk-82faaf11.js";
 export { a as Modal } from "./chunk-5b3fa049.js";
 export { a as Navigation } from "./chunk-788daa04.js";
+export { a as Pagination } from "./chunk-0a666e61.js";
 export { a as Popover } from "./chunk-235ea17b.js";

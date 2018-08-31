@@ -326,6 +326,25 @@ export namespace Components {
     'items'?: string;
   }
 
+  interface BsPagination {
+    'alignment': number;
+    'className': string;
+    'icon': string;
+    'isLarge': boolean;
+    'isSmall': boolean;
+    'label': string;
+    'numberOfPages': number;
+  }
+  interface BsPaginationAttributes extends StencilHTMLAttributes {
+    'alignment'?: number;
+    'className'?: string;
+    'icon'?: string;
+    'isLarge'?: boolean;
+    'isSmall'?: boolean;
+    'label'?: string;
+    'numberOfPages'?: number;
+  }
+
   interface BsPopover {
     'btnProps': string;
     'className': string;
@@ -361,6 +380,7 @@ declare global {
     'BsListgroup': Components.BsListgroup;
     'BsModal': Components.BsModal;
     'BsNav': Components.BsNav;
+    'BsPagination': Components.BsPagination;
     'BsPopover': Components.BsPopover;
   }
 
@@ -382,6 +402,7 @@ declare global {
     'bs-listgroup': Components.BsListgroupAttributes;
     'bs-modal': Components.BsModalAttributes;
     'bs-nav': Components.BsNavAttributes;
+    'bs-pagination': Components.BsPaginationAttributes;
     'bs-popover': Components.BsPopoverAttributes;
   }
 
@@ -488,6 +509,12 @@ declare global {
     new (): HTMLBsNavElement;
   };
 
+  interface HTMLBsPaginationElement extends Components.BsPagination, HTMLStencilElement {}
+  var HTMLBsPaginationElement: {
+    prototype: HTMLBsPaginationElement;
+    new (): HTMLBsPaginationElement;
+  };
+
   interface HTMLBsPopoverElement extends Components.BsPopover, HTMLStencilElement {}
   var HTMLBsPopoverElement: {
     prototype: HTMLBsPopoverElement;
@@ -512,6 +539,7 @@ declare global {
     'bs-listgroup': HTMLBsListgroupElement
     'bs-modal': HTMLBsModalElement
     'bs-nav': HTMLBsNavElement
+    'bs-pagination': HTMLBsPaginationElement
     'bs-popover': HTMLBsPopoverElement
   }
 
@@ -533,6 +561,7 @@ declare global {
     'bs-listgroup': HTMLBsListgroupElement;
     'bs-modal': HTMLBsModalElement;
     'bs-nav': HTMLBsNavElement;
+    'bs-pagination': HTMLBsPaginationElement;
     'bs-popover': HTMLBsPopoverElement;
   }
 
