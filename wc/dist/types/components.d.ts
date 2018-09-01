@@ -330,6 +330,7 @@ export namespace Components {
     'brand': string;
     'brandUrl': string;
     'className': string;
+    'id': string;
     'items': string;
     'searchBox': string;
     'type': number;
@@ -338,6 +339,7 @@ export namespace Components {
     'brand'?: string;
     'brandUrl'?: string;
     'className'?: string;
+    'id'?: string;
     'items'?: string;
     'searchBox'?: string;
     'type'?: number;

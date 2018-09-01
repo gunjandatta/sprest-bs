@@ -799,6 +799,11 @@
           "attr": "class-name"
         },
         {
+          "name": "id",
+          "type": "String",
+          "attr": "id"
+        },
+        {
           "name": "items",
           "type": "String",
           "attr": "items"

@@ -12,12 +12,16 @@ export class Navbar {
     @Prop() brand: string;
     @Prop() brandUrl: string;
     @Prop() className: string;
+    @Prop() id: string;
     @Prop() items: string;
     @Prop() searchBox: string;
     @Prop() type: number;
 
     // Component loaded event
     componentDidLoad() {
+        // Remove the id attribute
+        this.el.removeAttribute("id");
+
         // Get the items
         let items = [];
         if (this.items) {
@@ -72,6 +76,7 @@ export class Navbar {
             brandUrl: this.brandUrl,
             className: this.className,
             el: this.el.children[0],
+            id: this.id,
             items,
             searchBox,
             type: this.type

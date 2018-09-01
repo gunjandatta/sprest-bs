@@ -1,6 +1,8 @@
 export class Navbar {
     // Component loaded event
     componentDidLoad() {
+        // Remove the id attribute
+        this.el.removeAttribute("id");
         // Get the items
         let items = [];
         if (this.items) {
@@ -51,6 +53,7 @@ export class Navbar {
             brandUrl: this.brandUrl,
             className: this.className,
             el: this.el.children[0],
+            id: this.id,
             items,
             searchBox,
             type: this.type
@@ -76,6 +79,10 @@ export class Navbar {
         },
         "el": {
             "elementRef": true
+        },
+        "id": {
+            "type": String,
+            "attr": "id"
         },
         "items": {
             "type": String,

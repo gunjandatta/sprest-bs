@@ -4,6 +4,7 @@ export declare class Navbar {
     brand: string;
     brandUrl: string;
     className: string;
+    id: string;
     items: string;
     searchBox: string;
     type: number;

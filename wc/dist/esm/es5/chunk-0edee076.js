@@ -5,6 +5,7 @@ var Navbar = /** @class */ (function () {
     }
     Navbar.prototype.componentDidLoad = function () {
         var _this = this;
+        this.el.removeAttribute("id");
         var t = [];
         if (this.items)
             try {
@@ -42,7 +43,7 @@ var Navbar = /** @class */ (function () {
                 });
             }
         }
-        return $REST.Components.Navbar({ brand: this.brand, brandUrl: this.brandUrl, className: this.className, el: this.el.children[0], items: t, searchBox: e, type: this.type });
+        return $REST.Components.Navbar({ brand: this.brand, brandUrl: this.brandUrl, className: this.className, el: this.el.children[0], id: this.id, items: t, searchBox: e, type: this.type });
     };
     Navbar.prototype.render = function () { return h("div", null); };
     Object.defineProperty(Navbar, "is", {
@@ -51,7 +52,7 @@ var Navbar = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Navbar, "properties", {
-        get: function () { return { brand: { type: String, attr: "brand" }, brandUrl: { type: String, attr: "brand-url" }, className: { type: String, attr: "class-name" }, el: { elementRef: !0 }, items: { type: String, attr: "items" }, searchBox: { type: String, attr: "search-box" }, type: { type: Number, attr: "type" } }; },
+        get: function () { return { brand: { type: String, attr: "brand" }, brandUrl: { type: String, attr: "brand-url" }, className: { type: String, attr: "class-name" }, el: { elementRef: !0 }, id: { type: String, attr: "id" }, items: { type: String, attr: "items" }, searchBox: { type: String, attr: "search-box" }, type: { type: Number, attr: "type" } }; },
         enumerable: true,
         configurable: true
     });
