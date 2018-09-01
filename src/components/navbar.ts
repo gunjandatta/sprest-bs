@@ -48,16 +48,19 @@ export const Navbar = (props: INavbarProps): INavbar | string => {
         html.push('<a class="navbar-brand"' + (props.brandUrl ? ' href="' + props.brandUrl + '"' : '') + '>' + props.brand + '</a>');
     }
 
+    // Set the nav id
+    let navId = props.id || "navbar_content";
+
     // Render the toggler
     html.push([
-        '<button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">',
+        '<button class="navbar-toggler" type="button" data-target="#' + navId + '" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">',
         '<span class="navbar-toggler-icon"></span>',
         '</button>'
     ].join('\n'));
 
     // Set the list starting tag
     html.push([
-        '<div class="collapse navbar-collapse">',
+        '<div class="collapse navbar-collapse" id="' + navId + '">',
         '<ul class="navbar-nav">'
     ].join('\n'));
 

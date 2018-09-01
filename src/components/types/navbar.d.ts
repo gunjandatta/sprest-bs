@@ -40,6 +40,7 @@ export interface INavbarProps {
     className?: string;
     el?: Element | HTMLElement;
     enableSearch?: string;
+    id?: string;
     items?: Array<INavbarItem>;
     searchBox?: INavbarSearchBox;
     type?: number;
