@@ -98,13 +98,15 @@ export const Navbar = (props: INavbarProps): INavbar | string => {
     html.push('</ul>');
 
     // See if we are rendering a search box
-    if (props.searchBox) {
+    if (props.enableSearch || props.searchBox) {
+        let text = (props.searchBox ? props.searchBox.btnText : null) || "Search";
+
         // Render the search box
         html.push([
             '<form class="form-inline">',
-            '<input class="form-control" type="search" placeholder="' + (props.searchBox.placeholder || 'Search') + '" aria-label="Search"></input>',
+            '<input class="form-control" type="search" placeholder="' + text + '" aria-label="Search"></input>',
             props.enableSearch || props.searchBox ? Button({
-                text: (props.searchBox ? props.searchBox.btnText : null) || "Search",
+                text,
                 type: props.searchBox ? props.searchBox.btnType : null
             }) : '',
             '</form>'
