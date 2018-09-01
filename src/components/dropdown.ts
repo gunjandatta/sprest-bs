@@ -30,7 +30,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
             html.push("<label>" + props.label + "</label>");
         }
 
-        // Set the attirbutes
+        // Set the attributes
         let attributes = [
             'class="form-control"',
             props.multi ? "multiple" : ""
@@ -76,6 +76,57 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
 
         // Add the select ending tag
         html.push("</select>");
+    }
+    // See if we are rendering this in a nav bar
+    if (props.navFl) {
+        // Set the class names
+        let classNames = ["nav-item dropdown"];
+        props.className ? classNames.push(props.className) : null;
+
+        // Set the starting tag
+        html.push('<li class="' + classNames.join(' ') + '">');
+
+        // Set the attributes
+        let attributes = [
+            'class="nav-link dropdown-toggle"',
+            'href="#"',
+            'id="navbarDDL_' + (props.label || "") + '"',
+            'role="button"',
+            'data-toggle="dropdown"',
+            'aria-haspopup="true"',
+            'aria-expanded="false"'
+        ];
+
+        // Render the label
+        html.push('<a ' + attributes.join(' ') + '>' + (props.label || "") + '</a>');
+
+        // Render the menu
+        html.push('<div class="dropdown-menu" aria-labelledby="navbarDDL_' + (props.label || "") + '">');
+
+        // Parse the items
+        let items = props.items || [];
+        for (let i = 0; i < items.length; i++) {
+            let item = items[i];
+
+            // See if this is a divider
+            if (item.isDivider) {
+                // Add the divider
+                html.push('<div class="dropdown-divider"></div>');
+            } else {
+                // Set the class names
+                let itemClassNames = ["dropdown-item"];
+                item.isHeader ? itemClassNames.push("dropdown-header") : null;
+
+                // Add the item
+                html.push('<a class="' + itemClassNames.join(' ') + '" href="' + (item.href || '#') + '" data-idx="' + i + '">' + item.text + '</a>');
+            }
+        }
+
+        // Set the ending tag
+        html.push('</div>');
+
+        // Set the ending tag
+        html.push('</div>');
     } else {
         // Set the class names
         let classNames = [props.isSplit ? "btn-group" : "dropdown"];
@@ -203,8 +254,6 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
         // Parse the items
         let elItems = props.el.querySelectorAll(props.formFl ? "option" : ".dropdown-item");
         for (let i = 0; i < elItems.length; i++) {
-            let item = props.items[i];
-
             // Set the click event for selecting the item
             elItems[i].addEventListener("click", ev => {
                 let elItem = ev.currentTarget as HTMLElement;

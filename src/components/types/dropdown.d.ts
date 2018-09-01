@@ -54,6 +54,7 @@ export interface IDropdownProps {
     items: Array<IDropdownItem>;
     label?: string;
     multi?: boolean;
+    navFl?: boolean;
     onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
     type?: number;
     value?: any;

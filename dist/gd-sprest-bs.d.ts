@@ -56,6 +56,7 @@ declare module 'gd-sprest-bs/components/types' {
     export * from "gd-sprest-bs/components/types/listGroup";
     export * from "gd-sprest-bs/components/types/modal";
     export * from "gd-sprest-bs/components/types/nav";
+    export * from "gd-sprest-bs/components/types/navbar";
     export * from "gd-sprest-bs/components/types/pagination";
     export * from "gd-sprest-bs/components/types/popover";
     export * from "gd-sprest-bs/components/types/progress";
@@ -601,6 +602,7 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
             items: Array<IDropdownItem>;
             label?: string;
             multi?: boolean;
+            navFl?: boolean;
             onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             type?: number;
             value?: any;
@@ -981,6 +983,72 @@ declare module 'gd-sprest-bs/components/types/nav' {
             onRenderTab?: (el: HTMLDivElement) => void;
             tabContent?: string;
             title?: string;
+    }
+}
+
+declare module 'gd-sprest-bs/components/types/navbar' {
+    import { IButtonProps } from "gd-sprest-bs/components/types/button";
+    import { IDropdownItem } from "gd-sprest-bs/components/types/dropdown";
+    
+    /**
+        * Navbar
+        */
+    export const Navbar: (props: INavbarProps) => INavbar | string;
+    
+    /**
+        * Navbar Types
+        */
+    export const NavbarTypes: INavbarTypes;
+    
+    /**
+        * Navbar
+        */
+    export interface INavbar {
+            /** The element. */
+            el: Element;
+    }
+    
+    /**
+        * Navbar Item
+        */
+    export interface INavbarItem {
+            brand?: string;
+            brandUrl?: string;
+            href?: string;
+            isActive?: boolean;
+            isDisabled?: boolean;
+            isLarge?: boolean;
+            items?: Array<IDropdownItem>;
+            text?: string;
+            searchBox?: INavbarSearchBox;
+    }
+    
+    /**
+        * Navbar Properties
+        */
+    export interface INavbarProps {
+            className?: string;
+            el?: Element | HTMLElement;
+            items?: Array<INavbarItem>;
+            type?: number;
+    }
+    
+    /**
+        * Navbar Types
+        */
+    export type INavbarTypes = {
+            Dark: number;
+            Light: number;
+            Primary: number;
+    }
+    
+    /**
+        * Navbar Search Box
+        */
+    export interface INavbarSearchBox {
+            btnProps?: IButtonProps;
+            onChange?: (value?: string, ev?: Event) => void;
+            placeholder?: string;
     }
 }
 

@@ -30,7 +30,6 @@ export const Form = (props: IFormProps): IForm | string => {
 
     // Method to render the control
     let renderControl = (el: HTMLElement, control: IFormControl) => {
-        let html = [];
         let value = props.value || {};
 
         // Return the html based on the type

@@ -2,8 +2,8 @@
 
 <head>
     <!--script src="https://rawgit.com/gunjandatta/sprest-bs/master/wc/dist/gd-sprest-bs.js"></script-->
-    <!--script src="dist/gd-sprest-bs.js"></script-->
-    <script src="wc/dist/gd-sprest-bs.js"></script>
+    <script src="dist/gd-sprest-bs.js"></script>
+    <!--script src="wc/dist/gd-sprest-bs.js"></script-->
     <style>
         .carousel {
             max-width: 400px;
@@ -28,6 +28,7 @@
         <div id="paging"></div>
         <div id="progress"></div>
         <div id="progressGroup"></div>
+        <div id="navbar"></div>
         <script type="text/javascript">
             window.addEventListener("load", function () {
                 $REST.Components.Dropdown({
@@ -265,6 +266,36 @@
                             isAnimated: true,
                             isStriped: true,
                             label: "50%"
+                        }
+                    ]
+                });
+                $REST.Components.Navbar({
+                    el: document.querySelector("#navbar"),
+                    brand: "Navbar",
+                    searchBox: {
+                        btnProps: { text: "Search" }
+                    },
+                    items: [
+                        {
+                            text: "Home",
+                            isActive: true
+                        },
+                        {
+                            text: "Link"
+                        },
+                        {
+                            text: "Disabled Link",
+                            isDisabled: true
+                        },
+                        {
+                            text: "Dropdown Link",
+                            items: [
+                                { text: "Link 1" },
+                                { text: "Link 2" },
+                                { text: "Link 3" },
+                                { text: "Link 4" },
+                                { text: "Link 5" }
+                            ]
                         }
                     ]
                 });
