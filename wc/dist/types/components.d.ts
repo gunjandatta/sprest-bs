@@ -326,6 +326,23 @@ export namespace Components {
     'items'?: string;
   }
 
+  interface BsNavbar {
+    'brand': string;
+    'brandUrl': string;
+    'className': string;
+    'items': string;
+    'searchBox': string;
+    'type': number;
+  }
+  interface BsNavbarAttributes extends StencilHTMLAttributes {
+    'brand'?: string;
+    'brandUrl'?: string;
+    'className'?: string;
+    'items'?: string;
+    'searchBox'?: string;
+    'type'?: number;
+  }
+
   interface BsPagination {
     'alignment': number;
     'className': string;
@@ -423,6 +440,7 @@ declare global {
     'BsListgroup': Components.BsListgroup;
     'BsModal': Components.BsModal;
     'BsNav': Components.BsNav;
+    'BsNavbar': Components.BsNavbar;
     'BsPagination': Components.BsPagination;
     'BsPopover': Components.BsPopover;
     'BsProgress': Components.BsProgress;
@@ -448,6 +466,7 @@ declare global {
     'bs-listgroup': Components.BsListgroupAttributes;
     'bs-modal': Components.BsModalAttributes;
     'bs-nav': Components.BsNavAttributes;
+    'bs-navbar': Components.BsNavbarAttributes;
     'bs-pagination': Components.BsPaginationAttributes;
     'bs-popover': Components.BsPopoverAttributes;
     'bs-progress': Components.BsProgressAttributes;
@@ -558,6 +577,12 @@ declare global {
     new (): HTMLBsNavElement;
   };
 
+  interface HTMLBsNavbarElement extends Components.BsNavbar, HTMLStencilElement {}
+  var HTMLBsNavbarElement: {
+    prototype: HTMLBsNavbarElement;
+    new (): HTMLBsNavbarElement;
+  };
+
   interface HTMLBsPaginationElement extends Components.BsPagination, HTMLStencilElement {}
   var HTMLBsPaginationElement: {
     prototype: HTMLBsPaginationElement;
@@ -606,6 +631,7 @@ declare global {
     'bs-listgroup': HTMLBsListgroupElement
     'bs-modal': HTMLBsModalElement
     'bs-nav': HTMLBsNavElement
+    'bs-navbar': HTMLBsNavbarElement
     'bs-pagination': HTMLBsPaginationElement
     'bs-popover': HTMLBsPopoverElement
     'bs-progress': HTMLBsProgressElement
@@ -631,6 +657,7 @@ declare global {
     'bs-listgroup': HTMLBsListgroupElement;
     'bs-modal': HTMLBsModalElement;
     'bs-nav': HTMLBsNavElement;
+    'bs-navbar': HTMLBsNavbarElement;
     'bs-pagination': HTMLBsPaginationElement;
     'bs-popover': HTMLBsPopoverElement;
     'bs-progress': HTMLBsProgressElement;

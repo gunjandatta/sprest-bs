@@ -777,6 +777,48 @@
       }
     },
     {
+      "tag": "bs-navbar",
+      "dependencies": [],
+      "componentClass": "Navbar",
+      "componentPath": "navbar.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "brand",
+          "type": "String",
+          "attr": "brand"
+        },
+        {
+          "name": "brandUrl",
+          "type": "String",
+          "attr": "brand-url"
+        },
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "items",
+          "type": "String",
+          "attr": "items"
+        },
+        {
+          "name": "searchBox",
+          "type": "String",
+          "attr": "search-box"
+        },
+        {
+          "name": "type",
+          "type": "Number",
+          "attr": "type"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
       "tag": "bs-pagination",
       "dependencies": [],
       "componentClass": "Pagination",

@@ -50,14 +50,14 @@ export const Navbar = (props: INavbarProps): INavbar | string => {
 
     // Render the toggler
     html.push([
-        '<button data-target="#navbarnav" class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">',
+        '<button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">',
         '<span class="navbar-toggler-icon"></span>',
         '</button>'
     ].join('\n'));
 
     // Set the list starting tag
     html.push([
-        '<div id="navbarnav" class="collapse navbar-collapse">',
+        '<div class="collapse navbar-collapse">',
         '<ul class="navbar-nav">'
     ].join('\n'));
 
@@ -103,7 +103,10 @@ export const Navbar = (props: INavbarProps): INavbar | string => {
         html.push([
             '<form class="form-inline">',
             '<input class="form-control" type="search" placeholder="' + (props.searchBox.placeholder || 'Search') + '" aria-label="Search"></input>',
-            props.searchBox.btnProps ? Button(props.searchBox.btnProps) : '',
+            props.enableSearch || props.searchBox ? Button({
+                text: (props.searchBox ? props.searchBox.btnText : null) || "Search",
+                type: props.searchBox ? props.searchBox.btnType : null
+            }) : '',
             '</form>'
         ].join('\n'));
     }
@@ -121,6 +124,49 @@ export const Navbar = (props: INavbarProps): INavbar | string => {
 
         // Set the html
         props.el.innerHTML = html.join('\n');
+
+        // Get the items
+        let items = props.el.querySelectorAll(".nav-link");
+        for (let i = 0; i < items.length; i++) {
+            // Add a click event
+            items[i].addEventListener("click", ev => {
+                let itemId = (ev.currentTarget as HTMLElement).getAttribute('data-idx');
+                let item: INavbarItem = props.items[itemId];
+                if (item) {
+                    // See if no href exists
+                    if (item.href == null || item.href == "#") {
+                        // Prevent the page from moving to the top
+                        ev.preventDefault();
+                    }
+
+                    // See if a click event exists
+                    item.onClick ? item.onClick(item, ev) : null;
+                }
+            });
+        }
+
+        // See if a searchbox exists and events exist
+        if (props.searchBox) {
+            // Get the search box and see if a change event exists
+            let elSearchBox = props.el.querySelector('input[type="search"]') as HTMLInputElement;
+            if (props.searchBox.onChange && elSearchBox) {
+                // Set the change event
+                elSearchBox.addEventListener("input", ev => {
+                    // Call the event
+                    props.searchBox.onChange((ev.currentTarget as HTMLInputElement).value);
+                });
+            }
+
+            // Get the search box button and see if a search event exists
+            let elSearchBoxButton = elSearchBox && elSearchBox.nextElementSibling;
+            if (props.searchBox.onSearch && elSearchBoxButton) {
+                // Add a click event
+                elSearchBoxButton.addEventListener("click", ev => {
+                    // Call the event
+                    props.searchBox.onSearch(elSearchBox.value, ev);
+                });
+            }
+        }
 
         // Create the navbar
         let navbar = jQuery(props.el.children[0]);

@@ -1012,24 +1012,25 @@ declare module 'gd-sprest-bs/components/types/navbar' {
         * Navbar Item
         */
     export interface INavbarItem {
-            brand?: string;
-            brandUrl?: string;
             href?: string;
             isActive?: boolean;
             isDisabled?: boolean;
-            isLarge?: boolean;
             items?: Array<IDropdownItem>;
+            onClick?: (item?: INavbarItem, ev?: Event) => void;
             text?: string;
-            searchBox?: INavbarSearchBox;
     }
     
     /**
         * Navbar Properties
         */
     export interface INavbarProps {
+            brand?: string;
+            brandUrl?: string;
             className?: string;
             el?: Element | HTMLElement;
+            enableSearch?: string;
             items?: Array<INavbarItem>;
+            searchBox?: INavbarSearchBox;
             type?: number;
     }
     
@@ -1046,8 +1047,10 @@ declare module 'gd-sprest-bs/components/types/navbar' {
         * Navbar Search Box
         */
     export interface INavbarSearchBox {
-            btnProps?: IButtonProps;
+            btnType?: number;
+            btnText?: string;
             onChange?: (value?: string, ev?: Event) => void;
+            onSearch?: (value?: string, ev?: Event) => void;
             placeholder?: string;
     }
 }

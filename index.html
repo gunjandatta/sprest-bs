@@ -2,8 +2,8 @@
 
 <head>
     <!--script src="https://rawgit.com/gunjandatta/sprest-bs/master/wc/dist/gd-sprest-bs.js"></script-->
-    <script src="dist/gd-sprest-bs.js"></script>
-    <!--script src="wc/dist/gd-sprest-bs.js"></script-->
+    <!--script src="dist/gd-sprest-bs.js"></script-->
+    <script src="wc/dist/gd-sprest-bs.js"></script>
     <style>
         .carousel {
             max-width: 400px;
@@ -453,6 +453,38 @@
         { "title": "Nav 4" },
         { "title": "Nav 5" }
     ]'></bs-nav>
+    <h3>Navbar</h3>
+    <script type="text/javascript">
+    function logSearch(value) {
+        console.log("The search value is: " + value);
+    }
+    </script>
+    <bs-navbar brand="Navbar" search-box='{
+            "onChange": "logSearch",
+            "onSearch": "logSearch"
+        }' items='[
+        {
+            "text": "Home",
+            "isActive": true
+        },
+        {
+            "text": "Link"
+        },
+        {
+            "text": "Disabled Link",
+            "isDisabled": true
+        },
+        {
+            "text": "Dropdown Link",
+            "items": [
+                { "text": "Link 1" },
+                { "text": "Link 2" },
+                { "text": "Link 3" },
+                { "text": "Link 4" },
+                { "text": "Link 5" }
+            ]
+        }
+    ]'></bs-navbar>
     <h3>Pagination</h3>
     <script type="text/javascript">
         function onPaginationClick(index, ev) {

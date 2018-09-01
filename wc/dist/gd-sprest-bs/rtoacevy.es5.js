@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("rtoacevy",["exports","./chunk-d2484aa0.js"],function(e,d){window.GdSprestBs.h,e.BsNavbar=d.Navbar,Object.defineProperty(e,"__esModule",{value:!0})});

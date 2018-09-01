@@ -27,6 +27,7 @@ export interface INavbarItem {
     isActive?: boolean;
     isDisabled?: boolean;
     items?: Array<IDropdownItem>;
+    onClick?: (item?: INavbarItem, ev?: Event) => void;
     text?: string;
 }
 
@@ -38,6 +39,7 @@ export interface INavbarProps {
     brandUrl?: string;
     className?: string;
     el?: Element | HTMLElement;
+    enableSearch?: string;
     items?: Array<INavbarItem>;
     searchBox?: INavbarSearchBox;
     type?: number;
@@ -56,7 +58,9 @@ export type INavbarTypes = {
  * Navbar Search Box
  */
 export interface INavbarSearchBox {
-    btnProps?: IButtonProps;
+    btnType?: number;
+    btnText?: string;
     onChange?: (value?: string, ev?: Event) => void;
+    onSearch?: (value?: string, ev?: Event) => void;
     placeholder?: string;
 }
