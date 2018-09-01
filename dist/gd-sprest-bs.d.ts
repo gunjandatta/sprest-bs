@@ -1029,6 +1029,7 @@ declare module 'gd-sprest-bs/components/types/navbar' {
             className?: string;
             el?: Element | HTMLElement;
             enableSearch?: string;
+            id?: string;
             items?: Array<INavbarItem>;
             searchBox?: INavbarSearchBox;
             type?: number;
