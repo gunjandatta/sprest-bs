@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("4rbnubbc",["exports","./chunk-13d86687.js"],function(e,d){window.GdSprestBs.h,e.BsAlert=d.Alert,Object.defineProperty(e,"__esModule",{value:!0})});

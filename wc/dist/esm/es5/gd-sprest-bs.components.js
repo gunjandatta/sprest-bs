@@ -2,7 +2,7 @@
 
 export var Accordion = ["bs-accordion",function(){return(import("./g0sszdnc.js")).then(function(m){return m.BsAccordion})},0,[["className",1,0,"class-name",2],["el",7],["id",1,0,1,2],["items",1,0,1,2]]];
 
-export var Alert = ["bs-alert",function(){return(import("./ia6vojdy.js")).then(function(m){return m.BsAlert})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["header",1,0,1,2],["isDismissible",1,0,"is-dismissible",3],["type",1,0,1,4]]];
+export var Alert = ["bs-alert",function(){return(import("./4rbnubbc.js")).then(function(m){return m.BsAlert})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["header",1,0,1,2],["isDismissible",1,0,"is-dismissible",3],["type",1,0,1,4]]];
 
 export var Badge = ["bs-badge",function(){return(import("./zsdhoqtb.js")).then(function(m){return m.BsBadge})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["header",1,0,1,2],["href",1,0,1,2],["isPill",1,0,"is-pill",3],["type",1,0,1,4]]];
 

@@ -3,7 +3,7 @@ import { h } from "./gd-sprest-bs.core.js";
 var Alert = /** @class */ (function () {
     function Alert() {
     }
-    Alert.prototype.componentDidLoad = function () { return $REST.Components.Alert({ className: this.className, content: this.content, el: this.el.children[0], header: this.header, isDismissible: this.isDismissible, type: this.type }); };
+    Alert.prototype.componentDidLoad = function () { return $REST.Components.Alert({ className: this.className, content: this.content, el: this.el, header: this.header, isDismissible: this.isDismissible, type: this.type }); };
     Alert.prototype.render = function () { return h("div", null); };
     Object.defineProperty(Alert, "is", {
         get: function () { return "bs-alert"; },

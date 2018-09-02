@@ -13,7 +13,11 @@ export {
 /**
  * $REST Bootstrap Library
  */
-export const $REST:IRESTBS;
+export const $REST: IRESTBS;
+
+/**
+ * $REST Bootstrap Library
+ */
 export interface IRESTBS extends IREST {
     jQuery,
     Components

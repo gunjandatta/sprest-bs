@@ -22,19 +22,23 @@ declare module 'gd-sprest-bs/rest' {
     
     export * from "gd-sprest";
     export {
-        jQuery,
-        Components,
-        WebParts
+            jQuery,
+            Components,
+            WebParts
     }
     
     /**
-      * $REST Bootstrap Library
-      */
-    export const $REST:IRESTBS;
+        * $REST Bootstrap Library
+        */
+    export const $REST: IRESTBS;
+    
+    /**
+        * $REST Bootstrap Library
+        */
     export interface IRESTBS extends IREST {
-        jQuery,
-        Components
-        WebParts
+            jQuery,
+            Components
+            WebParts
     }
 }
 

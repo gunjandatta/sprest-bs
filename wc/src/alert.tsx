@@ -21,7 +21,7 @@ export class Alert {
         return $REST.Components.Alert({
             className: this.className,
             content: this.content,
-            el: this.el.children[0],
+            el: this.el,
             header: this.header,
             isDismissible: this.isDismissible,
             type: this.type
