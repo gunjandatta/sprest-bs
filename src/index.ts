@@ -8,7 +8,7 @@ export * from "./rest";
 if (window) {
     // Update the $REST global variable
     if (window["$REST"]) {
-        window["$REST"].Component = Components;
+        window["$REST"].Components = Components;
         window["$REST"].jQuery = jQuery;
         window["$REST"].WebParts = WebParts;
     }
