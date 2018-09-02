@@ -5,13 +5,19 @@ module.exports = (env, argv) => {
 
     // Return the configuration
     return {
-        entry: "./src/index.ts",
+        entry: [
+            "./node_modules/gd-sprest/dist/gd-sprest.min.js",
+            "./src/index.ts"
+        ],
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: "gd-sprest-bs" + (isDev ? "" : ".min") + ".js"
         },
         resolve: {
             extensions: [".scss", ".css", ".ts", ".js"]
+        },
+        externals: {
+            "gd-sprest": "$REST"
         },
         module: {
             rules: [
