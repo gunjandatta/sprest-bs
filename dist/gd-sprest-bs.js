@@ -493,7 +493,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nfunction __export(m) {\n    for (var p in m) {\n        if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n    }\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.js\");\n__webpack_require__(/*! ./styles.scss */ \"./src/styles.scss\");\nvar Lib = __webpack_require__(/*! ./rest */ \"./src/rest.ts\");\n__export(__webpack_require__(/*! ./rest */ \"./src/rest.ts\"));\nexports.$REST = Lib;\n// See if the window exists\nif (window) {\n    // Set the global variable\n    window[\"$REST\"] = exports.$REST;\n    // Notify waiting scripts\n    window[\"SP\"] ? window[\"SP\"].SOD.notifyScriptLoadedAndExecuteWaitingJobs(\"gd-sprest-bs.js\") : null;\n}\n\n//# sourceURL=webpack:///./src/index.ts?");
+eval("\n\nfunction __export(m) {\n    for (var p in m) {\n        if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n    }\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.js\");\n__webpack_require__(/*! ./styles.scss */ \"./src/styles.scss\");\nvar $REST = __webpack_require__(/*! ./rest */ \"./src/rest.ts\");\n__export(__webpack_require__(/*! ./rest */ \"./src/rest.ts\"));\n// See if the window exists\nif (window) {\n    // Set the global variable\n    window[\"$REST\"] = $REST;\n    // Notify waiting scripts\n    window[\"SP\"] ? window[\"SP\"].SOD.notifyScriptLoadedAndExecuteWaitingJobs(\"gd-sprest-bs.js\") : null;\n}\n\n//# sourceURL=webpack:///./src/index.ts?");
 
 /***/ }),
 
