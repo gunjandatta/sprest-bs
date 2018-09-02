@@ -78,8 +78,8 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         // Add the select ending tag
         html.push("</select>");
     }
-    // See if we are rendering this in a nav bar
-    if (props.navFl) {
+    // Else, see if we are rendering this in a nav bar
+    else if (props.navFl) {
         // Set the class names
         let classNames = ["nav-item dropdown"];
         props.className ? classNames.push(props.className) : null;
