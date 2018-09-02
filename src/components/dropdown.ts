@@ -324,26 +324,26 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
     }
 
     // Return the dropdown
-    let ddl = jQuery(el.children[0]);
+    let ddl = props.menuOnly ? el : jQuery(el.children[0]);
     return {
-        dispose: () => { ddl.dropdown("dispose") },
+        dispose: () => { ddl.dropdown ? ddl.dropdown("dispose") : null; },
         el,
         toggle: () => {
             // See if we are only rendering a menu
             if (props.menuOnly) {
                 // See if the "show" class exists
-                if (ddl.classList.contains("show")) {
+                if (el.children[0].classList.contains("show")) {
                     // Hide the dropdown
-                    ddl.classList.remove("show");
+                    el.children[0].classList.remove("show");
                 } else {
                     // Show the dropdown
-                    ddl.classList.add("show");
+                    el.children[0].classList.add("show");
                 }
             } else {
                 // Toggle the menu
-                ddl.dropdown("toggle")
+                ddl.dropdown ? ddl.dropdown("toggle") : null;
             }
         },
-        update: () => { ddl.dropdown("update") }
+        update: () => { ddl.dropdown ? ddl.dropdown("update") : null; }
     };
 }
