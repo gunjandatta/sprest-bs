@@ -16,15 +16,13 @@ export enum PopoverTypes {
 /**
  * Popover
  */
-export const Popover = (props: IPopoverProps): IPopover | string => {
+export const Popover = (props: IPopoverProps): IPopover => {
     // Create the button
-    let el = document.createElement("div");
     let btnProps = props.btnProps || {};
-    btnProps.el = el;
     btnProps.isLink = props.isDismissible ? true : false;
     btnProps.toggle = "popover";
     btnProps.trigger = "focus";
-    Button(btnProps);
+    let elBtn = Button(btnProps).el;
 
     // Set the popover options
     let options = props.options || {};
@@ -54,9 +52,9 @@ export const Popover = (props: IPopoverProps): IPopover | string => {
     }
 
     // Set the attributes
-    el.children[0].setAttribute("tabindex", "0");
-    el.children[0].setAttribute("title", options.title || "");
-    el.children[0].setAttribute("data-content", options.content || "");
+    elBtn.children[0].setAttribute("tabindex", "0");
+    elBtn.children[0].setAttribute("title", options.title || "");
+    elBtn.children[0].setAttribute("data-content", options.content || "");
 
     // Ensure the main popover element exists
     // This will ensure the popovers are wrapped with a parent element with the "bs" class applied to it.
@@ -74,29 +72,26 @@ export const Popover = (props: IPopoverProps): IPopover | string => {
     // Set the options to target the main popover element
     options.container = "#bs-popovers";
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = el.innerHTML;
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Create the popover
-        let popover = jQuery(props.el.children[0]).popover(options);
+    // Add the button
+    el.appendChild(elBtn);
 
-        // Return the popover
-        return {
-            dispose: () => { popover.popover("dispose"); },
-            el: popover,
-            hide: () => { popover.popover("hide"); },
-            show: () => { popover.popover("show"); },
-            toggle: () => { popover.popover("toggle"); },
-            toggleEnabled: () => { popover.popover("toggleEnabled"); },
-            update: () => { popover.popover("update"); }
-        };
-    } else {
-        // Return the html
-        return el.innerHTML;
-    }
+    // Create the popover
+    let popover = jQuery(elBtn).popover(options);
+
+    // Return the popover
+    return {
+        dispose: () => { popover.popover("dispose"); },
+        el,
+        hide: () => { popover.popover("hide"); },
+        show: () => { popover.popover("show"); },
+        toggle: () => { popover.popover("toggle"); },
+        toggleEnabled: () => { popover.popover("toggleEnabled"); },
+        update: () => { popover.popover("update"); }
+    };
 }

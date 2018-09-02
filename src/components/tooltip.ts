@@ -16,13 +16,11 @@ export enum TooltipTypes {
 /**
  * Tooltip
  */
-export const Tooltip = (props: ITooltipProps): ITooltip | string => {
+export const Tooltip = (props: ITooltipProps): ITooltip => {
     // Create the button
-    let el = document.createElement("div");
     let btnProps = props.btnProps || {};
-    btnProps.el = el;
     btnProps.toggle = "tooltip";
-    Button(btnProps);
+    let elBtn = Button(btnProps).el;
 
     // Set the tooltip options
     let options = props.options || {};
@@ -52,8 +50,8 @@ export const Tooltip = (props: ITooltipProps): ITooltip | string => {
     }
 
     // Set the attributes
-    el.children[0].setAttribute("title", options.title || "");
-    el.children[0].setAttribute("data-placement", options.placement as string || "");
+    elBtn.children[0].setAttribute("title", options.title || "");
+    elBtn.children[0].setAttribute("data-placement", options.placement as string || "");
 
     // Ensure the main tooltip element exists
     // This will ensure the tooltips are wrapped with a parent element with the "bs" class applied to it.
@@ -71,30 +69,27 @@ export const Tooltip = (props: ITooltipProps): ITooltip | string => {
     // Set the options to target the main tooltip element
     options.container = "#bs-tooltips";
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = el.innerHTML;
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Create the tooltip
-        let tooltip = jQuery(props.el.children[0]).tooltip(options);
+    // Add the button
+    el.appendChild(elBtn);
 
-        // Return the tooltip
-        return {
-            dispose: () => { tooltip.tooltip("dispose"); },
-            el: tooltip,
-            enable: () => { tooltip.tooltip("enable"); },
-            hide: () => { tooltip.tooltip("hide"); },
-            show: () => { tooltip.tooltip("show"); },
-            toggle: () => { tooltip.tooltip("toggle"); },
-            toggleEnabled: () => { tooltip.tooltip("toggleEnabled"); },
-            update: () => { tooltip.tooltip("update"); }
-        };
-    } else {
-        // Return the html
-        return el.innerHTML;
-    }
+    // Create the tooltip
+    let tooltip = jQuery(el.children[0]).tooltip(options);
+
+    // Return the tooltip
+    return {
+        dispose: () => { tooltip.tooltip("dispose"); },
+        el,
+        enable: () => { tooltip.tooltip("enable"); },
+        hide: () => { tooltip.tooltip("hide"); },
+        show: () => { tooltip.tooltip("show"); },
+        toggle: () => { tooltip.tooltip("toggle"); },
+        toggleEnabled: () => { tooltip.tooltip("toggleEnabled"); },
+        update: () => { tooltip.tooltip("update"); }
+    };
 }

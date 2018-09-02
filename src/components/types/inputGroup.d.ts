@@ -1,7 +1,7 @@
 /**
  * Input Group
  */
-export const InputGroup: (props: IInputGroupProps) => IInputGroup | string;
+export const InputGroup: (props: IInputGroupProps) => IInputGroup;
 
 /**
  * Button Group

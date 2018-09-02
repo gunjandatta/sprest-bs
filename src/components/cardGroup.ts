@@ -6,7 +6,7 @@ import { ICardGroup, ICardGroupProps } from "./types/cardGroup";
  * Card Group
  * @property props - The button group properties.
  */
-export const CardGroup = (props: ICardGroupProps): ICardGroup | string => {
+export const CardGroup = (props: ICardGroupProps): ICardGroup => {
     let html = [];
 
     // Set the class names
@@ -28,21 +28,16 @@ export const CardGroup = (props: ICardGroupProps): ICardGroup | string => {
     // Add the closing tag
     html.push("</div>");
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Return the card group
-        let cardGroup = jQuery(props.el.children[0]);
-        return {
-            el: cardGroup
-        };
-    } else {
-        // Return the html
-        return html.join('\n');
-    }
+    // Set the html
+    el.innerHTML = html.join('\n');
+
+    // Return the card group
+    let cardGroup = jQuery(el.children[0]);
+    return { el };
 }

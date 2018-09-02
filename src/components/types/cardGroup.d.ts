@@ -3,7 +3,7 @@ import { ICardProps } from ".";
 /**
  * Card Group
  */
-export const CardGroup: (props: ICardGroupProps) => ICardGroup | string;
+export const CardGroup: (props: ICardGroupProps) => ICardGroup;
 
 /**
  * Card Group

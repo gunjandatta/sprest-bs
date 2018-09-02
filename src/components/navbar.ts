@@ -15,7 +15,7 @@ export enum NavbarTypes {
 /**
  * Navbar
  */
-export const Navbar = (props: INavbarProps): INavbar | string => {
+export const Navbar = (props: INavbarProps): INavbar => {
     // Set the class name
     let classNames = ["navbar navbar-expand-lg"]
     props.className ? classNames.push(props.className) : null;
@@ -76,7 +76,7 @@ export const Navbar = (props: INavbarProps): INavbar | string => {
                 items: item.items,
                 label: item.text,
                 navFl: true
-            }) as string);
+            }).el.innerHTML);
         }
         // Else, ensure there is text
         else if (item.text) {
@@ -122,66 +122,59 @@ export const Navbar = (props: INavbarProps): INavbar | string => {
         '</nav>'
     ].join('\n'));
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Get the items
-        let items = props.el.querySelectorAll(".nav-link");
-        for (let i = 0; i < items.length; i++) {
-            // Add a click event
-            items[i].addEventListener("click", ev => {
-                let itemId = (ev.currentTarget as HTMLElement).getAttribute('data-idx');
-                let item: INavbarItem = props.items[itemId];
-                if (item) {
-                    // See if no href exists
-                    if (item.href == null || item.href == "#") {
-                        // Prevent the page from moving to the top
-                        ev.preventDefault();
-                    }
+    // Set the html
+    el.innerHTML = html.join('\n');
 
-                    // See if a click event exists
-                    item.onClick ? item.onClick(item, ev) : null;
+    // Get the items
+    let elItems = el.querySelectorAll(".nav-link");
+    for (let i = 0; i < elItems.length; i++) {
+        // Add a click event
+        elItems[i].addEventListener("click", ev => {
+            let itemId = (ev.currentTarget as HTMLElement).getAttribute('data-idx');
+            let item: INavbarItem = props.items[itemId];
+            if (item) {
+                // See if no href exists
+                if (item.href == null || item.href == "#") {
+                    // Prevent the page from moving to the top
+                    ev.preventDefault();
                 }
+
+                // See if a click event exists
+                item.onClick ? item.onClick(item, ev) : null;
+            }
+        });
+    }
+
+    // See if a searchbox exists and events exist
+    if (props.searchBox) {
+        // Get the search box and see if a change event exists
+        let elSearchBox = el.querySelector('input[type="search"]') as HTMLInputElement;
+        if (props.searchBox.onChange && elSearchBox) {
+            // Set the change event
+            elSearchBox.addEventListener("input", ev => {
+                // Call the event
+                props.searchBox.onChange((ev.currentTarget as HTMLInputElement).value);
             });
         }
 
-        // See if a searchbox exists and events exist
-        if (props.searchBox) {
-            // Get the search box and see if a change event exists
-            let elSearchBox = props.el.querySelector('input[type="search"]') as HTMLInputElement;
-            if (props.searchBox.onChange && elSearchBox) {
-                // Set the change event
-                elSearchBox.addEventListener("input", ev => {
-                    // Call the event
-                    props.searchBox.onChange((ev.currentTarget as HTMLInputElement).value);
-                });
-            }
-
-            // Get the search box button and see if a search event exists
-            let elSearchBoxButton = elSearchBox && elSearchBox.nextElementSibling;
-            if (props.searchBox.onSearch && elSearchBoxButton) {
-                // Add a click event
-                elSearchBoxButton.addEventListener("click", ev => {
-                    // Call the event
-                    props.searchBox.onSearch(elSearchBox.value, ev);
-                });
-            }
+        // Get the search box button and see if a search event exists
+        let elSearchBoxButton = elSearchBox && elSearchBox.nextElementSibling;
+        if (props.searchBox.onSearch && elSearchBoxButton) {
+            // Add a click event
+            elSearchBoxButton.addEventListener("click", ev => {
+                // Call the event
+                props.searchBox.onSearch(elSearchBox.value, ev);
+            });
         }
-
-        // Create the navbar
-        let navbar = jQuery(props.el.children[0]);
-
-        // Return the navbar
-        return {
-            el: navbar
-        };
-    } else {
-        // Return the html
-        return html.join('\n');
     }
+
+    // Return the navbar
+    let navbar = jQuery(el.children[0]);
+    return { el };
 }

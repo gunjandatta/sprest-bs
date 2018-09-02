@@ -6,7 +6,7 @@ import { IButtonGroup, IButtonGroupProps } from "./types/buttonGroup";
  * Button Group
  * @property props - The button group properties.
  */
-export const ButtonGroup = (props: IButtonGroupProps): IButtonGroup | string => {
+export const ButtonGroup = (props: IButtonGroupProps): IButtonGroup => {
     let html = [];
 
     // Set the class names
@@ -41,33 +41,28 @@ export const ButtonGroup = (props: IButtonGroupProps): IButtonGroup | string => 
     // Add the closing tag
     html.push("</div>");
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Parse the buttons
-        let elButtons = props.el.querySelectorAll(".btn-group > .btn");
-        for (let i = 0; i < elButtons.length; i++) {
-            let button = props.buttons[i];
+    // Set the html
+    el.innerHTML = html.join('\n');
 
-            // See if there is a click event
-            if (button.onClick) {
-                // Set the click event
-                elButtons[i].addEventListener("click", button.onClick);
-            }
+    // Parse the buttons
+    let elButtons = el.querySelectorAll(".btn-group > .btn");
+    for (let i = 0; i < elButtons.length; i++) {
+        let button = props.buttons[i];
+
+        // See if there is a click event
+        if (button.onClick) {
+            // Set the click event
+            elButtons[i].addEventListener("click", button.onClick);
         }
-
-        // Return the button group
-        let buttonGroup = jQuery(props.el.children[0]);
-        return {
-            el: buttonGroup
-        };
-    } else {
-        // Return the html
-        return html.join('\n');
     }
+
+    // Return the button group
+    let buttonGroup = jQuery(el.children[0]);
+    return { el };
 }

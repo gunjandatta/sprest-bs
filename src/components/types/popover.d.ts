@@ -3,7 +3,7 @@ import { IButtonProps } from "./button";
 /**
  * Popover
  */
-export const Popover: (props: IPopoverProps) => IPopover | string;
+export const Popover: (props: IPopoverProps) => IPopover;
 
 /**
  * Popover Types

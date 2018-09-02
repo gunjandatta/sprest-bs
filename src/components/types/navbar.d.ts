@@ -4,7 +4,7 @@ import { IDropdownItem } from "./dropdown";
 /**
  * Navbar
  */
-export const Navbar: (props: INavbarProps) => INavbar | string;
+export const Navbar: (props: INavbarProps) => INavbar;
 
 /**
  * Navbar Types

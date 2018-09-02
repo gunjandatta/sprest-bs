@@ -13,7 +13,7 @@ export enum PaginationAlignment {
 /**
  * Pagination
  */
-export const Pagination = (props: IPaginationProps): IPagination | string => {
+export const Pagination = (props: IPaginationProps): IPagination => {
     // Set the class names
     let classNames = ["pagination"];
     props.className ? classNames.push(props.className) : null;
@@ -75,67 +75,62 @@ export const Pagination = (props: IPaginationProps): IPagination | string => {
         '</nav>'
     ].join('\n'));
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Parse the items
-        let items = props.el.querySelectorAll(".page-item");
-        for (let i = 0; i < items.length; i++) {
-            items[i].addEventListener("click", ev => {
-                ev.preventDefault();
+    // Set the html
+    el.innerHTML = html.join('\n');
 
-                // Get the index
-                let index = parseInt((ev.currentTarget as HTMLElement).getAttribute("data-idx"));
+    // Parse the items
+    let items = el.querySelectorAll(".page-item");
+    for (let i = 0; i < items.length; i++) {
+        items[i].addEventListener("click", ev => {
+            ev.preventDefault();
 
-                // Get the current active item
-                let activeItem = props.el.querySelector(".page-item.active");
-                let activeIdx = activeItem ? parseInt(activeItem.getAttribute("data-idx")) : 1;
-                let oldIdx = activeIdx;
+            // Get the index
+            let index = parseInt((ev.currentTarget as HTMLElement).getAttribute("data-idx"));
 
-                // Clear the active item
-                activeItem ? activeItem.classList.remove("active") : null;
+            // Get the current active item
+            let activeItem = el.querySelector(".page-item.active");
+            let activeIdx = activeItem ? parseInt(activeItem.getAttribute("data-idx")) : 1;
+            let oldIdx = activeIdx;
 
-                // See if this is the previous button
-                if (index == 0) {
-                    // Decrement the active index
-                    activeIdx > 1 ? activeIdx-- : null;
-                }
-                // Else, see if this is the next button
-                else if (index == pages + 1) {
-                    // Increment the active index
-                    activeIdx < pages ? activeIdx++ : null;
-                } else {
-                    // Set the active index
-                    activeIdx = index;
-                }
+            // Clear the active item
+            activeItem ? activeItem.classList.remove("active") : null;
 
-                // Set the active item
-                activeItem = items[activeIdx];
-                if (activeItem) {
-                    // Make this item active
-                    activeItem.classList.add("active");
-                }
+            // See if this is the previous button
+            if (index == 0) {
+                // Decrement the active index
+                activeIdx > 1 ? activeIdx-- : null;
+            }
+            // Else, see if this is the next button
+            else if (index == pages + 1) {
+                // Increment the active index
+                activeIdx < pages ? activeIdx++ : null;
+            } else {
+                // Set the active index
+                activeIdx = index;
+            }
 
-                // Ensure the index has changed
-                if (oldIdx != activeIdx) {
-                    // Class the click event
-                    props.onClick ? props.onClick(activeIdx, ev) : null;
-                }
-            });
-        }
+            // Set the active item
+            activeItem = items[activeIdx];
+            if (activeItem) {
+                // Make this item active
+                activeItem.classList.add("active");
+            }
 
-        // Return the pagination
-        let pagination = jQuery(props.el.children[0]);
-        return {
-            el: pagination
-        };
-    } else {
-        // Return the html
-        return html.join('\n');
+            // Ensure the index has changed
+            if (oldIdx != activeIdx) {
+                // Class the click event
+                props.onClick ? props.onClick(activeIdx, ev) : null;
+            }
+        });
     }
+
+    // Return the pagination
+    let pagination = jQuery(el.children[0]);
+    return { el };
 }

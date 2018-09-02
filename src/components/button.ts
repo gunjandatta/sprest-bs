@@ -21,7 +21,7 @@ export enum ButtonTypes {
  * Button
  * @param props The button properties.
  */
-export const Button = (props: IButtonProps): IButton | string => {
+export const Button = (props: IButtonProps): IButton => {
     // Set the class names
     let classNames = ["btn"];
     props.className ? classNames.push(props.className) : null;
@@ -91,29 +91,26 @@ export const Button = (props: IButtonProps): IButton | string => {
         '</' + (props.isLink ? 'a' : 'button') + '>'
     ].join('\n');
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html;
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // See if there is a click event
-        if (props.onClick) {
-            // Add a click event
-            props.el.querySelector(".btn").addEventListener("click", props.onClick);
-        }
+    // Set the html
+    el.innerHTML = html;
 
-        // Return the button
-        let btn = jQuery(props.el.children[0]);
-        return {
-            dispose: () => { btn.button("dispose"); },
-            el: btn,
-            toggle: () => { btn.button("toggle"); }
-        };
-    } else {
-        // Return the html
-        return html;
+    // See if there is a click event
+    if (props.onClick) {
+        // Add a click event
+        el.querySelector(".btn").addEventListener("click", props.onClick);
     }
+
+    // Return the button
+    let btn = jQuery(el.children[0]);
+    return {
+        dispose: () => { btn.button("dispose"); },
+        el,
+        toggle: () => { btn.button("toggle"); }
+    };
 }

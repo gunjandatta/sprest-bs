@@ -1,7 +1,7 @@
 /**
  * Dropdown
  */
-export const Dropdown: (props: IDropdownProps) => IDropdown | string;
+export const Dropdown: (props: IDropdownProps) => IDropdown;
 
 /**
  * Dropdown Types

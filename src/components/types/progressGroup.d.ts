@@ -3,7 +3,7 @@ import { IProgressProps } from "./progress";
 /**
  * Progress Group
  */
-export const ProgressGroup: (props: IProgressGroupProps) => IProgressGroup | string;
+export const ProgressGroup: (props: IProgressGroupProps) => IProgressGroup;
 
 /**
  * Progress Group

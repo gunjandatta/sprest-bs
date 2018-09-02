@@ -6,7 +6,7 @@ import { Button } from "./button";
  * Modal
  * @param props The modal properties.
  */
-export const Modal = (props: IModalProps): IModal | string => {
+export const Modal = (props: IModalProps): IModal => {
     let html = [];
 
     // See if we are rendering a button
@@ -59,31 +59,28 @@ export const Modal = (props: IModalProps): IModal | string => {
         '</div>'
     ].join('\n'));
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Execute the events
-        props.onRenderBody ? props.onRenderBody(props.el.querySelector(".modal-body")) : null;
-        props.onRenderFooter ? props.onRenderFooter(props.el.querySelector(".modal-footer")) : null;
+    // Set the html
+    el.innerHTML = html.join('\n');
 
-        // Return the element
-        let modal = jQuery(props.el.children[0]);
-        return {
-            dispose: () => { modal.modal("dispose"); },
-            el: modal,
-            handleUpdate: () => { modal.modal("dispose"); },
-            hide: () => { modal.modal("dispose"); },
-            modal: () => { modal.modal("dispose"); },
-            show: () => { modal.modal("dispose"); },
-            toggle: () => { modal.modal("dispose"); }
-        };
-    } else {
-        // Return the html
-        return html.join('\n');
-    }
+    // Execute the events
+    props.onRenderBody ? props.onRenderBody(el.querySelector(".modal-body")) : null;
+    props.onRenderFooter ? props.onRenderFooter(el.querySelector(".modal-footer")) : null;
+
+    // Return the element
+    let modal = jQuery(el.children[0]);
+    return {
+        dispose: () => { modal.modal("dispose"); },
+        el,
+        handleUpdate: () => { modal.modal("dispose"); },
+        hide: () => { modal.modal("dispose"); },
+        modal: () => { modal.modal("dispose"); },
+        show: () => { modal.modal("dispose"); },
+        toggle: () => { modal.modal("dispose"); }
+    };
 }

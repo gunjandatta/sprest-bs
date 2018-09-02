@@ -3,7 +3,7 @@ import { IButtonProps } from "./button";
 /**
  * Modal
  */
-export const Modal: (props: IModalProps) => IModal | string;
+export const Modal: (props: IModalProps) => IModal;
 
 /**
  * Modal

@@ -3,7 +3,7 @@ import { IButtonProps } from "./button";
 /**
  * Accordion
  */
-export const Accordion: (props: IAccordionProps) => IAccordion | string;
+export const Accordion: (props: IAccordionProps) => IAccordion;
 
 /**
  * Accordion

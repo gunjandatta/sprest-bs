@@ -5,7 +5,7 @@ import { Button, ButtonTypes } from "./button";
 /**
  * Accordion
  */
-export const Accordion = (props: IAccordionProps): IAccordion | string => {
+export const Accordion = (props: IAccordionProps): IAccordion => {
     let id = props.id || "accordion";
 
     // Set the class names
@@ -45,24 +45,19 @@ export const Accordion = (props: IAccordionProps): IAccordion | string => {
     // Add the closing tag
     html.push('</div>');
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Initialize the collapse items
-        jQuery(props.el.children[0].querySelectorAll(".collapse")).collapse();
+    // Set the html
+    el.innerHTML = html.join('\n');
 
-        // Return the accordion
-        let accordion = jQuery(props.el.children[0]);
-        return {
-            el: accordion
-        };
-    } else {
-        // Return the html
-        return html.join('\n');
-    }
+    // Initialize the collapse items
+    jQuery(el.children[0].querySelectorAll(".collapse")).collapse();
+
+    // Return the accordion
+    let accordion = jQuery(props.el.children[0]);
+    return { el };
 }

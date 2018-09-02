@@ -4,7 +4,7 @@ import { ICollapse, ICollapseProps } from "./types/collapse";
 /**
  * Collapse
  */
-export const Collapse = (props: ICollapseProps): ICollapse | string => {
+export const Collapse = (props: ICollapseProps): ICollapse => {
     // Set the class names
     let classNames = ["collapse"];
     props.className ? classNames.push(props.className) : null;
@@ -23,27 +23,24 @@ export const Collapse = (props: ICollapseProps): ICollapse | string => {
         props.content || "",
         '</div>',
         '</div>'
-    ].join('\n');
+    ];
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html;
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Return the collapse
-        let collapse = jQuery(props.el.children[0]);
-        return {
-            dispose: () => { collapse.collapse("dispose"); },
-            el: collapse,
-            hide: () => { collapse.collapse("hide"); },
-            show: () => { collapse.collapse("show"); },
-            toggle: () => { collapse.collapse("toggle"); }
-        };
-    } else {
-        // Return the html
-        return html;
-    }
+    // Set the html
+    el.innerHTML = html.join('\n');
+
+    // Return the collapse
+    let collapse = jQuery(el.children[0]);
+    return {
+        dispose: () => { collapse.collapse("dispose"); },
+        el,
+        hide: () => { collapse.collapse("hide"); },
+        show: () => { collapse.collapse("show"); },
+        toggle: () => { collapse.collapse("toggle"); }
+    };
 }

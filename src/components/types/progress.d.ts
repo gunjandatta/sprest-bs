@@ -1,7 +1,7 @@
 /**
  * Progress
  */
-export const Progress: (props: IProgressProps) => IProgress | string;
+export const Progress: (props: IProgressProps) => IProgress;
 
 /**
  * Progress

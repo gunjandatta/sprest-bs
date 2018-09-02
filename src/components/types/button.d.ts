@@ -1,7 +1,7 @@
 /**
  * Button
  */
-export const Button: (props: IButtonProps) => IButton | string;
+export const Button: (props: IButtonProps) => IButton;
 
 /**
  * Button Types

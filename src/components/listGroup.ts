@@ -20,7 +20,7 @@ export enum ListGroupItemTypes {
  * List Group
  * @param props The list group properties.
  */
-export const ListGroup = (props: IListGroupProps): IListGroup | string => {
+export const ListGroup = (props: IListGroupProps): IListGroup => {
     let html = [];
 
     // See if we the column width is defined
@@ -165,51 +165,48 @@ export const ListGroup = (props: IListGroupProps): IListGroup | string => {
         renderColumns ? html.push("</div>") : null;
     }
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Create the list group
-        let listGroup = jQuery(props.el.children[0]);
+    // Set the html
+    el.innerHTML = html.join('\n');
 
-        // See if we are rendering tabs
-        if (props.isTabs) {
-            // Get the tabs
-            let tabs = props.el.querySelectorAll(".list-group-item");
-            for (let i = 0; i < tabs.length; i++) {
-                // Add the click event
-                tabs[i].addEventListener("click", ev => {
-                    // Get the active items
-                    let activeItems = props.el.querySelectorAll(".active");
-                    for (let i = 0; i < activeItems.length; i++) {
-                        // Remove the class
-                        activeItems[i].classList.remove("active");
-                    }
+    // Create the list group
+    let listGroup = jQuery(el.children[0]);
 
-                    // Set this tab to be active
-                    (ev.currentTarget as HTMLElement).classList.add("active");
+    // See if we are rendering tabs
+    if (props.isTabs) {
+        // Get the tabs
+        let tabs = el.querySelectorAll(".list-group-item");
+        for (let i = 0; i < tabs.length; i++) {
+            // Add the click event
+            tabs[i].addEventListener("click", ev => {
+                // Get the active items
+                let activeItems = el.querySelectorAll(".active");
+                for (let i = 0; i < activeItems.length; i++) {
+                    // Remove the class
+                    activeItems[i].classList.remove("active");
+                }
 
-                    // Get the tab content and make it active
-                    let elTab = props.el.querySelector((ev.currentTarget as HTMLElement).getAttribute("href"));
-                    elTab ? elTab.classList.add("active") : null;
-                });
-            }
+                // Set this tab to be active
+                (ev.currentTarget as HTMLElement).classList.add("active");
+
+                // Get the tab content and make it active
+                let elTab = el.querySelector((ev.currentTarget as HTMLElement).getAttribute("href"));
+                elTab ? elTab.classList.add("active") : null;
+            });
         }
-
-        // Return the list group
-        return {
-            el: listGroup,
-            show: (tabId: string) => {
-                // Show the tab
-                listGroup.querySelector("#" + tabId).tab("show");
-            }
-        };
-    } else {
-        // Return the html
-        return html.join('\n');
     }
+
+    // Return the list group
+    return {
+        el,
+        show: (tabId: string) => {
+            // Show the tab
+            listGroup.querySelector("#" + tabId).tab("show");
+        }
+    };
 }

@@ -3,7 +3,7 @@ import { IBadgeProps } from "./badge";
 /**
  * List Group
  */
-export const ListGroup: (props: IListGroupProps) => IListGroup | string;
+export const ListGroup: (props: IListGroupProps) => IListGroup;
 
 /**
  * List Group Item Types

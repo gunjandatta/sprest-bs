@@ -6,7 +6,7 @@ import { Nav } from "./nav";
 /**
  * Card
  */
-export const Card = (props: ICardProps): ICard | string => {
+export const Card = (props: ICardProps): ICard => {
     // Set the class names
     let classNames = ["card"];
     props.className ? classNames.push(props.className) : null;
@@ -43,7 +43,7 @@ export const Card = (props: ICardProps): ICard | string => {
             ].join(' ');
 
             // Render the navigation
-            html.push(Nav(navProps) as string);
+            html.push(Nav(navProps).el.innerHTML);
         }
     }
 
@@ -147,22 +147,19 @@ export const Card = (props: ICardProps): ICard | string => {
     // Set the closing tag
     html.push("</div>");
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Return the alert
-        let card = jQuery(props.el.children[0]);
-        return {
-            dispose: () => { card.card("dispose"); },
-            el: card
-        };
-    } else {
-        // Return the html
-        return html.join('\n');
-    }
+    // Set the html
+    el.innerHTML = html.join('\n');
+
+    // Return the alert
+    let card = jQuery(el.children[0]);
+    return {
+        dispose: () => { card.card("dispose"); },
+        el
+    };
 }

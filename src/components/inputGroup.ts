@@ -16,7 +16,7 @@ export enum InputGroupTypes {
  * Input Group
  * @param props The input group properties.
  */
-export const InputGroup = (props: IInputGroupProps): IInputGroup | string => {
+export const InputGroup = (props: IInputGroupProps): IInputGroup => {
     let html = [];
 
     // Set the class names
@@ -101,70 +101,65 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup | string => {
         html.push('<small class="text-muted">' + props.description + '</small>');
     }
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // See if a change event exists
-        if (props.onChange) {
-            let isMulti = props.type == InputGroupTypes.TextArea;
-            let el = props.el.querySelector(isMulti ? "textarea" : "input");
-            let callbackValue = null;
+    // Set the html
+    el.innerHTML = html.join('\n');
 
-            // Add a input event
-            el.addEventListener("input", ev => {
-                let tb = ev.currentTarget as HTMLInputElement | HTMLTextAreaElement;
+    // See if a change event exists
+    if (props.onChange) {
+        let isMulti = props.type == InputGroupTypes.TextArea;
+        let elInput = el.querySelector(isMulti ? "textarea" : "input");
+        let callbackValue = null;
 
-                // See if we have already executed the change event
-                if (callbackValue != tb.value) {
-                    // Set the value
-                    callbackValue = tb.value;
+        // Add a input event
+        elInput.addEventListener("input", ev => {
+            let tb = ev.currentTarget as HTMLInputElement | HTMLTextAreaElement;
 
-                    // Call the change event
-                    props.onChange(callbackValue, ev);
-                }
-            });
+            // See if we have already executed the change event
+            if (callbackValue != tb.value) {
+                // Set the value
+                callbackValue = tb.value;
 
-            // See if this is not a multi-line
-            if (!isMulti) {
-                // Add a mouse up event to detect the clear event
-                el.addEventListener("mouseup", ev => {
-                    // Get the current value
-                    let el = ev.currentTarget as HTMLInputElement;
-                    let oldValue = el.value;
-
-                    // Wait for the clear event to update the value (if clicked)
-                    setTimeout(() => {
-                        // Get the current value
-                        let currentValue = el.value;
-
-                        // See if the values have changed
-                        if (currentValue != oldValue) {
-                            // See if we have already executed the change event
-                            if (callbackValue != currentValue) {
-                                // Set the value
-                                callbackValue = currentValue;
-
-                                // Call the change event
-                                props.onChange(callbackValue, ev);
-                            }
-                        }
-                    }, 1);
-                });
+                // Call the change event
+                props.onChange(callbackValue, ev);
             }
-        }
+        });
 
-        // Return the input group
-        let inputGroup = jQuery(props.el.children[0]);
-        return {
-            el: inputGroup
-        };
-    } else {
-        // Return the html
-        return html.join('\n');
+        // See if this is not a multi-line
+        if (!isMulti) {
+            // Add a mouse up event to detect the clear event
+            elInput.addEventListener("mouseup", ev => {
+                // Get the current value
+                let el = ev.currentTarget as HTMLInputElement;
+                let oldValue = el.value;
+
+                // Wait for the clear event to update the value (if clicked)
+                setTimeout(() => {
+                    // Get the current value
+                    let currentValue = el.value;
+
+                    // See if the values have changed
+                    if (currentValue != oldValue) {
+                        // See if we have already executed the change event
+                        if (callbackValue != currentValue) {
+                            // Set the value
+                            callbackValue = currentValue;
+
+                            // Call the change event
+                            props.onChange(callbackValue, ev);
+                        }
+                    }
+                }, 1);
+            });
+        }
     }
+
+    // Return the input group
+    let inputGroup = jQuery(el.children[0]);
+    return { el };
 }

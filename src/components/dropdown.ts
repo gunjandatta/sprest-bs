@@ -17,7 +17,7 @@ export enum DropdownTypes {
  * Dropdown
  * @property props - The dropdown properties.
  */
-export const Dropdown = (props: IDropdownProps): IDropdown | string => {
+export const Dropdown = (props: IDropdownProps): IDropdown => {
     let html = [];
     let isMulti = props.multi || false;
     let items = props.items || [];
@@ -250,103 +250,100 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
         html.push("</div>");
     }
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = props.menuOnly ? menu.join('\n') : html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Parse the items
-        let elItems = props.el.querySelectorAll(props.formFl ? "option" : ".dropdown-item");
-        for (let i = 0; i < elItems.length; i++) {
-            // Set the click event for selecting the item
-            elItems[i].addEventListener("click", ev => {
-                let elItem = ev.currentTarget as HTMLElement;
-                let item: IDropdownItem = props.items[elItem.getAttribute("data-idx")];
-                let items: Array<IDropdownItem> = [];
+    // Set the html
+    el.innerHTML = props.menuOnly ? menu.join('\n') : html.join('\n');
 
-                // Cancel the events, if this isn't a link
-                item && item.href ? null : ev.preventDefault();
+    // Parse the items
+    let elItems = el.querySelectorAll(props.formFl ? "option" : ".dropdown-item");
+    for (let i = 0; i < elItems.length; i++) {
+        // Set the click event for selecting the item
+        elItems[i].addEventListener("click", ev => {
+            let elItem = ev.currentTarget as HTMLElement;
+            let item: IDropdownItem = props.items[elItem.getAttribute("data-idx")];
+            let items: Array<IDropdownItem> = [];
 
-                // Parse the selected items
-                let elSelectedItems = props.el.querySelectorAll(".dropdown-item.active");
-                for (let i = 0; i < elSelectedItems.length; i++) {
-                    let elSelectedItem = elSelectedItems[i] as HTMLElement;
-                    let selectedItem = props.items[elSelectedItem.getAttribute("data-idx")];
+            // Cancel the events, if this isn't a link
+            item && item.href ? null : ev.preventDefault();
 
-                    // Skip this item
-                    if (item.text == selectedItem.text) { continue; }
+            // Parse the selected items
+            let elSelectedItems = el.querySelectorAll(".dropdown-item.active");
+            for (let i = 0; i < elSelectedItems.length; i++) {
+                let elSelectedItem = elSelectedItems[i] as HTMLElement;
+                let selectedItem = props.items[elSelectedItem.getAttribute("data-idx")];
 
-                    // See if this is a multi-select
-                    if (isMulti) {
-                        // Add the item
-                        items.push(selectedItem);
-                    } else {
-                        // Unselect the item
-                        elSelectedItem.classList.remove("active")
-                    }
-                }
+                // Skip this item
+                if (item.text == selectedItem.text) { continue; }
 
-                // See if this item is selected
-                if (elItem.classList.contains("active")) {
-                    // Unselect this item
-                    elItem.classList.remove("active");
-                } else {
-                    // Select this item
-                    elItem.classList.add("active");
-
+                // See if this is a multi-select
+                if (isMulti) {
                     // Add the item
-                    items.push(item);
-                }
-
-                // Sort the items
-                items = items.sort((a, b) => {
-                    if (a.text < b.text) { return -1; }
-                    if (a.text > b.text) { return 1; }
-                    return 0;
-                });
-
-                // See if a change event exists
-                if (item.onChange) {
-                    // Call the change event
-                    item.onChange(isMulti ? items : items[0], ev);
-                }
-
-                // See if a global change event exists
-                if (props.onChange) {
-                    // Call the change event
-                    props.onChange(isMulti ? items : items[0], ev);
-                }
-            });
-        }
-
-        // Return the dropdown
-        let ddl = jQuery(props.el.children[0]);
-        return {
-            dispose: () => { ddl.dropdown("dispose") },
-            el: ddl,
-            toggle: () => {
-                // See if we are only rendering a menu
-                if (props.menuOnly) {
-                    // See if the "show" class exists
-                    if (ddl.classList.contains("show")) {
-                        // Hide the dropdown
-                        ddl.classList.remove("show");
-                    } else {
-                        // Show the dropdown
-                        ddl.classList.add("show");
-                    }
+                    items.push(selectedItem);
                 } else {
-                    // Toggle the menu
-                    ddl.dropdown("toggle")
+                    // Unselect the item
+                    elSelectedItem.classList.remove("active")
                 }
-            },
-            update: () => { ddl.dropdown("update") }
-        };
-    } else {
-        // Return the html
-        return props.menuOnly ? menu.join('\n') : html.join('\n');
+            }
+
+            // See if this item is selected
+            if (elItem.classList.contains("active")) {
+                // Unselect this item
+                elItem.classList.remove("active");
+            } else {
+                // Select this item
+                elItem.classList.add("active");
+
+                // Add the item
+                items.push(item);
+            }
+
+            // Sort the items
+            items = items.sort((a, b) => {
+                if (a.text < b.text) { return -1; }
+                if (a.text > b.text) { return 1; }
+                return 0;
+            });
+
+            // See if a change event exists
+            if (item.onChange) {
+                // Call the change event
+                item.onChange(isMulti ? items : items[0], ev);
+            }
+
+            // See if a global change event exists
+            if (props.onChange) {
+                // Call the change event
+                props.onChange(isMulti ? items : items[0], ev);
+            }
+        });
     }
+
+    // Return the dropdown
+    let ddl = jQuery(el.children[0]);
+    return {
+        dispose: () => { ddl.dropdown("dispose") },
+        el,
+        toggle: () => {
+            // See if we are only rendering a menu
+            if (props.menuOnly) {
+                // See if the "show" class exists
+                if (ddl.classList.contains("show")) {
+                    // Hide the dropdown
+                    ddl.classList.remove("show");
+                } else {
+                    // Show the dropdown
+                    ddl.classList.add("show");
+                }
+            } else {
+                // Toggle the menu
+                ddl.dropdown("toggle")
+            }
+        },
+        update: () => { ddl.dropdown("update") }
+    };
 }

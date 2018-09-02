@@ -1,7 +1,7 @@
 /**
  * Navigation
  */
-export const Nav: (props: INavProps) => INav | string;
+export const Nav: (props: INavProps) => INav;
 
 /**
  * Navigation

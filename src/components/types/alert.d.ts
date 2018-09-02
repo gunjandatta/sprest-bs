@@ -1,7 +1,7 @@
 /**
  * Alert
  */
-export const Alert: (props: IAlertProps) => IAlert | string;
+export const Alert: (props: IAlertProps) => IAlert;
 
 /**
  * Alert Types

@@ -4,7 +4,7 @@ import { IBreadcrumb, IBreadcrumbProps } from "./types/breadcrumb";
 /**
  * Breadcrumb
  */
-export const Breadcrumb = (props: IBreadcrumbProps): IBreadcrumb | string => {
+export const Breadcrumb = (props: IBreadcrumbProps): IBreadcrumb => {
     // Set the class names
     let classNames = ["breadcrumb"];
     props.className ? classNames.push(props.className) : null;
@@ -47,21 +47,16 @@ export const Breadcrumb = (props: IBreadcrumbProps): IBreadcrumb | string => {
         '</nav>'
     ].join('\n'));
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Return the breadcrumb
-        let breadcrumb = jQuery(props.el.children[0]);
-        return {
-            el: breadcrumb
-        };
-    } else {
-        // Return the html
-        return html.join('\n');
-    }
+    // Set the html
+    el.innerHTML = html.join('\n');
+
+    // Return the breadcrumb
+    let breadcrumb = jQuery(el.children[0]);
+    return { el };
 }

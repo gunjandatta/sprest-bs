@@ -1,7 +1,7 @@
 /**
  * Pagination
  */
-export const Pagination: (props: IPaginationProps) => IPagination | string;
+export const Pagination: (props: IPaginationProps) => IPagination;
 
 /**
  * Pagination Alignment
@@ -22,7 +22,7 @@ export interface IPagination {
 export interface IPaginationProps {
     alignment?: number;
     className?: string;
-    el?: Element | HTMLElement;
+    el?: Element;
     icon?: string;
     isLarge?: boolean;
     isSmall?: boolean;

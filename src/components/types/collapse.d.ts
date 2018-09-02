@@ -1,7 +1,7 @@
 /**
  * Collapse
  */
-export const Collapse: (props: ICollapseProps) => ICollapse | string;
+export const Collapse: (props: ICollapseProps) => ICollapse;
 
 /**
  * Collapse

@@ -1,7 +1,7 @@
 /**
  * Carousel
  */
-export const Carousel: (props: ICarouselProps) => ICarousel | string;
+export const Carousel: (props: ICarouselProps) => ICarousel;
 
 /**
  * Carousel

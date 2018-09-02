@@ -24,7 +24,7 @@ export enum FormControlTypes {
  * Form
  * @property props - The form properties.
  */
-export const Form = (props: IFormProps): IForm | string => {
+export const Form = (props: IFormProps): IForm => {
     // Create the form element
     let elForm = document.createElement("form");
 
@@ -187,29 +187,26 @@ export const Form = (props: IFormProps): IForm | string => {
     // Render the form
     renderForm();
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class name
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Clear the element content
-        props.el.innerHTML = "";
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Append the form
-        props.el.appendChild(elForm);
+    // Clear the element content
+    el.innerHTML = "";
 
-        // Return the form
-        return {
-            el: elForm,
-            getValues: () => {
-                let values = {};
+    // Append the form
+    el.appendChild(elForm);
 
-                // Return the values
-                return values;
-            }
-        };
-    } else {
-        // Return the html
-        return elForm.outerHTML;
-    }
+    // Return the form
+    return {
+        el: elForm,
+        getValues: () => {
+            let values = {};
+
+            // Return the values
+            return values;
+        }
+    };
 }

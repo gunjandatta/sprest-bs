@@ -3,7 +3,7 @@ import { IButtonProps } from ".";
 /**
  * Button Group
  */
-export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup | string;
+export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup;
 
 /**
  * Button Group

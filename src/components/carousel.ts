@@ -5,7 +5,7 @@ import { ICarousel, ICarouselProps } from "./types/carousel";
  * Carousel
  * @param props - The carousel properties.
  */
-export const Carousel = (props: ICarouselProps): ICarousel | string => {
+export const Carousel = (props: ICarouselProps): ICarousel => {
     let html = [];
     let id = 'carousel_' + (props.id || '');
     let items = props.items || [];
@@ -103,30 +103,27 @@ export const Carousel = (props: ICarouselProps): ICarousel | string => {
     // Set the ending tag
     html.push('</div>');
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Create the carousel
-        let carousel = jQuery(props.el.children[0]);
-        carousel.carousel(props.options);
+    // Set the html
+    el.innerHTML = html.join('\n');
 
-        // Return the carousel
-        return {
-            cycle: () => { carousel.carousel("cycle"); },
-            dispose: () => { carousel.carousel("dispose"); },
-            el: carousel,
-            next: () => { carousel.carousel("next"); },
-            number: (value: number) => { carousel.carousel(value); },
-            pause: () => { carousel.carousel("pause"); },
-            previous: () => { carousel.carousel("dispose"); }
-        };
-    } else {
-        // Return the html
-        return html.join('\n');
-    }
+    // Create the carousel
+    let carousel = jQuery(el.children[0]);
+    carousel.carousel(props.options);
+
+    // Return the carousel
+    return {
+        cycle: () => { carousel.carousel("cycle"); },
+        dispose: () => { carousel.carousel("dispose"); },
+        el,
+        next: () => { carousel.carousel("next"); },
+        number: (value: number) => { carousel.carousel(value); },
+        pause: () => { carousel.carousel("pause"); },
+        previous: () => { carousel.carousel("dispose"); }
+    };
 }

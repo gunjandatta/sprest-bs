@@ -4,7 +4,7 @@ import { IJumbotron, IJumbotronProps } from "./types/jumbotron";
 /**
  * Jumbotron
  */
-export const Jumbotron = (props: IJumbotronProps): IJumbotron | string => {
+export const Jumbotron = (props: IJumbotronProps): IJumbotron => {
     // Set the class names
     let classNames = ["jumbotron"];
     props.className ? classNames.push(props.className) : null;
@@ -17,26 +17,21 @@ export const Jumbotron = (props: IJumbotronProps): IJumbotron | string => {
         props.lead ? '<p class="lead">' + props.lead + '</p>' : '',
         props.content || '',
         '</div>'
-    ].join('\n');
+    ];
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html;
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Call the render event
-        props.onRenderContent ? props.onRenderContent(props.el.children[0] as any) : null;
+    // Set the html
+    el.innerHTML = html.join('\n');
 
-        // Return the jumbotron
-        let jumbotron = jQuery(props.el.children[0]);
-        return {
-            el: jumbotron
-        };
-    } else {
-        // Return the html
-        return html;
-    }
+    // Call the render event
+    props.onRenderContent ? props.onRenderContent(el.children[0] as any) : null;
+
+    // Return the jumbotron
+    let jumbotron = jQuery(el.children[0]);
+    return { el };
 }

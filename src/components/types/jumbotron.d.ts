@@ -1,7 +1,7 @@
 /**
  * Jumbotron
  */
-export const Jumbotron: (props: IJumbotronProps) => IJumbotron | string;
+export const Jumbotron: (props: IJumbotronProps) => IJumbotron;
 
 /**
  * Jumbotron

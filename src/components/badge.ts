@@ -18,7 +18,7 @@ export enum BadgeTypes {
 /**
  * Badge
  */
-export const Badge = (props: IBadgeProps): IBadge | string => {
+export const Badge = (props: IBadgeProps): IBadge => {
     // Set the class names
     let classNames = ["badge"];
     props.className ? classNames.push(props.className) : null;
@@ -66,21 +66,16 @@ export const Badge = (props: IBadgeProps): IBadge | string => {
         :
         '<span class="' + classNames.join(' ') + '">' + (props.content || "") + '</span>';
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html;
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Return the badge
-        let badge = jQuery(props.el.children[0]);
-        return {
-            el: badge
-        };
-    } else {
-        // Return the html
-        return html;
-    }
+    // Set the html
+    el.innerHTML = html;
+
+    // Return the badge
+    let badge = jQuery(el.children[0]);
+    return { el };
 }

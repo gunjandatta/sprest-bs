@@ -5,7 +5,7 @@ import { INav, INavProps } from "./types/nav";
  * Navigation
  * @param props - The navigation properties.
  */
-export const Nav = (props: INavProps): INav | string => {
+export const Nav = (props: INavProps): INav => {
     let html = [];
     let renderTabContent = false;
 
@@ -81,75 +81,72 @@ export const Nav = (props: INavProps): INav | string => {
         html.push('</div>');
     }
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Get the nav items
-        let elNavItems = props.el.querySelectorAll(".nav-item");
-        for (let i = 0; i < elNavItems.length; i++) {
-            let elNavItem = elNavItems[i];
-            let item = props.items[i];
+    // Set the html
+    el.innerHTML = html.join('\n');
 
-            // Set the index
-            elNavItem.setAttribute("data-idx", i.toString());
+    // Get the nav items
+    let elNavItems = el.querySelectorAll(".nav-item");
+    for (let i = 0; i < elNavItems.length; i++) {
+        let elNavItem = elNavItems[i];
+        let item = props.items[i];
 
-            // See if we are rendering tabs
-            if (props.isPills || props.isTabs) {
-                // Add a click event
-                elNavItem.addEventListener("click", ev => {
-                    // Parse the selected tabs
-                    let selectedTabs = props.el.querySelectorAll(".nav-link.active");
-                    for (let i = 0; i < selectedTabs.length; i++) {
-                        let selectedTab = selectedTabs[i];
+        // Set the index
+        elNavItem.setAttribute("data-idx", i.toString());
 
-                        // Unselect this tab
-                        selectedTab.classList.remove("active");
-                    }
+        // See if we are rendering tabs
+        if (props.isPills || props.isTabs) {
+            // Add a click event
+            elNavItem.addEventListener("click", ev => {
+                // Parse the selected tabs
+                let selectedTabs = el.querySelectorAll(".nav-link.active");
+                for (let i = 0; i < selectedTabs.length; i++) {
+                    let selectedTab = selectedTabs[i];
 
-                    // Get the navigation link
-                    let elTab = (ev.currentTarget as HTMLElement).querySelector(".nav-link");
-                    if (elTab) {
-                        // Select this tab
-                        elTab.classList.add("active");
-                    }
-                });
-            }
+                    // Unselect this tab
+                    selectedTab.classList.remove("active");
+                }
 
-            // See if a click event exists
-            if (item.onClick) {
-                // Add a click event
-                elNavItem.addEventListener("click", ev => {
-                    let elItem = ev.currentTarget as HTMLDivElement;
-
-                    // Call the click event
-                    item.onClick(props.items[elItem.getAttribute("data-idx")], ev);
-                });
-            }
+                // Get the navigation link
+                let elTab = (ev.currentTarget as HTMLElement).querySelector(".nav-link");
+                if (elTab) {
+                    // Select this tab
+                    elTab.classList.add("active");
+                }
+            });
         }
 
-        // Get the tab content elements
-        let elTabContent = props.el.querySelectorAll(".tab-pane");
-        for (let i = 0; i < elTabContent.length; i++) {
-            let item = props.items[i];
+        // See if a click event exists
+        if (item.onClick) {
+            // Add a click event
+            elNavItem.addEventListener("click", ev => {
+                let elItem = ev.currentTarget as HTMLDivElement;
 
-            // Call the event
-            item.onRenderTab ? item.onRenderTab(elTabContent[i] as any) : null;
+                // Call the click event
+                item.onClick(props.items[elItem.getAttribute("data-idx")], ev);
+            });
         }
-
-        // Return the element
-        let nav = jQuery(props.el.children[0]);
-        return {
-            dispose: () => { nav.tab("dispose"); },
-            el: nav,
-            show: (selector: string) => { nav.querySelector(selector).tab("show"); }
-        };
-    } else {
-        // Return the html
-        return html.join('\n');
     }
+
+    // Get the tab content elements
+    let elTabContent = el.querySelectorAll(".tab-pane");
+    for (let i = 0; i < elTabContent.length; i++) {
+        let item = props.items[i];
+
+        // Call the event
+        item.onRenderTab ? item.onRenderTab(elTabContent[i] as any) : null;
+    }
+
+    // Return the element
+    let nav = jQuery(el.children[0]);
+    return {
+        dispose: () => { nav.tab("dispose"); },
+        el,
+        show: (selector: string) => { nav.querySelector(selector).tab("show"); }
+    };
 }

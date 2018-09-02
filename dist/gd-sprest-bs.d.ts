@@ -79,7 +79,7 @@ declare module 'gd-sprest-bs/components/types/accordion' {
     /**
         * Accordion
         */
-    export const Accordion: (props: IAccordionProps) => IAccordion | string;
+    export const Accordion: (props: IAccordionProps) => IAccordion;
     
     /**
         * Accordion
@@ -112,7 +112,7 @@ declare module 'gd-sprest-bs/components/types/alert' {
     /**
         * Alert
         */
-    export const Alert: (props: IAlertProps) => IAlert | string;
+    export const Alert: (props: IAlertProps) => IAlert;
     
     /**
         * Alert Types
@@ -164,7 +164,7 @@ declare module 'gd-sprest-bs/components/types/badge' {
     /**
         * Badge
         */
-    export const Badge: (props: IBadgeProps) => IBadge | string;
+    export const Badge: (props: IBadgeProps) => IBadge;
     
     /**
         * Badge Types
@@ -211,7 +211,7 @@ declare module 'gd-sprest-bs/components/types/breadcrumb' {
     /**
         * Breadcrumb
         */
-    export const Breadcrumb: (props: IBreadcrumbProps) => IBreadcrumb | string;
+    export const Breadcrumb: (props: IBreadcrumbProps) => IBreadcrumb;
     
     /**
         * Breadcrumb
@@ -243,7 +243,7 @@ declare module 'gd-sprest-bs/components/types/button' {
     /**
         * Button
         */
-    export const Button: (props: IButtonProps) => IButton | string;
+    export const Button: (props: IButtonProps) => IButton;
     
     /**
         * Button Types
@@ -311,7 +311,7 @@ declare module 'gd-sprest-bs/components/types/buttonGroup' {
     /**
         * Button Group
         */
-    export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup | string;
+    export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup;
     
     /**
         * Button Group
@@ -344,7 +344,7 @@ declare module 'gd-sprest-bs/components/types/card' {
     /**
         * Card
         */
-    export const Card: (props: ICardProps) => ICard | string;
+    export const Card: (props: ICardProps) => ICard;
     
     /**
         * Card
@@ -397,7 +397,7 @@ declare module 'gd-sprest-bs/components/types/cardGroup' {
     /**
         * Card Group
         */
-    export const CardGroup: (props: ICardGroupProps) => ICardGroup | string;
+    export const CardGroup: (props: ICardGroupProps) => ICardGroup;
     
     /**
         * Card Group
@@ -421,7 +421,7 @@ declare module 'gd-sprest-bs/components/types/carousel' {
     /**
         * Carousel
         */
-    export const Carousel: (props: ICarouselProps) => ICarousel | string;
+    export const Carousel: (props: ICarouselProps) => ICarousel;
     
     /**
         * Carousel
@@ -502,7 +502,7 @@ declare module 'gd-sprest-bs/components/types/collapse' {
     /**
         * Collapse
         */
-    export const Collapse: (props: ICollapseProps) => ICollapse | string;
+    export const Collapse: (props: ICollapseProps) => ICollapse;
     
     /**
         * Collapse
@@ -549,7 +549,7 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
     /**
         * Dropdown
         */
-    export const Dropdown: (props: IDropdownProps) => IDropdown | string;
+    export const Dropdown: (props: IDropdownProps) => IDropdown;
     
     /**
         * Dropdown Types
@@ -719,7 +719,7 @@ declare module 'gd-sprest-bs/components/types/inputGroup' {
     /**
         * Input Group
         */
-    export const InputGroup: (props: IInputGroupProps) => IInputGroup | string;
+    export const InputGroup: (props: IInputGroupProps) => IInputGroup;
     
     /**
         * Button Group
@@ -769,7 +769,7 @@ declare module 'gd-sprest-bs/components/types/jumbotron' {
     /**
         * Jumbotron
         */
-    export const Jumbotron: (props: IJumbotronProps) => IJumbotron | string;
+    export const Jumbotron: (props: IJumbotronProps) => IJumbotron;
     
     /**
         * Jumbotron
@@ -799,7 +799,7 @@ declare module 'gd-sprest-bs/components/types/listGroup' {
     /**
         * List Group
         */
-    export const ListGroup: (props: IListGroupProps) => IListGroup | string;
+    export const ListGroup: (props: IListGroupProps) => IListGroup;
     
     /**
         * List Group Item Types
@@ -868,7 +868,7 @@ declare module 'gd-sprest-bs/components/types/modal' {
     /**
         * Modal
         */
-    export const Modal: (props: IModalProps) => IModal | string;
+    export const Modal: (props: IModalProps) => IModal;
     
     /**
         * Modal
@@ -938,7 +938,7 @@ declare module 'gd-sprest-bs/components/types/nav' {
     /**
         * Navigation
         */
-    export const Nav: (props: INavProps) => INav | string;
+    export const Nav: (props: INavProps) => INav;
     
     /**
         * Navigation
@@ -994,7 +994,7 @@ declare module 'gd-sprest-bs/components/types/navbar' {
     /**
         * Navbar
         */
-    export const Navbar: (props: INavbarProps) => INavbar | string;
+    export const Navbar: (props: INavbarProps) => INavbar;
     
     /**
         * Navbar Types
@@ -1061,7 +1061,7 @@ declare module 'gd-sprest-bs/components/types/pagination' {
     /**
         * Pagination
         */
-    export const Pagination: (props: IPaginationProps) => IPagination | string;
+    export const Pagination: (props: IPaginationProps) => IPagination;
     
     /**
         * Pagination Alignment
@@ -1082,7 +1082,7 @@ declare module 'gd-sprest-bs/components/types/pagination' {
     export interface IPaginationProps {
             alignment?: number;
             className?: string;
-            el?: Element | HTMLElement;
+            el?: Element;
             icon?: string;
             isLarge?: boolean;
             isSmall?: boolean;
@@ -1107,7 +1107,7 @@ declare module 'gd-sprest-bs/components/types/popover' {
     /**
         * Popover
         */
-    export const Popover: (props: IPopoverProps) => IPopover | string;
+    export const Popover: (props: IPopoverProps) => IPopover;
     
     /**
         * Popover Types
@@ -1187,7 +1187,7 @@ declare module 'gd-sprest-bs/components/types/progress' {
     /**
         * Progress
         */
-    export const Progress: (props: IProgressProps) => IProgress | string;
+    export const Progress: (props: IProgressProps) => IProgress;
     
     /**
         * Progress
@@ -1218,7 +1218,7 @@ declare module 'gd-sprest-bs/components/types/progressGroup' {
     /**
         * Progress Group
         */
-    export const ProgressGroup: (props: IProgressGroupProps) => IProgressGroup | string;
+    export const ProgressGroup: (props: IProgressGroupProps) => IProgressGroup;
     
     /**
         * Progress Group
@@ -1245,7 +1245,7 @@ declare module 'gd-sprest-bs/components/types/tooltip' {
     /**
         * Tooltip
         */
-    export const Tooltip: (props: ITooltipProps) => ITooltip | string;
+    export const Tooltip: (props: ITooltipProps) => ITooltip;
     
     /**
         * Tooltip Types

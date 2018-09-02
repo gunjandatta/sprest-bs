@@ -4,7 +4,7 @@ import { INavProps } from "./nav";
 /**
  * Card
  */
-export const Card: (props: ICardProps) => ICard | string;
+export const Card: (props: ICardProps) => ICard;
 
 /**
  * Card

@@ -6,7 +6,7 @@ import { Progress } from "./progress";
  * Progress Group
  * @param props The progress group properties.
  */
-export const ProgressGroup = (props: IProgressGroupProps): IProgressGroup | string => {
+export const ProgressGroup = (props: IProgressGroupProps): IProgressGroup => {
     // Set the class names
     let classNames = [];
     props.className ? classNames.push(props.className) : null;
@@ -18,27 +18,22 @@ export const ProgressGroup = (props: IProgressGroupProps): IProgressGroup | stri
     let progressbars = props.progressbars || [];
     for (let i = 0; i < progressbars.length; i++) {
         // Add the progress bar
-        html.push(Progress(progressbars[i]) as string);
+        html.push(Progress(progressbars[i]).el.innerHTML);
     }
 
     // Add the closing tag
     html.push('</div>');
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html.join('\n');
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Return the progress group
-        let progressGroup = jQuery(props.el.children[0]);
-        return {
-            el: progressGroup
-        };
-    } else {
-        // Return the html
-        return html.join('\n');
-    }
+    // Set the html
+    el.innerHTML = html.join('\n');
+
+    // Return the progress group
+    let progressGroup = jQuery(el.children[0]);
+    return { el };
 }

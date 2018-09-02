@@ -1,7 +1,7 @@
 /**
  * Badge
  */
-export const Badge: (props: IBadgeProps) => IBadge | string;
+export const Badge: (props: IBadgeProps) => IBadge;
 
 /**
  * Badge Types

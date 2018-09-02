@@ -1,7 +1,7 @@
 /**
  * Breadcrumb
  */
-export const Breadcrumb: (props: IBreadcrumbProps) => IBreadcrumb | string;
+export const Breadcrumb: (props: IBreadcrumbProps) => IBreadcrumb;
 
 /**
  * Breadcrumb

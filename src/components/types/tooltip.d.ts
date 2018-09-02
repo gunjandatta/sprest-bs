@@ -3,7 +3,7 @@ import { IButtonProps } from "./button";
 /**
  * Tooltip
  */
-export const Tooltip: (props: ITooltipProps) => ITooltip | string;
+export const Tooltip: (props: ITooltipProps) => ITooltip;
 
 /**
  * Tooltip Types

@@ -4,7 +4,7 @@ import { IProgress, IProgressProps } from "./types/progress";
 /**
  * Progress
  */
-export const Progress = (props: IProgressProps): IProgress | string => {
+export const Progress = (props: IProgressProps): IProgress => {
     let maxValue = typeof (props.max) === "number" ? props.max : 100;
     let minValue = typeof (props.min) === "number" ? props.min : 0;
     let size = typeof (props.size) === "number" ? props.size : 0;
@@ -33,23 +33,18 @@ export const Progress = (props: IProgressProps): IProgress | string => {
         '<div class="' + classNames.join(' ') + '">',
         '<div ' + attributes + '>' + (props.label || '') + '</div>',
         '</div>'
-    ].join('\n');
+    ];
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html;
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Return the progress
-        let progress = jQuery(props.el.children[0]);
-        return {
-            el: progress
-        };
-    } else {
-        // Return the html
-        return html;
-    }
+    // Set the html
+    el.innerHTML = html.join('\n');
+
+    // Return the progress
+    let progress = jQuery(el.children[0]);
+    return { el };
 }

@@ -18,7 +18,7 @@ export enum AlertTypes {
 /**
  * Alert
  */
-export const Alert = (props: IAlertProps): IAlert | string => {
+export const Alert = (props: IAlertProps): IAlert => {
     // Set the class names
     let classNames = ["alert"];
     props.className ? classNames.push(props.className) : null;
@@ -68,23 +68,20 @@ export const Alert = (props: IAlertProps): IAlert | string => {
         '</div>'
     ].join('\n');
 
-    // See if the element exists
-    if (props.el) {
-        // Set the class
-        props.el.classList.add("bs");
+    // Get the element to render to
+    let el = props.el || document.createElement("div");
 
-        // Set the html
-        props.el.innerHTML = html;
+    // Set the boostrap class
+    el.classList.contains("bs") ? null : el.classList.add("bs");
 
-        // Return the alert
-        let alert = jQuery(props.el.children[0]);
-        return {
-            close: () => { alert.alert("toggle"); },
-            dispose: () => { alert.alert("dispose"); },
-            el: alert
-        };
-    } else {
-        // Return the html
-        return html;
-    }
+    // Set the html
+    el.innerHTML = html;
+
+    // Return the alert
+    let alert = jQuery(el.children[0]);
+    return {
+        close: () => { alert.alert("toggle"); },
+        dispose: () => { alert.alert("dispose"); },
+        el
+    };
 }
