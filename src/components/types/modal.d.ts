@@ -21,9 +21,6 @@ export interface IModal {
     /** Manually hides a modal. */
     hide: () => void;
 
-    /** Activates your content as a modal. */
-    modal: (options: IModalOptions) => void;
-
     /** Manually opens a modal. */
     show: () => void;
 

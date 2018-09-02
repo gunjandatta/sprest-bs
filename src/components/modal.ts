@@ -77,10 +77,9 @@ export const Modal = (props: IModalProps): IModal => {
     return {
         dispose: () => { modal.modal("dispose"); },
         el,
-        handleUpdate: () => { modal.modal("dispose"); },
-        hide: () => { modal.modal("dispose"); },
-        modal: () => { modal.modal("dispose"); },
-        show: () => { modal.modal("dispose"); },
-        toggle: () => { modal.modal("dispose"); }
+        handleUpdate: () => { modal.modal("handleUpdate"); },
+        hide: () => { modal.modal("hide"); },
+        show: () => { modal.modal("show"); },
+        toggle: () => { modal.modal("toggle"); }
     };
 }
