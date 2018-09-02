@@ -465,6 +465,11 @@
           "attr": "label"
         },
         {
+          "name": "menuOnly",
+          "type": "Boolean",
+          "attr": "menu-only"
+        },
+        {
           "name": "multi",
           "type": "Boolean",
           "attr": "multi"

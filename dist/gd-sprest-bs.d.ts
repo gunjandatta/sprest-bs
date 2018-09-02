@@ -601,6 +601,7 @@ declare module 'gd-sprest-bs/components/types/dropdown' {
             isSplit?: boolean;
             items: Array<IDropdownItem>;
             label?: string;
+            menuOnly?: boolean;
             multi?: boolean;
             navFl?: boolean;
             onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;

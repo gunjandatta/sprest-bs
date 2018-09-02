@@ -30,6 +30,7 @@ export class Dropdown {
             isSplit: this.isSplit,
             items: items,
             label: this.label,
+            menuOnly: this.menuOnly,
             multi: this.multi,
             type: this.type,
             value: this.value,
@@ -86,6 +87,10 @@ export class Dropdown {
         "label": {
             "type": String,
             "attr": "label"
+        },
+        "menuOnly": {
+            "type": Boolean,
+            "attr": "menu-only"
         },
         "multi": {
             "type": Boolean,

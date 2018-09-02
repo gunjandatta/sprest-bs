@@ -10,6 +10,7 @@ export declare class Dropdown {
     isSplit: boolean;
     items: string;
     label: string;
+    menuOnly: boolean;
     multi: boolean;
     type: number;
     value: string;

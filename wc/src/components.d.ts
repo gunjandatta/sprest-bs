@@ -189,6 +189,7 @@ export namespace Components {
     'isSplit': boolean;
     'items': string;
     'label': string;
+    'menuOnly': boolean;
     'multi': boolean;
     'type': number;
     'value': string;
@@ -203,6 +204,7 @@ export namespace Components {
     'isSplit'?: boolean;
     'items'?: string;
     'label'?: string;
+    'menuOnly'?: boolean;
     'multi'?: boolean;
     'type'?: number;
     'value'?: string;

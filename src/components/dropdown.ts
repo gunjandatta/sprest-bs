@@ -21,6 +21,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
     let html = [];
     let isMulti = props.multi || false;
     let items = props.items || [];
+    let menu = [];
 
     // See if we are rendering this in a form
     if (props.formFl) {
@@ -100,8 +101,8 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
         // Render the label
         html.push('<a ' + attributes.join(' ') + '>' + (props.label || "") + '</a>');
 
-        // Render the menu
-        html.push('<div class="dropdown-menu" aria-labelledby="navbarDDL_' + (props.label || "") + '">');
+        // Create the menu
+        menu = ['<div class="dropdown-menu" aria-labelledby="navbarDDL_' + (props.label || "") + '">']
 
         // Parse the items
         let items = props.items || [];
@@ -111,19 +112,22 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
             // See if this is a divider
             if (item.isDivider) {
                 // Add the divider
-                html.push('<div class="dropdown-divider"></div>');
+                menu.push('<div class="dropdown-divider"></div>');
             } else {
                 // Set the class names
                 let itemClassNames = ["dropdown-item"];
                 item.isHeader ? itemClassNames.push("dropdown-header") : null;
 
                 // Add the item
-                html.push('<a class="' + itemClassNames.join(' ') + '" href="' + (item.href || '#') + '" data-idx="' + i + '">' + item.text + '</a>');
+                menu.push('<a class="' + itemClassNames.join(' ') + '" href="' + (item.href || '#') + '" data-idx="' + i + '">' + item.text + '</a>');
             }
         }
 
         // Set the ending tag
-        html.push('</div>');
+        menu.push('</div>');
+
+        // Render the menu
+        html.push(menu.join('\n'));
 
         // Set the ending tag
         html.push('</div>');
@@ -185,8 +189,8 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
             '</button>'
         ].join('\n'));
 
-        // Add the menu
-        html.push('<div class="dropdown-menu"' + (props.id ? 'aria-labelledby="' + props.id + '"' : '') + '>')
+        // Create the menu
+        menu = ['<div class="dropdown-menu"' + (props.id ? 'aria-labelledby="' + props.id + '"' : '') + '>'];
 
         // Parse the items
         for (let i = 0; i < items.length; i++) {
@@ -195,7 +199,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
             // See if this is a divider
             if (item.isDivider) {
                 // Add the divider
-                html.push('<div class="dropdown-divider"></div>');
+                menu.push('<div class="dropdown-divider"></div>');
                 continue;
             }
 
@@ -233,11 +237,14 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
             ].join(' ');
 
             // Add the button html
-            html.push('<a ' + attributes + '>' + item.text + '</a>');
+            menu.push('<a ' + attributes + '>' + item.text + '</a>');
         }
 
         // Add the menu closing tag
-        html.push("</div>");
+        menu.push("</div>");
+
+        // Add the menu
+        html.push(menu.join('\n'));
 
         // Add the closing tag
         html.push("</div>");
@@ -249,7 +256,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
         props.el.classList.add("bs");
 
         // Set the html
-        props.el.innerHTML = html.join('\n');
+        props.el.innerHTML = props.menuOnly ? menu.join('\n') : html.join('\n');
 
         // Parse the items
         let elItems = props.el.querySelectorAll(props.formFl ? "option" : ".dropdown-item");
@@ -320,11 +327,26 @@ export const Dropdown = (props: IDropdownProps): IDropdown | string => {
         return {
             dispose: () => { ddl.dropdown("dispose") },
             el: ddl,
-            toggle: () => { ddl.dropdown("toggle") },
+            toggle: () => {
+                // See if we are only rendering a menu
+                if (props.menuOnly) {
+                    // See if the "show" class exists
+                    if (ddl.classList.contains("show")) {
+                        // Hide the dropdown
+                        ddl.classList.remove("show");
+                    } else {
+                        // Show the dropdown
+                        ddl.classList.add("show");
+                    }
+                } else {
+                    // Toggle the menu
+                    ddl.dropdown("toggle")
+                }
+            },
             update: () => { ddl.dropdown("update") }
         };
     } else {
         // Return the html
-        return html.join('\n');
+        return props.menuOnly ? menu.join('\n') : html.join('\n');
     }
 }

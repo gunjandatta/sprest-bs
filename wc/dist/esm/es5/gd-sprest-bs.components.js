@@ -20,7 +20,7 @@ export var Carousel = ["bs-carousel",function(){return(import("./qyn6rtb0.js")).
 
 export var Collapse = ["bs-collapse",function(){return(import("./qgxnid4m.js")).then(function(m){return m.BsCollapse})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["id",1,0,1,2],["isMulti",1,0,"is-multi",3],["options",1,0,1,2]]];
 
-export var Dropdown = ["bs-dropdown",function(o){return(import("./jwjkukno.js")).then(function(m){return m.BsDropdown})},0,[["className",1,0,"class-name",2],["dropLeft",1,0,"drop-left",3],["dropRight",1,0,"drop-right",3],["dropUp",1,0,"drop-up",3],["el",7],["formFl",1,0,"form-fl",3],["id",1,0,1,2],["isSplit",1,0,"is-split",3],["items",1,0,1,2],["label",1,0,1,2],["multi",1,0,1,3],["type",1,0,1,4],["value",1,0,1,2]]];
+export var Dropdown = ["bs-dropdown",function(){return(import("./mzrhv4a7.js")).then(function(m){return m.BsDropdown})},0,[["className",1,0,"class-name",2],["dropLeft",1,0,"drop-left",3],["dropRight",1,0,"drop-right",3],["dropUp",1,0,"drop-up",3],["el",7],["formFl",1,0,"form-fl",3],["id",1,0,1,2],["isSplit",1,0,"is-split",3],["items",1,0,1,2],["label",1,0,1,2],["menuOnly",1,0,"menu-only",3],["multi",1,0,1,3],["type",1,0,1,4],["value",1,0,1,2]]];
 
 export var Form = ["bs-form",function(){return(import("./w6nfcw2a.js")).then(function(m){return m.BsForm})},0,[["el",7],["rows",1,0,1,2],["value",1,0,1,2]]];
 

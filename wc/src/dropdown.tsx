@@ -18,6 +18,7 @@ export class Dropdown {
     @Prop() isSplit: boolean;
     @Prop() items: string;
     @Prop() label: string;
+    @Prop() menuOnly: boolean;
     @Prop() multi: boolean;
     @Prop() type: number;
     @Prop() value: string;
@@ -55,6 +56,7 @@ export class Dropdown {
             isSplit: this.isSplit,
             items: items,
             label: this.label,
+            menuOnly: this.menuOnly,
             multi: this.multi,
             type: this.type,
             value: this.value,
