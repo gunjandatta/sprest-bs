@@ -1,6 +1,7 @@
+import { Components } from "gd-bs";
 import { IREST } from "gd-sprest";
-import * as Components from "./components/types";
 import * as WebParts from "./webparts/types";
+export * from "gd-bs";
 export * from "gd-sprest";
 
 /**

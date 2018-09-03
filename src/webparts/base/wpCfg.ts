@@ -1,5 +1,4 @@
-import { Button, ButtonGroup, ButtonTypes, Modal } from "../../components";
-import { IButtonProps } from "../../components/types/button";
+import { Components } from "gd-bs";
 import { IWebPartCfg, IWebPartEditForm, IWebPartInfo, IWebPartProps } from "../types/wp";
 import { Helper } from "./helper";
 declare var MSOWebPartPageFormName;
@@ -37,16 +36,16 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
         ].join('\n');
 
         // Render the button to toggle the modal
-        Button({
+        Components.Button({
             el: wp.el.children[0],
             target: "#" + props.elementId + "_modal",
             text: "Configure WebPart",
             toggle: "modal",
-            type: ButtonTypes.Secondary
+            type: Components.ButtonTypes.Secondary
         });
 
         // Render the modal
-        let modal = Modal({
+        let modal = Components.Modal({
             el: wp.el.children[1],
             id: props.elementId + "_modal",
             isCentered: true,
@@ -76,7 +75,7 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
                 else { Helper.renderEditForm(wp, formControls); }
             },
             onRenderFooter: el => {
-                let actionButtons: Array<IButtonProps> = [];
+                let actionButtons: Array<Components.IButtonProps> = [];
 
                 // See if this is a wiki page
                 let disableSaveButton = isWikiPageInEdit();
@@ -120,9 +119,9 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
                 }
 
                 // Render the menu buttons
-                ButtonGroup({
+                Components.ButtonGroup({
                     buttons: actionButtons,
-                    buttonType: ButtonTypes.Secondary,
+                    buttonType: Components.ButtonTypes.Secondary,
                     el,
                     isSmall: true
                 });

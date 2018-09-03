@@ -1,8 +1,8 @@
-import "bootstrap";
-import "./styles.scss";
 import { Components, jQuery, WebParts } from "./rest";
+export * from "gd-bs";
 export * from "gd-sprest";
 export * from "./rest";
+//import "./styles.scss";
 
 // See if the window exists
 if (window) {

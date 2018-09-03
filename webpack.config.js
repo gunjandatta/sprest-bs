@@ -6,6 +6,7 @@ module.exports = (env, argv) => {
     // Return the configuration
     return {
         entry: [
+            "./node_modules/gd-bs/dist/gd-bs.min.js",
             "./node_modules/gd-sprest/dist/gd-sprest.min.js",
             "./src/index.ts"
         ],
@@ -17,6 +18,7 @@ module.exports = (env, argv) => {
             extensions: [".scss", ".css", ".ts", ".js"]
         },
         externals: {
+            "gd-bs": "$REST",
             "gd-sprest": "$REST"
         },
         module: {
@@ -28,17 +30,6 @@ module.exports = (env, argv) => {
                         { loader: "style-loader" },
                         // Translate CSS to CommonJS
                         { loader: "css-loader" },
-                        // Loader for webpack to process CSS with PostCSS
-                        {
-                            loader: "postcss-loader",
-                            options: {
-                                plugins: function () {
-                                    return [
-                                        require("autoprefixer")
-                                    ]
-                                }
-                            }
-                        },
                         // Compile SASS to CSS
                         { loader: "sass-loader" }
                     ]

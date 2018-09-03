@@ -1,6 +1,5 @@
+import { Components } from "gd-bs";
 import { Types, Web } from "gd-sprest";
-import { FormControlTypes } from "../../components/form";
-import { IDropdownItem, IButtonProps, IFormControl, IFormControlTextField, IFormControlDropdown } from "../../components/types";
 import { IWPListCfg, IWPListEditForm, IWPListInfo } from "../types";
 
 /**
@@ -10,7 +9,7 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
     let _wpInfo: IWPListInfo = null;
 
     // Method to load the lists
-    let loadLists = (webUrl?: string): PromiseLike<Array<IFormControl>> => {
+    let loadLists = (webUrl?: string): PromiseLike<Array<Components.IFormControl>> => {
         // Return a promise
         return new Promise((resolve, reject) => {
             // Set the query
@@ -24,8 +23,8 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                 .query(query)
                 // Execute the request
                 .execute(lists => {
-                    let controls: Array<IFormControl> = [];
-                    let items: Array<IDropdownItem> = [{
+                    let controls: Array<Components.IFormControl> = [];
+                    let items: Array<Components.IDropdownItem> = [{
                         text: "",
                         value: ""
                     }];
@@ -38,13 +37,13 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                         label: "Relative Web Url:",
                         description: "The web containing the list. If blank, the current web is used.",
                         name: "WebUrl",
-                        type: FormControlTypes.TextField,
+                        type: Components.FormControlTypes.TextField,
                         value: webUrl,
                         onChange: (value) => {
                             // Update the configuration
                             _wpInfo.cfg.WebUrl = value;
                         }
-                    } as IFormControlTextField);
+                    } as Components.IFormControlTextField);
 
                     // Parse the lists
                     let selectedList = null;
@@ -69,9 +68,9 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                         label: "List:",
                         name: "ListName",
                         items,
-                        type: FormControlTypes.Dropdown,
+                        type: Components.FormControlTypes.Dropdown,
                         value: _wpInfo && _wpInfo.cfg ? _wpInfo.cfg.ListName : null,
-                        onChange: (item: IDropdownItem) => {
+                        onChange: (item: Components.IDropdownItem) => {
                             if (item) {
                                 // Parse the list
                                 for (let i = 0; i < listValues.length; i++) {
@@ -89,7 +88,7 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                                 }
                             }
                         }
-                    } as IFormControlDropdown);
+                    } as Components.IFormControlDropdown);
 
                     // Call the render form event
                     let returnVal: any = props.onRenderForm ? props.onRenderForm(_wpInfo, selectedList) : null;
@@ -123,7 +122,7 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
     }
 
     // Create the form action buttons
-    let actionButtons: Array<IButtonProps> = [
+    let actionButtons: Array<Components.IButtonProps> = [
         {
             text: "Refresh",
             onClick: () => {

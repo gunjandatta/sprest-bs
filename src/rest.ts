@@ -1,7 +1,5 @@
-import * as jQuery from "jquery";
-import * as Components from "./components";
+import { Components, jQuery } from "gd-bs";
 import * as WebParts from "./webparts";
-
 export {
     jQuery,
     Components,

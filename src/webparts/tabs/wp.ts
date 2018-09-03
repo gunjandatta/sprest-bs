@@ -1,5 +1,4 @@
-import { Nav } from "../../components";
-import { INavLink } from "../../components/types";
+import { Components } from "gd-bs";
 import { WebPart } from "../base";
 import { IWebPartInfo } from "../types/wp";
 import { IWPTabs, IWPTabsProps } from "../types/wpTabs";
@@ -160,7 +159,7 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
     }
 
     // Method to update the visibility of the webparts
-    let updateWebParts = (tab?: INavLink, ev?: Event) => {
+    let updateWebParts = (tab?: Components.INavLink, ev?: Event) => {
         let selectedTabId = 0;
 
         // See if the tab exists
@@ -243,7 +242,7 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
             _webparts = getWebParts(wpInfo);
 
             // Parse the webparts
-            let items: Array<INavLink> = [];
+            let items: Array<Components.INavLink> = [];
             for (let i = 0; i < _webparts.length; i++) {
                 // Ensure a title exists
                 let wpTitle = _webparts[i].querySelector(".ms-webpart-titleText") as HTMLDivElement;
@@ -258,7 +257,7 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
             }
 
             // Render the navigation
-            let nav = Nav({
+            let nav = Components.Nav({
                 className: props.className,
                 el: wpInfo.el,
                 isPills: props.type == WPTabTypes.Pillars,

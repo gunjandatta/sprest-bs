@@ -1,6 +1,5 @@
+import { Components } from "gd-bs";
 import { ContextInfo, } from "gd-sprest";
-import { Form } from "../../components/form";
-import { IFormControl, IFormRow } from "../../components/types/form";
 import { IHelper, IWebPartInfo, IWPInstance } from "../types";
 declare var SP;
 
@@ -63,8 +62,8 @@ export const Helper: IHelper = {
     },
 
     // Method to render the edit form
-    renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<IFormControl> = []) => {
-        let rows: Array<IFormRow> = [];
+    renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<Components.IFormControl> = []) => {
+        let rows: Array<Components.IFormRow> = [];
 
         // Parse the controls
         for (let i = 0; i < formControls.length; i++) {
@@ -73,7 +72,7 @@ export const Helper: IHelper = {
         }
 
         // Render the form
-        Form({
+        Components.Form({
             el: wpInfo.el.querySelector(".wp-cfg-form"),
             rows,
             value: wpInfo.cfg

@@ -1,5 +1,5 @@
+import { Components } from "gd-bs";
 import { Types } from "gd-sprest";
-import { IFormControl } from "../../components/types/form";
 import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "./wp";
 
 /**
@@ -61,11 +61,11 @@ export interface IWPListEditForm<IListCfg = IWPListCfg, IListInfo = IWPListInfo>
     listQuery?: Types.SP.ODataQuery;
 
     /** The list changed event. */
-    onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
+    onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControl> | PromiseLike<Array<Components.IFormControl>> | void;
 
     /** The lists rendering event. */
     onListsRendering?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
 
     /** The render form event. */
-    onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
+    onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControl> | PromiseLike<Array<Components.IFormControl>> | void;
 }

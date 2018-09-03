@@ -1,7 +1,5 @@
+import { Components } from "gd-bs";
 import { Helper } from "gd-sprest";
-import { FormControlTypes } from "../../components";
-import { IDropdownItem } from "../../components/types/dropdown";
-import { IFormControlDropdown } from "../../components/types/form";
 import { Helper as WPHelper } from "../base/helper";
 import { IWPTaxonomyInfo, IWPTaxonomyEditForm, IWPTaxonomyCfg } from "../types/wpTaxonomy";
 
@@ -9,22 +7,22 @@ import { IWPTaxonomyInfo, IWPTaxonomyEditForm, IWPTaxonomyCfg } from "../types/w
  * Taxonomy WebPart Edit Form
  */
 export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomyEditForm => {
-    let _termGroupItems: Array<IDropdownItem> = [];
-    let _termSetItems: Array<IDropdownItem> = [];
-    let _termSetTermsItems: Array<IDropdownItem> = [];
+    let _termGroupItems: Array<Components.IDropdownItem> = [];
+    let _termSetItems: Array<Components.IDropdownItem> = [];
+    let _termSetTermsItems: Array<Components.IDropdownItem> = [];
     let _wpInfo: IWPTaxonomyInfo = null;
 
     // Method to generate the form controls
-    let generateFormControls = (): Array<IFormControlDropdown> => {
-        let formControls: Array<IFormControlDropdown> = [];
+    let generateFormControls = (): Array<Components.IFormControlDropdown> => {
+        let formControls: Array<Components.IFormControlDropdown> = [];
 
         // Add the term groups dropdown
         formControls.push({
             label: "Select the Term Group:",
             items: _termGroupItems,
             name: "TermGroupId",
-            type: FormControlTypes.Dropdown,
-            onChange: (option: IDropdownItem) => {
+            type: Components.FormControlTypes.Dropdown,
+            onChange: (option: Components.IDropdownItem) => {
                 // Set the configuration
                 _wpInfo.cfg.TermGroupId = option ? option.value : "";
                 _wpInfo.cfg.TermGroupName = option ? option.text : "";
@@ -47,8 +45,8 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
                 label: "Select a Term Set:",
                 items: _termSetItems,
                 name: "TermSetId",
-                type: FormControlTypes.Dropdown,
-                onChange: (option: IDropdownItem) => {
+                type: Components.FormControlTypes.Dropdown,
+                onChange: (option: Components.IDropdownItem) => {
                     // Set the configuration
                     _wpInfo.cfg.TermSetId = option ? option.value : "";
                     _wpInfo.cfg.TermSetName = option ? option.text : "";
@@ -73,8 +71,8 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
                 label: "Select a Term Set Term:",
                 items: _termSetTermsItems,
                 name: "TermSetTermId",
-                type: FormControlTypes.Dropdown,
-                onChange: (option: IDropdownItem) => {
+                type: Components.FormControlTypes.Dropdown,
+                onChange: (option: Components.IDropdownItem) => {
                     // Set the configuration
                     _wpInfo.cfg.TermSetTermId = option ? option.value : "";
                     _wpInfo.cfg.TermSetTermName = option ? option.text : "";
@@ -90,7 +88,7 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
     }
 
     // Method to load the term groups
-    let loadTermGroups = (): PromiseLike<Array<IFormControlDropdown>> => {
+    let loadTermGroups = (): PromiseLike<Array<Components.IFormControlDropdown>> => {
         // Return a promise
         return new Promise((resolve, reject) => {
             // Load the term groups

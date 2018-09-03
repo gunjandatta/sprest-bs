@@ -1,4 +1,4 @@
-import { IFormControl } from "../../components/types/form";
+import { Components } from "gd-bs";
 import { IWebPartInfo } from "./wp";
 
 /**
@@ -27,7 +27,7 @@ export interface IHelper {
      * @param wpInfo - The webpart information.
      * @param formControls - The form controls to render.
      */
-    renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<IFormControl>) => void;
+    renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<Components.IFormControl>) => void;
 
     /**
      * Method to save the webpart configuration.

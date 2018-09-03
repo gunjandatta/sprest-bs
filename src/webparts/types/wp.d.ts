@@ -1,5 +1,4 @@
-import { IButtonProps } from "../../components/types/button";
-import { IFormControl } from "../../components/types/form";
+import { Components } from "gd-bs";
 
 /**
  * Web Part
@@ -17,7 +16,7 @@ export interface IWebPart<IWPCfg = IWebPartCfg, IWPInfo = IWebPartInfo> {
     info: IWPInfo;
 
     /** Method to update the edit form. */
-    updateEditForm?: (formControls: Array<IFormControl>) => void;
+    updateEditForm?: (formControls: Array<Components.IFormControl>) => void;
 }
 
 /**
@@ -97,7 +96,7 @@ export interface IWebPartProps<IWPInfo = IWebPartInfo, IWPEditForm = IWebPartEdi
  */
 export const WPCfg: (cfg: IWebPartCfg, props: IWebPartProps) => {
     /** Method to render the edit form. */
-    renderForm?: (formControls: Array<IFormControl>) => void;
+    renderForm?: (formControls: Array<Components.IFormControl>) => void;
 };
 
 /**
@@ -113,10 +112,10 @@ export interface IWebPartCfg {
  */
 export interface IWebPartEditForm<IWPCfg = IWebPartCfg, IWPInfo = IWebPartInfo> {
     /** The form action buttons displayed in the footer of the modal. */
-    actions?: Array<IButtonProps>;
+    actions?: Array<Components.IButtonProps>;
 
     /** The render form event. */
-    onRenderForm?: (wpInfo: IWPInfo) => Array<IFormControl> | PromiseLike<Array<IFormControl>> | void;
+    onRenderForm?: (wpInfo: IWPInfo) => Array<Components.IFormControl> | PromiseLike<Array<Components.IFormControl>> | void;
 
     /** The save event. */
     onSave?: (wpCfg: IWPCfg) => IWPCfg;

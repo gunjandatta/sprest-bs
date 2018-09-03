@@ -1,7 +1,5 @@
+import { Components } from "gd-bs";
 import { SPTypes, Types } from "gd-sprest";
-import { IDropdownItem } from "../../components/types/dropdown";
-import { FormControlTypes } from "../../components/form";
-import { IFormControlDropdown } from "../../components/types/form";
 import { IWPSearchCfg, IWPSearchEditForm, IWPSearchInfo } from "../types/wpSearch";
 
 /**
@@ -12,8 +10,8 @@ export const WPSearchEditForm = (props: IWPSearchEditForm = {}): IWPSearchEditFo
 
     // Method to render the fields
     let loadFields = (list: Types.SP.IListQueryResult) => {
-        let formControls: Array<IFormControlDropdown> = [];
-        let items: Array<IDropdownItem> = [];
+        let formControls: Array<Components.IFormControlDropdown> = [];
+        let items: Array<Components.IDropdownItem> = [];
 
         // Ensure the list exists
         if (list == null) { return formControls; }
@@ -72,8 +70,8 @@ export const WPSearchEditForm = (props: IWPSearchEditForm = {}): IWPSearchEditFo
         formControls.push({
             label: "Filter Field(s):",
             items,
-            type: FormControlTypes.MultiDropdown,
-            onChange: (items: Array<IDropdownItem>) => {
+            type: Components.FormControlTypes.MultiDropdown,
+            onChange: (items: Array<Components.IDropdownItem>) => {
                 // Clear the fields
                 _wpInfo.cfg.Fields = [];
 
