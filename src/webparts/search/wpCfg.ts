@@ -105,11 +105,42 @@ export const WPSearchEditForm = (props: IWPSearchEditForm = {}): IWPSearchEditFo
         listQuery,
         onListsRendering: props.onListsRendering,
         onRenderForm: (wpInfo, list: Types.SP.IListQueryResult) => {
-            // Save the webpart information
-            _wpInfo = wpInfo;
+            // Return a promise
+            return new Promise((resolve, reject) => {
+                // Save the webpart information
+                _wpInfo = wpInfo;
 
-            // Load the fields
-            return loadFields(list);
+                // Load the fields
+                let formControls = loadFields(list);
+
+                // Call the render form event
+                let returnVal: any = props.onRenderForm ? props.onRenderForm(_wpInfo) : null;
+                if (returnVal) {
+                    // See if this is a promise
+                    if (returnVal.then) {
+                        // Wait for the promise to complete
+                        returnVal.then((controls = []) => {
+                            // Add the form controls
+                            formControls = formControls.concat(controls);
+
+                            // Resolve the promise
+                            resolve(formControls);
+                        });
+                    }
+                    // Else, see if the form controls exist
+                    else if (returnVal.length > 0) {
+                        // Add the form controls
+                        formControls = formControls.concat(returnVal);
+
+                        // Resolve the promise
+                        resolve(formControls);
+                    }
+                    // Else, resolve the promise
+                    else { resolve(formControls); }
+                }
+                // Else, resolve the promise
+                else { resolve(formControls); }
+            });
         },
         showSaveButton: props.showSaveButton,
         onListChanged: (wpInfo: IWPSearchInfo, list: Types.SP.IListQueryResult) => {

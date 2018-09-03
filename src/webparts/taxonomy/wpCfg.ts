@@ -191,12 +191,44 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
 
     // Return the edit panel
     return {
+        actions: props.actions,
         onRenderForm: (wpInfo) => {
-            // Save the webpart information
-            _wpInfo = wpInfo;
+            // Return a promise
+            return new Promise((resolve, reject) => {
+                // Save the webpart information
+                _wpInfo = wpInfo;
 
-            // Load the term groups
-            return loadTermGroups();
+                // Load the term groups
+                loadTermGroups().then(formControls => {
+                    // Call the render form event
+                    let returnVal: any = props.onRenderForm ? props.onRenderForm(_wpInfo) : null;
+                    if (returnVal) {
+                        // See if this is a promise
+                        if (returnVal.then) {
+                            // Wait for the promise to complete
+                            returnVal.then((controls = []) => {
+                                // Add the form controls
+                                formControls = formControls.concat(controls);
+
+                                // Resolve the promise
+                                resolve(formControls);
+                            });
+                        }
+                        // Else, see if the form controls exist
+                        else if (returnVal.length > 0) {
+                            // Add the form controls
+                            formControls = formControls.concat(returnVal);
+
+                            // Resolve the promise
+                            resolve(formControls);
+                        }
+                        // Else, resolve the promise
+                        else { resolve(formControls); }
+                    }
+                    // Else, resolve the promise
+                    else { resolve(formControls); }
+                });
+            });
         },
         onSave: (cfg: IWPTaxonomyCfg) => {
             // Update the configuration
