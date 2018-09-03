@@ -16,8 +16,9 @@
   "author": "Gunjan Datta <gunjandatta.github.io>",
   "license": "ISC",
   "dependencies": {
-    "@stencil/core": "^0.12.2",
-    "stencil": "^0.0.5"
+    "@stencil/core": "file:../node_modules/@stencil/core",
+    "gd-bs": "file:../node_modules/gd-bs",
+    "stencil": "file:../node_modules/stencil"
   },
   "devDependencies": {}
 }

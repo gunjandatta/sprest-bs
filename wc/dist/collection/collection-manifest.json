@@ -4,7 +4,7 @@
       "tag": "bs-accordion",
       "dependencies": [],
       "componentClass": "Accordion",
-      "componentPath": "accordion.js",
+      "componentPath": "components/accordion.js",
       "styles": {},
       "props": [
         {
@@ -31,7 +31,7 @@
       "tag": "bs-alert",
       "dependencies": [],
       "componentClass": "Alert",
-      "componentPath": "alert.js",
+      "componentPath": "components/alert.js",
       "styles": {},
       "props": [
         {
@@ -68,7 +68,7 @@
       "tag": "bs-badge",
       "dependencies": [],
       "componentClass": "Badge",
-      "componentPath": "badge.js",
+      "componentPath": "components/badge.js",
       "styles": {},
       "props": [
         {
@@ -110,7 +110,7 @@
       "tag": "bs-breadcrumb",
       "dependencies": [],
       "componentClass": "Breadcrumb",
-      "componentPath": "breadcrumb.js",
+      "componentPath": "components/breadcrumb.js",
       "styles": {},
       "props": [
         {
@@ -132,7 +132,7 @@
       "tag": "bs-button",
       "dependencies": [],
       "componentClass": "Button",
-      "componentPath": "button.js",
+      "componentPath": "components/button.js",
       "styles": {},
       "props": [
         {
@@ -218,7 +218,7 @@
       "tag": "bs-buttongroup",
       "dependencies": [],
       "componentClass": "ButtonGroup",
-      "componentPath": "buttonGroup.js",
+      "componentPath": "components/buttonGroup.js",
       "styles": {},
       "props": [
         {
@@ -270,7 +270,7 @@
       "tag": "bs-card",
       "dependencies": [],
       "componentClass": "Card",
-      "componentPath": "card.js",
+      "componentPath": "components/card.js",
       "styles": {},
       "props": [
         {
@@ -310,7 +310,7 @@
       "tag": "bs-cardgroup",
       "dependencies": [],
       "componentClass": "CardGroup",
-      "componentPath": "cardGroup.js",
+      "componentPath": "components/cardGroup.js",
       "styles": {},
       "props": [
         {
@@ -332,7 +332,7 @@
       "tag": "bs-carousel",
       "dependencies": [],
       "componentClass": "Carousel",
-      "componentPath": "carousel.js",
+      "componentPath": "components/carousel.js",
       "styles": {},
       "props": [
         {
@@ -379,7 +379,7 @@
       "tag": "bs-collapse",
       "dependencies": [],
       "componentClass": "Collapse",
-      "componentPath": "collapse.js",
+      "componentPath": "components/collapse.js",
       "styles": {},
       "props": [
         {
@@ -416,7 +416,7 @@
       "tag": "bs-dropdown",
       "dependencies": [],
       "componentClass": "Dropdown",
-      "componentPath": "dropdown.js",
+      "componentPath": "components/dropdown.js",
       "styles": {},
       "props": [
         {
@@ -493,7 +493,7 @@
       "tag": "bs-form",
       "dependencies": [],
       "componentClass": "Form",
-      "componentPath": "form.js",
+      "componentPath": "components/form.js",
       "styles": {},
       "props": [
         {
@@ -515,7 +515,7 @@
       "tag": "bs-inputgroup",
       "dependencies": [],
       "componentClass": "InputGroup",
-      "componentPath": "inputGroup.js",
+      "componentPath": "components/inputGroup.js",
       "styles": {},
       "props": [
         {
@@ -582,7 +582,7 @@
       "tag": "bs-jumbotron",
       "dependencies": [],
       "componentClass": "Jumbotron",
-      "componentPath": "jumbotron.js",
+      "componentPath": "components/jumbotron.js",
       "styles": {},
       "props": [
         {
@@ -614,7 +614,7 @@
       "tag": "bs-listgroup",
       "dependencies": [],
       "componentClass": "ListGroup",
-      "componentPath": "listGroup.js",
+      "componentPath": "components/listGroup.js",
       "styles": {},
       "props": [
         {
@@ -656,7 +656,7 @@
       "tag": "bs-modal",
       "dependencies": [],
       "componentClass": "Modal",
-      "componentPath": "modal.js",
+      "componentPath": "components/modal.js",
       "styles": {},
       "props": [
         {
@@ -728,7 +728,7 @@
       "tag": "bs-nav",
       "dependencies": [],
       "componentClass": "Nav",
-      "componentPath": "nav.js",
+      "componentPath": "components/nav.js",
       "styles": {},
       "props": [
         {
@@ -785,7 +785,7 @@
       "tag": "bs-navbar",
       "dependencies": [],
       "componentClass": "Navbar",
-      "componentPath": "navbar.js",
+      "componentPath": "components/navbar.js",
       "styles": {},
       "props": [
         {
@@ -832,7 +832,7 @@
       "tag": "bs-pagination",
       "dependencies": [],
       "componentClass": "Pagination",
-      "componentPath": "pagination.js",
+      "componentPath": "components/pagination.js",
       "styles": {},
       "props": [
         {
@@ -879,7 +879,7 @@
       "tag": "bs-popover",
       "dependencies": [],
       "componentClass": "Popover",
-      "componentPath": "popover.js",
+      "componentPath": "components/popover.js",
       "styles": {},
       "props": [
         {
@@ -916,7 +916,7 @@
       "tag": "bs-progress",
       "dependencies": [],
       "componentClass": "Progress",
-      "componentPath": "progress.js",
+      "componentPath": "components/progress.js",
       "styles": {},
       "props": [
         {
@@ -963,7 +963,7 @@
       "tag": "bs-progressgroup",
       "dependencies": [],
       "componentClass": "ProgressGroup",
-      "componentPath": "progressGroup.js",
+      "componentPath": "components/progressGroup.js",
       "styles": {},
       "props": [
         {
@@ -990,7 +990,7 @@
       "tag": "bs-tooltip",
       "dependencies": [],
       "componentClass": "Tooltip",
-      "componentPath": "toggle.js",
+      "componentPath": "components/toggle.js",
       "styles": {},
       "props": [
         {
@@ -1022,7 +1022,7 @@
   "collections": [],
   "compiler": {
     "name": "@stencil/core",
-    "version": "0.12.2",
+    "version": "0.12.4",
     "typescriptVersion": "2.9.2"
   },
   "bundles": []
