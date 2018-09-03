@@ -111,7 +111,7 @@ export const Navbar = (props: INavbarProps): INavbar => {
             props.enableSearch || props.searchBox ? Button({
                 text,
                 type: props.searchBox ? props.searchBox.btnType : null
-            }) : '',
+            }).el.innerHTML : '',
             '</form>'
         ].join('\n'));
     }
