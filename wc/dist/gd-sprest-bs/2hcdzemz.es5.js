@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("2hcdzemz",["exports","./chunk-cda485f6.js"],function(e,d){window.GdSprestBs.h,e.BsTooltip=d.Tooltip,Object.defineProperty(e,"__esModule",{value:!0})});

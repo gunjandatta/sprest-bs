@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("bu4vct8g",["exports","./chunk-382b9708.js"],function(e,d){window.GdSprestBs.h,e.BsNavbar=d.Navbar,Object.defineProperty(e,"__esModule",{value:!0})});

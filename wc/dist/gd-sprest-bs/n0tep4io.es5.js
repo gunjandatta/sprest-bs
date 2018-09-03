@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("n0tep4io",["exports","./chunk-d6c118e8.js"],function(e,d){window.GdSprestBs.h,e.BsButton=d.Button,Object.defineProperty(e,"__esModule",{value:!0})});
