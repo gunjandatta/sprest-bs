@@ -22,7 +22,7 @@ export const CardGroup = (props: ICardGroupProps): ICardGroup => {
         let card = cards[i];
 
         // Add the button html
-        html.push(Card(card));
+        html.push(Card(card).el.innerHTML);
     }
 
     // Add the closing tag

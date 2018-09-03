@@ -35,7 +35,7 @@ export const ButtonGroup = (props: IButtonGroupProps): IButtonGroup => {
         buttonProps.type = buttonProps.type || props.buttonType;
 
         // Add the button html
-        html.push(Button(buttonProps));
+        html.push(Button(buttonProps).el.innerHTML);
     }
 
     // Add the closing tag

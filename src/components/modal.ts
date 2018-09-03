@@ -18,7 +18,7 @@ export const Modal = (props: IModalProps): IModal => {
         btnProps.toggle = "modal";
 
         // Render a button
-        html.push(Button(btnProps));
+        html.push(Button(btnProps).el.innerHTML);
     }
 
     // Set the class names

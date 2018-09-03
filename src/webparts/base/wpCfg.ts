@@ -76,6 +76,7 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
                 else { Helper.renderEditForm(wp, formControls); }
             },
             onRenderFooter: el => {
+                debugger;
                 let actionButtons: Array<IButtonProps> = [];
 
                 // See if this is a wiki page
