@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("g0sszdnc",["exports","./chunk-3e055a12.js"],function(e,d){window.GdSprestBs.h,e.BsAccordion=d.Accordion,Object.defineProperty(e,"__esModule",{value:!0})});

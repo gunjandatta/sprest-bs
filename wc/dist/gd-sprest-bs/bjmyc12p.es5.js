@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("bjmyc12p",["exports","./chunk-23c73e3a.js"],function(e,d){window.GdSprestBs.h,e.BsNav=d.Nav,Object.defineProperty(e,"__esModule",{value:!0})});

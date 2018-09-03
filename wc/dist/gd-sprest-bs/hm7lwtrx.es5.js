@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("hm7lwtrx",["exports","./chunk-4fa83bd4.js"],function(e,d){window.GdSprestBs.h,e.BsJumbotron=d.Jumbotron,Object.defineProperty(e,"__esModule",{value:!0})});

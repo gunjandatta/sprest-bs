@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("ugxo8boj",["exports","./chunk-f510fdb4.js"],function(e,s){window.GdSprestBs.h,e.BsProgress=s.Progress,Object.defineProperty(e,"__esModule",{value:!0})});

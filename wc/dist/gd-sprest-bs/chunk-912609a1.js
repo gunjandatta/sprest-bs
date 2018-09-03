@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-const{h:e}=window.GdSprestBs;class t{componentDidLoad(){let e=[];if(this.items)try{e=JSON.parse(this.items)}catch(t){e=[],console.log("Error parsing the JSON string."),console.log(this.items)}return $REST.Components.Breadcrumb({className:this.className,el:this.el.children[0],items:e})}render(){return e("div",null)}static get is(){return"bs-breadcrumb"}static get properties(){return{className:{type:String,attr:"class-name"},el:{elementRef:!0},items:{type:String,attr:"items"}}}}export{t as a};

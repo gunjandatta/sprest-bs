@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("veiafayi",["exports","./chunk-1311ffc0.js"],function(e,o){window.GdSprestBs.h,e.BsPopover=o.Popover,Object.defineProperty(e,"__esModule",{value:!0})});
