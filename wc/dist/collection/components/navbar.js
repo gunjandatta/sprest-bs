@@ -53,6 +53,7 @@ export class Navbar {
             brandUrl: this.brandUrl,
             className: this.className,
             el: this.el.children[0],
+            enableSearch: this.enableSearch,
             id: this.id,
             items,
             searchBox,
@@ -79,6 +80,10 @@ export class Navbar {
         },
         "el": {
             "elementRef": true
+        },
+        "enableSearch": {
+            "type": Boolean,
+            "attr": "enable-search"
         },
         "id": {
             "type": String,

@@ -34,7 +34,7 @@ export var Modal = ["bs-modal",function(){return(import("./ahhryzif.js")).then(f
 
 export var Nav = ["bs-nav",function(){return(import("./a2pbbgxy.js")).then(function(m){return m.BsNav})},0,[["className",1,0,"class-name",2],["el",7],["enableFade",1,0,"enable-fade",3],["enableFill",1,0,"enable-fill",3],["id",1,0,1,2],["isJustified",1,0,"is-justified",3],["isPills",1,0,"is-pills",3],["isTabs",1,0,"is-tabs",3],["isVertical",1,0,"is-vertical",3],["items",1,0,1,2]]];
 
-export var Navbar = ["bs-navbar",function(){return(import("./bu4vct8g.js")).then(function(m){return m.BsNavbar})},0,[["brand",1,0,1,2],["brandUrl",1,0,"brand-url",2],["className",1,0,"class-name",2],["el",7],["id",1,0,1,2],["items",1,0,1,2],["searchBox",1,0,"search-box",2],["type",1,0,1,4]]];
+export var Navbar = ["bs-navbar",function(){return(import("./gttiyltd.js")).then(function(m){return m.BsNavbar})},0,[["brand",1,0,1,2],["brandUrl",1,0,"brand-url",2],["className",1,0,"class-name",2],["el",7],["enableSearch",1,0,"enable-search",3],["id",1,0,1,2],["items",1,0,1,2],["searchBox",1,0,"search-box",2],["type",1,0,1,4]]];
 
 export var Pagination = ["bs-pagination",function(){return(import("./djoytmyh.js")).then(function(m){return m.BsPagination})},0,[["alignment",1,0,1,4],["className",1,0,"class-name",2],["el",7],["icon",1,0,1,2],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3],["label",1,0,1,2],["numberOfPages",1,0,"number-of-pages",4]]];
 

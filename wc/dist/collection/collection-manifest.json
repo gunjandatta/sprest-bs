@@ -804,6 +804,11 @@
           "attr": "class-name"
         },
         {
+          "name": "enableSearch",
+          "type": "Boolean",
+          "attr": "enable-search"
+        },
+        {
           "name": "id",
           "type": "String",
           "attr": "id"

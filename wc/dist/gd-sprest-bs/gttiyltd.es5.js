@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("gttiyltd",["exports","./chunk-ebaf3b64.js"],function(e,d){window.GdSprestBs.h,e.BsNavbar=d.Navbar,Object.defineProperty(e,"__esModule",{value:!0})});

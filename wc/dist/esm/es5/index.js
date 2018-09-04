@@ -15,7 +15,7 @@ import { a as Jumbotron } from "./chunk-ba96d80e.js";
 import { a as ListGroup } from "./chunk-870318d8.js";
 import { a as Modal } from "./chunk-46a8a977.js";
 import { a as Nav } from "./chunk-b56a69e6.js";
-import { a as Navbar } from "./chunk-49f061cc.js";
+import { a as Navbar } from "./chunk-28086014.js";
 import { a as Pagination } from "./chunk-214ba19d.js";
 import { a as Popover } from "./chunk-025c46c8.js";
 import { a as Progress } from "./chunk-e33dcc56.js";
