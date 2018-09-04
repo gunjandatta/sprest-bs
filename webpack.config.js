@@ -6,8 +6,8 @@ module.exports = (env, argv) => {
     // Return the configuration
     return {
         entry: [
-            "./node_modules/gd-bs/dist/gd-bs.min.js",
-            "./node_modules/gd-sprest/dist/gd-sprest.min.js",
+            "./node_modules/gd-bs/dist/gd-bs" + (isDev ? "" : ".min") + ".js",
+            "./node_modules/gd-sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
             "./src/index.ts"
         ],
         output: {

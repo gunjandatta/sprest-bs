@@ -1,6 +1,6 @@
 {
   "name": "gd-sprest-bs",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
   "main": "dist/gd-sprest-bs.js",
   "typings": "dist/gd-sprest-bs.d.ts",
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/gunjandatta/sprest-bs#readme",
   "dependencies": {
-    "gd-bs": "^0.1.2",
+    "gd-bs": "^0.1.3",
     "gd-sprest": "^4.2.1"
   },
   "devDependencies": {
