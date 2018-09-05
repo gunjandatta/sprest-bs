@@ -1,6 +1,6 @@
 [![NuGet](https://img.shields.io/nuget/v/gd-sprest-bs.svg)](https://www.nuget.org/packages/gd-sprest-bs/) [![Current Version](https://badge.fury.io/js/gd-sprest-bs.svg)](https://www.npmjs.com/package/gd-sprest-bs) [![Downloads](https://img.shields.io/npm/dm/gd-sprest-bs.svg)](https://www.npmjs.com/package/gd-sprest-bs) [![Total Downloads](https://img.shields.io/npm/dt/gd-sprest-bs.svg)](https://www.npmjs.com/package/gd-sprest-bs) [![Gitter Chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/gd-sprest/Lobby) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/Dattabase)
 
-_This library is still in development._
+_This library is still in development. Please report issues & requests [here](https://github.com/gunjandatta/sprest-bs/issues)._
 
 ## SharePoint Bootstrap Library
 
