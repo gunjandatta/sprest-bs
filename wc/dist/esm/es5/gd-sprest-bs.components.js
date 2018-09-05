@@ -24,7 +24,7 @@ export var Dropdown = ["bs-dropdown",function(){return(import("./qynlyxv5.js")).
 
 export var Form = ["bs-form",function(){return(import("./zlfwtuiz.js")).then(function(m){return m.BsForm})},0,[["el",7],["rows",1,0,1,2],["value",1,0,1,2]]];
 
-export var InputGroup = ["bs-inputGroup",function(o){return(import("./fiojpaoo.js")).then(function(m){return m.BsInputgroup})},0,[["appendedLabel",1,0,"appended-label",2],["className",1,0,"class-name",2],["description",1,0,1,2],["el",7],["id",1,0,1,2],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3],["label",1,0,1,2],["placeholder",1,0,1,2],["prependedLabel",1,0,"prepended-label",2],["type",1,0,1,4],["value",1,0,1,2]]];
+export var InputGroup = ["bs-inputGroup",function(){return(import("./rk8ghpe2.js")).then(function(m){return m.BsInputgroup})},0,[["appendedLabel",1,0,"appended-label",2],["className",1,0,"class-name",2],["description",1,0,1,2],["el",7],["id",1,0,1,2],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3],["label",1,0,1,2],["placeholder",1,0,1,2],["prependedLabel",1,0,"prepended-label",2],["type",1,0,1,4],["value",1,0,1,2]]];
 
 export var Jumbotron = ["bs-jumbotron",function(){return(import("./prnrshzk.js")).then(function(m){return m.BsJumbotron})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["isFluid",1,0,"is-fluid",3],["lead",1,0,1,2]]];
 

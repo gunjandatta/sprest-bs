@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("fiojpaoo",["exports","./chunk-35b8b942.js"],function(e,u){window.GdSprestBs.h,e.BsInputgroup=u.InputGroup,Object.defineProperty(e,"__esModule",{value:!0})});

@@ -10,7 +10,7 @@ import { a as Carousel } from "./chunk-0d914292.js";
 import { a as Collapse } from "./chunk-73dcfc2c.js";
 import { a as Dropdown } from "./chunk-0e2064dd.js";
 import { a as Form } from "./chunk-862221bb.js";
-import { a as InputGroup } from "./chunk-0800a479.js";
+import { a as InputGroup } from "./chunk-a05e55eb.js";
 import { a as Jumbotron } from "./chunk-ba96d80e.js";
 import { a as ListGroup } from "./chunk-870318d8.js";
 import { a as Modal } from "./chunk-46a8a977.js";
