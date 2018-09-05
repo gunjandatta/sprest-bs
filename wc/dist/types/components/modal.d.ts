@@ -11,8 +11,6 @@ export declare class Modal {
     isCentered: boolean;
     isLarge: boolean;
     isSmall: boolean;
-    onRenderBody: string;
-    onRenderFooter: string;
     componentDidLoad(): any;
     render(): JSX.Element;
 }

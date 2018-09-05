@@ -14,6 +14,7 @@ export class InputGroup {
             el: this.el.children[0],
             id: this.id,
             isLarge: this.isLarge,
+            isPlainText: this.isPlainText,
             isSmall: this.isSmall,
             label: this.label,
             placeholder: this.placeholder,
@@ -64,6 +65,10 @@ export class InputGroup {
         "isLarge": {
             "type": Boolean,
             "attr": "is-large"
+        },
+        "isPlainText": {
+            "type": Boolean,
+            "attr": "is-plain-text"
         },
         "isSmall": {
             "type": Boolean,

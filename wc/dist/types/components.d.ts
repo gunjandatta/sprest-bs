@@ -225,6 +225,7 @@ export namespace Components {
     'description': string;
     'id': string;
     'isLarge': boolean;
+    'isPlainText': boolean;
     'isSmall': boolean;
     'label': string;
     'placeholder': string;
@@ -238,6 +239,7 @@ export namespace Components {
     'description'?: string;
     'id'?: string;
     'isLarge'?: boolean;
+    'isPlainText'?: boolean;
     'isSmall'?: boolean;
     'label'?: string;
     'placeholder'?: string;
@@ -287,8 +289,6 @@ export namespace Components {
     'isCentered': boolean;
     'isLarge': boolean;
     'isSmall': boolean;
-    'onRenderBody': string;
-    'onRenderFooter': string;
   }
   interface BsModalAttributes extends StencilHTMLAttributes {
     'body'?: string;
@@ -301,8 +301,6 @@ export namespace Components {
     'isCentered'?: boolean;
     'isLarge'?: boolean;
     'isSmall'?: boolean;
-    'onRenderBody'?: string;
-    'onRenderFooter'?: string;
   }
 
   interface BsNav {

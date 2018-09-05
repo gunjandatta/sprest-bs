@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("rk8ghpe2",["exports","./chunk-6b318e07.js"],function(e,u){window.GdSprestBs.h,e.BsInputgroup=u.InputGroup,Object.defineProperty(e,"__esModule",{value:!0})});

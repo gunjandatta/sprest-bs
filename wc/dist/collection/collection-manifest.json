@@ -544,6 +544,11 @@
           "attr": "is-large"
         },
         {
+          "name": "isPlainText",
+          "type": "Boolean",
+          "attr": "is-plain-text"
+        },
+        {
           "name": "isSmall",
           "type": "Boolean",
           "attr": "is-small"
@@ -708,16 +713,6 @@
           "name": "isSmall",
           "type": "Boolean",
           "attr": "is-small"
-        },
-        {
-          "name": "onRenderBody",
-          "type": "String",
-          "attr": "on-render-body"
-        },
-        {
-          "name": "onRenderFooter",
-          "type": "String",
-          "attr": "on-render-footer"
         }
       ],
       "hostElement": {

@@ -6,7 +6,7 @@ var InputGroup = /** @class */ (function () {
     InputGroup.prototype.componentDidLoad = function () {
         var _this = this;
         var e = this.el.getAttribute("onChange"), t = this.el.getAttribute("onClear");
-        return this.el.removeAttribute("id"), GD.Components.InputGroup({ appendedLabel: this.appendedLabel, className: this.className, description: this.description, el: this.el.children[0], id: this.id, isLarge: this.isLarge, isSmall: this.isSmall, label: this.label, placeholder: this.placeholder, prependedLabel: this.prependedLabel, type: this.type, value: this.value, onChange: function () {
+        return this.el.removeAttribute("id"), GD.Components.InputGroup({ appendedLabel: this.appendedLabel, className: this.className, description: this.description, el: this.el.children[0], id: this.id, isLarge: this.isLarge, isPlainText: this.isPlainText, isSmall: this.isSmall, label: this.label, placeholder: this.placeholder, prependedLabel: this.prependedLabel, type: this.type, value: this.value, onChange: function () {
                 var t = [];
                 for (var _i = 0; _i < arguments.length; _i++) {
                     t[_i] = arguments[_i];
@@ -27,7 +27,7 @@ var InputGroup = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(InputGroup, "properties", {
-        get: function () { return { appendedLabel: { type: String, attr: "appended-label" }, className: { type: String, attr: "class-name" }, description: { type: String, attr: "description" }, el: { elementRef: !0 }, id: { type: String, attr: "id" }, isLarge: { type: Boolean, attr: "is-large" }, isSmall: { type: Boolean, attr: "is-small" }, label: { type: String, attr: "label" }, placeholder: { type: String, attr: "placeholder" }, prependedLabel: { type: String, attr: "prepended-label" }, type: { type: Number, attr: "type" }, value: { type: String, attr: "value" } }; },
+        get: function () { return { appendedLabel: { type: String, attr: "appended-label" }, className: { type: String, attr: "class-name" }, description: { type: String, attr: "description" }, el: { elementRef: !0 }, id: { type: String, attr: "id" }, isLarge: { type: Boolean, attr: "is-large" }, isPlainText: { type: Boolean, attr: "is-plain-text" }, isSmall: { type: Boolean, attr: "is-small" }, label: { type: String, attr: "label" }, placeholder: { type: String, attr: "placeholder" }, prependedLabel: { type: String, attr: "prepended-label" }, type: { type: Number, attr: "type" }, value: { type: String, attr: "value" } }; },
         enumerable: true,
         configurable: true
     });
