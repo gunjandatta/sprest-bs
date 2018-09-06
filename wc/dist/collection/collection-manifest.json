@@ -519,6 +519,11 @@
       "styles": {},
       "props": [
         {
+          "name": "appendedButtons",
+          "type": "String",
+          "attr": "appended-buttons"
+        },
+        {
           "name": "appendedLabel",
           "type": "String",
           "attr": "appended-label"
@@ -549,6 +554,11 @@
           "attr": "is-plain-text"
         },
         {
+          "name": "isReadonly",
+          "type": "Boolean",
+          "attr": "is-readonly"
+        },
+        {
           "name": "isSmall",
           "type": "Boolean",
           "attr": "is-small"
@@ -562,6 +572,11 @@
           "name": "placeholder",
           "type": "String",
           "attr": "placeholder"
+        },
+        {
+          "name": "prependedButtons",
+          "type": "String",
+          "attr": "prepended-buttons"
         },
         {
           "name": "prependedLabel",

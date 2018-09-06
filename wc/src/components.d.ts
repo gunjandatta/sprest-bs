@@ -220,29 +220,35 @@ export namespace Components {
   }
 
   interface BsInputgroup {
+    'appendedButtons': string;
     'appendedLabel': string;
     'className': string;
     'description': string;
     'id': string;
     'isLarge': boolean;
     'isPlainText': boolean;
+    'isReadonly': boolean;
     'isSmall': boolean;
     'label': string;
     'placeholder': string;
+    'prependedButtons': string;
     'prependedLabel': string;
     'type': number;
     'value': string;
   }
   interface BsInputgroupAttributes extends StencilHTMLAttributes {
+    'appendedButtons'?: string;
     'appendedLabel'?: string;
     'className'?: string;
     'description'?: string;
     'id'?: string;
     'isLarge'?: boolean;
     'isPlainText'?: boolean;
+    'isReadonly'?: boolean;
     'isSmall'?: boolean;
     'label'?: string;
     'placeholder'?: string;
+    'prependedButtons'?: string;
     'prependedLabel'?: string;
     'type'?: number;
     'value'?: string;

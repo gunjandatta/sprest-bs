@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("w4ogpatr",["exports","./chunk-670651a4.js"],function(e,u){window.GdSprestBs.h,e.BsInputgroup=u.InputGroup,Object.defineProperty(e,"__esModule",{value:!0})});
