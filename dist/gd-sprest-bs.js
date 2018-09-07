@@ -172,7 +172,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar gd_bs_1 = __webpack_require__(/*! gd-bs */ \"gd-bs\");\nexports.Components = gd_bs_1.Components;\nvar listForm_1 = __webpack_require__(/*! ./listForm */ \"./src/components/listForm.ts\");\n// Update the list form\ngd_bs_1.Components[\"ListForm\"] = listForm_1.ListForm;\n\n//# sourceURL=webpack:///./src/components/index.ts?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar gd_bs_1 = __webpack_require__(/*! gd-bs */ \"gd-bs\");\nexports.Components = gd_bs_1.Components;\nvar listForm_1 = __webpack_require__(/*! ./listForm */ \"./src/components/listForm.ts\");\n// Extend the components\ngd_bs_1.Components[\"ListForm\"] = listForm_1.ListForm;\n\n//# sourceURL=webpack:///./src/components/index.ts?");
 
 /***/ }),
 
@@ -196,7 +196,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nfunction __export(m) {\n    for (var p in m) {\n        if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n    }\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar rest_1 = __webpack_require__(/*! ./rest */ \"./src/rest.ts\");\n__export(__webpack_require__(/*! gd-bs */ \"gd-bs\"));\n__export(__webpack_require__(/*! gd-sprest */ \"gd-sprest\"));\n__export(__webpack_require__(/*! ./rest */ \"./src/rest.ts\"));\n// See if the window exists\nif (window) {\n    // Ensure the global variable exists\n    if (window[\"$REST\"]) {\n        // Update the $REST global variable\n        window[\"$REST\"].Components = rest_1.Components;\n        window[\"$REST\"].jQuery = GD.jQuery;\n        window[\"$REST\"].WebParts = rest_1.WebParts;\n    }\n    // Notify waiting scripts\n    window[\"SP\"] ? window[\"SP\"].SOD.notifyScriptLoadedAndExecuteWaitingJobs(\"gd-sprest-bs.js\") : null;\n}\n\n//# sourceURL=webpack:///./src/index.ts?");
+eval("\n\nfunction __export(m) {\n    for (var p in m) {\n        if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n    }\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(/*! gd-bs */ \"gd-bs\"));\n__export(__webpack_require__(/*! gd-sprest */ \"gd-sprest\"));\nvar rest_1 = __webpack_require__(/*! ./rest */ \"./src/rest.ts\");\nexports.Components = rest_1.Components;\nexports.WebParts = rest_1.WebParts;\n// See if the window exists\nif (window) {\n    // Ensure the global variable exists\n    if (window[\"$REST\"]) {\n        // Update the $REST global variable\n        window[\"$REST\"].Components = rest_1.Components;\n        window[\"$REST\"].jQuery = GD.jQuery;\n        window[\"$REST\"].WebParts = rest_1.WebParts;\n    }\n    // Notify waiting scripts\n    window[\"SP\"] ? window[\"SP\"].SOD.notifyScriptLoadedAndExecuteWaitingJobs(\"gd-sprest-bs.js\") : null;\n}\n\n//# sourceURL=webpack:///./src/index.ts?");
 
 /***/ }),
 

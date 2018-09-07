@@ -4,6 +4,11 @@ import { Components } from "gd-bs";
 /**
  * List Form
  */
+export const ListForm: IListForm;
+
+/**
+ * List Form
+ */
 export interface IListForm extends Types.Helper.IListForm {
     /**
      * Method to render the display form template.

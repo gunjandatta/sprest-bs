@@ -6,7 +6,6 @@ import { FieldInfo } from "./fieldInfo";
 // Extend the list form
 export const ListForm: IListForm = Helper.ListForm as any;
 
-
 // Method to render a display form for an item
 ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     // Render a loading message

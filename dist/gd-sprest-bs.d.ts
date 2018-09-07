@@ -21,8 +21,8 @@ declare module 'gd-sprest-bs/components/types' {
 }
 
 declare module 'gd-sprest-bs/rest' {
-    import { Components } from "gd-bs";
     import { IREST } from "gd-sprest";
+    import * as Components from "gd-sprest-bs/components/types";
     import * as WebParts from "gd-sprest-bs/webparts/types";
     export * from "gd-bs";
     export * from "gd-sprest";
@@ -54,6 +54,11 @@ declare module 'gd-sprest-bs/webparts/types' {
 declare module 'gd-sprest-bs/components/types/listForm' {
     import { Types } from "gd-sprest";
     import { Components } from "gd-bs";
+    
+    /**
+        * List Form
+        */
+    export const ListForm: IListForm;
     
     /**
         * List Form

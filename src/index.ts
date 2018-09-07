@@ -1,8 +1,8 @@
-import { Components, WebParts } from "./rest";
-
 export * from "gd-bs";
 export * from "gd-sprest";
-export * from "./rest";
+
+import { Components, WebParts } from "./rest";
+export { Components, WebParts }
 
 //import "./styles.scss";
 declare var GD;
