@@ -59,12 +59,6 @@ declare module 'gd-sprest-bs/components/types/listForm' {
         */
     export interface IListForm extends Types.Helper.IListForm {
             /**
-                * Method to render the attachments view.
-                * @param props - The attachment information.
-                */
-            renderAttachmentsView(props: IListFormAttachmentsProps);
-    
-            /**
                 * Method to render the display form template.
                 * @param props - The display form properties.
                 */
@@ -75,12 +69,6 @@ declare module 'gd-sprest-bs/components/types/listForm' {
                 * @param props - The edit/new form properties.
                 */
             renderEditForm(props: IListFormEditProps);
-    
-            /**
-                * Method to render the form template.
-                * @param props - The form properties.
-                */
-            renderFormTemplate(props: IListFormDisplayProps);
     }
     
     /**

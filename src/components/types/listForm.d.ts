@@ -5,12 +5,6 @@ import { Types } from "gd-sprest";
  */
 export interface IListForm extends Types.Helper.IListForm {
     /**
-     * Method to render the attachments view.
-     * @param props - The attachment information.
-     */
-    renderAttachmentsView(props: IListFormAttachmentsProps);
-
-    /**
      * Method to render the display form template.
      * @param props - The display form properties.
      */
@@ -21,12 +15,6 @@ export interface IListForm extends Types.Helper.IListForm {
      * @param props - The edit/new form properties.
      */
     renderEditForm(props: IListFormEditProps);
-
-    /**
-     * Method to render the form template.
-     * @param props - The form properties.
-     */
-    renderFormTemplate(props: IListFormDisplayProps);
 }
 
 /**
