@@ -1,89 +1,20 @@
-import { Helper, SPTypes, Types, Web } from "gd-sprest";
-import { Fabric } from "..";
-import { Field } from ".";
-import {
-    IField, IListForm,
-    IListFormAttachmentsProps,
-    IListFormDisplay, IListFormDisplayProps,
-    IListFormEdit, IListFormEditProps
-} from "./types";
-import { IListFormAttachmentInfo } from "gd-sprest/build/helper/types";
+import { Helper } from "gd-sprest";
+import { Components } from "gd-bs";
+import { IListForm, IListFormDisplayProps, IListFormEditProps } from "./types";
 
 // Extend the list form
 export const ListForm: IListForm = Helper.ListForm as any;
 
-// Method to render the attachments view
-ListForm.renderAttachmentsView = (props: IListFormAttachmentsProps) => {
-    let attachments = props.info.attachments || [];
-
-    // Render the list
-    let renderList = (el: Element) => {
-        let items: Array<Fabric.Types.IListItemProps> = [];
-
-        // Parse the attachments
-        for (let i = 0; i < attachments.length; i++) {
-            let attachment = attachments[i];
-
-            // Add the item
-            items.push({
-                primaryText: attachment.FileName,
-                actions: [{
-                    iconName: "Download",
-                    url: attachment.ServerRelativeUrl
-                }]
-            });
-        }
-
-        // Render the list
-        Fabric.List({
-            el,
-            items
-        });
-    };
-
-    // Method to render the menu
-    let renderMenu = (el: Element) => {
-        // Render a command bar
-        Fabric.CommandBar({
-            el,
-            mainCommands: [{
-                text: "Upload",
-                onClick: () => {
-                    // Show a spinner
-                    Fabric.Spinner({
-                        el: props.el,
-                        text: "Saving the attachment..."
-                    });
-
-                    // Show the file dialog
-                    ListForm.showFileDialog(props.info).then(() => {
-                        // Render the list
-                        renderList(props.el.children[1]);
-
-                        // Call the save event
-                        props.onSave ? props.onSave(props.info) : null;
-                    });
-                }
-            }]
-        })
-    };
-
-    // Render the template
-    props.el.innerHTML = "<div></div><div></div>";
-
-    // Render the menu
-    renderMenu(props.el.children[0]);
-
-    // Render the list
-    renderList(props.el.children[1]);
-}
-
 // Method to render a display form for an item
-ListForm.renderDisplayForm = (props: IListFormDisplayProps): IListFormDisplay => {
-    let fields = [];
-
-    // Render the form template
-    ListForm.renderFormTemplate(props);
+ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
+    // Render a loading message
+    Components.Progress({
+        el: props.el,
+        isAnimated: true,
+        isStriped: true,
+        label: "Loading the Item Form",
+        size: 100
+    });
 
     // Load the list item
     props.info.list.Items(props.info.item.Id)
@@ -92,34 +23,32 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps): IListFormDisplay =>
         // Execute the request
         .execute(formValues => {
             let hasUserField = false;
+            let rows: Array<Components.IFormRow> = [];
 
             // Parse the fields
             for (let fieldName in props.info.fields) {
-                // Get the element
-                let elField = props.el.querySelector("[data-field='" + fieldName + "']");
-                if (elField) {
-                    let field = props.info.fields[fieldName];
-                    let html = formValues[fieldName] || formValues[fieldName.replace(/\_/g, "_x005f_")] || "";
+                let field = props.info.fields[fieldName];
+                let html = formValues[fieldName] || formValues[fieldName.replace(/\_/g, "_x005f_")] || "";
 
-                    // Set the flag
-                    hasUserField = hasUserField || field.FieldTypeKind == SPTypes.FieldType.User;
-
-                    // Set the html for this field
-                    elField.innerHTML = [
-                        '<div class="display-form">',
-                        Fabric.Templates.Label({
-                            className: "field-label",
-                            description: field.Description,
-                            text: field.Title
-                        }),
-                        '<div class="field-value">' + html.replace(/\r?\n/g, '<br/>') + '</div>',
-                        '</div>'
-                    ].join('\n');
-
-                    // Add this field
-                    fields.push(elField);
-                }
+                // Add the row
+                rows.push({
+                    colSize: 2,
+                    control: {
+                        description: field.Description,
+                        html,
+                        label: field.Title
+                    }
+                });
             }
+
+            // Clear the element
+            props.el ? props.el.innerHTML = "" : null;
+
+            // Render the form
+            Components.Form({
+                el: props.el,
+                rows
+            });
 
             // See if we are displaying a user field
             if (hasUserField) {
@@ -127,15 +56,11 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps): IListFormDisplay =>
                 window["ProcessImn"]();
             }
         });
-
-    // Return the form
-    return {
-        getFields: () => { return fields; }
-    }
 };
 
 // Render the edit form
-ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
+ListForm.renderEditForm = (props: IListFormEditProps) => {
+    /*
     let controlMode = typeof (props.controlMode) === "number" ? props.controlMode : props.info.item ? SPTypes.ControlMode.Edit : SPTypes.ControlMode.New;
     let fields: Array<IField> = [];
 
@@ -408,55 +333,5 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             return true;
         }
     }
-};
-
-// Method to render the form template
-ListForm.renderFormTemplate = (props: IListFormDisplayProps) => {
-    // Clear the element
-    props.el.innerHTML = "";
-
-    // See if the field order has been specified
-    if (props.includeFields) {
-        // Parse the fields to include
-        for (let i = 0; i < props.includeFields.length; i++) {
-            // Parse the fields
-            for (let fieldName in props.info.fields) {
-                // See if we are including this field
-                if (props.includeFields[i] == fieldName) {
-                    // Append the field to the form
-                    props.el.innerHTML += "<div data-field='" + fieldName + "'></div>";
-                    break;
-                }
-            }
-        }
-    }
-    // Else, see if fields have been specified to be excluded
-    else if (props.excludeFields) {
-        // Parse the fields
-        for (let fieldName in props.info.fields) {
-            let excludeField = props.includeFields ? true : false;
-
-            // Parse the fields
-            for (let i = 0; i < props.excludeFields.length; i++) {
-                // See if we are excluding this field
-                if (props.excludeFields[i] == fieldName) {
-                    // Set the flag
-                    excludeField = true;
-                    break;
-                }
-            }
-
-            // See if we are excluding the field
-            if (excludeField) { continue; }
-
-            // Append the field to the form
-            props.el.innerHTML += "<div data-field='" + fieldName + "'></div>";
-        }
-    } else {
-        // Parse the fields
-        for (let fieldName in props.info.fields) {
-            // Append the field to the form
-            props.el.innerHTML += "<div data-field='" + fieldName + "'></div>";
-        }
-    }
+    */
 };

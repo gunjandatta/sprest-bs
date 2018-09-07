@@ -8,9 +8,5 @@
     },
     "include": [
         "src/**/*.ts"
-    ],
-    // Exclude the custom components until it's implemented
-    "exclude": [
-        "src/components/**/*"
     ]
 }

@@ -1,5 +1,5 @@
 import { Helper } from "gd-sprest";
-import { IListFormDisplay, IListFormEdit } from ".";
+import { IListFormEdit } from ".";
 
 /**
  * List Form Panel
@@ -8,7 +8,7 @@ export interface IListFormPanel {
     /**
      * Returns the form.
      */
-    getForm(): IListFormDisplay | IListFormEdit;
+    getForm(): IListFormEdit;
 
     /**
      * Displays the list form

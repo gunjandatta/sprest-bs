@@ -1,15 +1,18 @@
-import { WebParts } from "./rest";
+import { Components, WebParts } from "./rest";
+
 export * from "gd-bs";
 export * from "gd-sprest";
 export * from "./rest";
+
 //import "./styles.scss";
 declare var GD;
 
 // See if the window exists
 if (window) {
-    // Update the $REST global variable
+    // Ensure the global variable exists
     if (window["$REST"]) {
-        window["$REST"].Components = GD.Components;
+        // Update the $REST global variable
+        window["$REST"].Components = Components;
         window["$REST"].jQuery = GD.jQuery;
         window["$REST"].WebParts = WebParts;
     }

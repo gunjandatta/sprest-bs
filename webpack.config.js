@@ -18,7 +18,7 @@ module.exports = (env, argv) => {
             extensions: [".scss", ".css", ".ts", ".js"]
         },
         externals: {
-            "gd-bs": "$REST",
+            "gd-bs": "GD",
             "gd-sprest": "$REST"
         },
         module: {
