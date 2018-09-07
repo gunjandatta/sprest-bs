@@ -239,6 +239,9 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
         let columns = null;
         let field = props.info.fields[fieldName];
 
+        // Set the value
+        value[fieldName] = props.info.item ? props.info.item[fieldName] : null;
+
         // See if this is a read-only field
         if (field.ReadOnlyField) {
             // Do not render in the new form
@@ -253,9 +256,6 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
             // Ensure it's not a taxonomy field
             if (!field.TypeAsString.startsWith("TaxonomyFieldType")) { continue; }
         }
-
-        // Set the value
-        value[fieldName] = props.info.item ? props.info.item[fieldName] : null;
 
         // Set the default properties for the control
         let control: Components.IFormControl = {
