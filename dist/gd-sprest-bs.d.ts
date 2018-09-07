@@ -53,6 +53,7 @@ declare module 'gd-sprest-bs/webparts/types' {
 
 declare module 'gd-sprest-bs/components/types/listForm' {
     import { Types } from "gd-sprest";
+    import { Components } from "gd-bs";
     
     /**
         * List Form
@@ -92,25 +93,17 @@ declare module 'gd-sprest-bs/components/types/listForm' {
             /** The element to render the form to. */
             el: Element;
     
-            /** The fields to exclude from the form. */
-            excludeFields?: Array<string>;
-    
-            /** The fields to include in the form. */
-            includeFields?: Array<string>;
-    
             /** The list form information. */
             info: Types.Helper.IListFormResult;
+    
+            /** The list form rows. */
+            template?: Array<Components.IFormRow>;
     }
     
     /**
         * List Form Edit
         */
     export interface IListFormEdit {
-            /**
-                * Method to get the fields
-                */
-            //getFields(): Array<IField>;
-    
             /**
                 * Method to get the form values
                 */

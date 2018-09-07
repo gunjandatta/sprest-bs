@@ -25,6 +25,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         // Execute the request
         .execute(formValues => {
             let hasUserField = false;
+            let mapper: { [key: string]: Components.IFormControl } = {};
             let rows: Array<Components.IFormRow> = [];
 
             // Parse the fields
@@ -32,24 +33,64 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                 let field = props.info.fields[fieldName];
                 let html = formValues[fieldName] || formValues[fieldName.replace(/\_/g, "_x005f_")] || "";
 
+                // Set the control
+                mapper[fieldName] = {
+                    description: field.Description,
+                    html,
+                    label: field.Title
+                };
+
                 // Add the row
                 rows.push({
                     colSize: 2,
-                    control: {
-                        description: field.Description,
-                        html,
-                        label: field.Title
-                    }
+                    control: mapper[fieldName]
                 });
             }
 
             // Clear the element
             props.el ? props.el.innerHTML = "" : null;
 
+            // See if there is a template
+            if (props.template) {
+                let updateControl = (refControl) => {
+                    // Get the control from the mapper
+                    let control = refControl ? mapper[refControl.name] : null;
+
+                    // Ensure the controls exists
+                    if (control && refControl) {
+                        // Parse the control keys
+                        for (let key in control) {
+                            // Skip if a value is already defined
+                            if (refControl[key]) { continue; }
+
+                            // Update the property
+                            refControl[key] = control[key];
+                        }
+                    }
+                }
+
+                // Parse the template
+                for (let i = 0; i < props.template.length; i++) {
+                    let row = props.template[i];
+
+                    // Update the control
+                    updateControl(row.control);
+
+                    // Parse the columns if there are columns
+                    let columns = row.columns || [];
+                    for (let j = 0; j < columns.length; j++) {
+                        let column = columns[j];
+
+                        // Update the control
+                        updateControl(column.control);
+                    }
+                }
+            }
+
             // Render the form
             Components.Form({
                 el: props.el,
-                rows
+                rows: props.template || rows
             });
 
             // See if we are displaying a user field
@@ -63,6 +104,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
 // Render the edit form
 ListForm.renderEditForm = (props: IListFormEditProps) => {
     let controlMode = typeof (props.controlMode) === "number" ? props.controlMode : props.info.item ? SPTypes.ControlMode.Edit : SPTypes.ControlMode.New;
+    let mapper: { [key: string]: Components.IFormControl } = {};
     let rows: Array<Components.IFormRow> = [];
     let value = {};
 
@@ -198,12 +240,28 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
         let columns = null;
         let field = props.info.fields[fieldName];
 
+        // See if this is a read-only field
+        if (field.ReadOnlyField) {
+            // Do not render in the new form
+            if (props.controlMode == SPTypes.ControlMode.New) { continue; }
+        }
+
+        // Do not render a hidden taxonomy field
+        if (field.Hidden && field.FieldTypeKind == SPTypes.FieldType.Note && field.Title.endsWith("_0")) { continue; }
+
+        // See if this is an invalid field type
+        if (field.FieldTypeKind == SPTypes.FieldType.Invalid) {
+            // Ensure it's not a taxonomy field
+            if (!field.TypeAsString.startsWith("TaxonomyFieldType")) { continue; }
+        }
+
         // Set the value
         value[fieldName] = props.info.item ? props.info.item[fieldName] : null;
 
         // Set the default properties for the control
         let control: Components.IFormControl = {
             description: field.Description,
+            isReadonly: field.ReadOnlyField,
             label: field.Title,
             name: field.InternalName,
             type: Components.FormControlTypes.TextField
@@ -223,7 +281,15 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
             // Boolean
             case SPTypes.FieldType.Boolean:
                 // Set the type
-                control.type = Components.FormControlTypes.CheckBox;
+                control.type = Components.FormControlTypes.Checkbox;
+
+                // Hide the label
+                (control as Components.IFormControlCheckbox).hideLabel = true;
+
+                // Set the type
+                (control as Components.IFormControlCheckbox).items = [
+                    { checked: value ? true : false }
+                ]
                 break;
 
             // Multi-Choice
@@ -376,6 +442,9 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
             });
         }
 
+        // Add the field to the mapper
+        mapper[fieldName] = control;
+
         // Add the row
         rows.push({
             colSize: 2,
@@ -387,10 +456,50 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
     // Clear the element
     props.el ? props.el.innerHTML = "" : null;
 
+    // See if there is a template
+    if (props.template) {
+        let updateControl = (refControl) => {
+            // Get the control from the mapper
+            let control = refControl ? mapper[refControl.name] : null;
+
+            // Ensure the controls exists
+            if (control && refControl) {
+                // Parse the control keys
+                for (let key in control) {
+                    // Skip if a value is already defined
+                    if (refControl[key]) { continue; }
+
+                    // Update the property
+                    refControl[key] = control[key];
+                }
+            }
+        }
+
+        // Parse the template
+        for (let i = 0; i < props.template.length; i++) {
+            let row = props.template[i];
+
+            // Default the row size
+            row.colSize = typeof (row.colSize) === "number" ? row.colSize : 2;
+
+            // Update the control
+            updateControl(row.control);
+
+            // Parse the columns if there are columns
+            let columns = row.columns || [];
+            for (let j = 0; j < columns.length; j++) {
+                let column = columns[j];
+
+                // Update the control
+                updateControl(column.control);
+            }
+        }
+    }
+
     // Render the form
     Components.Form({
         el: props.el,
-        rows,
+        rows: props.template || rows,
         value
     });
 };
