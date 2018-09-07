@@ -1,8 +1,6 @@
 import { IREST } from "gd-sprest";
 import * as Components from "./components/types";
 import * as WebParts from "./webparts/types";
-export * from "gd-bs";
-export * from "gd-sprest";
 
 /**
  * $REST Bootstrap Library

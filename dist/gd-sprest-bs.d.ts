@@ -24,8 +24,6 @@ declare module 'gd-sprest-bs/rest' {
     import { IREST } from "gd-sprest";
     import * as Components from "gd-sprest-bs/components/types";
     import * as WebParts from "gd-sprest-bs/webparts/types";
-    export * from "gd-bs";
-    export * from "gd-sprest";
     
     /**
         * $REST Bootstrap Library
