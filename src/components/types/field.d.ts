@@ -11,6 +11,12 @@ export interface IField {
 }
 
 /**
+ * Field Information
+ */
+export interface IFieldInfo {
+}
+
+/**
  * Field Properties
  */
 export interface IFieldProps {

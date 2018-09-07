@@ -1,6 +1,7 @@
 import { Helper, SPTypes, Types } from "gd-sprest";
 import { Components } from "gd-bs";
 import { IListForm, IListFormDisplayProps, IListFormEditProps } from "./types";
+import { FieldInfo } from "./fieldInfo";
 
 // Extend the list form
 export const ListForm: IListForm = Helper.ListForm as any;
@@ -148,6 +149,50 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
         return items;
     }
 
+    // Method to get the mms dropdown items
+    let getMMSItems = (term: Helper.Types.ITerm, selectedValues = []) => {
+        let items: Array<Components.IDropdownItem> = [];
+
+        // See if information exists
+        if (term.info) {
+            let isSelected = false;
+
+            // Parse the selected values
+            for (let i = 0; i < selectedValues.length; i++) {
+                // See if this item is selected
+                if (selectedValues[i] == term.info.id) {
+                    isSelected = true;
+                    break;
+                }
+            }
+
+            // Add the heading
+            items.push({
+                isHeader: true,
+                isSelected,
+                text: term.info.name,
+                value: term.info.id
+            });
+        }
+
+        // Parse the terms
+        for (let termName in term) {
+            let child = term[termName];
+
+            // Skip the info and parent properties
+            if (termName == "info" || termName == "parent") { continue; }
+
+            // Get the child items
+            let childItems = getMMSItems(child, selectedValues);
+
+            // Add the item
+            items = items.concat(childItems);
+        }
+
+        // Return the items
+        return items;
+    }
+
     // Parse the fields
     for (let fieldName in props.info.fields) {
         let columns = null;
@@ -206,23 +251,24 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
                         size: 100
                     });
 
-                    // Get the drop down information
-                    Helper.ListFormField.loadLookupData({
-                        lookupField: (field as Types.SP.IFieldLookup).LookupField,
-                        lookupListId: (field as Types.SP.IFieldLookup).LookupList,
-                        lookupWebId: (field as Types.SP.IFieldLookup).LookupWebId,
-                        name: field.InternalName,
+                    // Load the field information
+                    FieldInfo({
+                        field,
                         listName: props.info.list.Title,
+                        name: fieldName,
                         webUrl: props.info.webUrl
-                    }, 500).then(items => {
-                        // Set the items
-                        (control as Components.IFormControlDropdown).items = getLookupItems(field as any, items, value);
+                    }).then((fieldInfo: Helper.Types.IListFormLookupFieldInfo) => {
+                        // Get the drop down information
+                        Helper.ListFormField.loadLookupData(fieldInfo, 500).then(items => {
+                            // Set the items
+                            (control as Components.IFormControlDropdown).items = getLookupItems(field as any, items, value);
 
-                        // Clear the element
-                        control.el.innerHTML = "";
+                            // Clear the element
+                            control.el.innerHTML = "";
 
-                        // Render the form control
-                        Components.FormControl(control);
+                            // Render the form control
+                            Components.FormControl(control);
+                        });
                     });
                 };
                 break;
@@ -265,6 +311,69 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
                     }
                 ];
                 break;
+        }
+
+        // See if this is a taxonomy field
+        if (field.TypeAsString.startsWith("TaxonomyFieldType")) {
+            // Set the type
+            control.type = Components.FormControlTypes.Dropdown;
+
+            // Load the field information
+            FieldInfo({
+                field,
+                listName: props.info.list.Title,
+                name: fieldName,
+                webUrl: props.info.webUrl
+            }).then((mmsInfo: Helper.Types.IListFormMMSFieldInfo) => {
+                // See if this is a new form
+                if (props.controlMode == SPTypes.ControlMode.New) {
+                    let fieldValue = [];
+
+                    // Get the default values
+                    let values = (field.DefaultValue || "").split(";#")
+                    for (let i = 0; i < values.length; i++) {
+                        let value = values[i].split("|");
+                        if (value.length == 2) {
+                            // Add the term id
+                            fieldValue.push(value[1]);
+                        }
+                    }
+                } else {
+                    // Get the field value
+                    let fieldValue = value[field.InternalName];
+                    let values = fieldValue && fieldValue.results ? fieldValue.results : [fieldValue];
+
+                    // Clear the field values
+                    fieldValue = [];
+
+                    // Parse the values
+                    for (let i = 0; i < values.length; i++) {
+                        // Ensure the value exists
+                        if (values[i] && values[i].TermGuid) {
+                            // Add the value
+                            fieldValue.push(values[i].TermGuid);
+                        }
+                    }
+                }
+
+                // Load the terms
+                Helper.ListFormField.loadMMSData(mmsInfo).then(terms => {
+                    // Load the value field
+                    Helper.ListFormField.loadMMSValueField(mmsInfo).then(valueField => {
+                        // Set the value field
+                        mmsInfo.valueField = valueField;
+
+                        // Set the items
+                        (control as Components.IFormControlDropdown).items = getMMSItems(Helper.Taxonomy.toObject(terms), value[fieldName]);
+
+                        // Clear the element
+                        control.el.innerHTML = "";
+
+                        // Render the form control
+                        Components.FormControl(control);
+                    });
+                });
+            });
         }
 
         // Add the row
