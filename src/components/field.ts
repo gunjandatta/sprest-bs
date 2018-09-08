@@ -230,35 +230,36 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
             // See if a value exists
             if (value) {
                 // Update the value
-                value[field.InternalName + "_Description"] = (value as Types.SP.ComplexTypes.FieldUrlValue).Description;
-                value[field.InternalName + "_URL"] = (value as Types.SP.ComplexTypes.FieldUrlValue).Url;
+                controlProps.value = (value as Types.SP.ComplexTypes.FieldUrlValue).Url;
             }
-
-            // Clear the control properties
-            controlProps = null;
-
-            /**
-             * Redo the URL
-             */
-            // Set the columns
-            let columns = [
-                {
-                    size: 6,
-                    control: {
-                        label: field.Title + " Description",
-                        name: field.InternalName + "_Description",
-                        type: Components.FormControlTypes.TextField
-                    } as Components.IFormControlProps
-                },
-                {
-                    size: 6,
-                    control: {
-                        label: field.Title + " URL",
-                        name: field.InternalName + "_URL",
-                        type: Components.FormControlTypes.TextField
-                    } as Components.IFormControlProps
+            /*
+                // See if a value exists
+                if (value) {
+                    // Update the value
+                    value[field.InternalName + "_Description"] = (value as Types.SP.ComplexTypes.FieldUrlValue).Description;
+                    value[field.InternalName + "_URL"] = (value as Types.SP.ComplexTypes.FieldUrlValue).Url;
                 }
-            ];
+    
+                // Set the columns
+                let columns = [
+                    {
+                        size: 6,
+                        control: {
+                            label: field.Title + " Description",
+                            name: field.InternalName + "_Description",
+                            type: Components.FormControlTypes.TextField
+                        } as Components.IFormControlProps
+                    },
+                    {
+                        size: 6,
+                        control: {
+                            label: field.Title + " URL",
+                            name: field.InternalName + "_URL",
+                            type: Components.FormControlTypes.TextField
+                        } as Components.IFormControlProps
+                    }
+                ];
+            */
             break;
     }
 
@@ -403,7 +404,11 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                     // See if the field value exists
                     if (fieldValue.value) {
                         // Add the metadata
-                        fieldValue.value.__metadata = { type: "SP.FieldUrlValue" };
+                        fieldValue.value = {
+                            __metadata: { type: "SP.FieldUrlValue" },
+                            Description: fieldValue.value, // TO DO - Add ability to update the description
+                            Url: fieldValue.value
+                        };
                     }
                     break;
 
