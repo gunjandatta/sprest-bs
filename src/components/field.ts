@@ -294,6 +294,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                     // Save the field information
                     mmsFieldInfo = fieldInfo;
 
+                    // Set the type
+                    controlProps.type = mmsFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
+
                     // Load the value field
                     Helper.ListFormField.loadMMSValueField(mmsFieldInfo).then(valueField => {
                         // Set the value field
@@ -366,24 +369,33 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
 
             // Update the field name/value, based on the type
             switch (field.FieldTypeKind) {
+                // Choice
+                case SPTypes.FieldType.Choice:
+                    let ddlValue: Components.IDropdownItem = fieldValue.value;
+                    // See if there is a value
+                    if (ddlValue) {
+                        // Update the field value
+                        fieldValue.value = ddlValue.value || ddlValue.text;
+                    }
+                    break;
                 // Lookup
                 case SPTypes.FieldType.Lookup:
                     // Append 'Id' to the field name
                     fieldValue.name += fieldValue.name.lastIndexOf("Id") == fieldValue.name.length - 2 ? "" : "Id";
 
                     // See if this is a multi-value field
-                    if (lookupFieldInfo && lookupFieldInfo.multi) {
+                    if (lookupFieldInfo.multi) {
                         let values: Array<Components.IDropdownItem> = fieldValue.value || [];
                         fieldValue.value = { results: [] };
 
                         // Parse the values
                         for (let j = 0; j < values.length; j++) {
                             // Add the value
-                            fieldValue.value.results.push(values[j].value);
+                            fieldValue.value.results.push(values[j].value || values[j].text);
                         }
                     } else {
                         // Update the field value
-                        fieldValue.value = fieldValue.value && fieldValue.value.length > 0 ? fieldValue.value[0].value : fieldValue.value;
+                        fieldValue.value = fieldValue.value ? fieldValue.value.value || fieldValue.value.text : null;
                     }
                     break;
 
@@ -395,7 +407,7 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                     // Parse the values
                     for (let j = 0; j < values.length; j++) {
                         // Add the values
-                        fieldValue.value.results.push(values[j].value);
+                        fieldValue.value.results.push(values[j].value || values[j].text);
                     }
                     break;
 
@@ -460,9 +472,11 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
 
                 // MMS
                 default:
-                    if (field.TypeAsString.startsWith("TaxonomyFieldType")) {
+                    // See if this is a MMS field
+                    if (mmsFieldInfo) {
+                        debugger;
                         // See if this is a multi field
-                        if (field.TypeAsString.endsWith("Multi")) {
+                        if (mmsFieldInfo.multi) {
                             // Update the field name to the value field
                             fieldValue.name = mmsFieldInfo ? mmsFieldInfo.valueField.InternalName : fieldValue.name + "_0";
 
@@ -480,12 +494,12 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                             fieldValue.value = fieldValue.value.join(";#");
                         } else {
                             // Update the value
-                            fieldValue.value = fieldValue.value && fieldValue.value.length > 0 ? {
+                            fieldValue.value = fieldValue.value ? {
                                 __metadata: { type: "SP.Taxonomy.TaxonomyFieldValue" },
                                 Label: fieldValue.value[0].text,
                                 TermGuid: fieldValue.value[0].value,
                                 WssId: -1
-                            } : fieldValue.value;
+                            } : null;
                         }
                     }
                     break;
