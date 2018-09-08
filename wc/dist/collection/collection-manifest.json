@@ -1002,6 +1002,33 @@
       }
     },
     {
+      "tag": "bs-toolbar",
+      "dependencies": [],
+      "componentClass": "Toolbar",
+      "componentPath": "components/toolbar.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "items",
+          "type": "String",
+          "attr": "items"
+        },
+        {
+          "name": "spacing",
+          "type": "Number",
+          "attr": "spacing"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
       "tag": "bs-tooltip",
       "dependencies": [],
       "componentClass": "Tooltip",

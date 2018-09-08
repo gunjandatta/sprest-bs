@@ -17,6 +17,8 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
         return new Promise((resolve, reject) => {
             // Get the form values
             let values = form.getValues();
+            console.log("Form Values:");
+            console.log(values);
 
             // Resolve the request
             resolve();

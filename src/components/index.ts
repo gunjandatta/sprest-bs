@@ -1,10 +1,10 @@
 import { Components } from "gd-bs";
-import { FieldInfo } from "./fieldInfo";
+import { Field } from "./field";
 import { ListForm } from "./listForm";
 import { ListFormDialog } from "./listFormDialog";
 
 // Extend the components
-Components["FieldInfo"] = FieldInfo;
+Components["Field"] = Field;
 Components["ListForm"] = ListForm;
 Components["ListFormDialog"] = ListFormDialog;
 

@@ -17,7 +17,7 @@ declare module 'gd-sprest-bs' {
 
 declare module 'gd-sprest-bs/components/types' {
     export * from "gd-bs/src/components/types";
-    export * from "gd-sprest-bs/components/types/fieldInfo";
+    export * from "gd-sprest-bs/components/types/field";
     export * from "gd-sprest-bs/components/types/listForm";
     export * from "gd-sprest-bs/components/types/listFormDialog";
 }
@@ -51,18 +51,45 @@ declare module 'gd-sprest-bs/webparts/types' {
     export * from "gd-sprest-bs/webparts/types/wpTaxonomy";
 }
 
-declare module 'gd-sprest-bs/components/types/fieldInfo' {
+declare module 'gd-sprest-bs/components/types/field' {
     import { Helper } from "gd-sprest";
+    import { Components } from "gd-bs";
     
     /**
-      * Field Information
-      */
-    export const FieldInfo: (fieldInfo: Helper.Types.IListFormFieldInfo) => PromiseLike<Helper.Types.IListFormFieldInfo>;
+        * Field
+        */
+    export const Field: (listInfo: Helper.Types.IListFormResult, fieldInfo: Helper.Types.IListFormFieldInfo) => IField;
+    
+    /**
+        * Field
+        */
+    export interface IField {
+            control: Components.IFormControl;
+            controlProps: Components.IFormControlProps;
+            getValue: () => IFieldValue;
+            save: () => PromiseLike<void>;
+    }
+    
+    /**
+        * Field Value
+        */
+    export interface IFieldValue {
+            name: string;
+            value: any;
+    }
+    
+    /**
+        * Field Value - Users
+        */
+    export interface IFieldValueUser extends IFieldValue {
+            unknownUsers?: Array<string>;
+    }
 }
 
 declare module 'gd-sprest-bs/components/types/listForm' {
     import { Types } from "gd-sprest";
     import { Components } from "gd-bs";
+    import { IFormControl } from "gd-bs/src/components/types";
     
     /**
         * List Form
@@ -121,7 +148,10 @@ declare module 'gd-sprest-bs/components/types/listForm' {
             /**
                 * Method to get the form values
                 */
-            getValues(): PromiseLike<any>;
+            getValues(): {
+                    formValues: { [key: string]: any };
+                    unknownUsers: { [key: string]: Array<string> };
+            };
     
             /**
                 * Method to determine if the field is valid
@@ -150,12 +180,18 @@ declare module 'gd-sprest-bs/components/types/listFormDialog' {
     /**
         * List Form Dialog
         */
-    export interface IListFormDialog extends Components.IModal { }
+    export interface IListFormDialog extends Components.IModal {
+            /** Method to save the form. */
+            saveForm: () => PromiseLike<void>;
+    }
     
     /**
         * List Form Dialog Properties
         */
     export interface IListFormDialogProps extends Helper.Types.IListFormProps {
+            /** The form actions. */
+            actions?: Components.IToolbarProps;
+    
             /** The form control mode. */
             controlMode?: number;
     
@@ -200,7 +236,7 @@ declare module 'gd-sprest-bs/webparts/types/helper' {
                 * @param wpInfo - The webpart information.
                 * @param formControls - The form controls to render.
                 */
-            renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<Components.IFormControl>) => void;
+            renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<Components.IFormControlProps>) => void;
     
             /**
                 * Method to save the webpart configuration.
@@ -357,7 +393,7 @@ declare module 'gd-sprest-bs/webparts/types/wp' {
             actions?: Array<Components.IButtonProps>;
     
             /** The render form event. */
-            onRenderForm?: (wpInfo: IWPInfo) => Array<Components.IFormControl> | PromiseLike<Array<Components.IFormControl>> | void;
+            onRenderForm?: (wpInfo: IWPInfo) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
     
             /** The save event. */
             onSave?: (wpCfg: IWPCfg) => IWPCfg;
@@ -431,13 +467,13 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
             listQuery?: Types.SP.ODataQuery;
     
             /** The list changed event. */
-            onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControl> | PromiseLike<Array<Components.IFormControl>> | void;
+            onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
     
             /** The lists rendering event. */
             onListsRendering?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
     
             /** The render form event. */
-            onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControl> | PromiseLike<Array<Components.IFormControl>> | void;
+            onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
     }
 }
 

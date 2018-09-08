@@ -23,6 +23,7 @@ import {
   Popover,
   Progress,
   ProgressGroup,
+  Toolbar,
   Tooltip
 } from './gd-sprest-bs.components.js';
 
@@ -50,6 +51,7 @@ export function defineCustomElements(window, opts) {
     Popover,
     Progress,
     ProgressGroup,
+    Toolbar,
     Tooltip
   ], opts);
 }

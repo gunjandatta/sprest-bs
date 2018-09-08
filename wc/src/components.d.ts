@@ -429,6 +429,17 @@ export namespace Components {
     'options'?: string;
     'type'?: number;
   }
+
+  interface BsToolbar {
+    'className': string;
+    'items': string;
+    'spacing': number;
+  }
+  interface BsToolbarAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+    'items'?: string;
+    'spacing'?: number;
+  }
 }
 
 declare global {
@@ -456,6 +467,7 @@ declare global {
     'BsProgress': Components.BsProgress;
     'BsProgressgroup': Components.BsProgressgroup;
     'BsTooltip': Components.BsTooltip;
+    'BsToolbar': Components.BsToolbar;
   }
 
   interface StencilIntrinsicElements {
@@ -482,6 +494,7 @@ declare global {
     'bs-progress': Components.BsProgressAttributes;
     'bs-progressGroup': Components.BsProgressgroupAttributes;
     'bs-tooltip': Components.BsTooltipAttributes;
+    'bs-toolbar': Components.BsToolbarAttributes;
   }
 
 
@@ -623,6 +636,12 @@ declare global {
     new (): HTMLBsTooltipElement;
   };
 
+  interface HTMLBsToolbarElement extends Components.BsToolbar, HTMLStencilElement {}
+  var HTMLBsToolbarElement: {
+    prototype: HTMLBsToolbarElement;
+    new (): HTMLBsToolbarElement;
+  };
+
   interface HTMLElementTagNameMap {
     'bs-accordion': HTMLBsAccordionElement
     'bs-alert': HTMLBsAlertElement
@@ -647,6 +666,7 @@ declare global {
     'bs-progress': HTMLBsProgressElement
     'bs-progressGroup': HTMLBsProgressgroupElement
     'bs-tooltip': HTMLBsTooltipElement
+    'bs-toolbar': HTMLBsToolbarElement
   }
 
   interface ElementTagNameMap {
@@ -673,6 +693,7 @@ declare global {
     'bs-progress': HTMLBsProgressElement;
     'bs-progressGroup': HTMLBsProgressgroupElement;
     'bs-tooltip': HTMLBsTooltipElement;
+    'bs-toolbar': HTMLBsToolbarElement;
   }
 
 
