@@ -115,7 +115,7 @@ export interface IWebPartEditForm<IWPCfg = IWebPartCfg, IWPInfo = IWebPartInfo> 
     actions?: Array<Components.IButtonProps>;
 
     /** The render form event. */
-    onRenderForm?: (wpInfo: IWPInfo) => Array<Components.IFormControl> | PromiseLike<Array<Components.IFormControl>> | void;
+    onRenderForm?: (wpInfo: IWPInfo) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
 
     /** The save event. */
     onSave?: (wpCfg: IWPCfg) => IWPCfg;

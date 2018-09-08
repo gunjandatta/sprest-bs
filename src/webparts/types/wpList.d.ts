@@ -61,11 +61,11 @@ export interface IWPListEditForm<IListCfg = IWPListCfg, IListInfo = IWPListInfo>
     listQuery?: Types.SP.ODataQuery;
 
     /** The list changed event. */
-    onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControl> | PromiseLike<Array<Components.IFormControl>> | void;
+    onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
 
     /** The lists rendering event. */
     onListsRendering?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
 
     /** The render form event. */
-    onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControl> | PromiseLike<Array<Components.IFormControl>> | void;
+    onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
 }

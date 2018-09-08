@@ -3,7 +3,7 @@ import { Helper, SPTypes } from "gd-sprest";
 /**
  * Field Information
  */
-export const FieldInfo = (fieldInfo: Helper.Types.IListFormFieldInfo) => {
+export const FieldInfo = (fieldInfo: Helper.Types.IListFormFieldInfo): PromiseLike<Helper.Types.IListFormFieldInfo> => {
     // Return a promise
     return new Promise((resolve, reject) => {
         // Load the field information

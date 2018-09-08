@@ -1,5 +1,6 @@
 import { Types } from "gd-sprest";
 import { Components } from "gd-bs";
+import { IFormControl } from "gd-bs/src/components/types";
 
 /**
  * List Form
@@ -58,7 +59,10 @@ export interface IListFormEdit {
     /**
      * Method to get the form values
      */
-    getValues(): PromiseLike<any>;
+    getValues(): {
+        formValues: { [key: string]: any };
+        unknownUsers: { [key: string]: Array<string> };
+    };
 
     /**
      * Method to determine if the field is valid

@@ -13,8 +13,8 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
     let _wpInfo: IWPTaxonomyInfo = null;
 
     // Method to generate the form controls
-    let generateFormControls = (): Array<Components.IFormControlDropdown> => {
-        let formControls: Array<Components.IFormControlDropdown> = [];
+    let generateFormControls = (): Array<Components.IFormControlPropsDropdown> => {
+        let formControls: Array<Components.IFormControlPropsDropdown> = [];
 
         // Add the term groups dropdown
         formControls.push({
@@ -88,7 +88,7 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
     }
 
     // Method to load the term groups
-    let loadTermGroups = (): PromiseLike<Array<Components.IFormControlDropdown>> => {
+    let loadTermGroups = (): PromiseLike<Array<Components.IFormControlPropsDropdown>> => {
         // Return a promise
         return new Promise((resolve, reject) => {
             // Load the term groups

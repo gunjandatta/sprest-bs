@@ -9,7 +9,7 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
     let _wpInfo: IWPListInfo = null;
 
     // Method to load the lists
-    let loadLists = (webUrl?: string): PromiseLike<Array<Components.IFormControl>> => {
+    let loadLists = (webUrl?: string): PromiseLike<Array<Components.IFormControlProps>> => {
         // Return a promise
         return new Promise((resolve, reject) => {
             // Set the query
@@ -23,7 +23,7 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                 .query(query)
                 // Execute the request
                 .execute(lists => {
-                    let controls: Array<Components.IFormControl> = [];
+                    let controls: Array<Components.IFormControlProps> = [];
                     let items: Array<Components.IDropdownItem> = [{
                         text: "",
                         value: ""
@@ -43,7 +43,7 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                             // Update the configuration
                             _wpInfo.cfg.WebUrl = value;
                         }
-                    } as Components.IFormControlTextField);
+                    } as Components.IFormControlPropsTextField);
 
                     // Parse the lists
                     let selectedList = null;
@@ -88,7 +88,7 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                                 }
                             }
                         }
-                    } as Components.IFormControlDropdown);
+                    } as Components.IFormControlPropsDropdown);
 
                     // Call the render form event
                     let returnVal: any = props.onRenderForm ? props.onRenderForm(_wpInfo, selectedList) : null;

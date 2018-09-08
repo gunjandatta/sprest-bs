@@ -27,7 +27,7 @@ export interface IHelper {
      * @param wpInfo - The webpart information.
      * @param formControls - The form controls to render.
      */
-    renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<Components.IFormControl>) => void;
+    renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<Components.IFormControlProps>) => void;
 
     /**
      * Method to save the webpart configuration.

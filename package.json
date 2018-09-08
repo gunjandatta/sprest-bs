@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/gunjandatta/sprest-bs#readme",
   "dependencies": {
-    "gd-bs": "^0.3.2",
+    "gd-bs": "^0.3.6",
     "gd-sprest": "^4.2.1"
   },
   "devDependencies": {

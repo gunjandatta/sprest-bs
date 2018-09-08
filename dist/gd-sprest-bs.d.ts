@@ -17,7 +17,9 @@ declare module 'gd-sprest-bs' {
 
 declare module 'gd-sprest-bs/components/types' {
     export * from "gd-bs/src/components/types";
+    export * from "gd-sprest-bs/components/types/fieldInfo";
     export * from "gd-sprest-bs/components/types/listForm";
+    export * from "gd-sprest-bs/components/types/listFormDialog";
 }
 
 declare module 'gd-sprest-bs/rest' {
@@ -47,6 +49,15 @@ declare module 'gd-sprest-bs/webparts/types' {
     export * from "gd-sprest-bs/webparts/types/wpSearch";
     export * from "gd-sprest-bs/webparts/types/wpTabs";
     export * from "gd-sprest-bs/webparts/types/wpTaxonomy";
+}
+
+declare module 'gd-sprest-bs/components/types/fieldInfo' {
+    import { Helper } from "gd-sprest";
+    
+    /**
+      * Field Information
+      */
+    export const FieldInfo: (fieldInfo: Helper.Types.IListFormFieldInfo) => PromiseLike<Helper.Types.IListFormFieldInfo>;
 }
 
 declare module 'gd-sprest-bs/components/types/listForm' {
@@ -124,6 +135,38 @@ declare module 'gd-sprest-bs/components/types/listForm' {
     export interface IListFormEditProps extends IListFormDisplayProps {
             /** The form mode (New/Edit) */
             controlMode?: number;
+    }
+}
+
+declare module 'gd-sprest-bs/components/types/listFormDialog' {
+    import { Components } from "gd-bs";
+    import { Helper } from "gd-sprest";
+    
+    /**
+        * List Form Dialog
+        */
+    export const ListFormDialog: (props: IListFormDialogProps) => IListFormDialog;
+    
+    /**
+        * List Form Dialog
+        */
+    export interface IListFormDialog extends Components.IModal { }
+    
+    /**
+        * List Form Dialog Properties
+        */
+    export interface IListFormDialogProps extends Helper.Types.IListFormProps {
+            /** The form control mode. */
+            controlMode?: number;
+    
+            /** The element to render the field to. */
+            el: Element | HTMLElement;
+    
+            /** The item. */
+            item?: any;
+    
+            /** The modal dialog properties. */
+            modalProps?: Components.IModalProps;
     }
 }
 

@@ -1,6 +1,6 @@
 import { Helper, SPTypes, Types } from "gd-sprest";
 import { Components } from "gd-bs";
-import { IListForm, IListFormDisplayProps, IListFormEditProps } from "./types";
+import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types/listForm";
 import { FieldInfo } from "./fieldInfo";
 
 // Extend the list form
@@ -24,7 +24,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         // Execute the request
         .execute(formValues => {
             let hasUserField = false;
-            let mapper: { [key: string]: Components.IFormControl } = {};
+            let mapper: { [key: string]: Components.IFormControlProps } = {};
             let rows: Array<Components.IFormRow> = [];
 
             // Parse the fields
@@ -101,9 +101,13 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
 };
 
 // Render the edit form
-ListForm.renderEditForm = (props: IListFormEditProps) => {
-    let controlMode = typeof (props.controlMode) === "number" ? props.controlMode : props.info.item ? SPTypes.ControlMode.Edit : SPTypes.ControlMode.New;
-    let mapper: { [key: string]: Components.IFormControl } = {};
+ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
+    let mapper: {
+        [key: string]: {
+            control: Components.IFormControlProps;
+            fieldInfo: Helper.Types.IFieldInfo;
+        }
+    } = {};
     let rows: Array<Components.IFormRow> = [];
     let value = {};
 
@@ -163,18 +167,15 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
             let item = lookupItems[i];
             let isSelected = false;
 
-            // See if this is a multi-lookup field
-            if (field.AllowMultipleValues) {
-                // Determine if this lookup is selected
-                for (let j = 0; j < selectedValues.length; j++) {
-                    let id = selectedValues[j] ? selectedValues[j].Id : null;
+            // Determine if this lookup is selected
+            for (let j = 0; j < selectedValues.length; j++) {
+                let id = selectedValues[j] ? selectedValues[j].Id : null;
 
-                    // See if this choice is selected
-                    if (item.Id == id) {
-                        // Set the flag and break from the loop
-                        isSelected = true;
-                        break;
-                    }
+                // See if this choice is selected
+                if (item.Id == id) {
+                    // Set the flag and break from the loop
+                    isSelected = true;
+                    break;
                 }
             }
 
@@ -241,6 +242,7 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
 
         // Set the value
         value[fieldName] = props.info.item ? props.info.item[fieldName] : null;
+        let fieldValue = value[fieldName];
 
         // See if this is a read-only field
         if (field.ReadOnlyField) {
@@ -258,7 +260,7 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
         }
 
         // Set the default properties for the control
-        let control: Components.IFormControl = {
+        let control: Components.IFormControlProps = {
             description: field.Description,
             isReadonly: field.ReadOnlyField,
             label: field.Title,
@@ -274,7 +276,7 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
                 control.type = Components.FormControlTypes.Dropdown;
 
                 // Set the items
-                (control as Components.IFormControlDropdown).items = getChoiceItems(field as any, value);
+                (control as Components.IFormControlPropsDropdown).items = getChoiceItems(field as any, fieldValue);
                 break;
 
             // Boolean
@@ -283,11 +285,11 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
                 control.type = Components.FormControlTypes.Checkbox;
 
                 // Hide the label
-                (control as Components.IFormControlCheckbox).hideLabel = true;
+                (control as Components.IFormControlPropsCheckbox).hideLabel = true;
 
                 // Set the type
-                (control as Components.IFormControlCheckbox).items = [
-                    { checked: value ? true : false }
+                (control as Components.IFormControlPropsCheckbox).items = [
+                    { checked: fieldValue ? true : false }
                 ]
                 break;
 
@@ -297,14 +299,11 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
                 control.type = Components.FormControlTypes.MultiDropdown;
 
                 // Set the items
-                (control as Components.IFormControlDropdown).items = getChoiceItems(field as any, value);
+                (control as Components.IFormControlPropsDropdown).items = getChoiceItems(field as any, fieldValue);
                 break;
 
             // Lookup
             case SPTypes.FieldType.Lookup:
-                // Set the type
-                control.type = (field as Types.SP.IFieldLookup).AllowMultipleValues ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
-
                 // Set the render event
                 control.onRenderControl = control => {
                     // Display a loading message
@@ -316,23 +315,32 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
                         size: 100
                     });
 
-                    // Load the field information
-                    FieldInfo({
-                        field,
-                        listName: props.info.list.Title,
-                        name: fieldName,
-                        webUrl: props.info.webUrl
-                    }).then((fieldInfo: Helper.Types.IListFormLookupFieldInfo) => {
-                        // Get the drop down information
-                        Helper.ListFormField.loadLookupData(fieldInfo, 500).then(items => {
-                            // Set the items
-                            (control as Components.IFormControlDropdown).items = getLookupItems(field as any, items, value);
+                    // Return a promise
+                    return new Promise((resolve, reject) => {
+                        // Load the field information
+                        FieldInfo({
+                            field,
+                            listName: props.info.list.Title,
+                            name: fieldName,
+                            webUrl: props.info.webUrl
+                        }).then((fieldInfo: Helper.Types.IListFormLookupFieldInfo) => {
+                            // Update the mapper
+                            mapper[fieldName].fieldInfo = fieldInfo;
 
-                            // Clear the element
-                            control.el.innerHTML = "";
+                            // Set the type
+                            control.type = fieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
 
-                            // Render the form control
-                            Components.FormControl(control);
+                            // Get the drop down information
+                            Helper.ListFormField.loadLookupData(fieldInfo, 500).then(items => {
+                                // Set the items
+                                (control as Components.IFormControlPropsDropdown).items = getLookupItems(field as any, items, fieldValue);
+
+                                // Clear the element
+                                control.el.innerHTML = "";
+
+                                // Resolve the promise
+                                resolve(control);
+                            });
                         });
                     });
                 };
@@ -347,10 +355,10 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
             // URL
             case SPTypes.FieldType.URL:
                 // See if a value exists
-                if (value[fieldName]) {
+                if (fieldValue) {
                     // Update the value
-                    value[field.InternalName + "_Description"] = (value[fieldName] as Types.SP.ComplexTypes.FieldUrlValue).Description;
-                    value[field.InternalName + "_URL"] = (value[fieldName] as Types.SP.ComplexTypes.FieldUrlValue).Url;
+                    value[field.InternalName + "_Description"] = (fieldValue as Types.SP.ComplexTypes.FieldUrlValue).Description;
+                    value[field.InternalName + "_URL"] = (fieldValue as Types.SP.ComplexTypes.FieldUrlValue).Url;
                 }
 
                 // Clear the control
@@ -364,7 +372,7 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
                             label: field.Title + " Description",
                             name: field.InternalName + "_Description",
                             type: Components.FormControlTypes.TextField
-                        } as Components.IFormControl
+                        } as Components.IFormControlProps
                     },
                     {
                         size: 6,
@@ -372,7 +380,7 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
                             label: field.Title + " URL",
                             name: field.InternalName + "_URL",
                             type: Components.FormControlTypes.TextField
-                        } as Components.IFormControl
+                        } as Components.IFormControlProps
                     }
                 ];
                 break;
@@ -383,66 +391,89 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
             // Set the type
             control.type = Components.FormControlTypes.Dropdown;
 
-            // Load the field information
-            FieldInfo({
-                field,
-                listName: props.info.list.Title,
-                name: fieldName,
-                webUrl: props.info.webUrl
-            }).then((mmsInfo: Helper.Types.IListFormMMSFieldInfo) => {
-                // See if this is a new form
-                if (props.controlMode == SPTypes.ControlMode.New) {
-                    let fieldValue = [];
+            // Set a render event
+            control.onRenderControl = el => {
+                // Return a promise
+                return new Promise((resolve, reject) => {
+                    // Display a loading message
+                    Components.Progress({
+                        el: control.el,
+                        isAnimated: true,
+                        isStriped: true,
+                        label: "Loading the mms data",
+                        size: 100
+                    });
 
-                    // Get the default values
-                    let values = (field.DefaultValue || "").split(";#")
-                    for (let i = 0; i < values.length; i++) {
-                        let value = values[i].split("|");
-                        if (value.length == 2) {
-                            // Add the term id
-                            fieldValue.push(value[1]);
+                    // Load the field information
+                    FieldInfo({
+                        field,
+                        listName: props.info.list.Title,
+                        name: fieldName,
+                        webUrl: props.info.webUrl
+                    }).then((mmsInfo: Helper.Types.IListFormMMSFieldInfo) => {
+                        // Update the mapper
+                        mapper[fieldName].fieldInfo = mmsInfo;
+
+                        // See if this is a new form
+                        if (props.controlMode == SPTypes.ControlMode.New) {
+                            let fieldValue = [];
+
+                            // Get the default values
+                            let values = (field.DefaultValue || "").split(";#")
+                            for (let i = 0; i < values.length; i++) {
+                                let value = values[i].split("|");
+                                if (value.length == 2) {
+                                    // Add the term id
+                                    fieldValue.push(value[1]);
+                                }
+                            }
+
+                            // Update the field value
+                            value[fieldName] = fieldValue;
+                        } else {
+                            // Get the field value
+                            let values = fieldValue && fieldValue.results ? fieldValue.results : [fieldValue];
+
+                            // Clear the field values
+                            fieldValue = [];
+
+                            // Parse the values
+                            for (let i = 0; i < values.length; i++) {
+                                // Ensure the value exists
+                                if (values[i] && values[i].TermGuid) {
+                                    // Add the value
+                                    fieldValue.push(values[i].TermGuid);
+                                }
+                            }
+
+                            // Update the field value
+                            value[fieldName] = fieldValue;
                         }
-                    }
-                } else {
-                    // Get the field value
-                    let fieldValue = value[field.InternalName];
-                    let values = fieldValue && fieldValue.results ? fieldValue.results : [fieldValue];
 
-                    // Clear the field values
-                    fieldValue = [];
+                        // Load the terms
+                        Helper.ListFormField.loadMMSData(mmsInfo).then(terms => {
+                            // Load the value field
+                            Helper.ListFormField.loadMMSValueField(mmsInfo).then(valueField => {
+                                // Set the value field
+                                mmsInfo.valueField = valueField;
 
-                    // Parse the values
-                    for (let i = 0; i < values.length; i++) {
-                        // Ensure the value exists
-                        if (values[i] && values[i].TermGuid) {
-                            // Add the value
-                            fieldValue.push(values[i].TermGuid);
-                        }
-                    }
-                }
+                                // Set the items
+                                (control as Components.IFormControlPropsDropdown).items = getMMSItems(Helper.Taxonomy.toObject(terms), value[fieldName]);
 
-                // Load the terms
-                Helper.ListFormField.loadMMSData(mmsInfo).then(terms => {
-                    // Load the value field
-                    Helper.ListFormField.loadMMSValueField(mmsInfo).then(valueField => {
-                        // Set the value field
-                        mmsInfo.valueField = valueField;
+                                // Clear the element
+                                control.el.innerHTML = "";
 
-                        // Set the items
-                        (control as Components.IFormControlDropdown).items = getMMSItems(Helper.Taxonomy.toObject(terms), value[fieldName]);
-
-                        // Clear the element
-                        control.el.innerHTML = "";
-
-                        // Render the form control
-                        Components.FormControl(control);
+                                // Resolve the promise
+                                resolve(control);
+                            });
+                        });
                     });
                 });
-            });
+            };
         }
 
         // Add the field to the mapper
-        mapper[fieldName] = control;
+        mapper[fieldName] = { control, fieldInfo: null };
 
         // Add the row
         rows.push({
@@ -459,7 +490,7 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
     if (props.template) {
         let updateControl = (refControl) => {
             // Get the control from the mapper
-            let control = refControl ? mapper[refControl.name] : null;
+            let control = refControl ? mapper[refControl.name].control : null;
 
             // Ensure the controls exists
             if (control && refControl) {
@@ -496,9 +527,158 @@ ListForm.renderEditForm = (props: IListFormEditProps) => {
     }
 
     // Render the form
-    Components.Form({
+    let form = Components.Form({
         el: props.el,
         rows: props.template || rows,
         value
     });
+
+    // Return the form
+    return {
+        getValues: () => {
+            let unknownUsers = {};
+
+            // Get the form values
+            let formValues = form.getValues();
+
+            // Parse the fields
+            for (let fieldName in props.info.fields) {
+                let field = props.info.fields[fieldName];
+                let fieldInfo = mapper[fieldName];
+                let fieldValue: any = formValues[fieldName];
+
+                // Update the field name/value, based on the type
+                switch (field.FieldTypeKind) {
+                    // Lookup
+                    case SPTypes.FieldType.Lookup:
+                        // Append 'Id' to the field name
+                        fieldName += fieldName.lastIndexOf("Id") == fieldName.length - 2 ? "" : "Id";
+
+                        // See if this is a multi-value field
+                        let lookupInfo: Helper.Types.IFieldInfoLookup = fieldInfo.fieldInfo;
+                        if (lookupInfo && lookupInfo.multi) {
+                            let values: Array<Components.IDropdownItem> = fieldValue || [];
+                            fieldValue = { results: [] };
+
+                            // Parse the values
+                            for (let j = 0; j < values.length; j++) {
+                                // Add the value
+                                fieldValue.results.push(values[j].value);
+                            }
+                        } else {
+                            // Update the field value
+                            fieldValue = fieldValue && fieldValue.length > 0 ? fieldValue[0].value : fieldValue;
+                        }
+                        break;
+
+                    // Multi-Choice
+                    case SPTypes.FieldType.MultiChoice:
+                        let values: Array<Components.IDropdownItem> = fieldValue || [];
+                        fieldValue = { results: [] };
+
+                        // Parse the values
+                        for (let j = 0; j < values.length; j++) {
+                            // Add the values
+                            fieldValue.results.push(values[j].value);
+                        }
+                        break;
+
+                    // URL
+                    case SPTypes.FieldType.URL:
+                        // See if the field value exists
+                        if (fieldValue) {
+                            // Add the metadata
+                            fieldValue.__metadata = { type: "SP.FieldUrlValue" };
+                        }
+                        break;
+
+                    // User
+                    case SPTypes.FieldType.User:
+                        // Append 'Id' to the field name
+                        fieldName += fieldName.lastIndexOf("Id") == fieldName.length - 2 ? "" : "Id";
+
+                        // See if this is a multi-value field
+                        if ((field as Types.SP.IFieldUser).AllowMultipleValues) {
+                            let values: Array<Components.IDropdownItem> = fieldValue || [];
+                            fieldValue = { results: [] };
+
+                            // Parse the options
+                            for (let j = 0; j < values.length; j++) {
+                                let userValue = values[j] as Types.SP.IPeoplePickerUser;
+                                if (userValue && userValue.EntityData) {
+                                    // Ensure the user or group id exists
+                                    if (userValue.EntityData.SPGroupID || userValue.EntityData.SPUserID) {
+                                        // Update the field value
+                                        fieldValue.results.push(userValue.EntityData.SPUserID || userValue.EntityData.SPGroupID);
+                                    } else {
+                                        // Add the unknown user account
+                                        unknownUsers[fieldName] = unknownUsers[fieldName] || [];
+                                        unknownUsers[fieldName].push(userValue.Key);
+                                    }
+                                }
+                            }
+                        } else {
+                            let userValue: Types.SP.IPeoplePickerUser = fieldValue ? fieldValue[0] : null;
+                            if (userValue && userValue.EntityData) {
+                                // Ensure the user or group id exists
+                                if (userValue.EntityData.SPGroupID || userValue.EntityData.SPUserID) {
+                                    // Update the field value
+                                    fieldValue = userValue.EntityData.SPUserID || userValue.EntityData.SPGroupID;
+                                } else {
+                                    // Add the unknown user account
+                                    unknownUsers[fieldName] = unknownUsers[fieldName] || [];
+                                    unknownUsers[fieldName].push(userValue.Key);
+                                }
+                            } else {
+                                // Clear the field value
+                                fieldValue = null;
+                            }
+                        }
+                        break;
+
+                    // MMS
+                    default:
+                        if (field.TypeAsString.startsWith("TaxonomyFieldType")) {
+                            // See if this is a multi field
+                            if (field.TypeAsString.endsWith("Multi")) {
+                                // Update the field name to the value field
+                                fieldName = fieldInfo.fieldInfo ? (fieldInfo.fieldInfo as Types.Helper.IListFormMMSFieldInfo).valueField.InternalName : fieldName + "_0";
+
+                                // Parse the field values
+                                let fieldValues: Array<Components.IDropdownItem> = fieldValue || [];
+                                fieldValue = [];
+                                for (let j = 0; j < fieldValues.length; j++) {
+                                    let termInfo = fieldValues[j];
+
+                                    // Add the field value
+                                    fieldValue.push(-1 + ";#" + termInfo.text + "|" + termInfo.value);
+                                }
+
+                                // Set the field value
+                                fieldValue = fieldValue.join(";#");
+                            } else {
+                                // Update the value
+                                fieldValue = fieldValue && fieldValue.length > 0 ? {
+                                    __metadata: { type: "SP.Taxonomy.TaxonomyFieldValue" },
+                                    Label: fieldValue[0].text,
+                                    TermGuid: fieldValue[0].value,
+                                    WssId: -1
+                                } : fieldValue;
+                            }
+                        }
+                        break;
+                }
+
+                // Set the field value
+                formValues[fieldName] = fieldValue;
+            }
+
+            // Return the form values
+            return { formValues, unknownUsers };
+        },
+        isValid: () => {
+            // TO DO
+            return true;
+        }
+    }
 };

@@ -1,0 +1,10 @@
+/* List Form Dialog */
+.listformdialog {
+    .modal-dialog {
+        max-width: 60vw;
+        .modal-body {
+            max-height: 75vh;
+            overflow-y: auto;
+        }
+    }
+}

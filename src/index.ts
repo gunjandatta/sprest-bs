@@ -4,7 +4,7 @@ export * from "gd-sprest";
 import { Components, WebParts } from "./rest";
 export { Components, WebParts }
 
-//import "./styles.scss";
+import "./styles.scss";
 declare var GD;
 
 // See if the window exists
