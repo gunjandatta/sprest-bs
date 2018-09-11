@@ -134,6 +134,12 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
     // Set the save method
     form == null ? null : dialog.saveForm = saveForm;
 
+    // See if we are displaying it by default
+    if (props.visible) {
+        // Dispaly the dialog
+        dialog.show();
+    }
+
     // Return the dialog
     return dialog;
 }

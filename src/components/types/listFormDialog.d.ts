@@ -32,4 +32,7 @@ export interface IListFormDialogProps extends Helper.Types.IListFormProps {
 
     /** The modal dialog properties. */
     modalProps?: Components.IModalProps;
+
+    /** True to display the modal by default. */
+    visible?: boolean;
 }
