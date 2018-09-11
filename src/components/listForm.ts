@@ -90,6 +90,8 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
             // Render the form
             Components.Form({
                 el: props.el,
+                onControlRendered: props.onControlRendered,
+                onControlRendering: props.onControlRendering,
                 rows: props.template || rows
             });
 
@@ -199,6 +201,8 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     // Render the form
     let form = Components.Form({
         el: props.el,
+        onControlRendered: props.onControlRendered,
+        onControlRendering: props.onControlRendering,
         rows: props.template || rows,
         value
     });

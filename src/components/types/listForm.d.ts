@@ -1,6 +1,6 @@
 import { Types } from "gd-sprest";
 import { Components } from "gd-bs";
-import { IFormControl } from "gd-bs/src/components/types";
+import { IFormControl, IFormControlProps } from "gd-bs/src/components/types";
 
 /**
  * List Form
@@ -47,6 +47,12 @@ export interface IListFormDisplayProps {
 
     /** The list form information. */
     info: Types.Helper.IListFormResult;
+
+    /** The control rendered event. */
+    onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
+
+    /** The control rendering event. */
+    onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
 
     /** The list form rows. */
     template?: Array<Components.IFormRow>;

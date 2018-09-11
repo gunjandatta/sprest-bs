@@ -1,5 +1,6 @@
 import { Components } from "gd-bs";
 import { Helper, Types } from "gd-sprest";
+import { IFormControl, IFormControlProps } from "gd-bs/src/components/types";
 
 /**
  * List Form Dialog
@@ -32,6 +33,12 @@ export interface IListFormDialogProps extends Helper.Types.IListFormProps {
 
     /** The modal dialog properties. */
     modalProps?: Components.IModalProps;
+
+    /** The control rendered event. */
+    onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
+
+    /** The control rendering event. */
+    onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
 
     /** The on save event. */
     onSave?: (item?: Types.SP.IListItemResult) => void;

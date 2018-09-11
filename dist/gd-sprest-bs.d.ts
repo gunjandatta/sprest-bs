@@ -91,7 +91,7 @@ declare module 'gd-sprest-bs/components/types/field' {
 declare module 'gd-sprest-bs/components/types/listForm' {
     import { Types } from "gd-sprest";
     import { Components } from "gd-bs";
-    import { IFormControl } from "gd-bs/src/components/types";
+    import { IFormControl, IFormControlProps } from "gd-bs/src/components/types";
     
     /**
         * List Form
@@ -139,6 +139,12 @@ declare module 'gd-sprest-bs/components/types/listForm' {
             /** The list form information. */
             info: Types.Helper.IListFormResult;
     
+            /** The control rendered event. */
+            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
+    
+            /** The control rendering event. */
+            onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
+    
             /** The list form rows. */
             template?: Array<Components.IFormRow>;
     }
@@ -173,6 +179,7 @@ declare module 'gd-sprest-bs/components/types/listForm' {
 declare module 'gd-sprest-bs/components/types/listFormDialog' {
     import { Components } from "gd-bs";
     import { Helper, Types } from "gd-sprest";
+    import { IFormControl, IFormControlProps } from "gd-bs/src/components/types";
     
     /**
         * List Form Dialog
@@ -205,6 +212,12 @@ declare module 'gd-sprest-bs/components/types/listFormDialog' {
     
             /** The modal dialog properties. */
             modalProps?: Components.IModalProps;
+    
+            /** The control rendered event. */
+            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
+    
+            /** The control rendering event. */
+            onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
     
             /** The on save event. */
             onSave?: (item?: Types.SP.IListItemResult) => void;

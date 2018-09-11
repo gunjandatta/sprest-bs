@@ -171,15 +171,6 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
 
     // Set the type
     switch (field.FieldTypeKind) {
-        // Choice
-        case SPTypes.FieldType.Choice:
-            // Set the type
-            controlProps.type = Components.FormControlTypes.Dropdown;
-
-            // Set the items
-            (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(field as any, value);
-            break;
-
         // Boolean
         case SPTypes.FieldType.Boolean:
             // Set the type
@@ -192,6 +183,27 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
             (controlProps as Components.IFormControlPropsCheckbox).items = [
                 { checked: value ? true : false }
             ];
+            break;
+
+        // Choice
+        case SPTypes.FieldType.Choice:
+            // Set the type
+            controlProps.type = Components.FormControlTypes.Dropdown;
+
+            // Set the items
+            (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(field as any, value);
+            break;
+
+        // Number or Currency Field
+        case SPTypes.FieldType.Currency:
+            // Set the type
+            controlProps.type = Components.FormControlTypes.TextField;
+
+            // Set the rendered event
+            controlProps.onControlRendered = (control) => {
+                debugger;
+                //
+            }
             break;
 
         // Multi-Choice
@@ -256,11 +268,29 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
             controlProps.type = Components.FormControlTypes.TextArea;
             break;
 
-        // Number or Currency Field
+        // Number Field
         case SPTypes.FieldType.Number:
-        case SPTypes.FieldType.Currency:
-            // Set the type
-            controlProps.type = (field as Types.SP.IFieldNumber).ShowAsPercentage ? Components.FormControlTypes.Range : Components.FormControlTypes.TextField;
+            let numberField = field as Types.SP.IFieldNumber;
+            let numberProps = controlProps as Components.IFormControlPropsNumberField;
+
+            // See if this is a percentage
+            if (numberField.ShowAsPercentage) {
+                // Set the type
+                numberProps.type = Components.FormControlTypes.Range;
+
+                // Set the max value
+                debugger;
+                numberProps.max = numberField.MaximumValue == Number.MAX_VALUE ? 100 : numberField.MaximumValue;
+
+                // Set the min value
+                numberProps.min = numberField.MinimumValue == -1.7976931348623157e+308 ? 0 : numberField.MinimumValue;
+
+                // Set the value
+                numberProps.value = numberProps.value == null || numberProps.value == Number.MIN_VALUE ? 0 : numberProps.value;
+            } else {
+                // Set the type
+                numberProps.type = Components.FormControlTypes.TextField;
+            }
             break;
 
         // URL

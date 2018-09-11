@@ -50,6 +50,8 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
                     form = ListForm.renderEditForm({
                         controlMode: props.controlMode,
                         el,
+                        onControlRendered: props.onControlRendered,
+                        onControlRendering: props.onControlRendering,
                         info
                     });
                     break;
@@ -58,7 +60,9 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
                     // Render the list form
                     ListForm.renderDisplayForm({
                         el,
-                        info
+                        info,
+                        onControlRendered: props.onControlRendered,
+                        onControlRendering: props.onControlRendering,
                     });
                     break;
             }
