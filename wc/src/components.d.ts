@@ -233,6 +233,7 @@ export namespace Components {
     'placeholder': string;
     'prependedButtons': string;
     'prependedLabel': string;
+    'rows': number;
     'type': number;
     'value': string;
   }
@@ -250,6 +251,7 @@ export namespace Components {
     'placeholder'?: string;
     'prependedButtons'?: string;
     'prependedLabel'?: string;
+    'rows'?: number;
     'type'?: number;
     'value'?: string;
   }

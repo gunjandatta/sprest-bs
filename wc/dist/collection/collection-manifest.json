@@ -584,6 +584,11 @@
           "attr": "prepended-label"
         },
         {
+          "name": "rows",
+          "type": "Number",
+          "attr": "rows"
+        },
+        {
           "name": "type",
           "type": "Number",
           "attr": "type"

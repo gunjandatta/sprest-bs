@@ -48,6 +48,7 @@ export class InputGroup {
             placeholder: this.placeholder,
             prependedButtons,
             prependedLabel: this.prependedLabel,
+            rows: this.rows,
             type: this.type,
             value: this.value,
             onChange: (...args) => {
@@ -126,6 +127,10 @@ export class InputGroup {
         "prependedLabel": {
             "type": String,
             "attr": "prepended-label"
+        },
+        "rows": {
+            "type": Number,
+            "attr": "rows"
         },
         "type": {
             "type": Number,

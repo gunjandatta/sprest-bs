@@ -201,7 +201,6 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
 
             // Set the rendered event
             controlProps.onControlRendered = (control) => {
-                debugger;
                 //
             }
             break;
@@ -264,8 +263,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
 
         // Note
         case SPTypes.FieldType.Note:
-            // Set the type
+            // Set the properties
             controlProps.type = Components.FormControlTypes.TextArea;
+            (controlProps as Components.IFormControlPropsTextField).rows = (field as Types.SP.IFieldNote).NumberOfLines;
             break;
 
         // Number Field
@@ -279,7 +279,6 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                 numberProps.type = Components.FormControlTypes.Range;
 
                 // Set the max value
-                debugger;
                 numberProps.max = numberField.MaximumValue == Number.MAX_VALUE ? 100 : numberField.MaximumValue;
 
                 // Set the min value

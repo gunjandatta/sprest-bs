@@ -14,6 +14,7 @@ export declare class InputGroup {
     placeholder: string;
     prependedButtons: string;
     prependedLabel: string;
+    rows: number;
     type: number;
     value: string;
     componentDidLoad(): any;
