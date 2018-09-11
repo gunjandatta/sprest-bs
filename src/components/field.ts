@@ -1,6 +1,8 @@
 import { Components } from "gd-bs";
 import { Helper, SPTypes, Types } from "gd-sprest";
 import { IField, IFieldValue, IFieldValueUser } from "./types/field";
+import { PeoplePicker } from "./peoplePicker";
+import { IPeoplePicker } from "./types/peoplePicker";
 
 /**
  * Field
@@ -125,6 +127,35 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
         return items;
     }
 
+    // Method to get the user items
+    let getUserItems = (value) => {
+        let users: Array<Types.SP.IPeoplePickerUser> = [];
+
+        // See if a value exists
+        if (value) {
+            let userValues = value.results ? value.results : [value];
+            for (let i = 0; i < userValues.length; i++) {
+                let userValue = userValues[i] as Types.SP.ComplexTypes.FieldUserValue;
+
+                // Ensure a title exists
+                if (userValue.Title) {
+                    // Add the user
+                    users.push({
+                        DisplayText: userValue.Title,
+                        EntityData: {
+                            Email: userValue.EMail,
+                            SPUserID: userValue.Id.toString()
+                        },
+                        Key: userValue.Id.toString()
+                    });
+                }
+            }
+        }
+
+        // Return the users
+        return users;
+    }
+
     // Set the default properties for the control
     let controlProps: Components.IFormControlProps = {
         description: field.Description,
@@ -160,7 +191,7 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
             // Set the type
             (controlProps as Components.IFormControlPropsCheckbox).items = [
                 { checked: value ? true : false }
-            ]
+            ];
             break;
 
         // Multi-Choice
@@ -225,6 +256,13 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
             controlProps.type = Components.FormControlTypes.TextArea;
             break;
 
+        // Number or Currency Field
+        case SPTypes.FieldType.Number:
+        case SPTypes.FieldType.Currency:
+            // Set the type
+            controlProps.type = (field as Types.SP.IFieldNumber).ShowAsPercentage ? Components.FormControlTypes.Range : Components.FormControlTypes.TextField;
+            break;
+
         // URL
         case SPTypes.FieldType.URL:
             // See if a value exists
@@ -260,6 +298,32 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                     }
                 ];
             */
+            break;
+
+        // User
+        case SPTypes.FieldType.User:
+            let picker: IPeoplePicker = null;
+
+            // Set the rendered event
+            controlProps.onControlRendered = formControl => {
+                // Save the control
+                control = formControl;
+
+                // Clear the control
+                control.el.innerHTML = "";
+
+                // Render a people picker to it
+                picker = PeoplePicker({
+                    el: control.el,
+                    value: getUserItems(value)
+                });
+            }
+
+            // Set the get value event
+            controlProps.onGetValue = () => {
+                // Get the values
+                return picker.getValue();
+            };
             break;
     }
 
@@ -474,7 +538,6 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                 default:
                     // See if this is a MMS field
                     if (mmsFieldInfo) {
-                        debugger;
                         // See if this is a multi field
                         if (mmsFieldInfo.multi) {
                             // Update the field name to the value field
