@@ -172,7 +172,7 @@ declare module 'gd-sprest-bs/components/types/listForm' {
 
 declare module 'gd-sprest-bs/components/types/listFormDialog' {
     import { Components } from "gd-bs";
-    import { Helper } from "gd-sprest";
+    import { Helper, Types } from "gd-sprest";
     
     /**
         * List Form Dialog
@@ -205,6 +205,9 @@ declare module 'gd-sprest-bs/components/types/listFormDialog' {
     
             /** The modal dialog properties. */
             modalProps?: Components.IModalProps;
+    
+            /** The on save event. */
+            onSave?: (item?: Types.SP.IListItemResult) => void;
     
             /** True to display the modal by default. */
             visible?: boolean;

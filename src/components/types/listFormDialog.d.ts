@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import { Helper } from "gd-sprest";
+import { Helper, Types } from "gd-sprest";
 
 /**
  * List Form Dialog
@@ -32,6 +32,9 @@ export interface IListFormDialogProps extends Helper.Types.IListFormProps {
 
     /** The modal dialog properties. */
     modalProps?: Components.IModalProps;
+
+    /** The on save event. */
+    onSave?: (item?: Types.SP.IListItemResult) => void;
 
     /** True to display the modal by default. */
     visible?: boolean;
