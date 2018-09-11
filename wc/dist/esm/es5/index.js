@@ -7,7 +7,7 @@ import { a as ButtonGroup } from "./chunk-85fa0bab.js";
 import { a as Card } from "./chunk-fc40989f.js";
 import { a as CardGroup } from "./chunk-b0dc7cdf.js";
 import { a as Carousel } from "./chunk-0d914292.js";
-import { a as Collapse } from "./chunk-73dcfc2c.js";
+import { a as Collapse } from "./chunk-02c3d75b.js";
 import { a as Dropdown } from "./chunk-0e2064dd.js";
 import { a as Form } from "./chunk-862221bb.js";
 import { a as InputGroup } from "./chunk-0c0029e6.js";

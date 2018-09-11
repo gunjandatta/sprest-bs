@@ -52,7 +52,8 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
                         el,
                         onControlRendered: props.onControlRendered,
                         onControlRendering: props.onControlRendering,
-                        info
+                        info,
+                        template: props.template
                     });
                     break;
                 // Default - Display Form
@@ -63,6 +64,7 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
                         info,
                         onControlRendered: props.onControlRendered,
                         onControlRendering: props.onControlRendering,
+                        template: props.template
                     });
                     break;
             }
@@ -140,7 +142,7 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
 
     // See if we are displaying it by default
     if (props.visible) {
-        // Dispaly the dialog
+        // Display the dialog
         dialog.show();
     }
 

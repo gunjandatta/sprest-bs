@@ -43,6 +43,9 @@ export interface IListFormDialogProps extends Helper.Types.IListFormProps {
     /** The on save event. */
     onSave?: (item?: Types.SP.IListItemResult) => void;
 
+    /** The list form rows. */
+    template?: Array<Components.IFormRow>;
+
     /** True to display the modal by default. */
     visible?: boolean;
 }
