@@ -27,7 +27,7 @@ module.exports = (env, argv) => {
         module: {
             rules: [
                 {
-                    test: /\.(scss)$/,
+                    test: /\.(s?css)$/,
                     use: [
                         // Inject CSS to the page
                         { loader: "style-loader" },

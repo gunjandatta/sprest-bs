@@ -64,7 +64,14 @@ declare module 'gd-sprest-bs/components/types/datetime' {
         * Date/Time
         */
     export interface IDateTime {
+            /** The date/time picker element. */
+            el: HTMLDivElement;
     
+            /** Method to get the value. */
+            getValue: () => string;
+    
+            /** Method to toggle the menu. */
+            toggle: () => void;
     }
     
     /**
