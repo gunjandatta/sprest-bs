@@ -489,7 +489,7 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
         getValue: () => {
             let fieldValue: IFieldValue = {
                 name: field.InternalName,
-                value: control.getValue()
+                value: control ? control.getValue() : null
             };
 
             // Update the field name/value, based on the type
@@ -502,6 +502,11 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                         // Update the field value
                         fieldValue.value = ddlValue.value || ddlValue.text;
                     }
+                    break;
+                // Date/Time
+                case SPTypes.FieldType.DateTime:
+                    // Ensure a value exists, otherwise null
+                    fieldValue.value = fieldValue.value || null;
                     break;
                 // Lookup
                 case SPTypes.FieldType.Lookup:
@@ -536,6 +541,23 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                     }
                     break;
 
+                // Number Field
+                case SPTypes.FieldType.Number:
+                    let numberField = field as Types.SP.IFieldNumber;
+
+                    // Ensure a field value exists
+                    if (fieldValue.value) {
+                        // See if this is a percentage
+                        if (numberField.ShowAsPercentage) {
+                            // Update the value
+                            fieldValue.value = fieldValue.value / 100;
+                        }
+                    } else {
+                        // Ensure the value is null
+                        fieldValue.value = null;
+                    }
+                    break;
+
                 // URL
                 case SPTypes.FieldType.URL:
                     // See if the field value exists
@@ -546,6 +568,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                             Description: fieldValue.value, // TO DO - Add ability to update the description
                             Url: fieldValue.value
                         };
+                    } else {
+                        // Ensure the value is null
+                        fieldValue.value = null;
                     }
                     break;
 

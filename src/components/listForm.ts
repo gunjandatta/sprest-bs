@@ -214,11 +214,12 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
         // Parse the fields
         for (let fieldName in props.info.fields) {
-            let field = props.info.fields[fieldName];
-            let fieldValue = mapper[fieldName].getValue();
-
             // Skip readonly fields
+            let field = props.info.fields[fieldName];
             if (field.ReadOnlyField) { continue; }
+
+            // Get the field value
+            let fieldValue = mapper[fieldName].getValue();
 
             // Set the item value
             item[fieldValue.name] = fieldValue.value;
