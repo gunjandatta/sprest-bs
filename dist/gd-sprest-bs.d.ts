@@ -219,6 +219,9 @@ declare module 'gd-sprest-bs/components/types/listForm' {
     export interface IListFormEditProps extends IListFormDisplayProps {
             /** The form mode (New/Edit) */
             controlMode?: number;
+    
+            /** The form saving event. */
+            onSaving?: (item: any) => void;
     }
 }
 
@@ -265,8 +268,11 @@ declare module 'gd-sprest-bs/components/types/listFormDialog' {
             /** The control rendering event. */
             onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
     
-            /** The on save event. */
-            onSave?: (item?: Types.SP.IListItemResult) => void;
+            /** The form saving event. */
+            onSaving?: (item: any) => void;
+    
+            /** The form saved event. */
+            onSaved?: (item?: Types.SP.IListItemResult) => void;
     
             /** The list form rows. */
             template?: Array<Components.IFormRow>;

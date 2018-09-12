@@ -40,6 +40,9 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
                 // Show the footer
                 elFooter.classList.remove("d-none");
 
+                // Call the save event
+                props.onSaved ? props.onSaved(item) : null;
+
                 // Resolve the promise
                 resolve(item);
             }, reject);
@@ -73,6 +76,7 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
                         el,
                         onControlRendered: props.onControlRendered,
                         onControlRendering: props.onControlRendering,
+                        onSaving: props.onSaving,
                         info,
                         template: props.template
                     });

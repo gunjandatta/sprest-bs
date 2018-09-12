@@ -242,6 +242,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 // Get the values
                 let item = getValues().formValues;
 
+                // Execute the saving event
+                props.onSaving ? props.onSaving(item) : null;
+
                 // Update the item
                 ListForm.saveItem(props.info, item).then(info => {
                     // Update the info

@@ -84,4 +84,7 @@ export interface IListFormEdit {
 export interface IListFormEditProps extends IListFormDisplayProps {
     /** The form mode (New/Edit) */
     controlMode?: number;
+
+    /** The form saving event. */
+    onSaving?: (item: any) => void;
 }
