@@ -8,6 +8,7 @@ module.exports = (env, argv) => {
         entry: [
             "./node_modules/gd-bs/dist/gd-bs" + (isDev ? "" : ".min") + ".js",
             "./node_modules/gd-sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
+            "./lib/jquery-ui-1.12.1.custom/jquery-ui" + (isDev ? "" : ".min") + ".js",
             "./src/index.ts"
         ],
         output: {
@@ -19,7 +20,9 @@ module.exports = (env, argv) => {
         },
         externals: {
             "gd-bs": "GD",
-            "gd-sprest": "$REST"
+            "gd-sprest": "$REST",
+            "$": "GD.jQuery",
+            "jquery": "GD.jQuery"
         },
         module: {
             rules: [

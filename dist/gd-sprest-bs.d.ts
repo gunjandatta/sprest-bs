@@ -38,6 +38,7 @@ declare module 'gd-sprest-bs/rest' {
 
 declare module 'gd-sprest-bs/components/types' {
     export * from "gd-bs/src/components/types";
+    export * from "gd-sprest-bs/components/types/datetime";
     export * from "gd-sprest-bs/components/types/field";
     export * from "gd-sprest-bs/components/types/listForm";
     export * from "gd-sprest-bs/components/types/listFormDialog";
@@ -51,6 +52,31 @@ declare module 'gd-sprest-bs/webparts/types' {
     export * from "gd-sprest-bs/webparts/types/wpSearch";
     export * from "gd-sprest-bs/webparts/types/wpTabs";
     export * from "gd-sprest-bs/webparts/types/wpTaxonomy";
+}
+
+declare module 'gd-sprest-bs/components/types/datetime' {
+    /**
+        * Date/Time
+        */
+    export const DateTime: (props: IDateTimeProps) => IDateTime
+    
+    /**
+        * Date/Time
+        */
+    export interface IDateTime {
+    
+    }
+    
+    /**
+        * Date/Time Props
+        */
+    export interface IDateTimeProps {
+            /** The class name to apply to the element. */
+            className?: string;
+    
+            /** The element to render the form to. */
+            el?: Element;
+    }
 }
 
 declare module 'gd-sprest-bs/components/types/field' {
