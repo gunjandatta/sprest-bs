@@ -4,7 +4,7 @@ export var Accordion = ["bs-accordion",function(){return(import("./6z2nbfhr.js")
 
 export var Alert = ["bs-alert",function(){return(import("./xrwqexkf.js")).then(function(m){return m.BsAlert})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["header",1,0,1,2],["isDismissible",1,0,"is-dismissible",3],["type",1,0,1,4]]];
 
-export var Badge = ["bs-badge",function(){return(import("./1wej3q0b.js")).then(function(m){return m.BsBadge})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["header",1,0,1,2],["href",1,0,1,2],["isPill",1,0,"is-pill",3],["type",1,0,1,4]]];
+export var Badge = ["bs-badge",function(){return(import("./h6yatlql.js")).then(function(m){return m.BsBadge})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["header",1,0,1,2],["href",1,0,1,2],["isPill",1,0,"is-pill",3],["type",1,0,1,4]]];
 
 export var Breadcrumb = ["bs-breadcrumb",function(){return(import("./wsffebed.js")).then(function(m){return m.BsBreadcrumb})},0,[["className",1,0,"class-name",2],["el",7],["items",1,0,1,2]]];
 

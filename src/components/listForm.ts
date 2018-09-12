@@ -207,31 +207,50 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         value
     });
 
+    // Method to get the values
+    let getValues = () => {
+        let item = {};
+        let unknownUsers = {};
+
+        // Parse the fields
+        for (let fieldName in props.info.fields) {
+            let field = props.info.fields[fieldName];
+            let fieldValue = mapper[fieldName].getValue();
+
+            // Skip readonly fields
+            if (field.ReadOnlyField) { continue; }
+
+            // Set the item value
+            item[fieldValue.name] = fieldValue.value;
+        }
+
+        // Return the form values
+        return { formValues: item, unknownUsers };
+    };
+
     // Return the form
     return {
-        getValues: () => {
-            let item = {};
-            let unknownUsers = {};
-
-            // Parse the fields
-            for (let fieldName in props.info.fields) {
-                let field = props.info.fields[fieldName];
-                let fieldValue = mapper[fieldName].getValue();
-
-                // Skip readonly fields
-                if (field.ReadOnlyField) { continue; }
-
-                // Set the item value
-                item[fieldValue.name] = fieldValue.value;
-            }
-
-            // Return the form values
-            console.log(item);
-            return { formValues: item, unknownUsers };
-        },
+        el: form.el,
+        getValues,
         isValid: () => {
             // TO DO
             return true;
+        },
+        save: () => {
+            // Return a promise
+            return new Promise((resolve, reject) => {
+                // Get the values
+                let item = getValues().formValues;
+
+                // Update the item
+                ListForm.saveItem(props.info, item).then(info => {
+                    // Update the info
+                    props.info = info;
+
+                    // Resolve the promise
+                    resolve(props.info.item as any);
+                }, reject);
+            });
         }
     }
 };

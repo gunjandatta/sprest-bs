@@ -1,6 +1,6 @@
 import { a as Accordion } from "./chunk-dd809db8.js";
 import { a as Alert } from "./chunk-574babfa.js";
-import { a as Badge } from "./chunk-8d6f014a.js";
+import { a as Badge } from "./chunk-4dd238a6.js";
 import { a as Breadcrumb } from "./chunk-ad44e50a.js";
 import { a as Button } from "./chunk-8d3183df.js";
 import { a as ButtonGroup } from "./chunk-85fa0bab.js";

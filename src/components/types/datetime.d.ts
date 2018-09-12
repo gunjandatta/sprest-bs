@@ -32,6 +32,9 @@ export interface IDateTimeProps {
     /** The date/time label. */
     label?: string;
 
+    /** Flag to display the time. */
+    showTime?: boolean;
+
     /** The date/time value. */
     value?: string;
 }

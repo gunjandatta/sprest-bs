@@ -12,7 +12,7 @@ export const ListFormDialog: (props: IListFormDialogProps) => IListFormDialog;
  */
 export interface IListFormDialog extends Components.IModal {
     /** Method to save the form. */
-    saveForm: () => PromiseLike<void>;
+    saveForm: () => PromiseLike<Types.SP.IListItemResult>;
 }
 
 /**

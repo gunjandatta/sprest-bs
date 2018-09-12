@@ -12,16 +12,37 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
     let modalProps = props.modalProps || {};
 
     // Method to save the form
-    let saveForm = (): PromiseLike<void> => {
+    let saveForm = (): PromiseLike<any> => {
+        // Hide the form
+        form.el.classList.add("d-none");
+
+        // Hide the footer
+        elFooter.classList.add("d-none");
+
+        // Add a progress
+        let progress = Components.Progress({
+            el: form.el.parentElement,
+            isAnimated: true,
+            isStriped: true,
+            size: 100
+        }).el;
+
         // Return a promise
         return new Promise((resolve, reject) => {
-            // Get the form values
-            let values = form.getValues();
-            console.log("Form Values:");
-            console.log(values);
+            // Save the form
+            form.save().then(item => {
+                // Remove the progress
+                form.el.parentElement.removeChild(progress);
 
-            // Resolve the request
-            resolve();
+                // Show the form
+                form.el.classList.remove("d-none");
+
+                // Show the footer
+                elFooter.classList.remove("d-none");
+
+                // Resolve the promise
+                resolve(item);
+            }, reject);
         });
     };
 
@@ -68,6 +89,9 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
                     });
                     break;
             }
+
+            // Display the actions
+            elFooter.classList.remove("d-none");
         });
     }
 
@@ -133,6 +157,10 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
 
     // Create the dialog
     let dialog = Components.Modal(modalProps) as IListFormDialog;
+
+    // Hide the actions
+    let elFooter = dialog.el.querySelector(".modal-footer");
+    elFooter.classList.add("d-none");
 
     // Add the class name
     dialog.el.classList.add("listformdialog");

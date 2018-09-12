@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("h6yatlql",["exports","./chunk-072e038d.js"],function(e,d){window.GdSprestBs.h,e.BsBadge=d.Badge,Object.defineProperty(e,"__esModule",{value:!0})});

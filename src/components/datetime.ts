@@ -11,47 +11,15 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
     elDateTime.className = "date-time";
 
     // Create the textbox
-    let elTextbox = Components.InputGroup({
-        isReadonly: true,
-        label: props.label,
-        appendedButtons: [{
-            className: "dropdown-toggle",
-            onClick: ev => {
-                ev.stopPropagation();
-
-                // Toggle the menu
-                toggle();
-            }
-        }],
-        value: props.value
+    let textbox = Components.InputGroup({
+        label: props.label
     });
-    elDateTime.appendChild(elTextbox.el);
+    let elTextbox = textbox.el.querySelector("input");
+    elDateTime.appendChild(textbox.el);
 
-    // Create the dropdown menu
-    let elMenu = document.createElement("div");
-    elMenu.className = "dropdown-menu";
-    elDateTime.appendChild(elMenu);
-
-    // Set the click event to hide the menu
-    elMenu.addEventListener("click", ev => { ev.stopPropagation(); });
-    window.addEventListener("click", () => {
-        // See if it's visible
-        if (elMenu.classList.contains("show")) {
-            // Hide the menu
-            elMenu.classList.remove("show");
-        }
-    });
-
-    // Method to toggle the menu
-    let toggle = () => {
-        // See if it's visible
-        if (elMenu.classList.contains("show")) {
-            // Hide the menu
-            elMenu.classList.remove("show");
-        } else {
-            // Show the menu
-            elMenu.classList.add("show");
-        }
+    // See if we are displaying the time
+    if (props.showTime) {
+        // TO DO
     }
 
     // Create the element
@@ -78,15 +46,21 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
         el.classList.add("bs");
     }
 
-    // Render the date/time picker
-    jQuery(elMenu).datepicker();
+    // Initialize the date/time picker
+    jQuery(elTextbox).datepicker();
+
+    // See if a value exists
+    if (props.value) {
+        // Set the value
+        jQuery(elTextbox).datepicker("setDate", new Date(props.value));
+    }
 
     // Return the element
     return {
         el: elDateTime,
-        toggle,
+        toggle: () => { },
         getValue: () => {
-            return elTextbox.el.getAttribute("value");
+            return elTextbox.value;
         }
     };
 }

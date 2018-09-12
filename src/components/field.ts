@@ -201,25 +201,39 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
             controlProps.type = Components.FormControlTypes.TextField;
 
             // Set the rendered event
-            controlProps.onControlRendered = (control) => {
+            controlProps.onControlRendered = (formControl) => {
+                // Save the control
+                control = formControl;
             }
             break;
 
         // Date/Time
         case SPTypes.FieldType.DateTime:
+            let showTime = (field as Types.SP.IFieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
+
             // Set the type
             controlProps.type = Components.FormControlTypes.TextField;
 
             // Set the rendered event
-            controlProps.onControlRendered = (control) => {
+            controlProps.onControlRendered = (formControl) => {
+                // Save the control
+                control = formControl;
+
                 // Clear the element
                 control.el.innerHTML = "";
 
                 // Render a date picker
-                DateTime({
+                let dt = DateTime({
                     el: control.el,
+                    showTime,
                     value: control.props.value
                 });
+
+                // Set the get value event
+                control.props.onGetValue = () => {
+                    // Return the value
+                    return dt.getValue();
+                }
             }
             break;
 

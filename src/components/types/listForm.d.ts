@@ -62,18 +62,20 @@ export interface IListFormDisplayProps {
  * List Form Edit
  */
 export interface IListFormEdit {
-    /**
-     * Method to get the form values
-     */
+    /** The element to render the form to. */
+    el: HTMLFormElement;
+
+    /** Method to get the form values */
     getValues(): {
         formValues: { [key: string]: any };
         unknownUsers: { [key: string]: Array<string> };
     };
 
-    /**
-     * Method to determine if the field is valid
-     */
+    /** Method to determine if the field is valid */
     isValid(): boolean;
+
+    /** Method to save the form. */
+    save(): PromiseLike<Types.SP.IListItemResult>;
 }
 
 /**
