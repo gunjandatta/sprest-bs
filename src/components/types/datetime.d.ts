@@ -1,3 +1,5 @@
+import { Components } from "gd-bs";
+
 /**
  * Date/Time
  */
@@ -26,4 +28,10 @@ export interface IDateTimeProps {
 
     /** The element to render the form to. */
     el?: Element;
+
+    /** The date/time label. */
+    label?: string;
+
+    /** The date/time value. */
+    value?: string;
 }

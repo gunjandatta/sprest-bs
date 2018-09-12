@@ -1,5 +1,6 @@
 import { Components } from "gd-bs";
 import { Helper, SPTypes, Types } from "gd-sprest";
+import { DateTime } from "./datetime";
 import { IField, IFieldValue, IFieldValueUser } from "./types/field";
 import { PeoplePicker } from "./peoplePicker";
 import { IPeoplePicker } from "./types/peoplePicker";
@@ -194,14 +195,31 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
             (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(field as any, value);
             break;
 
-        // Number or Currency Field
+        // Currency Field
         case SPTypes.FieldType.Currency:
             // Set the type
             controlProps.type = Components.FormControlTypes.TextField;
 
             // Set the rendered event
             controlProps.onControlRendered = (control) => {
-                //
+            }
+            break;
+
+        // Date/Time
+        case SPTypes.FieldType.DateTime:
+            // Set the type
+            controlProps.type = Components.FormControlTypes.TextField;
+
+            // Set the rendered event
+            controlProps.onControlRendered = (control) => {
+                // Clear the element
+                control.el.innerHTML = "";
+
+                // Render a date picker
+                DateTime({
+                    el: control.el,
+                    value: control.props.value
+                });
             }
             break;
 

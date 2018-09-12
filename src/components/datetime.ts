@@ -8,24 +8,39 @@ import "../../lib/jquery-ui-1.12.1.custom/jquery-ui.min.css";
 export const DateTime = (props: IDateTimeProps): IDateTime => {
     // Create the date/time element
     let elDateTime = document.createElement("div");
-    elDateTime.className = "bs date-time";
+    elDateTime.className = "date-time";
 
     // Create the textbox
     let elTextbox = Components.InputGroup({
+        isReadonly: true,
+        label: props.label,
         appendedButtons: [{
             className: "dropdown-toggle",
-            onClick: () => {
+            onClick: ev => {
+                ev.stopPropagation();
+
                 // Toggle the menu
                 toggle();
             }
-        }]
+        }],
+        value: props.value
     });
     elDateTime.appendChild(elTextbox.el);
 
     // Create the dropdown menu
     let elMenu = document.createElement("div");
-    elMenu.className = "dropdown-menu float-right";
+    elMenu.className = "dropdown-menu";
     elDateTime.appendChild(elMenu);
+
+    // Set the click event to hide the menu
+    elMenu.addEventListener("click", ev => { ev.stopPropagation(); });
+    window.addEventListener("click", () => {
+        // See if it's visible
+        if (elMenu.classList.contains("show")) {
+            // Hide the menu
+            elMenu.classList.remove("show");
+        }
+    });
 
     // Method to toggle the menu
     let toggle = () => {

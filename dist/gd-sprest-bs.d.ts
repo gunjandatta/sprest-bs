@@ -55,6 +55,8 @@ declare module 'gd-sprest-bs/webparts/types' {
 }
 
 declare module 'gd-sprest-bs/components/types/datetime' {
+    import { Components } from "gd-bs";
+    
     /**
         * Date/Time
         */
@@ -83,6 +85,12 @@ declare module 'gd-sprest-bs/components/types/datetime' {
     
             /** The element to render the form to. */
             el?: Element;
+    
+            /** The date/time label. */
+            label?: string;
+    
+            /** The date/time value. */
+            value?: string;
     }
 }
 
