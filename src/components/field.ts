@@ -17,9 +17,8 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
     let getChoiceItems = (field: Types.SP.IFieldChoice, selectedValues) => {
         let items: Array<Components.IDropdownItem> = [];
 
-        // Get the current value
-        let values = selectedValues || null;
-        values = values && values.results ? values.results : [values];
+        // Update the selected values
+        selectedValues = selectedValues && selectedValues.results ? selectedValues.results : [selectedValues];
 
         // Parse the choices
         for (let i = 0; i < field.Choices.results.length; i++) {
@@ -27,9 +26,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
             let isSelected = false;
 
             // Determine if this choice is selected
-            for (let j = 0; j < values.length; j++) {
+            for (let j = 0; j < selectedValues.length; j++) {
                 // See if this choice is selected
-                if (choice == values[j]) {
+                if (choice == selectedValues[j]) {
                     // Set the flag and break from the loop
                     isSelected = true;
                     break;
@@ -42,6 +41,12 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                 text: choice,
                 value: choice
             });
+        }
+
+        // See if no selected values exists, and this is a required field
+        if (items.length > 0 && selectedValues.length == 0 && field.Required) {
+            // Select the first item
+            items[0].isSelected = true;
         }
 
         // Return the items
@@ -78,6 +83,12 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                 text: item[field.LookupField],
                 value: item.Id.toString()
             });
+        }
+
+        // See if no selected values exists, and this is a required field
+        if (items.length > 0 && selectedValues.length == 0 && field.Required) {
+            // Select the first item
+            items[0].isSelected = true;
         }
 
         // Return the items
@@ -122,6 +133,12 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
 
             // Add the item
             items = items.concat(childItems);
+        }
+
+        // See if no selected values exists, and this is a required field
+        if (items.length > 0 && selectedValues.length == 0 && field.Required) {
+            // Select the first item
+            items[0].isSelected = true;
         }
 
         // Return the items
@@ -191,8 +208,20 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
             // Set the type
             controlProps.type = Components.FormControlTypes.Dropdown;
 
+            // Get the items
+            let items = getChoiceItems(field as any, value);
+
+            // See if this is not a required field
+            if (!field.Required) {
+                // Add a blank entry
+                items = [{
+                    text: "",
+                    value: null
+                } as any].concat(items);
+            }
+
             // Set the items
-            (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(field as any, value);
+            (controlProps as Components.IFormControlPropsDropdown).items = items;
             break;
 
         // Currency Field
@@ -279,8 +308,20 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                             // Set the type
                             controlProps.type = lookupFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
 
+                            // Get the dropdown items
+                            let ddlItems = getLookupItems(field as any, items, value);
+
+                            // See if this is not a required field and not a multi-select
+                            if (!field.Required && !lookupFieldInfo.multi) {
+                                // Add a blank entry
+                                ddlItems = [{
+                                    text: "",
+                                    value: null
+                                } as any].concat(ddlItems);
+                            }
+
                             // Set the items
-                            (controlProps as Components.IFormControlPropsDropdown).items = getLookupItems(field as any, items, value);
+                            (controlProps as Components.IFormControlPropsDropdown).items = ddlItems;
 
                             // Clear the element
                             controlProps.el ? controlProps.el.innerHTML = "" : null;
@@ -467,8 +508,20 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
 
                         // Load the terms
                         Helper.ListFormField.loadMMSData(mmsFieldInfo).then(terms => {
+                            // Get the items
+                            let items = getMMSItems(Helper.Taxonomy.toObject(terms), value[field.InternalName]);
+
+                            // See if this is not a required field and not a multi-select
+                            if (!field.Required && !mmsFieldInfo.multi) {
+                                // Add a blank entry
+                                items = [{
+                                    text: "",
+                                    value: null
+                                } as any].concat(items);
+                            }
+
                             // Set the items
-                            (controlProps as Components.IFormControlPropsDropdown).items = getMMSItems(Helper.Taxonomy.toObject(terms), value[field.InternalName]);
+                            (controlProps as Components.IFormControlPropsDropdown).items = items;
 
                             // Clear the element
                             controlProps.el ? controlProps.el.innerHTML = "" : null;
