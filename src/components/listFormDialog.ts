@@ -52,6 +52,12 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
     // Update the properties
     modalProps.el = modalProps.el || props.el;
     modalProps.title = modalProps.title || props.listName;
+    modalProps.body = Components.Progress({
+        isAnimated: true,
+        isStriped: true,
+        label: "Loading the Form...",
+        size: 100
+    }).el.outerHTML;
 
     // Set the on render event
     modalProps.onRenderBody = (el) => {
@@ -65,6 +71,9 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
             query: props.query,
             webUrl: props.webUrl
         }).then(info => {
+            // Clear the modal body
+            el.innerHTML = "";
+
             // Check the control mode
             switch (props.controlMode) {
                 // Edit Form
