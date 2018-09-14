@@ -556,11 +556,19 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                         fieldValue.value = ddlValue.value || ddlValue.text;
                     }
                     break;
+
+                // Number Field
+                case SPTypes.FieldType.Currency:
+                    // Ensure a value exists, otherwise null
+                    fieldValue.value = fieldValue.value || null;
+                    break;
+
                 // Date/Time
                 case SPTypes.FieldType.DateTime:
                     // Ensure a value exists, otherwise null
                     fieldValue.value = fieldValue.value || null;
                     break;
+
                 // Lookup
                 case SPTypes.FieldType.Lookup:
                     // Append 'Id' to the field name
