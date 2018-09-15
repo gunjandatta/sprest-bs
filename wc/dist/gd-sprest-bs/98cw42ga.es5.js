@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("98cw42ga",["exports","./chunk-71a18128.js"],function(e,d){window.GdSprestBs.h,e.BsCardgroup=d.CardGroup,Object.defineProperty(e,"__esModule",{value:!0})});

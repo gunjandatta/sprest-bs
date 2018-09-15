@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("pgodvz8a",["exports","./chunk-0b64a19d.js"],function(e,d){window.GdSprestBs.h,e.BsToolbar=d.Toolbar,Object.defineProperty(e,"__esModule",{value:!0})});

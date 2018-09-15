@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("wsffebed",["exports","./chunk-fe25f625.js"],function(e,d){window.GdSprestBs.h,e.BsBreadcrumb=d.Breadcrumb,Object.defineProperty(e,"__esModule",{value:!0})});
