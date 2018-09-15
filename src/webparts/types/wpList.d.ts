@@ -63,8 +63,8 @@ export interface IWPListEditForm<IListCfg = IWPListCfg, IListInfo = IWPListInfo>
     /** The list changed event. */
     onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
 
-    /** The lists rendering event. */
-    onListsRendering?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
+    /** The lists loaded event. */
+    onListsLoaded?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
 
     /** The render form event. */
     onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;

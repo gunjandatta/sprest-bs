@@ -29,8 +29,8 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                         value: ""
                     }];
 
-                    // Call the list rendering event
-                    let listValues: Array<any> = (props.onListsRendering ? props.onListsRendering(_wpInfo, lists.results) as any : null) || lists.results;
+                    // Call the list loaded event
+                    let listValues: Array<any> = (props.onListsLoaded ? props.onListsLoaded(_wpInfo, lists.results) as any : null) || lists.results;
 
                     // Add the web url
                     controls.push({

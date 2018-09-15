@@ -109,6 +109,9 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
 
                 // Load the term sets
                 loadTermSets().then(() => {
+                    // Execute the term groups loaded event
+                    _termGroupItems = props.onTermGroupsLoaded ? props.onTermGroupsLoaded(_wpInfo, _termGroupItems) : _termGroupItems;
+
                     // Resolve the promise
                     resolve(generateFormControls());
                 });
@@ -139,7 +142,13 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
                     }
 
                     // Load the term set terms and resolve the promise
-                    loadTermSetTerms().then(resolve);
+                    loadTermSetTerms().then(() => {
+                        // Execute the term sets loaded event
+                        _termSetItems = props.onTermSetsLoaded ? props.onTermSetsLoaded(_wpInfo, _termSetItems) : _termSetItems;
+
+                        // Resolve the promise
+                        resolve();
+                    });
                 });
             } else {
                 // Resolve the promise
@@ -176,6 +185,9 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
                             value: terms[i].id
                         });
                     }
+
+                    // Execute the term sets loaded event
+                    _termSetTermsItems = props.onTermSetTermsLoaded ? props.onTermSetTermsLoaded(_wpInfo, _termSetTermsItems) : _termSetTermsItems;
 
                     // Resolve the promise
                     resolve();

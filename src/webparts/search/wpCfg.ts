@@ -101,7 +101,7 @@ export const WPSearchEditForm = (props: IWPSearchEditForm = {}): IWPSearchEditFo
     return {
         actions: props.actions,
         listQuery,
-        onListsRendering: props.onListsRendering,
+        onListsLoaded: props.onListsLoaded,
         onRenderForm: (wpInfo, list: Types.SP.IListQueryResult) => {
             // Return a promise
             return new Promise((resolve, reject) => {

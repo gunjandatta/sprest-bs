@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("6uddnrqw",["exports","./chunk-d2df275d.js"],function(e,d){window.GdSprestBs.h,e.BsCarousel=d.Carousel,Object.defineProperty(e,"__esModule",{value:!0})});

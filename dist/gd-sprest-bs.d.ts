@@ -587,8 +587,8 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
             /** The list changed event. */
             onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
     
-            /** The lists rendering event. */
-            onListsRendering?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
+            /** The lists loaded event. */
+            onListsLoaded?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
     
             /** The render form event. */
             onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
@@ -680,6 +680,7 @@ declare module 'gd-sprest-bs/webparts/types/wpTabs' {
 }
 
 declare module 'gd-sprest-bs/webparts/types/wpTaxonomy' {
+    import { Components } from "gd-bs"
     import { Helper } from "gd-sprest";
     import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/types/wp";
     
@@ -747,11 +748,20 @@ declare module 'gd-sprest-bs/webparts/types/wpTaxonomy' {
             /** The term group changed event. */
             onTermGroupChanged?: (wpInfo: IWPTaxonomyInfo, termGroupInfo?: ITermGroupInfo) => void;
     
+            /** The term group loaded event. */
+            onTermGroupsLoaded?: (wpInfo: IWPTaxonomyInfo, termGroups: Array<Components.IDropdownItem>) => Array<Components.IDropdownItem>;
+    
             /** The term set changed event. */
             onTermSetChanged?: (wpInfo: IWPTaxonomyInfo, termSetInfo?: ITermInfo) => void;
     
+            /** The term set loaded event. */
+            onTermSetsLoaded?: (wpInfo: IWPTaxonomyInfo, termSets?: Array<Components.IDropdownItem>) => Array<Components.IDropdownItem>;
+    
             /** The term set term changed event. */
             onTermSetTermChanged?: (wpInfo: IWPTaxonomyInfo, termInfo?: ITermInfo) => void;
+    
+            /** The term set terms loaded event. */
+            onTermSetTermsLoaded?: (wpInfo: IWPTaxonomyInfo, terms?: Array<Components.IDropdownItem>) => Array<Components.IDropdownItem>;
     
             /** Flag to display the term set terms. */
             showTermSetTerms?: boolean;

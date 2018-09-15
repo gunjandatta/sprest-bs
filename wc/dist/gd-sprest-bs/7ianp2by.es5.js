@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("7ianp2by",["exports","./chunk-adcd08be.js"],function(e,d){window.GdSprestBs.h,e.BsPopover=d.Popover,Object.defineProperty(e,"__esModule",{value:!0})});
