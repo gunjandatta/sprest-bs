@@ -354,7 +354,7 @@ declare module 'gd-sprest-bs/webparts/types/helper' {
                 * @param wpInfo - The webpart information.
                 * @param formControls - The form controls to render.
                 */
-            renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<Components.IFormControlProps>) => void;
+            renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<Components.IFormControlProps>) => Components.IForm;
     
             /**
                 * Method to save the webpart configuration.
@@ -511,10 +511,10 @@ declare module 'gd-sprest-bs/webparts/types/wp' {
             actions?: Array<Components.IButtonProps>;
     
             /** The render form event. */
-            onRenderForm?: (wpInfo: IWPInfo) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
+            onRenderForm?: (wpInfo?: IWPInfo) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
     
             /** The save event. */
-            onSave?: (wpCfg: IWPCfg) => IWPCfg;
+            onSave?: (wpCfg?: IWPCfg, form?: Components.IForm) => IWPCfg;
     
             /** True to hide the save button. */
             showSaveButton?: boolean;

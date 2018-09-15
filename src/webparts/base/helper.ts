@@ -62,7 +62,7 @@ export const Helper: IHelper = {
     },
 
     // Method to render the edit form
-    renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<Components.IFormControl> = []) => {
+    renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<Components.IFormControlProps> = []): Components.IForm => {
         let rows: Array<Components.IFormRow> = [];
 
         // Parse the controls
@@ -72,7 +72,7 @@ export const Helper: IHelper = {
         }
 
         // Render the form
-        Components.Form({
+        return Components.Form({
             el: wpInfo.el.querySelector(".wp-cfg-form"),
             rows,
             value: wpInfo.cfg

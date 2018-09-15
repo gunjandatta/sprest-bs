@@ -115,10 +115,10 @@ export interface IWebPartEditForm<IWPCfg = IWebPartCfg, IWPInfo = IWebPartInfo> 
     actions?: Array<Components.IButtonProps>;
 
     /** The render form event. */
-    onRenderForm?: (wpInfo: IWPInfo) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
+    onRenderForm?: (wpInfo?: IWPInfo) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
 
     /** The save event. */
-    onSave?: (wpCfg: IWPCfg) => IWPCfg;
+    onSave?: (wpCfg?: IWPCfg, form?: Components.IForm) => IWPCfg;
 
     /** True to hide the save button. */
     showSaveButton?: boolean;

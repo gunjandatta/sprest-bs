@@ -26,6 +26,8 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
 
     // The default render method when the page is edited
     let render = () => {
+        let form: Components.IForm = null;
+
         // Ensure we need to render this
         if (_editForm == null) { return; }
 
@@ -68,11 +70,11 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
                     // Wait for the promise to be resolved
                     formControls.then(formControls => {
                         // Render the edit form
-                        Helper.renderEditForm(wp, formControls);
+                        form = Helper.renderEditForm(wp, formControls);
                     });
                 }
                 // Else, render the edit form
-                else { Helper.renderEditForm(wp, formControls); }
+                else { form = Helper.renderEditForm(wp, formControls); }
             },
             onRenderFooter: el => {
                 let actionButtons: Array<Components.IButtonProps> = [];
@@ -100,7 +102,7 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
                         text: "Save",
                         onClick: ev => {
                             // Call the save event and set the configuration
-                            let cfg = _editForm.onSave ? _editForm.onSave(wp.cfg) : null;
+                            let cfg = _editForm.onSave ? _editForm.onSave(wp.cfg, form) : null;
                             cfg = cfg ? cfg : wp.cfg;
 
                             // Save the configuration
