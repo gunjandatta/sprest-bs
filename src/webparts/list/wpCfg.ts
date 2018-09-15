@@ -72,6 +72,13 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                         value: _wpInfo && _wpInfo.cfg ? _wpInfo.cfg.ListName : null,
                         onChange: (item: Components.IDropdownItem) => {
                             if (item) {
+                                // See if this is a blank item
+                                if (item.text == "") {
+                                    // Call the change event
+                                    props.onListChanged ? props.onListChanged(_wpInfo) : null;
+                                    return;
+                                }
+
                                 // Parse the list
                                 for (let i = 0; i < listValues.length; i++) {
                                     let list = listValues[i];
