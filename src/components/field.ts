@@ -587,6 +587,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                     } else {
                         // Update the field value
                         fieldValue.value = fieldValue.value ? fieldValue.value.value || fieldValue.value.text : null;
+
+                        // Ensure a value exists, otherwise null
+                        fieldValue.value = fieldValue.value || null;
                     }
                     break;
 
