@@ -41,7 +41,7 @@ export interface IListFormDialogProps extends Helper.Types.IListFormProps {
     onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
 
     /** The form saving event. */
-    onSaving?: (item: any) => void;
+    onSaving?: (item: any) => void | PromiseLike<any>;
 
     /** The form saved event. */
     onSaved?: (item?: Types.SP.IListItemResult) => void;

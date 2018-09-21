@@ -243,17 +243,27 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 // Get the values
                 let item = getValues().formValues;
 
+                // Method to save the item
+                let saveItem = (item) => {
+                    // Update the item
+                    ListForm.saveItem(props.info, item).then(info => {
+                        // Update the info
+                        props.info = info;
+
+                        // Resolve the promise
+                        resolve(props.info.item as any);
+                    }, reject);
+                }
+
                 // Execute the saving event
-                props.onSaving ? props.onSaving(item) : null;
-
-                // Update the item
-                ListForm.saveItem(props.info, item).then(info => {
-                    // Update the info
-                    props.info = info;
-
-                    // Resolve the promise
-                    resolve(props.info.item as any);
-                }, reject);
+                let returnVal = props.onSaving ? props.onSaving(item) : null;
+                if (returnVal && returnVal.then) {
+                    // Wait for the promise to complete
+                    returnVal.then(saveItem);
+                } else {
+                    // Save the item
+                    saveItem(item);
+                }
             });
         }
     }

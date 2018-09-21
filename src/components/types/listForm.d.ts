@@ -86,5 +86,5 @@ export interface IListFormEditProps extends IListFormDisplayProps {
     controlMode?: number;
 
     /** The form saving event. */
-    onSaving?: (item: any) => void;
+    onSaving?: (item: any) => void | PromiseLike<any>;
 }
