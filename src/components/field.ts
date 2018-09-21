@@ -306,37 +306,67 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                         listName: listInfo.list.Title,
                         name: field.InternalName,
                         webUrl: listInfo.webUrl
-                    }).then((fieldInfo: Helper.Types.IListFormLookupFieldInfo) => {
-                        // Save the field information
-                        lookupFieldInfo = fieldInfo;
+                    }).then(
+                        // Success
+                        (fieldInfo: Helper.Types.IListFormLookupFieldInfo) => {
+                            // Save the field information
+                            lookupFieldInfo = fieldInfo;
 
-                        // Get the drop down information
-                        Helper.ListFormField.loadLookupData(lookupFieldInfo, 500).then(items => {
-                            // Set the type
-                            controlProps.type = lookupFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
+                            // Get the drop down information
+                            Helper.ListFormField.loadLookupData(lookupFieldInfo, 500).then(
+                                // Success
+                                items => {
+                                    // Set the type
+                                    controlProps.type = lookupFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
 
-                            // Get the dropdown items
-                            let ddlItems = getLookupItems(field as any, items, value);
+                                    // Get the dropdown items
+                                    let ddlItems = getLookupItems(field as any, items, value);
 
-                            // See if this is not a required field and not a multi-select
-                            if (!field.Required && !lookupFieldInfo.multi) {
-                                // Add a blank entry
-                                ddlItems = [{
-                                    text: "",
-                                    value: null
-                                } as any].concat(ddlItems);
-                            }
+                                    // See if this is not a required field and not a multi-select
+                                    if (!field.Required && !lookupFieldInfo.multi) {
+                                        // Add a blank entry
+                                        ddlItems = [{
+                                            text: "",
+                                            value: null
+                                        } as any].concat(ddlItems);
+                                    }
 
-                            // Set the items
-                            (controlProps as Components.IFormControlPropsDropdown).items = ddlItems;
+                                    // Set the items
+                                    (controlProps as Components.IFormControlPropsDropdown).items = ddlItems;
 
-                            // Clear the element
-                            controlProps.el ? controlProps.el.innerHTML = "" : null;
+                                    // Clear the element
+                                    controlProps.el ? controlProps.el.innerHTML = "" : null;
 
-                            // Resolve the promise
-                            resolve(controlProps);
-                        });
-                    });
+                                    // Resolve the promise
+                                    resolve(controlProps);
+                                },
+                                // Error
+                                msg => {
+                                    // Log the error
+                                    console.error("Error loading the lookup field values for '" + field.InternalName + "'.");
+
+                                    // Display an error message
+                                    Components.Alert({
+                                        el: controlProps.el,
+                                        content: "Error loading the lookup field values.",
+                                        type: Components.AlertTypes.Danger
+                                    });
+                                }
+                            );
+                        },
+                        // Error
+                        msg => {
+                            // Log the error
+                            console.error("Error loading the field information for field '" + field.InternalName + "'.");
+
+                            // Display an error message
+                            Components.Alert({
+                                el: controlProps.el,
+                                content: "Error loading the lookup field information.",
+                                type: Components.AlertTypes.Danger
+                            });
+                        }
+                    );
                 });
             };
             break;
@@ -463,81 +493,125 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                     listName: listInfo.list.Title,
                     name: field.InternalName,
                     webUrl: listInfo.webUrl
-                }).then((fieldInfo: Helper.Types.IListFormMMSFieldInfo) => {
-                    // Save the field information
-                    mmsFieldInfo = fieldInfo;
+                }).then(
+                    // Success
+                    (fieldInfo: Helper.Types.IListFormMMSFieldInfo) => {
+                        // Save the field information
+                        mmsFieldInfo = fieldInfo;
 
-                    // Set the type
-                    controlProps.type = mmsFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
+                        // Set the type
+                        controlProps.type = mmsFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
 
-                    // Load the value field
-                    Helper.ListFormField.loadMMSValueField(mmsFieldInfo).then(valueField => {
-                        // Set the value field
-                        mmsFieldInfo.valueField = valueField;
+                        // Load the value field
+                        Helper.ListFormField.loadMMSValueField(mmsFieldInfo).then(
+                            // Success
+                            valueField => {
+                                // Set the value field
+                                mmsFieldInfo.valueField = valueField;
 
-                        // See if this is a new form
-                        if (controlMode == SPTypes.ControlMode.New) {
-                            let fieldValue = [];
+                                // See if this is a new form
+                                if (controlMode == SPTypes.ControlMode.New) {
+                                    let fieldValue = [];
 
-                            // Get the default values
-                            let values = (field.DefaultValue || "").split(";#")
-                            for (let i = 0; i < values.length; i++) {
-                                let value = values[i].split("|");
-                                if (value.length == 2) {
-                                    // Add the term id
-                                    fieldValue.push(value[1]);
+                                    // Get the default values
+                                    let values = (field.DefaultValue || "").split(";#")
+                                    for (let i = 0; i < values.length; i++) {
+                                        let value = values[i].split("|");
+                                        if (value.length == 2) {
+                                            // Add the term id
+                                            fieldValue.push(value[1]);
+                                        }
+                                    }
+
+                                    // Update the field value
+                                    value[field.InternalName] = fieldValue;
+                                } else {
+                                    let fieldValue = value;
+
+                                    // Get the field value
+                                    let values = fieldValue && fieldValue.results ? fieldValue.results : [fieldValue];
+
+                                    // Clear the field values
+                                    fieldValue = [];
+
+                                    // Parse the values
+                                    for (let i = 0; i < values.length; i++) {
+                                        // Ensure the value exists
+                                        if (values[i] && values[i].TermGuid) {
+                                            // Add the value
+                                            fieldValue.push(values[i].TermGuid);
+                                        }
+                                    }
+
+                                    // Update the field value
+                                    value[field.InternalName] = fieldValue;
                                 }
+
+                                // Load the terms
+                                Helper.ListFormField.loadMMSData(mmsFieldInfo).then(
+                                    // Success
+                                    terms => {
+                                        // Get the items
+                                        let items = getMMSItems(Helper.Taxonomy.toObject(terms), value[field.InternalName]);
+
+                                        // See if this is not a required field and not a multi-select
+                                        if (!field.Required && !mmsFieldInfo.multi) {
+                                            // Add a blank entry
+                                            items = [{
+                                                text: "",
+                                                value: null
+                                            } as any].concat(items);
+                                        }
+
+                                        // Set the items
+                                        (controlProps as Components.IFormControlPropsDropdown).items = items;
+
+                                        // Clear the element
+                                        controlProps.el ? controlProps.el.innerHTML = "" : null;
+
+                                        // Resolve the promise
+                                        resolve(controlProps);
+                                    },
+                                    // Error
+                                    msg => {
+                                        // Log the error
+                                        console.error("Error loading the mms terms for '" + field.InternalName + "'.");
+
+                                        // Display an error message
+                                        Components.Alert({
+                                            el: controlProps.el,
+                                            content: "Error loading the mms terms.",
+                                            type: Components.AlertTypes.Danger
+                                        });
+                                    }
+                                );
+                            },
+                            // Error
+                            msg => {
+                                // Log the error
+                                console.error("Error loading the mms value field for '" + field.InternalName + "'.");
+
+                                // Display an error message
+                                Components.Alert({
+                                    el: controlProps.el,
+                                    content: "Error loading the mms value field.",
+                                    type: Components.AlertTypes.Danger
+                                });
                             }
+                        );
+                    },
+                    msg => {
+                        // Log the error
+                        console.error("Error loading the field information for field '" + field.InternalName + "'.");
 
-                            // Update the field value
-                            value[field.InternalName] = fieldValue;
-                        } else {
-                            let fieldValue = value;
-
-                            // Get the field value
-                            let values = fieldValue && fieldValue.results ? fieldValue.results : [fieldValue];
-
-                            // Clear the field values
-                            fieldValue = [];
-
-                            // Parse the values
-                            for (let i = 0; i < values.length; i++) {
-                                // Ensure the value exists
-                                if (values[i] && values[i].TermGuid) {
-                                    // Add the value
-                                    fieldValue.push(values[i].TermGuid);
-                                }
-                            }
-
-                            // Update the field value
-                            value[field.InternalName] = fieldValue;
-                        }
-
-                        // Load the terms
-                        Helper.ListFormField.loadMMSData(mmsFieldInfo).then(terms => {
-                            // Get the items
-                            let items = getMMSItems(Helper.Taxonomy.toObject(terms), value[field.InternalName]);
-
-                            // See if this is not a required field and not a multi-select
-                            if (!field.Required && !mmsFieldInfo.multi) {
-                                // Add a blank entry
-                                items = [{
-                                    text: "",
-                                    value: null
-                                } as any].concat(items);
-                            }
-
-                            // Set the items
-                            (controlProps as Components.IFormControlPropsDropdown).items = items;
-
-                            // Clear the element
-                            controlProps.el ? controlProps.el.innerHTML = "" : null;
-
-                            // Resolve the promise
-                            resolve(controlProps);
+                        // Display an error message
+                        Components.Alert({
+                            el: controlProps.el,
+                            content: "Error loading the lookup field information.",
+                            type: Components.AlertTypes.Danger
                         });
-                    });
-                });
+                    }
+                );
             });
         };
     }
