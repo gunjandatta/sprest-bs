@@ -181,11 +181,18 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
         label: field.Title,
         name: field.InternalName,
         type: Components.FormControlTypes.TextField,
+        value,
         onControlRendered: formControl => {
             // Save the control
             control = formControl;
         }
     };
+
+    // See if this is a new form, a default value exists and no value has been defined
+    if (controlMode == SPTypes.ControlMode.New && field.DefaultValue && value == null) {
+        // Set the default value
+        controlProps.value = field.DefaultValue;
+    }
 
     // Set the type
     switch (field.FieldTypeKind) {
