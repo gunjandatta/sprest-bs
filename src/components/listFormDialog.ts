@@ -72,42 +72,60 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
             loadAttachments: props.loadAttachments,
             query: props.query,
             webUrl: props.webUrl
-        }).then(info => {
-            // Clear the modal body
-            el.innerHTML = "";
+        }).then(
+            // Success
+            info => {
+                // Clear the modal body
+                el.innerHTML = "";
 
-            // Check the control mode
-            switch (props.controlMode) {
-                // Edit Form
-                case SPTypes.ControlMode.Edit:
-                case SPTypes.ControlMode.New:
-                    // Render the list form
-                    form = ListForm.renderEditForm({
-                        controlMode: props.controlMode,
-                        el,
-                        onControlRendered: props.onControlRendered,
-                        onControlRendering: props.onControlRendering,
-                        onSaving: props.onSaving,
-                        info,
-                        template: props.template
-                    });
-                    break;
-                // Default - Display Form
-                default:
-                    // Render the list form
-                    ListForm.renderDisplayForm({
-                        el,
-                        info,
-                        onControlRendered: props.onControlRendered,
-                        onControlRendering: props.onControlRendering,
-                        template: props.template
-                    });
-                    break;
+                // Check the control mode
+                switch (props.controlMode) {
+                    // Edit Form
+                    case SPTypes.ControlMode.Edit:
+                    case SPTypes.ControlMode.New:
+                        // Render the list form
+                        form = ListForm.renderEditForm({
+                            controlMode: props.controlMode,
+                            el,
+                            onControlRendered: props.onControlRendered,
+                            onControlRendering: props.onControlRendering,
+                            onSaving: props.onSaving,
+                            info,
+                            template: props.template
+                        });
+                        break;
+                    // Default - Display Form
+                    default:
+                        // Render the list form
+                        ListForm.renderDisplayForm({
+                            el,
+                            info,
+                            onControlRendered: props.onControlRendered,
+                            onControlRendering: props.onControlRendering,
+                            template: props.template
+                        });
+                        break;
+                }
+
+                // Display the actions
+                elFooter.classList.remove("d-none");
+            },
+            // Error
+            () => {
+                // Log the error
+                console.error("Error loading the list form information.");
+
+                // Clear the modal
+                el.innerHTML = "";
+
+                // Display an error message
+                Components.Alert({
+                    el,
+                    content: "Error loading the list form information.",
+                    type: Components.AlertTypes.Danger
+                });
             }
-
-            // Display the actions
-            elFooter.classList.remove("d-none");
-        });
+        );
     }
 
     // Set the render footer event
