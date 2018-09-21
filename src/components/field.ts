@@ -372,6 +372,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                 content: "Error loading the lookup field information.",
                                 type: Components.AlertTypes.Danger
                             });
+
+                            // Reject the request
+                            reject(msg);
                         }
                     );
                 });
@@ -610,6 +613,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                     content: "Error loading the mms value field.",
                                     type: Components.AlertTypes.Danger
                                 });
+
+                                // Reject the request
+                                reject(msg);
                             }
                         );
                     },
