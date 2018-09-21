@@ -290,7 +290,7 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                 controlProps = props;
 
                 // Display a loading message
-                Components.Progress({
+                let progress = Components.Progress({
                     el: controlProps.el,
                     isAnimated: true,
                     isStriped: true,
@@ -345,6 +345,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                     // Log the error
                                     console.error("Error loading the lookup field values for '" + field.InternalName + "'.");
 
+                                    // Remove the progress bar
+                                    progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
+
                                     // Display an error message
                                     Components.Alert({
                                         el: controlProps.el,
@@ -359,7 +362,11 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                             // Log the error
                             console.error("Error loading the field information for field '" + field.InternalName + "'.");
 
+                            // Remove the progress bar
+                            progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
+
                             // Display an error message
+                            controlProps.el.innerHTML = "";
                             Components.Alert({
                                 el: controlProps.el,
                                 content: "Error loading the lookup field information.",
@@ -479,7 +486,7 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
             // Return a promise
             return new Promise((resolve, reject) => {
                 // Display a loading message
-                Components.Progress({
+                let progress = Components.Progress({
                     el: controlProps.el,
                     isAnimated: true,
                     isStriped: true,
@@ -577,6 +584,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                         // Log the error
                                         console.error("Error loading the mms terms for '" + field.InternalName + "'.");
 
+                                        // Remove the progress bar
+                                        progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
+
                                         // Display an error message
                                         Components.Alert({
                                             el: controlProps.el,
@@ -591,6 +601,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                 // Log the error
                                 console.error("Error loading the mms value field for '" + field.InternalName + "'.");
 
+                                // Remove the progress bar
+                                progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
+
                                 // Display an error message
                                 Components.Alert({
                                     el: controlProps.el,
@@ -603,6 +616,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                     msg => {
                         // Log the error
                         console.error("Error loading the field information for field '" + field.InternalName + "'.");
+
+                        // Remove the progress bar
+                        progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
 
                         // Display an error message
                         Components.Alert({

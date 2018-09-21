@@ -10,11 +10,11 @@ export const ListForm: IListForm = Helper.ListForm as any;
 // Method to render a display form for an item
 ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     // Render a loading message
-    Components.Progress({
+    let progress = Components.Progress({
         el: props.el,
         isAnimated: true,
         isStriped: true,
-        label: "Loading the Item Form",
+        label: "Loading the Form",
         size: 100
     });
 
@@ -23,84 +23,99 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         // Get the html for the fields
         .FieldValuesAsHtml()
         // Execute the request
-        .execute(formValues => {
-            let hasUserField = false;
-            let mapper: { [key: string]: Components.IFormControlProps } = {};
-            let rows: Array<Components.IFormRow> = [];
+        .execute(
+            // Success
+            formValues => {
+                let hasUserField = false;
+                let mapper: { [key: string]: Components.IFormControlProps } = {};
+                let rows: Array<Components.IFormRow> = [];
 
-            // Parse the fields
-            for (let fieldName in props.info.fields) {
-                let field = props.info.fields[fieldName];
-                let html = formValues[fieldName] || formValues[fieldName.replace(/\_/g, "_x005f_")] || "";
+                // Parse the fields
+                for (let fieldName in props.info.fields) {
+                    let field = props.info.fields[fieldName];
+                    let html = formValues[fieldName] || formValues[fieldName.replace(/\_/g, "_x005f_")] || "";
 
-                // Set the control
-                mapper[fieldName] = {
-                    description: field.Description,
-                    html,
-                    label: field.Title
-                };
+                    // Set the control
+                    mapper[fieldName] = {
+                        description: field.Description,
+                        html,
+                        label: field.Title
+                    };
 
-                // Add the row
-                rows.push({
-                    colSize: 2,
-                    control: mapper[fieldName]
-                });
-            }
+                    // Add the row
+                    rows.push({
+                        colSize: 2,
+                        control: mapper[fieldName]
+                    });
+                }
 
-            // Clear the element
-            props.el ? props.el.innerHTML = "" : null;
+                // Clear the element
+                props.el ? props.el.innerHTML = "" : null;
 
-            // See if there is a template
-            if (props.template) {
-                let updateControl = (refControl) => {
-                    // Get the control from the mapper
-                    let control = refControl ? mapper[refControl.name] : null;
+                // See if there is a template
+                if (props.template) {
+                    let updateControl = (refControl) => {
+                        // Get the control from the mapper
+                        let control = refControl ? mapper[refControl.name] : null;
 
-                    // Ensure the controls exists
-                    if (control && refControl) {
-                        // Parse the control keys
-                        for (let key in control) {
-                            // Skip if a value is already defined
-                            if (refControl[key]) { continue; }
+                        // Ensure the controls exists
+                        if (control && refControl) {
+                            // Parse the control keys
+                            for (let key in control) {
+                                // Skip if a value is already defined
+                                if (refControl[key]) { continue; }
 
-                            // Update the property
-                            refControl[key] = control[key];
+                                // Update the property
+                                refControl[key] = control[key];
+                            }
+                        }
+                    }
+
+                    // Parse the template
+                    for (let i = 0; i < props.template.length; i++) {
+                        let row = props.template[i];
+
+                        // Update the control
+                        updateControl(row.control);
+
+                        // Parse the columns if there are columns
+                        let columns = row.columns || [];
+                        for (let j = 0; j < columns.length; j++) {
+                            let column = columns[j];
+
+                            // Update the control
+                            updateControl(column.control);
                         }
                     }
                 }
 
-                // Parse the template
-                for (let i = 0; i < props.template.length; i++) {
-                    let row = props.template[i];
+                // Render the form
+                Components.Form({
+                    el: props.el,
+                    onControlRendered: props.onControlRendered,
+                    onControlRendering: props.onControlRendering,
+                    rows: props.template || rows
+                });
 
-                    // Update the control
-                    updateControl(row.control);
-
-                    // Parse the columns if there are columns
-                    let columns = row.columns || [];
-                    for (let j = 0; j < columns.length; j++) {
-                        let column = columns[j];
-
-                        // Update the control
-                        updateControl(column.control);
-                    }
+                // See if we are displaying a user field
+                if (hasUserField) {
+                    // Enable the persona
+                    window["ProcessImn"]();
                 }
-            }
+            },
+            // Error
+            () => {
+                // Remove the progress bar
+                progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
 
-            // Render the form
-            Components.Form({
-                el: props.el,
-                onControlRendered: props.onControlRendered,
-                onControlRendering: props.onControlRendering,
-                rows: props.template || rows
-            });
-
-            // See if we are displaying a user field
-            if (hasUserField) {
-                // Enable the persona
-                window["ProcessImn"]();
+                // Display an alert
+                Components.Alert({
+                    el: props.el,
+                    content: "Error loading the form information...",
+                    type: Components.AlertTypes.Danger
+                });
             }
-        });
+        );
 };
 
 // Render the edit form
@@ -110,11 +125,11 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     let value = {};
 
     // Render a loading message
-    Components.Progress({
+    let progress = Components.Progress({
         el: props.el,
         isAnimated: true,
         isStriped: true,
-        label: "Loading the Item Form",
+        label: "Loading the Form",
         size: 100
     });
 
@@ -155,9 +170,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         });
     }
 
-    // Clear the element
-    props.el ? props.el.innerHTML = "" : null;
-
     // See if there is a template
     if (props.template) {
         let updateControl = (refControl: Components.IFormControlProps) => {
@@ -197,6 +209,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             }
         }
     }
+
+    // Remove the progress bar
+    progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
 
     // Render the form
     let form = Components.Form({
