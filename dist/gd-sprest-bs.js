@@ -126,7 +126,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"/* Date Picker */\\n.ui-datepicker {\\n  background-color: white;\\n  z-index: 2000 !important;\\n  /* Fix for Next/Prev */ }\\n  .ui-datepicker .ui-icon {\\n    text-indent: 0px; }\\n\\n/* List Form Dialog */\\n.listformdialog .modal-dialog {\\n  max-width: 60vw; }\\n  .listformdialog .modal-dialog .modal-body {\\n    max-height: 75vh;\\n    overflow-y: auto; }\\n\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./src/styles.scss?./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js");
+eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"/* Date Picker */\\n.ui-datepicker {\\n  background-color: white;\\n  z-index: 2000 !important;\\n  /* Fix for Next/Prev */ }\\n  .ui-datepicker .ui-icon {\\n    cursor: pointer;\\n    text-indent: 0px; }\\n\\n/* List Form Dialog */\\n.listformdialog .modal-dialog {\\n  max-width: 60vw; }\\n  .listformdialog .modal-dialog .modal-body {\\n    max-height: 75vh;\\n    overflow-y: auto; }\\n\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./src/styles.scss?./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js");
 
 /***/ }),
 
