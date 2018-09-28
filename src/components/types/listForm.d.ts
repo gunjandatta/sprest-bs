@@ -54,6 +54,9 @@ export interface IListFormDisplayProps {
     /** The control rendering event. */
     onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
 
+    /** The error event. */
+    onError?: (msg?: string) => void;
+
     /** The list form rows. */
     template?: Array<Components.IFormRow>;
 }

@@ -1,10 +1,10 @@
-import { Helper } from "gd-sprest";
+import { Helper, Types } from "gd-sprest";
 import { Components } from "gd-bs";
 
 /**
  * Field
  */
-export const Field: (listInfo: Helper.Types.IListFormResult, fieldInfo: Helper.Types.IListFormFieldInfo) => IField;
+export const Field: (props: IFieldProps) => IField;
 
 /**
  * Field
@@ -14,6 +14,17 @@ export interface IField {
     controlProps: Components.IFormControlProps;
     getValue: () => IFieldValue;
     save: () => PromiseLike<void>;
+}
+
+/**
+ * Field Properties
+ */
+export interface IFieldProps {
+    controlMode?: number;
+    field: Types.SP.IFieldResult;
+    listInfo: Helper.Types.IListFormResult;
+    onError?: (msg: string) => void;
+    value?: any;
 }
 
 /**

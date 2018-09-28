@@ -98,13 +98,13 @@ declare module 'gd-sprest-bs/components/types/datetime' {
 }
 
 declare module 'gd-sprest-bs/components/types/field' {
-    import { Helper } from "gd-sprest";
+    import { Helper, Types } from "gd-sprest";
     import { Components } from "gd-bs";
     
     /**
         * Field
         */
-    export const Field: (listInfo: Helper.Types.IListFormResult, fieldInfo: Helper.Types.IListFormFieldInfo) => IField;
+    export const Field: (props: IFieldProps) => IField;
     
     /**
         * Field
@@ -114,6 +114,17 @@ declare module 'gd-sprest-bs/components/types/field' {
             controlProps: Components.IFormControlProps;
             getValue: () => IFieldValue;
             save: () => PromiseLike<void>;
+    }
+    
+    /**
+        * Field Properties
+        */
+    export interface IFieldProps {
+            controlMode?: number;
+            field: Types.SP.IFieldResult;
+            listInfo: Helper.Types.IListFormResult;
+            onError?: (msg: string) => void;
+            value?: any;
     }
     
     /**
@@ -188,6 +199,9 @@ declare module 'gd-sprest-bs/components/types/listForm' {
     
             /** The control rendering event. */
             onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
+    
+            /** The error event. */
+            onError?: (msg?: string) => void;
     
             /** The list form rows. */
             template?: Array<Components.IFormRow>;

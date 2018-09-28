@@ -1,14 +1,14 @@
 import { Components } from "gd-bs";
-import { Helper, SPTypes, Types, Web } from "gd-sprest";
+import { Helper, SPTypes, Types } from "gd-sprest";
 import { DateTime } from "./datetime";
-import { IField, IFieldValue, IFieldValueUser } from "./types/field";
+import { IField, IFieldProps, IFieldValue, IFieldValueUser } from "./types/field";
 import { PeoplePicker } from "./peoplePicker";
 import { IPeoplePicker } from "./types/peoplePicker";
 
 /**
  * Field
  */
-export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IFieldResult, value: any, controlMode: number): IField => {
+export const Field = (props: IFieldProps): IField => {
     let control: Components.IFormControl;
     let lookupFieldInfo: Helper.Types.IListFormLookupFieldInfo = null;
     let mmsFieldInfo: Helper.Types.IListFormMMSFieldInfo = null;
@@ -136,7 +136,7 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
         }
 
         // See if no selected values exists, and this is a required field
-        if (items.length > 0 && selectedValues.length == 0 && field.Required) {
+        if (items.length > 0 && selectedValues.length == 0 && props.field.Required) {
             // Select the first item
             items[0].isSelected = true;
         }
@@ -176,12 +176,12 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
 
     // Set the default properties for the control
     let controlProps: Components.IFormControlProps = {
-        description: field.Description,
-        isReadonly: field.ReadOnlyField,
-        label: field.Title,
-        name: field.InternalName,
+        description: props.field.Description,
+        isReadonly: props.field.ReadOnlyField,
+        label: props.field.Title,
+        name: props.field.InternalName,
         type: Components.FormControlTypes.TextField,
-        value,
+        value: props.value,
         onControlRendered: formControl => {
             // Save the control
             control = formControl;
@@ -189,13 +189,13 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
     };
 
     // See if this is a new form, a default value exists and no value has been defined
-    if (controlMode == SPTypes.ControlMode.New && field.DefaultValue && value == null) {
+    if (props.controlMode == SPTypes.ControlMode.New && props.field.DefaultValue && props.value == null) {
         // Set the default value
-        controlProps.value = field.DefaultValue;
+        controlProps.value = props.field.DefaultValue;
     }
 
     // Set the type
-    switch (field.FieldTypeKind) {
+    switch (props.field.FieldTypeKind) {
         // Boolean
         case SPTypes.FieldType.Boolean:
             // Set the type
@@ -206,7 +206,7 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
 
             // Set the type
             (controlProps as Components.IFormControlPropsCheckbox).items = [
-                { checked: value ? true : false }
+                { checked: props.value ? true : false }
             ];
             break;
 
@@ -216,10 +216,10 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
             controlProps.type = Components.FormControlTypes.Dropdown;
 
             // Get the items
-            let items = getChoiceItems(field as any, value);
+            let items = getChoiceItems(props.field as any, props.value);
 
             // See if this is not a required field
-            if (!field.Required) {
+            if (!props.field.Required) {
                 // Add a blank entry
                 items = [{
                     text: "",
@@ -245,7 +245,7 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
 
         // Date/Time
         case SPTypes.FieldType.DateTime:
-            let showTime = (field as Types.SP.IFieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
+            let showTime = (props.field as Types.SP.IFieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
 
             // Set the type
             controlProps.type = Components.FormControlTypes.TextField;
@@ -279,15 +279,15 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
             controlProps.type = Components.FormControlTypes.MultiDropdown;
 
             // Set the items
-            (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(field as any, value);
+            (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(props.field as any, props.value);
             break;
 
         // Lookup
         case SPTypes.FieldType.Lookup:
             // Set the rendering event
-            controlProps.onControlRendering = props => {
+            controlProps.onControlRendering = newProps => {
                 // Update the control properties
-                controlProps = props;
+                controlProps = newProps;
 
                 // Display a loading message
                 let progress = Components.Progress({
@@ -302,10 +302,10 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                 return new Promise((resolve, reject) => {
                     // Load the field information
                     Helper.ListFormField.create({
-                        field: field as any,
-                        listName: listInfo.list.Title,
-                        name: field.InternalName,
-                        webUrl: listInfo.webUrl
+                        field: props.field as any,
+                        listName: props.listInfo.list.Title,
+                        name: props.field.InternalName,
+                        webUrl: props.listInfo.webUrl
                     }).then(
                         // Success
                         (fieldInfo: Helper.Types.IListFormLookupFieldInfo) => {
@@ -320,10 +320,10 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                     controlProps.type = lookupFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
 
                                     // Get the dropdown items
-                                    let ddlItems = getLookupItems(field as any, items, value);
+                                    let ddlItems = getLookupItems(props.field as any, items, props.value);
 
                                     // See if this is not a required field and not a multi-select
-                                    if (!field.Required && !lookupFieldInfo.multi) {
+                                    if (!props.field.Required && !lookupFieldInfo.multi) {
                                         // Add a blank entry
                                         ddlItems = [{
                                             text: "",
@@ -342,8 +342,8 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                 },
                                 // Error
                                 msg => {
-                                    // Log the error
-                                    console.error("Error loading the lookup field values for '" + field.InternalName + "'.");
+                                    // Set the error message
+                                    let errorMessage = "Error loading the lookup field values for '" + props.field.InternalName + "'.";
 
                                     // Remove the progress bar
                                     progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
@@ -351,16 +351,19 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                     // Display an error message
                                     Components.Alert({
                                         el: controlProps.el,
-                                        content: "Error loading the lookup field values.",
+                                        content: errorMessage,
                                         type: Components.AlertTypes.Danger
                                     });
+
+                                    // Call the error event
+                                    props.onError ? props.onError(errorMessage) : null;
                                 }
                             );
                         },
                         // Error
                         msg => {
-                            // Log the error
-                            console.error("Error loading the field information for field '" + field.InternalName + "'.");
+                            // Set the error message
+                            let errorMessage = "Error loading the field information for field '" + props.field.InternalName + "'.";
 
                             // Remove the progress bar
                             progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
@@ -372,6 +375,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                 content: "Error loading the lookup field information.",
                                 type: Components.AlertTypes.Danger
                             });
+
+                            // Call the error event
+                            props.onError ? props.onError(errorMessage) : null;
 
                             // Reject the request
                             reject(msg);
@@ -385,12 +391,12 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
         case SPTypes.FieldType.Note:
             // Set the properties
             controlProps.type = Components.FormControlTypes.TextArea;
-            (controlProps as Components.IFormControlPropsTextField).rows = (field as Types.SP.IFieldNote).NumberOfLines;
+            (controlProps as Components.IFormControlPropsTextField).rows = (props.field as Types.SP.IFieldNote).NumberOfLines;
             break;
 
         // Number Field
         case SPTypes.FieldType.Number:
-            let numberField = field as Types.SP.IFieldNumber;
+            let numberField = props.field as Types.SP.IFieldNumber;
             let numberProps = controlProps as Components.IFormControlPropsNumberField;
 
             // See if this is a percentage
@@ -415,9 +421,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
         // URL
         case SPTypes.FieldType.URL:
             // See if a value exists
-            if (value) {
+            if (props.value) {
                 // Update the value
-                controlProps.value = (value as Types.SP.ComplexTypes.FieldUrlValue).Url;
+                controlProps.value = (props.value as Types.SP.ComplexTypes.FieldUrlValue).Url;
             }
             /*
                 // See if a value exists
@@ -464,7 +470,7 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                 // Render a people picker to it
                 picker = PeoplePicker({
                     el: control.el,
-                    value: getUserItems(value)
+                    value: getUserItems(props.value)
                 });
             }
 
@@ -477,14 +483,14 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
     }
 
     // See if this is a taxonomy field
-    if (field.TypeAsString.startsWith("TaxonomyFieldType")) {
+    if (props.field.TypeAsString.startsWith("TaxonomyFieldType")) {
         // Set the type
         controlProps.type = Components.FormControlTypes.Dropdown;
 
         // Set a render event
-        controlProps.onControlRendering = props => {
+        controlProps.onControlRendering = newProps => {
             // Update the control properties
-            controlProps = props;
+            controlProps = newProps;
 
             // Return a promise
             return new Promise((resolve, reject) => {
@@ -499,10 +505,10 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
 
                 // Load the field information
                 Helper.ListFormField.create({
-                    field: field as any,
-                    listName: listInfo.list.Title,
-                    name: field.InternalName,
-                    webUrl: listInfo.webUrl
+                    field: props.field,
+                    listName: props.listInfo.list.Title,
+                    name: props.field.InternalName,
+                    webUrl: props.listInfo.webUrl
                 }).then(
                     // Success
                     (fieldInfo: Helper.Types.IListFormMMSFieldInfo) => {
@@ -520,11 +526,11 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                 mmsFieldInfo.valueField = valueField;
 
                                 // See if this is a new form
-                                if (controlMode == SPTypes.ControlMode.New) {
+                                if (props.controlMode == SPTypes.ControlMode.New) {
                                     let fieldValue = [];
 
                                     // Get the default values
-                                    let values = (field.DefaultValue || "").split(";#")
+                                    let values = (props.field.DefaultValue || "").split(";#")
                                     for (let i = 0; i < values.length; i++) {
                                         let value = values[i].split("|");
                                         if (value.length == 2) {
@@ -534,9 +540,9 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                     }
 
                                     // Update the field value
-                                    value[field.InternalName] = fieldValue;
+                                    props.value[props.field.InternalName] = fieldValue;
                                 } else {
-                                    let fieldValue = value;
+                                    let fieldValue = props.value;
 
                                     // Get the field value
                                     let values = fieldValue && fieldValue.results ? fieldValue.results : [fieldValue];
@@ -554,7 +560,7 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                     }
 
                                     // Update the field value
-                                    value[field.InternalName] = fieldValue;
+                                    props.value[props.field.InternalName] = fieldValue;
                                 }
 
                                 // Load the terms
@@ -562,10 +568,10 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                     // Success
                                     terms => {
                                         // Get the items
-                                        let items = getMMSItems(Helper.Taxonomy.toObject(terms), value[field.InternalName]);
+                                        let items = getMMSItems(Helper.Taxonomy.toObject(terms), props.value[props.field.InternalName]);
 
                                         // See if this is not a required field and not a multi-select
-                                        if (!field.Required && !mmsFieldInfo.multi) {
+                                        if (!props.field.Required && !mmsFieldInfo.multi) {
                                             // Add a blank entry
                                             items = [{
                                                 text: "",
@@ -584,8 +590,8 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                     },
                                     // Error
                                     msg => {
-                                        // Log the error
-                                        console.error("Error loading the mms terms for '" + field.InternalName + "'.");
+                                        // Set the error message
+                                        let errorMessage = "Error loading the mms terms for '" + props.field.InternalName + "'.";
 
                                         // Remove the progress bar
                                         progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
@@ -593,16 +599,19 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                         // Display an error message
                                         Components.Alert({
                                             el: controlProps.el,
-                                            content: "Error loading the mms terms.",
+                                            content: errorMessage,
                                             type: Components.AlertTypes.Danger
                                         });
+
+                                        // Call the error event
+                                        props.onError ? props.onError(errorMessage) : null;
                                     }
                                 );
                             },
                             // Error
                             msg => {
-                                // Log the error
-                                console.error("Error loading the mms value field for '" + field.InternalName + "'.");
+                                // Set the error message
+                                let errorMessage = "Error loading the mms value field for '" + props.field.InternalName + "'.";
 
                                 // Remove the progress bar
                                 progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
@@ -610,9 +619,12 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                                 // Display an error message
                                 Components.Alert({
                                     el: controlProps.el,
-                                    content: "Error loading the mms value field.",
+                                    content: errorMessage,
                                     type: Components.AlertTypes.Danger
                                 });
+
+                                // Call the error event
+                                props.onError ? props.onError(errorMessage) : null;
 
                                 // Reject the request
                                 reject(msg);
@@ -620,18 +632,18 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                         );
                     },
                     msg => {
-                        // Log the error
-                        console.error("Error loading the field information for field '" + field.InternalName + "'.");
-
                         // Remove the progress bar
                         progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
 
                         // Display an error message
                         Components.Alert({
                             el: controlProps.el,
-                            content: "Error loading the lookup field information.",
+                            content: msg,
                             type: Components.AlertTypes.Danger
                         });
+
+                        // Call the error event
+                        props.onError ? props.onError(msg) : null;
                     }
                 );
             });
@@ -644,12 +656,12 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
         controlProps,
         getValue: () => {
             let fieldValue: IFieldValue = {
-                name: field.InternalName,
+                name: props.field.InternalName,
                 value: control ? control.getValue() : null
             };
 
             // Update the field name/value, based on the type
-            switch (field.FieldTypeKind) {
+            switch (props.field.FieldTypeKind) {
                 // Choice
                 case SPTypes.FieldType.Choice:
                     let ddlValue: Components.IDropdownItem = fieldValue.value;
@@ -710,7 +722,7 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
 
                 // Number Field
                 case SPTypes.FieldType.Number:
-                    let numberField = field as Types.SP.IFieldNumber;
+                    let numberField = props.field as Types.SP.IFieldNumber;
 
                     // Ensure a field value exists
                     if (fieldValue.value) {
@@ -749,7 +761,7 @@ export const Field = (listInfo: Helper.Types.IListFormResult, field: Types.SP.IF
                     fieldValue.name += fieldValue.name.lastIndexOf("Id") == fieldValue.name.length - 2 ? "" : "Id";
 
                     // See if this is a multi-value field
-                    if ((field as Types.SP.IFieldUser).AllowMultipleValues) {
+                    if ((props.field as Types.SP.IFieldUser).AllowMultipleValues) {
                         let values: Array<Components.IDropdownItem> = userFieldValue.value || [];
                         userFieldValue.value = { results: [] };
 

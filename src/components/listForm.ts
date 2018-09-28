@@ -124,6 +124,29 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     let rows: Array<Components.IFormRow> = [];
     let value = {};
 
+    // Method to add a refresh alert
+    let addRefreshLink = () => {
+        // Ensure the link doesn't already exist
+        if (props.el.querySelector(".refresh-btn")) { return; }
+
+        // Create the refresh button
+        let alert = Components.Button({
+            className: "refresh-btn",
+            type: Components.ButtonTypes.Danger,
+            text: "Refresh Form",
+            onClick: () => {
+                // Clear the element and reload the form
+                props.el.innerHTML = "";
+
+                // Render the form
+                ListForm.renderEditForm(props);
+            }
+        });
+
+        // Add the element at the top
+        props.el.insertBefore(alert.el, props.el.children[0]);
+    }
+
     // Render a loading message
     let progress = Components.Progress({
         el: props.el,
@@ -157,7 +180,19 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         }
 
         // Create the control
-        let fieldControl = Field(props.info, field, value[fieldName], props.controlMode);
+        let fieldControl = Field({
+            controlMode: props.controlMode,
+            field,
+            listInfo: props.info,
+            value: value[fieldName],
+            onError: msg => {
+                // Add the refresh link
+                addRefreshLink();
+
+                // Call the event
+                props.onError ? props.onError(msg) : null;
+            },
+        });
 
         // Update the mapper
         mapper[fieldName] = fieldControl;
