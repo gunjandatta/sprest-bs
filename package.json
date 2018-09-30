@@ -27,11 +27,10 @@
     "gd-sprest": "^4.2.8"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
     "@stencil/core": "^0.12.4",
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
+    "babel-loader": "^8.0.4",
     "css-loader": "^1.0.0",
     "dts-bundle": "^0.7.3",
     "node-sass": "^4.9.3",
