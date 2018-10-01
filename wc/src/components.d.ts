@@ -375,6 +375,17 @@ export namespace Components {
     'numberOfPages'?: number;
   }
 
+  interface BsPanel {
+    'className': string;
+    'modalProps': string;
+    'type': number;
+  }
+  interface BsPanelAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+    'modalProps'?: string;
+    'type'?: number;
+  }
+
   interface BsPopover {
     'btnProps': string;
     'className': string;
@@ -466,6 +477,7 @@ declare global {
     'BsNav': Components.BsNav;
     'BsNavbar': Components.BsNavbar;
     'BsPagination': Components.BsPagination;
+    'BsPanel': Components.BsPanel;
     'BsPopover': Components.BsPopover;
     'BsProgress': Components.BsProgress;
     'BsProgressgroup': Components.BsProgressgroup;
@@ -493,6 +505,7 @@ declare global {
     'bs-nav': Components.BsNavAttributes;
     'bs-navbar': Components.BsNavbarAttributes;
     'bs-pagination': Components.BsPaginationAttributes;
+    'bs-panel': Components.BsPanelAttributes;
     'bs-popover': Components.BsPopoverAttributes;
     'bs-progress': Components.BsProgressAttributes;
     'bs-progressGroup': Components.BsProgressgroupAttributes;
@@ -615,6 +628,12 @@ declare global {
     new (): HTMLBsPaginationElement;
   };
 
+  interface HTMLBsPanelElement extends Components.BsPanel, HTMLStencilElement {}
+  var HTMLBsPanelElement: {
+    prototype: HTMLBsPanelElement;
+    new (): HTMLBsPanelElement;
+  };
+
   interface HTMLBsPopoverElement extends Components.BsPopover, HTMLStencilElement {}
   var HTMLBsPopoverElement: {
     prototype: HTMLBsPopoverElement;
@@ -665,6 +684,7 @@ declare global {
     'bs-nav': HTMLBsNavElement
     'bs-navbar': HTMLBsNavbarElement
     'bs-pagination': HTMLBsPaginationElement
+    'bs-panel': HTMLBsPanelElement
     'bs-popover': HTMLBsPopoverElement
     'bs-progress': HTMLBsProgressElement
     'bs-progressGroup': HTMLBsProgressgroupElement
@@ -692,6 +712,7 @@ declare global {
     'bs-nav': HTMLBsNavElement;
     'bs-navbar': HTMLBsNavbarElement;
     'bs-pagination': HTMLBsPaginationElement;
+    'bs-panel': HTMLBsPanelElement;
     'bs-popover': HTMLBsPopoverElement;
     'bs-progress': HTMLBsProgressElement;
     'bs-progressGroup': HTMLBsProgressgroupElement;

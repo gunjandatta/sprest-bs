@@ -896,6 +896,33 @@
       }
     },
     {
+      "tag": "bs-panel",
+      "dependencies": [],
+      "componentClass": "Panel",
+      "componentPath": "components/panel.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "modalProps",
+          "type": "String",
+          "attr": "modal-props"
+        },
+        {
+          "name": "type",
+          "type": "Number",
+          "attr": "type"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
       "tag": "bs-popover",
       "dependencies": [],
       "componentClass": "Popover",

@@ -1,8 +1,8 @@
-import { Helper, SPTypes, Types, Web } from "gd-sprest";
 import { Components } from "gd-bs";
+import { ContextInfo, Helper, SPTypes } from "gd-sprest";
+import { IField } from "./types/field";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types/listForm";
 import { Field } from "./field";
-import { IField } from "./types/field";
 
 // Extend the list form
 export const ListForm: IListForm = Helper.ListForm as any;
@@ -148,9 +148,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 });
 
                 // Ensure a connection to SharePoint still exists
-                Web().query({ Select: ["Title"] }).execute(
+                ContextInfo.getWeb("").execute(
                     // Success
-                    web => {
+                    () => {
                         // Clear the element and reload the form
                         props.el.innerHTML = "";
 
