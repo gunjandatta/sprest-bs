@@ -824,8 +824,8 @@ export const Field = (props: IFieldProps): IField => {
                             // Update the value
                             fieldValue.value = fieldValue.value ? {
                                 __metadata: { type: "SP.Taxonomy.TaxonomyFieldValue" },
-                                Label: fieldValue.value[0].text,
-                                TermGuid: fieldValue.value[0].value,
+                                Label: fieldValue.value.text,
+                                TermGuid: fieldValue.value.value,
                                 WssId: -1
                             } : null;
                         }
