@@ -1,4 +1,4 @@
-import { Helper, SPTypes, Types } from "gd-sprest";
+import { Helper, SPTypes, Types, Web } from "gd-sprest";
 import { Components } from "gd-bs";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types/listForm";
 import { Field } from "./field";
@@ -138,8 +138,38 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 // Clear the element and reload the form
                 props.el.innerHTML = "";
 
-                // Render the form
-                ListForm.renderEditForm(props);
+                // Render a loading message
+                let progress = Components.Progress({
+                    el: props.el,
+                    isAnimated: true,
+                    isStriped: true,
+                    label: "Loading the Form",
+                    size: 100
+                });
+
+                // Ensure a connection to SharePoint still exists
+                Web().query({ Select: ["Title"] }).execute(
+                    // Success
+                    web => {
+                        // Clear the element and reload the form
+                        props.el.innerHTML = "";
+
+                        // Render the form
+                        ListForm.renderEditForm(props);
+                    },
+                    // Error
+                    () => {
+                        // Clear the element and reload the form
+                        props.el.innerHTML = "";
+
+                        // Display a message
+                        Components.Alert({
+                            el: props.el,
+                            content: "The connection to SharePoint is no longer valid. Please refresh the page.",
+                            type: Components.AlertTypes.Danger
+                        });
+                    }
+                );
             }
         });
 
