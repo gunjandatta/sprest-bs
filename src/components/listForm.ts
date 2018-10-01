@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import { ContextInfo, Helper, SPTypes } from "gd-sprest";
+import { Helper, SPTypes } from "gd-sprest";
 import { IField } from "./types/field";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types/listForm";
 import { Field } from "./field";
