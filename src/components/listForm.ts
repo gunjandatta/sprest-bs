@@ -130,47 +130,28 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         if (props.el.querySelector(".refresh-btn")) { return; }
 
         // Create the refresh button
-        let alert = Components.Button({
+        let alert = Components.ButtonGroup({
             className: "refresh-btn",
-            type: Components.ButtonTypes.Danger,
-            text: "Refresh Form",
-            onClick: () => {
-                // Clear the element and reload the form
-                props.el.innerHTML = "";
-
-                // Render a loading message
-                let progress = Components.Progress({
-                    el: props.el,
-                    isAnimated: true,
-                    isStriped: true,
-                    label: "Loading the Form",
-                    size: 100
-                });
-
-                // Ensure a connection to SharePoint still exists
-                ContextInfo.getWeb("").execute(
-                    // Success
-                    () => {
+            buttonType: Components.ButtonTypes.Danger,
+            buttons: [
+                {
+                    text: "Refresh Form",
+                    onClick: () => {
                         // Clear the element and reload the form
                         props.el.innerHTML = "";
 
                         // Render the form
                         ListForm.renderEditForm(props);
-                    },
-                    // Error
-                    () => {
-                        // Clear the element and reload the form
-                        props.el.innerHTML = "";
-
-                        // Display a message
-                        Components.Alert({
-                            el: props.el,
-                            content: "The connection to SharePoint is no longer valid. Please refresh the page.",
-                            type: Components.AlertTypes.Danger
-                        });
                     }
-                );
-            }
+                },
+                {
+                    text: "Refresh Page",
+                    onClick: () => {
+                        // Refresh the page
+                        document.location.href = document.location.href;
+                    }
+                }
+            ]
         });
 
         // Add the element at the top
