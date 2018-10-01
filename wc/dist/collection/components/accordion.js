@@ -1,9 +1,6 @@
 export class Accordion {
-    // Component loaded event
     componentDidLoad() {
-        // Remove the id attribute
         this.el.removeAttribute("id");
-        // Get the items
         let items = [];
         if (this.items) {
             try {
@@ -11,12 +8,10 @@ export class Accordion {
             }
             catch (_a) {
                 items = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.items);
             }
         }
-        // Render the accordion
         return GD.Components.Accordion({
             className: this.className,
             el: this.el.children[0],
@@ -24,7 +19,6 @@ export class Accordion {
             items
         });
     }
-    // Render the accordion
     render() {
         return (h("div", null));
     }

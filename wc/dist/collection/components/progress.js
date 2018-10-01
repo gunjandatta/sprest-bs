@@ -1,7 +1,5 @@
 export class Progress {
-    // Component loaded event
     componentDidLoad() {
-        // Render the progress
         return GD.Components.Progress({
             className: this.className,
             el: this.el.children[0],
@@ -13,7 +11,6 @@ export class Progress {
             size: this.size
         });
     }
-    // Render the progress
     render() {
         return (h("div", null));
     }

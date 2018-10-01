@@ -1069,7 +1069,7 @@
   "collections": [],
   "compiler": {
     "name": "@stencil/core",
-    "version": "0.12.4",
+    "version": "0.13.2",
     "typescriptVersion": "2.9.2"
   },
   "bundles": []

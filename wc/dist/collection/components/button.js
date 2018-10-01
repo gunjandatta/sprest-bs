@@ -1,11 +1,7 @@
 export class Button {
-    // Component loaded event
     componentDidLoad() {
-        // Get the onclick attribute
         let onClick = this.el.getAttribute("onClick");
-        // Remove the id attribute
         this.el.removeAttribute("id");
-        // Render the button
         return GD.Components.Button({
             badgeType: this.badgeType,
             badgeValue: this.badgeValue,
@@ -24,15 +20,12 @@ export class Button {
             toggle: this.toggle,
             type: this.type,
             onClick: (...args) => {
-                // See if a click event exists
                 if (onClick && window[onClick]) {
-                    // Call the event
                     window[onClick].apply(this, args);
                 }
             }
         });
     }
-    // Render the button
     render() {
         return (h("div", null));
     }

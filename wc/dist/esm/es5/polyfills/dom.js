@@ -1,5 +1,4 @@
-export function applyPolyfill(window, document) {
-/*! document-register-element, 1.7.0
+export function applyPolyfill(window, document) {/*! document-register-element, 1.7.0
 https://github.com/WebReflection/document-register-element
 (C) Andrea Giammarchi - @WebReflection - Mit Style License */
 if (!window['s-ce1']) {
@@ -17,5 +16,4 @@ Creative Commons Zero v1.0 Universal
 Element.remove()
 https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
 */
-(function(b){b.forEach(function(a){a.hasOwnProperty("remove")||Object.defineProperty(a,"remove",{configurable:!0,enumerable:!0,writable:!0,value:function(){null!==this.parentNode&&this.parentNode.removeChild(this)}})})})([Element.prototype,CharacterData.prototype,DocumentType.prototype]);
-}
+(function(b){b.forEach(function(a){a.hasOwnProperty("remove")||Object.defineProperty(a,"remove",{configurable:!0,enumerable:!0,writable:!0,value:function(){null!==this.parentNode&&this.parentNode.removeChild(this)}})})})([Element.prototype,CharacterData.prototype,DocumentType.prototype]);}

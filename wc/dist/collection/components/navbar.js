@@ -1,9 +1,6 @@
 export class Navbar {
-    // Component loaded event
     componentDidLoad() {
-        // Remove the id attribute
         this.el.removeAttribute("id");
-        // Get the items
         let items = [];
         if (this.items) {
             try {
@@ -11,12 +8,10 @@ export class Navbar {
             }
             catch (_a) {
                 items = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.items);
             }
         }
-        // Get the search box
         let searchBox = {};
         if (this.searchBox) {
             try {
@@ -24,30 +19,22 @@ export class Navbar {
             }
             catch (_b) {
                 searchBox = {};
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.searchBox);
             }
-            // See if the change event exists
             if (searchBox.onChange && window[searchBox.onChange]) {
                 let event = window[searchBox.onChange];
-                // Set the event
                 searchBox.onChange = (...args) => {
-                    // Call the event
                     event.apply(this, args);
                 };
             }
-            // See if the search event exists
             if (searchBox.onSearch && window[searchBox.onSearch]) {
                 let event = window[searchBox.onSearch];
-                // Set the event
                 searchBox.onSearch = (...args) => {
-                    // Call the event
                     event.apply(this, args);
                 };
             }
         }
-        // Render the navbar
         return GD.Components.Navbar({
             brand: this.brand,
             brandUrl: this.brandUrl,
@@ -60,7 +47,6 @@ export class Navbar {
             type: this.type
         });
     }
-    // Render the navbar
     render() {
         return (h("div", null));
     }

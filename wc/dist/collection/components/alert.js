@@ -1,7 +1,5 @@
 export class Alert {
-    // Component loaded event
     componentDidLoad() {
-        // Render the alert
         return GD.Components.Alert({
             className: this.className,
             content: this.content,
@@ -11,7 +9,6 @@ export class Alert {
             type: this.type
         });
     }
-    // Render the alert
     render() {
         return (h("div", null));
     }

@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("ccriaiza",["exports","./chunk-ccb7a55e.js"],function(e,o){window.GdSprestBs.h,e.BsButtongroup=o.ButtonGroup,Object.defineProperty(e,"__esModule",{value:!0})});

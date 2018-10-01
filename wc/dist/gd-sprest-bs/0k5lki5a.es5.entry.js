@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("0k5lki5a",["exports","./chunk-d37dce22.js"],function(e,d){window,e.BsCarousel=d.Carousel,Object.defineProperty(e,"__esModule",{value:!0})});

@@ -1,9 +1,6 @@
 export class ButtonGroup {
-    // Component loaded event
     componentDidLoad() {
-        // Remove the id attribute
         this.el.removeAttribute("id");
-        // Get the buttons property
         let buttons = [];
         if (this.buttons) {
             try {
@@ -11,12 +8,10 @@ export class ButtonGroup {
             }
             catch (_a) {
                 buttons = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.buttons);
             }
         }
-        // Render the button group
         return GD.Components.ButtonGroup({
             buttons: buttons,
             buttonType: this.buttonType,
@@ -29,7 +24,6 @@ export class ButtonGroup {
             label: this.label
         });
     }
-    // Render the button group
     render() {
         return (h("div", null));
     }

@@ -1,7 +1,5 @@
 export class Card {
-    // Component loaded event
     componentDidLoad() {
-        // Get the body property
         let body = [];
         if (this.body) {
             try {
@@ -9,12 +7,10 @@ export class Card {
             }
             catch (_a) {
                 body = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.body);
             }
         }
-        // Render the card
         return GD.Components.Card({
             body: body,
             className: this.className,
@@ -25,7 +21,6 @@ export class Card {
             imgTop: this.imgTop
         });
     }
-    // Render the card
     render() {
         return (h("div", null));
     }

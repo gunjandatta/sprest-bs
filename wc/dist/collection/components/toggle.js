@@ -1,7 +1,5 @@
 export class Tooltip {
-    // Component loaded event
     componentDidLoad() {
-        // Get the button properties
         let btnProps = {};
         if (this.btnProps) {
             try {
@@ -9,12 +7,10 @@ export class Tooltip {
             }
             catch (_a) {
                 btnProps = {};
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.btnProps);
             }
         }
-        // Get the tooltip options
         let options = {};
         if (this.options) {
             try {
@@ -22,12 +18,10 @@ export class Tooltip {
             }
             catch (_b) {
                 options = {};
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.options);
             }
         }
-        // Render the tooltip
         return GD.Components.Tooltip({
             btnProps,
             className: this.className,
@@ -36,7 +30,6 @@ export class Tooltip {
             type: this.type
         });
     }
-    // Render the tooltip
     render() {
         return (h("div", null));
     }

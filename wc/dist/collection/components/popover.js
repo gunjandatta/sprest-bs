@@ -1,7 +1,5 @@
 export class Popover {
-    // Component loaded event
     componentDidLoad() {
-        // Get the button properties
         let btnProps = {};
         if (this.btnProps) {
             try {
@@ -9,12 +7,10 @@ export class Popover {
             }
             catch (_a) {
                 btnProps = {};
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.btnProps);
             }
         }
-        // Get the popover options
         let options = {};
         if (this.options) {
             try {
@@ -22,12 +18,10 @@ export class Popover {
             }
             catch (_b) {
                 options = {};
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.options);
             }
         }
-        // Render the popover
         return GD.Components.Popover({
             btnProps,
             className: this.className,
@@ -37,7 +31,6 @@ export class Popover {
             type: this.type
         });
     }
-    // Render the popover
     render() {
         return (h("div", null));
     }

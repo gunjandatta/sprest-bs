@@ -1,11 +1,7 @@
 export class Collapse {
-    // Component loaded event
     componentDidLoad() {
-        // Get the onRender attribute
         let onRender = this.el.getAttribute("onRender");
-        // Remove the id attribute
         this.el.removeAttribute("id");
-        // Get the options
         let options = [];
         if (this.options) {
             try {
@@ -13,12 +9,10 @@ export class Collapse {
             }
             catch (_a) {
                 options = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.options);
             }
         }
-        // Render the collapse
         return GD.Components.Collapse({
             className: this.className,
             content: this.content,
@@ -27,15 +21,12 @@ export class Collapse {
             isMulti: this.isMulti,
             options,
             onRender: (...args) => {
-                // See if a render event exists
                 if (onRender && window[onRender]) {
-                    // Call the event
                     window[onRender].apply(this, args);
                 }
             }
         });
     }
-    // Render the collapse
     render() {
         return (h("div", null));
     }

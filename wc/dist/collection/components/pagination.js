@@ -1,9 +1,6 @@
 export class Pagination {
-    // Component loaded event
     componentDidLoad() {
-        // Get the onclick attribute
         let onClick = this.el.getAttribute("onClick");
-        // Render the pagination
         return GD.Components.Pagination({
             alignment: this.alignment,
             className: this.className,
@@ -14,15 +11,12 @@ export class Pagination {
             label: this.label,
             numberOfPages: this.numberOfPages,
             onClick: (...args) => {
-                // See if a click event exists
                 if (onClick && window[onClick]) {
-                    // Call the event
                     window[onClick].apply(this, args);
                 }
             }
         });
     }
-    // Render the pagination
     render() {
         return (h("div", null));
     }

@@ -1,7 +1,5 @@
 export class Form {
-    // Component loaded event
     componentDidLoad() {
-        // Get the rows
         let rows = [];
         if (this.rows) {
             try {
@@ -9,12 +7,10 @@ export class Form {
             }
             catch (_a) {
                 rows = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.rows);
             }
         }
-        // Get the value
         let value = null;
         if (this.value) {
             try {
@@ -22,19 +18,16 @@ export class Form {
             }
             catch (_b) {
                 value = null;
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.value);
             }
         }
-        // Render the form
         return GD.Components.Form({
             el: this.el.children[0],
             rows: rows,
             value: value
         });
     }
-    // Render the form
     render() {
         return (h("div", null));
     }

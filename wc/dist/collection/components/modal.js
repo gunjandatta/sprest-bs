@@ -1,13 +1,9 @@
 export class Modal {
-    // Component loaded event
     componentDidLoad() {
-        // Get the events attribute
         let onClose = this.el.getAttribute("onClose");
         let onRenderBody = this.el.getAttribute("onRenderBody");
         let onRenderFooter = this.el.getAttribute("onRenderFooter");
-        // Remove the id attribute
         this.el.removeAttribute("id");
-        // Get the button properties
         let buttonProps = {};
         if (this.button) {
             try {
@@ -15,12 +11,10 @@ export class Modal {
             }
             catch (_a) {
                 buttonProps = {};
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.button);
             }
         }
-        // Render the modal
         return GD.Components.Modal({
             body: this.body,
             button: buttonProps,
@@ -35,29 +29,22 @@ export class Modal {
             isSmall: this.isSmall,
             title: this.el.getAttribute("title"),
             onClose: (...args) => {
-                // See if a render body event exists
                 if (onClose && window[onClose]) {
-                    // Call the event
                     window[onClose].apply(this, args);
                 }
             },
             onRenderBody: (...args) => {
-                // See if a render body event exists
                 if (onRenderBody && window[onRenderBody]) {
-                    // Call the event
                     window[onRenderBody].apply(this, args);
                 }
             },
             onRenderFooter: (...args) => {
-                // See if a render footer event exists
                 if (onRenderFooter && window[onRenderFooter]) {
-                    // Call the event
                     window[onRenderFooter].apply(this, args);
                 }
             }
         });
     }
-    // Render the modal
     render() {
         return (h("div", null));
     }

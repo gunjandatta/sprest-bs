@@ -1,11 +1,7 @@
 export class Dropdown {
-    // Component loaded event
     componentDidLoad() {
-        // Get the onclick attribute
         let onChange = this.el.getAttribute("onChange");
-        // Remove the id attribute
         this.el.removeAttribute("id");
-        // Get the items
         let items = [];
         if (this.items) {
             try {
@@ -13,12 +9,10 @@ export class Dropdown {
             }
             catch (_a) {
                 items = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.items);
             }
         }
-        // Render the dropdown
         return GD.Components.Dropdown({
             className: this.className,
             dropLeft: this.dropLeft,
@@ -35,15 +29,12 @@ export class Dropdown {
             type: this.type,
             value: this.value,
             onChange: (...args) => {
-                // See if a change event exists
                 if (onChange && window[onChange]) {
-                    // Call the event
                     window[onChange].apply(this, args);
                 }
             }
         });
     }
-    // Render the dropdown
     render() {
         return (h("div", null));
     }

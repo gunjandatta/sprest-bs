@@ -1,7 +1,5 @@
 export class ListGroup {
-    // Component loaded event
     componentDidLoad() {
-        // Get the items
         let items = [];
         if (this.items) {
             try {
@@ -9,12 +7,10 @@ export class ListGroup {
             }
             catch (_a) {
                 items = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.items);
             }
         }
-        // Render the list group
         return GD.Components.ListGroup({
             className: this.className,
             colWidth: this.colWidth,
@@ -25,7 +21,6 @@ export class ListGroup {
             items
         });
     }
-    // Render the list group
     render() {
         return (h("div", null));
     }

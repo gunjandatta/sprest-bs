@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("jikqsgg1",["exports","./chunk-33728bc4.js"],function(e,s){window.GdSprestBs.h,e.BsListgroup=s.ListGroup,Object.defineProperty(e,"__esModule",{value:!0})});

@@ -1,7 +1,5 @@
 export class Toolbar {
-    // Component loaded event
     componentDidLoad() {
-        // Get the items
         let items = [];
         if (this.items) {
             try {
@@ -9,12 +7,10 @@ export class Toolbar {
             }
             catch (_a) {
                 items = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.items);
             }
         }
-        // Render the toolbar
         return GD.Components.Toolbar({
             className: this.className,
             el: this.el.children[0],
@@ -22,7 +18,6 @@ export class Toolbar {
             spacing: this.spacing
         });
     }
-    // Render the toolbar
     render() {
         return (h("div", null));
     }

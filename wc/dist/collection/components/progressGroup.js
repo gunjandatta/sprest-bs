@@ -1,7 +1,5 @@
 export class ProgressGroup {
-    // Component loaded event
     componentDidLoad() {
-        // Set the progress bars
         let progressbars = [];
         if (this.progressbars) {
             try {
@@ -9,12 +7,10 @@ export class ProgressGroup {
             }
             catch (_a) {
                 progressbars = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.progressbars);
             }
         }
-        // Render the progress group
         return GD.Components.ProgressGroup({
             className: this.className,
             el: this.el.children[0],
@@ -22,7 +18,6 @@ export class ProgressGroup {
             progressbars
         });
     }
-    // Render the progress
     render() {
         return (h("div", null));
     }

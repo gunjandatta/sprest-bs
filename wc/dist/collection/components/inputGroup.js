@@ -1,12 +1,8 @@
 export class InputGroup {
-    // Component loaded event
     componentDidLoad() {
-        // Get the events
         let onChange = this.el.getAttribute("onChange");
         let onClear = this.el.getAttribute("onClear");
-        // Remove the id attribute
         this.el.removeAttribute("id");
-        // Get the appended buttons
         let appendedButtons = [];
         if (this.appendedButtons) {
             try {
@@ -14,12 +10,10 @@ export class InputGroup {
             }
             catch (_a) {
                 appendedButtons = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.appendedButtons);
             }
         }
-        // Get the prepended buttons
         let prependedButtons = [];
         if (this.prependedButtons) {
             try {
@@ -27,12 +21,10 @@ export class InputGroup {
             }
             catch (_b) {
                 prependedButtons = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.prependedButtons);
             }
         }
-        // Render the inputGroup
         return GD.Components.InputGroup({
             appendedButtons,
             appendedLabel: this.appendedLabel,
@@ -52,22 +44,17 @@ export class InputGroup {
             type: this.type,
             value: this.value,
             onChange: (...args) => {
-                // See if a change event exists
                 if (onChange && window[onChange]) {
-                    // Call the event
                     window[onChange].apply(this, args);
                 }
             },
             onClear: (...args) => {
-                // See if a clear event exists
                 if (onClear && window[onClear]) {
-                    // Call the event
                     window[onClear].apply(this, args);
                 }
             }
         });
     }
-    // Render the inputGroup
     render() {
         return (h("div", null));
     }

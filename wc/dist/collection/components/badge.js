@@ -1,9 +1,6 @@
 export class Badge {
-    // Component loaded event
     componentDidLoad() {
-        // Get the onclick attribute
         let onClick = this.el.getAttribute("onClick");
-        // Render the badge
         return GD.Components.Badge({
             className: this.className,
             content: this.content,
@@ -13,15 +10,12 @@ export class Badge {
             isPill: this.isPill,
             type: this.type,
             onClick: (...args) => {
-                // See if a click event exists
                 if (onClick && window[onClick]) {
-                    // Call the event
                     window[onClick].apply(this, args);
                 }
             }
         });
     }
-    // Render the badge
     render() {
         return (h("div", null));
     }

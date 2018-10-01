@@ -1,9 +1,6 @@
 export class Carousel {
-    // Component loaded event
     componentDidLoad() {
-        // Remove the id attribute
         this.el.removeAttribute("id");
-        // Get the items
         let items = [];
         if (this.items) {
             try {
@@ -11,12 +8,10 @@ export class Carousel {
             }
             catch (_a) {
                 items = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.items);
             }
         }
-        // Get the options
         let options = {};
         if (this.options) {
             try {
@@ -24,12 +19,10 @@ export class Carousel {
             }
             catch (_b) {
                 options = {};
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.options);
             }
         }
-        // Render the carousel
         return GD.Components.Carousel({
             className: this.className,
             el: this.el.children[0],
@@ -41,7 +34,6 @@ export class Carousel {
             options
         });
     }
-    // Render the carousel
     render() {
         return (h("div", null));
     }

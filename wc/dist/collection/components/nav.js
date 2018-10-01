@@ -1,9 +1,6 @@
 export class Nav {
-    // Component loaded event
     componentDidLoad() {
-        // Remove the id attribute
         this.el.removeAttribute("id");
-        // Get the items
         let items = [];
         if (this.items) {
             try {
@@ -11,12 +8,10 @@ export class Nav {
             }
             catch (_a) {
                 items = [];
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.items);
             }
         }
-        // Render the navigation
         return GD.Components.Nav({
             className: this.className,
             el: this.el.children[0],
@@ -30,7 +25,6 @@ export class Nav {
             isVertical: this.isVertical
         });
     }
-    // Render the navigation
     render() {
         return (h("div", null));
     }
