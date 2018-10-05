@@ -13,7 +13,6 @@ export interface IField {
     control: Components.IFormControl;
     controlProps: Components.IFormControlProps;
     getValue: () => IFieldValue;
-    save: () => PromiseLike<void>;
 }
 
 /**

@@ -540,7 +540,7 @@ export const Field = (props: IFieldProps): IField => {
                                     }
 
                                     // Update the field value
-                                    props.value[props.field.InternalName] = fieldValue;
+                                    controlProps.value = fieldValue;
                                 } else {
                                     let fieldValue = props.value;
 
@@ -560,7 +560,7 @@ export const Field = (props: IFieldProps): IField => {
                                     }
 
                                     // Update the field value
-                                    props.value[props.field.InternalName] = fieldValue;
+                                    controlProps.value = fieldValue;
                                 }
 
                                 // Load the terms
@@ -568,7 +568,7 @@ export const Field = (props: IFieldProps): IField => {
                                     // Success
                                     terms => {
                                         // Get the items
-                                        let items = getMMSItems(Helper.Taxonomy.toObject(terms), props.value[props.field.InternalName]);
+                                        let items = getMMSItems(Helper.Taxonomy.toObject(terms), controlProps.value);
 
                                         // See if this is not a required field and not a multi-select
                                         if (!props.field.Required && !mmsFieldInfo.multi) {
@@ -835,11 +835,6 @@ export const Field = (props: IFieldProps): IField => {
 
             // Return the field value
             return fieldValue;
-        },
-        save: () => {
-            // Return a promise
-            return new Promise((resolve, reject) => {
-            });
         }
     };
 }

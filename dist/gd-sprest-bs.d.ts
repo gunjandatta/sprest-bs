@@ -113,7 +113,6 @@ declare module 'gd-sprest-bs/components/types/field' {
             control: Components.IFormControl;
             controlProps: Components.IFormControlProps;
             getValue: () => IFieldValue;
-            save: () => PromiseLike<void>;
     }
     
     /**
