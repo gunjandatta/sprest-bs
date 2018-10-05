@@ -145,7 +145,6 @@ declare module 'gd-sprest-bs/components/types/field' {
 declare module 'gd-sprest-bs/components/types/listForm' {
     import { Types } from "gd-sprest";
     import { Components } from "gd-bs";
-    import { IFormControl, IFormControlProps } from "gd-bs/src/components/types";
     
     /**
         * List Form
@@ -194,10 +193,10 @@ declare module 'gd-sprest-bs/components/types/listForm' {
             info: Types.Helper.IListFormResult;
     
             /** The control rendered event. */
-            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
+            onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
     
             /** The control rendering event. */
-            onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
+            onControlRendering?: (control: Components.IFormControlProps) => void | Promise<Components.IFormControlProps>;
     
             /** The error event. */
             onError?: (msg?: string) => void;
@@ -241,7 +240,6 @@ declare module 'gd-sprest-bs/components/types/listForm' {
 declare module 'gd-sprest-bs/components/types/listFormDialog' {
     import { Components } from "gd-bs";
     import { Helper, Types } from "gd-sprest";
-    import { IFormControl, IFormControlProps } from "gd-bs/src/components/types";
     
     /**
         * List Form Dialog
@@ -276,10 +274,10 @@ declare module 'gd-sprest-bs/components/types/listFormDialog' {
             modalProps?: Components.IModalProps;
     
             /** The control rendered event. */
-            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
+            onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
     
             /** The control rendering event. */
-            onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
+            onControlRendering?: (control: Components.IFormControlProps) => void | Promise<Components.IFormControlProps>;
     
             /** The form saving event. */
             onSaving?: (item: any) => void | PromiseLike<any>;
