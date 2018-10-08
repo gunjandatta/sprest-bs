@@ -52,7 +52,7 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
                 // Skip hidden webparts
                 let wpTitle: string = ((webpart.querySelector(".ms-webpart-titleText") || {}) as HTMLDivElement).innerText || "";
                 let isHidden = webpart.firstElementChild && webpart.firstElementChild.classList.contains("ms-hide");
-                isHidden = isHidden || wpTitle.startsWith("(Hidden)");
+                isHidden = isHidden || /^\(Hidden\)/.test(wpTitle);
                 if (isHidden) { continue; }
 
                 // See if this is within a content zone

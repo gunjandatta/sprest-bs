@@ -483,7 +483,7 @@ export const Field = (props: IFieldProps): IField => {
     }
 
     // See if this is a taxonomy field
-    if (props.field.TypeAsString.startsWith("TaxonomyFieldType")) {
+    if (/^TaxonomyFieldType/.test(props.field.TypeAsString)) {
         // Set the type
         controlProps.type = Components.FormControlTypes.Dropdown;
 

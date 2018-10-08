@@ -35,7 +35,7 @@ export const WPSearchEditForm = (props: IWPSearchEditForm = {}): IWPSearchEditFo
                     break;
                 default:
                     // Allow managed metadata fields
-                    addField = field.TypeAsString.startsWith("TaxonomyFieldType");
+                    addField = /^TaxonomyFieldType/.test(field.TypeAsString);
                     break;
             }
 

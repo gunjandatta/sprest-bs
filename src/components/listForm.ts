@@ -182,12 +182,12 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         }
 
         // Do not render a hidden taxonomy field
-        if (field.Hidden && field.FieldTypeKind == SPTypes.FieldType.Note && field.Title.endsWith("_0")) { continue; }
+        if (field.Hidden && field.FieldTypeKind == SPTypes.FieldType.Note && /_0$/.test(field.Title)) { continue; }
 
         // See if this is an invalid field type
         if (field.FieldTypeKind == SPTypes.FieldType.Invalid) {
             // Ensure it's not a taxonomy field
-            if (!field.TypeAsString.startsWith("TaxonomyFieldType")) { continue; }
+            if (!/^TaxonomyFieldType/.test(field.TypeAsString)) { continue; }
         }
 
         // Create the control
