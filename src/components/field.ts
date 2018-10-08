@@ -420,39 +420,48 @@ export const Field = (props: IFieldProps): IField => {
 
         // URL
         case SPTypes.FieldType.URL:
+            let value = props.value as Types.SP.ComplexTypes.FieldUrlValue;
+
             // See if a value exists
             if (props.value) {
                 // Update the value
                 controlProps.value = (props.value as Types.SP.ComplexTypes.FieldUrlValue).Url;
             }
-            /*
-                // See if a value exists
-                if (value) {
-                    // Update the value
-                    value[field.InternalName + "_Description"] = (value as Types.SP.ComplexTypes.FieldUrlValue).Description;
-                    value[field.InternalName + "_URL"] = (value as Types.SP.ComplexTypes.FieldUrlValue).Url;
-                }
-    
-                // Set the columns
-                let columns = [
-                    {
-                        size: 6,
-                        control: {
-                            label: field.Title + " Description",
-                            name: field.InternalName + "_Description",
-                            type: Components.FormControlTypes.TextField
-                        } as Components.IFormControlProps
-                    },
-                    {
-                        size: 6,
-                        control: {
-                            label: field.Title + " URL",
-                            name: field.InternalName + "_URL",
-                            type: Components.FormControlTypes.TextField
-                        } as Components.IFormControlProps
+
+            // Set the render event
+            controlProps.onControlRendered = (formControl) => {
+                // Save the control
+                control = formControl;
+
+                // Clear the element
+                control.el.innerHTML = "";
+
+                // Render the description
+                let desc = Components.FormControl({
+                    className: "mb-1",
+                    el: control.el,
+                    placeholder: "Description",
+                    type: Components.FormControlTypes.TextField,
+                    value: value ? value.Description : null
+                } as Components.IFormControlPropsTextField);
+
+                // Render the url
+                let url = Components.FormControl({
+                    el: control.el,
+                    placeholder: "Url",
+                    type: Components.FormControlTypes.TextField,
+                    value: value ? value.Url : null
+                } as Components.IFormControlPropsTextField);
+
+                // Set the get value event
+                control.props.onGetValue = (controlProps) => {
+                    // Return the value
+                    return {
+                        Description: desc.getValue(),
+                        Url: url.getValue()
                     }
-                ];
-            */
+                }
+            }
             break;
 
         // User
@@ -740,12 +749,19 @@ export const Field = (props: IFieldProps): IField => {
                 // URL
                 case SPTypes.FieldType.URL:
                     // See if the field value exists
-                    if (fieldValue.value) {
+                    if (fieldValue.value && fieldValue.value.Url) {
+                        // Set the url, and validate the format
+                        let url = fieldValue.value.Url;
+                        if (url && /^http/.test(url.toLowerCase()) == false) {
+                            // Update the url, otherwise the request will fail
+                            url = "https://" + url;
+                        }
+
                         // Add the metadata
                         fieldValue.value = {
                             __metadata: { type: "SP.FieldUrlValue" },
-                            Description: fieldValue.value, // TO DO - Add ability to update the description
-                            Url: fieldValue.value
+                            Description: fieldValue.value.Description || "",
+                            Url: url
                         };
                     } else {
                         // Ensure the value is null
