@@ -15,7 +15,9 @@
     "type": "git",
     "url": "git+https://github.com/gunjandatta/sprest-bs.git"
   },
-  "keywords": [],
+  "keywords": [
+    "Bootstrap", "SharePoint", "Web Components"
+  ],
   "author": "Gunjan Datta",
   "license": "MIT",
   "bugs": {
