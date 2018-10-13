@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-const{h:s}=window.GdSprestBs;import{a as t}from"./chunk-b00b75f4.js";class e{render(){let s=t(this.el,{className:this.className,el:this.el,spacing:this.spacing});return GD.Components.Toolbar(s)}static get is(){return"bs-toolbar"}static get properties(){return{className:{type:String,attr:"class-name"},el:{elementRef:!0},spacing:{type:Number,attr:"spacing"}}}}export{e as a};

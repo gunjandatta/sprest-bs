@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class Nav {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             el: this.el,
@@ -13,7 +16,8 @@ export class Nav {
             isVertical: this.isVertical
         });
         this.el.removeAttribute("id");
-        return GD.Components.Nav(props);
+        GD.Components.Nav(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-nav"; }
     static get properties() { return {

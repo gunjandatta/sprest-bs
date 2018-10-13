@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class Modal {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             body: this.body,
             className: this.className,
@@ -15,7 +18,8 @@ export class Modal {
             title: this.el.getAttribute("title")
         });
         this.el.removeAttribute("id");
-        return GD.Components.Modal(props);
+        GD.Components.Modal(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-modal"; }
     static get properties() { return {

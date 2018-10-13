@@ -3,5 +3,5 @@ export declare class Popover {
     className: string;
     isDismissible: boolean;
     type: number;
-    render(): any;
+    render(): void;
 }

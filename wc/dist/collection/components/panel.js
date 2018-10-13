@@ -1,12 +1,16 @@
 import { getProps } from "../common";
 export class Panel {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             el: this.el,
             type: this.type
         });
-        return GD.Components.Panel(props);
+        GD.Components.Panel(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-panel"; }
     static get properties() { return {

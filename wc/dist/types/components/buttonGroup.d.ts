@@ -7,5 +7,5 @@ export declare class ButtonGroup {
     isSmall: boolean;
     isVertical: boolean;
     label: string;
-    render(): any;
+    render(): void;
 }

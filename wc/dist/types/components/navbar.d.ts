@@ -6,5 +6,5 @@ export declare class Navbar {
     enableSearch: boolean;
     id: string;
     type: number;
-    render(): any;
+    render(): void;
 }

@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("vej9bakr",["exports","./chunk-9a04bf15.js"],function(e,d){window,e.BsAccordion=d.Accordion,Object.defineProperty(e,"__esModule",{value:!0})});

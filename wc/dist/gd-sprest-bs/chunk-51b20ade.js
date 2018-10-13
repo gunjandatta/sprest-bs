@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-const{h:t}=window.GdSprestBs;import{a as e}from"./chunk-b00b75f4.js";class r{render(){let t=e(this.el,{className:this.className,el:this.el,footer:this.footer,header:this.header,imgBottom:this.imgBottom,imgTop:this.imgTop});return GD.Components.Card(t)}static get is(){return"bs-card"}static get properties(){return{className:{type:String,attr:"class-name"},el:{elementRef:!0},footer:{type:String,attr:"footer"},header:{type:String,attr:"header"},imgBottom:{type:"Any",attr:"img-bottom"},imgTop:{type:"Any",attr:"img-top"}}}}export{r as a};

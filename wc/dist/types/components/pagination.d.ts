@@ -7,5 +7,5 @@ export declare class Pagination {
     isSmall: boolean;
     label: string;
     numberOfPages: number;
-    render(): any;
+    render(): void;
 }

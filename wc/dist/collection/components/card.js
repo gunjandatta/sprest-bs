@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class Card {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             el: this.el,
@@ -9,7 +12,8 @@ export class Card {
             imgBottom: this.imgBottom,
             imgTop: this.imgTop
         });
-        return GD.Components.Card(props);
+        GD.Components.Card(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-card"; }
     static get properties() { return {

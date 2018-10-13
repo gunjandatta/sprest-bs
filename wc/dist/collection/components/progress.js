@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class Progress {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             el: this.el,
@@ -11,7 +14,8 @@ export class Progress {
             min: this.min,
             size: this.size
         });
-        return GD.Components.Progress(props);
+        GD.Components.Progress(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-progress"; }
     static get properties() { return {

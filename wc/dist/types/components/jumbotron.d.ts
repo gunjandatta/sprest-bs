@@ -4,5 +4,5 @@ export declare class Jumbotron {
     content: string;
     isFluid: boolean;
     lead: string;
-    render(): any;
+    render(): void;
 }

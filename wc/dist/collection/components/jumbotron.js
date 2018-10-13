@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class Jumbotron {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             content: this.content,
@@ -9,7 +12,8 @@ export class Jumbotron {
             lead: this.lead,
             title: this.el.getAttribute("title")
         });
-        return GD.Components.Jumbotron(props);
+        GD.Components.Jumbotron(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-jumbotron"; }
     static get properties() { return {

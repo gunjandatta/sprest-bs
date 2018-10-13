@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class Badge {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             content: this.content,
@@ -10,7 +13,8 @@ export class Badge {
             isPill: this.isPill,
             type: this.type
         });
-        return GD.Components.Badge(props);
+        GD.Components.Badge(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-badge"; }
     static get properties() { return {

@@ -15,5 +15,5 @@ export declare class Button {
     text: string;
     toggle: string;
     type: number;
-    render(): any;
+    render(): void;
 }

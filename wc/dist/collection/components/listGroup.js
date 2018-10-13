@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class ListGroup {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             colWidth: this.colWidth,
@@ -9,7 +12,8 @@ export class ListGroup {
             isFlush: this.isFlush,
             isTabs: this.isTabs
         });
-        return GD.Components.ListGroup(props);
+        GD.Components.ListGroup(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-listGroup"; }
     static get properties() { return {

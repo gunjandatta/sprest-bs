@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-const{h:s}=window.GdSprestBs;import{a as e}from"./chunk-b00b75f4.js";class t{render(){let s=e(this.el,{className:this.className,el:this.el,isDismissible:this.isDismissible,type:this.type});return GD.Components.Popover(s)}static get is(){return"bs-popover"}static get properties(){return{className:{type:String,attr:"class-name"},el:{elementRef:!0},isDismissible:{type:Boolean,attr:"is-dismissible"},type:{type:Number,attr:"type"}}}}export{t as a};

@@ -1,13 +1,17 @@
 import { getProps } from "../common";
 export class Accordion {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             el: this.el,
             id: this.id
         });
         this.el.removeAttribute("id");
-        return GD.Components.Accordion(props);
+        GD.Components.Accordion(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-accordion"; }
     static get properties() { return {

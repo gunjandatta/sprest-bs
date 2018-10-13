@@ -5,5 +5,5 @@ export declare class ListGroup {
     enableFade: boolean;
     isFlush: boolean;
     isTabs: boolean;
-    render(): any;
+    render(): void;
 }

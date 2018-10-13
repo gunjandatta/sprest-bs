@@ -1,11 +1,15 @@
 import { getProps } from "../common";
 export class Breadcrumb {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             el: this.el
         });
-        return GD.Components.Breadcrumb(props);
+        GD.Components.Breadcrumb(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-breadcrumb"; }
     static get properties() { return {

@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class Pagination {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             alignment: this.alignment,
             className: this.className,
@@ -11,7 +14,8 @@ export class Pagination {
             label: this.label,
             numberOfPages: this.numberOfPages
         });
-        return GD.Components.Pagination(props);
+        GD.Components.Pagination(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-pagination"; }
     static get properties() { return {

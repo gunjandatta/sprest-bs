@@ -8,5 +8,5 @@ export declare class Nav {
     isPills: boolean;
     isTabs: boolean;
     isVertical: boolean;
-    render(): any;
+    render(): void;
 }

@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class Collapse {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             content: this.content,
@@ -9,7 +12,8 @@ export class Collapse {
             isMulti: this.isMulti
         });
         this.el.removeAttribute("id");
-        return GD.Components.Collapse(props);
+        GD.Components.Collapse(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-collapse"; }
     static get properties() { return {

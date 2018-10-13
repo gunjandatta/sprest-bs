@@ -12,5 +12,5 @@ export declare class Dropdown {
     multi: boolean;
     type: number;
     value: string;
-    render(): any;
+    render(): void;
 }

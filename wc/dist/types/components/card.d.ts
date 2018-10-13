@@ -5,5 +5,5 @@ export declare class Card {
     header: string;
     imgBottom: object;
     imgTop: object;
-    render(): any;
+    render(): void;
 }

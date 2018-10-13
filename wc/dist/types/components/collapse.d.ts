@@ -4,5 +4,5 @@ export declare class Collapse {
     content: string;
     id: string;
     isMulti: boolean;
-    render(): any;
+    render(): void;
 }

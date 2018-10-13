@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("kk2xolzo",["exports","./chunk-b62ac33c.js","./chunk-ddddf6a4.js"],function(d,n,e){window,d.BsPagination=n.Pagination,Object.defineProperty(d,"__esModule",{value:!0})});

@@ -1,12 +1,16 @@
 import { getProps } from "../common";
 export class ProgressGroup {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             el: this.el,
             isMultiple: this.isMultiple
         });
-        return GD.Components.ProgressGroup(props);
+        GD.Components.ProgressGroup(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-progressGroup"; }
     static get properties() { return {

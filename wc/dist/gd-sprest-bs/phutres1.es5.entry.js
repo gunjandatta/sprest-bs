@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("phutres1",["exports","./chunk-1e6f063c.js","./chunk-ddddf6a4.js"],function(d,e,u){window,d.BsInputgroup=e.InputGroup,Object.defineProperty(d,"__esModule",{value:!0})});

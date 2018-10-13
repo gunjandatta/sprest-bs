@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("chunk-4f87a038.js",["exports","./chunk-ddddf6a4.js"],function(e,n){window;var r=function(){function e(){}return e.prototype.render=function(){var e=n.getProps(this.el,{el:this.el});return GD.Components.Form(e)},Object.defineProperty(e,"is",{get:function(){return"bs-form"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"properties",{get:function(){return{el:{elementRef:!0}}},enumerable:!0,configurable:!0}),e}();e.Form=r});

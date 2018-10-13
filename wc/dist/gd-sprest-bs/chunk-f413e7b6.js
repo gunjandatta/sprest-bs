@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-const{h:t}=window.GdSprestBs;import{a as e}from"./chunk-b00b75f4.js";class s{render(){let t=e(this.el,{className:this.className,el:this.el,type:this.type});return GD.Components.Tooltip(t)}static get is(){return"bs-tooltip"}static get properties(){return{className:{type:String,attr:"class-name"},el:{elementRef:!0},type:{type:Number,attr:"type"}}}}export{s as a};

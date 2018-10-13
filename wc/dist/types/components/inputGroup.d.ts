@@ -14,5 +14,5 @@ export declare class InputGroup {
     rows: number;
     type: number;
     value: string;
-    render(): any;
+    render(): void;
 }

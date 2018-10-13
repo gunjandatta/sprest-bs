@@ -5,5 +5,5 @@ export declare class Carousel {
     enableCrossfade: boolean;
     enableIndicators: boolean;
     id: string;
-    render(): any;
+    render(): void;
 }

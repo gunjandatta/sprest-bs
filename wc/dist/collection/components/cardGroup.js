@@ -1,11 +1,15 @@
 import { getProps } from "../common";
 export class CardGroup {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             el: this.el
         });
-        return GD.Components.CardGroup(props);
+        GD.Components.CardGroup(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-cardGroup"; }
     static get properties() { return {

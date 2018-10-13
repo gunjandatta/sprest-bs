@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class Navbar {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             brand: this.brand,
             brandUrl: this.brandUrl,
@@ -11,7 +14,8 @@ export class Navbar {
             type: this.type
         });
         this.el.removeAttribute("id");
-        return GD.Components.Navbar(props);
+        GD.Components.Navbar(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-navbar"; }
     static get properties() { return {

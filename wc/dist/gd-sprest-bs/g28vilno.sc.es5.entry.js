@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("g28vilno",["exports","./chunk-fb7f9ea5.js","./chunk-9a04bf15.js"],function(e,u,n){window,e.BsButtongroup=u.ButtonGroup,Object.defineProperty(e,"__esModule",{value:!0})});

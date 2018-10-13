@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-const{h:e}=window.GdSprestBs;import{a as t}from"./chunk-b00b75f4.js";class s{render(){let e=t(this.el,{className:this.className,el:this.el,type:this.type});return GD.Components.Panel(e)}static get is(){return"bs-panel"}static get properties(){return{className:{type:String,attr:"class-name"},el:{elementRef:!0},type:{type:Number,attr:"type"}}}}export{s as BsPanel};

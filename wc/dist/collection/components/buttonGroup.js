@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class ButtonGroup {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             buttonType: this.buttonType,
             className: this.className,
@@ -12,7 +15,8 @@ export class ButtonGroup {
             label: this.label
         });
         this.el.removeAttribute("id");
-        return GD.Components.ButtonGroup(props);
+        GD.Components.ButtonGroup(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-buttonGroup"; }
     static get properties() { return {

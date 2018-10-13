@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class Dropdown {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             dropLeft: this.dropLeft,
@@ -17,7 +20,8 @@ export class Dropdown {
             value: this.value
         });
         this.el.removeAttribute("id");
-        return GD.Components.Dropdown(props);
+        GD.Components.Dropdown(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-dropdown"; }
     static get properties() { return {

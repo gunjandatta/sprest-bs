@@ -2,5 +2,5 @@ export declare class Toolbar {
     private el;
     className: string;
     spacing: number;
-    render(): any;
+    render(): void;
 }

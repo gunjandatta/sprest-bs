@@ -9,5 +9,5 @@ export declare class Modal {
     isCentered: boolean;
     isLarge: boolean;
     isSmall: boolean;
-    render(): any;
+    render(): void;
 }

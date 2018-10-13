@@ -7,5 +7,5 @@ export declare class Progress {
     max: number;
     min: number;
     size: number;
-    render(): any;
+    render(): void;
 }

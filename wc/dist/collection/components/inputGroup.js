@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class InputGroup {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             appendedLabel: this.appendedLabel,
             className: this.className,
@@ -19,7 +22,8 @@ export class InputGroup {
             value: this.value
         });
         this.el.removeAttribute("id");
-        return GD.Components.InputGroup(props);
+        GD.Components.InputGroup(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-inputGroup"; }
     static get properties() { return {

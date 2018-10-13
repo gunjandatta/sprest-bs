@@ -6,5 +6,5 @@ export declare class Badge {
     href: string;
     isPill: boolean;
     type: number;
-    render(): any;
+    render(): void;
 }

@@ -1,6 +1,9 @@
 import { getProps } from "../common";
 export class Alert {
     render() {
+        if (this.el.hasAttribute("data-init")) {
+            return;
+        }
         let props = getProps(this.el, {
             className: this.className,
             content: this.content,
@@ -9,7 +12,8 @@ export class Alert {
             isDismissible: this.isDismissible,
             type: this.type
         });
-        return GD.Components.Alert(props);
+        GD.Components.Alert(props);
+        this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-alert"; }
     static get properties() { return {

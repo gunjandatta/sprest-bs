@@ -5,5 +5,5 @@ export declare class Alert {
     header: string;
     isDismissible: boolean;
     type: number;
-    render(): any;
+    render(): void;
 }

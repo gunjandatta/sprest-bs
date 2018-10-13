@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-const{h:e}=window.GdSprestBs;import{a as t}from"./chunk-b00b75f4.js";class r{render(){let e=t(this.el,{el:this.el});return GD.Components.Form(e)}static get is(){return"bs-form"}static get properties(){return{el:{elementRef:!0}}}}export{r as a};
