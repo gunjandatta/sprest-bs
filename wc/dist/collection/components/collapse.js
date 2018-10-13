@@ -1,34 +1,15 @@
+import { getProps } from "../common";
 export class Collapse {
-    componentDidLoad() {
-        let onRender = this.el.getAttribute("onRender");
-        this.el.removeAttribute("id");
-        let options = [];
-        if (this.options) {
-            try {
-                options = JSON.parse(this.options);
-            }
-            catch (_a) {
-                options = [];
-                console.log("Error parsing the JSON string.");
-                console.log(this.options);
-            }
-        }
-        return GD.Components.Collapse({
+    render() {
+        let props = getProps(this.el, {
             className: this.className,
             content: this.content,
-            el: this.el.children[0],
+            el: this.el,
             id: this.id,
-            isMulti: this.isMulti,
-            options,
-            onRender: (...args) => {
-                if (onRender && window[onRender]) {
-                    window[onRender].apply(this, args);
-                }
-            }
+            isMulti: this.isMulti
         });
-    }
-    render() {
-        return (h("div", null));
+        this.el.removeAttribute("id");
+        return GD.Components.Collapse(props);
     }
     static get is() { return "bs-collapse"; }
     static get properties() { return {
@@ -50,10 +31,6 @@ export class Collapse {
         "isMulti": {
             "type": Boolean,
             "attr": "is-multi"
-        },
-        "options": {
-            "type": String,
-            "attr": "options"
         }
     }; }
 }

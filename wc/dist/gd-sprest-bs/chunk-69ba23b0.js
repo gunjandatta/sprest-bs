@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+const{h:e}=window.GdSprestBs;import{a as s}from"./chunk-b00b75f4.js";class t{render(){let e=s(this.el,{className:this.className,el:this.el,isMultiple:this.isMultiple});return GD.Components.ProgressGroup(e)}static get is(){return"bs-progressGroup"}static get properties(){return{className:{type:String,attr:"class-name"},el:{elementRef:!0},isMultiple:{type:Boolean,attr:"is-multiple"}}}}export{t as a};

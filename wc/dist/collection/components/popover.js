@@ -1,45 +1,16 @@
+import { getProps } from "../common";
 export class Popover {
-    componentDidLoad() {
-        let btnProps = {};
-        if (this.btnProps) {
-            try {
-                btnProps = JSON.parse(this.btnProps);
-            }
-            catch (_a) {
-                btnProps = {};
-                console.log("Error parsing the JSON string.");
-                console.log(this.btnProps);
-            }
-        }
-        let options = {};
-        if (this.options) {
-            try {
-                options = JSON.parse(this.options);
-            }
-            catch (_b) {
-                options = {};
-                console.log("Error parsing the JSON string.");
-                console.log(this.options);
-            }
-        }
-        return GD.Components.Popover({
-            btnProps,
+    render() {
+        let props = getProps(this.el, {
             className: this.className,
-            el: this.el.children[0],
+            el: this.el,
             isDismissible: this.isDismissible,
-            options,
             type: this.type
         });
-    }
-    render() {
-        return (h("div", null));
+        return GD.Components.Popover(props);
     }
     static get is() { return "bs-popover"; }
     static get properties() { return {
-        "btnProps": {
-            "type": String,
-            "attr": "btn-props"
-        },
         "className": {
             "type": String,
             "attr": "class-name"
@@ -50,10 +21,6 @@ export class Popover {
         "isDismissible": {
             "type": Boolean,
             "attr": "is-dismissible"
-        },
-        "options": {
-            "type": String,
-            "attr": "options"
         },
         "type": {
             "type": Number,

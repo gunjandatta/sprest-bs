@@ -16,11 +16,6 @@
           "name": "id",
           "type": "String",
           "attr": "id"
-        },
-        {
-          "name": "items",
-          "type": "String",
-          "attr": "items"
         }
       ],
       "hostElement": {
@@ -117,11 +112,6 @@
           "name": "className",
           "type": "String",
           "attr": "class-name"
-        },
-        {
-          "name": "items",
-          "type": "String",
-          "attr": "items"
         }
       ],
       "hostElement": {
@@ -222,11 +212,6 @@
       "styles": {},
       "props": [
         {
-          "name": "buttons",
-          "type": "String",
-          "attr": "buttons"
-        },
-        {
           "name": "buttonType",
           "type": "Number",
           "attr": "button-type"
@@ -274,11 +259,6 @@
       "styles": {},
       "props": [
         {
-          "name": "body",
-          "type": "String",
-          "attr": "body"
-        },
-        {
           "name": "className",
           "type": "String",
           "attr": "class-name"
@@ -313,11 +293,6 @@
       "componentPath": "components/cardGroup.js",
       "styles": {},
       "props": [
-        {
-          "name": "cards",
-          "type": "String",
-          "attr": "cards"
-        },
         {
           "name": "className",
           "type": "String",
@@ -359,16 +334,6 @@
           "name": "id",
           "type": "String",
           "attr": "id"
-        },
-        {
-          "name": "items",
-          "type": "String",
-          "attr": "items"
-        },
-        {
-          "name": "options",
-          "type": "String",
-          "attr": "options"
         }
       ],
       "hostElement": {
@@ -401,11 +366,6 @@
           "name": "isMulti",
           "type": "Boolean",
           "attr": "is-multi"
-        },
-        {
-          "name": "options",
-          "type": "String",
-          "attr": "options"
         }
       ],
       "hostElement": {
@@ -455,11 +415,6 @@
           "attr": "is-split"
         },
         {
-          "name": "items",
-          "type": "String",
-          "attr": "items"
-        },
-        {
           "name": "label",
           "type": "String",
           "attr": "label"
@@ -495,18 +450,6 @@
       "componentClass": "Form",
       "componentPath": "components/form.js",
       "styles": {},
-      "props": [
-        {
-          "name": "rows",
-          "type": "String",
-          "attr": "rows"
-        },
-        {
-          "name": "value",
-          "type": "String",
-          "attr": "value"
-        }
-      ],
       "hostElement": {
         "name": "el"
       }
@@ -518,11 +461,6 @@
       "componentPath": "components/inputGroup.js",
       "styles": {},
       "props": [
-        {
-          "name": "appendedButtons",
-          "type": "String",
-          "attr": "appended-buttons"
-        },
         {
           "name": "appendedLabel",
           "type": "String",
@@ -572,11 +510,6 @@
           "name": "placeholder",
           "type": "String",
           "attr": "placeholder"
-        },
-        {
-          "name": "prependedButtons",
-          "type": "String",
-          "attr": "prepended-buttons"
         },
         {
           "name": "prependedLabel",
@@ -666,11 +599,6 @@
           "name": "isTabs",
           "type": "Boolean",
           "attr": "is-tabs"
-        },
-        {
-          "name": "items",
-          "type": "String",
-          "attr": "items"
         }
       ],
       "hostElement": {
@@ -688,11 +616,6 @@
           "name": "body",
           "type": "String",
           "attr": "body"
-        },
-        {
-          "name": "button",
-          "type": "String",
-          "attr": "button"
         },
         {
           "name": "className",
@@ -785,11 +708,6 @@
           "name": "isVertical",
           "type": "Boolean",
           "attr": "is-vertical"
-        },
-        {
-          "name": "items",
-          "type": "String",
-          "attr": "items"
         }
       ],
       "hostElement": {
@@ -827,16 +745,6 @@
           "name": "id",
           "type": "String",
           "attr": "id"
-        },
-        {
-          "name": "items",
-          "type": "String",
-          "attr": "items"
-        },
-        {
-          "name": "searchBox",
-          "type": "String",
-          "attr": "search-box"
         },
         {
           "name": "type",
@@ -908,11 +816,6 @@
           "attr": "class-name"
         },
         {
-          "name": "modalProps",
-          "type": "String",
-          "attr": "modal-props"
-        },
-        {
           "name": "type",
           "type": "Number",
           "attr": "type"
@@ -930,11 +833,6 @@
       "styles": {},
       "props": [
         {
-          "name": "btnProps",
-          "type": "String",
-          "attr": "btn-props"
-        },
-        {
           "name": "className",
           "type": "String",
           "attr": "class-name"
@@ -943,11 +841,6 @@
           "name": "isDismissible",
           "type": "Boolean",
           "attr": "is-dismissible"
-        },
-        {
-          "name": "options",
-          "type": "String",
-          "attr": "options"
         },
         {
           "name": "type",
@@ -1022,11 +915,6 @@
           "name": "isMultiple",
           "type": "Boolean",
           "attr": "is-multiple"
-        },
-        {
-          "name": "progressbars",
-          "type": "String",
-          "attr": "progressbars"
         }
       ],
       "hostElement": {
@@ -1046,11 +934,6 @@
           "attr": "class-name"
         },
         {
-          "name": "items",
-          "type": "String",
-          "attr": "items"
-        },
-        {
           "name": "spacing",
           "type": "Number",
           "attr": "spacing"
@@ -1068,19 +951,9 @@
       "styles": {},
       "props": [
         {
-          "name": "btnProps",
-          "type": "String",
-          "attr": "btn-props"
-        },
-        {
           "name": "className",
           "type": "String",
           "attr": "class-name"
-        },
-        {
-          "name": "options",
-          "type": "String",
-          "attr": "options"
         },
         {
           "name": "type",

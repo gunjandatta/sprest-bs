@@ -1,7 +1,5 @@
-import '../stencil.core';
 export declare class ButtonGroup {
     private el;
-    buttons: string;
     buttonType: number;
     className: string;
     id: string;
@@ -9,6 +7,5 @@ export declare class ButtonGroup {
     isSmall: boolean;
     isVertical: boolean;
     label: string;
-    componentDidLoad(): any;
-    render(): JSX.Element;
+    render(): any;
 }

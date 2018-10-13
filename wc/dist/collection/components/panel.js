@@ -1,25 +1,12 @@
+import { getProps } from "../common";
 export class Panel {
-    componentDidLoad() {
-        let modalProps = {};
-        if (this.modalProps) {
-            try {
-                modalProps = JSON.parse(this.modalProps);
-            }
-            catch (_a) {
-                modalProps = {};
-                console.log("Error parsing the JSON string.");
-                console.log(this.modalProps);
-            }
-        }
-        return GD.Components.Panel({
+    render() {
+        let props = getProps(this.el, {
             className: this.className,
-            el: this.el.children[0],
-            modalProps,
+            el: this.el,
             type: this.type
         });
-    }
-    render() {
-        return (h("div", null));
+        return GD.Components.Panel(props);
     }
     static get is() { return "bs-panel"; }
     static get properties() { return {
@@ -29,10 +16,6 @@ export class Panel {
         },
         "el": {
             "elementRef": true
-        },
-        "modalProps": {
-            "type": String,
-            "attr": "modal-props"
         },
         "type": {
             "type": Number,

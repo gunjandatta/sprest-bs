@@ -1,26 +1,13 @@
+import { getProps } from "../common";
 export class Accordion {
-    componentDidLoad() {
-        this.el.removeAttribute("id");
-        let items = [];
-        if (this.items) {
-            try {
-                items = JSON.parse(this.items);
-            }
-            catch (_a) {
-                items = [];
-                console.log("Error parsing the JSON string.");
-                console.log(this.items);
-            }
-        }
-        return GD.Components.Accordion({
-            className: this.className,
-            el: this.el.children[0],
-            id: this.id,
-            items
-        });
-    }
     render() {
-        return (h("div", null));
+        let props = getProps(this.el, {
+            className: this.className,
+            el: this.el,
+            id: this.id
+        });
+        this.el.removeAttribute("id");
+        return GD.Components.Accordion(props);
     }
     static get is() { return "bs-accordion"; }
     static get properties() { return {
@@ -34,10 +21,6 @@ export class Accordion {
         "id": {
             "type": String,
             "attr": "id"
-        },
-        "items": {
-            "type": String,
-            "attr": "items"
         }
     }; }
 }

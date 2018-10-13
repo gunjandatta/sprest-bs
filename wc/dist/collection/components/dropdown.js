@@ -1,42 +1,23 @@
+import { getProps } from "../common";
 export class Dropdown {
-    componentDidLoad() {
-        let onChange = this.el.getAttribute("onChange");
-        this.el.removeAttribute("id");
-        let items = [];
-        if (this.items) {
-            try {
-                items = JSON.parse(this.items);
-            }
-            catch (_a) {
-                items = [];
-                console.log("Error parsing the JSON string.");
-                console.log(this.items);
-            }
-        }
-        return GD.Components.Dropdown({
+    render() {
+        let props = getProps(this.el, {
             className: this.className,
             dropLeft: this.dropLeft,
             dropRight: this.dropRight,
             dropUp: this.dropUp,
-            el: this.el.children[0],
+            el: this.el,
             formFl: this.formFl,
             id: this.id,
             isSplit: this.isSplit,
-            items: items,
             label: this.label,
             menuOnly: this.menuOnly,
             multi: this.multi,
             type: this.type,
-            value: this.value,
-            onChange: (...args) => {
-                if (onChange && window[onChange]) {
-                    window[onChange].apply(this, args);
-                }
-            }
+            value: this.value
         });
-    }
-    render() {
-        return (h("div", null));
+        this.el.removeAttribute("id");
+        return GD.Components.Dropdown(props);
     }
     static get is() { return "bs-dropdown"; }
     static get properties() { return {
@@ -70,10 +51,6 @@ export class Dropdown {
         "isSplit": {
             "type": Boolean,
             "attr": "is-split"
-        },
-        "items": {
-            "type": String,
-            "attr": "items"
         },
         "label": {
             "type": String,

@@ -1,32 +1,19 @@
+import { getProps } from "../common";
 export class Nav {
-    componentDidLoad() {
-        this.el.removeAttribute("id");
-        let items = [];
-        if (this.items) {
-            try {
-                items = JSON.parse(this.items);
-            }
-            catch (_a) {
-                items = [];
-                console.log("Error parsing the JSON string.");
-                console.log(this.items);
-            }
-        }
-        return GD.Components.Nav({
+    render() {
+        let props = getProps(this.el, {
             className: this.className,
-            el: this.el.children[0],
+            el: this.el,
             enableFade: this.enableFade,
             enableFill: this.enableFill,
             id: this.id,
-            items,
             isJustified: this.isJustified,
             isPills: this.isPills,
             isTabs: this.isTabs,
             isVertical: this.isVertical
         });
-    }
-    render() {
-        return (h("div", null));
+        this.el.removeAttribute("id");
+        return GD.Components.Nav(props);
     }
     static get is() { return "bs-nav"; }
     static get properties() { return {
@@ -64,10 +51,6 @@ export class Nav {
         "isVertical": {
             "type": Boolean,
             "attr": "is-vertical"
-        },
-        "items": {
-            "type": String,
-            "attr": "items"
         }
     }; }
 }

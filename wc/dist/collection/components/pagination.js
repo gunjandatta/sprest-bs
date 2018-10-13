@@ -1,24 +1,17 @@
+import { getProps } from "../common";
 export class Pagination {
-    componentDidLoad() {
-        let onClick = this.el.getAttribute("onClick");
-        return GD.Components.Pagination({
+    render() {
+        let props = getProps(this.el, {
             alignment: this.alignment,
             className: this.className,
-            el: this.el.children[0],
+            el: this.el,
             icon: this.icon,
             isLarge: this.isLarge,
             isSmall: this.isSmall,
             label: this.label,
-            numberOfPages: this.numberOfPages,
-            onClick: (...args) => {
-                if (onClick && window[onClick]) {
-                    window[onClick].apply(this, args);
-                }
-            }
+            numberOfPages: this.numberOfPages
         });
-    }
-    render() {
-        return (h("div", null));
+        return GD.Components.Pagination(props);
     }
     static get is() { return "bs-pagination"; }
     static get properties() { return {

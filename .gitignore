@@ -1,4 +1,5 @@
 node_modules
 wc/.stencil
 wc/node_modules
+wc/src/common.ts
 wc/src/components

@@ -1,6 +1,7 @@
+import { getProps } from "../common";
 export class Alert {
-    componentDidLoad() {
-        return GD.Components.Alert({
+    render() {
+        let props = getProps(this.el, {
             className: this.className,
             content: this.content,
             el: this.el,
@@ -8,9 +9,7 @@ export class Alert {
             isDismissible: this.isDismissible,
             type: this.type
         });
-    }
-    render() {
-        return (h("div", null));
+        return GD.Components.Alert(props);
     }
     static get is() { return "bs-alert"; }
     static get properties() { return {

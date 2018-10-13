@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("ldtjqb83",["exports","./chunk-888647e2.js"],function(e,l){window,e.BsCollapse=l.Collapse,Object.defineProperty(e,"__esModule",{value:!0})});

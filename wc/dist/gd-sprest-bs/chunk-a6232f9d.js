@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+const{h:t}=window.GdSprestBs;import{a as e}from"./chunk-b00b75f4.js";class s{render(){let t=e(this.el,{className:this.className,content:this.content,el:this.el,id:this.id,isMulti:this.isMulti});return this.el.removeAttribute("id"),GD.Components.Collapse(t)}static get is(){return"bs-collapse"}static get properties(){return{className:{type:String,attr:"class-name"},content:{type:String,attr:"content"},el:{elementRef:!0},id:{type:String,attr:"id"},isMulti:{type:Boolean,attr:"is-multi"}}}}export{s as a};

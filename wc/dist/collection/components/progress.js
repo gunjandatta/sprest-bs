@@ -1,8 +1,9 @@
+import { getProps } from "../common";
 export class Progress {
-    componentDidLoad() {
-        return GD.Components.Progress({
+    render() {
+        let props = getProps(this.el, {
             className: this.className,
-            el: this.el.children[0],
+            el: this.el,
             isAnimated: this.isAnimated,
             isStriped: this.isStriped,
             label: this.label,
@@ -10,9 +11,7 @@ export class Progress {
             min: this.min,
             size: this.size
         });
-    }
-    render() {
-        return (h("div", null));
+        return GD.Components.Progress(props);
     }
     static get is() { return "bs-progress"; }
     static get properties() { return {

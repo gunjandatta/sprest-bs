@@ -1,36 +1,11 @@
+import { getProps } from "../common";
 export class InputGroup {
-    componentDidLoad() {
-        let onChange = this.el.getAttribute("onChange");
-        let onClear = this.el.getAttribute("onClear");
-        this.el.removeAttribute("id");
-        let appendedButtons = [];
-        if (this.appendedButtons) {
-            try {
-                appendedButtons = JSON.parse(this.appendedButtons);
-            }
-            catch (_a) {
-                appendedButtons = [];
-                console.log("Error parsing the JSON string.");
-                console.log(this.appendedButtons);
-            }
-        }
-        let prependedButtons = [];
-        if (this.prependedButtons) {
-            try {
-                prependedButtons = JSON.parse(this.prependedButtons);
-            }
-            catch (_b) {
-                prependedButtons = [];
-                console.log("Error parsing the JSON string.");
-                console.log(this.prependedButtons);
-            }
-        }
-        return GD.Components.InputGroup({
-            appendedButtons,
+    render() {
+        let props = getProps(this.el, {
             appendedLabel: this.appendedLabel,
             className: this.className,
             description: this.description,
-            el: this.el.children[0],
+            el: this.el,
             id: this.id,
             isLarge: this.isLarge,
             isPlainText: this.isPlainText,
@@ -38,32 +13,16 @@ export class InputGroup {
             isSmall: this.isSmall,
             label: this.label,
             placeholder: this.placeholder,
-            prependedButtons,
             prependedLabel: this.prependedLabel,
             rows: this.rows,
             type: this.type,
-            value: this.value,
-            onChange: (...args) => {
-                if (onChange && window[onChange]) {
-                    window[onChange].apply(this, args);
-                }
-            },
-            onClear: (...args) => {
-                if (onClear && window[onClear]) {
-                    window[onClear].apply(this, args);
-                }
-            }
+            value: this.value
         });
-    }
-    render() {
-        return (h("div", null));
+        this.el.removeAttribute("id");
+        return GD.Components.InputGroup(props);
     }
     static get is() { return "bs-inputGroup"; }
     static get properties() { return {
-        "appendedButtons": {
-            "type": String,
-            "attr": "appended-buttons"
-        },
         "appendedLabel": {
             "type": String,
             "attr": "appended-label"
@@ -106,10 +65,6 @@ export class InputGroup {
         "placeholder": {
             "type": String,
             "attr": "placeholder"
-        },
-        "prependedButtons": {
-            "type": String,
-            "attr": "prepended-buttons"
         },
         "prependedLabel": {
             "type": String,

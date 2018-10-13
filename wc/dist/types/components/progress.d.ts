@@ -1,4 +1,3 @@
-import '../stencil.core';
 export declare class Progress {
     private el;
     className: string;
@@ -8,6 +7,5 @@ export declare class Progress {
     max: number;
     min: number;
     size: number;
-    componentDidLoad(): any;
-    render(): JSX.Element;
+    render(): any;
 }

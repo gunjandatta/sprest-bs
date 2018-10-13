@@ -1,24 +1,11 @@
+import { getProps } from "../common";
 export class Breadcrumb {
-    componentDidLoad() {
-        let items = [];
-        if (this.items) {
-            try {
-                items = JSON.parse(this.items);
-            }
-            catch (_a) {
-                items = [];
-                console.log("Error parsing the JSON string.");
-                console.log(this.items);
-            }
-        }
-        return GD.Components.Breadcrumb({
-            className: this.className,
-            el: this.el.children[0],
-            items: items
-        });
-    }
     render() {
-        return (h("div", null));
+        let props = getProps(this.el, {
+            className: this.className,
+            el: this.el
+        });
+        return GD.Components.Breadcrumb(props);
     }
     static get is() { return "bs-breadcrumb"; }
     static get properties() { return {
@@ -28,10 +15,6 @@ export class Breadcrumb {
         },
         "el": {
             "elementRef": true
-        },
-        "items": {
-            "type": String,
-            "attr": "items"
         }
     }; }
 }

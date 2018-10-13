@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("1fdjyksh",["exports","./chunk-af5ebd0e.js"],function(e,o){window,e.BsButtongroup=o.ButtonGroup,Object.defineProperty(e,"__esModule",{value:!0})});

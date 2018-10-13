@@ -1,35 +1,18 @@
+import { getProps } from "../common";
 export class Card {
-    componentDidLoad() {
-        let body = [];
-        if (this.body) {
-            try {
-                body = JSON.parse(this.body);
-            }
-            catch (_a) {
-                body = [];
-                console.log("Error parsing the JSON string.");
-                console.log(this.body);
-            }
-        }
-        return GD.Components.Card({
-            body: body,
+    render() {
+        let props = getProps(this.el, {
             className: this.className,
-            el: this.el.children[0],
+            el: this.el,
             footer: this.footer,
             header: this.header,
             imgBottom: this.imgBottom,
             imgTop: this.imgTop
         });
-    }
-    render() {
-        return (h("div", null));
+        return GD.Components.Card(props);
     }
     static get is() { return "bs-card"; }
     static get properties() { return {
-        "body": {
-            "type": String,
-            "attr": "body"
-        },
         "className": {
             "type": String,
             "attr": "class-name"

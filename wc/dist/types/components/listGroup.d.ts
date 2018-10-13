@@ -1,4 +1,3 @@
-import '../stencil.core';
 export declare class ListGroup {
     private el;
     className: string;
@@ -6,7 +5,5 @@ export declare class ListGroup {
     enableFade: boolean;
     isFlush: boolean;
     isTabs: boolean;
-    items: string;
-    componentDidLoad(): any;
-    render(): JSX.Element;
+    render(): any;
 }

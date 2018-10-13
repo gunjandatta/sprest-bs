@@ -1,4 +1,3 @@
-import '../stencil.core';
 export declare class Badge {
     private el;
     className: string;
@@ -7,6 +6,5 @@ export declare class Badge {
     href: string;
     isPill: boolean;
     type: number;
-    componentDidLoad(): any;
-    render(): JSX.Element;
+    render(): any;
 }

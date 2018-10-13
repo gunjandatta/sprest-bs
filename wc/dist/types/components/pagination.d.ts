@@ -1,4 +1,3 @@
-import '../stencil.core';
 export declare class Pagination {
     private el;
     alignment: number;
@@ -8,6 +7,5 @@ export declare class Pagination {
     isSmall: boolean;
     label: string;
     numberOfPages: number;
-    componentDidLoad(): any;
-    render(): JSX.Element;
+    render(): any;
 }

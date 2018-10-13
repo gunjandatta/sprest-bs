@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("6wixhcrm",["exports","./chunk-03f32b90.js","./chunk-ddddf6a4.js"],function(e,d,l){window,e.BsCollapse=d.Collapse,Object.defineProperty(e,"__esModule",{value:!0})});

@@ -1,4 +1,3 @@
-import '../stencil.core';
 export declare class Carousel {
     private el;
     className: string;
@@ -6,8 +5,5 @@ export declare class Carousel {
     enableCrossfade: boolean;
     enableIndicators: boolean;
     id: string;
-    items: string;
-    options: string;
-    componentDidLoad(): any;
-    render(): JSX.Element;
+    render(): any;
 }

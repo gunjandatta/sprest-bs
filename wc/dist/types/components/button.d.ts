@@ -1,4 +1,3 @@
-import '../stencil.core';
 export declare class Button {
     private el;
     badgeType: number;
@@ -16,6 +15,5 @@ export declare class Button {
     text: string;
     toggle: string;
     type: number;
-    componentDidLoad(): any;
-    render(): JSX.Element;
+    render(): any;
 }

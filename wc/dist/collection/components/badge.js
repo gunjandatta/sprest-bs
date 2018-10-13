@@ -1,23 +1,16 @@
+import { getProps } from "../common";
 export class Badge {
-    componentDidLoad() {
-        let onClick = this.el.getAttribute("onClick");
-        return GD.Components.Badge({
+    render() {
+        let props = getProps(this.el, {
             className: this.className,
             content: this.content,
-            el: this.el.children[0],
+            el: this.el,
             header: this.header,
             href: this.href,
             isPill: this.isPill,
-            type: this.type,
-            onClick: (...args) => {
-                if (onClick && window[onClick]) {
-                    window[onClick].apply(this, args);
-                }
-            }
+            type: this.type
         });
-    }
-    render() {
-        return (h("div", null));
+        return GD.Components.Badge(props);
     }
     static get is() { return "bs-badge"; }
     static get properties() { return {

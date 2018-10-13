@@ -15,12 +15,10 @@ export namespace Components {
   interface BsAccordion {
     'className': string;
     'id': string;
-    'items': string;
   }
   interface BsAccordionAttributes extends StencilHTMLAttributes {
     'className'?: string;
     'id'?: string;
-    'items'?: string;
   }
 
   interface BsAlert {
@@ -57,11 +55,9 @@ export namespace Components {
 
   interface BsBreadcrumb {
     'className': string;
-    'items': string;
   }
   interface BsBreadcrumbAttributes extends StencilHTMLAttributes {
     'className'?: string;
-    'items'?: string;
   }
 
   interface BsButton {
@@ -101,7 +97,6 @@ export namespace Components {
 
   interface BsButtongroup {
     'buttonType': number;
-    'buttons': string;
     'className': string;
     'id': string;
     'isLarge': boolean;
@@ -111,7 +106,6 @@ export namespace Components {
   }
   interface BsButtongroupAttributes extends StencilHTMLAttributes {
     'buttonType'?: number;
-    'buttons'?: string;
     'className'?: string;
     'id'?: string;
     'isLarge'?: boolean;
@@ -121,7 +115,6 @@ export namespace Components {
   }
 
   interface BsCard {
-    'body': string;
     'className': string;
     'footer': string;
     'header': string;
@@ -129,7 +122,6 @@ export namespace Components {
     'imgTop': object;
   }
   interface BsCardAttributes extends StencilHTMLAttributes {
-    'body'?: string;
     'className'?: string;
     'footer'?: string;
     'header'?: string;
@@ -138,11 +130,9 @@ export namespace Components {
   }
 
   interface BsCardgroup {
-    'cards': string;
     'className': string;
   }
   interface BsCardgroupAttributes extends StencilHTMLAttributes {
-    'cards'?: string;
     'className'?: string;
   }
 
@@ -152,8 +142,6 @@ export namespace Components {
     'enableCrossfade': boolean;
     'enableIndicators': boolean;
     'id': string;
-    'items': string;
-    'options': string;
   }
   interface BsCarouselAttributes extends StencilHTMLAttributes {
     'className'?: string;
@@ -161,8 +149,6 @@ export namespace Components {
     'enableCrossfade'?: boolean;
     'enableIndicators'?: boolean;
     'id'?: string;
-    'items'?: string;
-    'options'?: string;
   }
 
   interface BsCollapse {
@@ -170,14 +156,12 @@ export namespace Components {
     'content': string;
     'id': string;
     'isMulti': boolean;
-    'options': string;
   }
   interface BsCollapseAttributes extends StencilHTMLAttributes {
     'className'?: string;
     'content'?: string;
     'id'?: string;
     'isMulti'?: boolean;
-    'options'?: string;
   }
 
   interface BsDropdown {
@@ -188,7 +172,6 @@ export namespace Components {
     'formFl': boolean;
     'id': string;
     'isSplit': boolean;
-    'items': string;
     'label': string;
     'menuOnly': boolean;
     'multi': boolean;
@@ -203,7 +186,6 @@ export namespace Components {
     'formFl'?: boolean;
     'id'?: string;
     'isSplit'?: boolean;
-    'items'?: string;
     'label'?: string;
     'menuOnly'?: boolean;
     'multi'?: boolean;
@@ -211,17 +193,10 @@ export namespace Components {
     'value'?: string;
   }
 
-  interface BsForm {
-    'rows': string;
-    'value': string;
-  }
-  interface BsFormAttributes extends StencilHTMLAttributes {
-    'rows'?: string;
-    'value'?: string;
-  }
+  interface BsForm {}
+  interface BsFormAttributes extends StencilHTMLAttributes {}
 
   interface BsInputgroup {
-    'appendedButtons': string;
     'appendedLabel': string;
     'className': string;
     'description': string;
@@ -232,14 +207,12 @@ export namespace Components {
     'isSmall': boolean;
     'label': string;
     'placeholder': string;
-    'prependedButtons': string;
     'prependedLabel': string;
     'rows': number;
     'type': number;
     'value': string;
   }
   interface BsInputgroupAttributes extends StencilHTMLAttributes {
-    'appendedButtons'?: string;
     'appendedLabel'?: string;
     'className'?: string;
     'description'?: string;
@@ -250,7 +223,6 @@ export namespace Components {
     'isSmall'?: boolean;
     'label'?: string;
     'placeholder'?: string;
-    'prependedButtons'?: string;
     'prependedLabel'?: string;
     'rows'?: number;
     'type'?: number;
@@ -276,7 +248,6 @@ export namespace Components {
     'enableFade': boolean;
     'isFlush': boolean;
     'isTabs': boolean;
-    'items': string;
   }
   interface BsListgroupAttributes extends StencilHTMLAttributes {
     'className'?: string;
@@ -284,12 +255,10 @@ export namespace Components {
     'enableFade'?: boolean;
     'isFlush'?: boolean;
     'isTabs'?: boolean;
-    'items'?: string;
   }
 
   interface BsModal {
     'body': string;
-    'button': string;
     'className': string;
     'disableFade': boolean;
     'footer': string;
@@ -301,7 +270,6 @@ export namespace Components {
   }
   interface BsModalAttributes extends StencilHTMLAttributes {
     'body'?: string;
-    'button'?: string;
     'className'?: string;
     'disableFade'?: boolean;
     'footer'?: string;
@@ -321,7 +289,6 @@ export namespace Components {
     'isPills': boolean;
     'isTabs': boolean;
     'isVertical': boolean;
-    'items': string;
   }
   interface BsNavAttributes extends StencilHTMLAttributes {
     'className'?: string;
@@ -332,7 +299,6 @@ export namespace Components {
     'isPills'?: boolean;
     'isTabs'?: boolean;
     'isVertical'?: boolean;
-    'items'?: string;
   }
 
   interface BsNavbar {
@@ -341,8 +307,6 @@ export namespace Components {
     'className': string;
     'enableSearch': boolean;
     'id': string;
-    'items': string;
-    'searchBox': string;
     'type': number;
   }
   interface BsNavbarAttributes extends StencilHTMLAttributes {
@@ -351,8 +315,6 @@ export namespace Components {
     'className'?: string;
     'enableSearch'?: boolean;
     'id'?: string;
-    'items'?: string;
-    'searchBox'?: string;
     'type'?: number;
   }
 
@@ -377,27 +339,21 @@ export namespace Components {
 
   interface BsPanel {
     'className': string;
-    'modalProps': string;
     'type': number;
   }
   interface BsPanelAttributes extends StencilHTMLAttributes {
     'className'?: string;
-    'modalProps'?: string;
     'type'?: number;
   }
 
   interface BsPopover {
-    'btnProps': string;
     'className': string;
     'isDismissible': boolean;
-    'options': string;
     'type': number;
   }
   interface BsPopoverAttributes extends StencilHTMLAttributes {
-    'btnProps'?: string;
     'className'?: string;
     'isDismissible'?: boolean;
-    'options'?: string;
     'type'?: number;
   }
 
@@ -423,35 +379,27 @@ export namespace Components {
   interface BsProgressgroup {
     'className': string;
     'isMultiple': boolean;
-    'progressbars': string;
   }
   interface BsProgressgroupAttributes extends StencilHTMLAttributes {
     'className'?: string;
     'isMultiple'?: boolean;
-    'progressbars'?: string;
   }
 
   interface BsTooltip {
-    'btnProps': string;
     'className': string;
-    'options': string;
     'type': number;
   }
   interface BsTooltipAttributes extends StencilHTMLAttributes {
-    'btnProps'?: string;
     'className'?: string;
-    'options'?: string;
     'type'?: number;
   }
 
   interface BsToolbar {
     'className': string;
-    'items': string;
     'spacing': number;
   }
   interface BsToolbarAttributes extends StencilHTMLAttributes {
     'className'?: string;
-    'items'?: string;
     'spacing'?: number;
   }
 }

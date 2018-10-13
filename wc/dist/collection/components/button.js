@@ -1,13 +1,12 @@
+import { getProps } from "../common";
 export class Button {
-    componentDidLoad() {
-        let onClick = this.el.getAttribute("onClick");
-        this.el.removeAttribute("id");
-        return GD.Components.Button({
+    render() {
+        let props = getProps(this.el, {
             badgeType: this.badgeType,
             badgeValue: this.badgeValue,
             className: this.className,
             controls: this.controls,
-            el: this.el.children[0],
+            el: this.el,
             id: this.id,
             isBlock: this.isBlock,
             isDisabled: this.isDisabled,
@@ -18,16 +17,10 @@ export class Button {
             target: this.target,
             text: this.text,
             toggle: this.toggle,
-            type: this.type,
-            onClick: (...args) => {
-                if (onClick && window[onClick]) {
-                    window[onClick].apply(this, args);
-                }
-            }
+            type: this.type
         });
-    }
-    render() {
-        return (h("div", null));
+        this.el.removeAttribute("id");
+        return GD.Components.Button(props);
     }
     static get is() { return "bs-button"; }
     static get properties() { return {

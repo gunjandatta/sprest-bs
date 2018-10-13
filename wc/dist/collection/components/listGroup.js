@@ -1,28 +1,15 @@
+import { getProps } from "../common";
 export class ListGroup {
-    componentDidLoad() {
-        let items = [];
-        if (this.items) {
-            try {
-                items = JSON.parse(this.items);
-            }
-            catch (_a) {
-                items = [];
-                console.log("Error parsing the JSON string.");
-                console.log(this.items);
-            }
-        }
-        return GD.Components.ListGroup({
+    render() {
+        let props = getProps(this.el, {
             className: this.className,
             colWidth: this.colWidth,
-            el: this.el.children[0],
+            el: this.el,
             enableFade: this.enableFade,
             isFlush: this.isFlush,
-            isTabs: this.isTabs,
-            items
+            isTabs: this.isTabs
         });
-    }
-    render() {
-        return (h("div", null));
+        return GD.Components.ListGroup(props);
     }
     static get is() { return "bs-listGroup"; }
     static get properties() { return {
@@ -48,10 +35,6 @@ export class ListGroup {
         "isTabs": {
             "type": Boolean,
             "attr": "is-tabs"
-        },
-        "items": {
-            "type": String,
-            "attr": "items"
         }
     }; }
 }

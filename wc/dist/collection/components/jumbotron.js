@@ -1,22 +1,15 @@
+import { getProps } from "../common";
 export class Jumbotron {
-    componentDidLoad() {
-        let onRenderContent = this.el.getAttribute("onRenderContent");
-        return GD.Components.Jumbotron({
+    render() {
+        let props = getProps(this.el, {
             className: this.className,
             content: this.content,
-            el: this.el.children[0],
+            el: this.el,
             isFluid: this.isFluid,
             lead: this.lead,
-            title: this.el.getAttribute("title"),
-            onRenderContent: (...args) => {
-                if (onRenderContent && window[onRenderContent]) {
-                    window[onRenderContent].apply(this, args);
-                }
-            }
+            title: this.el.getAttribute("title")
         });
-    }
-    render() {
-        return (h("div", null));
+        return GD.Components.Jumbotron(props);
     }
     static get is() { return "bs-jumbotron"; }
     static get properties() { return {
