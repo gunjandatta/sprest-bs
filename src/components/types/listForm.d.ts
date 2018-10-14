@@ -89,4 +89,7 @@ export interface IListFormEditProps extends IListFormDisplayProps {
 
     /** The form saving event. */
     onSaving?: (item: any) => void | PromiseLike<any>;
+
+    /** The form validating event. */
+    onValidate?: (field: Types.SP.IFieldResult, control: Components.IFormControl) => boolean;
 }

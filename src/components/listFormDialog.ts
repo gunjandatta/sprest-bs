@@ -29,6 +29,24 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
 
         // Return a promise
         return new Promise((resolve, reject) => {
+            // Ensure the form is valid
+            if (!form.isValid()) {
+                // Remove the progress
+                form.el.parentElement.removeChild(progress);
+
+                // Show the form
+                form.el.classList.remove("d-none");
+
+                // Show the footer
+                elFooter.classList.remove("d-none");
+
+                // Reject the promise
+                reject("Form is invalid");
+
+                // Return
+                return;
+            }
+
             // Save the form
             form.save().then(item => {
                 // Remove the progress

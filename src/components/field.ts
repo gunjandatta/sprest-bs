@@ -177,9 +177,11 @@ export const Field = (props: IFieldProps): IField => {
     // Set the default properties for the control
     let controlProps: Components.IFormControlProps = {
         description: props.field.Description,
+        errorMessage: props.errorMessage,
         isReadonly: props.field.ReadOnlyField,
         label: props.field.Title,
         name: props.field.InternalName,
+        required: props.field.Required,
         type: Components.FormControlTypes.TextField,
         value: props.value,
         onControlRendered: formControl => {
@@ -420,6 +422,8 @@ export const Field = (props: IFieldProps): IField => {
 
         // URL
         case SPTypes.FieldType.URL:
+            let desc: Components.IFormControl = null;
+            let url: Components.IFormControl = null;
             let value = props.value as Types.SP.ComplexTypes.FieldUrlValue;
 
             // See if a value exists
@@ -437,7 +441,7 @@ export const Field = (props: IFieldProps): IField => {
                 control.el.innerHTML = "";
 
                 // Render the description
-                let desc = Components.FormControl({
+                desc = Components.FormControl({
                     className: "mb-1",
                     el: control.el,
                     placeholder: "Description",
@@ -446,7 +450,7 @@ export const Field = (props: IFieldProps): IField => {
                 } as Components.IFormControlPropsTextField);
 
                 // Render the url
-                let url = Components.FormControl({
+                url = Components.FormControl({
                     el: control.el,
                     placeholder: "Url",
                     type: Components.FormControlTypes.TextField,
@@ -461,6 +465,45 @@ export const Field = (props: IFieldProps): IField => {
                         Url: url.getValue()
                     }
                 }
+            }
+
+            // Set the validate event
+            controlProps.onValidate = (control) => {
+                let descValid, urlValid = false;
+
+                // Get the form control elements
+                let elFormControl = control.el.querySelectorAll(".form-control");
+                let elDesc = elFormControl[0];
+                let elUrl = elFormControl[1];
+
+                // See if the description exists
+                if (elDesc) {
+                    // Clear the classes
+                    elDesc.classList.remove("is-invalid");
+                    elDesc.classList.remove("is-valid");
+
+                    // Set the flag
+                    descValid = control.required ? (desc.getValue() ? true : false) : true;
+
+                    // Set the class
+                    elDesc.classList.add(descValid ? "is-valid" : "is-invalid");
+                }
+
+                // See if the url exists
+                if (elUrl) {
+                    // Clear the classes
+                    elUrl.classList.remove("is-invalid");
+                    elUrl.classList.remove("is-valid");
+
+                    // Set the flag
+                    urlValid = control.required ? (url.getValue() ? true : false) : true;
+
+                    // Set the class
+                    elUrl.classList.add(urlValid ? "is-valid" : "is-invalid");
+                }
+
+                // Return the flag if this field is required
+                return descValid && urlValid;
             }
             break;
 
@@ -851,6 +894,16 @@ export const Field = (props: IFieldProps): IField => {
 
             // Return the field value
             return fieldValue;
+        },
+        isValid: () => {
+            // Validate the control
+            let isValid = control ? control.isValid() : false;
+
+            // Call the event
+            isValid = props.onValidate ? props.onValidate(props.field, control) : isValid;
+
+            // Return the flag
+            return isValid;
         }
     };
 }

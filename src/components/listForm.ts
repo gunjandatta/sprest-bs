@@ -37,9 +37,13 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
 
                     // Set the control
                     mapper[fieldName] = {
+                        data: html,
                         description: field.Description,
-                        html,
-                        label: field.Title
+                        label: field.Title,
+                        onControlRendered: control => {
+                            // Set the html
+                            control.el.innerHTML = control.props.data;
+                        }
                     };
 
                     // Add the row
@@ -196,13 +200,14 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             field,
             listInfo: props.info,
             value: value[fieldName],
+            onValidate: props.onValidate,
             onError: msg => {
                 // Add the refresh link
                 addRefreshLink();
 
                 // Call the event
                 props.onError ? props.onError(msg) : null;
-            },
+            }
         });
 
         // Update the mapper
@@ -295,8 +300,20 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         el: form.el,
         getValues,
         isValid: () => {
-            // TO DO
-            return true;
+            let isValid = true;
+
+            // Parse the fields
+            for (let fieldName in props.info.fields) {
+                // Skip readonly fields
+                let field = props.info.fields[fieldName];
+                if (field.ReadOnlyField) { continue; }
+
+                // Set the flag
+                isValid = isValid && mapper[field.InternalName].isValid();
+            }
+
+            // Return the flag
+            return isValid;
         },
         save: () => {
             // Return a promise

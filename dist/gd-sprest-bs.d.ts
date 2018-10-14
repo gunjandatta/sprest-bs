@@ -113,6 +113,7 @@ declare module 'gd-sprest-bs/components/types/field' {
             control: Components.IFormControl;
             controlProps: Components.IFormControlProps;
             getValue: () => IFieldValue;
+            isValid: () => boolean;
     }
     
     /**
@@ -120,9 +121,11 @@ declare module 'gd-sprest-bs/components/types/field' {
         */
     export interface IFieldProps {
             controlMode?: number;
+            errorMessage?: string;
             field: Types.SP.IFieldResult;
             listInfo: Helper.Types.IListFormResult;
             onError?: (msg: string) => void;
+            onValidate?: (field: Types.SP.IFieldResult, control: Components.IFormControl) => boolean;
             value?: any;
     }
     
@@ -234,6 +237,9 @@ declare module 'gd-sprest-bs/components/types/listForm' {
     
             /** The form saving event. */
             onSaving?: (item: any) => void | PromiseLike<any>;
+    
+            /** The form validating event. */
+            onValidate?: (field: Types.SP.IFieldResult, control: Components.IFormControl) => boolean;
     }
 }
 

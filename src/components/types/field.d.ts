@@ -13,6 +13,7 @@ export interface IField {
     control: Components.IFormControl;
     controlProps: Components.IFormControlProps;
     getValue: () => IFieldValue;
+    isValid: () => boolean;
 }
 
 /**
@@ -20,9 +21,11 @@ export interface IField {
  */
 export interface IFieldProps {
     controlMode?: number;
+    errorMessage?: string;
     field: Types.SP.IFieldResult;
     listInfo: Helper.Types.IListFormResult;
     onError?: (msg: string) => void;
+    onValidate?: (field: Types.SP.IFieldResult, control: Components.IFormControl) => boolean;
     value?: any;
 }
 
