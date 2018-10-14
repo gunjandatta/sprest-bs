@@ -1,6 +1,7 @@
 import { Components } from "gd-bs";
 import { ContextInfo, } from "gd-sprest";
-import { IHelper, IWebPartInfo, IWPInstance } from "../types";
+import { IHelper, IWPInstance } from "../types/helper";
+import { IWebPartInfo } from "../types/wp";
 declare var SP;
 
 /**

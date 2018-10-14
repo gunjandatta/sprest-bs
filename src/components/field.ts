@@ -1,9 +1,9 @@
 import { Components } from "gd-bs";
 import { Helper, SPTypes, Types } from "gd-sprest";
-import { DateTime } from "./datetime";
 import { IField, IFieldProps, IFieldValue, IFieldValueUser } from "./types/field";
-import { PeoplePicker } from "./peoplePicker";
 import { IPeoplePicker } from "./types/peoplePicker";
+import { DateTime } from "./datetime";
+import { PeoplePicker } from "./peoplePicker";
 
 /**
  * Field
