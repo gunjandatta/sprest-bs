@@ -212,7 +212,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             if (attachments.delete.length == 0) { resolve(); return; }
 
             // Get the web
-            debugger;
             props.info.list.ParentWeb().execute(web => {
                 // Parse the attachments
                 Helper.Executor<Types.SP.IAttachment>(attachments.delete, attachment => {
@@ -323,14 +322,62 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     // Add the "Upload" button
                     items.push({
                         buttons: [{
-                            className: "upload-attachment",
+                            className: "upload-btn",
                             text: "Upload",
                             type: Components.ButtonTypes.Secondary,
-                            onClick: () => {
+                            onClick: (btn, ev) => {
+                                let elUpload = ev.currentTarget as HTMLButtonElement;
+
                                 // Display an upload dialog
                                 Helper.ListForm.showFileDialog().then(fileInfo => {
+                                    // Get the buttons and remove any duplicates
+                                    let buttons = elUpload.parentElement.querySelectorAll(".btn");
+                                    for (let i = 0; i < buttons.length; i++) {
+                                        let button = buttons[i] as HTMLButtonElement;
+
+                                        // See if this is the associated button
+                                        if (button.innerText.replace(/X$/, '') == fileInfo.name) {
+                                            // Get the badge
+                                            let badge = button.querySelector(".badge") as HTMLSpanElement;
+                                            if (badge) {
+                                                // Remove the button
+                                                badge.click();
+                                            }
+                                            break;
+                                        }
+                                    }
+
                                     // Save the file information
                                     attachments.new.push(fileInfo);
+
+                                    // Create a button for this file
+                                    let newFile = Components.Button({
+                                        className: "mr-1",
+                                        isSmall: true,
+                                        text: fileInfo.name,
+                                        badge: {
+                                            className: "ml-3",
+                                            content: "X",
+                                            onClick: (badge, ev) => {
+                                                // Parse the array
+                                                for (let i = 0; i < attachments.new.length; i++) {
+                                                    // See if this is the target attachment
+                                                    if (attachments.new[i].name == fileInfo.name) {
+                                                        // Remove this attachment
+                                                        attachments.new.splice(i, 1);
+                                                        break;
+                                                    }
+                                                }
+
+                                                // Remove this element
+                                                let btn = (ev.currentTarget as HTMLElement).parentElement;
+                                                btn.parentElement.removeChild(btn);
+                                            }
+                                        }
+                                    });
+
+                                    // Append the button
+                                    elUpload.parentElement.insertBefore(newFile.el, elUpload);
                                 });
                             }
                         }]
