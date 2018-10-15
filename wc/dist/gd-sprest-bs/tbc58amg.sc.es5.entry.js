@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("tbc58amg",["exports","./chunk-68ec1750.js","./chunk-9a04bf15.js"],function(e,n,t){window,e.BsButton=n.Button,Object.defineProperty(e,"__esModule",{value:!0})});

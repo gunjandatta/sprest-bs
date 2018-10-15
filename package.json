@@ -28,8 +28,8 @@
   },
   "homepage": "https://gunjandatta.github.io/extras/bs",
   "dependencies": {
-    "gd-bs": "^0.7.5",
-    "gd-sprest": "^4.3.0"
+    "gd-bs": "^0.7.7",
+    "gd-sprest": "^4.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",

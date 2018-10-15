@@ -15,7 +15,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
         // Render a badge for this user
         let badge = Components.Button({
-            badgeValue: "X",
+            badge: { content: "X" },
             el: elSelectedUsers,
             text: user.DisplayText
         }).el;

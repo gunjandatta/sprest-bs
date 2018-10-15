@@ -126,16 +126,6 @@
       "styles": {},
       "props": [
         {
-          "name": "badgeType",
-          "type": "Number",
-          "attr": "badge-type"
-        },
-        {
-          "name": "badgeValue",
-          "type": "String",
-          "attr": "badge-value"
-        },
-        {
           "name": "className",
           "type": "String",
           "attr": "class-name"
@@ -143,6 +133,16 @@
         {
           "name": "controls",
           "attr": "controls"
+        },
+        {
+          "name": "data",
+          "type": "Any",
+          "attr": "data"
+        },
+        {
+          "name": "href",
+          "type": "String",
+          "attr": "href"
         },
         {
           "name": "id",
@@ -170,6 +170,11 @@
           "attr": "is-large"
         },
         {
+          "name": "isLink",
+          "type": "Boolean",
+          "attr": "is-link"
+        },
+        {
           "name": "isOutline",
           "type": "Boolean",
           "attr": "is-outline"
@@ -193,6 +198,11 @@
           "name": "toggle",
           "type": "String",
           "attr": "toggle"
+        },
+        {
+          "name": "trigger",
+          "type": "String",
+          "attr": "trigger"
         },
         {
           "name": "type",
@@ -970,7 +980,7 @@
   "compiler": {
     "name": "@stencil/core",
     "version": "0.13.2",
-    "typescriptVersion": "2.9.2"
+    "typescriptVersion": "3.1.3"
   },
   "bundles": []
 }

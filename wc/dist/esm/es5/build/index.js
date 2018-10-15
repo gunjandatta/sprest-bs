@@ -1,5 +1,5 @@
 import { b as Accordion, c as Alert, d as Badge, e as Breadcrumb, f as Card } from './chunk-69297144.js';
-import { a as Button } from './chunk-8c5d572a.js';
+import { a as Button } from './chunk-f91c4953.js';
 import { a as ButtonGroup } from './chunk-fc103bb6.js';
 import { a as CardGroup } from './chunk-410e90bf.js';
 import { a as Carousel } from './chunk-30085220.js';

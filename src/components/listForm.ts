@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import { Helper, SPTypes } from "gd-sprest";
+import { Helper, SPTypes, Types } from "gd-sprest";
 import { IField } from "./types/field";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types/listForm";
 import { Field } from "./field";
@@ -29,6 +29,41 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                 let hasUserField = false;
                 let mapper: { [key: string]: Components.IFormControlProps } = {};
                 let rows: Array<Components.IFormRow> = [];
+
+                // See if we are rendering attachments
+                if (props.info.attachments) {
+                    // Render the attachments
+                    rows.push({
+                        colSize: 2,
+                        control: {
+                            label: "Attachments",
+                            onControlRendered: control => {
+                                let items: Array<Components.IToolbarItem> = [];
+
+                                // Parse the attachments
+                                for (let i = 0; i < props.info.attachments.length; i++) {
+                                    let attachment = props.info.attachments[i];
+
+                                    // Add the item
+                                    items.push({
+                                        buttons: [{
+                                            className: "mr-1",
+                                            href: attachment.ServerRelativeUrl,
+                                            isSmall: true,
+                                            text: attachment.FileName
+                                        }]
+                                    });
+                                }
+
+                                // Render a toolbar
+                                Components.Toolbar({
+                                    el: control.el,
+                                    items
+                                });
+                            }
+                        }
+                    });
+                }
 
                 // Parse the fields
                 for (let fieldName in props.info.fields) {
@@ -127,6 +162,13 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     let mapper: { [key: string]: IField } = {};
     let rows: Array<Components.IFormRow> = [];
     let value = {};
+    let attachments: {
+        delete: Array<Types.SP.IAttachment>;
+        new: Array<Helper.Types.IListFormAttachmentInfo>;
+    } = {
+        delete: [],
+        new: []
+    };
 
     // Method to add a refresh alert
     let addRefreshLink = () => {
@@ -162,6 +204,78 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         props.el.insertBefore(alert.el, props.el.children[0]);
     }
 
+    // Method to remove the attachments
+    let removeAttachments = (info: Helper.Types.IListFormResult) => {
+        // Return a promise
+        return new Promise((resolve, reject) => {
+            // Ensure attachments exists
+            if (attachments.delete.length == 0) { resolve(); return; }
+
+            // Get the web
+            debugger;
+            props.info.list.ParentWeb().execute(web => {
+                // Parse the attachments
+                Helper.Executor<Types.SP.IAttachment>(attachments.delete, attachment => {
+                    // Get the attachment file
+                    web.getFileByServerRelativeUrl(attachment.ServerRelativeUrl).delete().execute();
+
+                    // Parse the attachments
+                    for (let i = 0; i < props.info.attachments.length; i++) {
+                        // See if this is the target attachment
+                        if (props.info.attachments[i].ServerRelativeUrl == attachment.ServerRelativeUrl) {
+                            // Remove this item
+                            props.info.attachments.splice(i, 1);
+                            break;
+                        }
+                    }
+                }).then(() => {
+                    // Wait for the files to be deleted
+                    web.done(() => {
+                        // Clear the attachments
+                        attachments.delete = [];
+
+                        // Resolve the promise
+                        resolve();
+                    });
+                });
+            });
+        });
+    }
+
+    // Method to save the attachments
+    let saveAttachments = (info: Helper.Types.IListFormResult) => {
+        // Return a promise
+        return new Promise((resolve, reject) => {
+            // Ensure attachments exists
+            if (attachments.new.length == 0) { resolve(); return; }
+
+            // Parse the attachments
+            Helper.Executor<Helper.Types.IListFormAttachmentInfo>(attachments.new, attachment => {
+                // Get the item's attachments
+                props.info.list.Items(info.item.Id).AttachmentFiles()
+                    // Add the file
+                    .add(attachment.name, attachment.data)
+                    // Execute the request
+                    .execute(attachment => {
+                        // Ensure attachments exist
+                        info.attachments = info.attachments || [];
+
+                        // Append the attachment
+                        info.attachments.push(attachment);
+                    });
+            }).then(() => {
+                // Wait for the files to upload
+                props.info.list.done(() => {
+                    // Clear the attachments
+                    attachments.new = [];
+
+                    // Resolve the promise
+                    resolve();
+                });
+            });
+        });
+    }
+
     // Render a loading message
     let progress = Components.Progress({
         el: props.el,
@@ -170,6 +284,67 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         label: "Loading the Form",
         size: 100
     });
+
+    // See if we are rendering attachments
+    if (props.info.attachments) {
+        // Render the attachments
+        rows.push({
+            colSize: 2,
+            control: {
+                label: "Attachments",
+                onControlRendered: control => {
+                    let items: Array<Components.IToolbarItem> = [];
+
+                    // Parse the attachments
+                    for (let i = 0; i < props.info.attachments.length; i++) {
+                        let attachment = props.info.attachments[i];
+
+                        // Add the item
+                        items.push({
+                            buttons: [{
+                                className: "mr-1",
+                                isSmall: true,
+                                text: attachment.FileName,
+                                badge: {
+                                    content: "X",
+                                    data: attachment,
+                                    onClick: (badge, ev) => {
+                                        // Add this file for deletion
+                                        attachments.delete.push(badge.data);
+
+                                        // Hide the attachment
+                                        (ev.currentTarget as HTMLElement).parentElement.classList.add("d-none");
+                                    }
+                                }
+                            }]
+                        });
+                    }
+
+                    // Add the "Upload" button
+                    items.push({
+                        buttons: [{
+                            className: "upload-attachment",
+                            text: "Upload",
+                            type: Components.ButtonTypes.Secondary,
+                            onClick: () => {
+                                // Display an upload dialog
+                                Helper.ListForm.showFileDialog().then(fileInfo => {
+                                    // Save the file information
+                                    attachments.new.push(fileInfo);
+                                });
+                            }
+                        }]
+                    });
+
+                    // Render a toolbar
+                    Components.Toolbar({
+                        el: control.el,
+                        items
+                    });
+                }
+            }
+        });
+    }
 
     // Parse the fields
     for (let fieldName in props.info.fields) {
@@ -325,11 +500,17 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 let saveItem = (item) => {
                     // Update the item
                     ListForm.saveItem(props.info, item).then(info => {
-                        // Update the info
-                        props.info = info;
+                        // Remove the attachments
+                        removeAttachments(info).then(() => {
+                            // Save the attachments
+                            saveAttachments(info).then(() => {
+                                // Update the info
+                                props.info = info;
 
-                        // Resolve the promise
-                        resolve(props.info.item as any);
+                                // Resolve the promise
+                                resolve(props.info.item as any);
+                            });
+                        });
                     }, reject);
                 }
 
