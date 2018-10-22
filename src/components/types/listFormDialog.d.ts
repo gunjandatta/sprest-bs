@@ -17,7 +17,7 @@ export interface IListFormDialog extends Components.IModal {
 /**
  * List Form Dialog Properties
  */
-export interface IListFormDialogProps extends Helper.Types.IListFormProps {
+export interface IListFormDialogProps extends Types.Helper.IListFormProps {
     /** The form actions. */
     actions?: Components.IToolbarProps;
 

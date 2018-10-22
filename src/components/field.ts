@@ -1,4 +1,5 @@
 import { Components } from "gd-bs";
+import { SP } from "gd-sprest-def";
 import { Helper, SPTypes, Types } from "gd-sprest";
 import { IField, IFieldProps, IFieldValue, IFieldValueUser } from "./types/field";
 import { IPeoplePicker } from "./types/peoplePicker";
@@ -10,8 +11,8 @@ import { PeoplePicker } from "./peoplePicker";
  */
 export const Field = (props: IFieldProps): IField => {
     let control: Components.IFormControl;
-    let lookupFieldInfo: Helper.Types.IListFormLookupFieldInfo = null;
-    let mmsFieldInfo: Helper.Types.IListFormMMSFieldInfo = null;
+    let lookupFieldInfo: Types.Helper.IListFormLookupFieldInfo = null;
+    let mmsFieldInfo: Types.Helper.IListFormMMSFieldInfo = null;
 
     // Method to get the choice options
     let getChoiceItems = (field: Types.SP.IFieldChoice, selectedValues) => {
@@ -96,7 +97,7 @@ export const Field = (props: IFieldProps): IField => {
     }
 
     // Method to get the mms dropdown items
-    let getMMSItems = (term: Helper.Types.ITerm, selectedValues = []) => {
+    let getMMSItems = (term: Types.Helper.ITerm, selectedValues = []) => {
         let items: Array<Components.IDropdownItem> = [];
 
         // See if information exists
@@ -153,7 +154,7 @@ export const Field = (props: IFieldProps): IField => {
         if (value) {
             let userValues = value.results ? value.results : [value];
             for (let i = 0; i < userValues.length; i++) {
-                let userValue = userValues[i] as Types.SP.ComplexTypes.FieldUserValue;
+                let userValue = userValues[i] as SP.Data.UserInfoItem;
 
                 // Ensure a title exists
                 if (userValue.Title) {
@@ -162,9 +163,9 @@ export const Field = (props: IFieldProps): IField => {
                         DisplayText: userValue.Title,
                         EntityData: {
                             Email: userValue.EMail,
-                            SPUserID: userValue.Id.toString()
+                            SPUserID: userValue.ID.toString()
                         },
-                        Key: userValue.Id.toString()
+                        Key: userValue.ID.toString()
                     });
                 }
             }
@@ -310,7 +311,7 @@ export const Field = (props: IFieldProps): IField => {
                         webUrl: props.listInfo.webUrl
                     }).then(
                         // Success
-                        (fieldInfo: Helper.Types.IListFormLookupFieldInfo) => {
+                        (fieldInfo: Types.Helper.IListFormLookupFieldInfo) => {
                             // Save the field information
                             lookupFieldInfo = fieldInfo;
 
@@ -424,12 +425,12 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.URL:
             let desc: Components.IFormControl = null;
             let url: Components.IFormControl = null;
-            let value = props.value as Types.SP.ComplexTypes.FieldUrlValue;
+            let value = props.value as SP.FieldUrlValue;
 
             // See if a value exists
             if (props.value) {
                 // Update the value
-                controlProps.value = (props.value as Types.SP.ComplexTypes.FieldUrlValue).Url;
+                controlProps.value = (props.value as SP.FieldUrlValue).Url;
             }
 
             // Set the render event
@@ -563,7 +564,7 @@ export const Field = (props: IFieldProps): IField => {
                     webUrl: props.listInfo.webUrl
                 }).then(
                     // Success
-                    (fieldInfo: Helper.Types.IListFormMMSFieldInfo) => {
+                    (fieldInfo: Types.Helper.IListFormMMSFieldInfo) => {
                         // Save the field information
                         mmsFieldInfo = fieldInfo;
 
