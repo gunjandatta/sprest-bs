@@ -6,6 +6,7 @@ import { IWPListCfg, IWPListEditForm, IWPListInfo } from "../types/wpList";
  * List WebPart Edit Form
  */
 export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => {
+    let _loadingMessage: HTMLElement = null;
     let _wpInfo: IWPListInfo = null;
 
     // Method to load the lists
@@ -28,6 +29,9 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                         text: "",
                         value: ""
                     }];
+
+                    // Remove the loading message
+                    _wpInfo.el.removeChild(_loadingMessage);
 
                     // Call the list loaded event
                     let listValues: Array<any> = (props.onListsLoaded ? props.onListsLoaded(_wpInfo, lists.results) as any : null) || lists.results;
@@ -152,6 +156,15 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
         onRenderForm: (wpInfo) => {
             // Save the webpart information
             _wpInfo = wpInfo;
+
+            // Render a loading message
+            _loadingMessage = Components.Progress({
+                el: _wpInfo.el,
+                isAnimated: true,
+                isStriped: true,
+                label: "Loading the List Information",
+                size: 100
+            }).el as any;
 
             // Load the lists
             return loadLists(_wpInfo && _wpInfo.cfg ? _wpInfo.cfg.WebUrl : "");
