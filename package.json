@@ -30,7 +30,7 @@
   "dependencies": {
     "gd-bs": "^0.8.2",
     "gd-sprest": "^4.3.5",
-    "gd-sprest-def": "0.0.5"
+    "gd-sprest-def": "^0.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
