@@ -123,7 +123,7 @@ declare module 'gd-sprest-bs/components/types/field' {
             controlMode?: number;
             errorMessage?: string;
             field: Types.SP.IFieldResult;
-            listInfo: Helper.Types.IListFormResult;
+            listInfo: Types.Helper.IListFormResult;
             onError?: (msg: string) => void;
             onValidate?: (field: Types.SP.IFieldResult, control: Components.IFormControl) => boolean;
             value?: any;
@@ -698,7 +698,7 @@ declare module 'gd-sprest-bs/webparts/types/wpTabs' {
 
 declare module 'gd-sprest-bs/webparts/types/wpTaxonomy' {
     import { Components } from "gd-bs"
-    import { Helper } from "gd-sprest";
+    import { Types } from "gd-sprest";
     import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/types/wp";
     
     /**
@@ -726,13 +726,13 @@ declare module 'gd-sprest-bs/webparts/types/wpTaxonomy' {
         */
     export interface IWPTaxonomyProps extends IWebPartProps<IWPTaxonomyInfo, IWPTaxonomyEditForm> {
             /** The on render term set event. */
-            onRenderTermSet?: (wpInfo: IWPTaxonomyInfo, termSet: Helper.Types.ITerm) => void;
+            onRenderTermSet?: (wpInfo: IWPTaxonomyInfo, termSet: Types.Helper.ITerm) => void;
     
             /** The on render term sets event. */
-            onRenderTermSets?: (wpInfo: IWPTaxonomyInfo, termSets: Array<Helper.Types.ITermSetInfo>) => void;
+            onRenderTermSets?: (wpInfo: IWPTaxonomyInfo, termSets: Array<Types.Helper.ITermSetInfo>) => void;
     
             /** The on render term set terms event. */
-            onRenderTermSetTerms?: (wpInfo: IWPTaxonomyInfo, terms: Array<Helper.Types.ITermInfo>) => void;
+            onRenderTermSetTerms?: (wpInfo: IWPTaxonomyInfo, terms: Array<Types.Helper.ITermInfo>) => void;
     }
     
     /**

@@ -23,7 +23,7 @@ export interface IFieldProps {
     controlMode?: number;
     errorMessage?: string;
     field: Types.SP.IFieldResult;
-    listInfo: Helper.Types.IListFormResult;
+    listInfo: Types.Helper.IListFormResult;
     onError?: (msg: string) => void;
     onValidate?: (field: Types.SP.IFieldResult, control: Components.IFormControl) => boolean;
     value?: any;
