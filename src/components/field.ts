@@ -293,13 +293,7 @@ export const Field = (props: IFieldProps): IField => {
                 controlProps = newProps;
 
                 // Display a loading message
-                let progress = Components.Progress({
-                    el: controlProps.el,
-                    isAnimated: true,
-                    isStriped: true,
-                    label: "Loading the lookup data",
-                    size: 100
-                });
+                controlProps.loadingMessage = "Loading the Lookup Data";
 
                 // Return a promise
                 return new Promise((resolve, reject) => {
@@ -348,9 +342,6 @@ export const Field = (props: IFieldProps): IField => {
                                     // Set the error message
                                     let errorMessage = "Error loading the lookup field values for '" + props.field.InternalName + "'.";
 
-                                    // Remove the progress bar
-                                    progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
-
                                     // Display an error message
                                     Components.Alert({
                                         el: controlProps.el,
@@ -367,9 +358,6 @@ export const Field = (props: IFieldProps): IField => {
                         msg => {
                             // Set the error message
                             let errorMessage = "Error loading the field information for field '" + props.field.InternalName + "'.";
-
-                            // Remove the progress bar
-                            progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
 
                             // Display an error message
                             controlProps.el.innerHTML = "";
@@ -548,13 +536,7 @@ export const Field = (props: IFieldProps): IField => {
             // Return a promise
             return new Promise((resolve, reject) => {
                 // Display a loading message
-                let progress = Components.Progress({
-                    el: controlProps.el,
-                    isAnimated: true,
-                    isStriped: true,
-                    label: "Loading the mms data",
-                    size: 100
-                });
+                controlProps.loadingMessage = "Loading the MMS Data";
 
                 // Load the field information
                 Helper.ListFormField.create({
@@ -646,9 +628,6 @@ export const Field = (props: IFieldProps): IField => {
                                         // Set the error message
                                         let errorMessage = "Error loading the mms terms for '" + props.field.InternalName + "'.";
 
-                                        // Remove the progress bar
-                                        progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
-
                                         // Display an error message
                                         Components.Alert({
                                             el: controlProps.el,
@@ -666,9 +645,6 @@ export const Field = (props: IFieldProps): IField => {
                                 // Set the error message
                                 let errorMessage = "Error loading the mms value field for '" + props.field.InternalName + "'.";
 
-                                // Remove the progress bar
-                                progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
-
                                 // Display an error message
                                 Components.Alert({
                                     el: controlProps.el,
@@ -685,9 +661,6 @@ export const Field = (props: IFieldProps): IField => {
                         );
                     },
                     msg => {
-                        // Remove the progress bar
-                        progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
-
                         // Display an error message
                         Components.Alert({
                             el: controlProps.el,
