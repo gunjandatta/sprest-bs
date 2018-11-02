@@ -8,6 +8,7 @@ export const ButtonGroup = ["bs-buttonGroup","g28vilno",0,[["buttonType",1,0,"bu
 export const Card = ["bs-card","5ts9tgys",0,[["className",1,0,"class-name",2],["el",64],["footer",1,0,1,2],["header",1,0,1,2],["imgBottom",1],["imgTop",1]]];
 export const CardGroup = ["bs-cardGroup","jsbyadhl",0,[["className",1,0,"class-name",2],["el",64]]];
 export const Carousel = ["bs-carousel","uv5g7m8c",0,[["className",1,0,"class-name",2],["el",64],["enableControls",1,0,"enable-controls",4],["enableCrossfade",1,0,"enable-crossfade",4],["enableIndicators",1,0,"enable-indicators",4],["id",1,0,1,2]]];
+export const CheckboxGroup = ["bs-checkboxGroup","chhhqpdw",0,[["className",1,0,"class-name",2],["colSize",1,0,"col-size",8],["el",64],["hideLabel",1,0,"hide-label",4],["label",1,0,1,2],["multi",1,0,1,4],["type",1,0,1,8]]];
 export const Collapse = ["bs-collapse","b4moxueb",0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",64],["id",1,0,1,2],["isMulti",1,0,"is-multi",4]]];
 export const Dropdown = ["bs-dropdown","aewwocud",0,[["className",1,0,"class-name",2],["dropLeft",1,0,"drop-left",4],["dropRight",1,0,"drop-right",4],["dropUp",1,0,"drop-up",4],["el",64],["formFl",1,0,"form-fl",4],["id",1,0,1,2],["isSplit",1,0,"is-split",4],["label",1,0,1,2],["menuOnly",1,0,"menu-only",4],["multi",1,0,1,4],["type",1,0,1,8],["value",1,0,1,2]]];
 export const Form = ["bs-form","aab7erkc",0,[["el",64]]];

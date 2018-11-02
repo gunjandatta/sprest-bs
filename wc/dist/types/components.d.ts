@@ -155,6 +155,23 @@ export namespace Components {
     'id'?: string;
   }
 
+  interface BsCheckboxgroup {
+    'className': string;
+    'colSize': number;
+    'hideLabel': boolean;
+    'label': string;
+    'multi': boolean;
+    'type': number;
+  }
+  interface BsCheckboxgroupAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+    'colSize'?: number;
+    'hideLabel'?: boolean;
+    'label'?: string;
+    'multi'?: boolean;
+    'type'?: number;
+  }
+
   interface BsCollapse {
     'className': string;
     'content': string;
@@ -419,6 +436,7 @@ declare global {
     'BsCard': Components.BsCard;
     'BsCardgroup': Components.BsCardgroup;
     'BsCarousel': Components.BsCarousel;
+    'BsCheckboxgroup': Components.BsCheckboxgroup;
     'BsCollapse': Components.BsCollapse;
     'BsDropdown': Components.BsDropdown;
     'BsForm': Components.BsForm;
@@ -447,6 +465,7 @@ declare global {
     'bs-card': Components.BsCardAttributes;
     'bs-cardgroup': Components.BsCardgroupAttributes;
     'bs-carousel': Components.BsCarouselAttributes;
+    'bs-checkboxgroup': Components.BsCheckboxgroupAttributes;
     'bs-collapse': Components.BsCollapseAttributes;
     'bs-dropdown': Components.BsDropdownAttributes;
     'bs-form': Components.BsFormAttributes;
@@ -518,6 +537,12 @@ declare global {
   var HTMLBsCarouselElement: {
     prototype: HTMLBsCarouselElement;
     new (): HTMLBsCarouselElement;
+  };
+
+  interface HTMLBsCheckboxgroupElement extends Components.BsCheckboxgroup, HTMLStencilElement {}
+  var HTMLBsCheckboxgroupElement: {
+    prototype: HTMLBsCheckboxgroupElement;
+    new (): HTMLBsCheckboxgroupElement;
   };
 
   interface HTMLBsCollapseElement extends Components.BsCollapse, HTMLStencilElement {}
@@ -626,6 +651,7 @@ declare global {
     'bs-card': HTMLBsCardElement
     'bs-cardgroup': HTMLBsCardgroupElement
     'bs-carousel': HTMLBsCarouselElement
+    'bs-checkboxgroup': HTMLBsCheckboxgroupElement
     'bs-collapse': HTMLBsCollapseElement
     'bs-dropdown': HTMLBsDropdownElement
     'bs-form': HTMLBsFormElement
@@ -654,6 +680,7 @@ declare global {
     'bs-card': HTMLBsCardElement;
     'bs-cardgroup': HTMLBsCardgroupElement;
     'bs-carousel': HTMLBsCarouselElement;
+    'bs-checkboxgroup': HTMLBsCheckboxgroupElement;
     'bs-collapse': HTMLBsCollapseElement;
     'bs-dropdown': HTMLBsDropdownElement;
     'bs-form': HTMLBsFormElement;

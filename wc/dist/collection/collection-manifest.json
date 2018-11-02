@@ -351,6 +351,48 @@
       }
     },
     {
+      "tag": "bs-checkboxgroup",
+      "dependencies": [],
+      "componentClass": "CheckboxGroup",
+      "componentPath": "components/checkboxGroup.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "colSize",
+          "type": "Number",
+          "attr": "col-size"
+        },
+        {
+          "name": "hideLabel",
+          "type": "Boolean",
+          "attr": "hide-label"
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "attr": "label"
+        },
+        {
+          "name": "multi",
+          "type": "Boolean",
+          "attr": "multi"
+        },
+        {
+          "name": "type",
+          "type": "Number",
+          "attr": "type"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
       "tag": "bs-collapse",
       "dependencies": [],
       "componentClass": "Collapse",
