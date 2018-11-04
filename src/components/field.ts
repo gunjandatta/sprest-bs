@@ -209,7 +209,7 @@ export const Field = (props: IFieldProps): IField => {
 
             // Set the type
             (controlProps as Components.IFormControlPropsCheckbox).items = [
-                { checked: props.value ? true : false }
+                { isSelected: props.value ? true : false }
             ];
             break;
 
