@@ -23,5 +23,6 @@ export var Panel = ["bs-panel","cretxipi",0,[["className",1,0,"class-name",2],["
 export var Popover = ["bs-popover","ft5tt9xx",0,[["className",1,0,"class-name",2],["el",64],["isDismissible",1,0,"is-dismissible",4],["type",1,0,1,8]]];
 export var Progress = ["bs-progress","l8xqp0wh",0,[["className",1,0,"class-name",2],["el",64],["isAnimated",1,0,"is-animated",4],["isStriped",1,0,"is-striped",4],["label",1,0,1,2],["max",1,0,1,8],["min",1,0,1,8],["size",1,0,1,8]]];
 export var ProgressGroup = ["bs-progressGroup","efpmkfhm",0,[["className",1,0,"class-name",2],["el",64],["isMultiple",1,0,"is-multiple",4]]];
+export var Table = ["bs-table","en9uksha",0,[["className",1,0,"class-name",2],["el",64]]];
 export var Toolbar = ["bs-toolbar","yzjnyenw",0,[["className",1,0,"class-name",2],["el",64],["spacing",1,0,1,8]]];
 export var Tooltip = ["bs-tooltip","9mm4esjz",0,[["className",1,0,"class-name",2],["el",64],["type",1,0,1,8]]];

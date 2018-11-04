@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("en9uksha",["exports","./chunk-ab342072.js","./chunk-9a04bf15.js"],function(e,d,n){window,e.BsTable=d.Table,Object.defineProperty(e,"__esModule",{value:!0})});

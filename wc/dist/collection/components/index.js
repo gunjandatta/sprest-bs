@@ -20,5 +20,6 @@ export * from "./pagination";
 export * from "./popover";
 export * from "./progress";
 export * from "./progressGroup";
+export * from "./table";
 export * from "./toggle";
 export * from "./toolbar";

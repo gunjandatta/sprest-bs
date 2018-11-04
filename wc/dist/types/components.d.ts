@@ -406,6 +406,13 @@ export namespace Components {
     'isMultiple'?: boolean;
   }
 
+  interface BsTable {
+    'className': string;
+  }
+  interface BsTableAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+  }
+
   interface BsTooltip {
     'className': string;
     'type': number;
@@ -451,6 +458,7 @@ declare global {
     'BsPopover': Components.BsPopover;
     'BsProgress': Components.BsProgress;
     'BsProgressgroup': Components.BsProgressgroup;
+    'BsTable': Components.BsTable;
     'BsTooltip': Components.BsTooltip;
     'BsToolbar': Components.BsToolbar;
   }
@@ -480,6 +488,7 @@ declare global {
     'bs-popover': Components.BsPopoverAttributes;
     'bs-progress': Components.BsProgressAttributes;
     'bs-progressgroup': Components.BsProgressgroupAttributes;
+    'bs-table': Components.BsTableAttributes;
     'bs-tooltip': Components.BsTooltipAttributes;
     'bs-toolbar': Components.BsToolbarAttributes;
   }
@@ -629,6 +638,12 @@ declare global {
     new (): HTMLBsProgressgroupElement;
   };
 
+  interface HTMLBsTableElement extends Components.BsTable, HTMLStencilElement {}
+  var HTMLBsTableElement: {
+    prototype: HTMLBsTableElement;
+    new (): HTMLBsTableElement;
+  };
+
   interface HTMLBsTooltipElement extends Components.BsTooltip, HTMLStencilElement {}
   var HTMLBsTooltipElement: {
     prototype: HTMLBsTooltipElement;
@@ -666,6 +681,7 @@ declare global {
     'bs-popover': HTMLBsPopoverElement
     'bs-progress': HTMLBsProgressElement
     'bs-progressgroup': HTMLBsProgressgroupElement
+    'bs-table': HTMLBsTableElement
     'bs-tooltip': HTMLBsTooltipElement
     'bs-toolbar': HTMLBsToolbarElement
   }
@@ -695,6 +711,7 @@ declare global {
     'bs-popover': HTMLBsPopoverElement;
     'bs-progress': HTMLBsProgressElement;
     'bs-progressgroup': HTMLBsProgressgroupElement;
+    'bs-table': HTMLBsTableElement;
     'bs-tooltip': HTMLBsTooltipElement;
     'bs-toolbar': HTMLBsToolbarElement;
   }

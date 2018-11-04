@@ -16,6 +16,7 @@ import { a as Pagination } from './chunk-4612012c.js';
 import { a as Popover } from './chunk-6dbf0958.js';
 import { a as Progress } from './chunk-4f3422b1.js';
 import { a as ProgressGroup } from './chunk-d5af3535.js';
+import { a as Table } from './chunk-026e962a.js';
 import { a as Tooltip } from './chunk-93112453.js';
 import { a as Toolbar } from './chunk-515f449d.js';
 var index = /*#__PURE__*/ Object.freeze({
@@ -41,6 +42,7 @@ var index = /*#__PURE__*/ Object.freeze({
     Popover: Popover,
     Progress: Progress,
     ProgressGroup: ProgressGroup,
+    Table: Table,
     Tooltip: Tooltip,
     Toolbar: Toolbar
 });
