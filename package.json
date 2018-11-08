@@ -1,6 +1,6 @@
 {
   "name": "gd-sprest-bs",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
   "main": "dist/gd-sprest-bs.js",
   "typings": "src/typings.d.ts",

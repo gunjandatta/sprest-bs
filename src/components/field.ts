@@ -163,9 +163,9 @@ export const Field = (props: IFieldProps): IField => {
                         DisplayText: userValue.Title,
                         EntityData: {
                             Email: userValue.EMail,
-                            SPUserID: userValue.ID.toString()
+                            SPUserID: userValue.Id.toString()
                         },
-                        Key: userValue.ID.toString()
+                        Key: userValue.Id.toString()
                     });
                 }
             }
@@ -688,10 +688,19 @@ export const Field = (props: IFieldProps): IField => {
 
             // Update the field name/value, based on the type
             switch (props.field.FieldTypeKind) {
+                // Boolean
+                case SPTypes.FieldType.Boolean:
+                    // See if there is a value
+                    let cbValue: Components.ICheckboxGroupItem = fieldValue.value;
+
+                    // Update the field value
+                    fieldValue.value = cbValue ? cbValue.isSelected : false;
+                    break;
+
                 // Choice
                 case SPTypes.FieldType.Choice:
-                    let ddlValue: Components.IDropdownItem = fieldValue.value;
                     // See if there is a value
+                    let ddlValue: Components.IDropdownItem = fieldValue.value;
                     if (ddlValue) {
                         // Update the field value
                         fieldValue.value = ddlValue.value || ddlValue.text;
