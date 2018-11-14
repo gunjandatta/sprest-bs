@@ -107,6 +107,18 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
         }
     }
 
+    // Method to set the value
+    let setValue = (selectedUsers: Array<string | Types.SP.IPeoplePickerUser> = []) => {
+        // Clear the selected users
+        elSelectedUsers.innerHTML = "";
+
+        // Parse the selected users
+        for (let i = 0; i < selectedUsers.length; i++) {
+            // Add the user
+            addUser(selectedUsers[i]);
+        }
+    }
+
     // Create the people picker
     let elPeoplePicker = document.createElement("div");
     elPeoplePicker.className = "people-picker";
@@ -153,12 +165,8 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     let elSelectedUsers = document.createElement("div");
     elPeoplePicker.appendChild(elSelectedUsers);
 
-    // Parse the selected users
-    let selectedUsers = props.value || [];
-    for (let i = 0; i < selectedUsers.length; i++) {
-        // Add the user
-        addUser(selectedUsers[i]);
-    }
+    // Set the default selected users
+    setValue(props.value);
 
     // Create the element
     let el = document.createElement("div");
@@ -200,6 +208,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
             // Return the value
             return selectedUsers;
-        }
+        },
+        setValue
     }
 }

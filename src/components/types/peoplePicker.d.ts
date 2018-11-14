@@ -11,8 +11,11 @@ export interface IPeoplePicker {
     /** The people picker element. */
     el: HTMLElement;
 
-    /** Returns the value. */
+    /** Returns the selected users. */
     getValue: () => Array<Types.SP.IPeoplePickerUser>;
+
+    /** Sets the selected users. */
+    setValue: (selectedUsers: Array<string | Types.SP.IPeoplePickerUser>) => void;
 }
 
 /**
