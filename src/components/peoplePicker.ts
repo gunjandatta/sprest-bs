@@ -155,9 +155,9 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
     // Parse the selected users
     let selectedUsers = props.value || [];
-    for (let i = 0; i < props.value.length; i++) {
+    for (let i = 0; i < selectedUsers.length; i++) {
         // Add the user
-        addUser(props.value[i]);
+        addUser(selectedUsers[i]);
     }
 
     // Create the element
