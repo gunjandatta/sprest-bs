@@ -1,2 +1,2 @@
-export { a as BsCollapse } from './chunk-18826dc7.js';
-import './chunk-69297144.js';
+/*! Built with http://stenciljs.com */
+export{a as BsCollapse}from"./chunk-18826dc7.js";import"./chunk-69297144.js";
