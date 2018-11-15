@@ -96,8 +96,11 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
                 // Clear the modal body
                 el.innerHTML = "";
 
+                // Ensure the item exists, otherwise default to the new form
+                let controlMode = props.item || props.itemId > 0 ? props.controlMode : SPTypes.ControlMode.New;
+
                 // Check the control mode
-                switch (props.controlMode) {
+                switch (controlMode) {
                     // Edit Form
                     case SPTypes.ControlMode.Edit:
                     case SPTypes.ControlMode.New:
