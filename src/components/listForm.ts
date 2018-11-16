@@ -38,6 +38,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                         colSize: 2,
                         control: {
                             label: "Attachments",
+                            name: "Attachments",
                             onControlRendered: control => {
                                 let items: Array<Components.IToolbarItem> = [];
 
@@ -76,6 +77,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                         data: html,
                         description: field.Description,
                         label: field.Title,
+                        name: field.InternalName,
                         onControlRendered: control => {
                             // Set the html
                             control.el.innerHTML = control.props.data;
@@ -292,6 +294,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             colSize: 2,
             control: {
                 label: "Attachments",
+                name: "Attachments",
                 onControlRendered: control => {
                     // Render a toolbar
                     let toolbar = Components.Toolbar({
