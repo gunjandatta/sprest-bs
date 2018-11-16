@@ -72,6 +72,12 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                     let field = props.info.fields[fieldName];
                     let html = formValues[fieldName] || formValues[fieldName.replace(/\_/g, "_x005f_")] || "";
 
+                    // See if this is a note field
+                    if (field.FieldTypeKind == SPTypes.FieldType.Note) {
+                        // Update the html
+                        html = html.replace(/\r?\n/g, '<br />');
+                    }
+
                     // Set the control
                     mapper[fieldName] = {
                         data: html,
