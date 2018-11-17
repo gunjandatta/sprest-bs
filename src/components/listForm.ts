@@ -1,7 +1,7 @@
 import { SP } from "gd-sprest-def";
 import { Components } from "gd-bs";
 import { Helper, SPTypes, Types, Web } from "gd-sprest";
-import { IField } from "./types/field";
+import { IField, IFieldValueUser } from "./types/field";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types/listForm";
 import { Field } from "./field";
 
@@ -612,6 +612,13 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
             // Set the item value
             item[fieldValue.name] = fieldValue.value;
+
+            // Set the unknown users
+            let userFieldValue: IFieldValueUser = fieldValue;
+            if (userFieldValue.unknownUsers) {
+                // Set the unknown users
+                unknownUsers[fieldValue.name] = userFieldValue.unknownUsers;
+            }
         }
 
         // Return the form values

@@ -805,6 +805,7 @@ export const Field = (props: IFieldProps): IField => {
                     // See if this is a multi-value field
                     if ((props.field as Types.SP.IFieldUser).AllowMultipleValues) {
                         let values: Array<Components.IDropdownItem> = userFieldValue.value || [];
+                        userFieldValue.unknownUsers = userFieldValue.unknownUsers || [];
                         userFieldValue.value = { results: [] };
 
                         // Parse the options
@@ -817,8 +818,7 @@ export const Field = (props: IFieldProps): IField => {
                                     userFieldValue.value.results.push(userValue.EntityData.SPUserID || userValue.EntityData.SPGroupID);
                                 } else {
                                     // Add the unknown user account
-                                    userFieldValue.unknownUsers[userFieldValue.name] = userFieldValue.unknownUsers[userFieldValue.name] || [];
-                                    userFieldValue.unknownUsers[userFieldValue.name].push(userValue.Key);
+                                    userFieldValue.unknownUsers.push(userValue.Key);
                                 }
                             }
                         }
@@ -831,8 +831,7 @@ export const Field = (props: IFieldProps): IField => {
                                 userFieldValue.value = userValue.EntityData.SPUserID || userValue.EntityData.SPGroupID;
                             } else {
                                 // Add the unknown user account
-                                userFieldValue.unknownUsers[userFieldValue.name] = userFieldValue.unknownUsers[userFieldValue.name] || [];
-                                userFieldValue.unknownUsers[userFieldValue.name].push(userValue.Key);
+                                userFieldValue.unknownUsers.push(userValue.Key);
                             }
                         } else {
                             // Clear the field value
