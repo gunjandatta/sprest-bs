@@ -323,7 +323,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                 // See if this is a multi-user value
                                 if (item[fieldName].results != null) {
                                     // Set the user account
-                                    item[fieldName].push(user.Id);
+                                    item[fieldName].results.push(user.Id);
                                 } else {
                                     // Set the user account
                                     item[fieldName] = user.Id;
