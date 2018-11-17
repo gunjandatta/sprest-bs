@@ -869,6 +869,15 @@ export const Field = (props: IFieldProps): IField => {
                                 TermGuid: fieldValue.value.value,
                                 WssId: -1
                             } : null;
+
+                            // See if this is a new form
+                            if (props.controlMode == SPTypes.ControlMode.New && fieldValue.value) {
+                                // See if no value exists
+                                if ((fieldValue.value.TermGuid || "").length == 0) {
+                                    // Clear the value
+                                    fieldValue.value = null;
+                                }
+                            }
                         }
                     }
                     break;
