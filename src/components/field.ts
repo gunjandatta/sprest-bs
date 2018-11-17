@@ -817,7 +817,7 @@ export const Field = (props: IFieldProps): IField => {
                                     userFieldValue.value.results.push(userValue.EntityData.SPUserID || userValue.EntityData.SPGroupID);
                                 } else {
                                     // Add the unknown user account
-                                    userFieldValue.unknownUsers = userFieldValue.unknownUsers || [];
+                                    userFieldValue.unknownUsers[userFieldValue.name] = userFieldValue.unknownUsers[userFieldValue.name] || [];
                                     userFieldValue.unknownUsers[userFieldValue.name].push(userValue.Key);
                                 }
                             }
@@ -831,7 +831,7 @@ export const Field = (props: IFieldProps): IField => {
                                 userFieldValue.value = userValue.EntityData.SPUserID || userValue.EntityData.SPGroupID;
                             } else {
                                 // Add the unknown user account
-                                userFieldValue.unknownUsers = userFieldValue.unknownUsers || [];
+                                userFieldValue.unknownUsers[userFieldValue.name] = userFieldValue.unknownUsers[userFieldValue.name] || [];
                                 userFieldValue.unknownUsers[userFieldValue.name].push(userValue.Key);
                             }
                         } else {

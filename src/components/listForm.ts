@@ -1,6 +1,6 @@
 import { SP } from "gd-sprest-def";
 import { Components } from "gd-bs";
-import { Helper, SPTypes, Types } from "gd-sprest";
+import { Helper, SPTypes, Types, Web } from "gd-sprest";
 import { IField } from "./types/field";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types/listForm";
 import { Field } from "./field";
@@ -280,6 +280,61 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     // Resolve the promise
                     resolve();
                 });
+            });
+        });
+    }
+
+    // Method to update the unknown user accounts
+    let updateUnknownUsers = (): PromiseLike<any> => {
+        // Return a promise
+        return new Promise((resolve, reject) => {
+            let web = Web();
+
+            // Get the values
+            let values = getValues();
+
+            // Parse the unknown users
+            for (let fieldName in values.unknownUsers) {
+                let users = values.unknownUsers[fieldName];
+
+                // Parse the users
+                for (let i = 0; i < users.length; i++) {
+                    // Ensure the user account exists
+                    web.ensureUser(users[i]).execute(true);
+                }
+            }
+
+            // Wait for the unknown users accounts to complete
+            web.done((...args) => {
+                let item = values.formValues;
+
+                // Parse the field names
+                for (let fieldName in values.unknownUsers) {
+                    // Parse the user accounts
+                    for (let i = 0; i < values.unknownUsers[fieldName].length; i++) {
+                        let userLogin = values.unknownUsers[fieldName][i];
+
+                        // Parse the responses
+                        for (let j = 0; j < args.length; j++) {
+                            let user = args[j] as Types.SP.IUserResult;
+
+                            // See if this is the user
+                            if (user.LoginName == userLogin) {
+                                // See if this is a multi-user value
+                                if (item[fieldName].results != null) {
+                                    // Set the user account
+                                    item[fieldName].push(user.Id);
+                                } else {
+                                    // Set the user account
+                                    item[fieldName] = user.Id;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Resolve the request
+                resolve(item);
             });
         });
     }
@@ -586,9 +641,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         save: () => {
             // Return a promise
             return new Promise((resolve, reject) => {
-                // Get the values
-                let item = getValues().formValues;
-
                 // Method to save the item
                 let saveItem = (item) => {
                     // Update the item
@@ -607,15 +659,18 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     }, reject);
                 }
 
-                // Execute the saving event
-                let returnVal = props.onSaving ? props.onSaving(item) : null;
-                if (returnVal && returnVal.then) {
-                    // Wait for the promise to complete
-                    returnVal.then(saveItem);
-                } else {
-                    // Save the item
-                    saveItem(item);
-                }
+                // Update the unknown user accounts
+                updateUnknownUsers().then(item => {
+                    // Execute the saving event
+                    let returnVal = props.onSaving ? props.onSaving(item) : null;
+                    if (returnVal && returnVal.then) {
+                        // Wait for the promise to complete
+                        returnVal.then(saveItem);
+                    } else {
+                        // Save the item
+                        saveItem(item);
+                    }
+                });
             });
         }
     }
