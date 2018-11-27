@@ -203,14 +203,6 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.Boolean:
             // Set the type
             controlProps.type = Components.FormControlTypes.Checkbox;
-
-            // Hide the label
-            (controlProps as Components.IFormControlPropsCheckbox).hideLabel = true;
-
-            // Set the type
-            (controlProps as Components.IFormControlPropsCheckbox).items = [
-                { isSelected: props.value ? true : false }
-            ];
             break;
 
         // Choice
@@ -688,15 +680,6 @@ export const Field = (props: IFieldProps): IField => {
 
             // Update the field name/value, based on the type
             switch (props.field.FieldTypeKind) {
-                // Boolean
-                case SPTypes.FieldType.Boolean:
-                    // See if there is a value
-                    let cbValue: Components.ICheckboxGroupItem = fieldValue.value;
-
-                    // Update the field value
-                    fieldValue.value = cbValue ? cbValue.isSelected : false;
-                    break;
-
                 // Choice
                 case SPTypes.FieldType.Choice:
                     // See if there is a value
