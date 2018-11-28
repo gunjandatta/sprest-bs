@@ -782,13 +782,15 @@ export const Field = (props: IFieldProps): IField => {
                 case SPTypes.FieldType.User:
                     let userFieldValue = fieldValue as IFieldValueUser;
 
+                    // Default the unknown users
+                    userFieldValue.unknownUsers = userFieldValue.unknownUsers || [];
+
                     // Append 'Id' to the field name
                     fieldValue.name += fieldValue.name.lastIndexOf("Id") == fieldValue.name.length - 2 ? "" : "Id";
 
                     // See if this is a multi-value field
                     if ((props.field as Types.SP.IFieldUser).AllowMultipleValues) {
                         let values: Array<Components.IDropdownItem> = userFieldValue.value || [];
-                        userFieldValue.unknownUsers = userFieldValue.unknownUsers || [];
                         userFieldValue.value = { results: [] };
 
                         // Parse the options

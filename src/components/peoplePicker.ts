@@ -13,23 +13,33 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     let addUser = (userInfo: Types.SP.IPeoplePickerUser | string) => {
         let user: Types.SP.IPeoplePickerUser = typeof (userInfo) === "string" ? JSON.parse(userInfo) : userInfo;
 
-        // Render a badge for this user
-        let badge = Components.Button({
-            badge: { content: "X" },
+        // Render a popover button
+        let btnUser = Components.Popover({
             el: elSelectedUsers,
-            text: user.DisplayText
-        }).el;
-
-        // Add a click event
-        badge.setAttribute("data-user", JSON.stringify(user));
-        badge.querySelector(".badge").addEventListener("click", ev => {
-            // Get the button
-            let elButton = (ev.currentTarget as HTMLElement).parentElement;
-            if (elButton) {
-                // Remove this element
-                elSelectedUsers.removeChild(elButton);
+            isDismissible: true,
+            type: Components.PopoverTypes.Bottom,
+            btnProps: {
+                className: "mr-1",
+                isSmall: true,
+                text: user.DisplayText
+            },
+            options: {
+                html: true,
+                content: Components.Button({
+                    data: user,
+                    isSmall: true,
+                    text: "Remove",
+                    type: Components.ButtonTypes.Danger,
+                    onClick: (btn) => {
+                        // Remove the button
+                        elSelectedUsers.removeChild(btnUser.el);
+                    }
+                }).el
             }
         });
+
+        // Set the data attribute
+        btnUser.el.setAttribute("data-user", JSON.stringify(user));
     }
 
     // Method to search for the users
