@@ -607,8 +607,12 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             let field = props.info.fields[fieldName];
             if (field.ReadOnlyField) { continue; }
 
+            // Get the form field
+            let formField = mapper[fieldName];
+            if (formField == null) { continue; }
+
             // Get the field value
-            let fieldValue = mapper[fieldName].getValue();
+            let fieldValue = formField.getValue();
 
             // Set the item value
             item[fieldValue.name] = fieldValue.value;
