@@ -638,8 +638,11 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 let field = props.info.fields[fieldName];
                 if (field.ReadOnlyField) { continue; }
 
+                // Get the form field
+                let formField = mapper[field.InternalName];
+
                 // Set the flag
-                isValid = isValid && mapper[field.InternalName].isValid();
+                isValid = isValid && (formField ? formField.isValid() : isValid);
             }
 
             // Return the flag
