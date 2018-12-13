@@ -67,9 +67,9 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
         };
 
         // Ensure the element id exists
-        if (props.elementId) {
+        if (props.element) {
             // Get the webpart elements
-            let elements = document.querySelectorAll("#" + props.elementId);
+            let elements = typeof (props.element) === "string" ? document.querySelectorAll("#" + props.element) : [props.element];
             for (let i = 0; i < elements.length; i++) {
                 let elWebPart = elements[i] as HTMLElement;
 
@@ -80,7 +80,7 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
                 let wpId = getWebPartId(elWebPart);
                 if (wpId) {
                     // See if the configuration element exists
-                    let elCfg: HTMLElement = props.cfgElementId ? elWebPart.parentElement.querySelector("#" + props.cfgElementId) : null as any;
+                    let elCfg: HTMLElement = typeof (props.cfgElement) === "string" ? elWebPart.parentElement.querySelector("#" + props.cfgElement) as any : props.cfgElement;
                     if (elCfg) {
                         try {
                             // Parse the configuration
@@ -122,7 +122,7 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
                             };
 
                             // Log
-                            console.log("[bs-webpart] Error parsing the configuration for element '" + props.cfgElementId + "'.");
+                            console.log("[bs-webpart] Error parsing the configuration for the webpart element.");
                         }
 
                         // Break from the loop
@@ -144,7 +144,7 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
             // Ensure elements were found
             if (elements.length == 0) {
                 // Log
-                console.log("[bs-webpart] Error - Unable to find elements with id '" + props.elementId + "'.")
+                console.log("[bs-webpart] Error - Unable to find the webpart element.")
             }
         } else {
             // Log
@@ -194,7 +194,7 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
         _wp = getWebPartInfo();
         if (_wp == null || _wp.el == null) {
             // Log
-            console.log("[bs-webpart] The target webpart element '" + props.elementId + "' was not found.");
+            console.log("[bs-webpart] The target webpart element was not found.");
             return;
         }
 
@@ -235,7 +235,7 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
             }
         } else {
             // See if the configuration is defined, but has no value
-            if (_wp.cfg || (props.cfgElementId || "").length == 0) {
+            if (_wp.cfg || props.cfgElement) {
                 // Execute the render edit event
                 returnVal = props.onRenderDisplay(_wp);
             } else {

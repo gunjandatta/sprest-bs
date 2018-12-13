@@ -380,10 +380,10 @@ declare module 'gd-sprest-bs/webparts/types/helper' {
                 * Method to save the webpart configuration.
                 * This method may execute a postback, based on the page type.
                 * @param wpId - The webpart id.
-                * @param cfgId: The configuration element id.
+                * @param cfg: The configuration element id.
                 * @param wpCfg - The webpart configuration.
                 */
-            saveConfiguration(wpId: string, cfgId?: string, wpCfg?: any): PromiseLike<void>;
+            saveConfiguration(wpId: string, cfg?: string | Element, wpCfg?: any): PromiseLike<void>;
     
             /**
                 * Method to update the configuration element
@@ -391,15 +391,15 @@ declare module 'gd-sprest-bs/webparts/types/helper' {
                 * @param elTarget - The target element.
                 * @param wpCfg - The webpart configuration.
                 */
-            updateConfigurationInElement(cfgId: string, elTarget: HTMLInputElement, wpCfg);
+            updateConfigurationInElement(cfg: HTMLElement, elTarget: HTMLInputElement, wpCfg);
     
             /**
                 * Method to update the webpart content elements
                 * @param wpId - The webpart id.
-                * @param cfgId: The configuration element id.
+                * @param cfg: The configuration element id.
                 * @param wpCfg - The webpart configuration.
                 */
-            updateWebPartContentElements(wpId: string, cfgId?: string, wpCfg?: any): boolean;
+            updateWebPartContentElements(wpId: string, cfg?: string | Element, wpCfg?: any): boolean;
     }
     
     /**
@@ -473,14 +473,14 @@ declare module 'gd-sprest-bs/webparts/types/wp' {
         * WebPart Properties
         */
     export interface IWebPartProps<IWPInfo = IWebPartInfo, IWPEditForm = IWebPartEditForm> {
-            /** The optional configuration element id */
-            cfgElementId?: string;
+            /** The optional configuration element */
+            cfgElement?: string | Element;
     
             /** The class name. */
             className?: string;
     
-            /** The target element id to render the webpart to */
-            elementId?: string;
+            /** The target element to render the webpart to */
+            element?: string | Element;
     
             /** The edit form */
             editForm?: IWPEditForm;

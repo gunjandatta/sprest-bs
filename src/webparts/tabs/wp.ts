@@ -235,7 +235,7 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
     // Return the webpart
     return WebPart({
         className: props.className,
-        elementId: props.elementId,
+        element: props.element,
         wpClassName: ["wp-tabs-main", props.wpClassName || ""].join(' ').trim(),
         onRenderDisplay: (wpInfo: IWebPartInfo) => {
             // Set the webparts

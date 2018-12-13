@@ -81,11 +81,11 @@ export const Helper: IHelper = {
     },
 
     // Method to save the webpart configuration
-    saveConfiguration: (wpId: string, cfgId?: string, wpCfg?: any): PromiseLike<void> => {
+    saveConfiguration: (wpId: string, cfg?: string | Element, wpCfg?: any): PromiseLike<void> => {
         // Return a promise
         return new Promise((resolve, reject) => {
             // Update the webpart content elements
-            if (Helper.updateWebPartContentElements(wpId, cfgId, wpCfg)) {
+            if (Helper.updateWebPartContentElements(wpId, cfg, wpCfg)) {
                 // Wiki page detected, resolve the promise and do nothing
                 resolve();
                 return;
@@ -101,8 +101,8 @@ export const Helper: IHelper = {
                     el.innerHTML = content;
 
                     // Get the configuration element and update it
-                    let cfg = el.querySelector("#" + cfgId) as HTMLDivElement;
-                    cfg ? cfg.innerText = JSON.stringify(wpCfg) : null;
+                    let elCfg = (typeof (cfg) === "string" ? el.querySelector("#" + cfg) : cfg) as HTMLDivElement;
+                    elCfg ? elCfg.innerText = JSON.stringify(wpCfg) : null;
 
                     // Update the webpart
                     wpInfo.Properties.set_item("Content", el.innerHTML);
@@ -141,13 +141,12 @@ export const Helper: IHelper = {
     },
 
     // Method to update the configuration element
-    updateConfigurationInElement: (cfgId: string, elTarget: HTMLInputElement, wpCfg) => {
+    updateConfigurationInElement: (cfg: HTMLElement, elTarget: HTMLInputElement, wpCfg) => {
         // Create an element so we can update the configuration
         let el = document.createElement("div");
         el.innerHTML = elTarget.value;
 
         // Get the configuration element and update it
-        let cfg = el.querySelector("#" + cfgId) as HTMLDivElement;
         cfg ? cfg.innerText = JSON.stringify(wpCfg) : null;
 
         // Update the value
@@ -155,7 +154,7 @@ export const Helper: IHelper = {
     },
 
     // Method to update the webpart content elements
-    updateWebPartContentElements: (wpId: string, cfgId?: string, wpCfg?: any): boolean => {
+    updateWebPartContentElements: (wpId: string, cfg?: string | HTMLElement, wpCfg?: any): boolean => {
         // Get the webpart element
         let elWebPart = document.querySelector("div[webpartid='" + wpId + "']");
         if (elWebPart) {
@@ -166,8 +165,8 @@ export const Helper: IHelper = {
             let wpId2 = elWebPart.getAttribute("webpartid2");
 
             // Update the configuration
-            var cfg = elWebPart.querySelector("#" + cfgId) as HTMLDivElement;
-            cfg ? cfg.innerText = JSON.stringify(wpCfg) : null;
+            var elCfg = (typeof (cfg) === "string" ? elWebPart.querySelector("#" + cfg) : cfg) as HTMLDivElement;
+            elCfg ? elCfg.innerText = JSON.stringify(wpCfg) : null;
 
             // Parse the hidden elements on the page
             let hiddenElements = document.querySelectorAll("input[type='hidden']");
@@ -185,7 +184,7 @@ export const Helper: IHelper = {
                         wpContent = elHidden;
 
                         // Update the configuration in the webpart content element
-                        Helper.updateConfigurationInElement(cfgId, wpContent, wpCfg);
+                        Helper.updateConfigurationInElement(elCfg, wpContent, wpCfg);
                     }
 
                     // Continue the loop
@@ -197,12 +196,12 @@ export const Helper: IHelper = {
                 el.innerHTML = elHidden.value;
 
                 // See if this is a hidden field element
-                if (el.querySelector("#" + cfgId)) {
+                if (el.querySelector("#" + (typeof (cfg) === "string" ? cfg : cfg.id))) {
                     // Set the webpart page content
                     wpPageContent = elHidden;
 
                     // Update the configuration in the webpart content element
-                    Helper.updateConfigurationInElement(cfgId, wpPageContent, wpCfg);
+                    Helper.updateConfigurationInElement(elCfg, wpPageContent, wpCfg);
 
                     // Continue the loop
                     continue;

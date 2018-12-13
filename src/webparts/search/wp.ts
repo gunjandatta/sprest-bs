@@ -13,10 +13,10 @@ export const WPSearch = (props: IWPSearchProps): IWPSearch => {
     // Create the webpart and return it
     let _wp: IWPSearch = WPList({
         camlQuery: props.camlQuery,
-        cfgElementId: props.cfgElementId,
+        cfgElement: props.cfgElement,
         className: props.className,
         editForm: WPSearchEditForm(props.editForm),
-        elementId: props.elementId,
+        element: props.element,
         helpProps: props.helpProps,
         odataQuery: props.odataQuery,
         wpClassName: props.wpClassName,

@@ -33,10 +33,10 @@ export interface IHelper {
      * Method to save the webpart configuration.
      * This method may execute a postback, based on the page type.
      * @param wpId - The webpart id.
-     * @param cfgId: The configuration element id.
+     * @param cfg: The configuration element id.
      * @param wpCfg - The webpart configuration.
      */
-    saveConfiguration(wpId: string, cfgId?: string, wpCfg?: any): PromiseLike<void>;
+    saveConfiguration(wpId: string, cfg?: string | Element, wpCfg?: any): PromiseLike<void>;
 
     /**
      * Method to update the configuration element
@@ -44,15 +44,15 @@ export interface IHelper {
      * @param elTarget - The target element.
      * @param wpCfg - The webpart configuration.
      */
-    updateConfigurationInElement(cfgId: string, elTarget: HTMLInputElement, wpCfg);
+    updateConfigurationInElement(cfg: HTMLElement, elTarget: HTMLInputElement, wpCfg);
 
     /**
      * Method to update the webpart content elements
      * @param wpId - The webpart id.
-     * @param cfgId: The configuration element id.
+     * @param cfg: The configuration element id.
      * @param wpCfg - The webpart configuration.
      */
-    updateWebPartContentElements(wpId: string, cfgId?: string, wpCfg?: any): boolean;
+    updateWebPartContentElements(wpId: string, cfg?: string | Element, wpCfg?: any): boolean;
 }
 
 /**

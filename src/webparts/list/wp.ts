@@ -69,10 +69,10 @@ export const WPList = (props: IWPListProps): IWPList => {
 
     // Create the webpart and return it
     return WebPart({
-        cfgElementId: props.cfgElementId,
+        cfgElement: props.cfgElement,
         className: props.className,
         editForm: WPListEditForm(props.editForm),
-        elementId: props.elementId,
+        element: props.element,
         wpClassName: props.wpClassName,
         onRenderDisplay: (wpInfo: IWPListInfo) => {
             // Save the information

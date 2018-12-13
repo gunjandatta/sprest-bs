@@ -49,7 +49,7 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
         // Render the modal
         let modal = Components.Modal({
             el: wp.el.children[1],
-            id: (wp.cfg.WebPartId || props.elementId) + "_modal",
+            id: (wp.cfg.WebPartId || "") + "_modal",
             isCentered: true,
             isLarge: true,
             title: "Configuration Panel",
@@ -106,7 +106,7 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
                             cfg = cfg ? cfg : wp.cfg;
 
                             // Save the configuration
-                            Helper.saveConfiguration(wp.wpId, props.cfgElementId, cfg).then(() => {
+                            Helper.saveConfiguration(wp.wpId, props.cfgElement, cfg).then(() => {
                                 // Close the modal
                                 modal.toggle();
                             });
