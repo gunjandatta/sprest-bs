@@ -4,10 +4,13 @@ export class WPTaxonomy {
         if (this.el.hasAttribute("data-init")) {
             return;
         }
+        let elTarget = document.createElement("div");
+        let elCfg = document.createElement("div");
+        elCfg.style.display = "none";
         let props = getProps(this.el, {
-            cfgElementId: this.cfgElementId,
+            cfgElement: elCfg,
             className: this.className,
-            el: this.el,
+            element: elTarget,
             wpClassName: this.wpClassName
         });
         this.el.removeAttribute("id");
@@ -16,20 +19,12 @@ export class WPTaxonomy {
     }
     static get is() { return "bs-webpart-taxonomy"; }
     static get properties() { return {
-        "cfgElementId": {
-            "type": String,
-            "attr": "cfg-element-id"
-        },
         "className": {
             "type": String,
             "attr": "class-name"
         },
         "el": {
             "elementRef": true
-        },
-        "elementId": {
-            "type": String,
-            "attr": "element-id"
         },
         "wpClassName": {
             "type": String,

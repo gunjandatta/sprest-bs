@@ -9,9 +9,7 @@ export class WebPart {
     @Element() private el: HTMLElement;
 
     // WebPart Properties
-    @Prop() cfgElementId: string;
     @Prop() className: string;
-    @Prop() elementId: string;
     @Prop() wpClassName: string;
 
     // Render the webpart
@@ -20,11 +18,18 @@ export class WebPart {
         // This seems to be an issue w/ IE & Edge
         if (this.el.hasAttribute("data-init")) { return; }
 
+        // Create the target element
+        let elTarget = document.createElement("div");
+
+        // Create the configuration element
+        let elCfg = document.createElement("div");
+        elCfg.style.display = "none";
+
         // Get the properties
         let props = getProps(this.el, {
-            cfgElementId: this.cfgElementId,
+            cfgElement: elCfg,
             className: this.className,
-            el: this.el,
+            element: elTarget,
             wpClassName: this.wpClassName
         });
 

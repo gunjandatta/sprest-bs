@@ -22,11 +22,11 @@ import { a as ProgressGroup } from './chunk-d5af3535.js';
 import { a as Table } from './chunk-026e962a.js';
 import { a as Tooltip } from './chunk-93112453.js';
 import { a as Toolbar } from './chunk-515f449d.js';
-import { a as WebPart } from './chunk-4071c197.js';
-import { a as WPList } from './chunk-17a461b5.js';
-import { a as WPSearch } from './chunk-15816cce.js';
-import { a as WPTabs } from './chunk-0cbaf986.js';
-import { a as WPTaxonomy } from './chunk-cdeb80a6.js';
+import { a as WebPart } from './chunk-b05eee59.js';
+import { a as WPList } from './chunk-043c9632.js';
+import { a as WPSearch } from './chunk-34ff2d7e.js';
+import { a as WPTabs } from './chunk-c2dff3e7.js';
+import { a as WPTaxonomy } from './chunk-bedac4db.js';
 
 
 

@@ -10,9 +10,7 @@ export class WPSearch {
 
     // WebPart Properties
     @Prop() camlQuery: string;
-    @Prop() cfgElementId: string;
     @Prop() className: string;
-    @Prop() elementId: string;
     @Prop() wpClassName: string;
 
     // Render the search webpart
@@ -21,12 +19,19 @@ export class WPSearch {
         // This seems to be an issue w/ IE & Edge
         if (this.el.hasAttribute("data-init")) { return; }
 
+        // Create the target element
+        let elTarget = document.createElement("div");
+
+        // Create the configuration element
+        let elCfg = document.createElement("div");
+        elCfg.style.display = "none";
+
         // Get the properties
         let props = getProps(this.el, {
             camlQuery: this.camlQuery,
-            cfgElementId: this.cfgElementId,
+            cfgElement: elCfg,
             className: this.className,
-            el: this.el,
+            element: elTarget,
             wpClassName: this.wpClassName
         });
 

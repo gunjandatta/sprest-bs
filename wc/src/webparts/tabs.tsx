@@ -9,9 +9,7 @@ export class WPTabs {
     @Element() private el: HTMLElement;
 
     // WebPart Properties
-    @Prop() cfgElementId: string;
     @Prop() className: string;
-    @Prop() elementId: string;
     @Prop() type: number;
     @Prop() wpClassName: string;
 
@@ -21,11 +19,18 @@ export class WPTabs {
         // This seems to be an issue w/ IE & Edge
         if (this.el.hasAttribute("data-init")) { return; }
 
+        // Create the target element
+        let elTarget = document.createElement("div");
+
+        // Create the configuration element
+        let elCfg = document.createElement("div");
+        elCfg.style.display = "none";
+
         // Get the properties
         let props = getProps(this.el, {
-            cfgElementId: this.cfgElementId,
+            cfgElement: elCfg,
             className: this.className,
-            el: this.el,
+            element: elTarget,
             type: this.type,
             wpClassName: this.wpClassName
         });

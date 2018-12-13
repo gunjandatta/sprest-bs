@@ -1042,19 +1042,9 @@
       "styles": {},
       "props": [
         {
-          "name": "cfgElementId",
-          "type": "String",
-          "attr": "cfg-element-id"
-        },
-        {
           "name": "className",
           "type": "String",
           "attr": "class-name"
-        },
-        {
-          "name": "elementId",
-          "type": "String",
-          "attr": "element-id"
         },
         {
           "name": "wpClassName",
@@ -1079,19 +1069,9 @@
           "attr": "caml-query"
         },
         {
-          "name": "cfgElementId",
-          "type": "String",
-          "attr": "cfg-element-id"
-        },
-        {
           "name": "className",
           "type": "String",
           "attr": "class-name"
-        },
-        {
-          "name": "elementId",
-          "type": "String",
-          "attr": "element-id"
         },
         {
           "name": "wpClassName",
@@ -1116,19 +1096,9 @@
           "attr": "caml-query"
         },
         {
-          "name": "cfgElementId",
-          "type": "String",
-          "attr": "cfg-element-id"
-        },
-        {
           "name": "className",
           "type": "String",
           "attr": "class-name"
-        },
-        {
-          "name": "elementId",
-          "type": "String",
-          "attr": "element-id"
         },
         {
           "name": "wpClassName",
@@ -1148,19 +1118,9 @@
       "styles": {},
       "props": [
         {
-          "name": "cfgElementId",
-          "type": "String",
-          "attr": "cfg-element-id"
-        },
-        {
           "name": "className",
           "type": "String",
           "attr": "class-name"
-        },
-        {
-          "name": "elementId",
-          "type": "String",
-          "attr": "element-id"
         },
         {
           "name": "type",
@@ -1185,19 +1145,9 @@
       "styles": {},
       "props": [
         {
-          "name": "cfgElementId",
-          "type": "String",
-          "attr": "cfg-element-id"
-        },
-        {
           "name": "className",
           "type": "String",
           "attr": "class-name"
-        },
-        {
-          "name": "elementId",
-          "type": "String",
-          "attr": "element-id"
         },
         {
           "name": "wpClassName",
