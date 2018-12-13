@@ -29,7 +29,12 @@ import {
   ProgressGroup,
   Table,
   Toolbar,
-  Tooltip
+  Tooltip,
+  WPList,
+  WPSearch,
+  WPTabs,
+  WPTaxonomy,
+  WebPart
 } from './gd-sprest-bs.components.js';
 
 export function defineCustomElements(win, opts) {
@@ -60,6 +65,11 @@ export function defineCustomElements(win, opts) {
     ProgressGroup,
     Table,
     Toolbar,
-    Tooltip
+    Tooltip,
+    WPList,
+    WPSearch,
+    WPTabs,
+    WPTaxonomy,
+    WebPart
   ], opts);
 }

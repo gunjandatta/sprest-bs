@@ -1033,6 +1033,181 @@
       "hostElement": {
         "name": "el"
       }
+    },
+    {
+      "tag": "bs-webpart",
+      "dependencies": [],
+      "componentClass": "WebPart",
+      "componentPath": "webparts/wp.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "cfgElementId",
+          "type": "String",
+          "attr": "cfg-element-id"
+        },
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "elementId",
+          "type": "String",
+          "attr": "element-id"
+        },
+        {
+          "name": "wpClassName",
+          "type": "String",
+          "attr": "wp-class-name"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
+      "tag": "bs-webpart-list",
+      "dependencies": [],
+      "componentClass": "WPList",
+      "componentPath": "webparts/list.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "camlQuery",
+          "type": "String",
+          "attr": "caml-query"
+        },
+        {
+          "name": "cfgElementId",
+          "type": "String",
+          "attr": "cfg-element-id"
+        },
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "elementId",
+          "type": "String",
+          "attr": "element-id"
+        },
+        {
+          "name": "wpClassName",
+          "type": "String",
+          "attr": "wp-class-name"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
+      "tag": "bs-webpart-search",
+      "dependencies": [],
+      "componentClass": "WPSearch",
+      "componentPath": "webparts/search.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "camlQuery",
+          "type": "String",
+          "attr": "caml-query"
+        },
+        {
+          "name": "cfgElementId",
+          "type": "String",
+          "attr": "cfg-element-id"
+        },
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "elementId",
+          "type": "String",
+          "attr": "element-id"
+        },
+        {
+          "name": "wpClassName",
+          "type": "String",
+          "attr": "wp-class-name"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
+      "tag": "bs-webpart-tabs",
+      "dependencies": [],
+      "componentClass": "WPTabs",
+      "componentPath": "webparts/tabs.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "cfgElementId",
+          "type": "String",
+          "attr": "cfg-element-id"
+        },
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "elementId",
+          "type": "String",
+          "attr": "element-id"
+        },
+        {
+          "name": "type",
+          "type": "Number",
+          "attr": "type"
+        },
+        {
+          "name": "wpClassName",
+          "type": "String",
+          "attr": "wp-class-name"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
+      "tag": "bs-webpart-taxonomy",
+      "dependencies": [],
+      "componentClass": "WPTaxonomy",
+      "componentPath": "webparts/taxonomy.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "cfgElementId",
+          "type": "String",
+          "attr": "cfg-element-id"
+        },
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "elementId",
+          "type": "String",
+          "attr": "element-id"
+        },
+        {
+          "name": "wpClassName",
+          "type": "String",
+          "attr": "wp-class-name"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
     }
   ],
   "collections": [],

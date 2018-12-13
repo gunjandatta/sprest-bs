@@ -1,2 +1,3 @@
 import * as Components from "./components";
-export { Components };
+import * as WebParts from "./webparts";
+export { Components, WebParts };

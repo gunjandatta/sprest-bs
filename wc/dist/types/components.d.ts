@@ -430,6 +430,77 @@ export namespace Components {
     'className'?: string;
     'spacing'?: number;
   }
+
+  interface BsWebpartList {
+    'camlQuery': string;
+    'cfgElementId': string;
+    'className': string;
+    'elementId': string;
+    'wpClassName': string;
+  }
+  interface BsWebpartListAttributes extends StencilHTMLAttributes {
+    'camlQuery'?: string;
+    'cfgElementId'?: string;
+    'className'?: string;
+    'elementId'?: string;
+    'wpClassName'?: string;
+  }
+
+  interface BsWebpartSearch {
+    'camlQuery': string;
+    'cfgElementId': string;
+    'className': string;
+    'elementId': string;
+    'wpClassName': string;
+  }
+  interface BsWebpartSearchAttributes extends StencilHTMLAttributes {
+    'camlQuery'?: string;
+    'cfgElementId'?: string;
+    'className'?: string;
+    'elementId'?: string;
+    'wpClassName'?: string;
+  }
+
+  interface BsWebpartTabs {
+    'cfgElementId': string;
+    'className': string;
+    'elementId': string;
+    'type': number;
+    'wpClassName': string;
+  }
+  interface BsWebpartTabsAttributes extends StencilHTMLAttributes {
+    'cfgElementId'?: string;
+    'className'?: string;
+    'elementId'?: string;
+    'type'?: number;
+    'wpClassName'?: string;
+  }
+
+  interface BsWebpartTaxonomy {
+    'cfgElementId': string;
+    'className': string;
+    'elementId': string;
+    'wpClassName': string;
+  }
+  interface BsWebpartTaxonomyAttributes extends StencilHTMLAttributes {
+    'cfgElementId'?: string;
+    'className'?: string;
+    'elementId'?: string;
+    'wpClassName'?: string;
+  }
+
+  interface BsWebpart {
+    'cfgElementId': string;
+    'className': string;
+    'elementId': string;
+    'wpClassName': string;
+  }
+  interface BsWebpartAttributes extends StencilHTMLAttributes {
+    'cfgElementId'?: string;
+    'className'?: string;
+    'elementId'?: string;
+    'wpClassName'?: string;
+  }
 }
 
 declare global {
@@ -461,6 +532,11 @@ declare global {
     'BsTable': Components.BsTable;
     'BsTooltip': Components.BsTooltip;
     'BsToolbar': Components.BsToolbar;
+    'BsWebpartList': Components.BsWebpartList;
+    'BsWebpartSearch': Components.BsWebpartSearch;
+    'BsWebpartTabs': Components.BsWebpartTabs;
+    'BsWebpartTaxonomy': Components.BsWebpartTaxonomy;
+    'BsWebpart': Components.BsWebpart;
   }
 
   interface StencilIntrinsicElements {
@@ -491,6 +567,11 @@ declare global {
     'bs-table': Components.BsTableAttributes;
     'bs-tooltip': Components.BsTooltipAttributes;
     'bs-toolbar': Components.BsToolbarAttributes;
+    'bs-webpart-list': Components.BsWebpartListAttributes;
+    'bs-webpart-search': Components.BsWebpartSearchAttributes;
+    'bs-webpart-tabs': Components.BsWebpartTabsAttributes;
+    'bs-webpart-taxonomy': Components.BsWebpartTaxonomyAttributes;
+    'bs-webpart': Components.BsWebpartAttributes;
   }
 
 
@@ -656,6 +737,36 @@ declare global {
     new (): HTMLBsToolbarElement;
   };
 
+  interface HTMLBsWebpartListElement extends Components.BsWebpartList, HTMLStencilElement {}
+  var HTMLBsWebpartListElement: {
+    prototype: HTMLBsWebpartListElement;
+    new (): HTMLBsWebpartListElement;
+  };
+
+  interface HTMLBsWebpartSearchElement extends Components.BsWebpartSearch, HTMLStencilElement {}
+  var HTMLBsWebpartSearchElement: {
+    prototype: HTMLBsWebpartSearchElement;
+    new (): HTMLBsWebpartSearchElement;
+  };
+
+  interface HTMLBsWebpartTabsElement extends Components.BsWebpartTabs, HTMLStencilElement {}
+  var HTMLBsWebpartTabsElement: {
+    prototype: HTMLBsWebpartTabsElement;
+    new (): HTMLBsWebpartTabsElement;
+  };
+
+  interface HTMLBsWebpartTaxonomyElement extends Components.BsWebpartTaxonomy, HTMLStencilElement {}
+  var HTMLBsWebpartTaxonomyElement: {
+    prototype: HTMLBsWebpartTaxonomyElement;
+    new (): HTMLBsWebpartTaxonomyElement;
+  };
+
+  interface HTMLBsWebpartElement extends Components.BsWebpart, HTMLStencilElement {}
+  var HTMLBsWebpartElement: {
+    prototype: HTMLBsWebpartElement;
+    new (): HTMLBsWebpartElement;
+  };
+
   interface HTMLElementTagNameMap {
     'bs-accordion': HTMLBsAccordionElement
     'bs-alert': HTMLBsAlertElement
@@ -684,6 +795,11 @@ declare global {
     'bs-table': HTMLBsTableElement
     'bs-tooltip': HTMLBsTooltipElement
     'bs-toolbar': HTMLBsToolbarElement
+    'bs-webpart-list': HTMLBsWebpartListElement
+    'bs-webpart-search': HTMLBsWebpartSearchElement
+    'bs-webpart-tabs': HTMLBsWebpartTabsElement
+    'bs-webpart-taxonomy': HTMLBsWebpartTaxonomyElement
+    'bs-webpart': HTMLBsWebpartElement
   }
 
   interface ElementTagNameMap {
@@ -714,6 +830,11 @@ declare global {
     'bs-table': HTMLBsTableElement;
     'bs-tooltip': HTMLBsTooltipElement;
     'bs-toolbar': HTMLBsToolbarElement;
+    'bs-webpart-list': HTMLBsWebpartListElement;
+    'bs-webpart-search': HTMLBsWebpartSearchElement;
+    'bs-webpart-tabs': HTMLBsWebpartTabsElement;
+    'bs-webpart-taxonomy': HTMLBsWebpartTaxonomyElement;
+    'bs-webpart': HTMLBsWebpartElement;
   }
 
 
