@@ -1,21 +1,19 @@
 import { getProps } from "../common";
+import { generateElement } from "./helper";
 export class WPSearch {
     render() {
         if (this.el.hasAttribute("data-init")) {
             return;
         }
-        let elTarget = document.createElement("div");
-        let elCfg = document.createElement("div");
-        elCfg.style.display = "none";
+        generateElement(this.el, this.elementId);
+        generateElement(this.el, this.cfgElementId, true);
         let props = getProps(this.el, {
             camlQuery: this.camlQuery,
-            cfgElement: elCfg,
+            cfgElementId: this.cfgElementId,
             className: this.className,
-            element: elTarget,
+            element: this.elementId,
             wpClassName: this.wpClassName
         });
-        this.el.appendChild(elTarget);
-        this.el.appendChild(elCfg);
         this.el.removeAttribute("id");
         $REST.WebParts.WPSearch(props);
         this.el.setAttribute("data-init", "true");
@@ -26,12 +24,20 @@ export class WPSearch {
             "type": String,
             "attr": "caml-query"
         },
+        "cfgElementId": {
+            "type": String,
+            "attr": "cfg-element-id"
+        },
         "className": {
             "type": String,
             "attr": "class-name"
         },
         "el": {
             "elementRef": true
+        },
+        "elementId": {
+            "type": String,
+            "attr": "element-id"
         },
         "wpClassName": {
             "type": String,

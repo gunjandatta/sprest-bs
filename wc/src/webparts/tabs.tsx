@@ -1,5 +1,6 @@
 import { Component, Element, Prop } from "@stencil/core";
 import { getProps } from "../common";
+import { generateElement } from "./helper";
 declare var $REST;
 
 @Component({
@@ -9,7 +10,9 @@ export class WPTabs {
     @Element() private el: HTMLElement;
 
     // WebPart Properties
+    @Prop() cfgElementId: string;
     @Prop() className: string;
+    @Prop() elementId: string;
     @Prop() type: number;
     @Prop() wpClassName: string;
 
@@ -19,25 +22,18 @@ export class WPTabs {
         // This seems to be an issue w/ IE & Edge
         if (this.el.hasAttribute("data-init")) { return; }
 
-        // Create the target element
-        let elTarget = document.createElement("div");
-
-        // Create the configuration element
-        let elCfg = document.createElement("div");
-        elCfg.style.display = "none";
+        // Generate the webpart elements
+        generateElement(this.el, this.elementId);
+        generateElement(this.el, this.cfgElementId, true);
 
         // Get the properties
         let props = getProps(this.el, {
-            cfgElement: elCfg,
+            cfgElementId: this.cfgElementId,
             className: this.className,
-            element: elTarget,
+            element: this.elementId,
             type: this.type,
             wpClassName: this.wpClassName
         });
-
-        // Append the elements
-        this.el.appendChild(elTarget);
-        this.el.appendChild(elCfg);
 
         // Remove the id attribute
         this.el.removeAttribute("id");

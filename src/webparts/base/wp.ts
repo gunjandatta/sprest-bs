@@ -67,9 +67,9 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
         };
 
         // Ensure the element id exists
-        if (props.element) {
+        if (props.elementId) {
             // Get the webpart elements
-            let elements = typeof (props.element) === "string" ? document.querySelectorAll("#" + props.element) : [props.element];
+            let elements = document.querySelectorAll("#" + props.elementId);
             for (let i = 0; i < elements.length; i++) {
                 let elWebPart = elements[i] as HTMLElement;
 
@@ -80,7 +80,7 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
                 let wpId = getWebPartId(elWebPart);
                 if (wpId) {
                     // See if the configuration element exists
-                    let elCfg: HTMLElement = typeof (props.cfgElement) === "string" ? elWebPart.parentElement.querySelector("#" + props.cfgElement) as any : props.cfgElement;
+                    let elCfg = elWebPart.parentElement.querySelector("#" + props.cfgElementId) as HTMLElement;
                     if (elCfg) {
                         try {
                             // Parse the configuration
@@ -188,8 +188,6 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
      * Method to render the webpart
      */
     let render = () => {
-        let element = null;
-
         // Get the webpart information
         _wp = getWebPartInfo();
         if (_wp == null || _wp.el == null) {
@@ -235,7 +233,7 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
             }
         } else {
             // See if the configuration is defined, but has no value
-            if (_wp.cfg || props.cfgElement) {
+            if (_wp.cfg || (props.cfgElementId || "").length == 0) {
                 // Execute the render edit event
                 returnVal = props.onRenderDisplay(_wp);
             } else {

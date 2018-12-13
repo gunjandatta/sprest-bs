@@ -106,7 +106,7 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
                             cfg = cfg ? cfg : wp.cfg;
 
                             // Save the configuration
-                            Helper.saveConfiguration(wp.wpId, props.cfgElement, cfg).then(() => {
+                            Helper.saveConfiguration(wp.wpId, props.cfgElementId, cfg).then(() => {
                                 // Close the modal
                                 modal.toggle();
                             });

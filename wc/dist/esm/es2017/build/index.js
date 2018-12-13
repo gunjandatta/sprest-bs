@@ -22,11 +22,12 @@ import { a as ProgressGroup } from './chunk-d5af3535.js';
 import { a as Table } from './chunk-026e962a.js';
 import { a as Tooltip } from './chunk-93112453.js';
 import { a as Toolbar } from './chunk-515f449d.js';
-import { a as WebPart } from './chunk-56a64eb2.js';
-import { a as WPList } from './chunk-88531c92.js';
-import { a as WPSearch } from './chunk-fa0c91ac.js';
-import { a as WPTabs } from './chunk-09631d92.js';
-import { a as WPTaxonomy } from './chunk-3bb97e40.js';
+import { a as generateElement } from './chunk-7bca89a2.js';
+import { a as WebPart } from './chunk-8ed3bd05.js';
+import { a as WPList } from './chunk-589521e0.js';
+import { a as WPSearch } from './chunk-4e1e6fab.js';
+import { a as WPTabs } from './chunk-1cd0ff84.js';
+import { a as WPTaxonomy } from './chunk-939d2c3f.js';
 
 
 
@@ -61,6 +62,7 @@ var index = /*#__PURE__*/Object.freeze({
 
 
 var index$1 = /*#__PURE__*/Object.freeze({
+	generateElement: generateElement,
 	WebPart: WebPart,
 	WPList: WPList,
 	WPSearch: WPSearch,

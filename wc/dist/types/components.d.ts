@@ -433,52 +433,72 @@ export namespace Components {
 
   interface BsWebpartList {
     'camlQuery': string;
+    'cfgElementId': string;
     'className': string;
+    'elementId': string;
     'wpClassName': string;
   }
   interface BsWebpartListAttributes extends StencilHTMLAttributes {
     'camlQuery'?: string;
+    'cfgElementId'?: string;
     'className'?: string;
+    'elementId'?: string;
     'wpClassName'?: string;
   }
 
   interface BsWebpartSearch {
     'camlQuery': string;
+    'cfgElementId': string;
     'className': string;
+    'elementId': string;
     'wpClassName': string;
   }
   interface BsWebpartSearchAttributes extends StencilHTMLAttributes {
     'camlQuery'?: string;
+    'cfgElementId'?: string;
     'className'?: string;
+    'elementId'?: string;
     'wpClassName'?: string;
   }
 
   interface BsWebpartTabs {
+    'cfgElementId': string;
     'className': string;
+    'elementId': string;
     'type': number;
     'wpClassName': string;
   }
   interface BsWebpartTabsAttributes extends StencilHTMLAttributes {
+    'cfgElementId'?: string;
     'className'?: string;
+    'elementId'?: string;
     'type'?: number;
     'wpClassName'?: string;
   }
 
   interface BsWebpartTaxonomy {
+    'cfgElementId': string;
     'className': string;
+    'elementId': string;
     'wpClassName': string;
   }
   interface BsWebpartTaxonomyAttributes extends StencilHTMLAttributes {
+    'cfgElementId'?: string;
     'className'?: string;
+    'elementId'?: string;
     'wpClassName'?: string;
   }
 
   interface BsWebpart {
+    'cfgElementId': string;
     'className': string;
+    'elementId': string;
     'wpClassName': string;
   }
   interface BsWebpartAttributes extends StencilHTMLAttributes {
+    'cfgElementId'?: string;
     'className'?: string;
+    'elementId'?: string;
     'wpClassName'?: string;
   }
 }

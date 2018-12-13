@@ -58,13 +58,13 @@ export interface IWebPartObject {
  */
 export interface IWebPartProps<IWPInfo = IWebPartInfo, IWPEditForm = IWebPartEditForm> {
     /** The optional configuration element */
-    cfgElement?: string | Element;
+    cfgElementId?: string;
 
     /** The class name. */
     className?: string;
 
-    /** The target element to render the webpart to */
-    element?: string | Element;
+    /** The target element id to render the webpart to */
+    elementId?: string;
 
     /** The edit form */
     editForm?: IWPEditForm;

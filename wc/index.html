@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <title>SharePoint Web Components</title>
+    <script src="./dist/gd-sprest-bs.js"></script>
+</head>
+
+<body>
+    <bs-webpart>
+        // Return the configuration
+        return {
+            onRenderDisplay: function(wpInfo) {
+                wpInfo.el.innerHTML = "<h3>Hello World</h3>";
+            },
+            onRenderEdit: function(wpInfo) {
+                wpInfo.el.innerHTML = "<h3>Hello Edit Page</h3>";
+            }
+        };
+    </bs-webpart>
+</body>
+</html>

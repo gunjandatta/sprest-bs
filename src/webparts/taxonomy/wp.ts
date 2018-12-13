@@ -9,10 +9,10 @@ import { WPTaxonomyEditForm } from "./wpCfg";
 export const WPTaxonomy = (props: IWPTaxonomyProps) => {
     // Create an instance of the webpart
     WebPart({
-        cfgElement: props.cfgElement,
+        cfgElementId: props.cfgElementId,
         className: props.className,
         editForm: WPTaxonomyEditForm(props.editForm || {}),
-        element: props.element,
+        elementId: props.elementId,
         helpProps: props.helpProps,
         onPostRender: props.onPostRender,
         onRenderEdit: props.onRenderEdit,
