@@ -5,8 +5,6 @@ export class WebPart {
         if (this.el.hasAttribute("data-init")) {
             return;
         }
-        generateElement(this.el, this.elementId);
-        generateElement(this.el, this.cfgElementId, true);
         let props = getProps(this.el, {
             cfgElementId: this.cfgElementId,
             className: this.className,
@@ -14,6 +12,8 @@ export class WebPart {
             wpClassName: this.wpClassName
         });
         this.el.removeAttribute("id");
+        generateElement(this.el, props.elementId);
+        generateElement(this.el, props.cfgElementId, true);
         $REST.WebParts.WebPart(props);
         this.el.setAttribute("data-init", "true");
     }

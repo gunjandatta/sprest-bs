@@ -5,8 +5,6 @@ export class WPSearch {
         if (this.el.hasAttribute("data-init")) {
             return;
         }
-        generateElement(this.el, this.elementId);
-        generateElement(this.el, this.cfgElementId, true);
         let props = getProps(this.el, {
             camlQuery: this.camlQuery,
             cfgElementId: this.cfgElementId,
@@ -15,6 +13,8 @@ export class WPSearch {
             wpClassName: this.wpClassName
         });
         this.el.removeAttribute("id");
+        generateElement(this.el, props.elementId);
+        generateElement(this.el, props.cfgElementId, true);
         $REST.WebParts.WPSearch(props);
         this.el.setAttribute("data-init", "true");
     }

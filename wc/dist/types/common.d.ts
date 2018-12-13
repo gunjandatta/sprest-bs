@@ -1,1 +1,1 @@
-export declare const getProps: (el: HTMLElement, elProps?: any) => {};
+export declare const getProps: (el: HTMLElement, elProps?: any) => any;

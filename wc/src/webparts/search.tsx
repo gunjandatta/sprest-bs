@@ -22,10 +22,6 @@ export class WPSearch {
         // This seems to be an issue w/ IE & Edge
         if (this.el.hasAttribute("data-init")) { return; }
 
-        // Generate the webpart elements
-        generateElement(this.el, this.elementId);
-        generateElement(this.el, this.cfgElementId, true);
-
         // Get the properties
         let props = getProps(this.el, {
             camlQuery: this.camlQuery,
@@ -37,6 +33,10 @@ export class WPSearch {
 
         // Remove the id attribute
         this.el.removeAttribute("id");
+
+        // Generate the webpart elements
+        generateElement(this.el, props.elementId);
+        generateElement(this.el, props.cfgElementId, true);
 
         // Render the search webpart
         $REST.WebParts.WPSearch(props);
