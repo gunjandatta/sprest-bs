@@ -13,6 +13,8 @@ export class WPTaxonomy {
             element: elTarget,
             wpClassName: this.wpClassName
         });
+        this.el.appendChild(elTarget);
+        this.el.appendChild(elCfg);
         this.el.removeAttribute("id");
         $REST.WebParts.WPTaxonomy(props);
         this.el.setAttribute("data-init", "true");

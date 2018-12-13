@@ -35,6 +35,10 @@ export class WPList {
             wpClassName: this.wpClassName
         });
 
+        // Append the elements
+        this.el.appendChild(elTarget);
+        this.el.appendChild(elCfg);
+
         // Remove the id attribute
         this.el.removeAttribute("id");
 

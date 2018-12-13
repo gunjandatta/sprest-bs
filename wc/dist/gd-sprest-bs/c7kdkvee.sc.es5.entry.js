@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("c7kdkvee",["exports","./chunk-33d985f8.js","./chunk-9a04bf15.js"],function(e,d,s){window,e.BsWebpartTabs=d.WPTabs,Object.defineProperty(e,"__esModule",{value:!0})});

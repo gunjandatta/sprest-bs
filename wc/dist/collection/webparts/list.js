@@ -14,6 +14,8 @@ export class WPList {
             element: elTarget,
             wpClassName: this.wpClassName
         });
+        this.el.appendChild(elTarget);
+        this.el.appendChild(elCfg);
         this.el.removeAttribute("id");
         $REST.WebParts.WPList(props);
         this.el.setAttribute("data-init", "true");

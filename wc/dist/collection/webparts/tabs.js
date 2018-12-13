@@ -14,6 +14,8 @@ export class WPTabs {
             type: this.type,
             wpClassName: this.wpClassName
         });
+        this.el.appendChild(elTarget);
+        this.el.appendChild(elCfg);
         this.el.removeAttribute("id");
         $REST.WebParts.WPTabs(props);
         this.el.setAttribute("data-init", "true");

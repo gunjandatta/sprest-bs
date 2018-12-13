@@ -14,6 +14,8 @@ export class WPSearch {
             element: elTarget,
             wpClassName: this.wpClassName
         });
+        this.el.appendChild(elTarget);
+        this.el.appendChild(elCfg);
         this.el.removeAttribute("id");
         $REST.WebParts.WPSearch(props);
         this.el.setAttribute("data-init", "true");
