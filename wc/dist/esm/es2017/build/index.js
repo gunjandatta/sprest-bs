@@ -23,11 +23,11 @@ import { a as Table } from './chunk-026e962a.js';
 import { a as Tooltip } from './chunk-93112453.js';
 import { a as Toolbar } from './chunk-515f449d.js';
 import { a as generateElement } from './chunk-7bca89a2.js';
-import { a as WebPart } from './chunk-e79c3d93.js';
-import { a as WPList } from './chunk-ebe33d16.js';
-import { a as WPSearch } from './chunk-15e602d2.js';
-import { a as WPTabs } from './chunk-0b02e1d6.js';
-import { a as WPTaxonomy } from './chunk-216561c0.js';
+import { a as WebPart } from './chunk-4e53d2d9.js';
+import { a as WPList } from './chunk-969fe489.js';
+import { a as WPSearch } from './chunk-857ac748.js';
+import { a as WPTabs } from './chunk-de2fb355.js';
+import { a as WPTaxonomy } from './chunk-bcf52d73.js';
 
 
 

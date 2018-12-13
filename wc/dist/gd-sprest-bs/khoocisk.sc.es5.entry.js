@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdSprestBs.loadBundle("khoocisk",["exports","./chunk-6d3f7843.js","./chunk-9a04bf15.js","./chunk-8bf51b04.js"],function(e,s,d,n){window,e.BsWebpartList=s.WPList,Object.defineProperty(e,"__esModule",{value:!0})});

@@ -9,7 +9,7 @@ export class WPList {
             camlQuery: this.camlQuery,
             cfgElementId: this.cfgElementId,
             className: this.className,
-            element: this.elementId,
+            elementId: this.elementId,
             wpClassName: this.wpClassName
         });
         this.el.removeAttribute("id");

@@ -26,7 +26,7 @@ export class WPTabs {
         let props = getProps(this.el, {
             cfgElementId: this.cfgElementId,
             className: this.className,
-            element: this.elementId,
+            elementId: this.elementId,
             type: this.type,
             wpClassName: this.wpClassName
         });

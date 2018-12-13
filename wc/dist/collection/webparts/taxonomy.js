@@ -8,7 +8,7 @@ export class WPTaxonomy {
         let props = getProps(this.el, {
             cfgElementId: this.cfgElementId,
             className: this.className,
-            element: this.elementId,
+            elementId: this.elementId,
             wpClassName: this.wpClassName
         });
         this.el.removeAttribute("id");
