@@ -1,0 +1,1 @@
+GdSprestBs.loadBundle("tghncu6w",["exports","./chunk-4d096277.js","./chunk-74acd46d.js","./chunk-a73ef914.js"],function(e,d,s,n){window,e.BsWebpartTabs=n.WPTabs,Object.defineProperty(e,"__esModule",{value:!0})});

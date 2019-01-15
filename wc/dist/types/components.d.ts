@@ -406,11 +406,45 @@ export namespace Components {
     'isMultiple'?: boolean;
   }
 
+  interface BsSpinner {
+    'className': string;
+    'isGrowing': boolean;
+    'isSmall': boolean;
+    'text': string;
+    'type': number;
+  }
+  interface BsSpinnerAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+    'isGrowing'?: boolean;
+    'isSmall'?: boolean;
+    'text'?: string;
+    'type'?: number;
+  }
+
   interface BsTable {
     'className': string;
   }
   interface BsTableAttributes extends StencilHTMLAttributes {
     'className'?: string;
+  }
+
+  interface BsToast {
+    'bodyText': string;
+    'className': string;
+    'closeButtonHidden': boolean;
+    'closeButtonText': boolean;
+    'headerImgClass': string;
+    'headerImgSrc': string;
+    'headerText': string;
+  }
+  interface BsToastAttributes extends StencilHTMLAttributes {
+    'bodyText'?: string;
+    'className'?: string;
+    'closeButtonHidden'?: boolean;
+    'closeButtonText'?: boolean;
+    'headerImgClass'?: string;
+    'headerImgSrc'?: string;
+    'headerText'?: string;
   }
 
   interface BsTooltip {
@@ -529,7 +563,9 @@ declare global {
     'BsPopover': Components.BsPopover;
     'BsProgress': Components.BsProgress;
     'BsProgressgroup': Components.BsProgressgroup;
+    'BsSpinner': Components.BsSpinner;
     'BsTable': Components.BsTable;
+    'BsToast': Components.BsToast;
     'BsTooltip': Components.BsTooltip;
     'BsToolbar': Components.BsToolbar;
     'BsWebpartList': Components.BsWebpartList;
@@ -564,7 +600,9 @@ declare global {
     'bs-popover': Components.BsPopoverAttributes;
     'bs-progress': Components.BsProgressAttributes;
     'bs-progressgroup': Components.BsProgressgroupAttributes;
+    'bs-spinner': Components.BsSpinnerAttributes;
     'bs-table': Components.BsTableAttributes;
+    'bs-toast': Components.BsToastAttributes;
     'bs-tooltip': Components.BsTooltipAttributes;
     'bs-toolbar': Components.BsToolbarAttributes;
     'bs-webpart-list': Components.BsWebpartListAttributes;
@@ -719,10 +757,22 @@ declare global {
     new (): HTMLBsProgressgroupElement;
   };
 
+  interface HTMLBsSpinnerElement extends Components.BsSpinner, HTMLStencilElement {}
+  var HTMLBsSpinnerElement: {
+    prototype: HTMLBsSpinnerElement;
+    new (): HTMLBsSpinnerElement;
+  };
+
   interface HTMLBsTableElement extends Components.BsTable, HTMLStencilElement {}
   var HTMLBsTableElement: {
     prototype: HTMLBsTableElement;
     new (): HTMLBsTableElement;
+  };
+
+  interface HTMLBsToastElement extends Components.BsToast, HTMLStencilElement {}
+  var HTMLBsToastElement: {
+    prototype: HTMLBsToastElement;
+    new (): HTMLBsToastElement;
   };
 
   interface HTMLBsTooltipElement extends Components.BsTooltip, HTMLStencilElement {}
@@ -792,7 +842,9 @@ declare global {
     'bs-popover': HTMLBsPopoverElement
     'bs-progress': HTMLBsProgressElement
     'bs-progressgroup': HTMLBsProgressgroupElement
+    'bs-spinner': HTMLBsSpinnerElement
     'bs-table': HTMLBsTableElement
+    'bs-toast': HTMLBsToastElement
     'bs-tooltip': HTMLBsTooltipElement
     'bs-toolbar': HTMLBsToolbarElement
     'bs-webpart-list': HTMLBsWebpartListElement
@@ -827,7 +879,9 @@ declare global {
     'bs-popover': HTMLBsPopoverElement;
     'bs-progress': HTMLBsProgressElement;
     'bs-progressgroup': HTMLBsProgressgroupElement;
+    'bs-spinner': HTMLBsSpinnerElement;
     'bs-table': HTMLBsTableElement;
+    'bs-toast': HTMLBsToastElement;
     'bs-tooltip': HTMLBsTooltipElement;
     'bs-toolbar': HTMLBsToolbarElement;
     'bs-webpart-list': HTMLBsWebpartListElement;

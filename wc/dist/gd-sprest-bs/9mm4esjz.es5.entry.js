@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdSprestBs.loadBundle("9mm4esjz",["exports","./chunk-ffd4a28a.js","./chunk-9a04bf15.js"],function(e,o,d){window,e.BsTooltip=o.Tooltip,Object.defineProperty(e,"__esModule",{value:!0})});

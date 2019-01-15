@@ -22,7 +22,7 @@ export class WPTaxonomy {
         if (this.el.hasAttribute("data-init")) { return; }
 
         // Get the properties
-        let props = getProps(this.el, {
+        let props:any = getProps(this.el, {
             cfgElementId: this.cfgElementId,
             className: this.className,
             elementId: this.elementId,

@@ -1,0 +1,1 @@
+GdSprestBs.loadBundle("wbx1abnb",["exports","./chunk-4d096277.js","./chunk-7e456139.js"],function(e,d,n){window,e.BsTable=n.Table,Object.defineProperty(e,"__esModule",{value:!0})});

@@ -974,6 +974,43 @@
       }
     },
     {
+      "tag": "bs-spinner",
+      "dependencies": [],
+      "componentClass": "Spinner",
+      "componentPath": "components/spinner.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "isGrowing",
+          "type": "Boolean",
+          "attr": "is-growing"
+        },
+        {
+          "name": "isSmall",
+          "type": "Boolean",
+          "attr": "is-small"
+        },
+        {
+          "name": "text",
+          "type": "String",
+          "attr": "text"
+        },
+        {
+          "name": "type",
+          "type": "Number",
+          "attr": "type"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
       "tag": "bs-table",
       "dependencies": [],
       "componentClass": "Table",
@@ -984,6 +1021,53 @@
           "name": "className",
           "type": "String",
           "attr": "class-name"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
+      "tag": "bs-toast",
+      "dependencies": [],
+      "componentClass": "Toast",
+      "componentPath": "components/toast.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "bodyText",
+          "type": "String",
+          "attr": "body-text"
+        },
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "closeButtonHidden",
+          "type": "Boolean",
+          "attr": "close-button-hidden"
+        },
+        {
+          "name": "closeButtonText",
+          "type": "Boolean",
+          "attr": "close-button-text"
+        },
+        {
+          "name": "headerImgClass",
+          "type": "String",
+          "attr": "header-img-class"
+        },
+        {
+          "name": "headerImgSrc",
+          "type": "String",
+          "attr": "header-img-src"
+        },
+        {
+          "name": "headerText",
+          "type": "String",
+          "attr": "header-text"
         }
       ],
       "hostElement": {
@@ -1213,8 +1297,8 @@
   "collections": [],
   "compiler": {
     "name": "@stencil/core",
-    "version": "0.15.2",
-    "typescriptVersion": "2.9.2"
+    "version": "0.16.4",
+    "typescriptVersion": "3.2.2"
   },
   "bundles": []
 }

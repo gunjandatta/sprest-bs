@@ -1,0 +1,1 @@
+var getProps=function(r,e){void 0===e&&(e={});var o={},n=(r.innerHTML||"").trim();if(n.length>0)try{o=new Function(n)(),r.innerHTML=""}catch(r){console.error("Error parsing the JS to get the properties."),console.error(n)}for(var t in e)void 0===o[t]&&(o[t]=e[t]);return o};export{getProps as a};

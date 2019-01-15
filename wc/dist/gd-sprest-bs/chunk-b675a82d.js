@@ -1,0 +1,1 @@
+const r=(r,e={})=>{let n={},o=(r.innerHTML||"").trim();if(o.length>0)try{n=new Function(o)(),r.innerHTML=""}catch(r){console.error("Error parsing the JS to get the properties."),console.error(o)}for(let r in e)void 0===n[r]&&(n[r]=e[r]);return n};export{r as a};
