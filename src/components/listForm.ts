@@ -273,7 +273,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     });
             }).then(() => {
                 // Wait for the files to upload
-                props.info.list.done(() => {
+                (props.info.list as any as Types.SP.IList).done(() => {
                     // Clear the attachments
                     attachments.new = [];
 
@@ -316,7 +316,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
                         // Parse the responses
                         for (let j = 0; j < args.length; j++) {
-                            let user = args[j] as Types.SP.IUserResult;
+                            let user = args[j] as any as Types.SP.IUserResult;
 
                             // See if this is the user
                             if (user.LoginName == userLogin) {
