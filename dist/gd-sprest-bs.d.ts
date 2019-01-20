@@ -146,7 +146,7 @@ declare module 'gd-sprest-bs/components/types/field' {
 }
 
 declare module 'gd-sprest-bs/components/types/listForm' {
-    import { Types } from "gd-sprest";
+    import { Helper, SP } from "gd-sprest";
     import { Components } from "gd-bs";
     
     /**
@@ -157,7 +157,7 @@ declare module 'gd-sprest-bs/components/types/listForm' {
     /**
         * List Form
         */
-    export interface IListForm extends Types.Helper.IListForm {
+    export interface IListForm extends Helper.IListForm {
             /**
                 * Method to render the display form template.
                 * @param props - The display form properties.
@@ -179,10 +179,10 @@ declare module 'gd-sprest-bs/components/types/listForm' {
             el: Element;
     
             /** The list form information. */
-            info: Types.Helper.IListFormResult;
+            info: Helper.IListFormResult;
     
             /** The item attachment saved event. */
-            onSave?: (info: Types.Helper.IListFormResult) => void;
+            onSave?: (info: Helper.IListFormResult) => void;
     }
     
     /**
@@ -193,7 +193,7 @@ declare module 'gd-sprest-bs/components/types/listForm' {
             el: Element;
     
             /** The list form information. */
-            info: Types.Helper.IListFormResult;
+            info: Helper.IListFormResult;
     
             /** The control rendered event. */
             onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
@@ -225,7 +225,7 @@ declare module 'gd-sprest-bs/components/types/listForm' {
             isValid(): boolean;
     
             /** Method to save the form. */
-            save(): PromiseLike<Types.SP.IListItemResult>;
+            save(): PromiseLike<SP.IListItemResult>;
     }
     
     /**
@@ -239,13 +239,13 @@ declare module 'gd-sprest-bs/components/types/listForm' {
             onSaving?: (item: any) => void | PromiseLike<any>;
     
             /** The form validating event. */
-            onValidate?: (field: Types.SP.IFieldResult, control: Components.IFormControl) => boolean;
+            onValidate?: (field: SP.IFieldResult, control: Components.IFormControl) => boolean;
     }
 }
 
 declare module 'gd-sprest-bs/components/types/listFormDialog' {
     import { Components } from "gd-bs";
-    import { Helper, Types } from "gd-sprest";
+    import { Helper, SP } from "gd-sprest";
     
     /**
         * List Form Dialog
@@ -257,13 +257,13 @@ declare module 'gd-sprest-bs/components/types/listFormDialog' {
         */
     export interface IListFormDialog extends Components.IModal {
             /** Method to save the form. */
-            saveForm: () => PromiseLike<Types.SP.IListItemResult>;
+            saveForm: () => PromiseLike<SP.IListItemResult>;
     }
     
     /**
         * List Form Dialog Properties
         */
-    export interface IListFormDialogProps extends Types.Helper.IListFormProps {
+    export interface IListFormDialogProps extends Helper.IListFormProps {
             /** The form actions. */
             actions?: Components.IToolbarProps;
     
@@ -289,7 +289,7 @@ declare module 'gd-sprest-bs/components/types/listFormDialog' {
             onSaving?: (item: any) => void | PromiseLike<any>;
     
             /** The form saved event. */
-            onSaved?: (item?: Types.SP.IListItemResult) => void;
+            onSaved?: (item?: SP.IListItemResult) => void;
     
             /** The list form rows. */
             template?: Array<Components.IFormRow>;

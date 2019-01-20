@@ -1,4 +1,4 @@
-import { ContextInfo, Web, Types } from "gd-sprest";
+import { ContextInfo, SP, Web } from "gd-sprest";
 import { WebPart } from "../base/wp";
 import { IWPList, IWPListInfo, IWPListProps } from "../types/wpList";
 import { WPListEditForm } from "./wpCfg";
@@ -48,7 +48,7 @@ export const WPList = (props: IWPListProps): IWPList => {
     }
 
     // Method to load the items using an ODATA query
-    let loadODATA = (query: Types.SP.ODataQuery = {}) => {
+    let loadODATA = (query: SP.ODataQuery = {}) => {
         // Call the load caml query event
         query = (props.onExecutingODATAQuery ? props.onExecutingODATAQuery(_wpInfo, query) : null) || query;
 

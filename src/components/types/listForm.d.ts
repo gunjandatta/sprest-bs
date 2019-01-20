@@ -1,4 +1,4 @@
-import { Types } from "gd-sprest";
+import { Helper, SP } from "gd-sprest";
 import { Components } from "gd-bs";
 
 /**
@@ -9,7 +9,7 @@ export const ListForm: IListForm;
 /**
  * List Form
  */
-export interface IListForm extends Types.Helper.IListForm {
+export interface IListForm extends Helper.IListForm {
     /**
      * Method to render the display form template.
      * @param props - The display form properties.
@@ -31,10 +31,10 @@ export interface IListFormAttachmentsProps {
     el: Element;
 
     /** The list form information. */
-    info: Types.Helper.IListFormResult;
+    info: Helper.IListFormResult;
 
     /** The item attachment saved event. */
-    onSave?: (info: Types.Helper.IListFormResult) => void;
+    onSave?: (info: Helper.IListFormResult) => void;
 }
 
 /**
@@ -45,7 +45,7 @@ export interface IListFormDisplayProps {
     el: Element;
 
     /** The list form information. */
-    info: Types.Helper.IListFormResult;
+    info: Helper.IListFormResult;
 
     /** The control rendered event. */
     onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
@@ -77,7 +77,7 @@ export interface IListFormEdit {
     isValid(): boolean;
 
     /** Method to save the form. */
-    save(): PromiseLike<Types.SP.IListItemResult>;
+    save(): PromiseLike<SP.IListItemResult>;
 }
 
 /**
@@ -91,5 +91,5 @@ export interface IListFormEditProps extends IListFormDisplayProps {
     onSaving?: (item: any) => void | PromiseLike<any>;
 
     /** The form validating event. */
-    onValidate?: (field: Types.SP.IFieldResult, control: Components.IFormControl) => boolean;
+    onValidate?: (field: SP.IFieldResult, control: Components.IFormControl) => boolean;
 }

@@ -1,6 +1,6 @@
 import { SP } from "gd-sprest-def";
 import { Components } from "gd-bs";
-import { Helper, SPTypes, Types, Web } from "gd-sprest";
+import { Helper, SPTypes, SP as Types, IList, Web } from "gd-sprest";
 import { IField, IFieldValueUser } from "./types/field";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types/listForm";
 import { Field } from "./field";
@@ -173,7 +173,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     let value = {};
     let attachments: {
         delete: Array<SP.Attachment>;
-        new: Array<Types.Helper.IListFormAttachmentInfo>;
+        new: Array<Helper.IListFormAttachmentInfo>;
     } = {
         delete: [],
         new: []
@@ -214,7 +214,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     }
 
     // Method to remove the attachments
-    let removeAttachments = (info: Types.Helper.IListFormResult) => {
+    let removeAttachments = (info: Helper.IListFormResult) => {
         // Return a promise
         return new Promise((resolve, reject) => {
             // Ensure attachments exists
@@ -251,14 +251,14 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     }
 
     // Method to save the attachments
-    let saveAttachments = (info: Types.Helper.IListFormResult) => {
+    let saveAttachments = (info: Helper.IListFormResult) => {
         // Return a promise
         return new Promise((resolve, reject) => {
             // Ensure attachments exists
             if (attachments.new.length == 0) { resolve(); return; }
 
             // Parse the attachments
-            Helper.Executor<Types.Helper.IListFormAttachmentInfo>(attachments.new, attachment => {
+            Helper.Executor<Helper.IListFormAttachmentInfo>(attachments.new, attachment => {
                 // Get the item's attachments
                 props.info.list.Items(info.item.Id).AttachmentFiles()
                     // Add the file
@@ -273,7 +273,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     });
             }).then(() => {
                 // Wait for the files to upload
-                (props.info.list as any as Types.SP.IList).done(() => {
+                (props.info.list as any as Types.IList).done(() => {
                     // Clear the attachments
                     attachments.new = [];
 
@@ -316,7 +316,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
                         // Parse the responses
                         for (let j = 0; j < args.length; j++) {
-                            let user = args[j] as any as Types.SP.IUserResult;
+                            let user: SP.User = args[j] as any;
 
                             // See if this is the user
                             if (user.LoginName == userLogin) {
@@ -408,7 +408,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                                     text: "Remove",
                                                     type: Components.ButtonTypes.Danger,
                                                     onClick: (btn, ev) => {
-                                                        let fileName = (btn.data as Types.Helper.IListFormAttachmentInfo).name;
+                                                        let fileName = (btn.data as Helper.IListFormAttachmentInfo).name;
 
                                                         // Parse the array
                                                         for (let i = 0; i < attachments.new.length; i++) {

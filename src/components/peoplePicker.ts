@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import { PeoplePicker as Search, SPTypes, Types } from "gd-sprest";
+import { PeoplePicker as Search, SP, SPTypes } from "gd-sprest";
 import { IPeoplePicker, IPeoplePickerProps } from "./types/peoplePicker";
 
 /**
@@ -10,8 +10,8 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     let _users = [];
 
     // Method to add a user
-    let addUser = (userInfo: Types.SP.IPeoplePickerUser | string) => {
-        let user: Types.SP.IPeoplePickerUser = typeof (userInfo) === "string" ? JSON.parse(userInfo) : userInfo;
+    let addUser = (userInfo: SP.IPeoplePickerUser | string) => {
+        let user: SP.IPeoplePickerUser = typeof (userInfo) === "string" ? JSON.parse(userInfo) : userInfo;
 
         // Render a popover button
         let btnUser = Components.Popover({
@@ -82,7 +82,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
                     // Parse the selected users
                     for (let j = 0; j < elSelectedUsers.children.length; j++) {
-                        let userInfo = JSON.parse(elSelectedUsers.children[j].getAttribute("data-user")) as Types.SP.IPeoplePickerUser;
+                        let userInfo = JSON.parse(elSelectedUsers.children[j].getAttribute("data-user")) as SP.IPeoplePickerUser;
 
                         // See if this user is already selected
                         if (exists = user.Key == userInfo.Key) { break; }
@@ -118,7 +118,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     }
 
     // Method to set the value
-    let setValue = (selectedUsers: Array<string | Types.SP.IPeoplePickerUser> = []) => {
+    let setValue = (selectedUsers: Array<string | SP.IPeoplePickerUser> = []) => {
         // Clear the selected users
         elSelectedUsers.innerHTML = "";
 
@@ -210,7 +210,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
             // Parse the selected users
             for (let i = 0; i < elSelectedUsers.children.length; i++) {
-                let userInfo = JSON.parse(elSelectedUsers.children[i].getAttribute("data-user")) as Types.SP.IPeoplePickerUser;
+                let userInfo = JSON.parse(elSelectedUsers.children[i].getAttribute("data-user")) as SP.IPeoplePickerUser;
 
                 // Add this user
                 selectedUsers.push(userInfo);

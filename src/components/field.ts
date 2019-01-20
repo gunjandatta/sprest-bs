@@ -1,6 +1,6 @@
 import { Components } from "gd-bs";
 import { SP } from "gd-sprest-def";
-import { Helper, SPTypes, Types } from "gd-sprest";
+import { Helper, SP as Types, SPTypes } from "gd-sprest";
 import { IField, IFieldProps, IFieldValue, IFieldValueUser } from "./types/field";
 import { IPeoplePicker } from "./types/peoplePicker";
 import { DateTime } from "./datetime";
@@ -11,11 +11,11 @@ import { PeoplePicker } from "./peoplePicker";
  */
 export const Field = (props: IFieldProps): IField => {
     let control: Components.IFormControl;
-    let lookupFieldInfo: Types.Helper.IListFormLookupFieldInfo = null;
-    let mmsFieldInfo: Types.Helper.IListFormMMSFieldInfo = null;
+    let lookupFieldInfo: Helper.IListFormLookupFieldInfo = null;
+    let mmsFieldInfo: Helper.IListFormMMSFieldInfo = null;
 
     // Method to get the choice options
-    let getChoiceItems = (field: Types.SP.IFieldChoice, selectedValues) => {
+    let getChoiceItems = (field: Types.IFieldChoice, selectedValues) => {
         let items: Array<Components.IDropdownItem> = [];
 
         // Update the selected values
@@ -55,7 +55,7 @@ export const Field = (props: IFieldProps): IField => {
     }
 
     // Method to generate the lookup dropdown items
-    let getLookupItems = (field: Types.SP.IFieldLookup, lookupItems: Array<Types.SP.IListItemQueryResult>, selectedValues) => {
+    let getLookupItems = (field: Types.IFieldLookup, lookupItems: Array<Types.IListItemQueryResult>, selectedValues) => {
         let items: Array<Components.IDropdownItem> = [];
 
         // Update the selected values
@@ -97,7 +97,7 @@ export const Field = (props: IFieldProps): IField => {
     }
 
     // Method to get the mms dropdown items
-    let getMMSItems = (term: Types.Helper.ITerm, selectedValues = []) => {
+    let getMMSItems = (term: Helper.ITerm, selectedValues = []) => {
         let items: Array<Components.IDropdownItem> = [];
 
         // See if information exists
@@ -148,7 +148,7 @@ export const Field = (props: IFieldProps): IField => {
 
     // Method to get the user items
     let getUserItems = (value) => {
-        let users: Array<Types.SP.IPeoplePickerUser> = [];
+        let users: Array<Types.IPeoplePickerUser> = [];
 
         // See if a value exists
         if (value) {
@@ -240,7 +240,7 @@ export const Field = (props: IFieldProps): IField => {
 
         // Date/Time
         case SPTypes.FieldType.DateTime:
-            let showTime = (props.field as Types.SP.IFieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
+            let showTime = (props.field as Types.IFieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
 
             // Set the type
             controlProps.type = Components.FormControlTypes.TextField;
@@ -297,7 +297,7 @@ export const Field = (props: IFieldProps): IField => {
                         webUrl: props.listInfo.webUrl
                     }).then(
                         // Success
-                        (fieldInfo: Types.Helper.IListFormLookupFieldInfo) => {
+                        (fieldInfo: Helper.IListFormLookupFieldInfo) => {
                             // Save the field information
                             lookupFieldInfo = fieldInfo;
 
@@ -374,12 +374,12 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.Note:
             // Set the properties
             controlProps.type = Components.FormControlTypes.TextArea;
-            (controlProps as Components.IFormControlPropsTextField).rows = (props.field as Types.SP.IFieldNote).NumberOfLines;
+            (controlProps as Components.IFormControlPropsTextField).rows = (props.field as Types.IFieldNote).NumberOfLines;
             break;
 
         // Number Field
         case SPTypes.FieldType.Number:
-            let numberField = props.field as Types.SP.IFieldNumber;
+            let numberField = props.field as Types.IFieldNumber;
             let numberProps = controlProps as Components.IFormControlPropsNumberField;
 
             // See if this is a percentage
@@ -538,7 +538,7 @@ export const Field = (props: IFieldProps): IField => {
                     webUrl: props.listInfo.webUrl
                 }).then(
                     // Success
-                    (fieldInfo: Types.Helper.IListFormMMSFieldInfo) => {
+                    (fieldInfo: Helper.IListFormMMSFieldInfo) => {
                         // Save the field information
                         mmsFieldInfo = fieldInfo;
 
@@ -740,7 +740,7 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Number Field
                 case SPTypes.FieldType.Number:
-                    let numberField = props.field as Types.SP.IFieldNumber;
+                    let numberField = props.field as Types.IFieldNumber;
 
                     // Ensure a field value exists
                     if (fieldValue.value) {
@@ -789,13 +789,13 @@ export const Field = (props: IFieldProps): IField => {
                     fieldValue.name += fieldValue.name.lastIndexOf("Id") == fieldValue.name.length - 2 ? "" : "Id";
 
                     // See if this is a multi-value field
-                    if ((props.field as Types.SP.IFieldUser).AllowMultipleValues) {
+                    if ((props.field as Types.IFieldUser).AllowMultipleValues) {
                         let values: Array<Components.IDropdownItem> = userFieldValue.value || [];
                         userFieldValue.value = { results: [] };
 
                         // Parse the options
                         for (let j = 0; j < values.length; j++) {
-                            let userValue = values[j] as Types.SP.IPeoplePickerUser;
+                            let userValue = values[j] as Types.IPeoplePickerUser;
                             if (userValue && userValue.EntityData) {
                                 // Ensure the user or group id exists
                                 if (userValue.EntityData.SPGroupID || userValue.EntityData.SPUserID) {
@@ -808,7 +808,7 @@ export const Field = (props: IFieldProps): IField => {
                             }
                         }
                     } else {
-                        let userValue: Types.SP.IPeoplePickerUser = userFieldValue.value ? userFieldValue.value[0] : null;
+                        let userValue: Types.IPeoplePickerUser = userFieldValue.value ? userFieldValue.value[0] : null;
                         if (userValue && userValue.EntityData) {
                             // Ensure the user or group id exists
                             if (userValue.EntityData.SPGroupID || userValue.EntityData.SPUserID) {
