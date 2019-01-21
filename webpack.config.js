@@ -5,9 +5,21 @@ module.exports = (env, argv) => {
 
     // Return the configuration
     let cfg = {
+        entry: [
+            "./node_modules/gd-bs/dist/gd-bs" + (isDev ? "" : ".min") + ".js",
+            "./node_modules/gd-sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
+            "./lib/jquery-ui-1.12.1.custom/jquery-ui" + (isDev ? "" : ".min") + ".js",
+            "./src/index.ts"
+        ],
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: "gd-sprest-bs" + (isDev ? "" : ".min") + ".js"
+        },
+        externals: {
+            "gd-bs": "GD",
+            "gd-sprest": "$REST",
+            "$": "GD.jQuery",
+            "jquery": "GD.jQuery"
         },
         resolve: {
             extensions: [".scss", ".css", ".ts", ".js"]
@@ -43,33 +55,6 @@ module.exports = (env, argv) => {
             ]
         }
     };
-
-    // Dev Configuration
-    if (isDev) {
-        cfg.entry = [
-            "./lib/jquery-ui-1.12.1.custom/jquery-ui" + (isDev ? "" : ".min") + ".js",
-            "./src/index.ts"
-        ];
-        cfg.externals = {
-            "$": "GD.jQuery",
-            "jquery": "GD.jQuery"
-        };
-    }
-    // Prod Configuration
-    else {
-        cfg.entry = [
-            "./node_modules/gd-bs/dist/gd-bs" + (isDev ? "" : ".min") + ".js",
-            "./node_modules/gd-sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
-            "./lib/jquery-ui-1.12.1.custom/jquery-ui" + (isDev ? "" : ".min") + ".js",
-            "./src/index.ts"
-        ];
-        cfg.externals = {
-            "gd-bs": "GD",
-            "gd-sprest": "$REST",
-            "$": "GD.jQuery",
-            "jquery": "GD.jQuery"
-        };
-    }
 
     // Return the configuration
     return cfg;
