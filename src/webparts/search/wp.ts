@@ -7,7 +7,7 @@ import { WPSearchEditForm } from "./wpCfg";
  * Search WebPart
  */
 export const WPSearch = (props: IWPSearchProps): IWPSearch => {
-    let _items: Array<SP.IListItemQuery | SP.IListItem> = [];
+    let _items: Array<SP.IListItemQuery | SP.ListItem> = [];
     let _wpInfo: IWPSearchInfo;
 
     // Create the webpart and return it
@@ -88,8 +88,8 @@ export const WPSearch = (props: IWPSearchProps): IWPSearch => {
     }) as any;
 
     // Set the filter method
-    _wp.filterItems = (filterText: string): Array<SP.IListItemQuery | SP.IListItem> => {
-        let results: Array<SP.IListItemQuery | SP.IListItem> = [];
+    _wp.filterItems = (filterText: string): Array<SP.IListItemQuery | SP.ListItem> => {
+        let results: Array<SP.IListItemQuery | SP.ListItem> = [];
 
         // Ensure the filter exists
         if (filterText && filterText.length > 0) {

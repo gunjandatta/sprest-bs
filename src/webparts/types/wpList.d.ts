@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import { Types } from "gd-sprest";
+import { IODataQuery, SP } from "gd-sprest";
 import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "./wp";
 
 /**
@@ -30,16 +30,16 @@ export interface IWPListProps<IListInfo=IWPListInfo, IListEditForm=IWPListEditFo
     camlQuery?: string;
 
     /** The odata query. */
-    odataQuery?: Types.SP.ODataQuery;
+    odataQuery?: IODataQuery;
 
     /** The executing caml query event. */
     onExecutingCAMLQuery?: (wpInfo: IListInfo, caml: string) => string;
 
     /** The executing odata query event. */
-    onExecutingODATAQuery?: (wpInfo: IListInfo, odata: Types.SP.ODataQuery) => Types.SP.ODataQuery;
+    onExecutingODATAQuery?: (wpInfo: IListInfo, odata: IODataQuery) => IODataQuery;
 
     /** The on render items event. */
-    onRenderItems?: (wpInfo: IListInfo, items: Array<Types.SP.IListItemQueryResult | Types.SP.IListItemResult>) => void;
+    onRenderItems?: (wpInfo: IListInfo, items: Array<SP.IListItemQuery | SP.ListItem>) => void;
 }
 
 /**
@@ -58,14 +58,14 @@ export interface IWPListCfg extends IWebPartCfg {
  */
 export interface IWPListEditForm<IListCfg = IWPListCfg, IListInfo = IWPListInfo> extends IWebPartEditForm<IListCfg, IListInfo> {
     /** The odata list query. */
-    listQuery?: Types.SP.ODataQuery;
+    listQuery?: IODataQuery;
 
     /** The list changed event. */
-    onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
+    onListChanged?: (wpInfo: IListInfo, list?: SP.IListQuery | SP.List) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
 
     /** The lists loaded event. */
-    onListsLoaded?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQueryResult | Types.SP.IListResult>) => Array<Types.SP.IListQueryResult | Types.SP.IListResult>;
+    onListsLoaded?: (wpInfo: IListInfo, lists?: Array<SP.IListQuery | SP.List>) => Array<SP.IListQuery | SP.List>;
 
     /** The render form event. */
-    onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQueryResult | Types.SP.IListResult) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
+    onRenderForm?: (wpInfo: IListInfo, list?: SP.IListQuery | SP.List) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
 }

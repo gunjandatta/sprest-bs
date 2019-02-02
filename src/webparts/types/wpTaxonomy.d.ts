@@ -1,5 +1,5 @@
 import { Components } from "gd-bs"
-import { Types } from "gd-sprest";
+import { Helper } from "gd-sprest";
 import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "./wp";
 
 /**
@@ -27,13 +27,13 @@ export interface IWPTaxonomyInfo extends IWebPartInfo<IWPTaxonomyCfg> { }
  */
 export interface IWPTaxonomyProps extends IWebPartProps<IWPTaxonomyInfo, IWPTaxonomyEditForm> {
     /** The on render term set event. */
-    onRenderTermSet?: (wpInfo: IWPTaxonomyInfo, termSet: Types.Helper.ITerm) => void;
+    onRenderTermSet?: (wpInfo: IWPTaxonomyInfo, termSet: Helper.ITerm) => void;
 
     /** The on render term sets event. */
-    onRenderTermSets?: (wpInfo: IWPTaxonomyInfo, termSets: Array<Types.Helper.ITermSetInfo>) => void;
+    onRenderTermSets?: (wpInfo: IWPTaxonomyInfo, termSets: Array<Helper.ITermSetInfo>) => void;
 
     /** The on render term set terms event. */
-    onRenderTermSetTerms?: (wpInfo: IWPTaxonomyInfo, terms: Array<Types.Helper.ITermInfo>) => void;
+    onRenderTermSetTerms?: (wpInfo: IWPTaxonomyInfo, terms: Array<Helper.ITermInfo>) => void;
 }
 
 /**
