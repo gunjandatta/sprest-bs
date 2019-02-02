@@ -12,10 +12,10 @@ export interface IPeoplePicker {
     el: HTMLElement;
 
     /** Returns the selected users. */
-    getValue: () => Array<Types.SP.IPeoplePickerUser>;
+    getValue: () => Array<Types.IPeoplePickerUser>;
 
     /** Sets the selected users. */
-    setValue: (selectedUsers: Array<string | Types.SP.IPeoplePickerUser>) => void;
+    setValue: (selectedUsers: Array<string | Types.IPeoplePickerUser>) => void;
 }
 
 /**
@@ -38,5 +38,5 @@ export interface IPeoplePickerProps {
     searchLocal?: boolean;
 
     /** The selected users. */
-    value?: Array<Types.SP.IPeoplePickerUser>;
+    value?: Array<Types.IPeoplePickerUser>;
 }

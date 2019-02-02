@@ -1,6 +1,5 @@
-import { SP } from "gd-sprest-def";
 import { Components } from "gd-bs";
-import { Helper, SPTypes, SP as Types, IList, Web } from "gd-sprest";
+import { Helper, SPTypes, SP, Web } from "gd-sprest";
 import { IField, IFieldValueUser } from "./types/field";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types/listForm";
 import { Field } from "./field";
@@ -238,7 +237,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     }
                 }).then(() => {
                     // Wait for the files to be deleted
-                    web.done(() => {
+                    (web as any as SP.IWeb).done(() => {
                         // Clear the attachments
                         attachments.delete = [];
 
@@ -273,7 +272,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     });
             }).then(() => {
                 // Wait for the files to upload
-                (props.info.list as any as Types.IList).done(() => {
+                (props.info.list as any as SP.IList).done(() => {
                     // Clear the attachments
                     attachments.new = [];
 

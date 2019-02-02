@@ -1,4 +1,5 @@
 const path = require("path");
+const UglifyJsPlugin = require ("uglifyjs-webpack-plugin");
 
 module.exports = (env, argv) => {
     var isDev = argv.mode === "development";
@@ -55,6 +56,13 @@ module.exports = (env, argv) => {
             ]
         }
     };
+
+    // Minify the production output
+    if (!isDev) {
+        cfg.optimization = {
+            minimizer: [new UglifyJsPlugin()]
+        };
+    }
 
     // Return the configuration
     return cfg;

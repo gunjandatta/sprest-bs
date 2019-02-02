@@ -1,6 +1,5 @@
 import { Components } from "gd-bs";
-import { SP } from "gd-sprest-def";
-import { Helper, SP as Types, SPTypes } from "gd-sprest";
+import { Helper, SP, SPTypes, Types } from "gd-sprest";
 import { IField, IFieldProps, IFieldValue, IFieldValueUser } from "./types/field";
 import { IPeoplePicker } from "./types/peoplePicker";
 import { DateTime } from "./datetime";
@@ -15,7 +14,7 @@ export const Field = (props: IFieldProps): IField => {
     let mmsFieldInfo: Helper.IListFormMMSFieldInfo = null;
 
     // Method to get the choice options
-    let getChoiceItems = (field: Types.IFieldChoice, selectedValues) => {
+    let getChoiceItems = (field: SP.FieldMultiChoice, selectedValues) => {
         let items: Array<Components.IDropdownItem> = [];
 
         // Update the selected values
@@ -55,7 +54,7 @@ export const Field = (props: IFieldProps): IField => {
     }
 
     // Method to generate the lookup dropdown items
-    let getLookupItems = (field: Types.IFieldLookup, lookupItems: Array<Types.IListItemQueryResult>, selectedValues) => {
+    let getLookupItems = (field: SP.FieldLookup, lookupItems: Array<SP.IListItemQuery>, selectedValues) => {
         let items: Array<Components.IDropdownItem> = [];
 
         // Update the selected values
@@ -158,14 +157,16 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Ensure a title exists
                 if (userValue.Title) {
+                    let userId = (userValue.ID || userValue["Id"]).toString();
+
                     // Add the user
                     users.push({
                         DisplayText: userValue.Title,
                         EntityData: {
                             Email: userValue.EMail,
-                            SPUserID: userValue.Id.toString()
+                            SPUserID: userId
                         },
-                        Key: userValue.Id.toString()
+                        Key: userId
                     });
                 }
             }
@@ -240,7 +241,7 @@ export const Field = (props: IFieldProps): IField => {
 
         // Date/Time
         case SPTypes.FieldType.DateTime:
-            let showTime = (props.field as Types.IFieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
+            let showTime = (props.field as SP.FieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
 
             // Set the type
             controlProps.type = Components.FormControlTypes.TextField;
@@ -374,12 +375,12 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.Note:
             // Set the properties
             controlProps.type = Components.FormControlTypes.TextArea;
-            (controlProps as Components.IFormControlPropsTextField).rows = (props.field as Types.IFieldNote).NumberOfLines;
+            (controlProps as Components.IFormControlPropsTextField).rows = (props.field as SP.FieldMultiLineText).NumberOfLines;
             break;
 
         // Number Field
         case SPTypes.FieldType.Number:
-            let numberField = props.field as Types.IFieldNumber;
+            let numberField = props.field as SP.FieldNumber;
             let numberProps = controlProps as Components.IFormControlPropsNumberField;
 
             // See if this is a percentage
@@ -740,7 +741,7 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Number Field
                 case SPTypes.FieldType.Number:
-                    let numberField = props.field as Types.IFieldNumber;
+                    let numberField = props.field as SP.FieldNumber;
 
                     // Ensure a field value exists
                     if (fieldValue.value) {
@@ -789,7 +790,7 @@ export const Field = (props: IFieldProps): IField => {
                     fieldValue.name += fieldValue.name.lastIndexOf("Id") == fieldValue.name.length - 2 ? "" : "Id";
 
                     // See if this is a multi-value field
-                    if ((props.field as Types.IFieldUser).AllowMultipleValues) {
+                    if ((props.field as SP.FieldUser).AllowMultipleValues) {
                         let values: Array<Components.IDropdownItem> = userFieldValue.value || [];
                         userFieldValue.value = { results: [] };
 

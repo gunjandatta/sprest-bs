@@ -98,7 +98,7 @@ declare module 'gd-sprest-bs/components/types/datetime' {
 }
 
 declare module 'gd-sprest-bs/components/types/field' {
-    import { Helper, Types } from "gd-sprest";
+    import { Helper, SP } from "gd-sprest";
     import { Components } from "gd-bs";
     
     /**
@@ -122,10 +122,10 @@ declare module 'gd-sprest-bs/components/types/field' {
     export interface IFieldProps {
             controlMode?: number;
             errorMessage?: string;
-            field: Types.SP.IFieldResult;
-            listInfo: Types.Helper.IListFormResult;
+            field: SP.Field;
+            listInfo: Helper.IListFormResult;
             onError?: (msg: string) => void;
-            onValidate?: (field: Types.SP.IFieldResult, control: Components.IFormControl) => boolean;
+            onValidate?: (field: SP.Field, control: Components.IFormControl) => boolean;
             value?: any;
     }
     
@@ -314,10 +314,10 @@ declare module 'gd-sprest-bs/components/types/peoplePicker' {
             el: HTMLElement;
     
             /** Returns the selected users. */
-            getValue: () => Array<Types.SP.IPeoplePickerUser>;
+            getValue: () => Array<Types.IPeoplePickerUser>;
     
             /** Sets the selected users. */
-            setValue: (selectedUsers: Array<string | Types.SP.IPeoplePickerUser>) => void;
+            setValue: (selectedUsers: Array<string | Types.IPeoplePickerUser>) => void;
     }
     
     /**
@@ -340,7 +340,7 @@ declare module 'gd-sprest-bs/components/types/peoplePicker' {
             searchLocal?: boolean;
     
             /** The selected users. */
-            value?: Array<Types.SP.IPeoplePickerUser>;
+            value?: Array<Types.IPeoplePickerUser>;
     }
 }
 
