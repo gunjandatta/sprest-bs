@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import { IODataQuery, SP, Web } from "gd-sprest";
+import { Types, Web } from "gd-sprest";
 import { IWPListCfg, IWPListEditForm, IWPListInfo } from "../types/wpList";
 
 /**
@@ -7,7 +7,7 @@ import { IWPListCfg, IWPListEditForm, IWPListInfo } from "../types/wpList";
  */
 export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => {
     let _ddlList: Components.IDropdown = null;
-    let _lists: Array<SP.IListQuery> = null;
+    let _lists: Array<Types.SP.IListQuery> = null;
     let _loadingMessage: HTMLElement = null;
     let _wpInfo: IWPListInfo = null;
 
@@ -16,7 +16,7 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
         // Return a promise
         return new Promise((resolve, reject) => {
             // Set the query
-            let query: IODataQuery = props.listQuery || {};
+            let query: Types.IODataQuery = props.listQuery || {};
 
             // Get the web
             Web(webUrl)

@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import { IODataQuery, SPTypes, SP } from "gd-sprest";
+import { SPTypes, Types } from "gd-sprest";
 import { IWPSearchCfg, IWPSearchEditForm, IWPSearchInfo } from "../types/wpSearch";
 
 /**
@@ -9,7 +9,7 @@ export const WPSearchEditForm = (props: IWPSearchEditForm = {}): IWPSearchEditFo
     let _wpInfo: IWPSearchInfo = null;
 
     // Method to render the fields
-    let loadFields = (list: SP.IListQuery) => {
+    let loadFields = (list: Types.SP.IListQuery) => {
         let formControls: Array<Components.IFormControlPropsDropdown> = [];
         let items: Array<Components.IDropdownItem> = [];
 
@@ -93,7 +93,7 @@ export const WPSearchEditForm = (props: IWPSearchEditForm = {}): IWPSearchEditFo
     }
 
     // Set the list query
-    let listQuery: IODataQuery = props.listQuery || {};
+    let listQuery: Types.IODataQuery = props.listQuery || {};
     listQuery.Expand = listQuery.Expand || [];
     listQuery.Expand.push("Fields");
 
@@ -102,7 +102,7 @@ export const WPSearchEditForm = (props: IWPSearchEditForm = {}): IWPSearchEditFo
         actions: props.actions,
         listQuery,
         onListsLoaded: props.onListsLoaded,
-        onRenderForm: (wpInfo, list: SP.IListQuery) => {
+        onRenderForm: (wpInfo, list: Types.SP.IListQuery) => {
             // Return a promise
             return new Promise((resolve, reject) => {
                 // Save the webpart information
@@ -141,7 +141,7 @@ export const WPSearchEditForm = (props: IWPSearchEditForm = {}): IWPSearchEditFo
             });
         },
         showSaveButton: props.showSaveButton,
-        onListChanged: (wpInfo: IWPSearchInfo, list: SP.IListQuery) => {
+        onListChanged: (wpInfo: IWPSearchInfo, list: Types.SP.IListQuery) => {
             // Render the fields
             return loadFields(list);
         },

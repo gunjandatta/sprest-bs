@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import { Helper, SP, SPTypes, Types } from "gd-sprest";
+import { Helper, SPTypes, Types } from "gd-sprest";
 import { IField, IFieldProps, IFieldValue, IFieldValueUser } from "./types/field";
 import { IPeoplePicker } from "./types/peoplePicker";
 import { DateTime } from "./datetime";
@@ -14,7 +14,7 @@ export const Field = (props: IFieldProps): IField => {
     let mmsFieldInfo: Helper.IListFormMMSFieldInfo = null;
 
     // Method to get the choice options
-    let getChoiceItems = (field: SP.FieldMultiChoice, selectedValues) => {
+    let getChoiceItems = (field: Types.SP.FieldMultiChoice, selectedValues) => {
         let items: Array<Components.IDropdownItem> = [];
 
         // Update the selected values
@@ -54,7 +54,7 @@ export const Field = (props: IFieldProps): IField => {
     }
 
     // Method to generate the lookup dropdown items
-    let getLookupItems = (field: SP.FieldLookup, lookupItems: Array<SP.IListItemQuery>, selectedValues) => {
+    let getLookupItems = (field: Types.SP.FieldLookup, lookupItems: Array<Types.SP.IListItemQuery>, selectedValues) => {
         let items: Array<Components.IDropdownItem> = [];
 
         // Update the selected values
@@ -153,7 +153,7 @@ export const Field = (props: IFieldProps): IField => {
         if (value) {
             let userValues = value.results ? value.results : [value];
             for (let i = 0; i < userValues.length; i++) {
-                let userValue = userValues[i] as SP.Data.UserInfoItem;
+                let userValue = userValues[i] as Types.SP.Data.UserInfoItem;
 
                 // Ensure a title exists
                 if (userValue.Title) {
@@ -241,7 +241,7 @@ export const Field = (props: IFieldProps): IField => {
 
         // Date/Time
         case SPTypes.FieldType.DateTime:
-            let showTime = (props.field as SP.FieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
+            let showTime = (props.field as Types.SP.FieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
 
             // Set the type
             controlProps.type = Components.FormControlTypes.TextField;
@@ -375,12 +375,12 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.Note:
             // Set the properties
             controlProps.type = Components.FormControlTypes.TextArea;
-            (controlProps as Components.IFormControlPropsTextField).rows = (props.field as SP.FieldMultiLineText).NumberOfLines;
+            (controlProps as Components.IFormControlPropsTextField).rows = (props.field as Types.SP.FieldMultiLineText).NumberOfLines;
             break;
 
         // Number Field
         case SPTypes.FieldType.Number:
-            let numberField = props.field as SP.FieldNumber;
+            let numberField = props.field as Types.SP.FieldNumber;
             let numberProps = controlProps as Components.IFormControlPropsNumberField;
 
             // See if this is a percentage
@@ -406,12 +406,12 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.URL:
             let desc: Components.IFormControl = null;
             let url: Components.IFormControl = null;
-            let value = props.value as SP.FieldUrlValue;
+            let value = props.value as Types.SP.FieldUrlValue;
 
             // See if a value exists
             if (props.value) {
                 // Update the value
-                controlProps.value = (props.value as SP.FieldUrlValue).Url;
+                controlProps.value = (props.value as Types.SP.FieldUrlValue).Url;
             }
 
             // Set the render event
@@ -741,7 +741,7 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Number Field
                 case SPTypes.FieldType.Number:
-                    let numberField = props.field as SP.FieldNumber;
+                    let numberField = props.field as Types.SP.FieldNumber;
 
                     // Ensure a field value exists
                     if (fieldValue.value) {
@@ -769,7 +769,7 @@ export const Field = (props: IFieldProps): IField => {
 
                         // Add the metadata
                         fieldValue.value = {
-                            __metadata: { type: "SP.FieldUrlValue" },
+                            __metadata: { type: "Types.SP.FieldUrlValue" },
                             Description: fieldValue.value.Description || "",
                             Url: url
                         };
@@ -790,7 +790,7 @@ export const Field = (props: IFieldProps): IField => {
                     fieldValue.name += fieldValue.name.lastIndexOf("Id") == fieldValue.name.length - 2 ? "" : "Id";
 
                     // See if this is a multi-value field
-                    if ((props.field as SP.FieldUser).AllowMultipleValues) {
+                    if ((props.field as Types.SP.FieldUser).AllowMultipleValues) {
                         let values: Array<Components.IDropdownItem> = userFieldValue.value || [];
                         userFieldValue.value = { results: [] };
 
@@ -850,7 +850,7 @@ export const Field = (props: IFieldProps): IField => {
                         } else {
                             // Update the value
                             fieldValue.value = fieldValue.value && fieldValue.value.value ? {
-                                __metadata: { type: "SP.Taxonomy.TaxonomyFieldValue" },
+                                __metadata: { type: "Types.SP.Taxonomy.TaxonomyFieldValue" },
                                 Label: fieldValue.value.text,
                                 TermGuid: fieldValue.value.value,
                                 WssId: -1

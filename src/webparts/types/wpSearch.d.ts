@@ -1,4 +1,4 @@
-import { SP } from "gd-sprest";
+import { Types } from "gd-sprest";
 import { IWPList, IWPListInfo, IWPListProps } from "./wpList";
 import { IWPListCfg, IWPListEditForm } from "./wpList";
 
@@ -17,7 +17,7 @@ export const WPSearchEditForm: (props: IWPSearchEditForm) => IWPSearchEditForm;
  */
 export interface IWPSearch extends IWPList<IWPSearchCfg, IWPSearchInfo> {
     /** The filter items method. */
-    filterItems: (filterText: string) => Array<SP.IListItemQuery | SP.ListItem>;
+    filterItems: (filterText: string) => Array<Types.SP.IListItemQuery | Types.SP.ListItem>;
 }
 
 /**

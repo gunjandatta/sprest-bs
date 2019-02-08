@@ -1,4 +1,4 @@
-import { Helper, SP } from "gd-sprest";
+import { Helper, Types } from "gd-sprest";
 import { Components } from "gd-bs";
 
 /**
@@ -77,7 +77,7 @@ export interface IListFormEdit {
     isValid(): boolean;
 
     /** Method to save the form. */
-    save(): PromiseLike<SP.IListItemResult>;
+    save(): PromiseLike<Types.SP.ListItem>;
 }
 
 /**
@@ -91,5 +91,5 @@ export interface IListFormEditProps extends IListFormDisplayProps {
     onSaving?: (item: any) => void | PromiseLike<any>;
 
     /** The form validating event. */
-    onValidate?: (field: SP.IFieldResult, control: Components.IFormControl) => boolean;
+    onValidate?: (field: Types.SP.Field, control: Components.IFormControl) => boolean;
 }

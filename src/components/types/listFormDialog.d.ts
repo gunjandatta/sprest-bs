@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import { Helper, SP } from "gd-sprest";
+import { Helper, Types } from "gd-sprest";
 
 /**
  * List Form Dialog
@@ -11,7 +11,7 @@ export const ListFormDialog: (props: IListFormDialogProps) => IListFormDialog;
  */
 export interface IListFormDialog extends Components.IModal {
     /** Method to save the form. */
-    saveForm: () => PromiseLike<SP.IListItemResult>;
+    saveForm: () => PromiseLike<Types.SP.ListItem>;
 }
 
 /**
@@ -43,7 +43,7 @@ export interface IListFormDialogProps extends Helper.IListFormProps {
     onSaving?: (item: any) => void | PromiseLike<any>;
 
     /** The form saved event. */
-    onSaved?: (item?: SP.IListItemResult) => void;
+    onSaved?: (item?: Types.SP.ListItem) => void;
 
     /** The list form rows. */
     template?: Array<Components.IFormRow>;

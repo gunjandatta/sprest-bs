@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import { Helper, SPTypes, SP, Web } from "gd-sprest";
+import { Helper, SPTypes, Types, Web } from "gd-sprest";
 import { IField, IFieldValueUser } from "./types/field";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types/listForm";
 import { Field } from "./field";
@@ -171,7 +171,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     let rows: Array<Components.IFormRow> = [];
     let value = {};
     let attachments: {
-        delete: Array<SP.Attachment>;
+        delete: Array<Types.SP.Attachment>;
         new: Array<Helper.IListFormAttachmentInfo>;
     } = {
         delete: [],
@@ -222,7 +222,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             // Get the web
             props.info.list.ParentWeb().execute(web => {
                 // Parse the attachments
-                Helper.Executor<SP.Attachment>(attachments.delete, attachment => {
+                Helper.Executor<Types.SP.Attachment>(attachments.delete, attachment => {
                     // Get the attachment file
                     web.getFileByServerRelativeUrl(attachment.ServerRelativeUrl).delete().execute();
 
@@ -237,7 +237,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     }
                 }).then(() => {
                     // Wait for the files to be deleted
-                    (web as any as SP.IWeb).done(() => {
+                    (web as any as Types.SP.IWeb).done(() => {
                         // Clear the attachments
                         attachments.delete = [];
 
@@ -272,7 +272,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     });
             }).then(() => {
                 // Wait for the files to upload
-                (props.info.list as any as SP.IList).done(() => {
+                (props.info.list as any as Types.SP.IList).done(() => {
                     // Clear the attachments
                     attachments.new = [];
 
@@ -315,7 +315,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
                         // Parse the responses
                         for (let j = 0; j < args.length; j++) {
-                            let user: SP.User = args[j] as any;
+                            let user: Types.SP.User = args[j] as any;
 
                             // See if this is the user
                             if (user.LoginName == userLogin) {
@@ -465,7 +465,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                         text: "Remove",
                                         type: Components.ButtonTypes.Danger,
                                         onClick: (btn, ev) => {
-                                            let attachment = btn.data as SP.Attachment;
+                                            let attachment = btn.data as Types.SP.Attachment;
 
                                             // Add this file for deletion
                                             attachments.delete.push(attachment);

@@ -98,7 +98,7 @@ declare module 'gd-sprest-bs/components/types/datetime' {
 }
 
 declare module 'gd-sprest-bs/components/types/field' {
-    import { Helper, SP } from "gd-sprest";
+    import { Helper, Types } from "gd-sprest";
     import { Components } from "gd-bs";
     
     /**
@@ -122,10 +122,10 @@ declare module 'gd-sprest-bs/components/types/field' {
     export interface IFieldProps {
             controlMode?: number;
             errorMessage?: string;
-            field: SP.Field;
+            field: Types.SP.Field;
             listInfo: Helper.IListFormResult;
             onError?: (msg: string) => void;
-            onValidate?: (field: SP.Field, control: Components.IFormControl) => boolean;
+            onValidate?: (field: Types.SP.Field, control: Components.IFormControl) => boolean;
             value?: any;
     }
     
@@ -146,7 +146,7 @@ declare module 'gd-sprest-bs/components/types/field' {
 }
 
 declare module 'gd-sprest-bs/components/types/listForm' {
-    import { Helper, SP } from "gd-sprest";
+    import { Helper, Types } from "gd-sprest";
     import { Components } from "gd-bs";
     
     /**
@@ -225,7 +225,7 @@ declare module 'gd-sprest-bs/components/types/listForm' {
             isValid(): boolean;
     
             /** Method to save the form. */
-            save(): PromiseLike<SP.IListItemResult>;
+            save(): PromiseLike<Types.SP.ListItem>;
     }
     
     /**
@@ -239,13 +239,13 @@ declare module 'gd-sprest-bs/components/types/listForm' {
             onSaving?: (item: any) => void | PromiseLike<any>;
     
             /** The form validating event. */
-            onValidate?: (field: SP.IFieldResult, control: Components.IFormControl) => boolean;
+            onValidate?: (field: Types.SP.Field, control: Components.IFormControl) => boolean;
     }
 }
 
 declare module 'gd-sprest-bs/components/types/listFormDialog' {
     import { Components } from "gd-bs";
-    import { Helper, SP } from "gd-sprest";
+    import { Helper, Types } from "gd-sprest";
     
     /**
         * List Form Dialog
@@ -257,7 +257,7 @@ declare module 'gd-sprest-bs/components/types/listFormDialog' {
         */
     export interface IListFormDialog extends Components.IModal {
             /** Method to save the form. */
-            saveForm: () => PromiseLike<SP.IListItemResult>;
+            saveForm: () => PromiseLike<Types.SP.ListItem>;
     }
     
     /**
@@ -289,7 +289,7 @@ declare module 'gd-sprest-bs/components/types/listFormDialog' {
             onSaving?: (item: any) => void | PromiseLike<any>;
     
             /** The form saved event. */
-            onSaved?: (item?: SP.IListItemResult) => void;
+            onSaved?: (item?: Types.SP.ListItem) => void;
     
             /** The list form rows. */
             template?: Array<Components.IFormRow>;
@@ -543,7 +543,7 @@ declare module 'gd-sprest-bs/webparts/types/wp' {
 
 declare module 'gd-sprest-bs/webparts/types/wpList' {
     import { Components } from "gd-bs";
-    import { IODataQuery, SP } from "gd-sprest";
+    import { Types } from "gd-sprest";
     import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/types/wp";
     
     /**
@@ -574,16 +574,16 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
             camlQuery?: string;
     
             /** The odata query. */
-            odataQuery?: IODataQuery;
+            odataQuery?: Types.IODataQuery;
     
             /** The executing caml query event. */
             onExecutingCAMLQuery?: (wpInfo: IListInfo, caml: string) => string;
     
             /** The executing odata query event. */
-            onExecutingODATAQuery?: (wpInfo: IListInfo, odata: IODataQuery) => IODataQuery;
+            onExecutingODATAQuery?: (wpInfo: IListInfo, odata: Types.IODataQuery) => Types.IODataQuery;
     
             /** The on render items event. */
-            onRenderItems?: (wpInfo: IListInfo, items: Array<SP.IListItemQuery | SP.ListItem>) => void;
+            onRenderItems?: (wpInfo: IListInfo, items: Array<Types.SP.IListItemQuery | Types.SP.ListItem>) => void;
     }
     
     /**
@@ -602,21 +602,21 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
         */
     export interface IWPListEditForm<IListCfg = IWPListCfg, IListInfo = IWPListInfo> extends IWebPartEditForm<IListCfg, IListInfo> {
             /** The odata list query. */
-            listQuery?: IODataQuery;
+            listQuery?: Types.IODataQuery;
     
             /** The list changed event. */
-            onListChanged?: (wpInfo: IListInfo, list?: SP.IListQuery | SP.List) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
+            onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
     
             /** The lists loaded event. */
-            onListsLoaded?: (wpInfo: IListInfo, lists?: Array<SP.IListQuery | SP.List>) => Array<SP.IListQuery | SP.List>;
+            onListsLoaded?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQuery | Types.SP.List>) => Array<Types.SP.IListQuery | Types.SP.List>;
     
             /** The render form event. */
-            onRenderForm?: (wpInfo: IListInfo, list?: SP.IListQuery | SP.List) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
+            onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
     }
 }
 
 declare module 'gd-sprest-bs/webparts/types/wpSearch' {
-    import { SP } from "gd-sprest";
+    import { Types } from "gd-sprest";
     import { IWPList, IWPListInfo, IWPListProps } from "gd-sprest-bs/webparts/types/wpList";
     import { IWPListCfg, IWPListEditForm } from "gd-sprest-bs/webparts/types/wpList";
     
@@ -635,7 +635,7 @@ declare module 'gd-sprest-bs/webparts/types/wpSearch' {
         */
     export interface IWPSearch extends IWPList<IWPSearchCfg, IWPSearchInfo> {
             /** The filter items method. */
-            filterItems: (filterText: string) => Array<SP.IListItemQuery | SP.ListItem>;
+            filterItems: (filterText: string) => Array<Types.SP.IListItemQuery | Types.SP.ListItem>;
     }
     
     /**

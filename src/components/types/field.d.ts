@@ -1,4 +1,4 @@
-import { Helper, SP } from "gd-sprest";
+import { Helper, Types } from "gd-sprest";
 import { Components } from "gd-bs";
 
 /**
@@ -22,10 +22,10 @@ export interface IField {
 export interface IFieldProps {
     controlMode?: number;
     errorMessage?: string;
-    field: SP.Field;
+    field: Types.SP.Field;
     listInfo: Helper.IListFormResult;
     onError?: (msg: string) => void;
-    onValidate?: (field: SP.Field, control: Components.IFormControl) => boolean;
+    onValidate?: (field: Types.SP.Field, control: Components.IFormControl) => boolean;
     value?: any;
 }
 
