@@ -196,6 +196,7 @@ export namespace Components {
     'label': string;
     'menuOnly': boolean;
     'multi': boolean;
+    'setLabelToValue': boolean;
     'type': number;
     'value': string;
   }
@@ -210,6 +211,7 @@ export namespace Components {
     'label'?: string;
     'menuOnly'?: boolean;
     'multi'?: boolean;
+    'setLabelToValue'?: boolean;
     'type'?: number;
     'value'?: string;
   }

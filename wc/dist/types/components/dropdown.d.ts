@@ -10,6 +10,7 @@ export declare class Dropdown {
     label: string;
     menuOnly: boolean;
     multi: boolean;
+    setLabelToValue: boolean;
     type: number;
     value: string;
     render(): void;

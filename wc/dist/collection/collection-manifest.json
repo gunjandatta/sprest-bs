@@ -482,6 +482,11 @@
           "attr": "multi"
         },
         {
+          "name": "setLabelToValue",
+          "type": "Boolean",
+          "attr": "set-label-to-value"
+        },
+        {
           "name": "type",
           "type": "Number",
           "attr": "type"

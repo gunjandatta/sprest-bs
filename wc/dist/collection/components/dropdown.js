@@ -16,6 +16,7 @@ export class Dropdown {
             label: this.label,
             menuOnly: this.menuOnly,
             multi: this.multi,
+            setLabelToValue: this.setLabelToValue,
             type: this.type,
             value: this.value
         });
@@ -67,6 +68,10 @@ export class Dropdown {
         "multi": {
             "type": Boolean,
             "attr": "multi"
+        },
+        "setLabelToValue": {
+            "type": Boolean,
+            "attr": "set-label-to-value"
         },
         "type": {
             "type": Number,

@@ -1,1 +1,0 @@
-GdSprestBs.loadBundle("wikcac9r",["exports","./chunk-4d096277.js","./chunk-db2fe816.js"],function(d,e,n){window,d.BsDropdown=n.Dropdown,Object.defineProperty(d,"__esModule",{value:!0})});

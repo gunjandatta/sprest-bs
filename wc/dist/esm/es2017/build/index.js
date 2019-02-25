@@ -11,7 +11,7 @@ import { a as Card } from './chunk-9d0fa635.js';
 import { a as CardGroup } from './chunk-03d14e18.js';
 import { a as Carousel } from './chunk-7169173f.js';
 import { a as Collapse } from './chunk-43b53d7c.js';
-import { a as Dropdown } from './chunk-47f3373f.js';
+import { a as Dropdown } from './chunk-e079b88b.js';
 import { a as Form } from './chunk-29937d40.js';
 import { a as InputGroup } from './chunk-cac54230.js';
 import { a as Jumbotron } from './chunk-89d99bfa.js';
