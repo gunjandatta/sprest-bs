@@ -99,7 +99,7 @@ export namespace Components {
     'type'?: number;
   }
 
-  interface BsButtongroup {
+  interface BsButtonGroup {
     'buttonType': number;
     'className': string;
     'id': string;
@@ -108,7 +108,7 @@ export namespace Components {
     'isVertical': boolean;
     'label': string;
   }
-  interface BsButtongroupAttributes extends StencilHTMLAttributes {
+  interface BsButtonGroupAttributes extends StencilHTMLAttributes {
     'buttonType'?: number;
     'className'?: string;
     'id'?: string;
@@ -133,10 +133,10 @@ export namespace Components {
     'imgTop'?: object;
   }
 
-  interface BsCardgroup {
+  interface BsCardGroup {
     'className': string;
   }
-  interface BsCardgroupAttributes extends StencilHTMLAttributes {
+  interface BsCardGroupAttributes extends StencilHTMLAttributes {
     'className'?: string;
   }
 
@@ -155,7 +155,7 @@ export namespace Components {
     'id'?: string;
   }
 
-  interface BsCheckboxgroup {
+  interface BsCheckboxGroup {
     'className': string;
     'colSize': number;
     'hideLabel': boolean;
@@ -163,7 +163,7 @@ export namespace Components {
     'multi': boolean;
     'type': number;
   }
-  interface BsCheckboxgroupAttributes extends StencilHTMLAttributes {
+  interface BsCheckboxGroupAttributes extends StencilHTMLAttributes {
     'className'?: string;
     'colSize'?: number;
     'hideLabel'?: boolean;
@@ -219,7 +219,7 @@ export namespace Components {
   interface BsForm {}
   interface BsFormAttributes extends StencilHTMLAttributes {}
 
-  interface BsInputgroup {
+  interface BsInputGroup {
     'appendedLabel': string;
     'className': string;
     'description': string;
@@ -235,7 +235,7 @@ export namespace Components {
     'type': number;
     'value': string;
   }
-  interface BsInputgroupAttributes extends StencilHTMLAttributes {
+  interface BsInputGroupAttributes extends StencilHTMLAttributes {
     'appendedLabel'?: string;
     'className'?: string;
     'description'?: string;
@@ -265,14 +265,14 @@ export namespace Components {
     'lead'?: string;
   }
 
-  interface BsListgroup {
+  interface BsListGroup {
     'className': string;
     'colWidth': number;
     'enableFade': boolean;
     'isFlush': boolean;
     'isTabs': boolean;
   }
-  interface BsListgroupAttributes extends StencilHTMLAttributes {
+  interface BsListGroupAttributes extends StencilHTMLAttributes {
     'className'?: string;
     'colWidth'?: number;
     'enableFade'?: boolean;
@@ -399,11 +399,11 @@ export namespace Components {
     'size'?: number;
   }
 
-  interface BsProgressgroup {
+  interface BsProgressGroup {
     'className': string;
     'isMultiple': boolean;
   }
-  interface BsProgressgroupAttributes extends StencilHTMLAttributes {
+  interface BsProgressGroupAttributes extends StencilHTMLAttributes {
     'className'?: string;
     'isMultiple'?: boolean;
   }
@@ -546,17 +546,17 @@ declare global {
     'BsBadge': Components.BsBadge;
     'BsBreadcrumb': Components.BsBreadcrumb;
     'BsButton': Components.BsButton;
-    'BsButtongroup': Components.BsButtongroup;
+    'BsButtonGroup': Components.BsButtonGroup;
     'BsCard': Components.BsCard;
-    'BsCardgroup': Components.BsCardgroup;
+    'BsCardGroup': Components.BsCardGroup;
     'BsCarousel': Components.BsCarousel;
-    'BsCheckboxgroup': Components.BsCheckboxgroup;
+    'BsCheckboxGroup': Components.BsCheckboxGroup;
     'BsCollapse': Components.BsCollapse;
     'BsDropdown': Components.BsDropdown;
     'BsForm': Components.BsForm;
-    'BsInputgroup': Components.BsInputgroup;
+    'BsInputGroup': Components.BsInputGroup;
     'BsJumbotron': Components.BsJumbotron;
-    'BsListgroup': Components.BsListgroup;
+    'BsListGroup': Components.BsListGroup;
     'BsModal': Components.BsModal;
     'BsNav': Components.BsNav;
     'BsNavbar': Components.BsNavbar;
@@ -564,7 +564,7 @@ declare global {
     'BsPanel': Components.BsPanel;
     'BsPopover': Components.BsPopover;
     'BsProgress': Components.BsProgress;
-    'BsProgressgroup': Components.BsProgressgroup;
+    'BsProgressGroup': Components.BsProgressGroup;
     'BsSpinner': Components.BsSpinner;
     'BsTable': Components.BsTable;
     'BsToast': Components.BsToast;
@@ -583,17 +583,17 @@ declare global {
     'bs-badge': Components.BsBadgeAttributes;
     'bs-breadcrumb': Components.BsBreadcrumbAttributes;
     'bs-button': Components.BsButtonAttributes;
-    'bs-buttonGroup': Components.BsButtongroupAttributes;
+    'bs-button-group': Components.BsButtonGroupAttributes;
     'bs-card': Components.BsCardAttributes;
-    'bs-cardGroup': Components.BsCardgroupAttributes;
+    'bs-card-group': Components.BsCardGroupAttributes;
     'bs-carousel': Components.BsCarouselAttributes;
-    'bs-checkboxGroup': Components.BsCheckboxgroupAttributes;
+    'bs-checkbox-group': Components.BsCheckboxGroupAttributes;
     'bs-collapse': Components.BsCollapseAttributes;
     'bs-dropdown': Components.BsDropdownAttributes;
     'bs-form': Components.BsFormAttributes;
-    'bs-inputGroup': Components.BsInputgroupAttributes;
+    'bs-input-group': Components.BsInputGroupAttributes;
     'bs-jumbotron': Components.BsJumbotronAttributes;
-    'bs-listGroup': Components.BsListgroupAttributes;
+    'bs-list-group': Components.BsListGroupAttributes;
     'bs-modal': Components.BsModalAttributes;
     'bs-nav': Components.BsNavAttributes;
     'bs-navbar': Components.BsNavbarAttributes;
@@ -601,7 +601,7 @@ declare global {
     'bs-panel': Components.BsPanelAttributes;
     'bs-popover': Components.BsPopoverAttributes;
     'bs-progress': Components.BsProgressAttributes;
-    'bs-progressGroup': Components.BsProgressgroupAttributes;
+    'bs-progress-group': Components.BsProgressGroupAttributes;
     'bs-spinner': Components.BsSpinnerAttributes;
     'bs-table': Components.BsTableAttributes;
     'bs-toast': Components.BsToastAttributes;
@@ -645,10 +645,10 @@ declare global {
     new (): HTMLBsButtonElement;
   };
 
-  interface HTMLBsButtongroupElement extends Components.BsButtongroup, HTMLStencilElement {}
-  var HTMLBsButtongroupElement: {
-    prototype: HTMLBsButtongroupElement;
-    new (): HTMLBsButtongroupElement;
+  interface HTMLBsButtonGroupElement extends Components.BsButtonGroup, HTMLStencilElement {}
+  var HTMLBsButtonGroupElement: {
+    prototype: HTMLBsButtonGroupElement;
+    new (): HTMLBsButtonGroupElement;
   };
 
   interface HTMLBsCardElement extends Components.BsCard, HTMLStencilElement {}
@@ -657,10 +657,10 @@ declare global {
     new (): HTMLBsCardElement;
   };
 
-  interface HTMLBsCardgroupElement extends Components.BsCardgroup, HTMLStencilElement {}
-  var HTMLBsCardgroupElement: {
-    prototype: HTMLBsCardgroupElement;
-    new (): HTMLBsCardgroupElement;
+  interface HTMLBsCardGroupElement extends Components.BsCardGroup, HTMLStencilElement {}
+  var HTMLBsCardGroupElement: {
+    prototype: HTMLBsCardGroupElement;
+    new (): HTMLBsCardGroupElement;
   };
 
   interface HTMLBsCarouselElement extends Components.BsCarousel, HTMLStencilElement {}
@@ -669,10 +669,10 @@ declare global {
     new (): HTMLBsCarouselElement;
   };
 
-  interface HTMLBsCheckboxgroupElement extends Components.BsCheckboxgroup, HTMLStencilElement {}
-  var HTMLBsCheckboxgroupElement: {
-    prototype: HTMLBsCheckboxgroupElement;
-    new (): HTMLBsCheckboxgroupElement;
+  interface HTMLBsCheckboxGroupElement extends Components.BsCheckboxGroup, HTMLStencilElement {}
+  var HTMLBsCheckboxGroupElement: {
+    prototype: HTMLBsCheckboxGroupElement;
+    new (): HTMLBsCheckboxGroupElement;
   };
 
   interface HTMLBsCollapseElement extends Components.BsCollapse, HTMLStencilElement {}
@@ -693,10 +693,10 @@ declare global {
     new (): HTMLBsFormElement;
   };
 
-  interface HTMLBsInputgroupElement extends Components.BsInputgroup, HTMLStencilElement {}
-  var HTMLBsInputgroupElement: {
-    prototype: HTMLBsInputgroupElement;
-    new (): HTMLBsInputgroupElement;
+  interface HTMLBsInputGroupElement extends Components.BsInputGroup, HTMLStencilElement {}
+  var HTMLBsInputGroupElement: {
+    prototype: HTMLBsInputGroupElement;
+    new (): HTMLBsInputGroupElement;
   };
 
   interface HTMLBsJumbotronElement extends Components.BsJumbotron, HTMLStencilElement {}
@@ -705,10 +705,10 @@ declare global {
     new (): HTMLBsJumbotronElement;
   };
 
-  interface HTMLBsListgroupElement extends Components.BsListgroup, HTMLStencilElement {}
-  var HTMLBsListgroupElement: {
-    prototype: HTMLBsListgroupElement;
-    new (): HTMLBsListgroupElement;
+  interface HTMLBsListGroupElement extends Components.BsListGroup, HTMLStencilElement {}
+  var HTMLBsListGroupElement: {
+    prototype: HTMLBsListGroupElement;
+    new (): HTMLBsListGroupElement;
   };
 
   interface HTMLBsModalElement extends Components.BsModal, HTMLStencilElement {}
@@ -753,10 +753,10 @@ declare global {
     new (): HTMLBsProgressElement;
   };
 
-  interface HTMLBsProgressgroupElement extends Components.BsProgressgroup, HTMLStencilElement {}
-  var HTMLBsProgressgroupElement: {
-    prototype: HTMLBsProgressgroupElement;
-    new (): HTMLBsProgressgroupElement;
+  interface HTMLBsProgressGroupElement extends Components.BsProgressGroup, HTMLStencilElement {}
+  var HTMLBsProgressGroupElement: {
+    prototype: HTMLBsProgressGroupElement;
+    new (): HTMLBsProgressGroupElement;
   };
 
   interface HTMLBsSpinnerElement extends Components.BsSpinner, HTMLStencilElement {}
@@ -825,17 +825,17 @@ declare global {
     'bs-badge': HTMLBsBadgeElement
     'bs-breadcrumb': HTMLBsBreadcrumbElement
     'bs-button': HTMLBsButtonElement
-    'bs-buttonGroup': HTMLBsButtongroupElement
+    'bs-button-group': HTMLBsButtonGroupElement
     'bs-card': HTMLBsCardElement
-    'bs-cardGroup': HTMLBsCardgroupElement
+    'bs-card-group': HTMLBsCardGroupElement
     'bs-carousel': HTMLBsCarouselElement
-    'bs-checkboxGroup': HTMLBsCheckboxgroupElement
+    'bs-checkbox-group': HTMLBsCheckboxGroupElement
     'bs-collapse': HTMLBsCollapseElement
     'bs-dropdown': HTMLBsDropdownElement
     'bs-form': HTMLBsFormElement
-    'bs-inputGroup': HTMLBsInputgroupElement
+    'bs-input-group': HTMLBsInputGroupElement
     'bs-jumbotron': HTMLBsJumbotronElement
-    'bs-listGroup': HTMLBsListgroupElement
+    'bs-list-group': HTMLBsListGroupElement
     'bs-modal': HTMLBsModalElement
     'bs-nav': HTMLBsNavElement
     'bs-navbar': HTMLBsNavbarElement
@@ -843,7 +843,7 @@ declare global {
     'bs-panel': HTMLBsPanelElement
     'bs-popover': HTMLBsPopoverElement
     'bs-progress': HTMLBsProgressElement
-    'bs-progressGroup': HTMLBsProgressgroupElement
+    'bs-progress-group': HTMLBsProgressGroupElement
     'bs-spinner': HTMLBsSpinnerElement
     'bs-table': HTMLBsTableElement
     'bs-toast': HTMLBsToastElement
@@ -862,17 +862,17 @@ declare global {
     'bs-badge': HTMLBsBadgeElement;
     'bs-breadcrumb': HTMLBsBreadcrumbElement;
     'bs-button': HTMLBsButtonElement;
-    'bs-buttonGroup': HTMLBsButtongroupElement;
+    'bs-button-group': HTMLBsButtonGroupElement;
     'bs-card': HTMLBsCardElement;
-    'bs-cardGroup': HTMLBsCardgroupElement;
+    'bs-card-group': HTMLBsCardGroupElement;
     'bs-carousel': HTMLBsCarouselElement;
-    'bs-checkboxGroup': HTMLBsCheckboxgroupElement;
+    'bs-checkbox-group': HTMLBsCheckboxGroupElement;
     'bs-collapse': HTMLBsCollapseElement;
     'bs-dropdown': HTMLBsDropdownElement;
     'bs-form': HTMLBsFormElement;
-    'bs-inputGroup': HTMLBsInputgroupElement;
+    'bs-input-group': HTMLBsInputGroupElement;
     'bs-jumbotron': HTMLBsJumbotronElement;
-    'bs-listGroup': HTMLBsListgroupElement;
+    'bs-list-group': HTMLBsListGroupElement;
     'bs-modal': HTMLBsModalElement;
     'bs-nav': HTMLBsNavElement;
     'bs-navbar': HTMLBsNavbarElement;
@@ -880,7 +880,7 @@ declare global {
     'bs-panel': HTMLBsPanelElement;
     'bs-popover': HTMLBsPopoverElement;
     'bs-progress': HTMLBsProgressElement;
-    'bs-progressGroup': HTMLBsProgressgroupElement;
+    'bs-progress-group': HTMLBsProgressGroupElement;
     'bs-spinner': HTMLBsSpinnerElement;
     'bs-table': HTMLBsTableElement;
     'bs-toast': HTMLBsToastElement;

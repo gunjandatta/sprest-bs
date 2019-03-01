@@ -18,7 +18,7 @@ export class ButtonGroup {
         GD.Components.ButtonGroup(props);
         this.el.setAttribute("data-init", "true");
     }
-    static get is() { return "bs-buttonGroup"; }
+    static get is() { return "bs-button-group"; }
     static get properties() { return {
         "buttonType": {
             "type": Number,

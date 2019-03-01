@@ -16,7 +16,7 @@ export class CheckboxGroup {
         GD.Components.CheckboxGroup(props);
         this.el.setAttribute("data-init", "true");
     }
-    static get is() { return "bs-checkboxGroup"; }
+    static get is() { return "bs-checkbox-group"; }
     static get properties() { return {
         "className": {
             "type": String,

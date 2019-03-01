@@ -11,7 +11,7 @@ export class CardGroup {
         GD.Components.CardGroup(props);
         this.el.setAttribute("data-init", "true");
     }
-    static get is() { return "bs-cardGroup"; }
+    static get is() { return "bs-card-group"; }
     static get properties() { return {
         "className": {
             "type": String,

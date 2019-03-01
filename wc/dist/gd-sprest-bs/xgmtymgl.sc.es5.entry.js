@@ -1,1 +1,0 @@
-GdSprestBs.loadBundle("xgmtymgl",["exports","./chunk-4d096277.js","./chunk-515414a2.js"],function(e,d,u){window,e.BsBreadcrumb=u.Breadcrumb,Object.defineProperty(e,"__esModule",{value:!0})});

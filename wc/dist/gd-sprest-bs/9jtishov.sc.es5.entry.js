@@ -1,1 +1,0 @@
-GdSprestBs.loadBundle("9jtishov",["exports","./chunk-4d096277.js","./chunk-ee956182.js"],function(e,d,n){window,e.BsCard=n.Card,Object.defineProperty(e,"__esModule",{value:!0})});

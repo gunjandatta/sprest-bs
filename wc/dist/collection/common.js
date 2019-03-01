@@ -12,7 +12,7 @@ export const getProps = (el, elProps = {}) => {
         }
     }
     for (let key in elProps) {
-        if (typeof (props[key]) != "undefined") {
+        if (props[key] != null) {
             continue;
         }
         props[key] = elProps[key];

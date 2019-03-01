@@ -1,1 +1,0 @@
-GdSprestBs.loadBundle("vekwawzs",["exports","./chunk-4d096277.js","./chunk-6b5ede8d.js"],function(e,d,l){window,e.BsCollapse=l.Collapse,Object.defineProperty(e,"__esModule",{value:!0})});

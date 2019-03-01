@@ -25,7 +25,7 @@ export class InputGroup {
         GD.Components.InputGroup(props);
         this.el.setAttribute("data-init", "true");
     }
-    static get is() { return "bs-inputGroup"; }
+    static get is() { return "bs-input-group"; }
     static get properties() { return {
         "appendedLabel": {
             "type": String,

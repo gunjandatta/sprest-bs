@@ -12,7 +12,7 @@ export class ProgressGroup {
         GD.Components.ProgressGroup(props);
         this.el.setAttribute("data-init", "true");
     }
-    static get is() { return "bs-progressGroup"; }
+    static get is() { return "bs-progress-group"; }
     static get properties() { return {
         "className": {
             "type": String,

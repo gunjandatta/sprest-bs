@@ -1,1 +1,0 @@
-GdSprestBs.loadBundle("ixognep4",["exports","./chunk-4d096277.js","./chunk-16f643bb.js"],function(d,e,n){window,d.BsAccordion=n.Accordion,Object.defineProperty(d,"__esModule",{value:!0})});

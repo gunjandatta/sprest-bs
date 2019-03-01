@@ -1,1 +1,0 @@
-GdSprestBs.loadBundle("8qxujbu6",["exports","./chunk-4d096277.js","./chunk-50e00611.js"],function(e,d,n){window,e.BsModal=n.Modal,Object.defineProperty(e,"__esModule",{value:!0})});

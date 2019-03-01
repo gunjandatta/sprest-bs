@@ -15,7 +15,7 @@ export class ListGroup {
         GD.Components.ListGroup(props);
         this.el.setAttribute("data-init", "true");
     }
-    static get is() { return "bs-listGroup"; }
+    static get is() { return "bs-list-group"; }
     static get properties() { return {
         "className": {
             "type": String,
