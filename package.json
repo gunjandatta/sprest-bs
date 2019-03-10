@@ -3,7 +3,7 @@
   "version": "1.8.2",
   "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
   "main": "dist/gd-sprest-bs.js",
-  "typings": "src/typings.d.ts",
+  "typings": "dist/gd-sprest-bs.d.ts",
   "scripts": {
     "all": "npm run build && npm run prod && npm run typings && npm run wc",
     "build": "webpack --mode=development",
