@@ -22,7 +22,7 @@ export const WPTaxonomy = (props: IWPTaxonomyProps) => {
             if (props.onRenderTermSets && wpInfo.cfg.TermGroupName) {
                 // Load the term group information
                 Helper.Taxonomy.getTermSets(wpInfo.cfg.TermGroupName).then(termSets => {
-                    // Call the event
+                    // Call the render event
                     props.onRenderTermSets(wpInfo, termSets);
                 });
             }
@@ -31,11 +31,25 @@ export const WPTaxonomy = (props: IWPTaxonomyProps) => {
             if (wpInfo.cfg.TermGroupName && wpInfo.cfg.TermSetName) {
                 // See if the render term set events exists
                 if (props.onRenderTermSet || props.onRenderTermSetTerms) {
-                    // Load the term group information
+                    // Load the term set information
                     Helper.Taxonomy.getTermSetByGroupName(wpInfo.cfg.TermSetName, wpInfo.cfg.TermGroupName).then(termSet => {
-                        // Call the events
+                        // Call the term set render event
                         props.onRenderTermSet ? props.onRenderTermSet(wpInfo, termSet) : null;
-                        props.onRenderTermSetTerms ? props.onRenderTermSetTerms(wpInfo, Helper.Taxonomy.toArray(termSet)) : null;
+
+                        // See if we are rendering term set terms
+                        if (props.onRenderTermSetTerms) {
+                            // See if a term set id exists
+                            if (wpInfo.cfg.TermSetTermId) {
+                                // Load the term set terms
+                                let term = Helper.Taxonomy.findById(termSet, wpInfo.cfg.TermSetTermId);
+
+                                // Call the term set terms render event
+                                props.onRenderTermSetTerms(wpInfo, term ? Helper.Taxonomy.toArray(term) : []);
+                            } else {
+                                // Call the term set terms render event
+                                props.onRenderTermSetTerms(wpInfo, Helper.Taxonomy.toArray(termSet));
+                            }
+                        }
                     });
                 }
             }
