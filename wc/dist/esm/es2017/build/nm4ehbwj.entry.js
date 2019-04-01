@@ -1,5 +1,0 @@
-import { h } from '../gd-sprest-bs.core.js';
-
-import './chunk-7e340ae1.js';
-import './chunk-5c60948f.js';
-export { a as BsWebpartTaxonomy } from './chunk-e0cd269d.js';

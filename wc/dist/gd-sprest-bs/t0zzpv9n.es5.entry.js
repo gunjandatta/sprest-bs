@@ -1,1 +1,0 @@
-GdSprestBs.loadBundle("t0zzpv9n",["exports","./chunk-78307676.js","./chunk-b7cf27fa.js"],function(n,e,d){window,n.BsPagination=d.Pagination,Object.defineProperty(n,"__esModule",{value:!0})});

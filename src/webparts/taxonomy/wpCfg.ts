@@ -1,12 +1,13 @@
 import { Components } from "gd-bs";
 import { Helper } from "gd-sprest";
-import { Helper as WPHelper } from "../base/helper";
 import { IWPTaxonomyInfo, IWPTaxonomyEditForm, IWPTaxonomyCfg } from "../types/wpTaxonomy";
 
 /**
  * Taxonomy WebPart Edit Form
  */
 export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomyEditForm => {
+    let _ddlTermSet: Components.IDropdown;
+    let _ddlTerm: Components.IDropdown;
     let _termGroupItems: Array<Components.IDropdownItem> = [];
     let _termSetItems: Array<Components.IDropdownItem> = [];
     let _termSetTermsItems: Array<Components.IDropdownItem> = [];
@@ -22,58 +23,81 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
             items: _termGroupItems,
             name: "TermGroupId",
             type: Components.FormControlTypes.Dropdown,
+            value: _wpInfo.cfg.TermGroupId,
             onChange: (option: Components.IDropdownItem) => {
-                // Set the configuration
+                // Clear the dropdowns
+                _termSetItems = [];
+                _termSetTermsItems = [];
+                _ddlTermSet.setItems([]);
+                _ddlTerm.setItems([]);
+
+                // Update the configuration
                 _wpInfo.cfg.TermGroupId = option ? option.value : "";
                 _wpInfo.cfg.TermGroupName = option ? option.text : "";
+                _wpInfo.cfg.TermSetId = "";
+                _wpInfo.cfg.TermSetName = "";
+                _wpInfo.cfg.TermSetTermId = "";
+                _wpInfo.cfg.TermSetTermName = "";
 
                 // Call the change event
                 props.onTermGroupChanged ? props.onTermGroupChanged(_wpInfo, { id: _wpInfo.cfg.TermGroupId, name: _wpInfo.cfg.TermGroupName }) : null;
 
                 // Load the term sets
                 loadTermSets().then(() => {
-                    // Render the edit form
-                    WPHelper.renderEditForm(_wpInfo, generateFormControls());
+                    // Render the child dropdowns
+                    _ddlTermSet.setItems(_termSetItems);
                 });
             }
         });
 
-        // Ensure a term group is selected
-        if (_wpInfo.cfg.TermGroupId) {
-            // Add the term sets dropdown
-            formControls.push({
-                label: "Select a Term Set:",
-                items: _termSetItems,
-                name: "TermSetId",
-                type: Components.FormControlTypes.Dropdown,
-                onChange: (option: Components.IDropdownItem) => {
-                    // Set the configuration
-                    _wpInfo.cfg.TermSetId = option ? option.value : "";
-                    _wpInfo.cfg.TermSetName = option ? option.text : "";
+        // Add the term sets dropdown
+        formControls.push({
+            label: "Select a Term Set:",
+            items: _termSetItems,
+            name: "TermSetId",
+            type: Components.FormControlTypes.Dropdown,
+            value: _wpInfo.cfg.TermSetId,
+            onControlRendered: (control) => {
+                // Save a reference to the dropdown
+                _ddlTermSet = control.get() as any;
+            },
+            onChange: (option: Components.IDropdownItem) => {
+                // Clear the dropdown
+                _termSetTermsItems = [];
+                _ddlTerm.setItems([]);
 
-                    // Call the change event
-                    props.onTermSetChanged ? props.onTermSetChanged(_wpInfo, { id: _wpInfo.cfg.TermSetId, name: _wpInfo.cfg.TermSetName }) : null;
+                // Update the configuration
+                _wpInfo.cfg.TermSetId = option ? option.value : "";
+                _wpInfo.cfg.TermSetName = option ? option.text : "";
+                _wpInfo.cfg.TermSetTermId = "";
+                _wpInfo.cfg.TermSetTermName = "";
 
-                    // Load the term set terms
-                    loadTermSetTerms().then(() => {
-                        // Render the edit form
-                        WPHelper.renderEditForm(_wpInfo, generateFormControls());
-                    });
-                }
-            });
+                // Call the change event
+                props.onTermSetChanged ? props.onTermSetChanged(_wpInfo, { id: _wpInfo.cfg.TermSetId, name: _wpInfo.cfg.TermSetName }) : null;
 
-        }
+                // Load the term set terms
+                loadTermSetTerms().then(() => {
+                    // Render the child dropdowns
+                    _ddlTerm.setItems(_termSetTermsItems);
+                });
+            }
+        });
 
-        // Ensure we are rendering the term set terms and a term set is selected
-        if (props.showTermSetTerms && _wpInfo.cfg.TermSetId) {
-            // Add the term sets dropdown
+        // Ensure we are rendering the term set terms
+        if (props.showTermSetTerms) {
+            // Add the term set terms dropdown
             formControls.push({
                 label: "Select a Term Set Term:",
                 items: _termSetTermsItems,
                 name: "TermSetTermId",
                 type: Components.FormControlTypes.Dropdown,
+                value: _wpInfo.cfg.TermSetTermId,
+                onControlRendered: (control) => {
+                    // Save a reference to the dropdown
+                    _ddlTerm = control.get() as any;
+                },
                 onChange: (option: Components.IDropdownItem) => {
-                    // Set the configuration
+                    // Update the configuration
                     _wpInfo.cfg.TermSetTermId = option ? option.value : "";
                     _wpInfo.cfg.TermSetTermName = option ? option.text : "";
 

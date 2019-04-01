@@ -1,1 +1,0 @@
-GdSprestBs.loadBundle("t4pbbowh",["exports","./chunk-78307676.js","./chunk-e70855b7.js"],function(e,l,s){window,e.BsCollapse=s.Collapse,Object.defineProperty(e,"__esModule",{value:!0})});
