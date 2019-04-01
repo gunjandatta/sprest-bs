@@ -29,7 +29,7 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
                 _termSetItems = [];
                 _termSetTermsItems = [];
                 _ddlTermSet.setItems([]);
-                _ddlTerm.setItems([]);
+                _ddlTerm ? _ddlTerm.setItems([]) : null;
 
                 // Update the configuration
                 _wpInfo.cfg.TermGroupId = option ? option.value : "";
@@ -64,7 +64,7 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
             onChange: (option: Components.IDropdownItem) => {
                 // Clear the dropdown
                 _termSetTermsItems = [];
-                _ddlTerm.setItems([]);
+                _ddlTerm ? _ddlTerm.setItems([]) : null;
 
                 // Update the configuration
                 _wpInfo.cfg.TermSetId = option ? option.value : "";
@@ -75,11 +75,14 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
                 // Call the change event
                 props.onTermSetChanged ? props.onTermSetChanged(_wpInfo, { id: _wpInfo.cfg.TermSetId, name: _wpInfo.cfg.TermSetName }) : null;
 
-                // Load the term set terms
-                loadTermSetTerms().then(() => {
-                    // Render the child dropdowns
-                    _ddlTerm.setItems(_termSetTermsItems);
-                });
+                // See if we are loading the terms
+                if (props.showTermSetTerms) {
+                    // Load the term set terms
+                    loadTermSetTerms().then(() => {
+                        // Render the child dropdowns
+                        _ddlTerm.setItems(_termSetTermsItems);
+                    });
+                }
             }
         });
 
