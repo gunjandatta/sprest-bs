@@ -1,1 +1,2 @@
-module.exports = require('./cjs/index.cjs.js');
+// GdSprestBs: CommonJS Main
+module.exports = require('../esm/index.js');

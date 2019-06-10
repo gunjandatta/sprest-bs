@@ -1,0 +1,1 @@
+import{r as t,g as s}from"./p-9f1e864c.js";import{g as e}from"./p-26c2e58d.js";class i{constructor(s){t(this,s)}render(){if(this.el.hasAttribute("data-init"))return;let t=e(this.el,{className:this.className,el:this.el,type:this.type});GD.Components.Tooltip(t),this.el.setAttribute("data-init","true")}get el(){return s(this)}}export{i as bs_tooltip};

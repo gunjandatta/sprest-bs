@@ -8,9 +8,9 @@
   "files": [
     "dist/"
   ],
-  "module": "dist/esm/index.js",
+  "module": "dist/index.js",
   "scripts": {
-    "build": "stencil build",
+    "build": "stencil build --prerender",
     "start": "stencil build --dev --watch --serve"
   },
   "author": "Gunjan Datta <gunjandatta.github.io>",

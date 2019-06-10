@@ -1,0 +1,1 @@
+import{a as t}from"./chunk-3f966420.js";class e{render(){if(this.el.hasAttribute("data-init"))return;let e=t(this.el,{el:this.el});GD.Components.Form(e),this.el.setAttribute("data-init","true")}static get is(){return"bs-form"}static get properties(){return{el:{elementRef:!0}}}}export{e as a};

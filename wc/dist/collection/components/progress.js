@@ -1,13 +1,9 @@
 import { getProps } from "../common";
 export class Progress {
-    // Render the progress
     render() {
-        // Ensure it hasn't been initialized
-        // This seems to be an issue w/ IE & Edge
         if (this.el.hasAttribute("data-init")) {
             return;
         }
-        // Get the properties
         let props = getProps(this.el, {
             className: this.className,
             el: this.el,
@@ -18,133 +14,41 @@ export class Progress {
             min: this.min,
             size: this.size
         });
-        // Render the progress
         GD.Components.Progress(props);
-        // Set the init attribute
-        // This seems to be an issue w/ IE & Edge
         this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-progress"; }
     static get properties() { return {
         "className": {
-            "type": "string",
-            "mutable": false,
-            "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-            },
-            "required": false,
-            "optional": false,
-            "docs": {
-                "tags": [],
-                "text": ""
-            },
-            "attribute": "class-name",
-            "reflect": false
+            "type": String,
+            "attr": "class-name"
+        },
+        "el": {
+            "elementRef": true
         },
         "isAnimated": {
-            "type": "boolean",
-            "mutable": false,
-            "complexType": {
-                "original": "boolean",
-                "resolved": "boolean",
-                "references": {}
-            },
-            "required": false,
-            "optional": false,
-            "docs": {
-                "tags": [],
-                "text": ""
-            },
-            "attribute": "is-animated",
-            "reflect": false
+            "type": Boolean,
+            "attr": "is-animated"
         },
         "isStriped": {
-            "type": "boolean",
-            "mutable": false,
-            "complexType": {
-                "original": "boolean",
-                "resolved": "boolean",
-                "references": {}
-            },
-            "required": false,
-            "optional": false,
-            "docs": {
-                "tags": [],
-                "text": ""
-            },
-            "attribute": "is-striped",
-            "reflect": false
+            "type": Boolean,
+            "attr": "is-striped"
         },
         "label": {
-            "type": "string",
-            "mutable": false,
-            "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-            },
-            "required": false,
-            "optional": false,
-            "docs": {
-                "tags": [],
-                "text": ""
-            },
-            "attribute": "label",
-            "reflect": false
+            "type": String,
+            "attr": "label"
         },
         "max": {
-            "type": "number",
-            "mutable": false,
-            "complexType": {
-                "original": "number",
-                "resolved": "number",
-                "references": {}
-            },
-            "required": false,
-            "optional": false,
-            "docs": {
-                "tags": [],
-                "text": ""
-            },
-            "attribute": "max",
-            "reflect": false
+            "type": Number,
+            "attr": "max"
         },
         "min": {
-            "type": "number",
-            "mutable": false,
-            "complexType": {
-                "original": "number",
-                "resolved": "number",
-                "references": {}
-            },
-            "required": false,
-            "optional": false,
-            "docs": {
-                "tags": [],
-                "text": ""
-            },
-            "attribute": "min",
-            "reflect": false
+            "type": Number,
+            "attr": "min"
         },
         "size": {
-            "type": "number",
-            "mutable": false,
-            "complexType": {
-                "original": "number",
-                "resolved": "number",
-                "references": {}
-            },
-            "required": false,
-            "optional": false,
-            "docs": {
-                "tags": [],
-                "text": ""
-            },
-            "attribute": "size",
-            "reflect": false
+            "type": Number,
+            "attr": "size"
         }
     }; }
-    static get elementRef() { return "el"; }
 }

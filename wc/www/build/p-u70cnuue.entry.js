@@ -1,0 +1,1 @@
+import{r as t,g as s}from"./p-9f1e864c.js";import{g as e}from"./p-26c2e58d.js";class r{constructor(s){t(this,s)}render(){if(this.el.hasAttribute("data-init"))return;let t=e(this.el,{className:this.className,el:this.el,isMultiple:this.isMultiple});GD.Components.ProgressGroup(t),this.el.setAttribute("data-init","true")}get el(){return s(this)}}export{r as bs_progress_group};

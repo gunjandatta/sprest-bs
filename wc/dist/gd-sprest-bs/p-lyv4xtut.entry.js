@@ -1,1 +1,0 @@
-import{r as t,g as e}from"./p-e7b96492.js";import{g as s}from"./p-26c2e58d.js";class r{constructor(e){t(this,e)}render(){if(this.el.hasAttribute("data-init"))return;let t=s(this.el,{className:this.className,el:this.el});GD.Components.Table(t),this.el.setAttribute("data-init","true")}get el(){return e(this)}}export{r as bs_table};
