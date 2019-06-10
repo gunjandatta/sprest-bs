@@ -1,1 +1,0 @@
-GdSprestBs.loadBundle("coxhnhmx",["exports","./chunk-1c26bad2.js","./chunk-03dfd30a.js","./chunk-f5d1b413.js"],function(e,d,s,n){e.BsWebpartTabs=n.WPTabs,Object.defineProperty(e,"__esModule",{value:!0})});

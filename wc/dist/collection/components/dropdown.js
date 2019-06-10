@@ -1,9 +1,13 @@
 import { getProps } from "../common";
 export class Dropdown {
+    // Render the dropdown
     render() {
+        // Ensure it hasn't been initialized
+        // This seems to be an issue w/ IE & Edge
         if (this.el.hasAttribute("data-init")) {
             return;
         }
+        // Get the properties
         let props = getProps(this.el, {
             className: this.className,
             dropLeft: this.dropLeft,
@@ -20,66 +24,237 @@ export class Dropdown {
             type: this.type,
             value: this.value
         });
+        // Remove the id attribute
         this.el.removeAttribute("id");
+        // Render the dropdown
         GD.Components.Dropdown(props);
+        // Set the init attribute
+        // This seems to be an issue w/ IE & Edge
         this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-dropdown"; }
     static get properties() { return {
         "className": {
-            "type": String,
-            "attr": "class-name"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "class-name",
+            "reflect": false
         },
         "dropLeft": {
-            "type": Boolean,
-            "attr": "drop-left"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "drop-left",
+            "reflect": false
         },
         "dropRight": {
-            "type": Boolean,
-            "attr": "drop-right"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "drop-right",
+            "reflect": false
         },
         "dropUp": {
-            "type": Boolean,
-            "attr": "drop-up"
-        },
-        "el": {
-            "elementRef": true
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "drop-up",
+            "reflect": false
         },
         "formFl": {
-            "type": Boolean,
-            "attr": "form-fl"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "form-fl",
+            "reflect": false
         },
         "id": {
-            "type": String,
-            "attr": "id"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "id",
+            "reflect": false
         },
         "isSplit": {
-            "type": Boolean,
-            "attr": "is-split"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "is-split",
+            "reflect": false
         },
         "label": {
-            "type": String,
-            "attr": "label"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "label",
+            "reflect": false
         },
         "menuOnly": {
-            "type": Boolean,
-            "attr": "menu-only"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "menu-only",
+            "reflect": false
         },
         "multi": {
-            "type": Boolean,
-            "attr": "multi"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "multi",
+            "reflect": false
         },
         "setLabelToValue": {
-            "type": Boolean,
-            "attr": "set-label-to-value"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "set-label-to-value",
+            "reflect": false
         },
         "type": {
-            "type": Number,
-            "attr": "type"
+            "type": "number",
+            "mutable": false,
+            "complexType": {
+                "original": "number",
+                "resolved": "number",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "type",
+            "reflect": false
         },
         "value": {
-            "type": String,
-            "attr": "value"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "value",
+            "reflect": false
         }
     }; }
+    static get elementRef() { return "el"; }
 }

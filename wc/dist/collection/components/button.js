@@ -1,9 +1,13 @@
 import { getProps } from "../common";
 export class Button {
+    // Render the button
     render() {
+        // Ensure it hasn't been initialized
+        // This seems to be an issue w/ IE & Edge
         if (this.el.hasAttribute("data-init")) {
             return;
         }
+        // Get the properties
         let props = getProps(this.el, {
             className: this.className,
             controls: this.controls,
@@ -24,82 +28,307 @@ export class Button {
             trigger: this.trigger,
             type: this.type
         });
+        // Remove the id attribute
         this.el.removeAttribute("id");
+        // Render the button
         GD.Components.Button(props);
+        // Set the init attribute
+        // This seems to be an issue w/ IE & Edge
         this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-button"; }
     static get properties() { return {
         "className": {
-            "type": String,
-            "attr": "class-name"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "class-name",
+            "reflect": false
         },
         "controls": {
-            "type": "Any",
-            "attr": "controls"
+            "type": "unknown",
+            "mutable": false,
+            "complexType": {
+                "original": "Array<string>",
+                "resolved": "string[]",
+                "references": {
+                    "Array": {
+                        "location": "global"
+                    }
+                }
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            }
         },
         "data": {
-            "type": "Any",
-            "attr": "data"
-        },
-        "el": {
-            "elementRef": true
+            "type": "any",
+            "mutable": false,
+            "complexType": {
+                "original": "any",
+                "resolved": "any",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "data",
+            "reflect": false
         },
         "href": {
-            "type": String,
-            "attr": "href"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "href",
+            "reflect": false
         },
         "id": {
-            "type": String,
-            "attr": "id"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "id",
+            "reflect": false
         },
         "isBlock": {
-            "type": Boolean,
-            "attr": "is-block"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "is-block",
+            "reflect": false
         },
         "isDisabled": {
-            "type": Boolean,
-            "attr": "is-disabled"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "is-disabled",
+            "reflect": false
         },
         "isExpanded": {
-            "type": Boolean,
-            "attr": "is-expanded"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "is-expanded",
+            "reflect": false
         },
         "isLarge": {
-            "type": Boolean,
-            "attr": "is-large"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "is-large",
+            "reflect": false
         },
         "isLink": {
-            "type": Boolean,
-            "attr": "is-link"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "is-link",
+            "reflect": false
         },
         "isOutline": {
-            "type": Boolean,
-            "attr": "is-outline"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "is-outline",
+            "reflect": false
         },
         "isSmall": {
-            "type": Boolean,
-            "attr": "is-small"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "is-small",
+            "reflect": false
         },
         "target": {
-            "type": String,
-            "attr": "target"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "target",
+            "reflect": false
         },
         "text": {
-            "type": String,
-            "attr": "text"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "text",
+            "reflect": false
         },
         "toggle": {
-            "type": String,
-            "attr": "toggle"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "toggle",
+            "reflect": false
         },
         "trigger": {
-            "type": String,
-            "attr": "trigger"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "trigger",
+            "reflect": false
         },
         "type": {
-            "type": Number,
-            "attr": "type"
+            "type": "number",
+            "mutable": false,
+            "complexType": {
+                "original": "number",
+                "resolved": "number",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "type",
+            "reflect": false
         }
     }; }
+    static get elementRef() { return "el"; }
 }

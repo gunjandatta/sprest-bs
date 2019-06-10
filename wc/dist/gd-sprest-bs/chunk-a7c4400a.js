@@ -1,1 +1,0 @@
-import{a as t}from"./chunk-3f966420.js";class e{render(){if(this.el.hasAttribute("data-init"))return;let e=t(this.el,{className:this.className,el:this.el});GD.Components.Breadcrumb(e),this.el.setAttribute("data-init","true")}static get is(){return"bs-breadcrumb"}static get properties(){return{className:{type:String,attr:"class-name"},el:{elementRef:!0}}}}export{e as a};

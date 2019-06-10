@@ -1,9 +1,13 @@
 import { getProps } from "../common";
 export class Toast {
+    // Render the toast
     render() {
+        // Ensure it hasn't been initialized
+        // This seems to be an issue w/ IE & Edge
         if (this.el.hasAttribute("data-init")) {
             return;
         }
+        // Get the properties
         let props = getProps(this.el, {
             bodyText: this.bodyText,
             className: this.className,
@@ -14,41 +18,133 @@ export class Toast {
             headerImgSrc: this.headerImgSrc,
             headerText: this.headerText
         });
+        // Render the toast
         GD.Components.Toast(props);
+        // Set the init attribute
+        // This seems to be an issue w/ IE & Edge
         this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-toast"; }
     static get properties() { return {
         "bodyText": {
-            "type": String,
-            "attr": "body-text"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "body-text",
+            "reflect": false
         },
         "className": {
-            "type": String,
-            "attr": "class-name"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "class-name",
+            "reflect": false
         },
         "closeButtonHidden": {
-            "type": Boolean,
-            "attr": "close-button-hidden"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "close-button-hidden",
+            "reflect": false
         },
         "closeButtonText": {
-            "type": Boolean,
-            "attr": "close-button-text"
-        },
-        "el": {
-            "elementRef": true
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "close-button-text",
+            "reflect": false
         },
         "headerImgClass": {
-            "type": String,
-            "attr": "header-img-class"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "header-img-class",
+            "reflect": false
         },
         "headerImgSrc": {
-            "type": String,
-            "attr": "header-img-src"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "header-img-src",
+            "reflect": false
         },
         "headerText": {
-            "type": String,
-            "attr": "header-text"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "header-text",
+            "reflect": false
         }
     }; }
+    static get elementRef() { return "el"; }
 }

@@ -10,7 +10,7 @@
   ],
   "module": "dist/esm/index.js",
   "scripts": {
-    "build": "stencil build --prerender",
+    "build": "stencil build",
     "start": "stencil build --dev --watch --serve"
   },
   "author": "Gunjan Datta <gunjandatta.github.io>",

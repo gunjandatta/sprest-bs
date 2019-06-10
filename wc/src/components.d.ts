@@ -5,22 +5,14 @@
  */
 
 
-import '@stencil/core';
-
-
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-
   interface BsAccordion {
     'className': string;
     'id': string;
   }
-  interface BsAccordionAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'id'?: string;
-  }
-
   interface BsAlert {
     'className': string;
     'content': string;
@@ -28,14 +20,6 @@ export namespace Components {
     'isDismissible': boolean;
     'type': number;
   }
-  interface BsAlertAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'content'?: string;
-    'header'?: string;
-    'isDismissible'?: boolean;
-    'type'?: number;
-  }
-
   interface BsBadge {
     'className': string;
     'content': string;
@@ -44,22 +28,9 @@ export namespace Components {
     'isPill': boolean;
     'type': number;
   }
-  interface BsBadgeAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'content'?: string;
-    'header'?: string;
-    'href'?: string;
-    'isPill'?: boolean;
-    'type'?: number;
-  }
-
   interface BsBreadcrumb {
     'className': string;
   }
-  interface BsBreadcrumbAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-  }
-
   interface BsButton {
     'className': string;
     'controls': Array<string>;
@@ -79,26 +50,6 @@ export namespace Components {
     'trigger': string;
     'type': number;
   }
-  interface BsButtonAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'controls'?: Array<string>;
-    'data'?: any;
-    'href'?: string;
-    'id'?: string;
-    'isBlock'?: boolean;
-    'isDisabled'?: boolean;
-    'isExpanded'?: boolean;
-    'isLarge'?: boolean;
-    'isLink'?: boolean;
-    'isOutline'?: boolean;
-    'isSmall'?: boolean;
-    'target'?: string;
-    'text'?: string;
-    'toggle'?: string;
-    'trigger'?: string;
-    'type'?: number;
-  }
-
   interface BsButtonGroup {
     'buttonType': number;
     'className': string;
@@ -108,16 +59,6 @@ export namespace Components {
     'isVertical': boolean;
     'label': string;
   }
-  interface BsButtonGroupAttributes extends StencilHTMLAttributes {
-    'buttonType'?: number;
-    'className'?: string;
-    'id'?: string;
-    'isLarge'?: boolean;
-    'isSmall'?: boolean;
-    'isVertical'?: boolean;
-    'label'?: string;
-  }
-
   interface BsCard {
     'className': string;
     'footer': string;
@@ -125,21 +66,9 @@ export namespace Components {
     'imgBottom': object;
     'imgTop': object;
   }
-  interface BsCardAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'footer'?: string;
-    'header'?: string;
-    'imgBottom'?: object;
-    'imgTop'?: object;
-  }
-
   interface BsCardGroup {
     'className': string;
   }
-  interface BsCardGroupAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-  }
-
   interface BsCarousel {
     'className': string;
     'enableControls': boolean;
@@ -147,14 +76,6 @@ export namespace Components {
     'enableIndicators': boolean;
     'id': string;
   }
-  interface BsCarouselAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'enableControls'?: boolean;
-    'enableCrossfade'?: boolean;
-    'enableIndicators'?: boolean;
-    'id'?: string;
-  }
-
   interface BsCheckboxGroup {
     'className': string;
     'colSize': number;
@@ -163,28 +84,12 @@ export namespace Components {
     'multi': boolean;
     'type': number;
   }
-  interface BsCheckboxGroupAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'colSize'?: number;
-    'hideLabel'?: boolean;
-    'label'?: string;
-    'multi'?: boolean;
-    'type'?: number;
-  }
-
   interface BsCollapse {
     'className': string;
     'content': string;
     'id': string;
     'isMulti': boolean;
   }
-  interface BsCollapseAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'content'?: string;
-    'id'?: string;
-    'isMulti'?: boolean;
-  }
-
   interface BsDropdown {
     'className': string;
     'dropLeft': boolean;
@@ -200,25 +105,7 @@ export namespace Components {
     'type': number;
     'value': string;
   }
-  interface BsDropdownAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'dropLeft'?: boolean;
-    'dropRight'?: boolean;
-    'dropUp'?: boolean;
-    'formFl'?: boolean;
-    'id'?: string;
-    'isSplit'?: boolean;
-    'label'?: string;
-    'menuOnly'?: boolean;
-    'multi'?: boolean;
-    'setLabelToValue'?: boolean;
-    'type'?: number;
-    'value'?: string;
-  }
-
   interface BsForm {}
-  interface BsFormAttributes extends StencilHTMLAttributes {}
-
   interface BsInputGroup {
     'appendedLabel': string;
     'className': string;
@@ -235,36 +122,12 @@ export namespace Components {
     'type': number;
     'value': string;
   }
-  interface BsInputGroupAttributes extends StencilHTMLAttributes {
-    'appendedLabel'?: string;
-    'className'?: string;
-    'description'?: string;
-    'id'?: string;
-    'isLarge'?: boolean;
-    'isPlainText'?: boolean;
-    'isReadonly'?: boolean;
-    'isSmall'?: boolean;
-    'label'?: string;
-    'placeholder'?: string;
-    'prependedLabel'?: string;
-    'rows'?: number;
-    'type'?: number;
-    'value'?: string;
-  }
-
   interface BsJumbotron {
     'className': string;
     'content': string;
     'isFluid': boolean;
     'lead': string;
   }
-  interface BsJumbotronAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'content'?: string;
-    'isFluid'?: boolean;
-    'lead'?: string;
-  }
-
   interface BsListGroup {
     'className': string;
     'colWidth': number;
@@ -272,14 +135,6 @@ export namespace Components {
     'isFlush': boolean;
     'isTabs': boolean;
   }
-  interface BsListGroupAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'colWidth'?: number;
-    'enableFade'?: boolean;
-    'isFlush'?: boolean;
-    'isTabs'?: boolean;
-  }
-
   interface BsModal {
     'body': string;
     'className': string;
@@ -291,18 +146,6 @@ export namespace Components {
     'isLarge': boolean;
     'isSmall': boolean;
   }
-  interface BsModalAttributes extends StencilHTMLAttributes {
-    'body'?: string;
-    'className'?: string;
-    'disableFade'?: boolean;
-    'footer'?: string;
-    'hideCloseButton'?: boolean;
-    'id'?: string;
-    'isCentered'?: boolean;
-    'isLarge'?: boolean;
-    'isSmall'?: boolean;
-  }
-
   interface BsNav {
     'className': string;
     'enableFade': boolean;
@@ -313,17 +156,6 @@ export namespace Components {
     'isTabs': boolean;
     'isVertical': boolean;
   }
-  interface BsNavAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'enableFade'?: boolean;
-    'enableFill'?: boolean;
-    'id'?: string;
-    'isJustified'?: boolean;
-    'isPills'?: boolean;
-    'isTabs'?: boolean;
-    'isVertical'?: boolean;
-  }
-
   interface BsNavbar {
     'brand': string;
     'brandUrl': string;
@@ -332,15 +164,6 @@ export namespace Components {
     'id': string;
     'type': number;
   }
-  interface BsNavbarAttributes extends StencilHTMLAttributes {
-    'brand'?: string;
-    'brandUrl'?: string;
-    'className'?: string;
-    'enableSearch'?: boolean;
-    'id'?: string;
-    'type'?: number;
-  }
-
   interface BsPagination {
     'alignment': number;
     'className': string;
@@ -350,36 +173,15 @@ export namespace Components {
     'label': string;
     'numberOfPages': number;
   }
-  interface BsPaginationAttributes extends StencilHTMLAttributes {
-    'alignment'?: number;
-    'className'?: string;
-    'icon'?: string;
-    'isLarge'?: boolean;
-    'isSmall'?: boolean;
-    'label'?: string;
-    'numberOfPages'?: number;
-  }
-
   interface BsPanel {
     'className': string;
     'type': number;
   }
-  interface BsPanelAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'type'?: number;
-  }
-
   interface BsPopover {
     'className': string;
     'isDismissible': boolean;
     'type': number;
   }
-  interface BsPopoverAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'isDismissible'?: boolean;
-    'type'?: number;
-  }
-
   interface BsProgress {
     'className': string;
     'isAnimated': boolean;
@@ -389,25 +191,10 @@ export namespace Components {
     'min': number;
     'size': number;
   }
-  interface BsProgressAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'isAnimated'?: boolean;
-    'isStriped'?: boolean;
-    'label'?: string;
-    'max'?: number;
-    'min'?: number;
-    'size'?: number;
-  }
-
   interface BsProgressGroup {
     'className': string;
     'isMultiple': boolean;
   }
-  interface BsProgressGroupAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'isMultiple'?: boolean;
-  }
-
   interface BsSpinner {
     'className': string;
     'isGrowing': boolean;
@@ -415,21 +202,9 @@ export namespace Components {
     'text': string;
     'type': number;
   }
-  interface BsSpinnerAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'isGrowing'?: boolean;
-    'isSmall'?: boolean;
-    'text'?: string;
-    'type'?: number;
-  }
-
   interface BsTable {
     'className': string;
   }
-  interface BsTableAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-  }
-
   interface BsToast {
     'bodyText': string;
     'className': string;
@@ -439,34 +214,20 @@ export namespace Components {
     'headerImgSrc': string;
     'headerText': string;
   }
-  interface BsToastAttributes extends StencilHTMLAttributes {
-    'bodyText'?: string;
-    'className'?: string;
-    'closeButtonHidden'?: boolean;
-    'closeButtonText'?: boolean;
-    'headerImgClass'?: string;
-    'headerImgSrc'?: string;
-    'headerText'?: string;
-  }
-
-  interface BsTooltip {
-    'className': string;
-    'type': number;
-  }
-  interface BsTooltipAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'type'?: number;
-  }
-
   interface BsToolbar {
     'className': string;
     'spacing': number;
   }
-  interface BsToolbarAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'spacing'?: number;
+  interface BsTooltip {
+    'className': string;
+    'type': number;
   }
-
+  interface BsWebpart {
+    'cfgElementId': string;
+    'className': string;
+    'elementId': string;
+    'wpClassName': string;
+  }
   interface BsWebpartList {
     'camlQuery': string;
     'cfgElementId': string;
@@ -474,14 +235,6 @@ export namespace Components {
     'elementId': string;
     'wpClassName': string;
   }
-  interface BsWebpartListAttributes extends StencilHTMLAttributes {
-    'camlQuery'?: string;
-    'cfgElementId'?: string;
-    'className'?: string;
-    'elementId'?: string;
-    'wpClassName'?: string;
-  }
-
   interface BsWebpartSearch {
     'camlQuery': string;
     'cfgElementId': string;
@@ -489,14 +242,6 @@ export namespace Components {
     'elementId': string;
     'wpClassName': string;
   }
-  interface BsWebpartSearchAttributes extends StencilHTMLAttributes {
-    'camlQuery'?: string;
-    'cfgElementId'?: string;
-    'className'?: string;
-    'elementId'?: string;
-    'wpClassName'?: string;
-  }
-
   interface BsWebpartTabs {
     'cfgElementId': string;
     'className': string;
@@ -504,115 +249,15 @@ export namespace Components {
     'type': number;
     'wpClassName': string;
   }
-  interface BsWebpartTabsAttributes extends StencilHTMLAttributes {
-    'cfgElementId'?: string;
-    'className'?: string;
-    'elementId'?: string;
-    'type'?: number;
-    'wpClassName'?: string;
-  }
-
   interface BsWebpartTaxonomy {
     'cfgElementId': string;
     'className': string;
     'elementId': string;
     'wpClassName': string;
   }
-  interface BsWebpartTaxonomyAttributes extends StencilHTMLAttributes {
-    'cfgElementId'?: string;
-    'className'?: string;
-    'elementId'?: string;
-    'wpClassName'?: string;
-  }
-
-  interface BsWebpart {
-    'cfgElementId': string;
-    'className': string;
-    'elementId': string;
-    'wpClassName': string;
-  }
-  interface BsWebpartAttributes extends StencilHTMLAttributes {
-    'cfgElementId'?: string;
-    'className'?: string;
-    'elementId'?: string;
-    'wpClassName'?: string;
-  }
 }
 
 declare global {
-  interface StencilElementInterfaces {
-    'BsAccordion': Components.BsAccordion;
-    'BsAlert': Components.BsAlert;
-    'BsBadge': Components.BsBadge;
-    'BsBreadcrumb': Components.BsBreadcrumb;
-    'BsButton': Components.BsButton;
-    'BsButtonGroup': Components.BsButtonGroup;
-    'BsCard': Components.BsCard;
-    'BsCardGroup': Components.BsCardGroup;
-    'BsCarousel': Components.BsCarousel;
-    'BsCheckboxGroup': Components.BsCheckboxGroup;
-    'BsCollapse': Components.BsCollapse;
-    'BsDropdown': Components.BsDropdown;
-    'BsForm': Components.BsForm;
-    'BsInputGroup': Components.BsInputGroup;
-    'BsJumbotron': Components.BsJumbotron;
-    'BsListGroup': Components.BsListGroup;
-    'BsModal': Components.BsModal;
-    'BsNav': Components.BsNav;
-    'BsNavbar': Components.BsNavbar;
-    'BsPagination': Components.BsPagination;
-    'BsPanel': Components.BsPanel;
-    'BsPopover': Components.BsPopover;
-    'BsProgress': Components.BsProgress;
-    'BsProgressGroup': Components.BsProgressGroup;
-    'BsSpinner': Components.BsSpinner;
-    'BsTable': Components.BsTable;
-    'BsToast': Components.BsToast;
-    'BsTooltip': Components.BsTooltip;
-    'BsToolbar': Components.BsToolbar;
-    'BsWebpartList': Components.BsWebpartList;
-    'BsWebpartSearch': Components.BsWebpartSearch;
-    'BsWebpartTabs': Components.BsWebpartTabs;
-    'BsWebpartTaxonomy': Components.BsWebpartTaxonomy;
-    'BsWebpart': Components.BsWebpart;
-  }
-
-  interface StencilIntrinsicElements {
-    'bs-accordion': Components.BsAccordionAttributes;
-    'bs-alert': Components.BsAlertAttributes;
-    'bs-badge': Components.BsBadgeAttributes;
-    'bs-breadcrumb': Components.BsBreadcrumbAttributes;
-    'bs-button': Components.BsButtonAttributes;
-    'bs-button-group': Components.BsButtonGroupAttributes;
-    'bs-card': Components.BsCardAttributes;
-    'bs-card-group': Components.BsCardGroupAttributes;
-    'bs-carousel': Components.BsCarouselAttributes;
-    'bs-checkbox-group': Components.BsCheckboxGroupAttributes;
-    'bs-collapse': Components.BsCollapseAttributes;
-    'bs-dropdown': Components.BsDropdownAttributes;
-    'bs-form': Components.BsFormAttributes;
-    'bs-input-group': Components.BsInputGroupAttributes;
-    'bs-jumbotron': Components.BsJumbotronAttributes;
-    'bs-list-group': Components.BsListGroupAttributes;
-    'bs-modal': Components.BsModalAttributes;
-    'bs-nav': Components.BsNavAttributes;
-    'bs-navbar': Components.BsNavbarAttributes;
-    'bs-pagination': Components.BsPaginationAttributes;
-    'bs-panel': Components.BsPanelAttributes;
-    'bs-popover': Components.BsPopoverAttributes;
-    'bs-progress': Components.BsProgressAttributes;
-    'bs-progress-group': Components.BsProgressGroupAttributes;
-    'bs-spinner': Components.BsSpinnerAttributes;
-    'bs-table': Components.BsTableAttributes;
-    'bs-toast': Components.BsToastAttributes;
-    'bs-tooltip': Components.BsTooltipAttributes;
-    'bs-toolbar': Components.BsToolbarAttributes;
-    'bs-webpart-list': Components.BsWebpartListAttributes;
-    'bs-webpart-search': Components.BsWebpartSearchAttributes;
-    'bs-webpart-tabs': Components.BsWebpartTabsAttributes;
-    'bs-webpart-taxonomy': Components.BsWebpartTaxonomyAttributes;
-    'bs-webpart': Components.BsWebpartAttributes;
-  }
 
 
   interface HTMLBsAccordionElement extends Components.BsAccordion, HTMLStencilElement {}
@@ -777,16 +422,22 @@ declare global {
     new (): HTMLBsToastElement;
   };
 
+  interface HTMLBsToolbarElement extends Components.BsToolbar, HTMLStencilElement {}
+  var HTMLBsToolbarElement: {
+    prototype: HTMLBsToolbarElement;
+    new (): HTMLBsToolbarElement;
+  };
+
   interface HTMLBsTooltipElement extends Components.BsTooltip, HTMLStencilElement {}
   var HTMLBsTooltipElement: {
     prototype: HTMLBsTooltipElement;
     new (): HTMLBsTooltipElement;
   };
 
-  interface HTMLBsToolbarElement extends Components.BsToolbar, HTMLStencilElement {}
-  var HTMLBsToolbarElement: {
-    prototype: HTMLBsToolbarElement;
-    new (): HTMLBsToolbarElement;
+  interface HTMLBsWebpartElement extends Components.BsWebpart, HTMLStencilElement {}
+  var HTMLBsWebpartElement: {
+    prototype: HTMLBsWebpartElement;
+    new (): HTMLBsWebpartElement;
   };
 
   interface HTMLBsWebpartListElement extends Components.BsWebpartList, HTMLStencilElement {}
@@ -812,51 +463,7 @@ declare global {
     prototype: HTMLBsWebpartTaxonomyElement;
     new (): HTMLBsWebpartTaxonomyElement;
   };
-
-  interface HTMLBsWebpartElement extends Components.BsWebpart, HTMLStencilElement {}
-  var HTMLBsWebpartElement: {
-    prototype: HTMLBsWebpartElement;
-    new (): HTMLBsWebpartElement;
-  };
-
   interface HTMLElementTagNameMap {
-    'bs-accordion': HTMLBsAccordionElement
-    'bs-alert': HTMLBsAlertElement
-    'bs-badge': HTMLBsBadgeElement
-    'bs-breadcrumb': HTMLBsBreadcrumbElement
-    'bs-button': HTMLBsButtonElement
-    'bs-button-group': HTMLBsButtonGroupElement
-    'bs-card': HTMLBsCardElement
-    'bs-card-group': HTMLBsCardGroupElement
-    'bs-carousel': HTMLBsCarouselElement
-    'bs-checkbox-group': HTMLBsCheckboxGroupElement
-    'bs-collapse': HTMLBsCollapseElement
-    'bs-dropdown': HTMLBsDropdownElement
-    'bs-form': HTMLBsFormElement
-    'bs-input-group': HTMLBsInputGroupElement
-    'bs-jumbotron': HTMLBsJumbotronElement
-    'bs-list-group': HTMLBsListGroupElement
-    'bs-modal': HTMLBsModalElement
-    'bs-nav': HTMLBsNavElement
-    'bs-navbar': HTMLBsNavbarElement
-    'bs-pagination': HTMLBsPaginationElement
-    'bs-panel': HTMLBsPanelElement
-    'bs-popover': HTMLBsPopoverElement
-    'bs-progress': HTMLBsProgressElement
-    'bs-progress-group': HTMLBsProgressGroupElement
-    'bs-spinner': HTMLBsSpinnerElement
-    'bs-table': HTMLBsTableElement
-    'bs-toast': HTMLBsToastElement
-    'bs-tooltip': HTMLBsTooltipElement
-    'bs-toolbar': HTMLBsToolbarElement
-    'bs-webpart-list': HTMLBsWebpartListElement
-    'bs-webpart-search': HTMLBsWebpartSearchElement
-    'bs-webpart-tabs': HTMLBsWebpartTabsElement
-    'bs-webpart-taxonomy': HTMLBsWebpartTaxonomyElement
-    'bs-webpart': HTMLBsWebpartElement
-  }
-
-  interface ElementTagNameMap {
     'bs-accordion': HTMLBsAccordionElement;
     'bs-alert': HTMLBsAlertElement;
     'bs-badge': HTMLBsBadgeElement;
@@ -884,22 +491,309 @@ declare global {
     'bs-spinner': HTMLBsSpinnerElement;
     'bs-table': HTMLBsTableElement;
     'bs-toast': HTMLBsToastElement;
-    'bs-tooltip': HTMLBsTooltipElement;
     'bs-toolbar': HTMLBsToolbarElement;
+    'bs-tooltip': HTMLBsTooltipElement;
+    'bs-webpart': HTMLBsWebpartElement;
     'bs-webpart-list': HTMLBsWebpartListElement;
     'bs-webpart-search': HTMLBsWebpartSearchElement;
     'bs-webpart-tabs': HTMLBsWebpartTabsElement;
     'bs-webpart-taxonomy': HTMLBsWebpartTaxonomyElement;
-    'bs-webpart': HTMLBsWebpartElement;
   }
-
-
-  export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
-    }
-  }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
+
+declare namespace LocalJSX {
+  interface BsAccordion extends JSXBase.HTMLAttributes<HTMLBsAccordionElement> {
+    'className'?: string;
+    'id'?: string;
+  }
+  interface BsAlert extends JSXBase.HTMLAttributes<HTMLBsAlertElement> {
+    'className'?: string;
+    'content'?: string;
+    'header'?: string;
+    'isDismissible'?: boolean;
+    'type'?: number;
+  }
+  interface BsBadge extends JSXBase.HTMLAttributes<HTMLBsBadgeElement> {
+    'className'?: string;
+    'content'?: string;
+    'header'?: string;
+    'href'?: string;
+    'isPill'?: boolean;
+    'type'?: number;
+  }
+  interface BsBreadcrumb extends JSXBase.HTMLAttributes<HTMLBsBreadcrumbElement> {
+    'className'?: string;
+  }
+  interface BsButton extends JSXBase.HTMLAttributes<HTMLBsButtonElement> {
+    'className'?: string;
+    'controls'?: Array<string>;
+    'data'?: any;
+    'href'?: string;
+    'id'?: string;
+    'isBlock'?: boolean;
+    'isDisabled'?: boolean;
+    'isExpanded'?: boolean;
+    'isLarge'?: boolean;
+    'isLink'?: boolean;
+    'isOutline'?: boolean;
+    'isSmall'?: boolean;
+    'target'?: string;
+    'text'?: string;
+    'toggle'?: string;
+    'trigger'?: string;
+    'type'?: number;
+  }
+  interface BsButtonGroup extends JSXBase.HTMLAttributes<HTMLBsButtonGroupElement> {
+    'buttonType'?: number;
+    'className'?: string;
+    'id'?: string;
+    'isLarge'?: boolean;
+    'isSmall'?: boolean;
+    'isVertical'?: boolean;
+    'label'?: string;
+  }
+  interface BsCard extends JSXBase.HTMLAttributes<HTMLBsCardElement> {
+    'className'?: string;
+    'footer'?: string;
+    'header'?: string;
+    'imgBottom'?: object;
+    'imgTop'?: object;
+  }
+  interface BsCardGroup extends JSXBase.HTMLAttributes<HTMLBsCardGroupElement> {
+    'className'?: string;
+  }
+  interface BsCarousel extends JSXBase.HTMLAttributes<HTMLBsCarouselElement> {
+    'className'?: string;
+    'enableControls'?: boolean;
+    'enableCrossfade'?: boolean;
+    'enableIndicators'?: boolean;
+    'id'?: string;
+  }
+  interface BsCheckboxGroup extends JSXBase.HTMLAttributes<HTMLBsCheckboxGroupElement> {
+    'className'?: string;
+    'colSize'?: number;
+    'hideLabel'?: boolean;
+    'label'?: string;
+    'multi'?: boolean;
+    'type'?: number;
+  }
+  interface BsCollapse extends JSXBase.HTMLAttributes<HTMLBsCollapseElement> {
+    'className'?: string;
+    'content'?: string;
+    'id'?: string;
+    'isMulti'?: boolean;
+  }
+  interface BsDropdown extends JSXBase.HTMLAttributes<HTMLBsDropdownElement> {
+    'className'?: string;
+    'dropLeft'?: boolean;
+    'dropRight'?: boolean;
+    'dropUp'?: boolean;
+    'formFl'?: boolean;
+    'id'?: string;
+    'isSplit'?: boolean;
+    'label'?: string;
+    'menuOnly'?: boolean;
+    'multi'?: boolean;
+    'setLabelToValue'?: boolean;
+    'type'?: number;
+    'value'?: string;
+  }
+  interface BsForm extends JSXBase.HTMLAttributes<HTMLBsFormElement> {}
+  interface BsInputGroup extends JSXBase.HTMLAttributes<HTMLBsInputGroupElement> {
+    'appendedLabel'?: string;
+    'className'?: string;
+    'description'?: string;
+    'id'?: string;
+    'isLarge'?: boolean;
+    'isPlainText'?: boolean;
+    'isReadonly'?: boolean;
+    'isSmall'?: boolean;
+    'label'?: string;
+    'placeholder'?: string;
+    'prependedLabel'?: string;
+    'rows'?: number;
+    'type'?: number;
+    'value'?: string;
+  }
+  interface BsJumbotron extends JSXBase.HTMLAttributes<HTMLBsJumbotronElement> {
+    'className'?: string;
+    'content'?: string;
+    'isFluid'?: boolean;
+    'lead'?: string;
+  }
+  interface BsListGroup extends JSXBase.HTMLAttributes<HTMLBsListGroupElement> {
+    'className'?: string;
+    'colWidth'?: number;
+    'enableFade'?: boolean;
+    'isFlush'?: boolean;
+    'isTabs'?: boolean;
+  }
+  interface BsModal extends JSXBase.HTMLAttributes<HTMLBsModalElement> {
+    'body'?: string;
+    'className'?: string;
+    'disableFade'?: boolean;
+    'footer'?: string;
+    'hideCloseButton'?: boolean;
+    'id'?: string;
+    'isCentered'?: boolean;
+    'isLarge'?: boolean;
+    'isSmall'?: boolean;
+  }
+  interface BsNav extends JSXBase.HTMLAttributes<HTMLBsNavElement> {
+    'className'?: string;
+    'enableFade'?: boolean;
+    'enableFill'?: boolean;
+    'id'?: string;
+    'isJustified'?: boolean;
+    'isPills'?: boolean;
+    'isTabs'?: boolean;
+    'isVertical'?: boolean;
+  }
+  interface BsNavbar extends JSXBase.HTMLAttributes<HTMLBsNavbarElement> {
+    'brand'?: string;
+    'brandUrl'?: string;
+    'className'?: string;
+    'enableSearch'?: boolean;
+    'id'?: string;
+    'type'?: number;
+  }
+  interface BsPagination extends JSXBase.HTMLAttributes<HTMLBsPaginationElement> {
+    'alignment'?: number;
+    'className'?: string;
+    'icon'?: string;
+    'isLarge'?: boolean;
+    'isSmall'?: boolean;
+    'label'?: string;
+    'numberOfPages'?: number;
+  }
+  interface BsPanel extends JSXBase.HTMLAttributes<HTMLBsPanelElement> {
+    'className'?: string;
+    'type'?: number;
+  }
+  interface BsPopover extends JSXBase.HTMLAttributes<HTMLBsPopoverElement> {
+    'className'?: string;
+    'isDismissible'?: boolean;
+    'type'?: number;
+  }
+  interface BsProgress extends JSXBase.HTMLAttributes<HTMLBsProgressElement> {
+    'className'?: string;
+    'isAnimated'?: boolean;
+    'isStriped'?: boolean;
+    'label'?: string;
+    'max'?: number;
+    'min'?: number;
+    'size'?: number;
+  }
+  interface BsProgressGroup extends JSXBase.HTMLAttributes<HTMLBsProgressGroupElement> {
+    'className'?: string;
+    'isMultiple'?: boolean;
+  }
+  interface BsSpinner extends JSXBase.HTMLAttributes<HTMLBsSpinnerElement> {
+    'className'?: string;
+    'isGrowing'?: boolean;
+    'isSmall'?: boolean;
+    'text'?: string;
+    'type'?: number;
+  }
+  interface BsTable extends JSXBase.HTMLAttributes<HTMLBsTableElement> {
+    'className'?: string;
+  }
+  interface BsToast extends JSXBase.HTMLAttributes<HTMLBsToastElement> {
+    'bodyText'?: string;
+    'className'?: string;
+    'closeButtonHidden'?: boolean;
+    'closeButtonText'?: boolean;
+    'headerImgClass'?: string;
+    'headerImgSrc'?: string;
+    'headerText'?: string;
+  }
+  interface BsToolbar extends JSXBase.HTMLAttributes<HTMLBsToolbarElement> {
+    'className'?: string;
+    'spacing'?: number;
+  }
+  interface BsTooltip extends JSXBase.HTMLAttributes<HTMLBsTooltipElement> {
+    'className'?: string;
+    'type'?: number;
+  }
+  interface BsWebpart extends JSXBase.HTMLAttributes<HTMLBsWebpartElement> {
+    'cfgElementId'?: string;
+    'className'?: string;
+    'elementId'?: string;
+    'wpClassName'?: string;
+  }
+  interface BsWebpartList extends JSXBase.HTMLAttributes<HTMLBsWebpartListElement> {
+    'camlQuery'?: string;
+    'cfgElementId'?: string;
+    'className'?: string;
+    'elementId'?: string;
+    'wpClassName'?: string;
+  }
+  interface BsWebpartSearch extends JSXBase.HTMLAttributes<HTMLBsWebpartSearchElement> {
+    'camlQuery'?: string;
+    'cfgElementId'?: string;
+    'className'?: string;
+    'elementId'?: string;
+    'wpClassName'?: string;
+  }
+  interface BsWebpartTabs extends JSXBase.HTMLAttributes<HTMLBsWebpartTabsElement> {
+    'cfgElementId'?: string;
+    'className'?: string;
+    'elementId'?: string;
+    'type'?: number;
+    'wpClassName'?: string;
+  }
+  interface BsWebpartTaxonomy extends JSXBase.HTMLAttributes<HTMLBsWebpartTaxonomyElement> {
+    'cfgElementId'?: string;
+    'className'?: string;
+    'elementId'?: string;
+    'wpClassName'?: string;
+  }
+
+  interface IntrinsicElements {
+    'bs-accordion': BsAccordion;
+    'bs-alert': BsAlert;
+    'bs-badge': BsBadge;
+    'bs-breadcrumb': BsBreadcrumb;
+    'bs-button': BsButton;
+    'bs-button-group': BsButtonGroup;
+    'bs-card': BsCard;
+    'bs-card-group': BsCardGroup;
+    'bs-carousel': BsCarousel;
+    'bs-checkbox-group': BsCheckboxGroup;
+    'bs-collapse': BsCollapse;
+    'bs-dropdown': BsDropdown;
+    'bs-form': BsForm;
+    'bs-input-group': BsInputGroup;
+    'bs-jumbotron': BsJumbotron;
+    'bs-list-group': BsListGroup;
+    'bs-modal': BsModal;
+    'bs-nav': BsNav;
+    'bs-navbar': BsNavbar;
+    'bs-pagination': BsPagination;
+    'bs-panel': BsPanel;
+    'bs-popover': BsPopover;
+    'bs-progress': BsProgress;
+    'bs-progress-group': BsProgressGroup;
+    'bs-spinner': BsSpinner;
+    'bs-table': BsTable;
+    'bs-toast': BsToast;
+    'bs-toolbar': BsToolbar;
+    'bs-tooltip': BsTooltip;
+    'bs-webpart': BsWebpart;
+    'bs-webpart-list': BsWebpartList;
+    'bs-webpart-search': BsWebpartSearch;
+    'bs-webpart-tabs': BsWebpartTabs;
+    'bs-webpart-taxonomy': BsWebpartTaxonomy;
+  }
+}
+
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
+

@@ -1,9 +1,13 @@
 import { getProps } from "../common";
 export class Modal {
+    // Render the modal
     render() {
+        // Ensure it hasn't been initialized
+        // This seems to be an issue w/ IE & Edge
         if (this.el.hasAttribute("data-init")) {
             return;
         }
+        // Get the properties
         let props = getProps(this.el, {
             body: this.body,
             className: this.className,
@@ -17,50 +21,169 @@ export class Modal {
             isSmall: this.isSmall,
             title: this.el.getAttribute("title")
         });
+        // Remove the id attribute
         this.el.removeAttribute("id");
+        // Render the modal
         GD.Components.Modal(props);
+        // Set the init attribute
+        // This seems to be an issue w/ IE & Edge
         this.el.setAttribute("data-init", "true");
     }
     static get is() { return "bs-modal"; }
     static get properties() { return {
         "body": {
-            "type": String,
-            "attr": "body"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "body",
+            "reflect": false
         },
         "className": {
-            "type": String,
-            "attr": "class-name"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "class-name",
+            "reflect": false
         },
         "disableFade": {
-            "type": Boolean,
-            "attr": "disable-fade"
-        },
-        "el": {
-            "elementRef": true
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "disable-fade",
+            "reflect": false
         },
         "footer": {
-            "type": String,
-            "attr": "footer"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "footer",
+            "reflect": false
         },
         "hideCloseButton": {
-            "type": Boolean,
-            "attr": "hide-close-button"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "hide-close-button",
+            "reflect": false
         },
         "id": {
-            "type": String,
-            "attr": "id"
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "id",
+            "reflect": false
         },
         "isCentered": {
-            "type": Boolean,
-            "attr": "is-centered"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "is-centered",
+            "reflect": false
         },
         "isLarge": {
-            "type": Boolean,
-            "attr": "is-large"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "is-large",
+            "reflect": false
         },
         "isSmall": {
-            "type": Boolean,
-            "attr": "is-small"
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "is-small",
+            "reflect": false
         }
     }; }
+    static get elementRef() { return "el"; }
 }

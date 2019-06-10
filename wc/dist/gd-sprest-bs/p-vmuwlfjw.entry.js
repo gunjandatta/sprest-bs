@@ -1,0 +1,1 @@
+import{r as t,g as e}from"./p-e7b96492.js";import{g as r}from"./p-26c2e58d.js";class s{constructor(e){t(this,e)}render(){if(this.el.hasAttribute("data-init"))return;let t=r(this.el,{el:this.el});GD.Components.Form(t),this.el.setAttribute("data-init","true")}get el(){return e(this)}}export{s as bs_form};

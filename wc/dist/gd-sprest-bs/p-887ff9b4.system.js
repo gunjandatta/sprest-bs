@@ -1,0 +1,1 @@
+System.register([],function(r){"use strict";return{execute:function(){var e=r("g",function(r,e){if(e===void 0){e={}}var n={};var t=(r.innerHTML||"").trim();if(t.length>0){try{n=new Function(t)();r.innerHTML=""}catch(r){console.error("Error parsing the JS to get the properties.");console.error(t)}}for(var i in e){if(n[i]!=null){continue}n[i]=e[i]}return n})}}});

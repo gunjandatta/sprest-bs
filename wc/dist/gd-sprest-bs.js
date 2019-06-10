@@ -1,1 +1,27 @@
-!function(e,s,t,r,o,n,a,b,i,c,p,u,d,l){for(p=e.GdSprestBs=e.GdSprestBs||{},(u=s.createElement("style")).innerHTML=i+"{visibility:hidden}.hydrated{visibility:inherit}",u.setAttribute("data-styles",""),d=s.head.querySelector("meta[charset]"),s.head.insertBefore(u,d?d.nextSibling:s.head.firstChild),function(e,s,t){(e["s-apps"]=e["s-apps"]||[]).push("GdSprestBs"),t.componentOnReady||(t.componentOnReady=function(){var s=this;function t(t){if(s.nodeName.indexOf("-")>0){for(var r=e["s-apps"],o=0,n=0;n<r.length;n++)if(e[r[n]].componentOnReady){if(e[r[n]].componentOnReady(s,t))return;o++}if(o<r.length)return void(e["s-cr"]=e["s-cr"]||[]).push([s,t])}t(null)}return e.Promise?new e.Promise(t):{then:t}})}(e,0,c),o=o||p.resourcesUrl,u=(d=s.querySelectorAll("script")).length-1;u>=0&&!(l=d[u]).src&&!l.hasAttribute("data-resources-url");u--);d=l.getAttribute("data-resources-url"),!o&&d&&(o=d),!o&&l.src&&(o=(d=l.src.split("/").slice(0,-1)).join("/")+(d.length?"/":"")+"gd-sprest-bs/"),u=s.createElement("script"),function(e,s,t,r){return!(s.search.indexOf("core=esm")>0)&&(!(!(s.search.indexOf("core=es5")>0||"file:"===s.protocol)&&e.customElements&&e.customElements.define&&e.fetch&&e.CSS&&e.CSS.supports&&e.CSS.supports("color","var(--c)")&&"noModule"in t)||function(e){try{return new Function('import("")'),!1}catch(e){}return!0}())}(e,e.location,u)?u.src=o+"gd-sprest-bs.00qqbxlc.js":(u.src=o+"gd-sprest-bs.pieasdow.js",u.setAttribute("type","module"),u.setAttribute("crossorigin",!0)),u.setAttribute("data-resources-url",o),u.setAttribute("data-namespace","gd-sprest-bs"),s.head.appendChild(u)}(window,document,0,0,0,0,0,0,"bs-accordion,bs-alert,bs-badge,bs-breadcrumb,bs-button,bs-button-group,bs-card,bs-card-group,bs-carousel,bs-checkbox-group,bs-collapse,bs-dropdown,bs-form,bs-input-group,bs-jumbotron,bs-list-group,bs-modal,bs-nav,bs-navbar,bs-pagination,bs-panel,bs-popover,bs-progress,bs-progress-group,bs-spinner,bs-table,bs-toast,bs-toolbar,bs-tooltip,bs-webpart,bs-webpart-list,bs-webpart-search,bs-webpart-tabs,bs-webpart-taxonomy",HTMLElement.prototype);
+
+(function(doc){
+  var scriptElm = doc.scripts[doc.scripts.length - 1];
+  var warn = ['[gd-sprest-bs] Deprecated script, please remove: ' + scriptElm.outerHTML];
+
+  warn.push('To improve performance it is recommended to set the differential scripts in the head as follows:')
+
+  var parts = scriptElm.src.split('/');
+  parts.pop();
+  parts.push('gd-sprest-bs');
+  var url = parts.join('/');
+
+  var scriptElm = doc.createElement('script');
+  scriptElm.setAttribute('type', 'module');
+  scriptElm.src = url + '/gd-sprest-bs.esm.js';
+  doc.head.appendChild(scriptElm);
+  warn.push(scriptElm.outerHTML);
+
+  scriptElm = doc.createElement('script');
+  scriptElm.setAttribute('nomodule', '');
+  scriptElm.src = url + '/gd-sprest-bs.js';
+  doc.head.appendChild(scriptElm);
+  warn.push(scriptElm.outerHTML);
+
+  console.warn(warn.join('\n'));
+
+})(document);
