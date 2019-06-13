@@ -1,5 +1,5 @@
-import { IDateTime, IDateTimeProps } from "./types/datetime";
 import { jQuery, Components } from "gd-bs";
+import { IDateTime, IDateTimeProps } from "../../@types/components";
 import "../../lib/jquery-ui-1.12.1.custom/jquery-ui.min.css";
 
 /**

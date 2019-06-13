@@ -1,4 +1,4 @@
-import { IWebPart, IWebPartCfg, IWebPartInfo, IWebPartProps } from "../types/wp";
+import { IWebPart, IWebPartCfg, IWebPartInfo, IWebPartProps } from "../../../@types/webparts";
 import { WPCfg } from "./wpCfg";
 declare var MSOWebPartPageFormName;
 

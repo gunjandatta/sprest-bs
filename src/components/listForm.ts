@@ -1,7 +1,9 @@
 import { Components } from "gd-bs";
 import { Helper, SPTypes, Types, Web } from "gd-sprest";
-import { IField, IFieldValueUser } from "./types/field";
-import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types/listForm";
+import {
+    IField, IFieldValueUser,
+    IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps
+} from "../../@types/components";
 import { Field } from "./field";
 
 // Extend the list form

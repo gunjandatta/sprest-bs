@@ -1,6 +1,6 @@
 import { Components } from "gd-bs";
 import { SPTypes, Types } from "gd-sprest";
-import { IWPSearchCfg, IWPSearchEditForm, IWPSearchInfo } from "../types/wpSearch";
+import { IWPSearchCfg, IWPSearchEditForm, IWPSearchInfo } from "../../../@types/webparts";
 
 /**
  * Search WebPart Edit Form

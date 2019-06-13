@@ -1,6 +1,6 @@
 import { Components } from "gd-bs";
 import { Helper } from "gd-sprest";
-import { IWPTaxonomyInfo, IWPTaxonomyEditForm, IWPTaxonomyCfg } from "../types/wpTaxonomy";
+import { IWPTaxonomyInfo, IWPTaxonomyEditForm, IWPTaxonomyCfg } from "../../../@types/webparts";
 
 /**
  * Taxonomy WebPart Edit Form

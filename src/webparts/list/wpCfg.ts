@@ -1,6 +1,6 @@
 import { Components } from "gd-bs";
 import { Types, Web } from "gd-sprest";
-import { IWPListCfg, IWPListEditForm, IWPListInfo } from "../types/wpList";
+import { IWPListCfg, IWPListEditForm, IWPListInfo } from "../../../@types/webparts";
 
 /**
  * List WebPart Edit Form

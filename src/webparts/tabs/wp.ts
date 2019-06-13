@@ -1,7 +1,6 @@
 import { Components } from "gd-bs";
+import { IWebPartInfo, IWPTabs, IWPTabsProps } from "../../../@types/webparts";
 import { WebPart } from "../base";
-import { IWebPartInfo } from "../types/wp";
-import { IWPTabs, IWPTabsProps } from "../types/wpTabs";
 
 /**
  * Web Part Tab Types

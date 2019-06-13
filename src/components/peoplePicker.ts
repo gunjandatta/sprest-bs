@@ -1,6 +1,6 @@
 import { Components } from "gd-bs";
+import { IPeoplePicker, IPeoplePickerProps } from "../../@types/components";
 import { PeoplePicker as Search, SPTypes, Types } from "gd-sprest";
-import { IPeoplePicker, IPeoplePickerProps } from "./types/peoplePicker";
 
 /**
  * People Picker

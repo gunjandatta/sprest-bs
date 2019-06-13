@@ -8,8 +8,8 @@ declare module 'gd-sprest-bs' {
     export * from "gd-bs";
     export * from "gd-sprest-bs/rest";
     
-    import * as Components from "gd-sprest-bs/components/types";
-    import * as WebParts from "gd-sprest-bs/webparts/types";
+    import * as Components from "gd-sprest-bs/components";
+    import * as WebParts from "gd-sprest-bs/webparts";
     export {
         Components,
         WebParts
@@ -18,8 +18,8 @@ declare module 'gd-sprest-bs' {
 
 declare module 'gd-sprest-bs/rest' {
     import { IREST } from "gd-sprest";
-    import * as Components from "gd-sprest-bs/components/types";
-    import * as WebParts from "gd-sprest-bs/webparts/types";
+    import * as Components from "gd-sprest-bs/components";
+    import * as WebParts from "gd-sprest-bs/webparts";
     
     /**
         * $REST Bootstrap Library
@@ -36,25 +36,25 @@ declare module 'gd-sprest-bs/rest' {
     }
 }
 
-declare module 'gd-sprest-bs/components/types' {
+declare module 'gd-sprest-bs/components' {
     export * from "gd-bs/src/components/types";
-    export * from "gd-sprest-bs/components/types/datetime";
-    export * from "gd-sprest-bs/components/types/field";
-    export * from "gd-sprest-bs/components/types/listForm";
-    export * from "gd-sprest-bs/components/types/listFormDialog";
-    export * from "gd-sprest-bs/components/types/peoplePicker";
+    export * from "gd-sprest-bs/components/datetime";
+    export * from "gd-sprest-bs/components/field";
+    export * from "gd-sprest-bs/components/listForm";
+    export * from "gd-sprest-bs/components/listFormDialog";
+    export * from "gd-sprest-bs/components/peoplePicker";
 }
 
-declare module 'gd-sprest-bs/webparts/types' {
-    export * from "gd-sprest-bs/webparts/types/helper";
-    export * from "gd-sprest-bs/webparts/types/wp";
-    export * from "gd-sprest-bs/webparts/types/wpList";
-    export * from "gd-sprest-bs/webparts/types/wpSearch";
-    export * from "gd-sprest-bs/webparts/types/wpTabs";
-    export * from "gd-sprest-bs/webparts/types/wpTaxonomy";
+declare module 'gd-sprest-bs/webparts' {
+    export * from "gd-sprest-bs/webparts/helper";
+    export * from "gd-sprest-bs/webparts/wp";
+    export * from "gd-sprest-bs/webparts/wpList";
+    export * from "gd-sprest-bs/webparts/wpSearch";
+    export * from "gd-sprest-bs/webparts/wpTabs";
+    export * from "gd-sprest-bs/webparts/wpTaxonomy";
 }
 
-declare module 'gd-sprest-bs/components/types/datetime' {
+declare module 'gd-sprest-bs/components/datetime' {
     import { Components } from "gd-bs";
     
     /**
@@ -97,7 +97,7 @@ declare module 'gd-sprest-bs/components/types/datetime' {
     }
 }
 
-declare module 'gd-sprest-bs/components/types/field' {
+declare module 'gd-sprest-bs/components/field' {
     import { Helper, Types } from "gd-sprest";
     import { Components } from "gd-bs";
     
@@ -145,7 +145,7 @@ declare module 'gd-sprest-bs/components/types/field' {
     }
 }
 
-declare module 'gd-sprest-bs/components/types/listForm' {
+declare module 'gd-sprest-bs/components/listForm' {
     import { Helper, Types } from "gd-sprest";
     import { Components } from "gd-bs";
     
@@ -243,7 +243,7 @@ declare module 'gd-sprest-bs/components/types/listForm' {
     }
 }
 
-declare module 'gd-sprest-bs/components/types/listFormDialog' {
+declare module 'gd-sprest-bs/components/listFormDialog' {
     import { Components } from "gd-bs";
     import { Helper, Types } from "gd-sprest";
     
@@ -299,7 +299,7 @@ declare module 'gd-sprest-bs/components/types/listFormDialog' {
     }
 }
 
-declare module 'gd-sprest-bs/components/types/peoplePicker' {
+declare module 'gd-sprest-bs/components/peoplePicker' {
     import { Types } from "gd-sprest";
     /**
         * People Picker
@@ -344,9 +344,9 @@ declare module 'gd-sprest-bs/components/types/peoplePicker' {
     }
 }
 
-declare module 'gd-sprest-bs/webparts/types/helper' {
+declare module 'gd-sprest-bs/webparts/helper' {
     import { Components } from "gd-bs";
-    import { IWebPartInfo } from "gd-sprest-bs/webparts/types/wp";
+    import { IWebPartInfo } from "gd-sprest-bs/webparts/wp";
     
     /**
         * Helper Methods
@@ -413,7 +413,7 @@ declare module 'gd-sprest-bs/webparts/types/helper' {
     }
 }
 
-declare module 'gd-sprest-bs/webparts/types/wp' {
+declare module 'gd-sprest-bs/webparts/wp' {
     import { Components } from "gd-bs";
     
     /**
@@ -541,10 +541,10 @@ declare module 'gd-sprest-bs/webparts/types/wp' {
     }
 }
 
-declare module 'gd-sprest-bs/webparts/types/wpList' {
+declare module 'gd-sprest-bs/webparts/wpList' {
     import { Components } from "gd-bs";
     import { Types } from "gd-sprest";
-    import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/types/wp";
+    import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/wp";
     
     /**
         * List WebPart
@@ -615,10 +615,10 @@ declare module 'gd-sprest-bs/webparts/types/wpList' {
     }
 }
 
-declare module 'gd-sprest-bs/webparts/types/wpSearch' {
+declare module 'gd-sprest-bs/webparts/wpSearch' {
     import { Types } from "gd-sprest";
-    import { IWPList, IWPListInfo, IWPListProps } from "gd-sprest-bs/webparts/types/wpList";
-    import { IWPListCfg, IWPListEditForm } from "gd-sprest-bs/webparts/types/wpList";
+    import { IWPList, IWPListInfo, IWPListProps } from "gd-sprest-bs/webparts/wpList";
+    import { IWPListCfg, IWPListEditForm } from "gd-sprest-bs/webparts/wpList";
     
     /**
         * Search WebPart
@@ -665,8 +665,8 @@ declare module 'gd-sprest-bs/webparts/types/wpSearch' {
     export interface IWPSearchEditForm extends IWPListEditForm<IWPSearchCfg, IWPSearchInfo> { }
 }
 
-declare module 'gd-sprest-bs/webparts/types/wpTabs' {
-    import { IWebPart, IWebPartProps } from "gd-sprest-bs/webparts/types/wp";
+declare module 'gd-sprest-bs/webparts/wpTabs' {
+    import { IWebPart, IWebPartProps } from "gd-sprest-bs/webparts/wp";
     
     /**
         * WebPart Tabs
@@ -699,10 +699,10 @@ declare module 'gd-sprest-bs/webparts/types/wpTabs' {
     }
 }
 
-declare module 'gd-sprest-bs/webparts/types/wpTaxonomy' {
+declare module 'gd-sprest-bs/webparts/wpTaxonomy' {
     import { Components } from "gd-bs"
     import { Helper } from "gd-sprest";
-    import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/types/wp";
+    import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/wp";
     
     /**
         * Taxonomy WebPart
