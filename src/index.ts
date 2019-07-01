@@ -1,7 +1,6 @@
 export * from "gd-bs";
 export * from "gd-sprest";
 
-import { $REST } from "gd-sprest";
 import { Components, WebParts } from "./rest";
 export { Components, WebParts }
 
@@ -13,7 +12,7 @@ if (window) {
     // Ensure the global variable exists
     if (window["$REST"]) {
         // Update the $REST global variable
-        window["$REST"] = $REST;
+        window["$REST"] = window["$REST"];
         window["$REST"].Components = Components;
         window["$REST"].jQuery = GD.jQuery;
         window["$REST"].WebParts = WebParts;
