@@ -12,7 +12,6 @@ if (window) {
     // Ensure the global variable exists
     if (window["$REST"]) {
         // Update the $REST global variable
-        window["$REST"] = window["$REST"];
         window["$REST"].Components = Components;
         window["$REST"].jQuery = GD.jQuery;
         window["$REST"].WebParts = WebParts;
