@@ -188,13 +188,7 @@ declare module 'gd-sprest-bs/components/listForm' {
     /**
         * List Form Display Properties
         */
-    export interface IListFormDisplayProps {
-            /** The element to render the form to. */
-            el: Element;
-    
-            /** The list form information. */
-            info: Helper.IListFormResult;
-    
+    export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
             /** The control rendered event. */
             onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
     
@@ -231,10 +225,7 @@ declare module 'gd-sprest-bs/components/listForm' {
     /**
         * List Form Edit Properties
         */
-    export interface IListFormEditProps extends IListFormDisplayProps {
-            /** The form mode (New/Edit) */
-            controlMode?: number;
-    
+    export interface IListFormEditProps extends IListFormDisplayProps, Helper.IListFormEditProps {
             /** The form saving event. */
             onSaving?: (item: any) => void | PromiseLike<any>;
     
