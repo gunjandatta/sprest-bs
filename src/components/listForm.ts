@@ -73,6 +73,41 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                     let field = props.info.fields[fieldName];
                     let html = formValues[fieldName] || formValues[fieldName.replace(/\_/g, "_x005f_")] || "";
 
+                    // See if the "include" property is set
+                    if (props.includeFields) {
+                        let renderFl = false;
+
+                        // Parse the fields
+                        for (let fName in props.includeFields) {
+                            // See if we are rendering this field
+                            if (fName == fieldName) {
+                                // Set the flag
+                                renderFl = true;
+                                break;
+                            }
+                        }
+
+                        // Skip this field, if we are not rendering it
+                        if (!renderFl) { continue; }
+                    }
+                    // Else, see if the "exclude" property is set
+                    else if (props.excludeFields) {
+                        let renderFl = true;
+
+                        // Parse the fields
+                        for (let fName in props.excludeFields) {
+                            // See if we are excluding this field
+                            if (fName == fieldName) {
+                                // Set the flag
+                                renderFl = false;
+                                break;
+                            }
+                        }
+
+                        // Skip this field, if we are not rendering it
+                        if (!renderFl) { continue; }
+                    }
+
                     // See if this is a note field
                     if (field.FieldTypeKind == SPTypes.FieldType.Note) {
                         // Update the html
