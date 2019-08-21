@@ -78,9 +78,9 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                         let renderFl = false;
 
                         // Parse the fields
-                        for (let fName in props.includeFields) {
+                        for (let i = 0; i < props.includeFields.length; i++) {
                             // See if we are rendering this field
-                            if (fName == fieldName) {
+                            if (props.includeFields[i] == fieldName) {
                                 // Set the flag
                                 renderFl = true;
                                 break;
@@ -95,9 +95,9 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                         let renderFl = true;
 
                         // Parse the fields
-                        for (let fName in props.excludeFields) {
+                        for (let i = 0; i < props.excludeFields.length; i++) {
                             // See if we are excluding this field
-                            if (fName == fieldName) {
+                            if (props.excludeFields[i] == fieldName) {
                                 // Set the flag
                                 renderFl = false;
                                 break;
