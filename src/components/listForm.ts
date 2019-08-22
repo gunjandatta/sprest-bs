@@ -9,6 +9,44 @@ import { Field } from "./field";
 // Extend the list form
 export const ListForm: IListForm = Helper.ListForm as any;
 
+// Method to get the fields to render
+let getFieldsToRender = (props: IListFormDisplayProps | IListFormEditProps): Array<string> => {
+    let fieldNames = [];
+
+    // See if the "include" fields property is defined
+    if (props.includeFields) {
+        // Set the field names
+        fieldNames = props.includeFields;
+    } else {
+        // Parse the fields
+        for (let fieldName in props.info.fields) {
+            // See if the "exclude" property is set
+            if (props.excludeFields) {
+                let renderFl = true;
+
+                // Parse the fields
+                for (let i = 0; i < props.excludeFields.length; i++) {
+                    // See if we are excluding this field
+                    if (props.excludeFields[i] == fieldName) {
+                        // Set the flag
+                        renderFl = false;
+                        break;
+                    }
+                }
+
+                // Skip this field, if we are not rendering it
+                if (!renderFl) { continue; }
+            }
+
+            // Add the field name
+            fieldNames.push(fieldName);
+        }
+
+        // Return the field names
+        return fieldNames;
+    }
+}
+
 // Method to render a display form for an item
 ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     // Render a loading message
@@ -68,45 +106,12 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                     });
                 }
 
-                // Parse the fields
-                for (let fieldName in props.info.fields) {
+                // Parse the fields to render
+                let fieldNames = getFieldsToRender(props);
+                for (let i = 0; i < fieldNames.length; i++) {
+                    let fieldName = fieldNames[i];
                     let field = props.info.fields[fieldName];
                     let html = formValues[fieldName] || formValues[fieldName.replace(/\_/g, "_x005f_")] || "";
-
-                    // See if the "include" property is set
-                    if (props.includeFields) {
-                        let renderFl = false;
-
-                        // Parse the fields
-                        for (let i = 0; i < props.includeFields.length; i++) {
-                            // See if we are rendering this field
-                            if (props.includeFields[i] == fieldName) {
-                                // Set the flag
-                                renderFl = true;
-                                break;
-                            }
-                        }
-
-                        // Skip this field, if we are not rendering it
-                        if (!renderFl) { continue; }
-                    }
-                    // Else, see if the "exclude" property is set
-                    else if (props.excludeFields) {
-                        let renderFl = true;
-
-                        // Parse the fields
-                        for (let i = 0; i < props.excludeFields.length; i++) {
-                            // See if we are excluding this field
-                            if (props.excludeFields[i] == fieldName) {
-                                // Set the flag
-                                renderFl = false;
-                                break;
-                            }
-                        }
-
-                        // Skip this field, if we are not rendering it
-                        if (!renderFl) { continue; }
-                    }
 
                     // See if this is a note field
                     if (field.FieldTypeKind == SPTypes.FieldType.Note) {
@@ -530,9 +535,11 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         });
     }
 
-    // Parse the fields
-    for (let fieldName in props.info.fields) {
+    // Parse the fields to render
+    let fieldNames = getFieldsToRender(props);
+    for (let i = 0; i < fieldNames.length; i++) {
         let columns = null;
+        let fieldName = fieldNames[i];
         let field = props.info.fields[fieldName];
 
         // Set the value
