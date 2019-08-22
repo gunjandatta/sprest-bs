@@ -41,10 +41,10 @@ let getFieldsToRender = (props: IListFormDisplayProps | IListFormEditProps): Arr
             // Add the field name
             fieldNames.push(fieldName);
         }
-
-        // Return the field names
-        return fieldNames;
     }
+
+    // Return the field names
+    return fieldNames;
 }
 
 // Method to render a display form for an item
