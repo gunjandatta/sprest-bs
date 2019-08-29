@@ -6,7 +6,7 @@
 
 declare module 'gd-sprest-bs' {
     export * from "gd-bs";
-    export * from "gd-sprest-bs/rest";
+    export * from "gd-sprest";
     
     import * as Components from "gd-sprest-bs/components";
     import * as WebParts from "gd-sprest-bs/webparts";
@@ -14,26 +14,9 @@ declare module 'gd-sprest-bs' {
         Components,
         WebParts
     }
-}
-
-declare module 'gd-sprest-bs/rest' {
-    import { IREST } from "gd-sprest";
-    import * as Components from "gd-sprest-bs/components";
-    import * as WebParts from "gd-sprest-bs/webparts";
     
-    /**
-        * $REST Bootstrap Library
-        */
+    import { IRESTBS } from "gd-sprest-bs/rest";
     export const $REST: IRESTBS;
-    
-    /**
-        * $REST Bootstrap Library
-        */
-    export interface IRESTBS extends IREST {
-            jQuery: any,
-            Components
-            WebParts
-    }
 }
 
 declare module 'gd-sprest-bs/components' {
@@ -52,6 +35,21 @@ declare module 'gd-sprest-bs/webparts' {
     export * from "gd-sprest-bs/webparts/wpSearch";
     export * from "gd-sprest-bs/webparts/wpTabs";
     export * from "gd-sprest-bs/webparts/wpTaxonomy";
+}
+
+declare module 'gd-sprest-bs/rest' {
+    import { IREST } from "gd-sprest";
+    import * as Components from "gd-sprest-bs/components";
+    import * as WebParts from "gd-sprest-bs/webparts";
+    
+    /**
+      * $REST Bootstrap Library
+      */
+    export interface IRESTBS extends IREST {
+        jQuery: any,
+        Components
+        WebParts
+    }
 }
 
 declare module 'gd-sprest-bs/components/datetime' {
