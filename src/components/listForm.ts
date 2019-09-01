@@ -113,6 +113,13 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                     let field = props.info.fields[fieldName];
                     let html = formValues[fieldName] || formValues[fieldName.replace(/\_/g, "_x005f_")] || "";
 
+                    // Ensure the field exists
+                    if (field == null) {
+                        // Log
+                        console.error("[List Form] Field '" + fieldName + "' does not exist. Check the list or query.");
+                        continue;
+                    }
+
                     // See if this is a note field
                     if (field.FieldTypeKind == SPTypes.FieldType.Note) {
                         // Update the html
@@ -541,6 +548,13 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         let columns = null;
         let fieldName = fieldNames[i];
         let field = props.info.fields[fieldName];
+
+        // Ensure the field exists
+        if (field == null) {
+            // Log
+            console.error("[List Form] Field '" + fieldName + "' does not exist. Check the list or query.");
+            continue;
+        }
 
         // Set the value
         value[fieldName] = props.info.item ? props.info.item[fieldName] : null;
