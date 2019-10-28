@@ -625,7 +625,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             let row = props.template[i];
 
             // Default the row size
-            row.colSize = typeof (row.colSize) === "number" ? row.colSize : 2;
+            row.colSize = typeof (row.colSize) === "string" ? parseInt(row.colSize) : row.colSize;
 
             // Update the control
             updateControl(row.control);
