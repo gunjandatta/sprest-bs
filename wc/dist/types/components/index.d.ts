@@ -22,5 +22,5 @@ export * from "./progress";
 export * from "./progressGroup";
 export * from "./table";
 export * from "./toast";
-export * from "./toggle";
 export * from "./toolbar";
+export * from "./tooltip";

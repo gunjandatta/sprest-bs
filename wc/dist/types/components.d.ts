@@ -449,15 +449,6 @@ export namespace Components {
     'headerText'?: string;
   }
 
-  interface BsTooltip {
-    'className': string;
-    'type': number;
-  }
-  interface BsTooltipAttributes extends StencilHTMLAttributes {
-    'className'?: string;
-    'type'?: number;
-  }
-
   interface BsToolbar {
     'className': string;
     'spacing': number;
@@ -465,6 +456,15 @@ export namespace Components {
   interface BsToolbarAttributes extends StencilHTMLAttributes {
     'className'?: string;
     'spacing'?: number;
+  }
+
+  interface BsTooltip {
+    'className': string;
+    'type': number;
+  }
+  interface BsTooltipAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+    'type'?: number;
   }
 
   interface BsWebpartList {
@@ -568,8 +568,8 @@ declare global {
     'BsSpinner': Components.BsSpinner;
     'BsTable': Components.BsTable;
     'BsToast': Components.BsToast;
-    'BsTooltip': Components.BsTooltip;
     'BsToolbar': Components.BsToolbar;
+    'BsTooltip': Components.BsTooltip;
     'BsWebpartList': Components.BsWebpartList;
     'BsWebpartSearch': Components.BsWebpartSearch;
     'BsWebpartTabs': Components.BsWebpartTabs;
@@ -605,8 +605,8 @@ declare global {
     'bs-spinner': Components.BsSpinnerAttributes;
     'bs-table': Components.BsTableAttributes;
     'bs-toast': Components.BsToastAttributes;
-    'bs-tooltip': Components.BsTooltipAttributes;
     'bs-toolbar': Components.BsToolbarAttributes;
+    'bs-tooltip': Components.BsTooltipAttributes;
     'bs-webpart-list': Components.BsWebpartListAttributes;
     'bs-webpart-search': Components.BsWebpartSearchAttributes;
     'bs-webpart-tabs': Components.BsWebpartTabsAttributes;
@@ -777,16 +777,16 @@ declare global {
     new (): HTMLBsToastElement;
   };
 
-  interface HTMLBsTooltipElement extends Components.BsTooltip, HTMLStencilElement {}
-  var HTMLBsTooltipElement: {
-    prototype: HTMLBsTooltipElement;
-    new (): HTMLBsTooltipElement;
-  };
-
   interface HTMLBsToolbarElement extends Components.BsToolbar, HTMLStencilElement {}
   var HTMLBsToolbarElement: {
     prototype: HTMLBsToolbarElement;
     new (): HTMLBsToolbarElement;
+  };
+
+  interface HTMLBsTooltipElement extends Components.BsTooltip, HTMLStencilElement {}
+  var HTMLBsTooltipElement: {
+    prototype: HTMLBsTooltipElement;
+    new (): HTMLBsTooltipElement;
   };
 
   interface HTMLBsWebpartListElement extends Components.BsWebpartList, HTMLStencilElement {}
@@ -847,8 +847,8 @@ declare global {
     'bs-spinner': HTMLBsSpinnerElement
     'bs-table': HTMLBsTableElement
     'bs-toast': HTMLBsToastElement
-    'bs-tooltip': HTMLBsTooltipElement
     'bs-toolbar': HTMLBsToolbarElement
+    'bs-tooltip': HTMLBsTooltipElement
     'bs-webpart-list': HTMLBsWebpartListElement
     'bs-webpart-search': HTMLBsWebpartSearchElement
     'bs-webpart-tabs': HTMLBsWebpartTabsElement
@@ -884,8 +884,8 @@ declare global {
     'bs-spinner': HTMLBsSpinnerElement;
     'bs-table': HTMLBsTableElement;
     'bs-toast': HTMLBsToastElement;
-    'bs-tooltip': HTMLBsTooltipElement;
     'bs-toolbar': HTMLBsToolbarElement;
+    'bs-tooltip': HTMLBsTooltipElement;
     'bs-webpart-list': HTMLBsWebpartListElement;
     'bs-webpart-search': HTMLBsWebpartSearchElement;
     'bs-webpart-tabs': HTMLBsWebpartTabsElement;

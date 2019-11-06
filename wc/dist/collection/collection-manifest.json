@@ -1105,7 +1105,7 @@
       "tag": "bs-tooltip",
       "dependencies": [],
       "componentClass": "Tooltip",
-      "componentPath": "components/toggle.js",
+      "componentPath": "components/tooltip.js",
       "styles": {},
       "props": [
         {

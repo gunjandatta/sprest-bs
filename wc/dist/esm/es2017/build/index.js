@@ -61,8 +61,8 @@ var index = /*#__PURE__*/Object.freeze({
 	ProgressGroup: ProgressGroup,
 	Table: Table,
 	Toast: Toast,
-	Tooltip: Tooltip,
-	Toolbar: Toolbar
+	Toolbar: Toolbar,
+	Tooltip: Tooltip
 });
 
 
