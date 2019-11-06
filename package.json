@@ -1,6 +1,6 @@
 {
   "name": "gd-sprest-bs",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
   "main": "dist/gd-sprest-bs.js",
   "typings": "dist/gd-sprest-bs.d.ts",
@@ -28,24 +28,24 @@
   },
   "homepage": "https://gunjandatta.github.io/extras/bs",
   "dependencies": {
-    "gd-bs": "^1.5.4",
+    "gd-bs": "^1.5.5",
     "gd-sprest": "^5.0.2",
     "gd-sprest-def": "^0.7.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
+    "@babel/core": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
     "@stencil/core": "^0.18.0",
-    "babel-loader": "^8.0.5",
-    "css-loader": "^2.1.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
     "dts-bundle": "^0.7.3",
-    "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
     "stencil": "^0.0.5",
-    "style-loader": "^0.23.1",
-    "ts-loader": "^5.3.3",
-    "uglifyjs-webpack-plugin": "^2.1.2",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3"
+    "style-loader": "^1.0.0",
+    "ts-loader": "^6.2.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   }
 }
