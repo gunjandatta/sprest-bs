@@ -28,7 +28,7 @@
   },
   "homepage": "https://gunjandatta.github.io/extras/bs",
   "dependencies": {
-    "gd-bs": "^1.5.5",
+    "gd-bs": "^1.5.7",
     "gd-sprest": "^5.0.4",
     "gd-sprest-def": "^0.7.1"
   },
