@@ -267,7 +267,7 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
                 });
             });
         },
-        onSave: (cfg: IWPTaxonomyCfg) => {
+        onSave: (cfg: IWPTaxonomyCfg, form) => {
             // Update the configuration
             cfg.TermGroupId = _wpInfo.cfg.TermGroupId;
             cfg.TermGroupName = _wpInfo.cfg.TermGroupName;
@@ -277,7 +277,7 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
             cfg.TermSetTermName = _wpInfo.cfg.TermSetTermName;
 
             // Return the configuration
-            return props.onSave ? props.onSave(_wpInfo.cfg) : _wpInfo.cfg;
+            return props.onSave ? props.onSave(_wpInfo.cfg, form) : _wpInfo.cfg;
         }
     };
 }

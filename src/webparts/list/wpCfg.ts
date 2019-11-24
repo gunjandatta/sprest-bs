@@ -202,13 +202,13 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
                 });
             });
         },
-        onSave: (cfg: IWPListCfg) => {
+        onSave: (cfg: IWPListCfg, form) => {
             // Update the configuration
             cfg.ListName = _wpInfo.cfg.ListName;
             cfg.WebUrl = _wpInfo.cfg.WebUrl;
 
             // Return the configuration
-            return props.onSave ? props.onSave(_wpInfo.cfg) : _wpInfo.cfg;
+            return props.onSave ? props.onSave(_wpInfo.cfg, form) : _wpInfo.cfg;
         }
     };
 }

@@ -145,12 +145,12 @@ export const WPSearchEditForm = (props: IWPSearchEditForm = {}): IWPSearchEditFo
             // Render the fields
             return loadFields(list);
         },
-        onSave: (cfg: IWPSearchCfg) => {
+        onSave: (cfg: IWPSearchCfg, form) => {
             // Update the configuration
             cfg.Fields = _wpInfo.cfg.Fields || [];
 
             // Return the configuration
-            return props.onSave ? props.onSave(_wpInfo.cfg) : _wpInfo.cfg;
+            return props.onSave ? props.onSave(_wpInfo.cfg, form) : _wpInfo.cfg;
         }
     }
 }
