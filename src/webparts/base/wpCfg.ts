@@ -41,7 +41,6 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
         Components.Button({
             el: wp.el.children[0],
             text: "Configure WebPart",
-            toggle: "modal",
             type: Components.ButtonTypes.Secondary,
             onClick: () => { modal.show(); }
         });
