@@ -29,7 +29,7 @@
   "homepage": "https://gunjandatta.github.io/extras/bs",
   "dependencies": {
     "gd-bs": "^1.5.9",
-    "gd-sprest": "^5.1.2",
+    "gd-sprest": "^5.1.3",
     "gd-sprest-def": "^0.7.6"
   },
   "devDependencies": {
