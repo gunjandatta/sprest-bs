@@ -1,13 +1,17 @@
 {
   "name": "gd-sprest-bs",
-  "version": "2.6.3",
+  "version": "2.6.4",
   "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
   "main": "dist/gd-sprest-bs.js",
   "typings": "dist/gd-sprest-bs.d.ts",
   "scripts": {
-    "all": "npm run build && npm run prod && npm run typings && npm run wc",
+    "all": "npm run build-all && npm run prod-all && npm run typings && npm run wc",
+    "build-all": "npm run build && npm run build-icons",
     "build": "webpack --mode=development",
+    "build-icons": "webpack --mode=development --icons=true",
+    "prod-all": "npm run prod && npm run prod-icons",
     "prod": "webpack --mode=production",
+    "prod-icons": "webpack --mode=production --icons=true",
     "typings": "dts-bundle --out ../dist/gd-sprest-bs.d.ts --name gd-sprest-bs --main ./@types/index.d.ts",
     "wc": "cd wc && npm run build",
     "wc-serve": "cd wc && npm run start"
@@ -28,7 +32,7 @@
   },
   "homepage": "https://gunjandatta.github.io/extras/bs",
   "dependencies": {
-    "gd-bs": "^1.6.4",
+    "gd-bs": "^1.6.5",
     "gd-sprest": "^5.1.3",
     "gd-sprest-def": "^0.7.6"
   },
