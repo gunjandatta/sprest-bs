@@ -1,8 +1,8 @@
 {
   "name": "gd-sprest-bs",
-  "version": "2.6.4",
+  "version": "2.6.5",
   "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
-  "main": "dist/gd-sprest-bs.js",
+  "main": "dist/gd-sprest-bs-icons.js",
   "typings": "dist/gd-sprest-bs.d.ts",
   "scripts": {
     "all": "npm run build-all && npm run prod-all && npm run typings && npm run wc",
