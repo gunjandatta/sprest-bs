@@ -2,7 +2,7 @@
 // Dependencies for this module:
 //   ../gd-bs
 //   ../gd-sprest
-//   ../gd-bs/@types
+//   ../gd-bs/@types/components
 
 declare module 'gd-sprest-bs' {
     export * from "gd-bs";
@@ -20,7 +20,7 @@ declare module 'gd-sprest-bs' {
 }
 
 declare module 'gd-sprest-bs/components' {
-    export * from "gd-bs/@types";
+    export * from "gd-bs/@types/components";
     export * from "gd-sprest-bs/components/datetime";
     export * from "gd-sprest-bs/components/field";
     export * from "gd-sprest-bs/components/listForm";
