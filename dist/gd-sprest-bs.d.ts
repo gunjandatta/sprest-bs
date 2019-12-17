@@ -655,6 +655,7 @@ declare module 'gd-sprest-bs/webparts/wpSearch' {
 }
 
 declare module 'gd-sprest-bs/webparts/wpTabs' {
+    import { Components } from "gd-bs";
     import { IWebPart, IWebPartProps } from "gd-sprest-bs/webparts/wp";
     
     /**
@@ -671,6 +672,7 @@ declare module 'gd-sprest-bs/webparts/wpTabs' {
         * WebPart Tabs
         */
     export interface IWPTabs extends IWebPart {
+            getNav(): Components.INav;
             getTabs(): Array<HTMLElement>;
     }
     

@@ -14,8 +14,9 @@ export enum WPTabTypes {
  * Web Part Tabs
  */
 export const WPTabs = (props: IWPTabsProps): IWPTabs => {
-    let _isContentZone: boolean = false;
     let _elWebPart: HTMLDivElement = null;
+    let _isContentZone: boolean = false;
+    let _nav: Components.INav = null;
 
     // Method to get the webparts
     let getWebParts = (wpInfo: IWebPartInfo) => {
@@ -264,7 +265,7 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
             }
 
             // Render the navigation
-            let nav = Components.Nav({
+            _nav = Components.Nav({
                 className: props.className,
                 el: wpInfo.el,
                 isPills: props.type == WPTabTypes.Pillars,
@@ -274,10 +275,14 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
 
             // Update the webparts
             updateWebParts();
+
+            // See if a custom event exists
+            props.onRenderDisplay ? props.onRenderDisplay(wpInfo) : null;
         }
     }) as IWPTabs;
 
     // Add the custom methods
+    wp.getNav = () => { return _nav; }
     wp.getTabs = () => { return _webparts as any; };
 
     // Return the webpart
