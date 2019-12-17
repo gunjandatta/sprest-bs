@@ -23,7 +23,7 @@ export interface IWPTabs extends IWebPart {
  * WebPart Tabs Properties
  */
 export interface IWPTabsProps extends IWebPartProps {
-    onClick(el?: HTMLElement);
+    onClick?: (el?: HTMLElement) => void;
     type?: number;
 }
 

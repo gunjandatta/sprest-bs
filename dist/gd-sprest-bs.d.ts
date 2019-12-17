@@ -680,7 +680,7 @@ declare module 'gd-sprest-bs/webparts/wpTabs' {
         * WebPart Tabs Properties
         */
     export interface IWPTabsProps extends IWebPartProps {
-            onClick(el?: HTMLElement);
+            onClick?: (el?: HTMLElement) => void;
             type?: number;
     }
     
