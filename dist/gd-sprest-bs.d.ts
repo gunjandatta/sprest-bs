@@ -670,12 +670,15 @@ declare module 'gd-sprest-bs/webparts/wpTabs' {
     /**
         * WebPart Tabs
         */
-    export interface IWPTabs extends IWebPart { }
+    export interface IWPTabs extends IWebPart {
+            getTabs(): Array<HTMLElement>;
+    }
     
     /**
         * WebPart Tabs Properties
         */
     export interface IWPTabsProps extends IWebPartProps {
+            onClick(el?: HTMLElement);
             type?: number;
     }
     

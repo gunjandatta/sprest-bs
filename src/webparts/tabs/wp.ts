@@ -215,6 +215,9 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
                             ev ? window.dispatchEvent(ev) : null;
                         }
                     }
+
+                    // Call the click if it exists
+                    props.onClick ? props.onClick(webpart) : null;
                 }
                 // Ensure the webpart is hidden
                 else if (webpart.classList.contains("is-hidden") == false) {
@@ -232,7 +235,7 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
     let _webparts = [];
 
     // Return the webpart
-    return WebPart({
+    let wp = WebPart({
         className: props.className,
         cfgElementId: props.cfgElementId,
         editForm: props.editForm,
@@ -272,5 +275,11 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
             // Update the webparts
             updateWebParts();
         }
-    });
+    }) as IWPTabs;
+
+    // Add the custom methods
+    wp.getTabs = () => { return _webparts as any; };
+
+    // Return the webpart
+    return wp;
 }
