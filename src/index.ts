@@ -1,8 +1,8 @@
 export * from "gd-bs";
 export * from "gd-sprest";
 
-import { Components, Icons, IconTypes, WebParts } from "./rest";
-export { Components, Icons, IconTypes, WebParts }
+import { Components, WebParts } from "./rest";
+export { Components, WebParts }
 
 import "./styles.scss";
 declare var GD;
@@ -13,8 +13,6 @@ if (window) {
     if (window["$REST"]) {
         // Update the $REST global variable
         window["$REST"].Components = Components;
-        window["$REST"].IconTypes = IconTypes;
-        window["$REST"].Icons = Icons;
         window["$REST"].jQuery = GD.jQuery;
         window["$REST"].WebParts = WebParts;
     }
