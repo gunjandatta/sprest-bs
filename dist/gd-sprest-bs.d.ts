@@ -38,6 +38,7 @@ declare module 'gd-sprest-bs/webparts' {
 }
 
 declare module 'gd-sprest-bs/rest' {
+    import { IconTypes, Icons } from "gd-bs";
     import { IREST } from "gd-sprest";
     import * as Components from "gd-sprest-bs/components";
     import * as WebParts from "gd-sprest-bs/webparts";
@@ -47,7 +48,8 @@ declare module 'gd-sprest-bs/rest' {
       */
     export interface IRESTBS extends IREST {
         jQuery: any,
-        Components
+        Components,
+        Icons, IconTypes,
         WebParts
     }
 }
