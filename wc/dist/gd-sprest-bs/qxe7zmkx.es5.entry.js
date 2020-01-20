@@ -1,1 +1,0 @@
-GdSprestBs.loadBundle("qxe7zmkx",["exports","./chunk-1c26bad2.js","./chunk-03dfd30a.js","./chunk-17f92c32.js"],function(e,d,n,s){e.BsWebpart=s.WebPart,Object.defineProperty(e,"__esModule",{value:!0})});

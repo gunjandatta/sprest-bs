@@ -1,1 +1,0 @@
-GdSprestBs.loadBundle("cviipw8q",["exports","./chunk-1c26bad2.js","./chunk-35e50f9e.js"],function(e,d,n){e.BsBadge=n.Badge,Object.defineProperty(e,"__esModule",{value:!0})});

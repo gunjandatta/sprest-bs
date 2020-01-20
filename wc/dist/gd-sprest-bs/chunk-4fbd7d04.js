@@ -1,1 +1,0 @@
-const e=(e,n,t=!1)=>{let l=null;return n&&e.parentElement&&null==(l=e.parentElement.querySelector("#"+n))&&((l=document.createElement("div")).id=n,t&&(l.style.display="none"),e.parentElement.appendChild(l)),l};export{e as a};

@@ -1,1 +1,0 @@
-export * from '../esm/es5/gd-sprest-bs.define.js';
