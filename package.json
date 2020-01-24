@@ -1,6 +1,6 @@
 {
   "name": "gd-sprest-bs",
-  "version": "2.8.1",
+  "version": "2.8.2",
   "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
   "main": "dist/gd-sprest-bs-icons.js",
   "typings": "dist/gd-sprest-bs.d.ts",
@@ -29,7 +29,7 @@
   },
   "homepage": "https://dattabase.com/extras/bs",
   "dependencies": {
-    "gd-bs": "^1.7.6",
+    "gd-bs": "^1.7.7",
     "gd-sprest": "^5.1.4",
     "gd-sprest-def": "^0.7.6"
   },
