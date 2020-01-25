@@ -30,7 +30,7 @@
   "homepage": "https://dattabase.com/extras/bs",
   "dependencies": {
     "gd-bs": "^1.7.7",
-    "gd-sprest": "^5.1.5",
+    "gd-sprest": "^5.1.6",
     "gd-sprest-def": "^0.7.6"
   },
   "devDependencies": {
