@@ -9,8 +9,7 @@ module.exports = (env, argv) => {
     let cfg = {
         entry: [
             "./node_modules/gd-bs/dist/gd-bs" + (includeIcons ? "-icons" : "") + (isDev ? "" : ".min") + ".js",
-            //"./node_modules/gd-sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
-            "../sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
+            "./node_modules/gd-sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
             "./lib/jquery-ui-1.12.1.custom/jquery-ui" + (isDev ? "" : ".min") + ".js",
             "./src/index" + (includeIcons ? "-icons" : "") + ".ts"
         ],
