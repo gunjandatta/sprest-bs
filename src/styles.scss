@@ -21,7 +21,13 @@
     }
 }
 
-/* List Field Pop-Up Menu */
+/** List Fields Pop-Up Menus */
+#calendarFields.dropdown-menu {
+    display: block;
+    max-height: 250px;
+    position: relative;
+    overflow-y: auto;
+}
 #selectedFields.dropdown-menu {
     border: none;
     display: block;
