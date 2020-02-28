@@ -249,8 +249,8 @@ export const WPListFieldsEditForm = (props: IWPListFieldsEditForm = {}): IWPList
             // Clear the selected fields
             _selectedFields = [];
 
-            // Return the custom properties
-            return [
+            // Set the default control
+            let controls: Array<Components.IFormControlProps> = [
                 {
                     name: "Fields",
                     label: "Fields",
@@ -263,6 +263,31 @@ export const WPListFieldsEditForm = (props: IWPListFieldsEditForm = {}): IWPList
                     }
                 }
             ];
+
+            // Call the render form event
+            let returnVal: any = props.onRenderForm ? props.onRenderForm(_wpInfo, list) : null;
+            if (returnVal) {
+                // See if this is a promise
+                if (returnVal.then) {
+                    // Return a promise
+                    return new Promise((resolve, reject) => {
+                        // Wait for the promise to complete
+                        returnVal.then((formControls = []) => {
+                            // Add the form controls
+                            controls = controls.concat(formControls);
+
+                            // Resolve the promise
+                            resolve(controls);
+                        });
+                    });
+                }
+
+                // Add the form controls
+                controls = controls.concat(returnVal);
+            }
+
+            // Return the custom properties
+            return controls;
         },
         onSave: (cfg: IWPListFieldsCfg, form) => {
             // Update the configuration
