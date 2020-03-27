@@ -26,6 +26,12 @@ declare module 'gd-sprest-bs/components' {
     export * from "gd-sprest-bs/components/listForm";
     export * from "gd-sprest-bs/components/listFormDialog";
     export * from "gd-sprest-bs/components/peoplePicker";
+    
+    import { IFormControlTypes as Parent } from "gd-bs/@types/components";
+    export interface IFormControlTypes extends Parent {
+        PeoplePicker
+    }
+    export const FormControlTypes: IFormControlTypes;
 }
 
 declare module 'gd-sprest-bs/webparts' {

@@ -194,7 +194,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     elPeoplePicker.appendChild(elSelectedUsers);
 
     // Set the default selected users
-    setValue(props.value);
+    setValue(props.value || []);
 
     // Create the element
     let el = document.createElement("div");
@@ -240,3 +240,30 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
         setValue
     }
 }
+
+// Customize the form control
+Components.FormControlTypes["PeoplePicker"] = 13;
+Components.FormControl.registerType(13 as any, props => {
+    let picker: IPeoplePicker = null;
+
+    // Set the created method
+    props.onControlRendered = ctrl => {
+        let pickerProps = ctrl.props.data || {};
+
+        // Render a people picker
+        picker = PeoplePicker({
+            allowGroups: pickerProps.allowGroups,
+            className: props.className,
+            el: ctrl.el,
+            label: props.label,
+            searchLocal: pickerProps.searchLocal,
+            value: props.value
+        });
+    }
+
+    // Register a people picker
+    props.onGetValue = () => {
+        // Return the value
+        return picker.getValue();
+    };
+});
