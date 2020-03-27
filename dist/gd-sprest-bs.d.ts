@@ -137,13 +137,6 @@ declare module 'gd-sprest-bs/components/field' {
             name: string;
             value: any;
     }
-    
-    /**
-        * Field Value - Users
-        */
-    export interface IFieldValueUser extends IFieldValue {
-            unknownUsers?: Array<string>;
-    }
 }
 
 declare module 'gd-sprest-bs/components/listForm' {
@@ -211,10 +204,7 @@ declare module 'gd-sprest-bs/components/listForm' {
             el: HTMLFormElement;
     
             /** Method to get the form values */
-            getValues(): {
-                    formValues: { [key: string]: any };
-                    unknownUsers: { [key: string]: Array<string> };
-            };
+            getValues(): { [key: string]: any }
     
             /** Method to determine if the field is valid */
             isValid(): boolean;

@@ -1,9 +1,6 @@
 import { Components } from "gd-bs";
 import { Helper, SPTypes, Types } from "gd-sprest";
-import {
-    IField, IFieldProps, IFieldValue, IFieldValueUser,
-    IPeoplePicker
-} from "../../@types/components";
+import { IField, IFieldProps, IFieldValue, IPeoplePicker } from "../../@types/components";
 import { DateTime } from "./datetime";
 import { PeoplePicker } from "./peoplePicker";
 
@@ -783,47 +780,30 @@ export const Field = (props: IFieldProps): IField => {
 
                 // User
                 case SPTypes.FieldType.User:
-                    let userFieldValue = fieldValue as IFieldValueUser;
-
-                    // Default the unknown users
-                    userFieldValue.unknownUsers = userFieldValue.unknownUsers || [];
-
                     // Append 'Id' to the field name
                     fieldValue.name += fieldValue.name.lastIndexOf("Id") == fieldValue.name.length - 2 ? "" : "Id";
 
                     // See if this is a multi-value field
                     if ((props.field as Types.SP.FieldUser).AllowMultipleValues) {
-                        let values: Array<Components.IDropdownItem> = userFieldValue.value || [];
-                        userFieldValue.value = { results: [] };
+                        let values: Array<Components.IDropdownItem> = fieldValue.value || [];
+                        fieldValue.value = { results: [] };
 
                         // Parse the options
                         for (let j = 0; j < values.length; j++) {
                             let userValue = values[j] as Types.IPeoplePickerUser;
-                            if (userValue && userValue.EntityData) {
-                                // Ensure the user or group id exists
-                                if (userValue.EntityData.SPGroupID || userValue.EntityData.SPUserID) {
-                                    // Update the field value
-                                    userFieldValue.value.results.push(userValue.EntityData.SPUserID || userValue.EntityData.SPGroupID);
-                                } else {
-                                    // Add the unknown user account
-                                    userFieldValue.unknownUsers.push(userValue.Key);
-                                }
+                            if (userValue && userValue.EntityData && (userValue.EntityData.SPGroupID || userValue.EntityData.SPUserID)) {
+                                // Update the field value
+                                fieldValue.value.results.push(userValue.EntityData.SPUserID || userValue.EntityData.SPGroupID);
                             }
                         }
                     } else {
-                        let userValue: Types.IPeoplePickerUser = userFieldValue.value ? userFieldValue.value[0] : null;
-                        if (userValue && userValue.EntityData) {
-                            // Ensure the user or group id exists
-                            if (userValue.EntityData.SPGroupID || userValue.EntityData.SPUserID) {
-                                // Update the field value
-                                userFieldValue.value = userValue.EntityData.SPUserID || userValue.EntityData.SPGroupID;
-                            } else {
-                                // Add the unknown user account
-                                userFieldValue.unknownUsers.push(userValue.Key);
-                            }
+                        let userValue: Types.IPeoplePickerUser = fieldValue.value ? fieldValue.value[0] : null;
+                        if (userValue && userValue.EntityData && (userValue.EntityData.SPGroupID || userValue.EntityData.SPUserID)) {
+                            // Update the field value
+                            fieldValue.value = userValue.EntityData.SPUserID || userValue.EntityData.SPGroupID;
                         } else {
                             // Clear the field value
-                            userFieldValue.value = null;
+                            fieldValue.value = null;
                         }
                     }
                     break;

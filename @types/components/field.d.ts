@@ -36,10 +36,3 @@ export interface IFieldValue {
     name: string;
     value: any;
 }
-
-/**
- * Field Value - Users
- */
-export interface IFieldValueUser extends IFieldValue {
-    unknownUsers?: Array<string>;
-}

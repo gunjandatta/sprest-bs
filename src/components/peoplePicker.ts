@@ -1,6 +1,6 @@
 import { Components } from "gd-bs";
 import { IPeoplePicker, IPeoplePickerProps } from "../../@types/components";
-import { PeoplePicker as Search, SPTypes, Types } from "gd-sprest";
+import { PeoplePicker as Search, SPTypes, Types, Web } from "gd-sprest";
 
 /**
  * People Picker
@@ -13,33 +13,51 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     let addUser = (userInfo: Types.IPeoplePickerUser | string) => {
         let user: Types.IPeoplePickerUser = typeof (userInfo) === "string" ? JSON.parse(userInfo) : userInfo;
 
-        // Render a popover button
-        let btnUser = Components.Popover({
-            el: elSelectedUsers,
-            isDismissible: true,
-            type: Components.PopoverTypes.Bottom,
-            btnProps: {
-                className: "mr-1",
-                isSmall: true,
-                text: user.DisplayText
-            },
-            options: {
-                html: true,
-                content: Components.Button({
-                    data: user,
+        // Adds the button
+        let addButton = () => {
+            // Render a popover button
+            let btnUser = Components.Popover({
+                el: elSelectedUsers,
+                isDismissible: true,
+                type: Components.PopoverTypes.Bottom,
+                btnProps: {
+                    className: "mr-1",
                     isSmall: true,
-                    text: "Remove",
-                    type: Components.ButtonTypes.Danger,
-                    onClick: (btn) => {
-                        // Remove the button
-                        elSelectedUsers.removeChild(btnUser.el);
-                    }
-                }).el
-            }
-        });
+                    text: user.DisplayText
+                },
+                options: {
+                    html: true,
+                    content: Components.Button({
+                        data: user,
+                        isSmall: true,
+                        text: "Remove",
+                        type: Components.ButtonTypes.Danger,
+                        onClick: (btn) => {
+                            // Remove the button
+                            elSelectedUsers.removeChild(btnUser.el);
+                        }
+                    }).el
+                }
+            });
 
-        // Set the data attribute
-        btnUser.el.setAttribute("data-user", JSON.stringify(user));
+            // Set the data attribute
+            btnUser.el.setAttribute("data-user", JSON.stringify(user));
+        }
+
+        // Ensure the group or user id is set
+        if (user.EntityData.SPGroupID || user.EntityData.SPUserID) {
+            // Add the button
+            addButton();
+        } else {
+            // Find the user
+            Web().ensureUser(user.Key).execute(userInfo => {
+                // Set the user id
+                user.EntityData.SPUserID = userInfo.Id.toString();
+
+                // Add the button
+                addButton();
+            }, addButton);
+        }
     }
 
     // Method to search for the users

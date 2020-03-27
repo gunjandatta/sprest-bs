@@ -1,9 +1,6 @@
 import { Components } from "gd-bs";
-import { Helper, SPTypes, Types, Web } from "gd-sprest";
-import {
-    IField, IFieldValueUser,
-    IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps
-} from "../../@types/components";
+import { Helper, SPTypes, Types } from "gd-sprest";
+import { IField, IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "../../@types/components";
 import { Field } from "./field";
 
 // Extend the list form
@@ -332,61 +329,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         });
     }
 
-    // Method to update the unknown user accounts
-    let updateUnknownUsers = (): PromiseLike<any> => {
-        // Return a promise
-        return new Promise((resolve, reject) => {
-            let web = Web();
-
-            // Get the values
-            let values = getValues();
-
-            // Parse the unknown users
-            for (let fieldName in values.unknownUsers) {
-                let users = values.unknownUsers[fieldName];
-
-                // Parse the users
-                for (let i = 0; i < users.length; i++) {
-                    // Ensure the user account exists
-                    web.ensureUser(users[i]).execute(true);
-                }
-            }
-
-            // Wait for the unknown users accounts to complete
-            web.done((...args) => {
-                let item = values.formValues;
-
-                // Parse the field names
-                for (let fieldName in values.unknownUsers) {
-                    // Parse the user accounts
-                    for (let i = 0; i < values.unknownUsers[fieldName].length; i++) {
-                        let userLogin = values.unknownUsers[fieldName][i];
-
-                        // Parse the responses
-                        for (let j = 0; j < args.length; j++) {
-                            let user: Types.SP.User = args[j] as any;
-
-                            // See if this is the user
-                            if (user.LoginName == userLogin) {
-                                // See if this is a multi-user value
-                                if (item[fieldName].results != null) {
-                                    // Set the user account
-                                    item[fieldName].results.push(user.Id);
-                                } else {
-                                    // Set the user account
-                                    item[fieldName] = user.Id;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                // Resolve the request
-                resolve(item);
-            });
-        });
-    }
-
     // Render a loading message
     let progress = Components.Progress({
         el: props.el,
@@ -655,8 +597,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
     // Method to get the values
     let getValues = () => {
-        let item = {};
-        let unknownUsers = {};
+        let values = {};
 
         // Parse the fields
         for (let fieldName in props.info.fields) {
@@ -672,18 +613,11 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             let fieldValue = formField.getValue();
 
             // Set the item value
-            item[fieldValue.name] = fieldValue.value;
-
-            // Set the unknown users
-            let userFieldValue: IFieldValueUser = fieldValue;
-            if (userFieldValue.unknownUsers) {
-                // Set the unknown users
-                unknownUsers[fieldValue.name] = userFieldValue.unknownUsers;
-            }
+            values[fieldValue.name] = fieldValue.value;
         }
 
         // Return the form values
-        return { formValues: item, unknownUsers };
+        return values;
     };
 
     // Return the form
@@ -712,36 +646,20 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         save: () => {
             // Return a promise
             return new Promise((resolve, reject) => {
-                // Method to save the item
-                let saveItem = (item) => {
-                    // Update the item
-                    ListForm.saveItem(props.info, item).then(info => {
-                        // Remove the attachments
-                        removeAttachments(info).then(() => {
-                            // Save the attachments
-                            saveAttachments(info).then(() => {
-                                // Update the info
-                                props.info = info;
+                // Update the item
+                ListForm.saveItem(props.info, getValues()).then(info => {
+                    // Remove the attachments
+                    removeAttachments(info).then(() => {
+                        // Save the attachments
+                        saveAttachments(info).then(() => {
+                            // Update the info
+                            props.info = info;
 
-                                // Resolve the promise
-                                resolve(props.info.item as any);
-                            });
+                            // Resolve the promise
+                            resolve(props.info.item as any);
                         });
-                    }, reject);
-                }
-
-                // Update the unknown user accounts
-                updateUnknownUsers().then(item => {
-                    // Execute the saving event
-                    let returnVal = props.onSaving ? props.onSaving(item) : null;
-                    if (returnVal && returnVal.then) {
-                        // Wait for the promise to complete
-                        returnVal.then(saveItem);
-                    } else {
-                        // Save the item
-                        saveItem(item);
-                    }
-                });
+                    });
+                }, reject);
             });
         }
     }
