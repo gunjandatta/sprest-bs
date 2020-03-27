@@ -1,6 +1,6 @@
 import { IWebPart, IWebPartCfg, IWebPartInfo, IWebPartProps } from "../../../@types/webparts";
+import { Helper } from "gd-sprest";
 import { WPCfg } from "./wpCfg";
-declare var MSOWebPartPageFormName;
 
 /**
  * Web Part
@@ -162,29 +162,6 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
     }
 
     /**
-     * Method to detect if a page is being edited
-     */
-    let isEditMode = () => {
-        let formName = MSOWebPartPageFormName ? MSOWebPartPageFormName : "";
-
-        // Get the form
-        let form = document.forms[MSOWebPartPageFormName];
-        if (form) {
-            // Get the wiki page mode
-            let wikiPageMode: any = form._wikiPageMode ? form._wikiPageMode.value : null;
-
-            // Get the webpart page mode
-            let wpPageMode = form.MSOLayout_InDesignMode ? form.MSOLayout_InDesignMode.value : null;
-
-            // Determine if the page is being edited
-            return wikiPageMode == "Edit" || wpPageMode == "1";
-        }
-
-        // Unable to determine
-        return false;
-    }
-
-    /**
      * Method to render the webpart
      */
     let render = () => {
@@ -214,7 +191,7 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
 
         // See if the page is being edited
         let returnVal = null;
-        if (isEditMode()) {
+        if (Helper.WebPart.isEditMode()) {
             // Add the help link
             addHelpLink();
 
