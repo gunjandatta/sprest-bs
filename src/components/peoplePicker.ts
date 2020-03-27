@@ -53,8 +53,6 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 PrincipalType: props.allowGroups ? SPTypes.PrincipalTypes.All : SPTypes.PrincipalTypes.User,
                 QueryString: _filterText
             }).execute((search) => {
-                //let value = getValue();
-
                 // Ensure the search text matches
                 if (_filterText != searchText) { return; }
 
@@ -169,10 +167,12 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     // Add the dropdown menu
     let elMenu = document.createElement("div");
     elMenu.className = "dropdown-menu";
+    elMenu.style.position = "relative";
     elPeoplePicker.appendChild(elMenu);
 
     // Add the selected users
     let elSelectedUsers = document.createElement("div");
+    elSelectedUsers.style.position = "absolute";
     elPeoplePicker.appendChild(elSelectedUsers);
 
     // Set the default selected users
