@@ -1,8 +1,8 @@
 import { Components } from "gd-bs";
 import { Helper, SPTypes, Types } from "gd-sprest";
-import { IField, IFieldProps, IFieldValue, IPeoplePicker } from "../../@types/components";
+import { IField, IFieldProps, IFieldValue } from "../../@types/components";
 import { DateTime } from "./datetime";
-import { PeoplePicker } from "./peoplePicker";
+import { PeoplePickerControlType } from "./peoplePicker";
 
 /**
  * Field
@@ -142,37 +142,6 @@ export const Field = (props: IFieldProps): IField => {
 
         // Return the items
         return items;
-    }
-
-    // Method to get the user items
-    let getUserItems = (value) => {
-        let users: Array<Types.IPeoplePickerUser> = [];
-
-        // See if a value exists
-        if (value) {
-            let userValues = value.results ? value.results : [value];
-            for (let i = 0; i < userValues.length; i++) {
-                let userValue = userValues[i] as Types.SP.Data.UserInfoItem;
-
-                // Ensure a title exists
-                if (userValue.Title) {
-                    let userId = (userValue.ID || userValue["Id"]).toString();
-
-                    // Add the user
-                    users.push({
-                        DisplayText: userValue.Title,
-                        EntityData: {
-                            Email: userValue.EMail,
-                            SPUserID: userId
-                        },
-                        Key: userId
-                    });
-                }
-            }
-        }
-
-        // Return the users
-        return users;
     }
 
     // Set the default properties for the control
@@ -490,28 +459,8 @@ export const Field = (props: IFieldProps): IField => {
 
         // User
         case SPTypes.FieldType.User:
-            let picker: IPeoplePicker = null;
-
-            // Set the rendered event
-            controlProps.onControlRendered = formControl => {
-                // Save the control
-                control = formControl;
-
-                // Clear the control
-                control.el.innerHTML = "";
-
-                // Render a people picker to it
-                picker = PeoplePicker({
-                    el: control.el,
-                    value: getUserItems(props.value)
-                });
-            }
-
-            // Set the get value event
-            controlProps.onGetValue = () => {
-                // Get the values
-                return picker.getValue();
-            };
+            // Set the type
+            controlProps.type = PeoplePickerControlType;
             break;
     }
 
@@ -786,25 +735,22 @@ export const Field = (props: IFieldProps): IField => {
                     // See if this is a multi-value field
                     if ((props.field as Types.SP.FieldUser).AllowMultipleValues) {
                         let values: Array<Components.IDropdownItem> = fieldValue.value || [];
+
+                        // Default the value
                         fieldValue.value = { results: [] };
 
                         // Parse the options
                         for (let j = 0; j < values.length; j++) {
-                            let userValue = values[j] as Types.IPeoplePickerUser;
-                            if (userValue && userValue.EntityData && (userValue.EntityData.SPGroupID || userValue.EntityData.SPUserID)) {
-                                // Update the field value
-                                fieldValue.value.results.push(userValue.EntityData.SPUserID || userValue.EntityData.SPGroupID);
-                            }
+                            let userValue = values[j] as Types.SP.User | Types.SP.Group;
+
+                            // Add the field value
+                            userValue.Id ? fieldValue.value.results.push(userValue.Id) : null;
                         }
                     } else {
-                        let userValue: Types.IPeoplePickerUser = fieldValue.value ? fieldValue.value[0] : null;
-                        if (userValue && userValue.EntityData && (userValue.EntityData.SPGroupID || userValue.EntityData.SPUserID)) {
-                            // Update the field value
-                            fieldValue.value = userValue.EntityData.SPUserID || userValue.EntityData.SPGroupID;
-                        } else {
-                            // Clear the field value
-                            fieldValue.value = null;
-                        }
+                        let userValue: Types.SP.User | Types.SP.Group = fieldValue.value ? fieldValue.value[0] : null;
+
+                        // Set the field value
+                        fieldValue.value = userValue.Id ? userValue.Id : null;
                     }
                     break;
 

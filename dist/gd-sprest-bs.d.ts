@@ -302,10 +302,10 @@ declare module 'gd-sprest-bs/components/peoplePicker' {
             el: HTMLElement;
     
             /** Returns the selected users. */
-            getValue: () => Array<Types.IPeoplePickerUser>;
+            getValue: () => Array<Types.SP.User | Types.SP.Group>;
     
-            /** Sets the selected users. */
-            setValue: (selectedUsers: Array<string | Types.IPeoplePickerUser>) => void;
+            /** Sets the selected users by id or people picker user object. */
+            setValue: (selectedUsers: Array<string | number | Types.IPeoplePickerUser>) => void;
     }
     
     /**
@@ -328,7 +328,7 @@ declare module 'gd-sprest-bs/components/peoplePicker' {
             searchLocal?: boolean;
     
             /** The selected users. */
-            value?: Array<Types.IPeoplePickerUser>;
+            value?: string | number | Types.IPeoplePickerUser | Array<string | number | Types.IPeoplePickerUser>;
     }
 }
 

@@ -1,6 +1,6 @@
 import { Components } from "gd-bs";
 import { IPeoplePicker, IPeoplePickerProps } from "../../@types/components";
-import { PeoplePicker as Search, SPTypes, Types, Web } from "gd-sprest";
+import { Helper, PeoplePicker as Search, SPTypes, Types, Web } from "gd-sprest";
 
 /**
  * People Picker
@@ -14,7 +14,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
         let user: Types.IPeoplePickerUser = typeof (userInfo) === "string" ? JSON.parse(userInfo) : userInfo;
 
         // Adds the button
-        let addButton = () => {
+        let addButton = (userInfo?: Types.SP.User | Types.SP.Group) => {
             // Render a popover button
             let btnUser = Components.Popover({
                 el: elSelectedUsers,
@@ -23,12 +23,12 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 btnProps: {
                     className: "mr-1",
                     isSmall: true,
-                    text: user.DisplayText
+                    text: userInfo.Title
                 },
                 options: {
                     html: true,
                     content: Components.Button({
-                        data: user,
+                        data: userInfo,
                         isSmall: true,
                         text: "Remove",
                         type: Components.ButtonTypes.Danger,
@@ -41,22 +41,37 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
             });
 
             // Set the data attribute
-            btnUser.el.setAttribute("data-user", JSON.stringify(user));
+            btnUser.el.setAttribute("data-user", JSON.stringify(userInfo.stringify()));
         }
 
-        // Ensure the group or user id is set
-        if (user.EntityData.SPGroupID || user.EntityData.SPUserID) {
-            // Add the button
-            addButton();
+        // Ensure this is a user object
+        if (user.EntityData) {
+            // Ensure the group or user id is set
+            if (user.EntityData.SPGroupID) {
+                // Find the user by id
+                Web().SiteGroups(parseInt(user.EntityData.SPGroupID)).execute(group => {
+                    // Add the button
+                    addButton(group);
+                });
+            } else if (user.EntityData.SPUserID) {
+                // Find the user by id
+                Web().getUserById(parseInt(user.EntityData.SPUserID)).execute(userInfo => {
+                    // Add the button
+                    addButton(userInfo);
+                });
+            } else {
+                // Find the user
+                Web().ensureUser(user.Key).execute(userInfo => {
+                    // Add the button
+                    addButton(userInfo);
+                }, addButton);
+            }
         } else {
-            // Find the user
-            Web().ensureUser(user.Key).execute(userInfo => {
-                // Set the user id
-                user.EntityData.SPUserID = userInfo.Id.toString();
-
+            // Find the user by id
+            Web().getUserById(user as any).execute(userInfo => {
                 // Add the button
-                addButton();
-            }, addButton);
+                addButton(userInfo);
+            });
         }
     }
 
@@ -193,8 +208,25 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     elSelectedUsers.style.position = "absolute";
     elPeoplePicker.appendChild(elSelectedUsers);
 
-    // Set the default selected users
-    setValue(props.value || []);
+    // Set the value and ensure it's a 
+    let value: any = props.value || [];
+    if (typeof (props.value) != "object") {
+        // Set the default selected users
+        setValue([value]);
+    } else {
+        // See if this is a user object
+        let userValue = value as Types.IPeoplePickerUser;
+        if (userValue.EntityData) {
+            // Set the value
+            value = userValue.EntityData.SPGroupID || userValue.EntityData.SPUserID;
+
+            // Set the default selected users
+            setValue([value]);
+        } else {
+            // Set the default selected users
+            setValue(value);
+        }
+    }
 
     // Create the element
     let el = document.createElement("div");
@@ -228,10 +260,11 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
             // Parse the selected users
             for (let i = 0; i < elSelectedUsers.children.length; i++) {
-                let userInfo = JSON.parse(elSelectedUsers.children[i].getAttribute("data-user")) as Types.IPeoplePickerUser;
+                let userInfo = JSON.parse(elSelectedUsers.children[i].getAttribute("data-user"));
+                let user = Helper.parse(userInfo) as Types.SP.User | Types.SP.Group;
 
                 // Add this user
-                selectedUsers.push(userInfo);
+                selectedUsers.push(user);
             }
 
             // Return the value
@@ -242,8 +275,9 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 }
 
 // Customize the form control
-Components.FormControlTypes["PeoplePicker"] = 13;
-Components.FormControl.registerType(13 as any, props => {
+export const PeoplePickerControlType = 13;
+Components.FormControlTypes["PeoplePicker"] = PeoplePickerControlType;
+Components.FormControl.registerType(PeoplePickerControlType, props => {
     let picker: IPeoplePicker = null;
 
     // Set the created method
