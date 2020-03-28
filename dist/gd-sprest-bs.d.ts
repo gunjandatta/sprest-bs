@@ -3,6 +3,7 @@
 //   ../gd-bs
 //   ../gd-sprest
 //   ../gd-bs/@types/components
+//   ../gd-bs/components/formControl
 
 declare module 'gd-sprest-bs' {
     export * from "gd-bs";
@@ -288,7 +289,9 @@ declare module 'gd-sprest-bs/components/listFormDialog' {
 }
 
 declare module 'gd-sprest-bs/components/peoplePicker' {
+    import { IFormControlProps } from "gd-bs/components/formControl";
     import { Types } from "gd-sprest";
+    
     /**
         * People Picker
         */
@@ -324,10 +327,23 @@ declare module 'gd-sprest-bs/components/peoplePicker' {
             /** The label. */
             label?: string;
     
+            /** True to allow multiple users to be selected. */
+            multi?: boolean;
+    
             /** True to search the local users first. */
             searchLocal?: boolean;
     
             /** The selected users. */
+            value?: string | number | Types.IPeoplePickerUser | Array<string | number | Types.IPeoplePickerUser>;
+    }
+    
+    /**
+        * Form Control Properties - People Picker
+        */
+    export interface IFormControlPropsPeoplePicker extends IFormControlProps {
+            allowGroups?: boolean;
+            multi?: boolean;
+            searchLocal?: boolean;
             value?: string | number | Types.IPeoplePickerUser | Array<string | number | Types.IPeoplePickerUser>;
     }
 }

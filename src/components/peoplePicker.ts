@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import { IPeoplePicker, IPeoplePickerProps } from "../../@types/components";
+import { IFormControlPropsPeoplePicker, IPeoplePicker, IPeoplePickerProps } from "../../@types/components";
 import { Helper, PeoplePicker as Search, SPTypes, Types, Web } from "gd-sprest";
 
 /**
@@ -42,6 +42,13 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
             // Set the data attribute
             btnUser.el.setAttribute("data-user", JSON.stringify(userInfo.stringify()));
+        }
+
+        // See if we are allowing multiple users
+        let allowMultple = typeof (props.multi) == "boolean" ? props.multi : false;
+        if (!allowMultple) {
+            // Remove existing users
+            while (elSelectedUsers.firstChild) { elSelectedUsers.removeChild(elSelectedUsers.firstChild); }
         }
 
         // Ensure this is a user object
@@ -277,20 +284,19 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 // Customize the form control
 export const PeoplePickerControlType = 13;
 Components.FormControlTypes["PeoplePicker"] = PeoplePickerControlType;
-Components.FormControl.registerType(PeoplePickerControlType, props => {
+Components.FormControl.registerType(PeoplePickerControlType, (props: IFormControlPropsPeoplePicker) => {
     let picker: IPeoplePicker = null;
 
     // Set the created method
     props.onControlRendered = ctrl => {
-        let pickerProps = ctrl.props.data || {};
-
         // Render a people picker
         picker = PeoplePicker({
-            allowGroups: pickerProps.allowGroups,
+            allowGroups: props.allowGroups,
             className: props.className,
             el: ctrl.el,
             label: props.label,
-            searchLocal: pickerProps.searchLocal,
+            multi: props.multi,
+            searchLocal: props.searchLocal,
             value: props.value
         });
     }
