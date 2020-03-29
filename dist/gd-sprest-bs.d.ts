@@ -330,6 +330,9 @@ declare module 'gd-sprest-bs/components/peoplePicker' {
             /** True to allow multiple users to be selected. */
             multi?: boolean;
     
+            /** True to allow multiple users to be selected. */
+            readOnly?: boolean;
+    
             /** True to search the local users first. */
             searchLocal?: boolean;
     
