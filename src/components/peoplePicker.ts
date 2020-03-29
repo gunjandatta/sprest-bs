@@ -15,33 +15,44 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
         // Adds the button
         let addButton = (userInfo?: Types.SP.User | Types.SP.Group) => {
-            // Render a popover button
-            let btnUser = Components.Popover({
-                el: elSelectedUsers,
-                isDismissible: true,
-                type: Components.PopoverTypes.Bottom,
-                btnProps: {
+            // See if the picker is read only
+            if (props.readOnly) {
+                // Render a button
+                Components.Button({
+                    el: elSelectedUsers,
                     className: "mr-1",
                     isSmall: true,
                     text: userInfo.Title
-                },
-                options: {
-                    html: true,
-                    content: Components.Button({
-                        data: userInfo,
+                });
+            } else {
+                // Render a popover button
+                let btnUser = Components.Popover({
+                    el: elSelectedUsers,
+                    isDismissible: true,
+                    type: Components.PopoverTypes.Bottom,
+                    btnProps: {
+                        className: "mr-1",
                         isSmall: true,
-                        text: "Remove",
-                        type: Components.ButtonTypes.Danger,
-                        onClick: (btn) => {
-                            // Remove the button
-                            elSelectedUsers.removeChild(btnUser.el);
-                        }
-                    }).el
-                }
-            });
+                        text: userInfo.Title
+                    },
+                    options: {
+                        html: true,
+                        content: Components.Button({
+                            data: userInfo,
+                            isSmall: true,
+                            text: "Remove",
+                            type: Components.ButtonTypes.Danger,
+                            onClick: (btn) => {
+                                // Remove the button
+                                elSelectedUsers.removeChild(btnUser.el);
+                            }
+                        }).el
+                    }
+                });
 
-            // Set the data attribute
-            btnUser.el.setAttribute("data-user", JSON.stringify(userInfo.stringify()));
+                // Set the data attribute
+                btnUser.el.setAttribute("data-user", JSON.stringify(userInfo.stringify()));
+            }
         }
 
         // See if we are allowing multiple users
@@ -202,6 +213,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
             }
         }
     }).el;
+    props.readOnly ? elTextbox.classList.add("d-none") : null;
     elPeoplePicker.appendChild(elTextbox);
 
     // Add the dropdown menu
@@ -296,6 +308,7 @@ Components.FormControl.registerType(PeoplePickerControlType, (props: IFormContro
             el: ctrl.el,
             label: props.label,
             multi: props.multi,
+            readOnly: props.isReadonly,
             searchLocal: props.searchLocal,
             value: props.value
         });
