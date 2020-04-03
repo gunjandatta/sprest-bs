@@ -68,7 +68,7 @@ export const Helper: IHelper = {
         // Parse the controls
         for (let i = 0; i < formControls.length; i++) {
             // Add the control
-            rows.push({ control: formControls[i] });
+            rows.push({ columns: [{ control: formControls[i] }] });
         }
 
         // Render the form

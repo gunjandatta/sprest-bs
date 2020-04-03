@@ -59,7 +59,7 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
             value: _wpInfo.cfg.TermSetId,
             onControlRendered: (control) => {
                 // Save a reference to the dropdown
-                _ddlTermSet = control.get() as any;
+                _ddlTermSet = control.dropdown;
             },
             onChange: (option: Components.IDropdownItem) => {
                 // Clear the dropdown
@@ -97,7 +97,7 @@ export const WPTaxonomyEditForm = (props: IWPTaxonomyEditForm = {}): IWPTaxonomy
                 value: _wpInfo.cfg.TermSetTermId,
                 onControlRendered: (control) => {
                     // Save a reference to the dropdown
-                    _ddlTerm = control.get() as any;
+                    _ddlTerm = control.dropdown;
                 },
                 onChange: (option: Components.IDropdownItem) => {
                     // Update the configuration

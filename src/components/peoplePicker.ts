@@ -296,7 +296,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 // Customize the form control
 export const PeoplePickerControlType = 13;
 Components.FormControlTypes["PeoplePicker"] = PeoplePickerControlType;
-Components.FormControl.registerType(PeoplePickerControlType, (props: IFormControlPropsPeoplePicker) => {
+Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormControlPropsPeoplePicker) => {
     let picker: IPeoplePicker = null;
 
     // Set the created method

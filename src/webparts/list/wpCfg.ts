@@ -77,7 +77,7 @@ export const WPListEditForm = (props: IWPListEditForm = {}): IWPListEditForm => 
             value: _wpInfo && _wpInfo.cfg ? _wpInfo.cfg.ListName : null,
             onControlRendered: control => {
                 // Save a reference to the dropdown list
-                _ddlList = control.get() as any;
+                _ddlList = control.dropdown;
             },
             onChange: (item: Components.IDropdownItem) => {
                 if (item) {

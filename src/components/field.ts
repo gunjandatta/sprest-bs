@@ -793,7 +793,7 @@ export const Field = (props: IFieldProps): IField => {
         },
         isValid: () => {
             // Validate the control
-            let isValid = control ? control.isValid() : false;
+            let isValid = control ? control.isValid : false;
 
             // Call the event
             isValid = props.onValidate ? props.onValidate(props.field, control) : isValid;
