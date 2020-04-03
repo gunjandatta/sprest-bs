@@ -72,7 +72,6 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                     // Render the attachments
                     rows.push({
                         columns: [{
-                            size: 2,
                             control: {
                                 label: "Attachments",
                                 name: "Attachments",
@@ -140,7 +139,6 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                     // Add the row
                     rows.push({
                         columns: [{
-                            size: 2,
                             control: mapper[fieldName]
                         }]
                     });
@@ -344,7 +342,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         // Render the attachments
         rows.push({
             columns: [{
-                size: 2,
                 control: {
                     label: "Attachments",
                     name: "Attachments",
@@ -540,8 +537,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         // Add the row
         rows.push({
             columns: [{
-                control: fieldControl.controlProps,
-                size: 2
+                control: fieldControl.controlProps
             }]
         });
     }
