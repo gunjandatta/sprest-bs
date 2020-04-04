@@ -20,7 +20,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 // Render a button
                 Components.Button({
                     el: elSelectedUsers,
-                    className: "mr-1",
+                    className: "mr-1 mb-1",
                     isSmall: true,
                     text: userInfo.Title
                 });
