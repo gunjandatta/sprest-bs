@@ -497,8 +497,18 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             continue;
         }
 
-        // Set the value
-        value[fieldName] = props.info.item ? props.info.item[fieldName] : null;
+        // See if the item exists
+        value[fieldName] = null;
+        if (props.info.item) {
+            // Set the value
+            value[fieldName] = props.info.item[fieldName];
+
+            // See if this is a lookup or user field
+            if (field.FieldTypeKind == SPTypes.FieldType.Lookup || field.FieldTypeKind == SPTypes.FieldType.User) {
+                // Update the value
+                value[fieldName] = value[fieldName] || props.info.item[fieldName + "Id"];
+            }
+        }
 
         // See if this is a read-only field
         if (field.ReadOnlyField) {

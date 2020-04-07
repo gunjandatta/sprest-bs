@@ -300,6 +300,7 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
     let picker: IPeoplePicker = null;
 
     // Set the created method
+    let onRendered = props.onControlRendered;
     props.onControlRendered = ctrl => {
         // Render a people picker
         picker = PeoplePicker({
@@ -312,6 +313,9 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
             searchLocal: props.searchLocal,
             value: props.value
         });
+
+        // Call the custom render event
+        onRendered ? onRendered(ctrl) : null;
     }
 
     // Register a people picker

@@ -461,6 +461,12 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.User:
             // Set the type
             controlProps.type = PeoplePickerControlType;
+
+            // Set the rendered event
+            controlProps.onControlRendered = (formControl) => {
+                // Save the control
+                control = formControl;
+            }
             break;
     }
 
