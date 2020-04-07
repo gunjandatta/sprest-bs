@@ -224,7 +224,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
     // Add the selected users
     let elSelectedUsers = document.createElement("div");
-    elSelectedUsers.style.position = "absolute";
+    elSelectedUsers.style.position = "relative";
     elPeoplePicker.appendChild(elSelectedUsers);
 
     // Set the value and ensure it's a 
