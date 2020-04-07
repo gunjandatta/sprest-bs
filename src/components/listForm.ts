@@ -629,8 +629,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 // Get the form field
                 let formField = mapper[field.InternalName];
 
-                // Set the flag
-                isValid = isValid && (formField ? formField.isValid() : isValid);
+                // Validate the form field and update the status flag
+                let formValidation = formField ? formField.isValid() : isValid;
+                isValid = isValid && formValidation;
             }
 
             // Return the flag
