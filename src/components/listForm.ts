@@ -183,6 +183,9 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                     }
                 }
 
+                // Remove the progress bar
+                progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
+
                 // Render the form
                 Components.Form({
                     el: props.el,
