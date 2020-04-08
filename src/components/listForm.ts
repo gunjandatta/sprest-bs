@@ -46,6 +46,8 @@ let getFieldsToRender = (props: IListFormDisplayProps | IListFormEditProps): Arr
 
 // Method to render a display form for an item
 ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
+    let form: Components.IForm = null;
+
     // Render a loading message
     let progress = Components.Progress({
         el: props.el,
@@ -187,7 +189,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                 progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
 
                 // Render the form
-                Components.Form({
+                form = Components.Form({
                     el: props.el,
                     onControlRendered: props.onControlRendered,
                     onControlRendering: props.onControlRendering,
@@ -213,6 +215,11 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                 });
             }
         );
+
+    // Return the form informaiton
+    return {
+        get el() { return form ? form.el as HTMLFormElement : null; }
+    };
 };
 
 // Render the edit form

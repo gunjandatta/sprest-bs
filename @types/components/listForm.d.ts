@@ -14,13 +14,13 @@ export interface IListForm extends Helper.IListForm {
      * Method to render the display form template.
      * @param props - The display form properties.
      */
-    renderDisplayForm(props: IListFormDisplayProps);
+    renderDisplayForm(props: IListFormDisplayProps): IListFormDisplay;
 
     /**
      * Method to render the edit/new form.
      * @param props - The edit/new form properties.
      */
-    renderEditForm(props: IListFormEditProps);
+    renderEditForm(props: IListFormEditProps): IListFormEdit;
 }
 
 /**
@@ -35,6 +35,14 @@ export interface IListFormAttachmentsProps {
 
     /** The item attachment saved event. */
     onSave?: (info: Helper.IListFormResult) => void;
+}
+
+/**
+ * List Form Display
+ */
+export interface IListFormDisplay {
+    /** The form element. */
+    el: HTMLFormElement;
 }
 
 /**
@@ -58,7 +66,7 @@ export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
  * List Form Edit
  */
 export interface IListFormEdit {
-    /** The element to render the form to. */
+    /** The form element. */
     el: HTMLFormElement;
 
     /** Method to get the form values */

@@ -163,13 +163,13 @@ declare module 'gd-sprest-bs/components/listForm' {
                 * Method to render the display form template.
                 * @param props - The display form properties.
                 */
-            renderDisplayForm(props: IListFormDisplayProps);
+            renderDisplayForm(props: IListFormDisplayProps): IListFormDisplay;
     
             /**
                 * Method to render the edit/new form.
                 * @param props - The edit/new form properties.
                 */
-            renderEditForm(props: IListFormEditProps);
+            renderEditForm(props: IListFormEditProps): IListFormEdit;
     }
     
     /**
@@ -184,6 +184,14 @@ declare module 'gd-sprest-bs/components/listForm' {
     
             /** The item attachment saved event. */
             onSave?: (info: Helper.IListFormResult) => void;
+    }
+    
+    /**
+        * List Form Display
+        */
+    export interface IListFormDisplay {
+            /** The form element. */
+            el: HTMLFormElement;
     }
     
     /**
@@ -207,7 +215,7 @@ declare module 'gd-sprest-bs/components/listForm' {
         * List Form Edit
         */
     export interface IListFormEdit {
-            /** The element to render the form to. */
+            /** The form element. */
             el: HTMLFormElement;
     
             /** Method to get the form values */
