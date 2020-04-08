@@ -123,6 +123,11 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                         // Update the html
                         html = html.replace(/\r?\n/g, '<br />');
                     }
+                    // Else, see if this is a user field
+                    else if (field.FieldTypeKind == SPTypes.FieldType.User) {
+                        // Set the flag
+                        hasUserField = true;
+                    }
 
                     // Set the control
                     mapper[fieldName] = {
@@ -143,9 +148,6 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                         }]
                     });
                 }
-
-                // Clear the element
-                props.el ? props.el.innerHTML = "" : null;
 
                 // See if there is a template
                 if (props.template) {
