@@ -518,7 +518,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             // See if this is a lookup or user field
             if (field.FieldTypeKind == SPTypes.FieldType.Lookup || field.FieldTypeKind == SPTypes.FieldType.User) {
                 // Update the value
-                value[fieldName] = value[fieldName + "Id"] || (value[fieldName] ? value[fieldName].Id : null);
+                value[fieldName] = value[fieldName + "Id"] || (value[fieldName] ? value[fieldName].Id : value[fieldName]);
             }
         }
 
