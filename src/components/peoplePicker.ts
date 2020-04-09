@@ -299,28 +299,49 @@ Components.FormControlTypes["PeoplePicker"] = PeoplePickerControlType;
 Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormControlPropsPeoplePicker) => {
     let picker: IPeoplePicker = null;
 
-    // Set the created method
-    let onRendered = props.onControlRendered;
-    props.onControlRendered = ctrl => {
-        // Render a people picker
-        picker = PeoplePicker({
-            allowGroups: props.allowGroups,
-            className: props.className,
-            el: ctrl.el,
-            label: props.label,
-            multi: props.multi,
-            readOnly: props.isReadonly,
-            searchLocal: props.searchLocal,
-            value: props.value
+    let onRendering = (): PromiseLike<IFormControlPropsPeoplePicker> => {
+        // Return a promise
+        return new Promise(resolve => {
+            // Execute the rendering event
+            let returnVal = props.onControlRendering ? props.onControlRendering(this._props) : null;
+            if (returnVal && returnVal.then) {
+                // Wait for the event to complete
+                returnVal.then(newProps => {
+                    // Resolve the promise
+                    resolve(newProps || props);
+                });
+            } else {
+                // Resolve the promise
+                resolve(props);
+            }
         });
-
-        // Call the custom render event
-        onRendered ? onRendered(ctrl) : null;
     }
 
-    // Register a people picker
-    props.onGetValue = () => {
-        // Return the value
-        return picker.getValue();
-    };
+    // Call the rendering event
+    onRendering().then(props => {
+        // Set the created method
+        let onRendered = props.onControlRendered;
+        props.onControlRendered = ctrl => {
+            // Render a people picker
+            picker = PeoplePicker({
+                allowGroups: props.allowGroups,
+                className: props.className,
+                el: ctrl.el,
+                label: props.label,
+                multi: props.multi,
+                readOnly: props.isReadonly,
+                searchLocal: props.searchLocal,
+                value: props.value
+            });
+
+            // Call the custom render event
+            onRendered ? onRendered(ctrl) : null;
+        }
+
+        // Register a people picker
+        props.onGetValue = () => {
+            // Return the value
+            return picker.getValue();
+        };
+    });
 });
