@@ -543,7 +543,13 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             field,
             listInfo: props.info,
             value: value[fieldName],
-            onControlRendered: props.onControlRendered,
+            onControlRendered: (control, field) => {
+                // Update the mapper
+                mapper[field.InternalName].control = control;
+
+                // Call the event
+                return props.onControlRendered ? props.onControlRendered(control, field) : null;
+            },
             onControlRendering: props.onControlRendering,
             onValidate: props.onValidate,
             onError: msg => {
