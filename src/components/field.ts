@@ -151,13 +151,16 @@ export const Field = (props: IFieldProps): IField => {
         isReadonly: props.field.ReadOnlyField,
         label: props.field.Title,
         name: props.field.InternalName,
-        onControlRendering: props.onControlRendering,
+        onControlRendering: control => {
+            // Execute the event
+            return props.onControlRendering ? props.onControlRendering(control, props.field) : null;
+        },
         onControlRendered: formControl => {
             // Save the control
             control = formControl;
 
-            // Call the rendered event
-            props.onControlRendered ? props.onControlRendered(control) : null;
+            // Execute the event
+            return props.onControlRendered ? props.onControlRendered(control, props.field) : null;
         },
         required: props.field.Required,
         type: Components.FormControlTypes.TextField,

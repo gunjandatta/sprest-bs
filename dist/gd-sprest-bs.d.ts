@@ -133,8 +133,8 @@ declare module 'gd-sprest-bs/components/field' {
             field: Types.SP.Field;
             listInfo: Helper.IListFormResult;
             onError?: (msg: string) => void;
-            onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
-            onControlRendering?: (control: Components.IFormControlProps) => void | Promise<Components.IFormControlProps>;
+            onControlRendered?: (control: Components.IFormControl, field: Types.SP.Field) => void | Promise<Components.IFormControl>;
+            onControlRendering?: (control: Components.IFormControlProps, field: Types.SP.Field) => void | Promise<Components.IFormControlProps>;
             onValidate?: (field: Types.SP.Field, control: Components.IFormControl) => boolean;
             value?: any;
     }
@@ -201,10 +201,10 @@ declare module 'gd-sprest-bs/components/listForm' {
         */
     export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
             /** The control rendered event. */
-            onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
+            onControlRendered?: (control: Components.IFormControl, field: Types.SP.Field) => void | Promise<Components.IFormControl>;
     
             /** The control rendering event. */
-            onControlRendering?: (control: Components.IFormControlProps) => void | Promise<Components.IFormControlProps>;
+            onControlRendering?: (control: Components.IFormControlProps, field: Types.SP.Field) => void | Promise<Components.IFormControlProps>;
     
             /** The error event. */
             onError?: (msg?: string) => void;
@@ -219,6 +219,9 @@ declare module 'gd-sprest-bs/components/listForm' {
     export interface IListFormEdit {
             /** The form element. */
             el: HTMLFormElement;
+    
+            /** Method to get a control by field name */
+            getControl(fieldName: string): Components.IFormControl;
     
             /** Method to get the form values */
             getValues(): { [key: string]: any }

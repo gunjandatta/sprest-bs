@@ -191,8 +191,8 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                 // Render the form
                 form = Components.Form({
                     el: props.el,
-                    onControlRendered: props.onControlRendered,
-                    onControlRendering: props.onControlRendering,
+                    onControlRendered: control => { return props.onControlRendered ? props.onControlRendered(control, props.info.fields[control.props.name]) : null; },
+                    onControlRendering: control => { return props.onControlRendering ? props.onControlRendering(control, props.info.fields[control.name]) : null; },
                     rows: props.template || rows
                 });
 
@@ -606,8 +606,8 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     // Render the form
     let form = Components.Form({
         el: props.el,
-        onControlRendered: props.onControlRendered,
-        onControlRendering: props.onControlRendering,
+        onControlRendered: control => { return props.onControlRendered ? props.onControlRendered(control, props.info.fields[control.props.name]) : null },
+        onControlRendering: control => { return props.onControlRendering ? props.onControlRendering(control, props.info.fields[control.name]) : null; },
         rows: props.template || rows,
         value
     });
@@ -640,6 +640,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     // Return the form
     return {
         el: form.el as HTMLFormElement,
+        getControl: (fieldName: string) => { return mapper[fieldName] ? mapper[fieldName].control : null; },
         getValues,
         isValid: () => {
             let isValid = true;
