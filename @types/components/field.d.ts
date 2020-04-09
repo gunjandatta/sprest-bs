@@ -25,6 +25,8 @@ export interface IFieldProps {
     field: Types.SP.Field;
     listInfo: Helper.IListFormResult;
     onError?: (msg: string) => void;
+    onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
+    onControlRendering?: (control: Components.IFormControlProps) => void | Promise<Components.IFormControlProps>;
     onValidate?: (field: Types.SP.Field, control: Components.IFormControl) => boolean;
     value?: any;
 }

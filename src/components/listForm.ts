@@ -543,6 +543,8 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             field,
             listInfo: props.info,
             value: value[fieldName],
+            onControlRendered: props.onControlRendered,
+            onControlRendering: props.onControlRendering,
             onValidate: props.onValidate,
             onError: msg => {
                 // Add the refresh link

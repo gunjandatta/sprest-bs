@@ -75,6 +75,12 @@ export interface IListFormEdit {
     /** Method to determine if the field is valid */
     isValid(): boolean;
 
+    /** The control rendered event. */
+    onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
+
+    /** The control rendering event. */
+    onControlRendering?: (control: Components.IFormControlProps) => void | Promise<Components.IFormControlProps>;
+
     /** Method to save the form. */
     save(): PromiseLike<Types.SP.ListItem>;
 }

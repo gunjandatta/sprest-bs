@@ -133,6 +133,8 @@ declare module 'gd-sprest-bs/components/field' {
             field: Types.SP.Field;
             listInfo: Helper.IListFormResult;
             onError?: (msg: string) => void;
+            onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
+            onControlRendering?: (control: Components.IFormControlProps) => void | Promise<Components.IFormControlProps>;
             onValidate?: (field: Types.SP.Field, control: Components.IFormControl) => boolean;
             value?: any;
     }
@@ -223,6 +225,12 @@ declare module 'gd-sprest-bs/components/listForm' {
     
             /** Method to determine if the field is valid */
             isValid(): boolean;
+    
+            /** The control rendered event. */
+            onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
+    
+            /** The control rendering event. */
+            onControlRendering?: (control: Components.IFormControlProps) => void | Promise<Components.IFormControlProps>;
     
             /** Method to save the form. */
             save(): PromiseLike<Types.SP.ListItem>;

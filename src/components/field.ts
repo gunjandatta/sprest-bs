@@ -151,13 +151,17 @@ export const Field = (props: IFieldProps): IField => {
         isReadonly: props.field.ReadOnlyField,
         label: props.field.Title,
         name: props.field.InternalName,
-        required: props.field.Required,
-        type: Components.FormControlTypes.TextField,
-        value: props.value,
+        onControlRendering: props.onControlRendering,
         onControlRendered: formControl => {
             // Save the control
             control = formControl;
-        }
+
+            // Call the rendered event
+            props.onControlRendered ? props.onControlRendered(control) : null;
+        },
+        required: props.field.Required,
+        type: Components.FormControlTypes.TextField,
+        value: props.value
     };
 
     // See if this is a new form, a default value exists and no value has been defined
