@@ -299,6 +299,7 @@ Components.FormControlTypes["PeoplePicker"] = PeoplePickerControlType;
 Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormControlPropsPeoplePicker) => {
     let picker: IPeoplePicker = null;
 
+    // Method for calling the rendering event
     let onRendering = (): PromiseLike<IFormControlPropsPeoplePicker> => {
         // Return a promise
         return new Promise(resolve => {
@@ -317,11 +318,11 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
         });
     }
 
-    // Call the rendering event
-    onRendering().then(props => {
-        // Set the created method
-        let onRendered = props.onControlRendered;
-        props.onControlRendered = ctrl => {
+    // Set the created method
+    let onRendered = props.onControlRendered;
+    props.onControlRendered = ctrl => {
+        // Call the rendering event
+        onRendering().then(props => {
             // Render a people picker
             picker = PeoplePicker({
                 allowGroups: props.allowGroups,
@@ -336,12 +337,12 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
 
             // Call the custom render event
             onRendered ? onRendered(ctrl) : null;
-        }
+        });
+    }
 
-        // Register a people picker
-        props.onGetValue = () => {
-            // Return the value
-            return picker.getValue();
-        };
-    });
+    // Register a people picker
+    props.onGetValue = () => {
+        // Return the value
+        return picker.getValue();
+    };
 });
