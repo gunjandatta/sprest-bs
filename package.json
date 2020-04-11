@@ -30,14 +30,14 @@
   "homepage": "https://dattabase.com/extras/bs",
   "dependencies": {
     "gd-bs": "^2.0.0",
-    "gd-sprest": "^5.4.1",
+    "gd-sprest": "^5.4.2",
     "gd-sprest-def": "^0.7.7"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "babel-loader": "^8.1.0",
-    "css-loader": "^3.5.1",
+    "css-loader": "^3.5.2",
     "dts-bundle": "^0.7.3",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
