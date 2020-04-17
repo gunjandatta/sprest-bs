@@ -689,22 +689,42 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             return isValid;
         },
         save: () => {
+            let onSaving = (values) => {
+                return new Promise((resolve) => {
+                    // See if a save event exists
+                    let returnVal = props.onSaving ? props.onSaving(values) : null;
+                    if (returnVal && returnVal.then) {
+                        // Wait for the promise to complete
+                        returnVal.then(newValues => {
+                            // Resolve the promise
+                            resolve(newValues || values);
+                        });
+                    } else {
+                        // Resolve the promise
+                        resolve(values);
+                    }
+                });
+            }
+
             // Return a promise
             return new Promise((resolve, reject) => {
-                // Update the item
-                ListForm.saveItem(props.info, getValues()).then(info => {
-                    // Remove the attachments
-                    removeAttachments(info).then(() => {
-                        // Save the attachments
-                        saveAttachments(info).then(() => {
-                            // Update the info
-                            props.info = info;
+                // Call the saving event
+                onSaving(getValues()).then(values => {
+                    // Update the item
+                    ListForm.saveItem(props.info, values).then(info => {
+                        // Remove the attachments
+                        removeAttachments(info).then(() => {
+                            // Save the attachments
+                            saveAttachments(info).then(() => {
+                                // Update the info
+                                props.info = info;
 
-                            // Resolve the promise
-                            resolve(props.info.item as any);
+                                // Resolve the promise
+                                resolve(props.info.item as any);
+                            });
                         });
-                    });
-                }, reject);
+                    }, reject);
+                });
             });
         }
     }
