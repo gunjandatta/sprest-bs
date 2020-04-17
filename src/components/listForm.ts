@@ -522,6 +522,24 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             }
         }
 
+        // See if this is an edit form
+        if (props.controlMode == SPTypes.ControlMode.Edit) {
+            // See if we are hiding the field
+            if (field.SchemaXml.indexOf('ShowInEditForm="FALSE"') > 0) { continue; }
+        }
+
+        // See if this is a display form
+        if (props.controlMode == SPTypes.ControlMode.Display) {
+            // See if we are hiding the field
+            if (field.SchemaXml.indexOf('ShowInDisplayForm="FALSE"') > 0) { continue; }
+        }
+
+        // See if this is a new form
+        if (props.controlMode == SPTypes.ControlMode.New) {
+            // See if we are hiding the field
+            if (field.SchemaXml.indexOf('ShowInNewForm="FALSE"') > 0) { continue; }
+        }
+
         // See if this is a read-only field
         if (field.ReadOnlyField) {
             // Do not render in the new form
