@@ -66,6 +66,12 @@ export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
  * List Form Edit
  */
 export interface IListFormEdit {
+    /** Appends controls to the form */
+    appendControls(controls: Array<Components.IFormControl>);
+
+    /** Appends rows to the form */
+    appendRows(rows: Array<Components.IFormRow>);
+
     /** The form element. */
     el: HTMLFormElement;
 
