@@ -663,8 +663,8 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
     // Return the form
     return {
-        appendControls: form.appendControls,
-        appendRows: form.appendRows,
+        appendControls: controls => { form.appendControls(controls); },
+        appendRows: rows => { form.appendRows(rows); },
         el: form.el as HTMLFormElement,
         getControl: (fieldName: string) => { return mapper[fieldName] ? mapper[fieldName].control : null; },
         getValues,
