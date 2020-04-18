@@ -272,6 +272,9 @@ export const Field = (props: IFieldProps): IField => {
                 controlProps.type = Components.FormControlTypes.MultiDropdown;
             }
 
+            // Update the value
+            controlProps.value = (props.value ? props.value.results : null) || props.value;
+
             // Set the items
             (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(isChoice, props.field as any, props.value);
             break;
