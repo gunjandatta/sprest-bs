@@ -678,11 +678,21 @@ export const Field = (props: IFieldProps): IField => {
             switch (props.field.FieldTypeKind) {
                 // Choice
                 case SPTypes.FieldType.Choice:
-                    // See if there is a value
-                    let ddlValue: Components.IDropdownItem = fieldValue.value;
-                    if (ddlValue) {
-                        // Update the field value
-                        fieldValue.value = ddlValue.value || ddlValue.text;
+                    // See if this is a dropdown
+                    if (controlProps.type == Components.FormControlTypes.Dropdown) {
+                        // See if there is a value
+                        let ddlValue: Components.IDropdownItem = fieldValue.value;
+                        if (ddlValue) {
+                            // Update the field value
+                            fieldValue.value = ddlValue.value || ddlValue.text;
+                        }
+                    } else {
+                        // See if there is a value
+                        let cbValue: Components.ICheckboxGroupItem = fieldValue.value;
+                        if (cbValue) {
+                            // Update the field value
+                            fieldValue.value = cbValue.label;
+                        }
                     }
                     break;
 
@@ -724,13 +734,25 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Multi-Choice
                 case SPTypes.FieldType.MultiChoice:
-                    let values: Array<Components.IDropdownItem> = fieldValue.value || [];
+                    let values: Array<Components.ICheckboxGroupItem | Components.IDropdownItem> = fieldValue.value || [];
                     fieldValue.value = { results: [] };
 
                     // Parse the values
                     for (let j = 0; j < values.length; j++) {
-                        // Add the values
-                        fieldValue.value.results.push(values[j].value || values[j].text);
+                        // See if this is a dropdown
+                        if (controlProps.type == Components.FormControlTypes.MultiDropdown) {
+                            // See if there is a value
+                            let ddlValue: Components.IDropdownItem = values[j];
+
+                            // Add the values
+                            fieldValue.value.results.push(ddlValue.value || ddlValue.text);
+                        } else {
+                            // See if there is a value
+                            let cbValue: Components.ICheckboxGroupItem = values[j];
+
+                            // Add the values
+                            fieldValue.value.results.push(cbValue.label);
+                        }
                     }
                     break;
 
