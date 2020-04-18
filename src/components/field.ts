@@ -245,7 +245,7 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Render a date picker
                 let dt = DateTime({
-                    el: control.textbox.el,
+                    el: control.el,
                     showTime,
                     value: control.props.value
                 });
