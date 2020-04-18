@@ -397,7 +397,15 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Set the value
                 numberProps.value = numberProps.value == null || numberProps.value == Number.MIN_VALUE ? 0 : numberProps.value;
-            } else {
+            }
+            // Else, see if the min/max values are defined
+            else if (typeof (numberField.MaximumValue) == "number" && typeof (numberField.MinimumValue) == "number") {
+                // Update the properties to display a range
+                numberProps.type = Components.FormControlTypes.Range;
+                numberProps.max = numberField.MaximumValue;
+                numberProps.min = numberField.MinimumValue;
+            }
+            else {
                 // Set the type
                 numberProps.type = Components.FormControlTypes.TextField;
             }
