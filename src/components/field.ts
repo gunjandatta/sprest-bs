@@ -13,8 +13,8 @@ export const Field = (props: IFieldProps): IField => {
     let mmsFieldInfo: Helper.IListFormMMSFieldInfo = null;
 
     // Method to get the choice options
-    let getChoiceItems = (field: Types.SP.FieldMultiChoice, selectedValues) => {
-        let items: Array<Components.IDropdownItem> = [];
+    let getChoiceItems = (isCheckbox: boolean, field: Types.SP.FieldMultiChoice, selectedValues) => {
+        let items: Array<Components.ICheckboxGroupItem | Components.IDropdownItem> = [];
 
         // Update the selected values
         selectedValues = selectedValues && selectedValues.results ? selectedValues.results : [selectedValues];
@@ -34,16 +34,25 @@ export const Field = (props: IFieldProps): IField => {
                 }
             }
 
-            // Add the item
-            items.push({
-                isSelected,
-                text: choice,
-                value: choice
-            });
+            // See if this is a checkbox
+            if (isCheckbox) {
+                // Add the item
+                items.push({
+                    isSelected,
+                    label: choice
+                } as Components.ICheckboxGroupItem);
+            } else {
+                // Add the item
+                items.push({
+                    isSelected,
+                    text: choice,
+                    value: choice
+                } as Components.IDropdownItem);
+            }
         }
 
-        // See if no selected values exists, and this is a required field
-        if (items.length > 0 && selectedValues.length == 0 && field.Required) {
+        // See if this is a dropdown and no selected values exists, and this is a required field
+        if (!isCheckbox && items.length > 0 && selectedValues.length == 0 && field.Required) {
             // Select the first item
             items[0].isSelected = true;
         }
@@ -183,11 +192,19 @@ export const Field = (props: IFieldProps): IField => {
 
         // Choice
         case SPTypes.FieldType.Choice:
-            // Set the type
-            controlProps.type = Components.FormControlTypes.Dropdown;
+            let displayRadioButtons = props.field.SchemaXml.indexOf('Format="RadioButtons"') ? true : false;
+
+            // See if we are displaying radio buttons
+            if (displayRadioButtons) {
+                // Set the type
+                controlProps.type = Components.FormControlTypes.Switch;
+            } else {
+                // Set the type
+                controlProps.type = Components.FormControlTypes.Dropdown;
+            }
 
             // Get the items
-            let items = getChoiceItems(props.field as any, props.value);
+            let items = getChoiceItems(displayRadioButtons, props.field as any, props.value);
 
             // See if this is not a required field
             if (!props.field.Required) {
@@ -246,11 +263,20 @@ export const Field = (props: IFieldProps): IField => {
 
         // Multi-Choice
         case SPTypes.FieldType.MultiChoice:
-            // Set the type
-            controlProps.type = Components.FormControlTypes.MultiDropdown;
+            let isChoice = props.field.SchemaXml.indexOf('Format="RadioButtons"') ? true : false;
+
+            // See if we are displaying radio buttons
+            if (isChoice) {
+                // Update the properties
+                (controlProps as Components.IFormControlPropsSwitch).multi = true;
+                controlProps.type = Components.FormControlTypes.Switch;
+            } else {
+                // Set the type
+                controlProps.type = Components.FormControlTypes.MultiDropdown;
+            }
 
             // Set the items
-            (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(props.field as any, props.value);
+            (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(isChoice, props.field as any, props.value);
             break;
 
         // Lookup
