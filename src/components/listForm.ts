@@ -554,6 +554,11 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             // Ensure it's not a taxonomy field
             if (!/^TaxonomyFieldType/.test(field.TypeAsString)) { continue; }
         }
+        // Else, see if this is a calculated column
+        else if (field.FieldTypeKind == SPTypes.FieldType.Calculated) {
+            // Do not render in the new/edit forms
+            if (props.controlMode != SPTypes.ControlMode.Display) { continue; }
+        }
 
         // Create the control
         let fieldControl = Field({
