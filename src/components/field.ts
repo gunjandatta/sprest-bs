@@ -192,7 +192,7 @@ export const Field = (props: IFieldProps): IField => {
 
         // Choice
         case SPTypes.FieldType.Choice:
-            let displayRadioButtons = props.field.SchemaXml.indexOf('Format="RadioButtons"') ? true : false;
+            let displayRadioButtons = props.field.SchemaXml.indexOf('Format="RadioButtons"') > 0 ? true : false;
 
             // See if we are displaying radio buttons
             if (displayRadioButtons) {
@@ -263,7 +263,7 @@ export const Field = (props: IFieldProps): IField => {
 
         // Multi-Choice
         case SPTypes.FieldType.MultiChoice:
-            let isChoice = props.field.SchemaXml.indexOf('Format="RadioButtons"') ? true : false;
+            let isChoice = props.field.SchemaXml.indexOf('Format="RadioButtons"') > 0 ? true : false;
 
             // See if we are displaying radio buttons
             if (isChoice) {
