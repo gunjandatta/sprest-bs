@@ -235,20 +235,17 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.DateTime:
             let showTime = (props.field as Types.SP.FieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
 
-            // Set the type
-            controlProps.type = Components.FormControlTypes.TextField;
+            // Clear the type
+            controlProps.type = null;
 
             // Set the rendered event
             controlProps.onControlRendered = (formControl) => {
                 // Save the control
                 control = formControl;
 
-                // Clear the element
-                control.el.innerHTML = "";
-
                 // Render a date picker
                 let dt = DateTime({
-                    el: control.el,
+                    el: control.textbox.el,
                     showTime,
                     value: control.props.value
                 });
@@ -705,7 +702,7 @@ export const Field = (props: IFieldProps): IField => {
                 // Date/Time
                 case SPTypes.FieldType.DateTime:
                     // Ensure a value exists, otherwise null
-                    fieldValue.value = fieldValue.value || null;
+                    fieldValue.value = fieldValue.value ? (new Date(fieldValue.value)).toISOString() : null;
                     break;
 
                 // Lookup
