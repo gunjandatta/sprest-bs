@@ -404,6 +404,7 @@ export const Field = (props: IFieldProps): IField => {
                 numberProps.type = Components.FormControlTypes.Range;
                 numberProps.max = numberField.MaximumValue;
                 numberProps.min = numberField.MinimumValue;
+                numberProps.value = typeof (numberProps.value) == "number" ? numberProps.value : numberProps.min;
             }
             else {
                 // Set the type
