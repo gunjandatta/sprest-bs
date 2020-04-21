@@ -154,8 +154,13 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                         // Update the control to be read-only
                         mapper[fieldName].type = Components.FormControlTypes.Readonly;
 
-                        // Override the html rendered
+                        // Set the rendered event
                         mapper[fieldName].onControlRendered = control => {
+                            // Set the class name
+                            control.el.classList.add("form-control");
+                            control.el.style.backgroundColor = "#e9ecef";
+
+                            // Override the html rendered
                             control.el.innerHTML = control.props.data;
                         }
                     }
