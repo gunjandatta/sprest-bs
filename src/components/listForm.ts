@@ -111,7 +111,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                 for (let i = 0; i < fieldNames.length; i++) {
                     let fieldName = fieldNames[i];
                     let field = props.info.fields[fieldName];
-                    let html = formValues[fieldName] || formValues[fieldName.replace(/\_/g, "_x005f_")] || "";
+                    let html: string = formValues[fieldName] || formValues[fieldName.replace(/\_/g, "_x005f_")] || "";
 
                     // Ensure the field exists
                     if (field == null) {
@@ -135,13 +135,30 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                     mapper[fieldName] = {
                         data: html,
                         description: field.Description,
+                        isReadonly: true,
                         label: field.Title,
                         name: field.InternalName,
-                        onControlRendered: control => {
-                            // Set the html
+                        type: Components.FormControlTypes.TextField,
+                        value: html
+                    };
+
+                    // Update the type, based on the field
+                    switch (field.FieldTypeKind) {
+                        case SPTypes.FieldType.Note:
+                            mapper[fieldName].type = Components.FormControlTypes.TextArea;
+                            break;
+                    }
+
+                    // Detect html
+                    if (/<*>/g.test(html)) {
+                        // Update the control to be read-only
+                        mapper[fieldName].type = Components.FormControlTypes.Readonly;
+
+                        // Override the html rendered
+                        mapper[fieldName].onControlRendered = control => {
                             control.el.innerHTML = control.props.data;
                         }
-                    };
+                    }
 
                     // Add the row
                     rows.push({
