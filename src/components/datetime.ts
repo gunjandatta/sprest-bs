@@ -92,10 +92,13 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
         // Set the date
         jQuery(elTextbox).datepicker("setDate", dt);
 
-        // Set the time
-        let hours = dt.getHours();
-        let value = (hours > 12 ? hours - 12 : hours) + ":" + ("00" + dt.getMinutes()).slice(-2) + " " + (hours > 12 ? "PM" : "AM");
-        ddlTime.setValue(value);
+        // See if we are showing the time
+        if (props.showTime) {
+            // Set the time
+            let hours = dt.getHours();
+            let value = (hours > 12 ? hours - 12 : hours) + ":" + ("00" + dt.getMinutes()).slice(-2) + " " + (hours > 12 ? "PM" : "AM");
+            ddlTime.setValue(value);
+        }
     }
 
     // Return the element
