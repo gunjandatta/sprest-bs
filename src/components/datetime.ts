@@ -96,7 +96,8 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
         if (props.showTime) {
             // Set the time
             let hours = dt.getHours();
-            let value = (hours > 12 ? hours - 12 : hours) + ":" + ("00" + dt.getMinutes()).slice(-2) + " " + (hours > 12 ? "PM" : "AM");
+            hours = hours == 0 ? 12 : hours > 12 ? hours - 12 : hours;
+            let value = hours + ":" + ("00" + dt.getMinutes()).slice(-2) + " " + (hours > 12 ? "PM" : "AM");
             ddlTime.setValue(value);
         }
     }
