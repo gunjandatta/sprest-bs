@@ -4,6 +4,11 @@
 //   ../gd-sprest
 //   ../gd-bs/@types/components
 //   ../gd-bs/components/formControl
+//   ../gd-bs/components/form
+//   ../gd-bs/components/modal
+//   ../gd-bs/components/toolbar
+//   ../gd-bs/components/button
+//   ../gd-bs/components/nav
 
 declare module 'gd-sprest-bs' {
     export * from "gd-bs";
@@ -63,8 +68,6 @@ declare module 'gd-sprest-bs/rest' {
 }
 
 declare module 'gd-sprest-bs/components/datetime' {
-    import { Components } from "gd-bs";
-    
     /**
         * Date/Time
         */
@@ -107,7 +110,7 @@ declare module 'gd-sprest-bs/components/datetime' {
 
 declare module 'gd-sprest-bs/components/field' {
     import { Helper, Types } from "gd-sprest";
-    import { Components } from "gd-bs";
+    import { IFormControl, IFormControlProps } from "gd-bs/components/formControl";
     
     /**
         * Field
@@ -118,8 +121,8 @@ declare module 'gd-sprest-bs/components/field' {
         * Field
         */
     export interface IField {
-            control: Components.IFormControl;
-            controlProps: Components.IFormControlProps;
+            control: IFormControl;
+            controlProps: IFormControlProps;
             getValue: () => IFieldValue;
             isValid: () => boolean;
     }
@@ -133,9 +136,9 @@ declare module 'gd-sprest-bs/components/field' {
             field: Types.SP.Field;
             listInfo: Helper.IListFormResult;
             onError?: (msg: string) => void;
-            onControlRendered?: (control: Components.IFormControl, field: Types.SP.Field) => void | Promise<Components.IFormControl>;
-            onControlRendering?: (control: Components.IFormControlProps, field: Types.SP.Field) => void | Promise<Components.IFormControlProps>;
-            onValidate?: (field: Types.SP.Field, control: Components.IFormControl) => boolean;
+            onControlRendered?: (control: IFormControl, field: Types.SP.Field) => void | Promise<IFormControl>;
+            onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;
+            onValidate?: (field: Types.SP.Field, control: IFormControl) => boolean;
             value?: any;
     }
     
@@ -150,7 +153,8 @@ declare module 'gd-sprest-bs/components/field' {
 
 declare module 'gd-sprest-bs/components/listForm' {
     import { Helper, Types } from "gd-sprest";
-    import { Components } from "gd-bs";
+    import { IFormRow } from "gd-bs/components/form";
+    import { IFormControl, IFormControlProps } from "gd-bs/components/formControl";
     
     /**
         * List Form
@@ -201,16 +205,16 @@ declare module 'gd-sprest-bs/components/listForm' {
         */
     export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
             /** The control rendered event. */
-            onControlRendered?: (control: Components.IFormControl, field: Types.SP.Field) => void | Promise<Components.IFormControl>;
+            onControlRendered?: (control: IFormControl, field: Types.SP.Field) => void | Promise<IFormControl>;
     
             /** The control rendering event. */
-            onControlRendering?: (control: Components.IFormControlProps, field: Types.SP.Field) => void | Promise<Components.IFormControlProps>;
+            onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;
     
             /** The error event. */
             onError?: (msg?: string) => void;
     
             /** The list form rows. */
-            template?: Array<Components.IFormRow>;
+            template?: Array<IFormRow>;
     }
     
     /**
@@ -218,16 +222,16 @@ declare module 'gd-sprest-bs/components/listForm' {
         */
     export interface IListFormEdit {
             /** Appends controls to the form */
-            appendControls(controls: Array<Components.IFormControlProps>);
+            appendControls(controls: Array<IFormControlProps>);
     
             /** Appends rows to the form */
-            appendRows(rows: Array<Components.IFormRow>);
+            appendRows(rows: Array<IFormRow>);
     
             /** The form element. */
             el: HTMLFormElement;
     
             /** Method to get a control by field name */
-            getControl(fieldName: string): Components.IFormControl;
+            getControl(fieldName: string): IFormControl;
     
             /** Method to get the form values */
             getValues(): { [key: string]: any }
@@ -236,10 +240,10 @@ declare module 'gd-sprest-bs/components/listForm' {
             isValid(): boolean;
     
             /** The control rendered event. */
-            onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
+            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
     
             /** The control rendering event. */
-            onControlRendering?: (control: Components.IFormControlProps) => void | Promise<Components.IFormControlProps>;
+            onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
     
             /** Method to save the form. */
             save(): PromiseLike<Types.SP.ListItem>;
@@ -253,12 +257,15 @@ declare module 'gd-sprest-bs/components/listForm' {
             onSaving?: (item: any) => void | PromiseLike<any>;
     
             /** The form validating event. */
-            onValidate?: (field: Types.SP.Field, control: Components.IFormControl) => boolean;
+            onValidate?: (field: Types.SP.Field, control: IFormControl) => boolean;
     }
 }
 
 declare module 'gd-sprest-bs/components/listFormDialog' {
-    import { Components } from "gd-bs";
+    import { IFormRow } from "gd-bs/components/form";
+    import { IFormControl, IFormControlProps } from "gd-bs/components/formControl";
+    import { IModal, IModalProps } from "gd-bs/components/modal";
+    import { IToolbarProps } from "gd-bs/components/toolbar";
     import { Helper, Types } from "gd-sprest";
     
     /**
@@ -269,7 +276,7 @@ declare module 'gd-sprest-bs/components/listFormDialog' {
     /**
         * List Form Dialog
         */
-    export interface IListFormDialog extends Components.IModal {
+    export interface IListFormDialog extends IModal {
             /** Method to save the form. */
             saveForm: () => PromiseLike<Types.SP.ListItem>;
     }
@@ -279,7 +286,7 @@ declare module 'gd-sprest-bs/components/listFormDialog' {
         */
     export interface IListFormDialogProps extends Helper.IListFormProps {
             /** The form actions. */
-            actions?: Components.IToolbarProps;
+            actions?: IToolbarProps;
     
             /** The form control mode. */
             controlMode?: number;
@@ -291,13 +298,13 @@ declare module 'gd-sprest-bs/components/listFormDialog' {
             item?: any;
     
             /** The modal dialog properties. */
-            modalProps?: Components.IModalProps;
+            modalProps?: IModalProps;
     
             /** The control rendered event. */
-            onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
+            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
     
             /** The control rendering event. */
-            onControlRendering?: (control: Components.IFormControlProps) => void | Promise<Components.IFormControlProps>;
+            onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
     
             /** The form saving event. */
             onSaving?: (item: any) => void | PromiseLike<any>;
@@ -306,7 +313,7 @@ declare module 'gd-sprest-bs/components/listFormDialog' {
             onSaved?: (item?: Types.SP.ListItem) => void;
     
             /** The list form rows. */
-            template?: Array<Components.IFormRow>;
+            template?: Array<IFormRow>;
     
             /** True to display the modal by default. */
             visible?: boolean;
@@ -377,7 +384,8 @@ declare module 'gd-sprest-bs/components/peoplePicker' {
 }
 
 declare module 'gd-sprest-bs/webparts/helper' {
-    import { Components } from "gd-bs";
+    import { IForm } from "gd-bs/components/form";
+    import { IFormControlProps } from "gd-bs/components/formControl";
     import { IWebPartInfo } from "gd-sprest-bs/webparts/wp";
     
     /**
@@ -406,7 +414,7 @@ declare module 'gd-sprest-bs/webparts/helper' {
                 * @param wpInfo - The webpart information.
                 * @param formControls - The form controls to render.
                 */
-            renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<Components.IFormControlProps>) => Components.IForm;
+            renderEditForm: (wpInfo: IWebPartInfo, formControls: Array<IFormControlProps>) => IForm;
     
             /**
                 * Method to save the webpart configuration.
@@ -446,7 +454,9 @@ declare module 'gd-sprest-bs/webparts/helper' {
 }
 
 declare module 'gd-sprest-bs/webparts/wp' {
-    import { Components } from "gd-bs";
+    import { IButtonProps } from "gd-bs/components/button";
+    import { IForm } from "gd-bs/components/form";
+    import { IFormControl, IFormControlProps } from "gd-bs/components/formControl";
     
     /**
         * Web Part
@@ -464,7 +474,7 @@ declare module 'gd-sprest-bs/webparts/wp' {
             info: IWPInfo;
     
             /** Method to update the edit form. */
-            updateEditForm?: (formControls: Array<Components.IFormControl>) => void;
+            updateEditForm?: (formControls: Array<IFormControl>) => void;
     }
     
     /**
@@ -544,7 +554,7 @@ declare module 'gd-sprest-bs/webparts/wp' {
         */
     export const WPCfg: (cfg: IWebPartCfg, props: IWebPartProps) => {
             /** Method to render the edit form. */
-            renderForm?: (formControls: Array<Components.IFormControl>) => void;
+            renderForm?: (formControls: Array<IFormControl>) => void;
     };
     
     /**
@@ -560,13 +570,13 @@ declare module 'gd-sprest-bs/webparts/wp' {
         */
     export interface IWebPartEditForm<IWPCfg = IWebPartCfg, IWPInfo = IWebPartInfo> {
             /** The form action buttons displayed in the footer of the modal. */
-            actions?: Array<Components.IButtonProps>;
+            actions?: Array<IButtonProps>;
     
             /** The render form event. */
-            onRenderForm?: (wpInfo?: IWPInfo) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
+            onRenderForm?: (wpInfo?: IWPInfo) => Array<IFormControlProps> | PromiseLike<Array<IFormControlProps>> | void;
     
             /** The save event. */
-            onSave?: (wpCfg?: IWPCfg, form?: Components.IForm) => IWPCfg;
+            onSave?: (wpCfg?: IWPCfg, form?: IForm) => IWPCfg;
     
             /** True to hide the save button. */
             showSaveButton?: boolean;
@@ -574,7 +584,7 @@ declare module 'gd-sprest-bs/webparts/wp' {
 }
 
 declare module 'gd-sprest-bs/webparts/wpList' {
-    import { Components } from "gd-bs";
+    import { IFormControlProps } from "gd-bs/components/formControl";
     import { Types } from "gd-sprest";
     import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/wp";
     
@@ -637,18 +647,17 @@ declare module 'gd-sprest-bs/webparts/wpList' {
             listQuery?: Types.IODataQuery;
     
             /** The list changed event. */
-            onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
+            onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<IFormControlProps> | PromiseLike<Array<IFormControlProps>> | void;
     
             /** The lists loaded event. */
             onListsLoaded?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQuery | Types.SP.List>) => Array<Types.SP.IListQuery | Types.SP.List>;
     
             /** The render form event. */
-            onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
+            onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<IFormControlProps> | PromiseLike<Array<IFormControlProps>> | void;
     }
 }
 
 declare module 'gd-sprest-bs/webparts/wpListFields' {
-    import { Components } from "gd-bs";
     import { Types } from "gd-sprest";
     import { IWPList, IWPListCfg, IWPListEditForm, IWPListInfo, IWPListProps } from "gd-sprest-bs/webparts/wpList";
     
@@ -753,7 +762,7 @@ declare module 'gd-sprest-bs/webparts/wpSearch' {
 }
 
 declare module 'gd-sprest-bs/webparts/wpTabs' {
-    import { Components } from "gd-bs";
+    import { INav } from "gd-bs/components/nav";
     import { IWebPart, IWebPartProps } from "gd-sprest-bs/webparts/wp";
     
     /**
@@ -770,7 +779,7 @@ declare module 'gd-sprest-bs/webparts/wpTabs' {
         * WebPart Tabs
         */
     export interface IWPTabs extends IWebPart {
-            getNav(): Components.INav;
+            getNav(): INav;
             getTabs(): Array<HTMLElement>;
     }
     
@@ -792,7 +801,7 @@ declare module 'gd-sprest-bs/webparts/wpTabs' {
 }
 
 declare module 'gd-sprest-bs/webparts/wpTaxonomy' {
-    import { Components } from "gd-bs"
+    import { IDropdownItem } from "gd-bs/components/dropdown"
     import { Helper } from "gd-sprest";
     import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/wp";
     
@@ -861,19 +870,19 @@ declare module 'gd-sprest-bs/webparts/wpTaxonomy' {
             onTermGroupChanged?: (wpInfo: IWPTaxonomyInfo, termGroupInfo?: ITermGroupInfo) => void;
     
             /** The term group loaded event. */
-            onTermGroupsLoaded?: (wpInfo: IWPTaxonomyInfo, termGroups: Array<Components.IDropdownItem>) => Array<Components.IDropdownItem>;
+            onTermGroupsLoaded?: (wpInfo: IWPTaxonomyInfo, termGroups: Array<IDropdownItem>) => Array<IDropdownItem>;
     
             /** The term set changed event. */
             onTermSetChanged?: (wpInfo: IWPTaxonomyInfo, termSetInfo?: ITermInfo) => void;
     
             /** The term set loaded event. */
-            onTermSetsLoaded?: (wpInfo: IWPTaxonomyInfo, termSets?: Array<Components.IDropdownItem>) => Array<Components.IDropdownItem>;
+            onTermSetsLoaded?: (wpInfo: IWPTaxonomyInfo, termSets?: Array<IDropdownItem>) => Array<IDropdownItem>;
     
             /** The term set term changed event. */
             onTermSetTermChanged?: (wpInfo: IWPTaxonomyInfo, termInfo?: ITermInfo) => void;
     
             /** The term set terms loaded event. */
-            onTermSetTermsLoaded?: (wpInfo: IWPTaxonomyInfo, terms?: Array<Components.IDropdownItem>) => Array<Components.IDropdownItem>;
+            onTermSetTermsLoaded?: (wpInfo: IWPTaxonomyInfo, terms?: Array<IDropdownItem>) => Array<IDropdownItem>;
     
             /** Flag to display the term set terms. */
             showTermSetTerms?: boolean;

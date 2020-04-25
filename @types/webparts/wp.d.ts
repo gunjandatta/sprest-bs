@@ -1,4 +1,6 @@
-import { Components } from "gd-bs";
+import { IButtonProps } from "gd-bs/components/button";
+import { IForm } from "gd-bs/components/form";
+import { IFormControl, IFormControlProps } from "gd-bs/components/formControl";
 
 /**
  * Web Part
@@ -16,7 +18,7 @@ export interface IWebPart<IWPCfg = IWebPartCfg, IWPInfo = IWebPartInfo> {
     info: IWPInfo;
 
     /** Method to update the edit form. */
-    updateEditForm?: (formControls: Array<Components.IFormControl>) => void;
+    updateEditForm?: (formControls: Array<IFormControl>) => void;
 }
 
 /**
@@ -96,7 +98,7 @@ export interface IWebPartProps<IWPInfo = IWebPartInfo, IWPEditForm = IWebPartEdi
  */
 export const WPCfg: (cfg: IWebPartCfg, props: IWebPartProps) => {
     /** Method to render the edit form. */
-    renderForm?: (formControls: Array<Components.IFormControl>) => void;
+    renderForm?: (formControls: Array<IFormControl>) => void;
 };
 
 /**
@@ -112,13 +114,13 @@ export interface IWebPartCfg {
  */
 export interface IWebPartEditForm<IWPCfg = IWebPartCfg, IWPInfo = IWebPartInfo> {
     /** The form action buttons displayed in the footer of the modal. */
-    actions?: Array<Components.IButtonProps>;
+    actions?: Array<IButtonProps>;
 
     /** The render form event. */
-    onRenderForm?: (wpInfo?: IWPInfo) => Array<Components.IFormControlProps> | PromiseLike<Array<Components.IFormControlProps>> | void;
+    onRenderForm?: (wpInfo?: IWPInfo) => Array<IFormControlProps> | PromiseLike<Array<IFormControlProps>> | void;
 
     /** The save event. */
-    onSave?: (wpCfg?: IWPCfg, form?: Components.IForm) => IWPCfg;
+    onSave?: (wpCfg?: IWPCfg, form?: IForm) => IWPCfg;
 
     /** True to hide the save button. */
     showSaveButton?: boolean;

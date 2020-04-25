@@ -1,5 +1,6 @@
 import { Helper, Types } from "gd-sprest";
-import { Components } from "gd-bs";
+import { IFormRow } from "gd-bs/components/form";
+import { IFormControl, IFormControlProps } from "gd-bs/components/formControl";
 
 /**
  * List Form
@@ -50,16 +51,16 @@ export interface IListFormDisplay {
  */
 export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
     /** The control rendered event. */
-    onControlRendered?: (control: Components.IFormControl, field: Types.SP.Field) => void | Promise<Components.IFormControl>;
+    onControlRendered?: (control: IFormControl, field: Types.SP.Field) => void | Promise<IFormControl>;
 
     /** The control rendering event. */
-    onControlRendering?: (control: Components.IFormControlProps, field: Types.SP.Field) => void | Promise<Components.IFormControlProps>;
+    onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;
 
     /** The error event. */
     onError?: (msg?: string) => void;
 
     /** The list form rows. */
-    template?: Array<Components.IFormRow>;
+    template?: Array<IFormRow>;
 }
 
 /**
@@ -67,16 +68,16 @@ export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
  */
 export interface IListFormEdit {
     /** Appends controls to the form */
-    appendControls(controls: Array<Components.IFormControlProps>);
+    appendControls(controls: Array<IFormControlProps>);
 
     /** Appends rows to the form */
-    appendRows(rows: Array<Components.IFormRow>);
+    appendRows(rows: Array<IFormRow>);
 
     /** The form element. */
     el: HTMLFormElement;
 
     /** Method to get a control by field name */
-    getControl(fieldName: string): Components.IFormControl;
+    getControl(fieldName: string): IFormControl;
 
     /** Method to get the form values */
     getValues(): { [key: string]: any }
@@ -85,10 +86,10 @@ export interface IListFormEdit {
     isValid(): boolean;
 
     /** The control rendered event. */
-    onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
+    onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
 
     /** The control rendering event. */
-    onControlRendering?: (control: Components.IFormControlProps) => void | Promise<Components.IFormControlProps>;
+    onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
 
     /** Method to save the form. */
     save(): PromiseLike<Types.SP.ListItem>;
@@ -102,5 +103,5 @@ export interface IListFormEditProps extends IListFormDisplayProps, Helper.IListF
     onSaving?: (item: any) => void | PromiseLike<any>;
 
     /** The form validating event. */
-    onValidate?: (field: Types.SP.Field, control: Components.IFormControl) => boolean;
+    onValidate?: (field: Types.SP.Field, control: IFormControl) => boolean;
 }

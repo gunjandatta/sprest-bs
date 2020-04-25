@@ -1,4 +1,7 @@
-import { Components } from "gd-bs";
+import { IFormRow } from "gd-bs/components/form";
+import { IFormControl, IFormControlProps } from "gd-bs/components/formControl";
+import { IModal, IModalProps } from "gd-bs/components/modal";
+import { IToolbarProps } from "gd-bs/components/toolbar";
 import { Helper, Types } from "gd-sprest";
 
 /**
@@ -9,7 +12,7 @@ export const ListFormDialog: (props: IListFormDialogProps) => IListFormDialog;
 /**
  * List Form Dialog
  */
-export interface IListFormDialog extends Components.IModal {
+export interface IListFormDialog extends IModal {
     /** Method to save the form. */
     saveForm: () => PromiseLike<Types.SP.ListItem>;
 }
@@ -19,7 +22,7 @@ export interface IListFormDialog extends Components.IModal {
  */
 export interface IListFormDialogProps extends Helper.IListFormProps {
     /** The form actions. */
-    actions?: Components.IToolbarProps;
+    actions?: IToolbarProps;
 
     /** The form control mode. */
     controlMode?: number;
@@ -31,13 +34,13 @@ export interface IListFormDialogProps extends Helper.IListFormProps {
     item?: any;
 
     /** The modal dialog properties. */
-    modalProps?: Components.IModalProps;
+    modalProps?: IModalProps;
 
     /** The control rendered event. */
-    onControlRendered?: (control: Components.IFormControl) => void | Promise<Components.IFormControl>;
+    onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
 
     /** The control rendering event. */
-    onControlRendering?: (control: Components.IFormControlProps) => void | Promise<Components.IFormControlProps>;
+    onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
 
     /** The form saving event. */
     onSaving?: (item: any) => void | PromiseLike<any>;
@@ -46,7 +49,7 @@ export interface IListFormDialogProps extends Helper.IListFormProps {
     onSaved?: (item?: Types.SP.ListItem) => void;
 
     /** The list form rows. */
-    template?: Array<Components.IFormRow>;
+    template?: Array<IFormRow>;
 
     /** True to display the modal by default. */
     visible?: boolean;

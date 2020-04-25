@@ -1,5 +1,5 @@
 import { Helper, Types } from "gd-sprest";
-import { Components } from "gd-bs";
+import { IFormControl, IFormControlProps } from "gd-bs/components/formControl";
 
 /**
  * Field
@@ -10,8 +10,8 @@ export const Field: (props: IFieldProps) => IField;
  * Field
  */
 export interface IField {
-    control: Components.IFormControl;
-    controlProps: Components.IFormControlProps;
+    control: IFormControl;
+    controlProps: IFormControlProps;
     getValue: () => IFieldValue;
     isValid: () => boolean;
 }
@@ -25,9 +25,9 @@ export interface IFieldProps {
     field: Types.SP.Field;
     listInfo: Helper.IListFormResult;
     onError?: (msg: string) => void;
-    onControlRendered?: (control: Components.IFormControl, field: Types.SP.Field) => void | Promise<Components.IFormControl>;
-    onControlRendering?: (control: Components.IFormControlProps, field: Types.SP.Field) => void | Promise<Components.IFormControlProps>;
-    onValidate?: (field: Types.SP.Field, control: Components.IFormControl) => boolean;
+    onControlRendered?: (control: IFormControl, field: Types.SP.Field) => void | Promise<IFormControl>;
+    onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;
+    onValidate?: (field: Types.SP.Field, control: IFormControl) => boolean;
     value?: any;
 }
 

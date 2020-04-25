@@ -1,4 +1,4 @@
-import { Components } from "gd-bs";
+import { INav } from "gd-bs/components/nav";
 import { IWebPart, IWebPartProps } from "./wp";
 
 /**
@@ -15,7 +15,7 @@ export const WPTabTypes: IWPTabTypes;
  * WebPart Tabs
  */
 export interface IWPTabs extends IWebPart {
-    getNav(): Components.INav;
+    getNav(): INav;
     getTabs(): Array<HTMLElement>;
 }
 

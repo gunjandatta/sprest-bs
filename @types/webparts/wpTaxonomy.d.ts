@@ -1,4 +1,4 @@
-import { Components } from "gd-bs"
+import { IDropdownItem } from "gd-bs/components/dropdown"
 import { Helper } from "gd-sprest";
 import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "./wp";
 
@@ -67,19 +67,19 @@ export interface IWPTaxonomyEditForm extends IWebPartEditForm<IWPTaxonomyCfg, IW
     onTermGroupChanged?: (wpInfo: IWPTaxonomyInfo, termGroupInfo?: ITermGroupInfo) => void;
 
     /** The term group loaded event. */
-    onTermGroupsLoaded?: (wpInfo: IWPTaxonomyInfo, termGroups: Array<Components.IDropdownItem>) => Array<Components.IDropdownItem>;
+    onTermGroupsLoaded?: (wpInfo: IWPTaxonomyInfo, termGroups: Array<IDropdownItem>) => Array<IDropdownItem>;
 
     /** The term set changed event. */
     onTermSetChanged?: (wpInfo: IWPTaxonomyInfo, termSetInfo?: ITermInfo) => void;
 
     /** The term set loaded event. */
-    onTermSetsLoaded?: (wpInfo: IWPTaxonomyInfo, termSets?: Array<Components.IDropdownItem>) => Array<Components.IDropdownItem>;
+    onTermSetsLoaded?: (wpInfo: IWPTaxonomyInfo, termSets?: Array<IDropdownItem>) => Array<IDropdownItem>;
 
     /** The term set term changed event. */
     onTermSetTermChanged?: (wpInfo: IWPTaxonomyInfo, termInfo?: ITermInfo) => void;
 
     /** The term set terms loaded event. */
-    onTermSetTermsLoaded?: (wpInfo: IWPTaxonomyInfo, terms?: Array<Components.IDropdownItem>) => Array<Components.IDropdownItem>;
+    onTermSetTermsLoaded?: (wpInfo: IWPTaxonomyInfo, terms?: Array<IDropdownItem>) => Array<IDropdownItem>;
 
     /** Flag to display the term set terms. */
     showTermSetTerms?: boolean;

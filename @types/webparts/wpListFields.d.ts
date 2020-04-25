@@ -1,4 +1,3 @@
-import { Components } from "gd-bs";
 import { Types } from "gd-sprest";
 import { IWPList, IWPListCfg, IWPListEditForm, IWPListInfo, IWPListProps } from "./wpList";
 

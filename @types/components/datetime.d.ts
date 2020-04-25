@@ -1,5 +1,3 @@
-import { Components } from "gd-bs";
-
 /**
  * Date/Time
  */
