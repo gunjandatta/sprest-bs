@@ -321,13 +321,37 @@ declare module 'gd-sprest-bs/components/listFormDialog' {
 }
 
 declare module 'gd-sprest-bs/components/peoplePicker' {
-    import { IFormControlProps } from "gd-bs/components/formControl";
-    import { Types } from "gd-sprest";
     
     /**
-        * People Picker
+        * ### People Picker
+        * 
+        * ```ts
+        * import { ContextInfo, Components } from "gd-sprest-bs";
+        * 
+        * // Create the panel
+        * let el = document.querySelector("#people-picker");
+        * let form = Components.Form({
+        *     el: el,
+        *     rows: [
+        *         // Other controls go here
+        *         {
+        *             control: {
+        *                 allowGroups: false,
+        *                 label: "Select User:",
+        *                 multi: true,
+        *                 name: "User",
+        *                 type: Components.FormControlTypes.PeoplePicker
+        *                 value: ContextInfo.userId // Default to the current user
+        *             } as Components.IFormControlPropsPeoplePicker
+        *         }
+        *     ]
+        * });
+        * ```
         */
     export const PeoplePicker: (props: IPeoplePickerProps) => IPeoplePicker;
+    
+    import { IFormControlProps } from "gd-bs/components/formControl";
+    import { Types } from "gd-sprest";
     
     /**
         * People Picker
@@ -459,7 +483,27 @@ declare module 'gd-sprest-bs/webparts/wp' {
     import { IFormControl, IFormControlProps } from "gd-bs/components/formControl";
     
     /**
-        * Web Part
+        * ### Web Part
+        * 
+        * The client-side webpart component can be used to control what is displayed when a page is being edited and displayed. An optional hidden configuration element can be utilized to store a custom configuration.
+        * 
+        * ```ts
+        * import { WebParts } from "gd-sprest-bs";
+        * 
+        * // Create the webpart
+        * WebParts.WebPart({
+        *     elementId: "my-wp",
+        *     cfgElementId: "my-wp-cfg",
+        *     onRenderDisplay: (wpInfo) => {
+        *         // Render the display element
+        *         wpInfo.el.innerHTML = '<h1>Hello Display Mode</h1>';
+        *     },
+        *     onRenderEdit: (wpInfo) => {
+        *         // Render the edit element
+        *         wpInfo.el.innerHTML = '<h1>Hello Edit Mode</h1>';
+        *     }
+        * });
+        * ```
         */
     export const WebPart: (props: IWebPartProps) => IWebPart;
     
@@ -589,7 +633,26 @@ declare module 'gd-sprest-bs/webparts/wpList' {
     import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/wp";
     
     /**
-        * List WebPart
+        * ### List WebPart
+        * 
+        * The list webpart should be used when targeting a list as a datasource.
+        * 
+        * ```ts
+        * import { WebParts } from "gd-sprest-bs";
+        * 
+        * // Create the webpart
+        * WebParts.WebPart({
+        *     elementId: "my-wpList",
+        *     cfgElementId: "my-wpList-cfg",
+        *     onRenderItems: (wpInfo, items) => {
+        *         // Render the display element
+        *         wpInfo.el.innerHTML = [
+        *             '<h1>List: ' + wpInfo.ListName + '</h1>',
+        *             '<h5>List Items: ' + items.length + '</h5>'
+        *         ].join('\n');
+        *     }
+        * });
+        * ```
         */
     export const WPList: (props: IWPListProps) => IWPList;
     
@@ -662,7 +725,26 @@ declare module 'gd-sprest-bs/webparts/wpListFields' {
     import { IWPList, IWPListCfg, IWPListEditForm, IWPListInfo, IWPListProps } from "gd-sprest-bs/webparts/wpList";
     
     /**
-        * List Fields WebPart
+        * ### List Fields WebPart
+        * 
+        * The list fields webpart should be used when targeting a list and fields as a datasource.
+        * 
+        * ```ts
+        * import { WebParts } from "gd-sprest-bs";
+        * 
+        * // Create the webpart
+        * WebParts.WebPart({
+        *     elementId: "my-wpList",
+        *     cfgElementId: "my-wpList-cfg",
+        *     onRenderItems: (wpInfo, items) => {
+        *         // Render the display element
+        *         wpInfo.el.innerHTML = [
+        *             '<h1>List: ' + wpInfo.ListName + '</h1>',
+        *             '<h5>List Items: ' + items.length + '</h5>'
+        *         ].join('\n');
+        *     }
+        * });
+        * ```
         */
     export const WPListFields: (props: IWPListFieldsProps) => IWPListFields;
     
@@ -717,7 +799,26 @@ declare module 'gd-sprest-bs/webparts/wpSearch' {
     import { IWPListCfg, IWPListEditForm } from "gd-sprest-bs/webparts/wpList";
     
     /**
-        * Search WebPart
+        * ### Search WebPart
+        * 
+        * The search webpart extends the list webpart, and includes a filterItems method to return items based on the inputed filter text.
+        * 
+        * ```ts
+        * import { WebParts } from "gd-sprest-bs";
+        * 
+        * // Create the webpart
+        * let wp = WebParts.WebPart({
+        *     elementId: "my-wpSearch",
+        *     cfgElementId: "my-wpSearch-cfg",
+        *     onRenderItems: (wpInfo, items) => {
+        *         // Render the display element
+        *         wpInfo.el.innerHTML = [
+        *             '<h1>List: ' + wpInfo.ListName + '</h1>',
+        *             '<h5>List Items: ' + items.length + '</h5>'
+        *         ].join('\n');
+        *     }
+        * });
+        * ```
         */
     export const WPSearch: (props: IWPListProps) => IWPSearch;
     
@@ -766,7 +867,16 @@ declare module 'gd-sprest-bs/webparts/wpTabs' {
     import { IWebPart, IWebPartProps } from "gd-sprest-bs/webparts/wp";
     
     /**
-        * WebPart Tabs
+        * ### WebPart Tabs
+        * 
+        * The webpart tabs will generate tabs for each visible webpart in its zone.
+        * 
+        * ```ts
+        * import { WebParts } from "gd-sprest-bs";
+        * 
+        * // Create the webpart
+        * WebParts.WPTabs({ elementId: "my-tabs" });
+        * ```
         */
     export const WPTabs: (props: IWPTabsProps) => IWPTabs;
     
@@ -806,7 +916,26 @@ declare module 'gd-sprest-bs/webparts/wpTaxonomy' {
     import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/wp";
     
     /**
-        * Taxonomy WebPart
+        * ### Taxonomy WebPart
+        * 
+        * The taxonomy webpart should be used when targeting the term store as a datasource.
+        * 
+        * ```ts
+        * import { WebParts } from "gd-sprest-bs";
+        * 
+        * // Create the webpart
+        * WebParts.WPTaxonomy({
+        *     elementId: "my-wpTaxonomy",
+        *     cfgElementId: "my-wpTaxonomy-cfg",
+        *     onRenderTermSetTerms: (wpInfo, terms) => {
+        *         // Render the display element
+        *         wpInfo.el.innerHTML = [
+        *             '<h1>Term Set: ' + wpInfo.TermSetName + '</h1>',
+        *             '<h5>Terms: ' + terms.length + '</h5>'
+        *         ].join('\n');
+        *     }
+        * });
+        * ```
         */
     export const WPTaxonomy: (props: IWPTaxonomyProps) => IWPTaxonomy;
     

@@ -2,7 +2,16 @@ import { INav } from "gd-bs/components/nav";
 import { IWebPart, IWebPartProps } from "./wp";
 
 /**
- * WebPart Tabs
+ * ### WebPart Tabs
+ * 
+ * The webpart tabs will generate tabs for each visible webpart in its zone.
+ * 
+ * ```ts
+ * import { WebParts } from "gd-sprest-bs";
+ * 
+ * // Create the webpart
+ * WebParts.WPTabs({ elementId: "my-tabs" });
+ * ```
  */
 export const WPTabs: (props: IWPTabsProps) => IWPTabs;
 

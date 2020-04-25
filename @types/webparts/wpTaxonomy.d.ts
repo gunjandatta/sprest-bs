@@ -3,7 +3,26 @@ import { Helper } from "gd-sprest";
 import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "./wp";
 
 /**
- * Taxonomy WebPart
+ * ### Taxonomy WebPart
+ * 
+ * The taxonomy webpart should be used when targeting the term store as a datasource.
+ * 
+ * ```ts
+ * import { WebParts } from "gd-sprest-bs";
+ * 
+ * // Create the webpart
+ * WebParts.WPTaxonomy({
+ *     elementId: "my-wpTaxonomy",
+ *     cfgElementId: "my-wpTaxonomy-cfg",
+ *     onRenderTermSetTerms: (wpInfo, terms) => {
+ *         // Render the display element
+ *         wpInfo.el.innerHTML = [
+ *             '<h1>Term Set: ' + wpInfo.TermSetName + '</h1>',
+ *             '<h5>Terms: ' + terms.length + '</h5>'
+ *         ].join('\n');
+ *     }
+ * });
+ * ```
  */
 export const WPTaxonomy: (props: IWPTaxonomyProps) => IWPTaxonomy;
 

@@ -1,10 +1,37 @@
-import { IFormControlProps } from "gd-bs/components/formControl";
-import { Types } from "gd-sprest";
+/**
+ * ![People Picker](/assets/images/people-picker.png)
+ */
 
 /**
- * People Picker
+ * ### People Picker
+ * 
+ * ```ts
+ * import { ContextInfo, Components } from "gd-sprest-bs";
+ * 
+ * // Create the panel
+ * let el = document.querySelector("#people-picker");
+ * let form = Components.Form({
+ *     el: el,
+ *     rows: [
+ *         // Other controls go here
+ *         {
+ *             control: {
+ *                 allowGroups: false,
+ *                 label: "Select User:",
+ *                 multi: true,
+ *                 name: "User",
+ *                 type: Components.FormControlTypes.PeoplePicker
+ *                 value: ContextInfo.userId // Default to the current user
+ *             } as Components.IFormControlPropsPeoplePicker
+ *         }
+ *     ]
+ * });
+ * ```
  */
 export const PeoplePicker: (props: IPeoplePickerProps) => IPeoplePicker;
+
+import { IFormControlProps } from "gd-bs/components/formControl";
+import { Types } from "gd-sprest";
 
 /**
  * People Picker

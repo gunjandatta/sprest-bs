@@ -3,7 +3,26 @@ import { IWPList, IWPListInfo, IWPListProps } from "./wpList";
 import { IWPListCfg, IWPListEditForm } from "./wpList";
 
 /**
- * Search WebPart
+ * ### Search WebPart
+ * 
+ * The search webpart extends the list webpart, and includes a filterItems method to return items based on the inputed filter text.
+ * 
+ * ```ts
+ * import { WebParts } from "gd-sprest-bs";
+ * 
+ * // Create the webpart
+ * let wp = WebParts.WebPart({
+ *     elementId: "my-wpSearch",
+ *     cfgElementId: "my-wpSearch-cfg",
+ *     onRenderItems: (wpInfo, items) => {
+ *         // Render the display element
+ *         wpInfo.el.innerHTML = [
+ *             '<h1>List: ' + wpInfo.ListName + '</h1>',
+ *             '<h5>List Items: ' + items.length + '</h5>'
+ *         ].join('\n');
+ *     }
+ * });
+ * ```
  */
 export const WPSearch: (props: IWPListProps) => IWPSearch;
 

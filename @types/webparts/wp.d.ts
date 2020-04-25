@@ -3,7 +3,27 @@ import { IForm } from "gd-bs/components/form";
 import { IFormControl, IFormControlProps } from "gd-bs/components/formControl";
 
 /**
- * Web Part
+ * ### Web Part
+ * 
+ * The client-side webpart component can be used to control what is displayed when a page is being edited and displayed. An optional hidden configuration element can be utilized to store a custom configuration.
+ * 
+ * ```ts
+ * import { WebParts } from "gd-sprest-bs";
+ * 
+ * // Create the webpart
+ * WebParts.WebPart({
+ *     elementId: "my-wp",
+ *     cfgElementId: "my-wp-cfg",
+ *     onRenderDisplay: (wpInfo) => {
+ *         // Render the display element
+ *         wpInfo.el.innerHTML = '<h1>Hello Display Mode</h1>';
+ *     },
+ *     onRenderEdit: (wpInfo) => {
+ *         // Render the edit element
+ *         wpInfo.el.innerHTML = '<h1>Hello Edit Mode</h1>';
+ *     }
+ * });
+ * ```
  */
 export const WebPart: (props: IWebPartProps) => IWebPart;
 

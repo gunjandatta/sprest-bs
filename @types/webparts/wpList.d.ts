@@ -3,7 +3,26 @@ import { Types } from "gd-sprest";
 import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "./wp";
 
 /**
- * List WebPart
+ * ### List WebPart
+ * 
+ * The list webpart should be used when targeting a list as a datasource.
+ * 
+ * ```ts
+ * import { WebParts } from "gd-sprest-bs";
+ * 
+ * // Create the webpart
+ * WebParts.WebPart({
+ *     elementId: "my-wpList",
+ *     cfgElementId: "my-wpList-cfg",
+ *     onRenderItems: (wpInfo, items) => {
+ *         // Render the display element
+ *         wpInfo.el.innerHTML = [
+ *             '<h1>List: ' + wpInfo.ListName + '</h1>',
+ *             '<h5>List Items: ' + items.length + '</h5>'
+ *         ].join('\n');
+ *     }
+ * });
+ * ```
  */
 export const WPList: (props: IWPListProps) => IWPList;
 
