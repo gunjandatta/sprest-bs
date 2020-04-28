@@ -565,7 +565,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         // See if this is a read-only field
         if (field.ReadOnlyField) {
             // Do not render in the new form
-            if (props.controlMode != SPTypes.ControlMode.New) {
+            if (props.controlMode == SPTypes.ControlMode.New) {
                 continue;
             }
         }
