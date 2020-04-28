@@ -158,7 +158,7 @@ export const Field = (props: IFieldProps): IField => {
         description: props.field.Description,
         errorMessage: props.errorMessage,
         isReadonly: props.field.ReadOnlyField,
-        label: props.field.Title,
+        label: (props.field.Required ? "* " : "") + props.field.Title,
         name: props.field.InternalName,
         onControlRendering: control => {
             // Execute the event
