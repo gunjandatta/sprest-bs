@@ -183,6 +183,8 @@ export const Field = (props: IFieldProps): IField => {
     }
 
     // Set the type
+    let onControlRendered = null;
+    let onControlRendering = null;
     switch (props.field.FieldTypeKind) {
         // Boolean
         case SPTypes.FieldType.Boolean:
@@ -225,9 +227,13 @@ export const Field = (props: IFieldProps): IField => {
             controlProps.type = Components.FormControlTypes.TextField;
 
             // Set the rendered event
+            onControlRendered = controlProps.onControlRendered;
             controlProps.onControlRendered = (formControl) => {
                 // Save the control
                 control = formControl;
+
+                // Call the event
+                onControlRendered ? onControlRendered(formControl) : null;
             }
             break;
 
@@ -239,6 +245,7 @@ export const Field = (props: IFieldProps): IField => {
             controlProps.type = null;
 
             // Set the rendered event
+            onControlRendered = controlProps.onControlRendered;
             controlProps.onControlRendered = (formControl) => {
                 // Save the control
                 control = formControl;
@@ -255,33 +262,16 @@ export const Field = (props: IFieldProps): IField => {
                     // Return the value
                     return dt.getValue();
                 }
+
+                // Call the event
+                onControlRendered ? onControlRendered(formControl) : null;
             }
-            break;
-
-        // Multi-Choice
-        case SPTypes.FieldType.MultiChoice:
-            let isChoice = props.field.SchemaXml.indexOf('Format="RadioButtons"') > 0 ? true : false;
-
-            // See if we are displaying radio buttons
-            if (isChoice) {
-                // Update the properties
-                (controlProps as Components.IFormControlPropsSwitch).multi = true;
-                controlProps.type = Components.FormControlTypes.Switch;
-            } else {
-                // Set the type
-                controlProps.type = Components.FormControlTypes.MultiDropdown;
-            }
-
-            // Update the value
-            controlProps.value = (props.value ? props.value.results : null) || props.value;
-
-            // Set the items
-            (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(isChoice, props.field as any, props.value);
             break;
 
         // Lookup
         case SPTypes.FieldType.Lookup:
             // Set the rendering event
+            onControlRendering = controlProps.onControlRendering;
             controlProps.onControlRendering = newProps => {
                 // Update the control properties
                 controlProps = newProps;
@@ -328,8 +318,18 @@ export const Field = (props: IFieldProps): IField => {
                                     // Clear the element
                                     controlProps.el ? controlProps.el.innerHTML = "" : null;
 
-                                    // Resolve the promise
-                                    resolve(controlProps);
+                                    // Call the event
+                                    let returnVal = onControlRendering ? onControlRendering(controlProps) : null;
+                                    if (returnVal && returnVal.then) {
+                                        // Wait for the promise to complete
+                                        returnVal.then(props => {
+                                            // Resolve the promise
+                                            resolve(props || controlProps);
+                                        })
+                                    } else {
+                                        // Resolve the promise
+                                        resolve(controlProps);
+                                    }
                                 },
                                 // Error
                                 msg => {
@@ -370,6 +370,27 @@ export const Field = (props: IFieldProps): IField => {
                     );
                 });
             };
+            break;
+
+        // Multi-Choice
+        case SPTypes.FieldType.MultiChoice:
+            let isChoice = props.field.SchemaXml.indexOf('Format="RadioButtons"') > 0 ? true : false;
+
+            // See if we are displaying radio buttons
+            if (isChoice) {
+                // Update the properties
+                (controlProps as Components.IFormControlPropsSwitch).multi = true;
+                controlProps.type = Components.FormControlTypes.Switch;
+            } else {
+                // Set the type
+                controlProps.type = Components.FormControlTypes.MultiDropdown;
+            }
+
+            // Update the value
+            controlProps.value = (props.value ? props.value.results : null) || props.value;
+
+            // Set the items
+            (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(isChoice, props.field as any, props.value);
             break;
 
         // Note
@@ -425,6 +446,7 @@ export const Field = (props: IFieldProps): IField => {
             }
 
             // Set the render event
+            onControlRendered = controlProps.onControlRendered;
             controlProps.onControlRendered = (formControl) => {
                 // Save the control
                 control = formControl;
@@ -457,6 +479,9 @@ export const Field = (props: IFieldProps): IField => {
                         Url: url.getValue()
                     }
                 }
+
+                // Call the event
+                onControlRendered ? onControlRendered(formControl) : null;
             }
 
             // Set the validate event
@@ -505,9 +530,13 @@ export const Field = (props: IFieldProps): IField => {
             controlProps.type = PeoplePickerControlType;
 
             // Set the rendered event
+            onControlRendered = controlProps.onControlRendered;
             controlProps.onControlRendered = (formControl) => {
                 // Save the control
                 control = formControl;
+
+                // Call the event
+                onControlRendered ? onControlRendered(formControl) : null;
             }
             break;
     }
@@ -518,6 +547,7 @@ export const Field = (props: IFieldProps): IField => {
         controlProps.type = Components.FormControlTypes.Dropdown;
 
         // Set a render event
+        onControlRendering = controlProps.onControlRendering;
         controlProps.onControlRendering = newProps => {
             // Update the control properties
             controlProps = newProps;
@@ -609,8 +639,18 @@ export const Field = (props: IFieldProps): IField => {
                                         // Clear the element
                                         controlProps.el ? controlProps.el.innerHTML = "" : null;
 
-                                        // Resolve the promise
-                                        resolve(controlProps);
+                                        // Call the event
+                                        let returnVal = onControlRendering ? onControlRendering(controlProps) : null;
+                                        if (returnVal && returnVal.then) {
+                                            // Wait for the promise to complete
+                                            returnVal.then(props => {
+                                                // Resolve the promise
+                                                resolve(props || controlProps);
+                                            })
+                                        } else {
+                                            // Resolve the promise
+                                            resolve(controlProps);
+                                        }
                                     },
                                     // Error
                                     msg => {
