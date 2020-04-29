@@ -241,8 +241,8 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.DateTime:
             let showTime = (props.field as Types.SP.FieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
 
-            // Clear the type
-            controlProps.type = null;
+            // Set the type
+            controlProps.type = props.field.ReadOnlyField ? Components.FormControlTypes.Readonly : null;
 
             // Set the rendered event
             onControlRendered = controlProps.onControlRendered;
@@ -250,40 +250,34 @@ export const Field = (props: IFieldProps): IField => {
                 // Save the control
                 control = formControl;
 
-                // Render a date picker
-                let dt = DateTime({
-                    el: control.el,
-                    showTime,
-                    value: control.props.value
-                });
+                // See if this field is readonly and a value exists
+                if (props.value && props.field.ReadOnlyField) {
+                    // Get the field value as html
+                    (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
+                        // Set the class name
+                        control.el.classList.add("form-control");
+                        control.el.style.backgroundColor = "#e9ecef";
 
-                // Set the get value event
-                control.props.onGetValue = () => {
-                    // Return the value
-                    return dt.getValue();
+                        // Override the html rendered
+                        control.el.innerHTML = values[props.field.InternalName];
+                    });
+                } else {
+                    // Render a date picker
+                    let dt = DateTime({
+                        el: control.el,
+                        showTime,
+                        value: control.props.value
+                    });
+
+                    // Set the get value event
+                    control.props.onGetValue = () => {
+                        // Return the value
+                        return dt.getValue();
+                    }
                 }
 
                 // Call the event
                 onControlRendered ? onControlRendered(formControl) : null;
-            }
-
-            // See if this field is readonly and a value exists
-            if (props.value && props.field.ReadOnlyField) {
-                // Set the rendering event
-                onControlRendering = props.onControlRendering;
-                props.onControlRendering = (control, field) => {
-                    // Return a promise
-                    return new Promise((resolve, reject) => {
-                        // Get the field value as html
-                        (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
-                            // Update the value
-                            control.value = values[field.InternalName];
-
-                            // Resolve the request
-                            resolve(control);
-                        });
-                    })
-                }
             }
             break;
 
@@ -292,22 +286,23 @@ export const Field = (props: IFieldProps): IField => {
 
             // See if this field is readonly and a value exists
             if (props.field.ReadOnlyField) {
+                // Update the value
+                controlProps.type = Components.FormControlTypes.Readonly;
+
                 // Ensure a value exists
                 if (props.value) {
-                    // Set the rendering event
-                    onControlRendering = props.onControlRendering;
-                    props.onControlRendering = (control, field) => {
-                        // Return a promise
-                        return new Promise((resolve, reject) => {
-                            // Get the field value as html
-                            (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
-                                // Update the value
-                                control.value = values[field.InternalName];
+                    // Set the rendered event
+                    onControlRendered = controlProps.onControlRendered;
+                    controlProps.onControlRendered = (formControl) => {
+                        // Get the field value as html
+                        (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
+                            // Set the class name
+                            control.el.classList.add("form-control");
+                            control.el.style.backgroundColor = "#e9ecef";
 
-                                // Resolve the request
-                                resolve(control);
-                            });
-                        })
+                            // Override the html rendered
+                            control.el.innerHTML = values[props.field.InternalName];
+                        });
                     }
                 }
             } else {
@@ -572,7 +567,7 @@ export const Field = (props: IFieldProps): IField => {
         // User
         case SPTypes.FieldType.User:
             // Set the type
-            controlProps.type = PeoplePickerControlType;
+            controlProps.type = props.field.ReadOnlyField ? Components.FormControlTypes.Readonly : PeoplePickerControlType;
 
             // Set the rendered event
             onControlRendered = controlProps.onControlRendered;
@@ -580,27 +575,21 @@ export const Field = (props: IFieldProps): IField => {
                 // Save the control
                 control = formControl;
 
+                // See if this field is readonly and a value exists
+                if (props.value && props.field.ReadOnlyField) {
+                    // Get the field value as html
+                    (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
+                        // Set the class name
+                        control.el.classList.add("form-control");
+                        control.el.style.backgroundColor = "#e9ecef";
+
+                        // Override the html rendered
+                        control.el.innerHTML = values[props.field.InternalName];
+                    });
+                }
+
                 // Call the event
                 onControlRendered ? onControlRendered(formControl) : null;
-            }
-
-            // See if this field is readonly and a value exists
-            if (props.value && props.field.ReadOnlyField) {
-                // Set the rendering event
-                onControlRendering = props.onControlRendering;
-                props.onControlRendering = (control, field) => {
-                    // Return a promise
-                    return new Promise((resolve, reject) => {
-                        // Get the field value as html
-                        (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
-                            // Update the value
-                            control.value = values[field.InternalName];
-
-                            // Resolve the request
-                            resolve(control);
-                        });
-                    })
-                }
             }
             break;
     }
