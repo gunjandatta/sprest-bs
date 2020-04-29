@@ -190,6 +190,7 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.Boolean:
             // Set the type
             controlProps.type = Components.FormControlTypes.Checkbox;
+            (controlProps as Components.IFormControlPropsCheckbox).items = [{ label: props.field.Title }]
             break;
 
         // Choice
