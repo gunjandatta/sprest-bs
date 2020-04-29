@@ -1,6 +1,6 @@
 import { Components } from "gd-bs";
 import { Helper, SPTypes, Types } from "gd-sprest";
-import { IField, IFieldProps, IFieldValue, IPeoplePickerProps } from "../../@types/components";
+import { IField, IFieldProps, IFieldValue } from "../../@types/components";
 import { DateTime } from "./datetime";
 import { PeoplePickerControlType } from "./peoplePicker";
 
@@ -266,110 +266,155 @@ export const Field = (props: IFieldProps): IField => {
                 // Call the event
                 onControlRendered ? onControlRendered(formControl) : null;
             }
+
+            // See if this field is readonly and a value exists
+            if (props.value && props.field.ReadOnlyField) {
+                // Set the rendering event
+                onControlRendering = props.onControlRendering;
+                props.onControlRendering = (control, field) => {
+                    // Return a promise
+                    return new Promise((resolve, reject) => {
+                        // Get the field value as html
+                        (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
+                            // Update the value
+                            control.value = values[field.InternalName];
+
+                            // Resolve the request
+                            resolve(control);
+                        });
+                    })
+                }
+            }
             break;
 
         // Lookup
         case SPTypes.FieldType.Lookup:
-            // Set the rendering event
-            onControlRendering = controlProps.onControlRendering;
-            controlProps.onControlRendering = newProps => {
-                // Update the control properties
-                controlProps = newProps;
 
-                // Display a loading message
-                controlProps.loadingMessage = "Loading the Lookup Data";
+            // See if this field is readonly and a value exists
+            if (props.field.ReadOnlyField) {
+                // Ensure a value exists
+                if (props.value) {
+                    // Set the rendering event
+                    onControlRendering = props.onControlRendering;
+                    props.onControlRendering = (control, field) => {
+                        // Return a promise
+                        return new Promise((resolve, reject) => {
+                            // Get the field value as html
+                            (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
+                                // Update the value
+                                control.value = values[field.InternalName];
 
-                // Return a promise
-                return new Promise((resolve, reject) => {
-                    // Load the field information
-                    Helper.ListFormField.create({
-                        field: props.field as any,
-                        listName: props.listInfo.list.Title,
-                        name: props.field.InternalName,
-                        webUrl: props.listInfo.webUrl
-                    }).then(
-                        // Success
-                        (fieldInfo: Helper.IListFormLookupFieldInfo) => {
-                            // Save the field information
-                            lookupFieldInfo = fieldInfo;
-
-                            // Get the drop down information
-                            Helper.ListFormField.loadLookupData(lookupFieldInfo, 500).then(
-                                // Success
-                                items => {
-                                    // Set the type
-                                    controlProps.type = lookupFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
-
-                                    // Get the dropdown items
-                                    let ddlItems = getLookupItems(props.field as any, items, props.value);
-
-                                    // See if this is not a required field and not a multi-select
-                                    if (!props.field.Required && !lookupFieldInfo.multi) {
-                                        // Add a blank entry
-                                        ddlItems = [{
-                                            text: "",
-                                            value: null
-                                        } as any].concat(ddlItems);
-                                    }
-
-                                    // Set the items
-                                    (controlProps as Components.IFormControlPropsDropdown).items = ddlItems;
-
-                                    // Clear the element
-                                    controlProps.el ? controlProps.el.innerHTML = "" : null;
-
-                                    // Call the event
-                                    let returnVal = onControlRendering ? onControlRendering(controlProps) : null;
-                                    if (returnVal && returnVal.then) {
-                                        // Wait for the promise to complete
-                                        returnVal.then(props => {
-                                            // Resolve the promise
-                                            resolve(props || controlProps);
-                                        })
-                                    } else {
-                                        // Resolve the promise
-                                        resolve(controlProps);
-                                    }
-                                },
-                                // Error
-                                msg => {
-                                    // Set the error message
-                                    let errorMessage = "Error loading the lookup field values for '" + props.field.InternalName + "'.";
-
-                                    // Display an error message
-                                    Components.Alert({
-                                        el: controlProps.el,
-                                        content: errorMessage,
-                                        type: Components.AlertTypes.Danger
-                                    });
-
-                                    // Call the error event
-                                    props.onError ? props.onError(errorMessage) : null;
-                                }
-                            );
-                        },
-                        // Error
-                        msg => {
-                            // Set the error message
-                            let errorMessage = "Error loading the field information for field '" + props.field.InternalName + "'.";
-
-                            // Display an error message
-                            controlProps.el.innerHTML = "";
-                            Components.Alert({
-                                el: controlProps.el,
-                                content: "Error loading the lookup field information.",
-                                type: Components.AlertTypes.Danger
+                                // Resolve the request
+                                resolve(control);
                             });
+                        })
+                    }
+                }
+            } else {
+                // Set the rendering event
+                onControlRendering = controlProps.onControlRendering;
+                controlProps.onControlRendering = newProps => {
+                    // Update the control properties
+                    controlProps = newProps;
 
-                            // Call the error event
-                            props.onError ? props.onError(errorMessage) : null;
+                    // Display a loading message
+                    controlProps.loadingMessage = "Loading the Lookup Data";
 
-                            // Reject the request
-                            reject(msg);
-                        }
-                    );
-                });
-            };
+                    // Return a promise
+                    return new Promise((resolve, reject) => {
+                        // Load the field information
+                        Helper.ListFormField.create({
+                            field: props.field as any,
+                            listName: props.listInfo.list.Title,
+                            name: props.field.InternalName,
+                            webUrl: props.listInfo.webUrl
+                        }).then(
+                            // Success
+                            (fieldInfo: Helper.IListFormLookupFieldInfo) => {
+                                // Save the field information
+                                lookupFieldInfo = fieldInfo;
+
+                                // Update the multi property
+                                (controlProps as Helper.IListFormLookupFieldInfo).multi = lookupFieldInfo.multi;
+
+                                // Get the drop down information
+                                Helper.ListFormField.loadLookupData(lookupFieldInfo, 500).then(
+                                    // Success
+                                    items => {
+                                        // Set the type
+                                        controlProps.type = lookupFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
+
+                                        // Get the dropdown items
+                                        let ddlItems = getLookupItems(props.field as any, items, props.value);
+
+                                        // See if this is not a required field and not a multi-select
+                                        if (!props.field.Required && !lookupFieldInfo.multi) {
+                                            // Add a blank entry
+                                            ddlItems = [{
+                                                text: "",
+                                                value: null
+                                            } as any].concat(ddlItems);
+                                        }
+
+                                        // Set the items
+                                        (controlProps as Components.IFormControlPropsDropdown).items = ddlItems;
+
+                                        // Clear the element
+                                        controlProps.el ? controlProps.el.innerHTML = "" : null;
+
+                                        // Call the event
+                                        let returnVal = onControlRendering ? onControlRendering(controlProps) : null;
+                                        if (returnVal && returnVal.then) {
+                                            // Wait for the promise to complete
+                                            returnVal.then(props => {
+                                                // Resolve the promise
+                                                resolve(props || controlProps);
+                                            })
+                                        } else {
+                                            // Resolve the promise
+                                            resolve(controlProps);
+                                        }
+                                    },
+                                    // Error
+                                    msg => {
+                                        // Set the error message
+                                        let errorMessage = "Error loading the lookup field values for '" + props.field.InternalName + "'.";
+
+                                        // Display an error message
+                                        Components.Alert({
+                                            el: controlProps.el,
+                                            content: errorMessage,
+                                            type: Components.AlertTypes.Danger
+                                        });
+
+                                        // Call the error event
+                                        props.onError ? props.onError(errorMessage) : null;
+                                    }
+                                );
+                            },
+                            // Error
+                            msg => {
+                                // Set the error message
+                                let errorMessage = "Error loading the field information for field '" + props.field.InternalName + "'.";
+
+                                // Display an error message
+                                controlProps.el.innerHTML = "";
+                                Components.Alert({
+                                    el: controlProps.el,
+                                    content: "Error loading the lookup field information.",
+                                    type: Components.AlertTypes.Danger
+                                });
+
+                                // Call the error event
+                                props.onError ? props.onError(errorMessage) : null;
+
+                                // Reject the request
+                                reject(msg);
+                            }
+                        );
+                    });
+                };
+            }
             break;
 
         // Multi-Choice
@@ -537,6 +582,25 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Call the event
                 onControlRendered ? onControlRendered(formControl) : null;
+            }
+
+            // See if this field is readonly and a value exists
+            if (props.value && props.field.ReadOnlyField) {
+                // Set the rendering event
+                onControlRendering = props.onControlRendering;
+                props.onControlRendering = (control, field) => {
+                    // Return a promise
+                    return new Promise((resolve, reject) => {
+                        // Get the field value as html
+                        (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
+                            // Update the value
+                            control.value = values[field.InternalName];
+
+                            // Resolve the request
+                            resolve(control);
+                        });
+                    })
+                }
             }
             break;
     }
