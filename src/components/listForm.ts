@@ -111,6 +111,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                 for (let i = 0; i < fieldNames.length; i++) {
                     let fieldName = fieldNames[i];
                     let field = props.info.fields[fieldName];
+                    let fieldLink = props.info.fieldLinks ? props.info.fieldLinks[fieldName] : null;
                     let html: string = formValues[fieldName] || formValues[fieldName.replace(/\_/g, "_x005f_")] || "";
 
                     // Ensure the field exists
@@ -136,7 +137,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                         data: html,
                         description: field.Description,
                         isReadonly: true,
-                        label: field.Title,
+                        label: fieldLink && fieldLink.DisplayName ? fieldLink.DisplayName : field.Title,
                         name: field.InternalName,
                         type: Components.FormControlTypes.TextField,
                         value: html

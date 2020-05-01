@@ -153,12 +153,18 @@ export const Field = (props: IFieldProps): IField => {
         return items;
     }
 
+    // Set the properties based on the field link
+    let fieldLink = props.listInfo.fieldLinks ? props.listInfo.fieldLinks[props.field.InternalName] : null;
+    let isReadonly = fieldLink && typeof (fieldLink.ReadOnly) === "boolean" ? fieldLink.ReadOnly : props.field.ReadOnlyField;
+    let isRequired = fieldLink && typeof (fieldLink.Required) === "boolean" ? fieldLink.Required : props.field.Required;
+    let title = fieldLink && fieldLink.DisplayName ? fieldLink.DisplayName : props.field.Title;
+
     // Set the default properties for the control
     let controlProps: Components.IFormControlProps = {
         description: props.field.Description,
         errorMessage: props.errorMessage,
-        isReadonly: props.field.ReadOnlyField,
-        label: (props.field.Required ? "* " : "") + props.field.Title,
+        isReadonly,
+        label: (isRequired ? "* " : "") + title,
         name: props.field.InternalName,
         onControlRendering: control => {
             // Execute the event
