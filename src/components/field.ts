@@ -144,7 +144,7 @@ export const Field = (props: IFieldProps): IField => {
         }
 
         // See if no selected values exists, and this is a required field
-        if (items.length > 0 && selectedValues.length == 0 && props.field.Required) {
+        if (items.length > 0 && selectedValues.length == 0 && isRequired) {
             // Select the first item
             items[0].isSelected = true;
         }
@@ -177,7 +177,7 @@ export const Field = (props: IFieldProps): IField => {
             // Execute the event
             return props.onControlRendered ? props.onControlRendered(control, props.field) : null;
         },
-        required: props.field.Required,
+        required: isRequired,
         type: Components.FormControlTypes.TextField,
         value: props.value
     };
@@ -196,7 +196,12 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.Boolean:
             // Set the type
             controlProps.type = Components.FormControlTypes.Checkbox;
-            (controlProps as Components.IFormControlPropsCheckbox).items = [{ label: props.field.Title }]
+
+            // Create the item
+            (controlProps as Components.IFormControlPropsCheckbox).items = [{ label: controlProps.label }]
+
+            // Clear the label
+            controlProps.label = "";
             break;
 
         // Choice
@@ -216,7 +221,7 @@ export const Field = (props: IFieldProps): IField => {
             let items = getChoiceItems(displayRadioButtons, props.field as any, props.value);
 
             // See if this is not a required field
-            if (!props.field.Required) {
+            if (!isRequired) {
                 // Add a blank entry
                 items = [{
                     text: "",
@@ -249,7 +254,7 @@ export const Field = (props: IFieldProps): IField => {
             let showTime = (props.field as Types.SP.FieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
 
             // Set the type
-            controlProps.type = props.field.ReadOnlyField ? Components.FormControlTypes.Readonly : null;
+            controlProps.type = isReadonly ? Components.FormControlTypes.Readonly : null;
 
             // Set the rendered event
             onControlRendered = controlProps.onControlRendered;
@@ -258,7 +263,7 @@ export const Field = (props: IFieldProps): IField => {
                 control = formControl;
 
                 // See if this field is readonly and a value exists
-                if (props.value && props.field.ReadOnlyField) {
+                if (props.value && isReadonly) {
                     // Get the field value as html
                     (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
                         // Set the class name
@@ -292,7 +297,7 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.Lookup:
 
             // See if this field is readonly and a value exists
-            if (props.field.ReadOnlyField) {
+            if (isReadonly) {
                 // Update the value
                 controlProps.type = Components.FormControlTypes.Readonly;
 
@@ -350,7 +355,7 @@ export const Field = (props: IFieldProps): IField => {
                                         let ddlItems = getLookupItems(props.field as any, items, props.value);
 
                                         // See if this is not a required field and not a multi-select
-                                        if (!props.field.Required && !lookupFieldInfo.multi) {
+                                        if (!isRequired && !lookupFieldInfo.multi) {
                                             // Add a blank entry
                                             ddlItems = [{
                                                 text: "",
@@ -574,7 +579,7 @@ export const Field = (props: IFieldProps): IField => {
         // User
         case SPTypes.FieldType.User:
             // Set the type
-            controlProps.type = props.field.ReadOnlyField ? Components.FormControlTypes.Readonly : PeoplePickerControlType;
+            controlProps.type = isReadonly ? Components.FormControlTypes.Readonly : PeoplePickerControlType;
 
             // Set the rendered event
             onControlRendered = controlProps.onControlRendered;
@@ -583,7 +588,7 @@ export const Field = (props: IFieldProps): IField => {
                 control = formControl;
 
                 // See if this field is readonly and a value exists
-                if (props.value && props.field.ReadOnlyField) {
+                if (props.value && isReadonly) {
                     // Get the field value as html
                     (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
                         // Set the class name
@@ -685,7 +690,7 @@ export const Field = (props: IFieldProps): IField => {
                                         let items = getMMSItems(Helper.Taxonomy.toObject(terms), controlProps.value);
 
                                         // See if this is not a required field and not a multi-select
-                                        if (!props.field.Required && !mmsFieldInfo.multi) {
+                                        if (!isRequired && !mmsFieldInfo.multi) {
                                             // Add a blank entry
                                             items = [{
                                                 text: "",
