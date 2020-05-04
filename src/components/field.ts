@@ -158,6 +158,12 @@ export const Field = (props: IFieldProps): IField => {
     let isReadonly = fieldLink && typeof (fieldLink.ReadOnly) === "boolean" ? fieldLink.ReadOnly : props.field.ReadOnlyField;
     let isRequired = fieldLink && typeof (fieldLink.Required) === "boolean" ? fieldLink.Required : props.field.Required;
 
+    // See if this is an internal field
+    if (props.field.CanBeDeleted == false) {
+        // Override the property based on the field property
+        isReadonly = isReadonly || props.field.ReadOnlyField;
+    }
+
     // Set the default properties for the control
     let controlProps: Components.IFormControlProps = {
         description: props.field.Description,
@@ -294,7 +300,6 @@ export const Field = (props: IFieldProps): IField => {
 
         // Lookup
         case SPTypes.FieldType.Lookup:
-
             // See if this field is readonly and a value exists
             if (isReadonly) {
                 // Update the value

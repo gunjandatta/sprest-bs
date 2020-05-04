@@ -593,11 +593,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             onControlRendered: (control, field) => {
                 // Update the mapper
                 mapper[field.InternalName].control = control;
-
-                // Call the event
-                return props.onControlRendered ? props.onControlRendered(control, field) : null;
             },
-            onControlRendering: props.onControlRendering,
             onValidate: props.onValidate,
             onError: msg => {
                 // Add the refresh link
