@@ -187,129 +187,438 @@ export const Field = (props: IFieldProps): IField => {
         value: props.value
     };
 
-    // See if this is a new form, a default value exists and no value has been defined
-    if (props.controlMode == SPTypes.ControlMode.New && props.field.DefaultValue && props.value == null) {
-        // Set the default value
-        controlProps.value = props.field.DefaultValue;
-    }
+    // See if this is a read-only field
+    if (isReadonly) {
+        let html = props.listInfo.item.FieldValuesAsHtml[props.field.InternalName];
 
-    // Set the type
-    let onControlRendered = null;
-    let onControlRendering = null;
-    switch (props.field.FieldTypeKind) {
-        // Boolean
-        case SPTypes.FieldType.Boolean:
-            // Set the type
-            controlProps.type = Components.FormControlTypes.Checkbox;
-
-            // Create the item
-            (controlProps as Components.IFormControlPropsCheckbox).items = [{ label: controlProps.label }]
-
-            // Clear the label
-            controlProps.label = "";
-            break;
-
-        // Choice
-        case SPTypes.FieldType.Choice:
-            let displayRadioButtons = props.field.SchemaXml.indexOf('Format="RadioButtons"') > 0 ? true : false;
-
-            // See if we are displaying radio buttons
-            if (displayRadioButtons) {
-                // Set the type
-                controlProps.type = Components.FormControlTypes.Switch;
-            } else {
-                // Set the type
-                controlProps.type = Components.FormControlTypes.Dropdown;
-            }
-
-            // Get the items
-            let items = getChoiceItems(displayRadioButtons, props.field as any, props.value);
-
-            // See if this is not a required field
-            if (!isRequired) {
-                // Add a blank entry
-                items = [{
-                    text: "",
-                    value: null
-                } as any].concat(items);
-            }
-
-            // Set the items
-            (controlProps as Components.IFormControlPropsDropdown).items = items;
-            break;
-
-        // Currency Field
-        case SPTypes.FieldType.Currency:
-            // Set the type
-            controlProps.type = Components.FormControlTypes.TextField;
+        // Detect html
+        if (/<*>/g.test(html)) {
+            // Update the control properties
+            controlProps.data = html;
+            controlProps.type = Components.FormControlTypes.Readonly;
+            controlProps.value = html;
 
             // Set the rendered event
-            onControlRendered = controlProps.onControlRendered;
-            controlProps.onControlRendered = (formControl) => {
-                // Save the control
-                control = formControl;
+            controlProps.onControlRendered = control => {
+                // Set the class name
+                control.el.classList.add("form-control");
+                control.el.style.backgroundColor = "#e9ecef";
 
-                // Call the event
-                onControlRendered ? onControlRendered(formControl) : null;
+                // Override the html rendered
+                control.el.innerHTML = control.props.data;
             }
-            break;
+        } else {
+            // Update the control properties
+            controlProps.isReadonly = true;
+            controlProps.type = props.field.FieldTypeKind == SPTypes.FieldType.Note ? Components.FormControlTypes.TextArea : Components.FormControlTypes.TextField;
+        }
+    } else {
+        // See if this is a new form, a default value exists and no value has been defined
+        if (props.controlMode == SPTypes.ControlMode.New && props.field.DefaultValue && props.value == null) {
+            // Set the default value
+            controlProps.value = props.field.DefaultValue;
+        }
 
-        // Date/Time
-        case SPTypes.FieldType.DateTime:
-            let showTime = (props.field as Types.SP.FieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
+        // Set the type
+        let onControlRendered = null;
+        let onControlRendering = null;
+        switch (props.field.FieldTypeKind) {
+            // Boolean
+            case SPTypes.FieldType.Boolean:
+                // Set the type
+                controlProps.type = Components.FormControlTypes.Checkbox;
 
-            // Set the type
-            controlProps.type = isReadonly ? Components.FormControlTypes.Readonly : null;
+                // Create the item
+                (controlProps as Components.IFormControlPropsCheckbox).items = [{ label: controlProps.label }]
 
-            // Set the rendered event
-            onControlRendered = controlProps.onControlRendered;
-            controlProps.onControlRendered = (formControl) => {
-                // Save the control
-                control = formControl;
+                // Clear the label
+                controlProps.label = "";
+                break;
 
-                // See if this field is readonly and a value exists
-                if (props.value && isReadonly) {
-                    // Get the field value as html
-                    (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
-                        // Set the class name
-                        control.el.classList.add("form-control");
-                        control.el.style.backgroundColor = "#e9ecef";
+            // Choice
+            case SPTypes.FieldType.Choice:
+                let displayRadioButtons = props.field.SchemaXml.indexOf('Format="RadioButtons"') > 0 ? true : false;
 
-                        // Override the html rendered
-                        control.el.innerHTML = values[props.field.InternalName];
-                    });
+                // See if we are displaying radio buttons
+                if (displayRadioButtons) {
+                    // Set the type
+                    controlProps.type = Components.FormControlTypes.Switch;
                 } else {
-                    // Render a date picker
-                    let dt = DateTime({
-                        el: control.el,
-                        showTime,
-                        value: control.props.value
-                    });
-
-                    // Set the get value event
-                    control.props.onGetValue = () => {
-                        // Return the value
-                        return dt.getValue();
-                    }
+                    // Set the type
+                    controlProps.type = Components.FormControlTypes.Dropdown;
                 }
 
-                // Call the event
-                onControlRendered ? onControlRendered(formControl) : null;
-            }
-            break;
+                // Get the items
+                let items = getChoiceItems(displayRadioButtons, props.field as any, props.value);
 
-        // Lookup
-        case SPTypes.FieldType.Lookup:
-            // See if this field is readonly and a value exists
-            if (isReadonly) {
+                // See if this is not a required field
+                if (!isRequired) {
+                    // Add a blank entry
+                    items = [{
+                        text: "",
+                        value: null
+                    } as any].concat(items);
+                }
+
+                // Set the items
+                (controlProps as Components.IFormControlPropsDropdown).items = items;
+                break;
+
+            // Currency Field
+            case SPTypes.FieldType.Currency:
+                // Set the type
+                controlProps.type = Components.FormControlTypes.TextField;
+
+                // Set the rendered event
+                onControlRendered = controlProps.onControlRendered;
+                controlProps.onControlRendered = (formControl) => {
+                    // Save the control
+                    control = formControl;
+
+                    // Call the event
+                    onControlRendered ? onControlRendered(formControl) : null;
+                }
+                break;
+
+            // Date/Time
+            case SPTypes.FieldType.DateTime:
+                let showTime = (props.field as Types.SP.FieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
+
+                // Set the type
+                controlProps.type = isReadonly ? Components.FormControlTypes.Readonly : null;
+
+                // Set the rendered event
+                onControlRendered = controlProps.onControlRendered;
+                controlProps.onControlRendered = (formControl) => {
+                    // Save the control
+                    control = formControl;
+
+                    // See if this field is readonly and a value exists
+                    if (props.value && isReadonly) {
+                        // Get the field value as html
+                        (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
+                            // Set the class name
+                            control.el.classList.add("form-control");
+                            control.el.style.backgroundColor = "#e9ecef";
+
+                            // Override the html rendered
+                            control.el.innerHTML = values[props.field.InternalName];
+                        });
+                    } else {
+                        // Render a date picker
+                        let dt = DateTime({
+                            el: control.el,
+                            showTime,
+                            value: control.props.value
+                        });
+
+                        // Set the get value event
+                        control.props.onGetValue = () => {
+                            // Return the value
+                            return dt.getValue();
+                        }
+                    }
+
+                    // Call the event
+                    onControlRendered ? onControlRendered(formControl) : null;
+                }
+                break;
+
+            // Lookup
+            case SPTypes.FieldType.Lookup:
+                // See if this field is readonly and a value exists
+                if (isReadonly) {
+                    // Update the value
+                    controlProps.type = Components.FormControlTypes.Readonly;
+
+                    // Ensure a value exists
+                    if (props.value) {
+                        // Set the rendered event
+                        onControlRendered = controlProps.onControlRendered;
+                        controlProps.onControlRendered = (formControl) => {
+                            // Get the field value as html
+                            (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
+                                // Set the class name
+                                control.el.classList.add("form-control");
+                                control.el.style.backgroundColor = "#e9ecef";
+
+                                // Override the html rendered
+                                control.el.innerHTML = values[props.field.InternalName];
+                            });
+                        }
+                    }
+                } else {
+                    // Set the rendering event
+                    onControlRendering = controlProps.onControlRendering;
+                    controlProps.onControlRendering = newProps => {
+                        // Update the control properties
+                        controlProps = newProps;
+
+                        // Display a loading message
+                        controlProps.loadingMessage = "Loading the Lookup Data";
+
+                        // Return a promise
+                        return new Promise((resolve, reject) => {
+                            // Load the field information
+                            Helper.ListFormField.create({
+                                field: props.field as any,
+                                listName: props.listInfo.list.Title,
+                                name: props.field.InternalName,
+                                webUrl: props.listInfo.webUrl
+                            }).then(
+                                // Success
+                                (fieldInfo: Helper.IListFormLookupFieldInfo) => {
+                                    // Save the field information
+                                    lookupFieldInfo = fieldInfo;
+
+                                    // Update the multi property
+                                    (controlProps as Helper.IListFormLookupFieldInfo).multi = lookupFieldInfo.multi;
+
+                                    // Get the drop down information
+                                    Helper.ListFormField.loadLookupData(lookupFieldInfo, 500).then(
+                                        // Success
+                                        items => {
+                                            // Set the type
+                                            controlProps.type = lookupFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
+
+                                            // Get the dropdown items
+                                            let ddlItems = getLookupItems(props.field as any, items, props.value);
+
+                                            // See if this is not a required field and not a multi-select
+                                            if (!isRequired && !lookupFieldInfo.multi) {
+                                                // Add a blank entry
+                                                ddlItems = [{
+                                                    text: "",
+                                                    value: null
+                                                } as any].concat(ddlItems);
+                                            }
+
+                                            // Set the items
+                                            (controlProps as Components.IFormControlPropsDropdown).items = ddlItems;
+
+                                            // Clear the element
+                                            controlProps.el ? controlProps.el.innerHTML = "" : null;
+
+                                            // Call the event
+                                            let returnVal = onControlRendering ? onControlRendering(controlProps) : null;
+                                            if (returnVal && returnVal.then) {
+                                                // Wait for the promise to complete
+                                                returnVal.then(props => {
+                                                    // Resolve the promise
+                                                    resolve(props || controlProps);
+                                                })
+                                            } else {
+                                                // Resolve the promise
+                                                resolve(controlProps);
+                                            }
+                                        },
+                                        // Error
+                                        msg => {
+                                            // Set the error message
+                                            let errorMessage = "Error loading the lookup field values for '" + props.field.InternalName + "'.";
+
+                                            // Display an error message
+                                            Components.Alert({
+                                                el: controlProps.el,
+                                                content: errorMessage,
+                                                type: Components.AlertTypes.Danger
+                                            });
+
+                                            // Call the error event
+                                            props.onError ? props.onError(errorMessage) : null;
+                                        }
+                                    );
+                                },
+                                // Error
+                                msg => {
+                                    // Set the error message
+                                    let errorMessage = "Error loading the field information for field '" + props.field.InternalName + "'.";
+
+                                    // Display an error message
+                                    controlProps.el.innerHTML = "";
+                                    Components.Alert({
+                                        el: controlProps.el,
+                                        content: "Error loading the lookup field information.",
+                                        type: Components.AlertTypes.Danger
+                                    });
+
+                                    // Call the error event
+                                    props.onError ? props.onError(errorMessage) : null;
+
+                                    // Reject the request
+                                    reject(msg);
+                                }
+                            );
+                        });
+                    };
+                }
+                break;
+
+            // Multi-Choice
+            case SPTypes.FieldType.MultiChoice:
+                let isChoice = props.field.SchemaXml.indexOf('Format="RadioButtons"') > 0 ? true : false;
+
+                // See if we are displaying radio buttons
+                if (isChoice) {
+                    // Update the properties
+                    (controlProps as Components.IFormControlPropsSwitch).multi = true;
+                    controlProps.type = Components.FormControlTypes.Switch;
+                } else {
+                    // Set the type
+                    controlProps.type = Components.FormControlTypes.MultiDropdown;
+                }
+
                 // Update the value
-                controlProps.type = Components.FormControlTypes.Readonly;
+                controlProps.value = (props.value ? props.value.results : null) || props.value;
 
-                // Ensure a value exists
+                // Set the items
+                (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(isChoice, props.field as any, props.value);
+                break;
+
+            // Note
+            case SPTypes.FieldType.Note:
+                // Set the properties
+                controlProps.type = Components.FormControlTypes.TextArea;
+                (controlProps as Components.IFormControlPropsTextField).rows = (props.field as Types.SP.FieldMultiLineText).NumberOfLines;
+                break;
+
+            // Number Field
+            case SPTypes.FieldType.Number:
+                let numberField = props.field as Types.SP.FieldNumber;
+                let numberProps = controlProps as Components.IFormControlPropsNumberField;
+
+                // See if this is a percentage
+                if (numberField.ShowAsPercentage) {
+                    // Set the type
+                    numberProps.type = Components.FormControlTypes.Range;
+
+                    // Set the max value
+                    numberProps.max = numberField.MaximumValue == Number.MAX_VALUE ? 100 : numberField.MaximumValue;
+
+                    // Set the min value
+                    numberProps.min = numberField.MinimumValue == -1.7976931348623157e+308 ? 0 : numberField.MinimumValue;
+
+                    // Set the value
+                    numberProps.value = numberProps.value == null || numberProps.value == Number.MIN_VALUE ? 0 : numberProps.value;
+                }
+                // Else, see if the min/max values are defined
+                else if (typeof (numberField.MaximumValue) == "number" && typeof (numberField.MinimumValue) == "number") {
+                    // Update the properties to display a range
+                    numberProps.type = Components.FormControlTypes.Range;
+                    numberProps.max = numberField.MaximumValue;
+                    numberProps.min = numberField.MinimumValue;
+                    numberProps.value = typeof (numberProps.value) == "number" ? numberProps.value : numberProps.min;
+                }
+                else {
+                    // Set the type
+                    numberProps.type = Components.FormControlTypes.TextField;
+                }
+                break;
+
+            // URL
+            case SPTypes.FieldType.URL:
+                let desc: Components.IFormControl = null;
+                let url: Components.IFormControl = null;
+                let value = props.value as Types.SP.FieldUrlValue;
+
+                // See if a value exists
                 if (props.value) {
-                    // Set the rendered event
-                    onControlRendered = controlProps.onControlRendered;
-                    controlProps.onControlRendered = (formControl) => {
+                    // Update the value
+                    controlProps.value = (props.value as Types.SP.FieldUrlValue).Url;
+                }
+
+                // Set the render event
+                onControlRendered = controlProps.onControlRendered;
+                controlProps.onControlRendered = (formControl) => {
+                    // Save the control
+                    control = formControl;
+
+                    // Clear the element
+                    control.el.innerHTML = "";
+
+                    // Render the description
+                    desc = Components.FormControl({
+                        className: "mb-1",
+                        el: control.el,
+                        placeholder: "Description",
+                        type: Components.FormControlTypes.TextField,
+                        value: value ? value.Description : null
+                    } as Components.IFormControlPropsTextField);
+
+                    // Render the url
+                    url = Components.FormControl({
+                        el: control.el,
+                        placeholder: "Url",
+                        type: Components.FormControlTypes.TextField,
+                        value: value ? value.Url : null
+                    } as Components.IFormControlPropsTextField);
+
+                    // Set the get value event
+                    control.props.onGetValue = (controlProps) => {
+                        // Return the value
+                        return {
+                            Description: desc.getValue(),
+                            Url: url.getValue()
+                        }
+                    }
+
+                    // Call the event
+                    onControlRendered ? onControlRendered(formControl) : null;
+                }
+
+                // Set the validate event
+                controlProps.onValidate = (control) => {
+                    let descValid, urlValid = false;
+
+                    // Get the form control elements
+                    let elFormControl = control.el.querySelectorAll(".form-control");
+                    let elDesc = elFormControl[0];
+                    let elUrl = elFormControl[1];
+
+                    // See if the description exists
+                    if (elDesc) {
+                        // Clear the classes
+                        elDesc.classList.remove("is-invalid");
+                        elDesc.classList.remove("is-valid");
+
+                        // Set the flag
+                        descValid = control.required ? (desc.getValue() ? true : false) : true;
+
+                        // Set the class
+                        elDesc.classList.add(descValid ? "is-valid" : "is-invalid");
+                    }
+
+                    // See if the url exists
+                    if (elUrl) {
+                        // Clear the classes
+                        elUrl.classList.remove("is-invalid");
+                        elUrl.classList.remove("is-valid");
+
+                        // Set the flag
+                        urlValid = control.required ? (url.getValue() ? true : false) : true;
+
+                        // Set the class
+                        elUrl.classList.add(urlValid ? "is-valid" : "is-invalid");
+                    }
+
+                    // Return the flag if this field is required
+                    return descValid && urlValid;
+                }
+                break;
+
+            // User
+            case SPTypes.FieldType.User:
+                // Set the type
+                controlProps.type = isReadonly ? Components.FormControlTypes.Readonly : PeoplePickerControlType;
+
+                // Set the rendered event
+                onControlRendered = controlProps.onControlRendered;
+                controlProps.onControlRendered = (formControl) => {
+                    // Save the control
+                    control = formControl;
+
+                    // See if this field is readonly and a value exists
+                    if (props.value && isReadonly) {
                         // Get the field value as html
                         (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
                             // Set the class name
@@ -320,458 +629,176 @@ export const Field = (props: IFieldProps): IField => {
                             control.el.innerHTML = values[props.field.InternalName];
                         });
                     }
+
+                    // Call the event
+                    onControlRendered ? onControlRendered(formControl) : null;
                 }
-            } else {
-                // Set the rendering event
-                onControlRendering = controlProps.onControlRendering;
-                controlProps.onControlRendering = newProps => {
-                    // Update the control properties
-                    controlProps = newProps;
+                break;
+        }
 
-                    // Display a loading message
-                    controlProps.loadingMessage = "Loading the Lookup Data";
-
-                    // Return a promise
-                    return new Promise((resolve, reject) => {
-                        // Load the field information
-                        Helper.ListFormField.create({
-                            field: props.field as any,
-                            listName: props.listInfo.list.Title,
-                            name: props.field.InternalName,
-                            webUrl: props.listInfo.webUrl
-                        }).then(
-                            // Success
-                            (fieldInfo: Helper.IListFormLookupFieldInfo) => {
-                                // Save the field information
-                                lookupFieldInfo = fieldInfo;
-
-                                // Update the multi property
-                                (controlProps as Helper.IListFormLookupFieldInfo).multi = lookupFieldInfo.multi;
-
-                                // Get the drop down information
-                                Helper.ListFormField.loadLookupData(lookupFieldInfo, 500).then(
-                                    // Success
-                                    items => {
-                                        // Set the type
-                                        controlProps.type = lookupFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
-
-                                        // Get the dropdown items
-                                        let ddlItems = getLookupItems(props.field as any, items, props.value);
-
-                                        // See if this is not a required field and not a multi-select
-                                        if (!isRequired && !lookupFieldInfo.multi) {
-                                            // Add a blank entry
-                                            ddlItems = [{
-                                                text: "",
-                                                value: null
-                                            } as any].concat(ddlItems);
-                                        }
-
-                                        // Set the items
-                                        (controlProps as Components.IFormControlPropsDropdown).items = ddlItems;
-
-                                        // Clear the element
-                                        controlProps.el ? controlProps.el.innerHTML = "" : null;
-
-                                        // Call the event
-                                        let returnVal = onControlRendering ? onControlRendering(controlProps) : null;
-                                        if (returnVal && returnVal.then) {
-                                            // Wait for the promise to complete
-                                            returnVal.then(props => {
-                                                // Resolve the promise
-                                                resolve(props || controlProps);
-                                            })
-                                        } else {
-                                            // Resolve the promise
-                                            resolve(controlProps);
-                                        }
-                                    },
-                                    // Error
-                                    msg => {
-                                        // Set the error message
-                                        let errorMessage = "Error loading the lookup field values for '" + props.field.InternalName + "'.";
-
-                                        // Display an error message
-                                        Components.Alert({
-                                            el: controlProps.el,
-                                            content: errorMessage,
-                                            type: Components.AlertTypes.Danger
-                                        });
-
-                                        // Call the error event
-                                        props.onError ? props.onError(errorMessage) : null;
-                                    }
-                                );
-                            },
-                            // Error
-                            msg => {
-                                // Set the error message
-                                let errorMessage = "Error loading the field information for field '" + props.field.InternalName + "'.";
-
-                                // Display an error message
-                                controlProps.el.innerHTML = "";
-                                Components.Alert({
-                                    el: controlProps.el,
-                                    content: "Error loading the lookup field information.",
-                                    type: Components.AlertTypes.Danger
-                                });
-
-                                // Call the error event
-                                props.onError ? props.onError(errorMessage) : null;
-
-                                // Reject the request
-                                reject(msg);
-                            }
-                        );
-                    });
-                };
-            }
-            break;
-
-        // Multi-Choice
-        case SPTypes.FieldType.MultiChoice:
-            let isChoice = props.field.SchemaXml.indexOf('Format="RadioButtons"') > 0 ? true : false;
-
-            // See if we are displaying radio buttons
-            if (isChoice) {
-                // Update the properties
-                (controlProps as Components.IFormControlPropsSwitch).multi = true;
-                controlProps.type = Components.FormControlTypes.Switch;
-            } else {
-                // Set the type
-                controlProps.type = Components.FormControlTypes.MultiDropdown;
-            }
-
-            // Update the value
-            controlProps.value = (props.value ? props.value.results : null) || props.value;
-
-            // Set the items
-            (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(isChoice, props.field as any, props.value);
-            break;
-
-        // Note
-        case SPTypes.FieldType.Note:
-            // Set the properties
-            controlProps.type = Components.FormControlTypes.TextArea;
-            (controlProps as Components.IFormControlPropsTextField).rows = (props.field as Types.SP.FieldMultiLineText).NumberOfLines;
-            break;
-
-        // Number Field
-        case SPTypes.FieldType.Number:
-            let numberField = props.field as Types.SP.FieldNumber;
-            let numberProps = controlProps as Components.IFormControlPropsNumberField;
-
-            // See if this is a percentage
-            if (numberField.ShowAsPercentage) {
-                // Set the type
-                numberProps.type = Components.FormControlTypes.Range;
-
-                // Set the max value
-                numberProps.max = numberField.MaximumValue == Number.MAX_VALUE ? 100 : numberField.MaximumValue;
-
-                // Set the min value
-                numberProps.min = numberField.MinimumValue == -1.7976931348623157e+308 ? 0 : numberField.MinimumValue;
-
-                // Set the value
-                numberProps.value = numberProps.value == null || numberProps.value == Number.MIN_VALUE ? 0 : numberProps.value;
-            }
-            // Else, see if the min/max values are defined
-            else if (typeof (numberField.MaximumValue) == "number" && typeof (numberField.MinimumValue) == "number") {
-                // Update the properties to display a range
-                numberProps.type = Components.FormControlTypes.Range;
-                numberProps.max = numberField.MaximumValue;
-                numberProps.min = numberField.MinimumValue;
-                numberProps.value = typeof (numberProps.value) == "number" ? numberProps.value : numberProps.min;
-            }
-            else {
-                // Set the type
-                numberProps.type = Components.FormControlTypes.TextField;
-            }
-            break;
-
-        // URL
-        case SPTypes.FieldType.URL:
-            let desc: Components.IFormControl = null;
-            let url: Components.IFormControl = null;
-            let value = props.value as Types.SP.FieldUrlValue;
-
-            // See if a value exists
-            if (props.value) {
-                // Update the value
-                controlProps.value = (props.value as Types.SP.FieldUrlValue).Url;
-            }
-
-            // Set the render event
-            onControlRendered = controlProps.onControlRendered;
-            controlProps.onControlRendered = (formControl) => {
-                // Save the control
-                control = formControl;
-
-                // Clear the element
-                control.el.innerHTML = "";
-
-                // Render the description
-                desc = Components.FormControl({
-                    className: "mb-1",
-                    el: control.el,
-                    placeholder: "Description",
-                    type: Components.FormControlTypes.TextField,
-                    value: value ? value.Description : null
-                } as Components.IFormControlPropsTextField);
-
-                // Render the url
-                url = Components.FormControl({
-                    el: control.el,
-                    placeholder: "Url",
-                    type: Components.FormControlTypes.TextField,
-                    value: value ? value.Url : null
-                } as Components.IFormControlPropsTextField);
-
-                // Set the get value event
-                control.props.onGetValue = (controlProps) => {
-                    // Return the value
-                    return {
-                        Description: desc.getValue(),
-                        Url: url.getValue()
-                    }
-                }
-
-                // Call the event
-                onControlRendered ? onControlRendered(formControl) : null;
-            }
-
-            // Set the validate event
-            controlProps.onValidate = (control) => {
-                let descValid, urlValid = false;
-
-                // Get the form control elements
-                let elFormControl = control.el.querySelectorAll(".form-control");
-                let elDesc = elFormControl[0];
-                let elUrl = elFormControl[1];
-
-                // See if the description exists
-                if (elDesc) {
-                    // Clear the classes
-                    elDesc.classList.remove("is-invalid");
-                    elDesc.classList.remove("is-valid");
-
-                    // Set the flag
-                    descValid = control.required ? (desc.getValue() ? true : false) : true;
-
-                    // Set the class
-                    elDesc.classList.add(descValid ? "is-valid" : "is-invalid");
-                }
-
-                // See if the url exists
-                if (elUrl) {
-                    // Clear the classes
-                    elUrl.classList.remove("is-invalid");
-                    elUrl.classList.remove("is-valid");
-
-                    // Set the flag
-                    urlValid = control.required ? (url.getValue() ? true : false) : true;
-
-                    // Set the class
-                    elUrl.classList.add(urlValid ? "is-valid" : "is-invalid");
-                }
-
-                // Return the flag if this field is required
-                return descValid && urlValid;
-            }
-            break;
-
-        // User
-        case SPTypes.FieldType.User:
+        // See if this is a taxonomy field
+        if (/^TaxonomyFieldType/.test(props.field.TypeAsString)) {
             // Set the type
-            controlProps.type = isReadonly ? Components.FormControlTypes.Readonly : PeoplePickerControlType;
+            controlProps.type = Components.FormControlTypes.Dropdown;
 
-            // Set the rendered event
-            onControlRendered = controlProps.onControlRendered;
-            controlProps.onControlRendered = (formControl) => {
-                // Save the control
-                control = formControl;
+            // Set a render event
+            onControlRendering = controlProps.onControlRendering;
+            controlProps.onControlRendering = newProps => {
+                // Update the control properties
+                controlProps = newProps;
 
-                // See if this field is readonly and a value exists
-                if (props.value && isReadonly) {
-                    // Get the field value as html
-                    (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
-                        // Set the class name
-                        control.el.classList.add("form-control");
-                        control.el.style.backgroundColor = "#e9ecef";
+                // Return a promise
+                return new Promise((resolve, reject) => {
+                    // Display a loading message
+                    controlProps.loadingMessage = "Loading the MMS Data";
 
-                        // Override the html rendered
-                        control.el.innerHTML = values[props.field.InternalName];
-                    });
-                }
+                    // Load the field information
+                    Helper.ListFormField.create({
+                        field: props.field,
+                        listName: props.listInfo.list.Title,
+                        name: props.field.InternalName,
+                        webUrl: props.listInfo.webUrl
+                    }).then(
+                        // Success
+                        (fieldInfo: Helper.IListFormMMSFieldInfo) => {
+                            // Save the field information
+                            mmsFieldInfo = fieldInfo;
 
-                // Call the event
-                onControlRendered ? onControlRendered(formControl) : null;
-            }
-            break;
-    }
+                            // Set the type
+                            controlProps.type = mmsFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
 
-    // See if this is a taxonomy field
-    if (/^TaxonomyFieldType/.test(props.field.TypeAsString)) {
-        // Set the type
-        controlProps.type = Components.FormControlTypes.Dropdown;
+                            // Load the value field
+                            Helper.ListFormField.loadMMSValueField(mmsFieldInfo).then(
+                                // Success
+                                valueField => {
+                                    // Set the value field
+                                    mmsFieldInfo.valueField = valueField;
 
-        // Set a render event
-        onControlRendering = controlProps.onControlRendering;
-        controlProps.onControlRendering = newProps => {
-            // Update the control properties
-            controlProps = newProps;
+                                    // See if this is a new form
+                                    if (props.controlMode == SPTypes.ControlMode.New) {
+                                        let fieldValue = [];
 
-            // Return a promise
-            return new Promise((resolve, reject) => {
-                // Display a loading message
-                controlProps.loadingMessage = "Loading the MMS Data";
-
-                // Load the field information
-                Helper.ListFormField.create({
-                    field: props.field,
-                    listName: props.listInfo.list.Title,
-                    name: props.field.InternalName,
-                    webUrl: props.listInfo.webUrl
-                }).then(
-                    // Success
-                    (fieldInfo: Helper.IListFormMMSFieldInfo) => {
-                        // Save the field information
-                        mmsFieldInfo = fieldInfo;
-
-                        // Set the type
-                        controlProps.type = mmsFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
-
-                        // Load the value field
-                        Helper.ListFormField.loadMMSValueField(mmsFieldInfo).then(
-                            // Success
-                            valueField => {
-                                // Set the value field
-                                mmsFieldInfo.valueField = valueField;
-
-                                // See if this is a new form
-                                if (props.controlMode == SPTypes.ControlMode.New) {
-                                    let fieldValue = [];
-
-                                    // Get the default values
-                                    let values = (props.field.DefaultValue || "").split(";#")
-                                    for (let i = 0; i < values.length; i++) {
-                                        let value = values[i].split("|");
-                                        if (value.length == 2) {
-                                            // Add the term id
-                                            fieldValue.push(value[1]);
+                                        // Get the default values
+                                        let values = (props.field.DefaultValue || "").split(";#")
+                                        for (let i = 0; i < values.length; i++) {
+                                            let value = values[i].split("|");
+                                            if (value.length == 2) {
+                                                // Add the term id
+                                                fieldValue.push(value[1]);
+                                            }
                                         }
+
+                                        // Update the field value
+                                        controlProps.value = fieldValue;
+                                    } else {
+                                        let fieldValue = props.value;
+
+                                        // Get the field value
+                                        let values = fieldValue && fieldValue.results ? fieldValue.results : [fieldValue];
+
+                                        // Clear the field values
+                                        fieldValue = [];
+
+                                        // Parse the values
+                                        for (let i = 0; i < values.length; i++) {
+                                            // Ensure the value exists
+                                            if (values[i] && values[i].TermGuid) {
+                                                // Add the value
+                                                fieldValue.push(values[i].TermGuid);
+                                            }
+                                        }
+
+                                        // Update the field value
+                                        controlProps.value = fieldValue;
                                     }
 
-                                    // Update the field value
-                                    controlProps.value = fieldValue;
-                                } else {
-                                    let fieldValue = props.value;
+                                    // Load the terms
+                                    Helper.ListFormField.loadMMSData(mmsFieldInfo).then(
+                                        // Success
+                                        terms => {
+                                            // Get the items
+                                            let items = getMMSItems(Helper.Taxonomy.toObject(terms), controlProps.value);
 
-                                    // Get the field value
-                                    let values = fieldValue && fieldValue.results ? fieldValue.results : [fieldValue];
+                                            // See if this is not a required field and not a multi-select
+                                            if (!isRequired && !mmsFieldInfo.multi) {
+                                                // Add a blank entry
+                                                items = [{
+                                                    text: "",
+                                                    value: null
+                                                } as any].concat(items);
+                                            }
 
-                                    // Clear the field values
-                                    fieldValue = [];
+                                            // Set the items
+                                            (controlProps as Components.IFormControlPropsDropdown).items = items;
 
-                                    // Parse the values
-                                    for (let i = 0; i < values.length; i++) {
-                                        // Ensure the value exists
-                                        if (values[i] && values[i].TermGuid) {
-                                            // Add the value
-                                            fieldValue.push(values[i].TermGuid);
-                                        }
-                                    }
+                                            // Clear the element
+                                            controlProps.el ? controlProps.el.innerHTML = "" : null;
 
-                                    // Update the field value
-                                    controlProps.value = fieldValue;
-                                }
-
-                                // Load the terms
-                                Helper.ListFormField.loadMMSData(mmsFieldInfo).then(
-                                    // Success
-                                    terms => {
-                                        // Get the items
-                                        let items = getMMSItems(Helper.Taxonomy.toObject(terms), controlProps.value);
-
-                                        // See if this is not a required field and not a multi-select
-                                        if (!isRequired && !mmsFieldInfo.multi) {
-                                            // Add a blank entry
-                                            items = [{
-                                                text: "",
-                                                value: null
-                                            } as any].concat(items);
-                                        }
-
-                                        // Set the items
-                                        (controlProps as Components.IFormControlPropsDropdown).items = items;
-
-                                        // Clear the element
-                                        controlProps.el ? controlProps.el.innerHTML = "" : null;
-
-                                        // Call the event
-                                        let returnVal = onControlRendering ? onControlRendering(controlProps) : null;
-                                        if (returnVal && returnVal.then) {
-                                            // Wait for the promise to complete
-                                            returnVal.then(props => {
+                                            // Call the event
+                                            let returnVal = onControlRendering ? onControlRendering(controlProps) : null;
+                                            if (returnVal && returnVal.then) {
+                                                // Wait for the promise to complete
+                                                returnVal.then(props => {
+                                                    // Resolve the promise
+                                                    resolve(props || controlProps);
+                                                })
+                                            } else {
                                                 // Resolve the promise
-                                                resolve(props || controlProps);
-                                            })
-                                        } else {
-                                            // Resolve the promise
-                                            resolve(controlProps);
+                                                resolve(controlProps);
+                                            }
+                                        },
+                                        // Error
+                                        msg => {
+                                            // Set the error message
+                                            let errorMessage = "Error loading the mms terms for '" + props.field.InternalName + "'.";
+
+                                            // Display an error message
+                                            Components.Alert({
+                                                el: controlProps.el,
+                                                content: errorMessage,
+                                                type: Components.AlertTypes.Danger
+                                            });
+
+                                            // Call the error event
+                                            props.onError ? props.onError(errorMessage) : null;
                                         }
-                                    },
-                                    // Error
-                                    msg => {
-                                        // Set the error message
-                                        let errorMessage = "Error loading the mms terms for '" + props.field.InternalName + "'.";
+                                    );
+                                },
+                                // Error
+                                msg => {
+                                    // Set the error message
+                                    let errorMessage = "Error loading the mms value field for '" + props.field.InternalName + "'.";
 
-                                        // Display an error message
-                                        Components.Alert({
-                                            el: controlProps.el,
-                                            content: errorMessage,
-                                            type: Components.AlertTypes.Danger
-                                        });
+                                    // Display an error message
+                                    Components.Alert({
+                                        el: controlProps.el,
+                                        content: errorMessage,
+                                        type: Components.AlertTypes.Danger
+                                    });
 
-                                        // Call the error event
-                                        props.onError ? props.onError(errorMessage) : null;
-                                    }
-                                );
-                            },
-                            // Error
-                            msg => {
-                                // Set the error message
-                                let errorMessage = "Error loading the mms value field for '" + props.field.InternalName + "'.";
+                                    // Call the error event
+                                    props.onError ? props.onError(errorMessage) : null;
 
-                                // Display an error message
-                                Components.Alert({
-                                    el: controlProps.el,
-                                    content: errorMessage,
-                                    type: Components.AlertTypes.Danger
-                                });
+                                    // Reject the request
+                                    reject(msg);
+                                }
+                            );
+                        },
+                        msg => {
+                            // Display an error message
+                            Components.Alert({
+                                el: controlProps.el,
+                                content: msg,
+                                type: Components.AlertTypes.Danger
+                            });
 
-                                // Call the error event
-                                props.onError ? props.onError(errorMessage) : null;
-
-                                // Reject the request
-                                reject(msg);
-                            }
-                        );
-                    },
-                    msg => {
-                        // Display an error message
-                        Components.Alert({
-                            el: controlProps.el,
-                            content: msg,
-                            type: Components.AlertTypes.Danger
-                        });
-
-                        // Call the error event
-                        props.onError ? props.onError(msg) : null;
-                    }
-                );
-            });
-        };
+                            // Call the error event
+                            props.onError ? props.onError(msg) : null;
+                        }
+                    );
+                });
+            };
+        }
     }
 
     // Return the field

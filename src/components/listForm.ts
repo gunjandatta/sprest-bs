@@ -57,6 +57,9 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         size: 100
     });
 
+    // This request shouldn't be needed anymore, the sprest lib has been updated to include this by default.
+    // TODO: Recode this and update the edit form logic
+
     // Load the list item
     props.info.list.Items(props.info.item.Id)
         // Get the html for the fields
