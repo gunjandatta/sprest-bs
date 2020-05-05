@@ -663,27 +663,25 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             let updateReadOnly = (control: Components.IFormControlProps) => {
                 // See if this control is readonly
                 if (control.isReadonly) {
-                    // Detect html
                     let html = props.info.item.FieldValuesAsHtml[field.InternalName];
+
+                    // Update the control properties
+                    control.type = Components.FormControlTypes.Readonly;
+
+                    // Detect html
                     if (/<*>/g.test(html)) {
                         // Update the control properties
                         control.data = html;
-                        control.type = Components.FormControlTypes.Readonly;
-                        control.value = html;
+                    }
 
-                        // Set the rendered event
-                        control.onControlRendered = control => {
-                            // Set the class name
-                            control.el.classList.add("form-control");
-                            control.el.style.backgroundColor = "#e9ecef";
+                    // Set the rendered event
+                    control.onControlRendered = control => {
+                        // Set the class name
+                        control.el.classList.add("form-control");
+                        control.el.style.backgroundColor = "#e9ecef";
 
-                            // Override the html rendered
-                            control.el.innerHTML = control.props.data;
-                        }
-                    } else {
-                        // Update the control properties
-                        control.isReadonly = true;
-                        control.type = field.FieldTypeKind == SPTypes.FieldType.Note ? Components.FormControlTypes.TextArea : Components.FormControlTypes.TextField;
+                        // Override the html rendered
+                        control.el.innerHTML = control.props.data || control.props.value;
                     }
                 }
             }
