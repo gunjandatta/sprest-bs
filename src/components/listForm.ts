@@ -681,7 +681,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                         control.el.style.backgroundColor = "#e9ecef";
 
                         // Override the html rendered
-                        control.el.innerHTML = control.props.data || control.props.value;
+                        control.el.innerHTML = html || control.props.value;
                     }
                 }
             }
