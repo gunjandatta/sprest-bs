@@ -659,7 +659,49 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     let form = Components.Form({
         el: props.el,
         onControlRendered: control => { return props.onControlRendered ? props.onControlRendered(control, props.info.fields[control.props.name]) : null },
-        onControlRendering: control => { return props.onControlRendering ? props.onControlRendering(control, props.info.fields[control.name]) : null; },
+        onControlRendering: control => {
+            let updateReadOnly = (control: Components.IFormControlProps) => {
+                // See if this control is readonly
+                if (control.isReadonly) {
+                    // Detect html
+                    let html = props.info.item.FieldValuesAsHtml[field.InternalName];
+                    if (/<*>/g.test(html)) {
+                        // Update the control properties
+                        control.data = html;
+                        control.type = Components.FormControlTypes.Readonly;
+                        control.value = html;
+
+                        // Set the rendered event
+                        control.onControlRendered = control => {
+                            // Set the class name
+                            control.el.classList.add("form-control");
+                            control.el.style.backgroundColor = "#e9ecef";
+
+                            // Override the html rendered
+                            control.el.innerHTML = control.props.data;
+                        }
+                    } else {
+                        // Update the control properties
+                        control.isReadonly = true;
+                        control.type = field.FieldTypeKind == SPTypes.FieldType.Note ? Components.FormControlTypes.TextArea : Components.FormControlTypes.TextField;
+                    }
+                }
+            }
+
+            // Execute the rendering event
+            let field = props.info.fields[control.name];
+            let returnVal = props.onControlRendering ? props.onControlRendering(control, field) : null;
+            if (returnVal && returnVal.then) {
+                // Wait for the event to complete
+                returnVal.then((ctrlProps) => {
+                    // Update the properties
+                    updateReadOnly(ctrlProps || control);
+                });
+            } else {
+                // Update the properties
+                updateReadOnly(control);
+            }
+        },
         rows: props.template || rows,
         value
     });

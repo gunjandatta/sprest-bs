@@ -173,33 +173,7 @@ export const Field = (props: IFieldProps): IField => {
         name: props.field.InternalName,
         onControlRendering: control => {
             // Execute the event
-            props.onControlRendering ? props.onControlRendering(control, props.field) : null;
-
-            // See if this control is readonly
-            if (control.isReadonly) {
-                // Detect html
-                let html = props.listInfo.item.FieldValuesAsHtml[props.field.InternalName];
-                if (/<*>/g.test(html)) {
-                    // Update the control properties
-                    controlProps.data = html;
-                    controlProps.type = Components.FormControlTypes.Readonly;
-                    controlProps.value = html;
-
-                    // Set the rendered event
-                    controlProps.onControlRendered = control => {
-                        // Set the class name
-                        control.el.classList.add("form-control");
-                        control.el.style.backgroundColor = "#e9ecef";
-
-                        // Override the html rendered
-                        control.el.innerHTML = control.props.data;
-                    }
-                } else {
-                    // Update the control properties
-                    controlProps.isReadonly = true;
-                    controlProps.type = props.field.FieldTypeKind == SPTypes.FieldType.Note ? Components.FormControlTypes.TextArea : Components.FormControlTypes.TextField;
-                }
-            }
+            return props.onControlRendering ? props.onControlRendering(control, props.field) : null;
         },
         onControlRendered: formControl => {
             // Save the control
