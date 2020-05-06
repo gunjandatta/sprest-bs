@@ -786,6 +786,12 @@ export const Field = (props: IFieldProps): IField => {
 
             // Update the field name/value, based on the type
             switch (props.field.FieldTypeKind) {
+                // Boolean
+                case SPTypes.FieldType.Boolean:
+                    // Update the value
+                    fieldValue.value = fieldValue.value ? true : false;
+                    break;
+
                 // Choice
                 case SPTypes.FieldType.Choice:
                     // See if this is a dropdown
