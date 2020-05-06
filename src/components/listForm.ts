@@ -710,13 +710,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
         // Parse the fields
         for (let fieldName in props.info.fields) {
-            // Skip readonly fields
-            let field = props.info.fields[fieldName];
-            if (field.ReadOnlyField) { continue; }
-
-            // Get the form field
+            // Get the form field and skip readonly fields
             let formField = mapper[fieldName];
-            if (formField == null) { continue; }
+            if (formField == null || formField.controlProps.isReadonly) { continue; }
 
             // Get the field value
             let fieldValue = formField.getValue();
@@ -742,15 +738,11 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             // Parse the fields
             for (let fieldName in props.info.fields) {
                 // Skip readonly fields
-                let field = props.info.fields[fieldName];
-                if (field.ReadOnlyField) { continue; }
-
-                // Get the form field
-                let formField = mapper[field.InternalName];
+                let formField = mapper[fieldName];
+                if (formField == null || formField.controlProps.isReadonly) { continue; }
 
                 // Validate the form field and update the status flag
-                let formValidation = formField ? formField.isValid() : isValid;
-                isValid = isValid && formValidation;
+                isValid = isValid && formField.isValid();
             }
 
             // Return the flag
