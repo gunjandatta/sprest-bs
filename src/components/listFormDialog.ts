@@ -80,7 +80,6 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
     modalProps.onRenderBody = (el) => {
         // Create an instance of the list form
         ListForm.create({
-            cacheKey: props.cacheKey,
             excludeFields: props.excludeFields,
             fields: props.fields,
             item: props.item,
