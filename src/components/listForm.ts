@@ -638,7 +638,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             let updateReadOnly = (control: Components.IFormControlProps) => {
                 // See if this control is readonly
                 if (control.isReadonly) {
-                    let html = props.info.item.FieldValuesAsHtml[field.InternalName];
+                    let html = props.info.fieldValuesAsHtml[field.InternalName];
 
                     // Update the control properties
                     control.type = Components.FormControlTypes.Readonly;
@@ -657,6 +657,12 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
                         // Override the html rendered
                         control.el.innerHTML = html || control.props.value;
+                    }
+
+                    // See if this is a user field
+                    if (field.FieldTypeKind == SPTypes.FieldType.User && window["ProcessImn"]) {
+                        // Enable the persona
+                        window["ProcessImn"]();
                     }
                 }
             }
