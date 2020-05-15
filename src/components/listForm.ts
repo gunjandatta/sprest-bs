@@ -57,189 +57,164 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         size: 100
     });
 
-    // This request shouldn't be needed anymore, the sprest lib has been updated to include this by default.
-    // TODO: Recode this and update the edit form logic
+    let hasUserField = false;
+    let mapper: { [key: string]: Components.IFormControlProps } = {};
+    let rows: Array<Components.IFormRow> = [];
 
-    // Load the list item
-    props.info.list.Items(props.info.item.Id)
-        // Get the html for the fields
-        .FieldValuesAsHtml()
-        // Execute the request
-        .execute(
-            // Success
-            formValues => {
-                let hasUserField = false;
-                let mapper: { [key: string]: Components.IFormControlProps } = {};
-                let rows: Array<Components.IFormRow> = [];
+    // See if we are rendering attachments
+    if (props.info.attachments) {
+        // Render the attachments
+        rows.push({
+            columns: [{
+                control: {
+                    label: "Attachments",
+                    name: "Attachments",
+                    onControlRendered: control => {
+                        let items: Array<Components.IToolbarItem> = [];
 
-                // See if we are rendering attachments
-                if (props.info.attachments) {
-                    // Render the attachments
-                    rows.push({
-                        columns: [{
-                            control: {
-                                label: "Attachments",
-                                name: "Attachments",
-                                onControlRendered: control => {
-                                    let items: Array<Components.IToolbarItem> = [];
+                        // Parse the attachments
+                        for (let i = 0; i < props.info.attachments.length; i++) {
+                            let attachment = props.info.attachments[i];
 
-                                    // Parse the attachments
-                                    for (let i = 0; i < props.info.attachments.length; i++) {
-                                        let attachment = props.info.attachments[i];
-
-                                        // Add the item
-                                        items.push({
-                                            buttons: [{
-                                                className: "mr-1",
-                                                href: attachment.ServerRelativeUrl,
-                                                isSmall: true,
-                                                text: attachment.FileName
-                                            }]
-                                        });
-                                    }
-
-                                    // Render a toolbar
-                                    Components.Toolbar({
-                                        el: control.el,
-                                        items
-                                    });
-                                }
-                            }
-                        }]
-                    });
-                }
-
-                // Parse the fields to render
-                let fieldNames = getFieldsToRender(props);
-                for (let i = 0; i < fieldNames.length; i++) {
-                    let fieldName = fieldNames[i];
-                    let field = props.info.fields[fieldName];
-                    let html: string = formValues[fieldName] || formValues[fieldName.replace(/\_/g, "_x005f_")] || "";
-
-                    // Ensure the field exists
-                    if (field == null) {
-                        // Log
-                        console.error("[List Form] Field '" + fieldName + "' does not exist. Check the list or query.");
-                        continue;
-                    }
-
-                    // See if this is a note field
-                    if (field.FieldTypeKind == SPTypes.FieldType.Note) {
-                        // Update the html
-                        html = html.replace(/\r?\n/g, '<br />');
-                    }
-                    // Else, see if this is a user field
-                    else if (field.FieldTypeKind == SPTypes.FieldType.User) {
-                        // Set the flag
-                        hasUserField = true;
-                    }
-
-                    // Set the control
-                    mapper[fieldName] = {
-                        data: html,
-                        description: field.Description,
-                        isReadonly: true,
-                        label: field.Title,
-                        name: field.InternalName,
-                        type: Components.FormControlTypes.TextField,
-                        value: html
-                    };
-
-                    // Update the type, based on the field
-                    switch (field.FieldTypeKind) {
-                        case SPTypes.FieldType.Note:
-                            mapper[fieldName].type = Components.FormControlTypes.TextArea;
-                            break;
-                    }
-
-                    // Detect html
-                    if (/<*>/g.test(html)) {
-                        // Update the control to be read-only
-                        mapper[fieldName].type = Components.FormControlTypes.Readonly;
-
-                        // Set the rendered event
-                        mapper[fieldName].onControlRendered = control => {
-                            // Set the class name
-                            control.el.classList.add("form-control");
-                            control.el.style.backgroundColor = "#e9ecef";
-
-                            // Override the html rendered
-                            control.el.innerHTML = control.props.data;
+                            // Add the item
+                            items.push({
+                                buttons: [{
+                                    className: "mr-1",
+                                    href: attachment.ServerRelativeUrl,
+                                    isSmall: true,
+                                    text: attachment.FileName
+                                }]
+                            });
                         }
-                    }
 
-                    // Add the row
-                    rows.push({
-                        columns: [{
-                            control: mapper[fieldName]
-                        }]
-                    });
-                }
-
-                // See if there is a template
-                if (props.template) {
-                    let updateControl = (refControl) => {
-                        // Get the control from the mapper
-                        let control = refControl ? mapper[refControl.name] : null;
-
-                        // Ensure the controls exists
-                        if (control && refControl) {
-                            // Parse the control keys
-                            for (let key in control) {
-                                // Skip if a value is already defined
-                                if (refControl[key]) { continue; }
-
-                                // Update the property
-                                refControl[key] = control[key];
-                            }
-                        }
-                    }
-
-                    // Parse the template
-                    for (let i = 0; i < props.template.length; i++) {
-                        let row = props.template[i];
-
-                        // Parse the columns if there are columns
-                        let columns = row.columns || [];
-                        for (let j = 0; j < columns.length; j++) {
-                            let column = columns[j];
-
-                            // Update the control
-                            updateControl(column.control);
-                        }
+                        // Render a toolbar
+                        Components.Toolbar({
+                            el: control.el,
+                            items
+                        });
                     }
                 }
+            }]
+        });
+    }
 
-                // Remove the progress bar
-                progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
+    // Parse the fields to render
+    let fieldNames = getFieldsToRender(props);
+    for (let i = 0; i < fieldNames.length; i++) {
+        let fieldName = fieldNames[i];
+        let field = props.info.fields[fieldName];
+        let html: string = props.info.fieldValuesAsHtml[fieldName] || props.info.fieldValuesAsHtml[fieldName.replace(/\_/g, "_x005f_")] || "";
 
-                // Render the form
-                form = Components.Form({
-                    el: props.el,
-                    onControlRendered: control => { return props.onControlRendered ? props.onControlRendered(control, props.info.fields[control.props.name]) : null; },
-                    onControlRendering: control => { return props.onControlRendering ? props.onControlRendering(control, props.info.fields[control.name]) : null; },
-                    rows: props.template || rows
-                });
+        // Ensure the field exists
+        if (field == null) {
+            // Log
+            console.error("[List Form] Field '" + fieldName + "' does not exist. Check the list or query.");
+            continue;
+        }
 
-                // See if we are displaying a user field
-                if (hasUserField) {
-                    // Enable the persona
-                    window["ProcessImn"]();
-                }
-            },
-            // Error
-            () => {
-                // Remove the progress bar
-                progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
+        // See if this is a note field
+        if (field.FieldTypeKind == SPTypes.FieldType.Note) {
+            // Update the html
+            html = html.replace(/\r?\n/g, '<br />');
+        }
+        // Else, see if this is a user field
+        else if (field.FieldTypeKind == SPTypes.FieldType.User) {
+            // Set the flag
+            hasUserField = true;
+        }
 
-                // Display an alert
-                Components.Alert({
-                    el: props.el,
-                    content: "Error loading the form information...",
-                    type: Components.AlertTypes.Danger
-                });
+        // Set the control
+        mapper[fieldName] = {
+            data: html,
+            description: field.Description,
+            isReadonly: true,
+            label: field.Title,
+            name: field.InternalName,
+            type: Components.FormControlTypes.TextField,
+            value: html
+        };
+
+        // Update the type, based on the field
+        switch (field.FieldTypeKind) {
+            case SPTypes.FieldType.Note:
+                mapper[fieldName].type = Components.FormControlTypes.TextArea;
+                break;
+        }
+
+        // Detect html
+        if (/<*>/g.test(html)) {
+            // Update the control to be read-only
+            mapper[fieldName].type = Components.FormControlTypes.Readonly;
+
+            // Set the rendered event
+            mapper[fieldName].onControlRendered = control => {
+                // Set the class name
+                control.el.classList.add("form-control");
+                control.el.style.backgroundColor = "#e9ecef";
+
+                // Override the html rendered
+                control.el.innerHTML = control.props.data;
             }
-        );
+        }
+
+        // Add the row
+        rows.push({
+            columns: [{
+                control: mapper[fieldName]
+            }]
+        });
+    }
+
+    // See if there is a template
+    if (props.template) {
+        let updateControl = (refControl) => {
+            // Get the control from the mapper
+            let control = refControl ? mapper[refControl.name] : null;
+
+            // Ensure the controls exists
+            if (control && refControl) {
+                // Parse the control keys
+                for (let key in control) {
+                    // Skip if a value is already defined
+                    if (refControl[key]) { continue; }
+
+                    // Update the property
+                    refControl[key] = control[key];
+                }
+            }
+        }
+
+        // Parse the template
+        for (let i = 0; i < props.template.length; i++) {
+            let row = props.template[i];
+
+            // Parse the columns if there are columns
+            let columns = row.columns || [];
+            for (let j = 0; j < columns.length; j++) {
+                let column = columns[j];
+
+                // Update the control
+                updateControl(column.control);
+            }
+        }
+    }
+
+    // Remove the progress bar
+    progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
+
+    // Render the form
+    form = Components.Form({
+        el: props.el,
+        onControlRendered: control => { return props.onControlRendered ? props.onControlRendered(control, props.info.fields[control.props.name]) : null; },
+        onControlRendering: control => { return props.onControlRendering ? props.onControlRendering(control, props.info.fields[control.name]) : null; },
+        rows: props.template || rows
+    });
+
+    // See if we are displaying a user field
+    if (hasUserField) {
+        // Enable the persona
+        window["ProcessImn"]();
+    }
 
     // Return the form informaiton
     return {

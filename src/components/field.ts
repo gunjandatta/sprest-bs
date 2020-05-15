@@ -269,15 +269,13 @@ export const Field = (props: IFieldProps): IField => {
 
                 // See if this field is readonly and a value exists
                 if (props.value && isReadonly) {
-                    // Get the field value as html
-                    (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
-                        // Set the class name
-                        control.el.classList.add("form-control");
-                        control.el.style.backgroundColor = "#e9ecef";
 
-                        // Override the html rendered
-                        control.el.innerHTML = values[props.field.InternalName];
-                    });
+                    // Set the class name
+                    control.el.classList.add("form-control");
+                    control.el.style.backgroundColor = "#e9ecef";
+
+                    // Override the html rendered
+                    control.el.innerHTML = props.listInfo.fieldValuesAsHtml[props.field.InternalName];
                 } else {
                     // Render a date picker
                     let dt = DateTime({
@@ -310,15 +308,12 @@ export const Field = (props: IFieldProps): IField => {
                     // Set the rendered event
                     onControlRendered = controlProps.onControlRendered;
                     controlProps.onControlRendered = (formControl) => {
-                        // Get the field value as html
-                        (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
-                            // Set the class name
-                            control.el.classList.add("form-control");
-                            control.el.style.backgroundColor = "#e9ecef";
+                        // Set the class name
+                        control.el.classList.add("form-control");
+                        control.el.style.backgroundColor = "#e9ecef";
 
-                            // Override the html rendered
-                            control.el.innerHTML = values[props.field.InternalName];
-                        });
+                        // Override the html rendered
+                        control.el.innerHTML = props.listInfo.fieldValuesAsHtml[props.field.InternalName];
                     }
                 }
             } else {
@@ -593,15 +588,12 @@ export const Field = (props: IFieldProps): IField => {
 
                 // See if this field is readonly and a value exists
                 if (props.value && isReadonly) {
-                    // Get the field value as html
-                    (props.listInfo.item as Types.SP.ListItem).FieldValuesAsHtml().execute(values => {
-                        // Set the class name
-                        control.el.classList.add("form-control");
-                        control.el.style.backgroundColor = "#e9ecef";
+                    // Set the class name
+                    control.el.classList.add("form-control");
+                    control.el.style.backgroundColor = "#e9ecef";
 
-                        // Override the html rendered
-                        control.el.innerHTML = values[props.field.InternalName];
-                    });
+                    // Override the html rendered
+                    control.el.innerHTML = props.listInfo.fieldValuesAsHtml[props.field.InternalName];
                 }
 
                 // Call the event
