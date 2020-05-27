@@ -1,24 +1,16 @@
-export * from "gd-bs";
-export * from "gd-sprest";
+export * from "./core";
 
-import { Components, Icons, IconTypes, WebParts } from "./rest";
-export { Components, Icons, IconTypes, WebParts }
+import { Icons, IconTypes } from "gd-bs";
+export { Icons, IconTypes }
 
-import "./styles.scss";
-declare var GD;
+// Ensure the global variable exists
+if (window && window["$REST"]) {
+    // Update the $REST global variable
+    window["$REST"].IconTypes = IconTypes;
+    window["$REST"].Icons = Icons;
+}
 
-// See if the window exists
-if (window) {
-    // Ensure the global variable exists
-    if (window["$REST"]) {
-        // Update the $REST global variable
-        window["$REST"].Components = Components;
-        window["$REST"].IconTypes = IconTypes;
-        window["$REST"].Icons = Icons;
-        window["$REST"].jQuery = GD.jQuery;
-        window["$REST"].WebParts = WebParts;
-    }
-
+if (window["SP"] && window["SP"].SOD) {
     // Notify waiting scripts
     window["SP"] ? window["SP"].SOD.notifyScriptLoadedAndExecuteWaitingJobs("gd-sprest-bs") : null;
     window["SP"] ? window["SP"].SOD.notifyScriptLoadedAndExecuteWaitingJobs("gd-sprest-bs.js") : null;

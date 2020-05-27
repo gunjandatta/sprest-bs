@@ -219,7 +219,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar gd_bs_1 = __webpack_require__(/*! gd-bs */ \"gd-bs\");\n\nexports.Components = gd_bs_1.Components;\n\nvar datetime_1 = __webpack_require__(/*! ./datetime */ \"./src/components/datetime.ts\");\n\nvar field_1 = __webpack_require__(/*! ./field */ \"./src/components/field.ts\");\n\nvar listForm_1 = __webpack_require__(/*! ./listForm */ \"./src/components/listForm.ts\");\n\nvar listFormDialog_1 = __webpack_require__(/*! ./listFormDialog */ \"./src/components/listFormDialog.ts\");\n\nvar peoplePicker_1 = __webpack_require__(/*! ./peoplePicker */ \"./src/components/peoplePicker.ts\"); // Extend the components\n\n\ngd_bs_1.Components[\"DateTime\"] = datetime_1.DateTime;\ngd_bs_1.Components[\"Field\"] = field_1.Field;\ngd_bs_1.Components[\"ListForm\"] = listForm_1.ListForm;\ngd_bs_1.Components[\"ListFormDialog\"] = listFormDialog_1.ListFormDialog;\ngd_bs_1.Components[\"PeoplePicker\"] = peoplePicker_1.PeoplePicker;\n\n//# sourceURL=webpack:///./src/components/index.ts?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar gd_bs_1 = __webpack_require__(/*! gd-bs */ \"gd-bs\");\n\nvar datetime_1 = __webpack_require__(/*! ./datetime */ \"./src/components/datetime.ts\");\n\nvar field_1 = __webpack_require__(/*! ./field */ \"./src/components/field.ts\");\n\nvar listForm_1 = __webpack_require__(/*! ./listForm */ \"./src/components/listForm.ts\");\n\nvar listFormDialog_1 = __webpack_require__(/*! ./listFormDialog */ \"./src/components/listFormDialog.ts\");\n\nvar peoplePicker_1 = __webpack_require__(/*! ./peoplePicker */ \"./src/components/peoplePicker.ts\"); // Ensure the Components reference exists\n\n\nif (gd_bs_1.Components == null) {\n  // Update it to the global variable\n  gd_bs_1.Components = window[\"GD\"] && window[\"GD\"].Components;\n} // Extend the components\n\n\ngd_bs_1.Components[\"DateTime\"] = datetime_1.DateTime;\ngd_bs_1.Components[\"Field\"] = field_1.Field;\ngd_bs_1.Components[\"ListForm\"] = listForm_1.ListForm;\ngd_bs_1.Components[\"ListFormDialog\"] = listFormDialog_1.ListFormDialog;\ngd_bs_1.Components[\"PeoplePicker\"] = peoplePicker_1.PeoplePicker; // Export the components\n\nexports[\"default\"] = gd_bs_1.Components;\n\n//# sourceURL=webpack:///./src/components/index.ts?");
 
 /***/ }),
 
@@ -259,6 +259,18 @@ eval("\n\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol
 
 /***/ }),
 
+/***/ "./src/core.ts":
+/*!*********************!*\
+  !*** ./src/core.ts ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nfunction __export(m) {\n  for (var p in m) {\n    if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n  }\n}\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n}); // Core Libraries\n\n__export(__webpack_require__(/*! gd-bs */ \"gd-bs\"));\n\n__export(__webpack_require__(/*! gd-sprest */ \"gd-sprest\")); // SharePoint Components/WebParts\n\n\nvar gd_bs_1 = __webpack_require__(/*! gd-bs */ \"gd-bs\");\n\nvar components_1 = __webpack_require__(/*! ./components */ \"./src/components/index.ts\");\n\nexports.Components = components_1[\"default\"];\n\nvar WebParts = __webpack_require__(/*! ./webparts */ \"./src/webparts/index.ts\");\n\nexports.WebParts = WebParts; // Styling\n\n__webpack_require__(/*! ./styles.scss */ \"./src/styles.scss\"); // Ensure the global variable exists\n\n\nvar $REST = window && window[\"$REST\"];\n\nif ($REST) {\n  // Update the $REST global variable\n  $REST.Components = components_1[\"default\"];\n  $REST.jQuery = gd_bs_1.jQuery;\n  $REST.WebParts = WebParts;\n}\n\n//# sourceURL=webpack:///./src/core.ts?");
+
+/***/ }),
+
 /***/ "./src/index-icons.ts":
 /*!****************************!*\
   !*** ./src/index-icons.ts ***!
@@ -267,19 +279,7 @@ eval("\n\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nfunction __export(m) {\n  for (var p in m) {\n    if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n  }\n}\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\n__export(__webpack_require__(/*! gd-bs */ \"gd-bs\"));\n\n__export(__webpack_require__(/*! gd-sprest */ \"gd-sprest\"));\n\nvar rest_1 = __webpack_require__(/*! ./rest */ \"./src/rest.ts\");\n\nexports.Components = rest_1.Components;\nexports.Icons = rest_1.Icons;\nexports.IconTypes = rest_1.IconTypes;\nexports.WebParts = rest_1.WebParts;\n\n__webpack_require__(/*! ./styles.scss */ \"./src/styles.scss\"); // See if the window exists\n\n\nif (window) {\n  // Ensure the global variable exists\n  if (window[\"$REST\"]) {\n    // Update the $REST global variable\n    window[\"$REST\"].Components = rest_1.Components;\n    window[\"$REST\"].IconTypes = rest_1.IconTypes;\n    window[\"$REST\"].Icons = rest_1.Icons;\n    window[\"$REST\"].jQuery = GD.jQuery;\n    window[\"$REST\"].WebParts = rest_1.WebParts;\n  } // Notify waiting scripts\n\n\n  window[\"SP\"] ? window[\"SP\"].SOD.notifyScriptLoadedAndExecuteWaitingJobs(\"gd-sprest-bs\") : null;\n  window[\"SP\"] ? window[\"SP\"].SOD.notifyScriptLoadedAndExecuteWaitingJobs(\"gd-sprest-bs.js\") : null;\n}\n\n//# sourceURL=webpack:///./src/index-icons.ts?");
-
-/***/ }),
-
-/***/ "./src/rest.ts":
-/*!*********************!*\
-  !*** ./src/rest.ts ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar gd_bs_1 = __webpack_require__(/*! gd-bs */ \"gd-bs\");\n\nexports.Icons = gd_bs_1.Icons;\nexports.IconTypes = gd_bs_1.IconTypes;\nexports.jQuery = gd_bs_1.jQuery;\n\nvar components_1 = __webpack_require__(/*! ./components */ \"./src/components/index.ts\");\n\nexports.Components = components_1.Components;\n\nvar WebParts = __webpack_require__(/*! ./webparts */ \"./src/webparts/index.ts\");\n\nexports.WebParts = WebParts;\n\n//# sourceURL=webpack:///./src/rest.ts?");
+eval("\n\nfunction __export(m) {\n  for (var p in m) {\n    if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n  }\n}\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\n__export(__webpack_require__(/*! ./core */ \"./src/core.ts\"));\n\nvar gd_bs_1 = __webpack_require__(/*! gd-bs */ \"gd-bs\");\n\nexports.Icons = gd_bs_1.Icons;\nexports.IconTypes = gd_bs_1.IconTypes; // Ensure the global variable exists\n\nif (window && window[\"$REST\"]) {\n  // Update the $REST global variable\n  window[\"$REST\"].IconTypes = gd_bs_1.IconTypes;\n  window[\"$REST\"].Icons = gd_bs_1.Icons;\n}\n\nif (window[\"SP\"] && window[\"SP\"].SOD) {\n  // Notify waiting scripts\n  window[\"SP\"] ? window[\"SP\"].SOD.notifyScriptLoadedAndExecuteWaitingJobs(\"gd-sprest-bs\") : null;\n  window[\"SP\"] ? window[\"SP\"].SOD.notifyScriptLoadedAndExecuteWaitingJobs(\"gd-sprest-bs.js\") : null;\n}\n\n//# sourceURL=webpack:///./src/index-icons.ts?");
 
 /***/ }),
 
