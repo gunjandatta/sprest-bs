@@ -5,13 +5,14 @@
   "main": "dist/gd-sprest-bs-icons.min.js",
   "typings": "@types/index.d.ts",
   "scripts": {
-    "all": "node clean.js && npm run build-all && npm run prod-all",
+    "all": "node clean.js && npm run build-all && npm run prod-all && npm run typings",
     "build-all": "npm run build && npm run build-icons",
     "build": "webpack --mode=development",
     "build-icons": "webpack --mode=development --icons=true",
     "prod-all": "npm run prod && npm run prod-icons",
     "prod": "webpack --mode=production",
-    "prod-icons": "webpack --mode=production --icons=true"
+    "prod-icons": "webpack --mode=production --icons=true",
+    "typings": "dts-bundle --out ../dist/gd-sprest-bs.d.ts --name gd-sprest-bs --main ./@types/index.d.ts"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
   },
   "homepage": "https://dattabase.com/extras/bs",
   "dependencies": {
+    "dts-bundle": "^0.7.3",
     "gd-bs": "^2.5.0",
     "gd-sprest": "^5.7.3",
     "gd-sprest-def": "^0.7.8"
