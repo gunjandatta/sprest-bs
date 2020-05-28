@@ -1,4 +1,4 @@
-import { IDropdownItem } from "gd-bs/components/dropdown"
+import { IDropdownItem } from "gd-bs/@types/components/dropdown"
 import { Helper } from "gd-sprest";
 import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "./wp";
 

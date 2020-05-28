@@ -1,6 +1,6 @@
-import { IButtonProps } from "gd-bs/components/button";
-import { IForm } from "gd-bs/components/form";
-import { IFormControl, IFormControlProps } from "gd-bs/components/formControl";
+import { IButtonProps } from "gd-bs/@types/components/button";
+import { IForm } from "gd-bs/@types/components/form";
+import { IFormControl, IFormControlProps } from "gd-bs/@types/components/formControl";
 
 /**
  * ### Web Part

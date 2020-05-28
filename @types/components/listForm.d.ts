@@ -1,6 +1,6 @@
 import { Helper, Types } from "gd-sprest";
-import { IFormRow } from "gd-bs/components/form";
-import { IFormControl, IFormControlProps } from "gd-bs/components/formControl";
+import { IFormRow } from "gd-bs/@types/components/form";
+import { IFormControl, IFormControlProps } from "gd-bs/@types/components/formControl";
 
 /**
  * List Form

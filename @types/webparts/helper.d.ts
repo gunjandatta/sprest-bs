@@ -1,5 +1,5 @@
-import { IForm } from "gd-bs/components/form";
-import { IFormControlProps } from "gd-bs/components/formControl";
+import { IForm } from "gd-bs/@types/components/form";
+import { IFormControlProps } from "gd-bs/@types/components/formControl";
 import { IWebPartInfo } from "./wp";
 
 /**

@@ -1,4 +1,4 @@
-import { INav } from "gd-bs/components/nav";
+import { INav } from "gd-bs/@types/components/nav";
 import { IWebPart, IWebPartProps } from "./wp";
 
 /**
