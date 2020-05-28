@@ -19,7 +19,8 @@
   },
   "keywords": [
     "Bootstrap",
-    "SharePoint"
+    "SharePoint",
+    "SPFx"
   ],
   "author": "Gunjan Datta <me@dattabase.com> (https://dattabase.com)",
   "license": "MIT",
