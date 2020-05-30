@@ -5,19 +5,10 @@ module.exports = (env, argv) => {
 
     // Return the configuration
     var cfg = {
-        entry: [
-            "./node_modules/gd-sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
-            "./lib/jquery-ui-1.12.1.custom/jquery-ui" + (isDev ? "" : ".min") + ".js",
-            "./build/index.js"
-        ],
+        entry: "./build/index.js",
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: "gd-sprest-bs" + (isDev ? "" : ".min") + ".js"
-        },
-        externals: {
-            "gd-sprest": "$REST",
-            "$": "GD.jQuery",
-            "jquery": "GD.jQuery"
         },
         module: {
             rules: [

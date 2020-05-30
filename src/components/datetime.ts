@@ -1,6 +1,9 @@
 import { jQuery, Components } from "gd-bs";
 import { IDateTime, IDateTimeProps } from "../../@types/components";
 
+// Include jQuery-ui datepicker library
+import "../../lib/jquery-ui-1.12.1.custom/jquery-ui.min.js";
+
 /**
  * Date/Time
  */

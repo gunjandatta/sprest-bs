@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var gd_bs_1 = require("gd-bs");
+// Include jQuery-ui datepicker library
+require("../../lib/jquery-ui-1.12.1.custom/jquery-ui.min.js");
 /**
  * Date/Time
  */
