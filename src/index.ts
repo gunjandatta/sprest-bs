@@ -11,7 +11,7 @@ import * as WebParts from "./webparts";
 export { Components, Icons, IconTypes, WebParts }
 
 // Styling
-import "./styles.scss";
+import "./styles";
 
 // Ensure the global variable exists
 const $REST = window && window["$REST"];

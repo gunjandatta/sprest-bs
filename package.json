@@ -1,12 +1,13 @@
 {
   "name": "gd-sprest-bs",
-  "version": "4.5.4",
+  "version": "4.5.6",
   "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
-  "main": "dist/gd-sprest-bs.min.js",
+  "main": "build/index.js",
   "typings": "@types/index.d.ts",
   "scripts": {
     "all": "node clean.js && npm run build && npm run prod && npm run typings",
-    "build": "webpack --mode=development",
+    "build": "tsc && npm run build-sass && webpack --mode=development",
+    "build-sass": "webpack --config webpack.sass.js",
     "prod": "webpack --mode=production",
     "typings": "dts-bundle --out ../dist/gd-sprest-bs.d.ts --name gd-sprest-bs --main ./@types/index.d.ts"
   },

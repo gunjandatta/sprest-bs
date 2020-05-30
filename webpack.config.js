@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
         entry: [
             "./node_modules/gd-sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
             "./lib/jquery-ui-1.12.1.custom/jquery-ui" + (isDev ? "" : ".min") + ".js",
-            "./src/index.ts"
+            "./build/index.js"
         ],
         output: {
             path: path.resolve(__dirname, "dist"),
@@ -19,24 +19,10 @@ module.exports = (env, argv) => {
             "$": "GD.jQuery",
             "jquery": "GD.jQuery"
         },
-        resolve: {
-            extensions: [".scss", ".css", ".ts", ".js"]
-        },
         module: {
             rules: [
                 {
-                    test: /\.(s?css)$/,
-                    use: [
-                        // Inject CSS to the page
-                        { loader: "style-loader" },
-                        // Translate CSS to CommonJS
-                        { loader: "css-loader" },
-                        // Compile SASS to CSS
-                        { loader: "sass-loader" }
-                    ]
-                },
-                {
-                    test: /\.tsx?$/,
+                    test: /\.js$/,
                     exclude: /node_modules/,
                     use: [
                         {
@@ -44,9 +30,6 @@ module.exports = (env, argv) => {
                             options: {
                                 presets: ["@babel/preset-env"]
                             }
-                        },
-                        {
-                            loader: "ts-loader"
                         }
                     ]
                 }
