@@ -1,24 +1,20 @@
 const path = require("path");
-const UglifyJsPlugin = require ("uglifyjs-webpack-plugin");
 
 module.exports = (env, argv) => {
     var isDev = argv.mode === "development";
-    var includeIcons = argv.icons === "true";
 
     // Return the configuration
-    let cfg = {
+    var cfg = {
         entry: [
-            "./node_modules/gd-bs/dist/gd-bs" + (includeIcons ? "-icons" : "") + (isDev ? "" : ".min") + ".js",
             "./node_modules/gd-sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
             "./lib/jquery-ui-1.12.1.custom/jquery-ui" + (isDev ? "" : ".min") + ".js",
-            "./src/index" + (includeIcons ? "-icons" : "") + ".ts"
+            "./src/index.ts"
         ],
         output: {
             path: path.resolve(__dirname, "dist"),
-            filename: "gd-sprest-bs" + (includeIcons ? "-icons" : "") + (isDev ? "" : ".min") + ".js"
+            filename: "gd-sprest-bs" + (isDev ? "" : ".min") + ".js"
         },
         externals: {
-            "gd-bs": "GD",
             "gd-sprest": "$REST",
             "$": "GD.jQuery",
             "jquery": "GD.jQuery"
@@ -57,13 +53,6 @@ module.exports = (env, argv) => {
             ]
         }
     };
-
-    // Minify the production output
-    if (!isDev) {
-        cfg.optimization = {
-            minimizer: [new UglifyJsPlugin()]
-        };
-    }
 
     // Return the configuration
     return cfg;

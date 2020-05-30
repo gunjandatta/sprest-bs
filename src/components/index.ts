@@ -5,12 +5,6 @@ import { ListForm } from "./listForm";
 import { ListFormDialog } from "./listFormDialog";
 import { PeoplePicker } from "./peoplePicker";
 
-// Ensure the Components reference exists
-if (Components == null) {
-    // Update it to the global variable
-    (Components as any) = window["GD"] && window["GD"].Components;
-}
-
 // Extend the components
 Components["DateTime"] = DateTime;
 Components["Field"] = Field;

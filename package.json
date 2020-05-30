@@ -2,16 +2,12 @@
   "name": "gd-sprest-bs",
   "version": "4.5.4",
   "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
-  "main": "dist/gd-sprest-bs-icons.min.js",
+  "main": "dist/gd-sprest-bs.min.js",
   "typings": "@types/index.d.ts",
   "scripts": {
-    "all": "node clean.js && npm run build-all && npm run prod-all && npm run typings",
-    "build-all": "npm run build && npm run build-icons",
+    "all": "node clean.js && npm run build && npm run prod && npm run typings",
     "build": "webpack --mode=development",
-    "build-icons": "webpack --mode=development --icons=true",
-    "prod-all": "npm run prod && npm run prod-icons",
     "prod": "webpack --mode=production",
-    "prod-icons": "webpack --mode=production --icons=true",
     "typings": "dts-bundle --out ../dist/gd-sprest-bs.d.ts --name gd-sprest-bs --main ./@types/index.d.ts"
   },
   "repository": {
@@ -30,7 +26,6 @@
   },
   "homepage": "https://dattabase.com/extras/bs",
   "dependencies": {
-    "dts-bundle": "^0.7.3",
     "gd-bs": "^2.5.6",
     "gd-sprest": "^5.7.5",
     "gd-sprest-def": "^0.7.8"
@@ -40,11 +35,11 @@
     "@babel/preset-env": "^7.10.1",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
+    "dts-bundle": "^0.7.3",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "ts-loader": "^7.0.5",
-    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   }
