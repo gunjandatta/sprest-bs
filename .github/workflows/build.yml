@@ -2,7 +2,7 @@
 on: [push]
 
 env:
-  NODE_VERSION: '12.x'
+  NODE_VERSION: '10.x'
 
 jobs:
   build-and-deploy:
@@ -16,8 +16,7 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
     - name: Build Library
       run: |
-        # Build and test the project, then
-        # deploy to Azure Web App.
+        # Build the project
         npm install
         npm run all
         npm run test --if-present
