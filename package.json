@@ -5,9 +5,10 @@
   "main": "build/index.js",
   "typings": "@types/index.d.ts",
   "scripts": {
-    "all": "node clean.js && npm run build && npm run prod && npm run typings",
+    "all": "npm run clean && npm run build && npm run prod && npm run typings",
     "build": "tsc && npm run build-sass && webpack --mode=development",
     "build-sass": "webpack --config webpack.sass.js",
+    "clean": "node clean.js",
     "prod": "webpack --mode=production",
     "typings": "dts-bundle --configJson dts-bundle.json"
   },
