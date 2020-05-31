@@ -1,5 +1,7 @@
+.vscode
 src
 *.log*
 *-lock.json
+.gitignore
 tsconfig.json
 webpack.*.js
