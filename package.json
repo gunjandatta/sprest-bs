@@ -5,10 +5,11 @@
   "main": "build/index.js",
   "typings": "@types/index.d.ts",
   "scripts": {
-    "all": "node clean.js && npm run build && npm run prod",
+    "all": "node clean.js && npm run build && npm run prod && npm run typings",
     "build": "tsc && npm run build-sass && webpack --mode=development",
     "build-sass": "webpack --config webpack.sass.js",
-    "prod": "webpack --mode=production"
+    "prod": "webpack --mode=production",
+    "typings": "dts-bundle --configJson dts-bundle.json"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
     "babel-loader": "^8.1.0",
+    "dts-bundle": "^0.7.3",
     "css-loader": "^3.5.3",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
