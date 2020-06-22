@@ -182,6 +182,11 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     let elPeoplePicker = document.createElement("div");
     elPeoplePicker.className = "people-picker";
 
+    // Add the selected users
+    let elSelectedUsers = document.createElement("div");
+    elSelectedUsers.style.position = "relative";
+    elPeoplePicker.appendChild(elSelectedUsers);
+
     // Create the textbox
     let elTextbox = Components.InputGroup({
         onChange: searchText => {
@@ -221,11 +226,6 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     elMenu.className = "dropdown-menu";
     elMenu.style.position = "relative";
     elPeoplePicker.appendChild(elMenu);
-
-    // Add the selected users
-    let elSelectedUsers = document.createElement("div");
-    elSelectedUsers.style.position = "relative";
-    elPeoplePicker.appendChild(elSelectedUsers);
 
     // Set the value and ensure it's a 
     let value: any = props.value || [];
