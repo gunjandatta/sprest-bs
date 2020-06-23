@@ -927,7 +927,7 @@ export const Field = (props: IFieldProps): IField => {
                         let userValue: Types.SP.User | Types.SP.Group = fieldValue.value ? fieldValue.value[0] : null;
 
                         // Set the field value
-                        fieldValue.value = userValue.Id ? userValue.Id : null;
+                        fieldValue.value = userValue && userValue.Id ? userValue.Id : null;
                     }
                     break;
 
