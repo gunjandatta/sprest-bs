@@ -189,7 +189,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
     // Create the textbox
     let elTextbox = Components.InputGroup({
-        placeholder: typeof (props.placeholder) == null ? "Search" : props.placeholder,
+        placeholder: props.placeholder == null ? "Search" : props.placeholder,
         onChange: searchText => {
             // See if a value exists
             if (searchText) {
