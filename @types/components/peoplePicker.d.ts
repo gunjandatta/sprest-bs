@@ -66,6 +66,9 @@ export interface IPeoplePickerProps {
     /** True to allow multiple users to be selected. */
     multi?: boolean;
 
+    /** The placeholder text. (Default value is "Search") */
+    placeholder?: string;
+
     /** True to allow multiple users to be selected. */
     readOnly?: boolean;
 
