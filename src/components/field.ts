@@ -45,6 +45,7 @@ export const Field = (props: IFieldProps): IField => {
                 // Add the item
                 items.push({
                     isSelected,
+                    label: choice,
                     text: choice,
                     value: choice
                 } as Components.IDropdownItem);
