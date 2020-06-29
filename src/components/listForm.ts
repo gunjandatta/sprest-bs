@@ -723,7 +723,8 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 if (formField == null || formField.controlProps.isReadonly) { continue; }
 
                 // Validate the form field and update the status flag
-                isValid = isValid && formField.isValid();
+                let controlIsValid = formField.isValid();
+                isValid = isValid && controlIsValid;
             }
 
             // Return the flag
