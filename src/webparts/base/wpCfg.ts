@@ -50,8 +50,8 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
             el: wp.el.children[1],
             id: (wp.cfg.WebPartId || "") + "_modal",
             isCentered: true,
-            isLarge: true,
             title: "Configuration Panel",
+            type: Components.ModalTypes.Large,
             onRenderBody: el => {
                 let formControls: any = null;
 
