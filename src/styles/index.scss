@@ -1,20 +1,5 @@
+@import "../../node_modules/flatpickr/dist/flatpickr.min.css";
 @import "./wp-tabs";
-@import "../../lib/jquery-ui-1.12.1.custom/jquery-ui.min.css";
-
-/* Date Field */
-.bs .date-time { width: 100%; }
-
-/* Date Picker */
-.ui-datepicker {
-    background-color: white;
-    z-index: 2000 !important;
-
-    /* Fix for Next/Prev */
-    .ui-icon {
-        cursor: pointer;
-        text-indent: 0px;
-    }
-}
 
 /* List Form Dialog */
 .listformdialog {

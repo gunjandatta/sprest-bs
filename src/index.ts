@@ -5,7 +5,7 @@ export * from "gd-bs";
 export * from "gd-sprest";
 
 // SharePoint bootstrap components/webparts
-import { jQuery, Icons, IconTypes } from "gd-bs";
+import { Icons, IconTypes } from "gd-bs";
 import Components from "./components";
 import * as WebParts from "./webparts";
 export { Components, Icons, IconTypes, WebParts }
@@ -18,7 +18,6 @@ const $REST = window && window["$REST"];
 if ($REST) {
     // Update the $REST global variable
     $REST.Components = Components;
-    $REST.jQuery = jQuery;
     $REST.IconTypes = IconTypes;
     $REST.Icons = Icons;
     $REST.WebParts = WebParts;

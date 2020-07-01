@@ -7,7 +7,6 @@ import * as WebParts from "./webparts";
  * $REST Bootstrap Library
  */
 export interface IRESTBS extends IREST {
-    jQuery: any,
     Components,
     Icons, IconTypes,
     WebParts

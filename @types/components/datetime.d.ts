@@ -10,11 +10,17 @@ export interface IDateTime {
     /** The date/time picker element. */
     el: HTMLDivElement;
 
+    /** The flatpickr object. */
+    flatpickrObj: any;
+
+    /** Returns the date as a Date/Time object. */
+    getDate: () => Date;
+
     /** Method to get the value. */
     getValue: () => string;
 
-    /** Method to toggle the menu. */
-    toggle: () => void;
+    /** Method to set the value. */
+    setValue: (dt: string | Date, dtFormat?: string) => void;
 }
 
 /**
@@ -29,6 +35,9 @@ export interface IDateTimeProps {
 
     /** The date/time label. */
     label?: string;
+
+    /** The flatpickr options. */
+    options?: any;
 
     /** Flag to display the time. */
     showTime?: boolean;

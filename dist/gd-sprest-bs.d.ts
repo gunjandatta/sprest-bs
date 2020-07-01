@@ -60,7 +60,6 @@ declare module 'gd-sprest-bs/rest' {
       * $REST Bootstrap Library
       */
     export interface IRESTBS extends IREST {
-        jQuery: any,
         Components,
         Icons, IconTypes,
         WebParts
@@ -80,11 +79,17 @@ declare module 'gd-sprest-bs/components/datetime' {
             /** The date/time picker element. */
             el: HTMLDivElement;
     
+            /** The flatpickr object. */
+            flatpickrObj: any;
+    
+            /** Returns the date as a Date/Time object. */
+            getDate: () => Date;
+    
             /** Method to get the value. */
             getValue: () => string;
     
-            /** Method to toggle the menu. */
-            toggle: () => void;
+            /** Method to set the value. */
+            setValue: (dt: string | Date, dtFormat?: string) => void;
     }
     
     /**
@@ -99,6 +104,9 @@ declare module 'gd-sprest-bs/components/datetime' {
     
             /** The date/time label. */
             label?: string;
+    
+            /** The flatpickr options. */
+            options?: any;
     
             /** Flag to display the time. */
             showTime?: boolean;

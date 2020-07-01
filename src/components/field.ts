@@ -288,7 +288,7 @@ export const Field = (props: IFieldProps): IField => {
                     // Set the get value event
                     control.props.onGetValue = () => {
                         // Return the value
-                        return dt.getValue();
+                        return dt.getDate();
                     }
                 }
 
@@ -810,7 +810,7 @@ export const Field = (props: IFieldProps): IField => {
                 // Date/Time
                 case SPTypes.FieldType.DateTime:
                     // Ensure a value exists, otherwise null
-                    fieldValue.value = fieldValue.value ? (new Date(fieldValue.value)).toISOString() : null;
+                    fieldValue.value = fieldValue.value ? (fieldValue.value as Date).toISOString() : null;
                     break;
 
                 // Lookup
