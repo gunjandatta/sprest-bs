@@ -25,33 +25,27 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                     text: userInfo.Title
                 });
             } else {
-                // Render a popover button
-                let btnUser = Components.Popover({
+                // Render a button
+                let btn = Components.Button({
+                    data: userInfo,
                     el: elSelectedUsers,
-                    isDismissible: true,
-                    type: Components.PopoverTypes.Bottom,
-                    btnProps: {
-                        className: "mr-1",
-                        isSmall: true,
-                        text: userInfo.Title
-                    },
-                    options: {
-                        html: true,
-                        content: Components.Button({
-                            data: userInfo,
-                            isSmall: true,
-                            text: "Remove",
-                            type: Components.ButtonTypes.Danger,
-                            onClick: (btn) => {
-                                // Remove the button
-                                elSelectedUsers.removeChild(btnUser.el);
-                            }
-                        }).el
+                    className: "mr-1 mb-1",
+                    isSmall: true,
+                    text: userInfo.Title,
+                    badge: {
+                        className: "ml-2",
+                        content: "&times;",
+                        isPill: true,
+                        type: Components.BadgeTypes.Light,
+                        onClick: () => {
+                            // Remove the button
+                            elSelectedUsers.removeChild(btn.el);
+                        }
                     }
                 });
 
                 // Set the data attribute
-                btnUser.el.setAttribute("data-user", JSON.stringify(userInfo.stringify()));
+                btn.el.setAttribute("data-user", JSON.stringify(userInfo.stringify()));
             }
         }
 
