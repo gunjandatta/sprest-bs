@@ -1,6 +1,7 @@
 import { Components } from "gd-bs";
 import { Helper, SPTypes, Types } from "gd-sprest";
 import { IField, IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "../../@types/components";
+import { DateTimeControlType } from "./datetime";
 import { Field } from "./field";
 
 // Extend the list form
@@ -136,6 +137,9 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
 
         // Update the type, based on the field
         switch (field.FieldTypeKind) {
+            case SPTypes.FieldType.DateTime:
+                mapper[fieldName].type = DateTimeControlType;
+                break;
             case SPTypes.FieldType.Note:
                 mapper[fieldName].type = Components.FormControlTypes.TextArea;
                 break;
