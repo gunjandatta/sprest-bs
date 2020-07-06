@@ -1,6 +1,6 @@
 import * as flatpickr from "flatpickr";
 import { Components } from "gd-bs";
-import { IDateTime, IDateTimeProps } from "../../@types/components";
+import { IDateTime, IDateTimeProps, IFormControlPropsDateTime } from "../../@types/components";
 
 /**
  * Date/Time
@@ -64,3 +64,33 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
         }
     };
 }
+
+// Customize the form control
+export const DateTimeControlType = 100;
+Components.FormControlTypes["DateTime"] = DateTimeControlType;
+Components.CustomControls.registerType(DateTimeControlType, (props: IFormControlPropsDateTime) => {
+    let dt: IDateTime = null;
+
+    // Set the created method
+    let onRendered = props.onControlRendered;
+    props.onControlRendered = ctrl => {
+        // Render a date/time
+        dt = DateTime({
+            className: props.className,
+            el: ctrl.el,
+            label: props.label,
+            options: props.options,
+            showTime: props.showTime,
+            value: props.value
+        });
+
+        // Call the custom render event
+        onRendered ? onRendered(ctrl) : null;
+    }
+
+    // Register a people picker
+    props.onGetValue = () => {
+        // Return the value
+        return dt.getValue();
+    };
+});

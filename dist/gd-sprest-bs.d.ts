@@ -35,7 +35,8 @@ declare module 'gd-sprest-bs/components' {
     
     import { IFormControlTypes as Parent } from "gd-bs/@types/components/formControl";
     export interface IFormControlTypes extends Parent {
-        PeoplePicker
+        DateTime: number;
+        PeoplePicker: number;
     }
     export const FormControlTypes: IFormControlTypes;
 }
@@ -67,6 +68,8 @@ declare module 'gd-sprest-bs/rest' {
 }
 
 declare module 'gd-sprest-bs/components/datetime' {
+    import { IFormControlProps } from "gd-bs/@types/components/formControl";
+    
     /**
         * Date/Time
         */
@@ -105,6 +108,20 @@ declare module 'gd-sprest-bs/components/datetime' {
             /** The date/time label. */
             label?: string;
     
+            /** The flatpickr options. */
+            options?: any;
+    
+            /** Flag to display the time. */
+            showTime?: boolean;
+    
+            /** The date/time value. */
+            value?: string;
+    }
+    
+    /**
+        * Form Control Properties - DateTime
+        */
+    export interface IFormControlPropsDateTime extends IFormControlProps {
             /** The flatpickr options. */
             options?: any;
     

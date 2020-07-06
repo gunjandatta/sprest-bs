@@ -1,3 +1,5 @@
+import { IFormControlProps } from "gd-bs/@types/components/formControl";
+
 /**
  * Date/Time
  */
@@ -36,6 +38,20 @@ export interface IDateTimeProps {
     /** The date/time label. */
     label?: string;
 
+    /** The flatpickr options. */
+    options?: any;
+
+    /** Flag to display the time. */
+    showTime?: boolean;
+
+    /** The date/time value. */
+    value?: string;
+}
+
+/**
+ * Form Control Properties - DateTime
+ */
+export interface IFormControlPropsDateTime extends IFormControlProps {
     /** The flatpickr options. */
     options?: any;
 

@@ -289,7 +289,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 }
 
 // Customize the form control
-export const PeoplePickerControlType = 100;
+export const PeoplePickerControlType = 101;
 Components.FormControlTypes["PeoplePicker"] = PeoplePickerControlType;
 Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormControlPropsPeoplePicker) => {
     let picker: IPeoplePicker = null;

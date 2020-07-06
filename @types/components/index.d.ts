@@ -8,6 +8,7 @@ export * from "./peoplePicker";
 // Customize the form control types
 import { IFormControlTypes as Parent } from "gd-bs/@types/components/formControl";
 export interface IFormControlTypes extends Parent {
-    PeoplePicker
+    DateTime: number;
+    PeoplePicker: number;
 }
 export const FormControlTypes: IFormControlTypes;
