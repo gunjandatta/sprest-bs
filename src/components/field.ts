@@ -1,7 +1,7 @@
 import { Components } from "gd-bs";
 import { Helper, SPTypes, Types } from "gd-sprest";
-import { IField, IFieldProps, IFieldValue } from "../../@types/components";
-import { DateTime } from "./datetime";
+import { IField, IFieldProps, IFieldValue, IFormControlPropsDateTime } from "../../@types/components";
+import { DateTime, DateTimeControlType } from "./datetime";
 import { PeoplePickerControlType } from "./peoplePicker";
 
 /**
@@ -257,10 +257,12 @@ export const Field = (props: IFieldProps): IField => {
 
         // Date/Time
         case SPTypes.FieldType.DateTime:
+            // Set the time flag
             let showTime = (props.field as Types.SP.FieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime;
+            (controlProps as IFormControlPropsDateTime).showTime = showTime;
 
             // Set the type
-            controlProps.type = isReadonly ? Components.FormControlTypes.Readonly : null;
+            controlProps.type = isReadonly ? Components.FormControlTypes.Readonly : DateTimeControlType;
 
             // Set the rendered event
             onControlRendered = controlProps.onControlRendered;
@@ -277,19 +279,6 @@ export const Field = (props: IFieldProps): IField => {
 
                     // Override the html rendered
                     control.el.innerHTML = props.listInfo.fieldValuesAsHtml[props.field.InternalName];
-                } else {
-                    // Render a date picker
-                    let dt = DateTime({
-                        el: control.el,
-                        showTime,
-                        value: control.props.value
-                    });
-
-                    // Set the get value event
-                    control.props.onGetValue = () => {
-                        // Return the value
-                        return dt.getDate();
-                    }
                 }
 
                 // Call the event
