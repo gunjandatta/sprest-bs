@@ -262,28 +262,7 @@ export const Field = (props: IFieldProps): IField => {
             (controlProps as IFormControlPropsDateTime).showTime = showTime;
 
             // Set the type
-            controlProps.type = isReadonly ? Components.FormControlTypes.Readonly : DateTimeControlType;
-
-            // Set the rendered event
-            onControlRendered = controlProps.onControlRendered;
-            controlProps.onControlRendered = (formControl) => {
-                // Save the control
-                control = formControl;
-
-                // See if this field is readonly and a value exists
-                if (props.value && isReadonly) {
-
-                    // Set the class name
-                    control.el.classList.add("form-control");
-                    control.el.style.backgroundColor = "#e9ecef";
-
-                    // Override the html rendered
-                    control.el.innerHTML = props.listInfo.fieldValuesAsHtml[props.field.InternalName];
-                }
-
-                // Call the event
-                onControlRendered ? onControlRendered(formControl) : null;
-            }
+            controlProps.type = DateTimeControlType;
             break;
 
         // Lookup

@@ -35,6 +35,9 @@ export interface IDateTimeProps {
     /** The element to render the form to. */
     el?: Element;
 
+    /** True to disable the date/time plugin */
+    disabled?: boolean;
+
     /** The date/time label. */
     label?: string;
 

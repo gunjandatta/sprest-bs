@@ -13,6 +13,7 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
     // Create the textbox
     let textbox = Components.InputGroup({
         el: elDateTime,
+        isReadonly: props.disabled ? true : false,
         label: props.label
     });
 
@@ -77,8 +78,8 @@ Components.CustomControls.registerType(DateTimeControlType, (props: IFormControl
         // Render a date/time
         dt = DateTime({
             className: props.className,
+            disabled: props.isReadonly,
             el: ctrl.el,
-            label: props.label,
             options: props.options,
             showTime: props.showTime,
             value: props.value
