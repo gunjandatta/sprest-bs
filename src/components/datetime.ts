@@ -97,6 +97,6 @@ Components.CustomControls.registerType(DateTimeControlType, (props: IFormControl
     // Register a people picker
     props.onGetValue = () => {
         // Return the value
-        return dt.getValue();
+        return dt.getDate();
     };
 });
