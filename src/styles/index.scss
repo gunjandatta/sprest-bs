@@ -1,7 +1,12 @@
 @import "../../node_modules/flatpickr/dist/flatpickr.min.css";
 @import "./wp-tabs";
 
-/* List Form Dialog */
+/** Date/Time */
+.date-time .form-control.input:read-only {
+    color: #495057;
+}
+
+/** List Form Dialog */
 .listformdialog {
     .modal-dialog {
         max-width: 60vw;
