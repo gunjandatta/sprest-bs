@@ -442,6 +442,33 @@ export const Field = (props: IFieldProps): IField => {
                 numberProps.max = numberField.MaximumValue;
                 numberProps.min = numberField.MinimumValue;
                 numberProps.value = typeof (numberProps.value) == "number" ? numberProps.value : numberProps.min;
+
+                // Set validation
+                if (numberField.MinimumValue || numberField.MaximumValue) {
+                    // Add validation
+                    numberProps.onValidate = (control, value) => {
+                        // Validate the min value
+                        if (numberField.MinimumValue && value <= numberField.MinimumValue) {
+                            // Fail
+                            return {
+                                isValid: false,
+                                invalidMessage: "The value must be greater than " + numberField.MinimumValue
+                            };
+                        }
+
+                        // Validate the max value
+                        if (numberField.MaximumValue && value < numberField.MaximumValue) {
+                            // Fail
+                            return {
+                                isValid: false,
+                                invalidMessage: "The value must be less than " + numberField.MaximumValue
+                            };
+                        }
+
+                        // Valid
+                        return true;
+                    }
+                }
             }
             else {
                 // Set the type
