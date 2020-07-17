@@ -138,7 +138,7 @@ declare module 'gd-sprest-bs/components/datetime' {
 
 declare module 'gd-sprest-bs/components/field' {
     import { Helper, Types } from "gd-sprest";
-    import { IFormControl, IFormControlProps } from "gd-bs/@types/components/formControl";
+    import { IFormControl, IFormControlProps, IFormControlValidationResult } from "gd-bs/@types/components/formControl";
     
     /**
         * Field
@@ -166,7 +166,7 @@ declare module 'gd-sprest-bs/components/field' {
             onError?: (msg: string) => void;
             onControlRendered?: (control: IFormControl, field: Types.SP.Field) => void | Promise<IFormControl>;
             onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;
-            onValidate?: (field: Types.SP.Field, control: IFormControl) => boolean;
+            onValidate?: (field: Types.SP.Field, control: IFormControl, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
             value?: any;
     }
     

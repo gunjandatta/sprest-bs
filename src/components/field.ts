@@ -1,7 +1,7 @@
 import { Components } from "gd-bs";
 import { Helper, SPTypes, Types } from "gd-sprest";
 import { IField, IFieldProps, IFieldValue, IFormControlPropsDateTime } from "../../@types/components";
-import { DateTime, DateTimeControlType } from "./datetime";
+import { DateTimeControlType } from "./datetime";
 import { PeoplePickerControlType } from "./peoplePicker";
 
 /**
@@ -961,14 +961,40 @@ export const Field = (props: IFieldProps): IField => {
             return fieldValue;
         },
         isValid: () => {
-            // Validate the control
-            let isValid = control ? control.isValid : false;
+            let result: Components.IFormControlValidationResult = {
+                isValid: control ? control.isValid : false,
+                value: control ? control.getValue() : null
+            };
 
-            // Call the event
-            isValid = props.onValidate ? props.onValidate(props.field, control) : isValid;
+            // Ensure a control exists
+            if (control) {
+                // See if a base event exists
+                if (controlProps.onValidate) {
+                    let returnVal = controlProps.onValidate(control, result);
+                    if (typeof (returnVal) === "boolean") {
+                        // Update the flag
+                        result.isValid = returnVal;
+                    } else {
+                        // Update the result
+                        result = returnVal || result;
+                    }
+                }
+
+                // See if a custom event exists
+                if (props.onValidate) {
+                    let returnVal = props.onValidate(props.field, control, result);
+                    if (typeof (returnVal) === "boolean") {
+                        // Update the flag
+                        result.isValid = returnVal;
+                    } else {
+                        // Update the result
+                        result = returnVal || result;
+                    }
+                }
+            }
 
             // Return the flag
-            return isValid;
+            return result.isValid;
         }
     };
 }

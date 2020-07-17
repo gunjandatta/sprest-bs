@@ -1,5 +1,6 @@
 .vscode
-src
+src/*
+!src/styles
 *.log*
 *-lock.json
 .gitignore
