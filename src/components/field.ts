@@ -450,6 +450,14 @@ export const Field = (props: IFieldProps): IField => {
                 if (numberField.MinimumValue || numberField.MaximumValue) {
                     // Add validation
                     baseValidation = (control, result) => {
+                        // Ensure the value is a number
+                        if(/^[0-9]*$/.test(result.value) == false) {
+                            // Update the validation and return it
+                            result.isValid = false;
+                            result.invalidMessage = "The value must be a number.";
+                            return result;
+                        }
+
                         // Validate the min value
                         if (numberField.MinimumValue && result.value <= numberField.MinimumValue) {
                             // Update the validation and return it
