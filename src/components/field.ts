@@ -975,13 +975,22 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Validate the current control
                 let result = controlProps.onValidate ? controlProps.onValidate(controlProps, baseResult) : baseResult;
+
+                // Return the flag
                 if (typeof (result) === "boolean") {
+                    // Update the validation
+                    baseResult.isValid = result;
+                    control.updateValidation(control.el, baseResult);
+
                     // Return the result
                     return result;
-                } else {
-                    // Return the flag
-                    return result.isValid;
                 }
+
+                // Update the validation
+                control.updateValidation(control.el, result);
+
+                // Return the flag
+                return result.isValid;
             }
 
             // Validate the control
