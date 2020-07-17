@@ -188,6 +188,9 @@ export const Field = (props: IFieldProps): IField => {
         value: props.value
     };
 
+    // Define a base validation method
+    let baseValidation: (control: Components.IFormControlProps, result: Components.IFormControlValidationResult) => Components.IFormControlValidationResult = null;
+
     // See if this is a new form, a default value exists and no value has been defined
     if (props.controlMode == SPTypes.ControlMode.New && props.field.DefaultValue && props.value == null) {
         // Set the default value
@@ -446,9 +449,9 @@ export const Field = (props: IFieldProps): IField => {
                 // Set validation
                 if (numberField.MinimumValue || numberField.MaximumValue) {
                     // Add validation
-                    numberProps.onValidate = (control, value) => {
+                    baseValidation = (control, result) => {
                         // Validate the min value
-                        if (numberField.MinimumValue && value <= numberField.MinimumValue) {
+                        if (numberField.MinimumValue && result.value <= numberField.MinimumValue) {
                             // Fail
                             return {
                                 isValid: false,
@@ -457,7 +460,7 @@ export const Field = (props: IFieldProps): IField => {
                         }
 
                         // Validate the max value
-                        if (numberField.MaximumValue && value < numberField.MaximumValue) {
+                        if (numberField.MaximumValue && result.value < numberField.MaximumValue) {
                             // Fail
                             return {
                                 isValid: false,
@@ -466,7 +469,10 @@ export const Field = (props: IFieldProps): IField => {
                         }
 
                         // Valid
-                        return true;
+                        result.isValid = true;
+
+                        // Return the result
+                        return result;
                     }
                 }
             }
@@ -528,7 +534,7 @@ export const Field = (props: IFieldProps): IField => {
             }
 
             // Set the validate event
-            controlProps.onValidate = (control) => {
+            baseValidation = (control, result) => {
                 let descValid, urlValid = false;
 
                 // Get the form control elements
@@ -562,8 +568,11 @@ export const Field = (props: IFieldProps): IField => {
                     elUrl.classList.add(urlValid ? "is-valid" : "is-invalid");
                 }
 
-                // Return the flag if this field is required
-                return descValid && urlValid;
+                // Set the validation falg
+                result.isValid = descValid && urlValid;
+
+                // Return the result
+                return result;
             }
             break;
 
@@ -961,40 +970,24 @@ export const Field = (props: IFieldProps): IField => {
             return fieldValue;
         },
         isValid: () => {
-            let result: Components.IFormControlValidationResult = {
-                isValid: control ? control.isValid : false,
-                value: control ? control.getValue() : null
-            };
+            // See if there is base validation
+            if (baseValidation) {
+                // Validate the field
+                let baseResult = baseValidation(controlProps, { isValid: false, value: control.getValue() });
 
-            // Ensure a control exists
-            if (control) {
-                // See if a base event exists
-                if (controlProps.onValidate) {
-                    let returnVal = controlProps.onValidate(control, result);
-                    if (typeof (returnVal) === "boolean") {
-                        // Update the flag
-                        result.isValid = returnVal;
-                    } else {
-                        // Update the result
-                        result = returnVal || result;
-                    }
-                }
-
-                // See if a custom event exists
-                if (props.onValidate) {
-                    let returnVal = props.onValidate(props.field, control, result);
-                    if (typeof (returnVal) === "boolean") {
-                        // Update the flag
-                        result.isValid = returnVal;
-                    } else {
-                        // Update the result
-                        result = returnVal || result;
-                    }
+                // Validate the current control
+                let result = controlProps.onValidate ? controlProps.onValidate(controlProps, baseResult) : baseResult;
+                if (typeof (result) === "boolean") {
+                    // Return the result
+                    return result;
+                } else {
+                    // Return the flag
+                    return result.isValid;
                 }
             }
 
-            // Return the flag
-            return result.isValid;
+            // Validate the control
+            return control ? control.isValid : false;
         }
     };
 }
