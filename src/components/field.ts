@@ -459,7 +459,7 @@ export const Field = (props: IFieldProps): IField => {
                         }
 
                         // Validate the max value
-                        if (numberField.MaximumValue && result.value < numberField.MaximumValue) {
+                        if (numberField.MaximumValue && result.value >= numberField.MaximumValue) {
                             // Update the validation and return it
                             result.isValid = false;
                             result.invalidMessage = "The value must be less than " + numberField.MaximumValue;
