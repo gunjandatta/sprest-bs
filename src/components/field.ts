@@ -452,20 +452,18 @@ export const Field = (props: IFieldProps): IField => {
                     baseValidation = (control, result) => {
                         // Validate the min value
                         if (numberField.MinimumValue && result.value <= numberField.MinimumValue) {
-                            // Fail
-                            return {
-                                isValid: false,
-                                invalidMessage: "The value must be greater than " + numberField.MinimumValue
-                            };
+                            // Update the validation and return it
+                            result.isValid = false;
+                            result.invalidMessage = "The value must be greater than " + numberField.MinimumValue;
+                            return result;
                         }
 
                         // Validate the max value
                         if (numberField.MaximumValue && result.value < numberField.MaximumValue) {
-                            // Fail
-                            return {
-                                isValid: false,
-                                invalidMessage: "The value must be less than " + numberField.MaximumValue
-                            };
+                            // Update the validation and return it
+                            result.isValid = false;
+                            result.invalidMessage = "The value must be less than " + numberField.MaximumValue;
+                            return result;
                         }
 
                         // Valid
