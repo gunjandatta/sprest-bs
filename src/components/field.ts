@@ -266,29 +266,6 @@ export const Field = (props: IFieldProps): IField => {
 
             // Set the type
             controlProps.type = DateTimeControlType;
-
-            // Add validation
-            baseValidation = (control, result) => {
-                // See if the field is required
-                if (control.required) {
-                    // Get the date field
-                    let elDate = control.el.querySelector(".form-control.input");
-
-                    // See if the value exists
-                    if (result.value) {
-                        // Update the classes
-                        elDate.classList.remove("is-invalid");
-                        elDate.classList.add("is-valid");
-                    } else {
-                        // Update the classes
-                        elDate.classList.remove("is-valid");
-                        elDate.classList.add("is-invalid");
-                    }
-                }
-
-                // Return the result
-                return result;
-            }
             break;
 
         // Lookup

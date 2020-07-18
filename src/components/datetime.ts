@@ -17,7 +17,7 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
     });
 
     // See if we are disabling the textbox
-    if(props.disabled) {
+    if (props.disabled) {
         // Disable the input element
         textbox.el.querySelector("input").disabled = true;
     }
@@ -92,6 +92,29 @@ Components.CustomControls.registerType(DateTimeControlType, (props: IFormControl
 
         // Call the custom render event
         onRendered ? onRendered(ctrl) : null;
+    }
+
+    let onValidate = props.onValidate;
+    props.onValidate = (ctrl, result) => {
+        // See if the field is required
+        if (ctrl.required) {
+            // Get the date field
+            let elDate = dt.el.querySelector(".form-control.input");
+
+            // See if the value exists
+            if (result.value) {
+                // Update the classes
+                elDate.classList.remove("is-invalid");
+                elDate.classList.add("is-valid");
+            } else {
+                // Update the classes
+                elDate.classList.remove("is-valid");
+                elDate.classList.add("is-invalid");
+            }
+        }
+
+        // Return the result
+        return result;
     }
 
     // Register a people picker
