@@ -169,6 +169,7 @@ export const Field = (props: IFieldProps): IField => {
     let controlProps: Components.IFormControlProps = {
         description: props.field.Description,
         errorMessage: props.errorMessage,
+        id: props.field.InternalName,
         isReadonly,
         label: (isRequired ? "* " : "") + props.field.Title,
         name: props.field.InternalName,

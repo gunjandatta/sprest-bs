@@ -68,6 +68,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         rows.push({
             columns: [{
                 control: {
+                    id: "ListFormAttachments",
                     label: "Attachments",
                     name: "Attachments",
                     onControlRendered: control => {
@@ -359,6 +360,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         rows.push({
             columns: [{
                 control: {
+                    id: "ListFormAttachments",
                     label: "Attachments",
                     name: "Attachments",
                     onControlRendered: control => {
