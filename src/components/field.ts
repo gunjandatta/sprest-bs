@@ -1,6 +1,6 @@
 import { Components } from "gd-bs";
 import { Helper, SPTypes, Types } from "gd-sprest";
-import { IField, IFieldProps, IFieldValue, IFormControlPropsDateTime } from "../../@types/components";
+import { IField, IFieldProps, IFieldValue, IFormControlPropsDateTime, IFormControlPropsPeoplePicker } from "../../@types/components";
 import { DateTimeControlType } from "./datetime";
 import { PeoplePickerControlType } from "./peoplePicker";
 
@@ -587,6 +587,9 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.User:
             // Set the type
             controlProps.type = isReadonly ? Components.FormControlTypes.Readonly : PeoplePickerControlType;
+
+            // Set the flag to allow multiple selections
+            (controlProps as IFormControlPropsPeoplePicker).multi = (props.field as Types.SP.FieldUser).AllowMultipleValues;
 
             // Set the rendered event
             onControlRendered = controlProps.onControlRendered;
