@@ -460,18 +460,18 @@ export const Field = (props: IFieldProps): IField => {
                         }
 
                         // Validate the min value
-                        if (numberField.MinimumValue && result.value <= numberField.MinimumValue) {
+                        if (numberField.MinimumValue && result.value < numberField.MinimumValue) {
                             // Update the validation and return it
                             result.isValid = false;
-                            result.invalidMessage = "The value must be greater than " + numberField.MinimumValue;
+                            result.invalidMessage = "The value must be greater than or equal to " + numberField.MinimumValue;
                             return result;
                         }
 
                         // Validate the max value
-                        if (numberField.MaximumValue && result.value >= numberField.MaximumValue) {
+                        if (numberField.MaximumValue && result.value > numberField.MaximumValue) {
                             // Update the validation and return it
                             result.isValid = false;
-                            result.invalidMessage = "The value must be less than " + numberField.MaximumValue;
+                            result.invalidMessage = "The value must be less than or equal to " + numberField.MaximumValue;
                             return result;
                         }
 
