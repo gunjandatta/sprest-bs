@@ -99,19 +99,23 @@ Components.CustomControls.registerType(DateTimeControlType, (props: IFormControl
         // See if the field is required
         if (ctrl.required) {
             // Get the date field
-            let elDate = dt.el.querySelector(".form-control.input");
-
-            // See if the value exists
-            if (result.value) {
-                // Update the classes
-                elDate.classList.remove("is-invalid");
-                elDate.classList.add("is-valid");
-            } else {
-                // Update the classes
-                elDate.classList.remove("is-valid");
-                elDate.classList.add("is-invalid");
+            let elDate = dt.el.querySelector(".form-control");
+            if (elDate) {
+                // See if the value exists
+                if (result.value) {
+                    // Update the classes
+                    elDate.classList.remove("is-invalid");
+                    elDate.classList.add("is-valid");
+                } else {
+                    // Update the classes
+                    elDate.classList.remove("is-valid");
+                    elDate.classList.add("is-invalid");
+                }
             }
         }
+
+        // Call the onvalidate event
+        onValidate ? onValidate(ctrl, result) : null;
 
         // Return the result
         return result;
