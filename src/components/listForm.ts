@@ -210,6 +210,9 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     // Render the form
     form = Components.Form({
         el: props.el,
+        className: props.className,
+        groupClassName: props.groupClassName,
+        rowClassName: props.rowClassName,
         onControlRendered: control => { return props.onControlRendered ? props.onControlRendered(control, props.info.fields[control.props.name]) : null; },
         onControlRendering: control => { return props.onControlRendering ? props.onControlRendering(control, props.info.fields[control.name]) : null; },
         rows: props.template || rows
@@ -639,6 +642,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     // Render the form
     let form = Components.Form({
         el: props.el,
+        className: props.className,
+        groupClassName: props.groupClassName,
+        rowClassName: props.rowClassName,
         onControlRendered: control => { return props.onControlRendered ? props.onControlRendered(control, props.info.fields[control.props.name]) : null },
         onControlRendering: control => {
             let updateReadOnly = (control: Components.IFormControlProps) => {

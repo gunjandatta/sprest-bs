@@ -232,6 +232,15 @@ declare module 'gd-sprest-bs/components/listForm' {
         * List Form Display Properties
         */
     export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
+            /** The form component class name. */
+            className?: string;
+    
+            /** The form component group class name. */
+            groupClassName?: string;
+    
+            /** The form component row class name. */
+            rowClassName?: string;
+    
             /** The control rendered event. */
             onControlRendered?: (control: IFormControl, field: Types.SP.Field) => void | Promise<IFormControl>;
     
