@@ -115,10 +115,10 @@ Components.CustomControls.registerType(DateTimeControlType, (props: IFormControl
         }
 
         // Call the onvalidate event
-        onValidate ? onValidate(ctrl, result) : null;
+        let returnVal = onValidate ? onValidate(ctrl, result) : null;
 
         // Return the result
-        return result;
+        return returnVal || result;
     }
 
     // Register a people picker
