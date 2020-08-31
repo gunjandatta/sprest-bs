@@ -236,7 +236,21 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
             // Set the default selected users
             setValue([value]);
-        } else {
+        }
+        // Else, see if the results exist
+        else if (value.results) {
+            let userIds = [];
+
+            // Parse the results
+            for (let i = 0; i < value.results.length; i++) {
+                // Add the user id
+                userIds.push(value.results[i].Id);
+            }
+
+            // Set the default selected users
+            setValue(userIds);
+        }
+        else {
             // Set the default selected users
             setValue(value);
         }
