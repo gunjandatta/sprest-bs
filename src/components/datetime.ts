@@ -126,4 +126,7 @@ Components.CustomControls.registerType(DateTimeControlType, (props: IFormControl
         // Return the value
         return dt.getDate();
     };
+
+    // Return the datetime control
+    return dt;
 });

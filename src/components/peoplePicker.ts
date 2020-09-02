@@ -332,4 +332,7 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
         // Return the value
         return picker.getValue();
     };
+
+    // Return the people picker
+    return picker;
 });
