@@ -323,6 +323,9 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
             value: props.value
         });
 
+        // Set the control
+        ctrl.setControl(picker);
+
         // Call the custom render event
         onRendered ? onRendered(ctrl) : null;
     }
@@ -332,7 +335,4 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
         // Return the value
         return picker.getValue();
     };
-
-    // Return the people picker
-    return picker;
 });

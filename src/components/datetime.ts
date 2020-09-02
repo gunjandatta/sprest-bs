@@ -90,6 +90,9 @@ Components.CustomControls.registerType(DateTimeControlType, (props: IFormControl
             value: props.value
         });
 
+        // Set the control
+        ctrl.setControl(dt);
+
         // Call the custom render event
         onRendered ? onRendered(ctrl) : null;
     }
@@ -126,7 +129,4 @@ Components.CustomControls.registerType(DateTimeControlType, (props: IFormControl
         // Return the value
         return dt.getDate();
     };
-
-    // Return the datetime control
-    return dt;
 });
