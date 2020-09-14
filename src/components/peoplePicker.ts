@@ -176,6 +176,11 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     let elPeoplePicker = document.createElement("div");
     elPeoplePicker.className = "people-picker";
 
+    // Create the menu
+    let elMenu = document.createElement("div");
+    elMenu.className = "dropdown-menu";
+    elMenu.style.position = "relative";
+
     // Add the selected users
     let elSelectedUsers = document.createElement("div");
     elSelectedUsers.style.position = "relative";
@@ -217,9 +222,6 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     elPeoplePicker.appendChild(elTextbox);
 
     // Add the dropdown menu
-    let elMenu = document.createElement("div");
-    elMenu.className = "dropdown-menu";
-    elMenu.style.position = "relative";
     elPeoplePicker.appendChild(elMenu);
 
     // Set the value and ensure it's a 
