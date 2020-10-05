@@ -114,6 +114,9 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
             continue;
         }
 
+        // See if we are hiding the field
+        if (field.SchemaXml.indexOf('ShowInDisplayForm="FALSE"') > 0) { continue; }
+
         // See if this is a note field
         if (field.FieldTypeKind == SPTypes.FieldType.Note) {
             // Update the html
@@ -534,23 +537,17 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             }
         }
 
-        // See if this is an edit form
-        if (props.controlMode == SPTypes.ControlMode.Edit) {
-            // See if we are hiding the field
-            if (field.SchemaXml.indexOf('ShowInEditForm="FALSE"') > 0) { continue; }
-        }
+        // Determine the control mode
+        let controlMode = props.controlMode || (props.info.item ? SPTypes.ControlMode.Edit : SPTypes.ControlMode.New);
 
-        // See if this is a display form
-        if (props.controlMode == SPTypes.ControlMode.Display) {
-            // See if we are hiding the field
-            if (field.SchemaXml.indexOf('ShowInDisplayForm="FALSE"') > 0) { continue; }
-        }
+        // See if this is an edit form and we are hiding this field
+        if (controlMode == SPTypes.ControlMode.Edit && field.SchemaXml.indexOf('ShowInEditForm="FALSE"') > 0) { continue; }
 
-        // See if this is a new form
-        if (props.controlMode == SPTypes.ControlMode.New) {
-            // See if we are hiding the field
-            if (field.SchemaXml.indexOf('ShowInNewForm="FALSE"') > 0) { continue; }
-        }
+        // See if this is a new form and we are hiding this field
+        if (controlMode == SPTypes.ControlMode.New && field.SchemaXml.indexOf('ShowInNewForm="FALSE"') > 0) { continue; }
+
+        // See if this is a display form and we are hiding this field
+        if (controlMode == SPTypes.ControlMode.Display && field.SchemaXml.indexOf('ShowInDisplayForm="FALSE"') > 0) { continue; }
 
         // See if this is a read-only field
         if (field.ReadOnlyField) {
