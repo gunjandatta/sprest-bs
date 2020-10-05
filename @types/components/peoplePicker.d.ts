@@ -54,6 +54,9 @@ export interface IPeoplePickerProps {
     /** True, to include groups in the results. */
     allowGroups?: boolean;
 
+    /** Assigns the object to the input parameter. */
+    assignTo?: (obj: IPeoplePicker) => void;
+
     /** The class name to apply to the element. */
     className?: string;
 

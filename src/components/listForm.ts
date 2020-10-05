@@ -224,6 +224,9 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         window["ProcessImn"]();
     }
 
+    // Execute the assign to event
+    props.assignTo ? props.assignTo(this as any) : null;
+
     // Return the form informaiton
     return {
         get el() { return form ? form.el as HTMLFormElement : null; }
@@ -717,6 +720,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         // Return the form values
         return values;
     };
+
+    // Execute the assign to event
+    props.assignTo ? props.assignTo(this as any) : null;
 
     // Return the form
     return {

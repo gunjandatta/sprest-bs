@@ -55,6 +55,9 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
         el.classList.add("bs");
     }
 
+    // Execute the assign to event
+    props.assignTo ? props.assignTo(this as any) : null;
+
     // Return the element
     return {
         el: elDateTime,

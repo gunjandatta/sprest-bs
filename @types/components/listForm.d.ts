@@ -50,6 +50,9 @@ export interface IListFormDisplay {
  * List Form Display Properties
  */
 export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
+    /** Assigns the object to the input parameter. */
+    assignTo?: (obj: IListFormDisplay) => void;
+
     /** The form component class name. */
     className?: string;
 
@@ -108,6 +111,9 @@ export interface IListFormEdit {
  * List Form Edit Properties
  */
 export interface IListFormEditProps extends IListFormDisplayProps, Helper.IListFormEditProps {
+    /** Assigns the object to the input parameter. */
+    assignTo?: (obj: IListFormEdit) => void;
+
     /** The form saving event. */
     onSaving?: (item: any) => void | PromiseLike<any>;
 

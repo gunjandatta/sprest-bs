@@ -99,6 +99,9 @@ declare module 'gd-sprest-bs/components/datetime' {
         * Date/Time Props
         */
     export interface IDateTimeProps {
+            /** Assigns the object to the input parameter. */
+            assignTo?: (obj: IDateTime) => void;
+    
             /** The class name to apply to the element. */
             className?: string;
     
@@ -159,6 +162,7 @@ declare module 'gd-sprest-bs/components/field' {
         * Field Properties
         */
     export interface IFieldProps {
+            assignTo?: (obj: IField) => void;
             controlMode?: number;
             errorMessage?: string;
             field: Types.SP.Field;
@@ -232,6 +236,9 @@ declare module 'gd-sprest-bs/components/listForm' {
         * List Form Display Properties
         */
     export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
+            /** Assigns the object to the input parameter. */
+            assignTo?: (obj: IListFormDisplay) => void;
+    
             /** The form component class name. */
             className?: string;
     
@@ -290,6 +297,9 @@ declare module 'gd-sprest-bs/components/listForm' {
         * List Form Edit Properties
         */
     export interface IListFormEditProps extends IListFormDisplayProps, Helper.IListFormEditProps {
+            /** Assigns the object to the input parameter. */
+            assignTo?: (obj: IListFormEdit) => void;
+    
             /** The form saving event. */
             onSaving?: (item: any) => void | PromiseLike<any>;
     
@@ -324,6 +334,9 @@ declare module 'gd-sprest-bs/components/listFormDialog' {
     export interface IListFormDialogProps extends Helper.IListFormProps {
             /** The form actions. */
             actions?: IToolbarProps;
+    
+            /** Assigns the object to the input parameter. */
+            assignTo?: (obj: IListFormDialog) => void;
     
             /** The form control mode. */
             controlMode?: number;
@@ -410,6 +423,9 @@ declare module 'gd-sprest-bs/components/peoplePicker' {
     export interface IPeoplePickerProps {
             /** True, to include groups in the results. */
             allowGroups?: boolean;
+    
+            /** Assigns the object to the input parameter. */
+            assignTo?: (obj: IPeoplePicker) => void;
     
             /** The class name to apply to the element. */
             className?: string;

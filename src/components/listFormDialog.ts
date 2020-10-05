@@ -226,6 +226,9 @@ export const ListFormDialog = (props: IListFormDialogProps): IListFormDialog => 
         dialog.show();
     }
 
+    // Execute the assign to event
+    props.assignTo ? props.assignTo(dialog) : null;
+
     // Return the dialog
     return dialog;
 }

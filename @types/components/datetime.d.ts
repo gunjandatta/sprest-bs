@@ -29,6 +29,9 @@ export interface IDateTime {
  * Date/Time Props
  */
 export interface IDateTimeProps {
+    /** Assigns the object to the input parameter. */
+    assignTo?: (obj: IDateTime) => void;
+
     /** The class name to apply to the element. */
     className?: string;
 

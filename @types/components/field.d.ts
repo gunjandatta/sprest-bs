@@ -20,6 +20,7 @@ export interface IField {
  * Field Properties
  */
 export interface IFieldProps {
+    assignTo?: (obj: IField) => void;
     controlMode?: number;
     errorMessage?: string;
     field: Types.SP.Field;

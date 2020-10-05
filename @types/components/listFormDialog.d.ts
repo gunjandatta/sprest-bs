@@ -24,6 +24,9 @@ export interface IListFormDialogProps extends Helper.IListFormProps {
     /** The form actions. */
     actions?: IToolbarProps;
 
+    /** Assigns the object to the input parameter. */
+    assignTo?: (obj: IListFormDialog) => void;
+
     /** The form control mode. */
     controlMode?: number;
 
