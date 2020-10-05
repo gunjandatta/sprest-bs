@@ -55,11 +55,8 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
         el.classList.add("bs");
     }
 
-    // Execute the assign to event
-    props.assignTo ? props.assignTo(this as any) : null;
-
-    // Return the element
-    return {
+    // Create the object
+    let obj = {
         el: elDateTime,
         flatpickrObj: datetime,
         getDate: () => { return datetime.selectedDates[0]; },
@@ -72,6 +69,12 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
             datetime.setDate(dt, true, dtFormat);
         }
     };
+
+    // Execute the assign to event
+    props.assignTo ? props.assignTo(obj) : null;
+
+    // Return the object
+    return obj;
 }
 
 // Customize the form control

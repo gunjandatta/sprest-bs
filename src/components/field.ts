@@ -777,11 +777,8 @@ export const Field = (props: IFieldProps): IField => {
         };
     }
 
-    // Execute the assign to event
-    props.assignTo ? props.assignTo(this as any) : null;
-
-    // Return the field
-    return {
+    // Create the field
+    let field = {
         control,
         controlProps,
         getValue: () => {
@@ -1012,4 +1009,10 @@ export const Field = (props: IFieldProps): IField => {
             return control ? control.isValid : false;
         }
     };
+
+    // Execute the assign to event
+    props.assignTo ? props.assignTo(field) : null;
+
+    // Return the field
+    return field;
 }

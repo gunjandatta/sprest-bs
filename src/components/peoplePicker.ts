@@ -282,11 +282,8 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
         el.classList.add("bs");
     }
 
-    // Execute the assign to event
-    props.assignTo ? props.assignTo(this as any) : null;
-
-    // Return the people picker
-    return {
+    // Create the object
+    let obj = {
         el: elPeoplePicker,
         getValue: () => {
             let selectedUsers = [];
@@ -304,7 +301,13 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
             return selectedUsers;
         },
         setValue
-    }
+    };
+
+    // Execute the assign to event
+    props.assignTo ? props.assignTo(obj) : null;
+
+    // Return the people picker object
+    return obj;
 }
 
 // Customize the form control

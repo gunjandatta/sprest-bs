@@ -225,7 +225,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     }
 
     // Execute the assign to event
-    props.assignTo ? props.assignTo(this as any) : null;
+    props.assignTo ? props.assignTo(form) : null;
 
     // Return the form informaiton
     return {
@@ -721,11 +721,8 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         return values;
     };
 
-    // Execute the assign to event
-    props.assignTo ? props.assignTo(this as any) : null;
-
-    // Return the form
-    return {
+    // Create the form object
+    let formObj: any = {
         appendControls: controls => { form.appendControls(controls); },
         appendRows: rows => { form.appendRows(rows); },
         el: form.el as HTMLFormElement,
@@ -787,5 +784,11 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 });
             });
         }
-    }
+    };
+
+    // Execute the assign to event
+    props.assignTo ? props.assignTo(formObj) : null;
+
+    // Return the form
+    return formObj;
 };
