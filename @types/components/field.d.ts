@@ -25,6 +25,7 @@ export interface IFieldProps {
     errorMessage?: string;
     field: Types.SP.Field;
     listInfo: Helper.IListFormResult;
+    lookupFilter?: string;
     onError?: (msg: string) => void;
     onControlRendered?: (control: IFormControl, field: Types.SP.Field) => void | Promise<IFormControl>;
     onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;

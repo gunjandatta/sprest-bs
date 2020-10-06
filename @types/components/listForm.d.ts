@@ -97,12 +97,6 @@ export interface IListFormEdit {
     /** Method to determine if the field is valid */
     isValid(): boolean;
 
-    /** The control rendered event. */
-    onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
-
-    /** The control rendering event. */
-    onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
-
     /** Method to save the form. */
     save(): PromiseLike<Types.SP.ListItem>;
 }
@@ -113,6 +107,9 @@ export interface IListFormEdit {
 export interface IListFormEditProps extends IListFormDisplayProps, Helper.IListFormEditProps {
     /** Assigns the object to the input parameter. */
     assignTo?: (obj: IListFormEdit) => void;
+
+    /** Use this event to filter a lookup field by OData query. */
+    onFilterLookupField?: (field: Types.SP.Field) => string;
 
     /** The form saving event. */
     onSaving?: (item: any) => void | PromiseLike<any>;

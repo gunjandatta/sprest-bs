@@ -571,11 +571,20 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             if (props.controlMode != SPTypes.ControlMode.Display) { continue; }
         }
 
+
+        // See if this is a lookup field
+        let lookupFilter = null;
+        if (field.FieldTypeKind == SPTypes.FieldType.Lookup) {
+            // Call the filter event
+            lookupFilter = props.onFilterLookupField ? props.onFilterLookupField(field) : null;
+        }
+
         // Create the control
         let fieldControl = Field({
             controlMode: props.controlMode,
             field,
             listInfo: props.info,
+            lookupFilter,
             value: value[fieldName],
             onControlRendered: (control, field) => {
                 // Update the mapper

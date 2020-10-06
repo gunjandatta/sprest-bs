@@ -313,6 +313,9 @@ export const Field = (props: IFieldProps): IField => {
                                 // Save the field information
                                 lookupFieldInfo = fieldInfo;
 
+                                // Set the lookup filter
+                                lookupFieldInfo.lookupFilter = props.lookupFilter;
+
                                 // Update the multi property
                                 (controlProps as Helper.IListFormLookupFieldInfo).multi = lookupFieldInfo.multi;
 
