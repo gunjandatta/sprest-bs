@@ -296,7 +296,7 @@ declare module 'gd-sprest-bs/components/listForm' {
             assignTo?: (obj: IListFormEdit) => void;
     
             /** Use this event to filter a lookup field by OData query. */
-            onFilterLookupField?: (field: Types.SP.Field) => string;
+            onFilterLookupField?: (field: Types.SP.Field) => string | Types.IODataQuery;
     
             /** The form saving event. */
             onSaving?: (item: any) => void | PromiseLike<any>;
