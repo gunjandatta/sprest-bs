@@ -96,6 +96,14 @@ Components.CustomControls.registerType(DateTimeControlType, (props: IFormControl
             value: props.value
         });
 
+        // See if the label exists
+        let elLabel: HTMLElement = ctrl["_elLabel"];
+        if (elLabel) {
+            // Set the id and aria properties
+            elLabel ? elLabel.id = (props.id || props.name) + "_label" : null;
+            dt.el.querySelector("input").setAttribute("aria-labelledby", elLabel.id);
+        }
+
         // Set the control
         ctrl.setControl(dt);
 

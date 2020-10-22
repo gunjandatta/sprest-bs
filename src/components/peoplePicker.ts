@@ -331,6 +331,14 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
             value: props.value
         });
 
+        // See if the label exists
+        let elLabel: HTMLElement = ctrl["_elLabel"];
+        if (elLabel) {
+            // Set the id and aria properties
+            elLabel ? elLabel.id = (props.id || props.name) + "_label" : null;
+            picker.el.querySelector("input").setAttribute("aria-labelledby", elLabel.id);
+        }
+
         // Set the control
         ctrl.setControl(picker);
 
