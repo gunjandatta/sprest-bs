@@ -10,7 +10,7 @@ export const WPSearchEditForm = (props: IWPSearchEditForm = {}): IWPSearchEditFo
 
     // Method to render the fields
     let loadFields = (list: Types.SP.IListQuery) => {
-        let formControls: Array<Components.IFormControlPropsDropdown> = [];
+        let formControls: Array<Components.IFormControlPropsMultiDropdown> = [];
         let items: Array<Components.IDropdownItem> = [];
 
         // Ensure the list exists

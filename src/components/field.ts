@@ -403,11 +403,8 @@ export const Field = (props: IFieldProps): IField => {
         case SPTypes.FieldType.MultiChoice:
             let isChoice = props.field.SchemaXml.indexOf('Format="RadioButtons"') > 0 ? true : false;
 
-            // Default the multi property
-            (controlProps as Components.IFormControlPropsSwitch).multi = true;
-
             // Set the type
-            controlProps.type = isChoice ? Components.FormControlTypes.Switch : Components.FormControlTypes.MultiDropdown;
+            controlProps.type = isChoice ? Components.FormControlTypes.MultiSwitch : Components.FormControlTypes.MultiDropdown;
 
             // Update the value
             controlProps.value = (props.value ? props.value.results : null) || props.value;
