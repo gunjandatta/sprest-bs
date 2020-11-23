@@ -115,18 +115,22 @@ Components.CustomControls.registerType(DateTimeControlType, (props: IFormControl
     props.onValidate = (ctrl, result) => {
         // See if the field is required
         if (ctrl.required) {
-            // Get the date field
-            let elDate = dt.el.querySelector(".form-control");
-            if (elDate) {
-                // See if the value exists
-                if (result.value) {
-                    // Update the classes
-                    elDate.classList.remove("is-invalid");
-                    elDate.classList.add("is-valid");
-                } else {
-                    // Update the classes
-                    elDate.classList.remove("is-valid");
-                    elDate.classList.add("is-invalid");
+            // Get the date field elements
+            let elDateElements = dt.el.querySelectorAll(".form-control");
+            for (let i = 0; i < elDateElements.length; i++) {
+                // Get the visible input element
+                let elDateElement = elDateElements[i] as HTMLInputElement;
+                if (elDateElement.type != "hidden") {
+                    // See if the value exists
+                    if (result.value) {
+                        // Update the classes
+                        elDateElement.classList.remove("is-invalid");
+                        elDateElement.classList.add("is-valid");
+                    } else {
+                        // Update the classes
+                        elDateElement.classList.remove("is-valid");
+                        elDateElement.classList.add("is-invalid");
+                    }
                 }
             }
         }
