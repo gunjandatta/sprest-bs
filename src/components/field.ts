@@ -323,14 +323,8 @@ export const Field = (props: IFieldProps): IField => {
                                 Helper.ListFormField.loadLookupData(lookupFieldInfo, 500).then(
                                     // Success
                                     items => {
-                                        // See if the type needs to be updated
-                                        if (lookupFieldInfo.multi && controlProps.type == Components.FormControlTypes.Dropdown) {
-                                            // Update the type
-                                            controlProps.type = Components.FormControlTypes.MultiDropdown;
-                                        } else {
-                                            // Ensure a type is set
-                                            controlProps.type = controlProps.type || lookupFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
-                                        }
+                                        // Ensure a type is set
+                                        controlProps.type = controlProps.type > 0 ? controlProps.type : lookupFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
 
                                         // Get the dropdown items
                                         let ddlItems = getLookupItems(props.field as any, items, props.value);
