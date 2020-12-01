@@ -659,7 +659,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             let updateReadOnly = (control: Components.IFormControlProps) => {
                 // See if this control is readonly
                 if (control.isReadonly) {
-                    let html = props.info.fieldValuesAsHtml[field.InternalName];
+                    let html = (props.info.fieldValuesAsHtml && props.info.fieldValuesAsHtml[field.InternalName]) || "";
 
                     // Update the control properties
                     control.type = Components.FormControlTypes.Readonly;
