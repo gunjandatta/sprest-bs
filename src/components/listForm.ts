@@ -284,7 +284,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     }
 
     // Method to remove the attachments
-    let removeAttachments = (info: Helper.IListFormResult) => {
+    let removeAttachments = (info: Helper.IListFormResult): PromiseLike<void> => {
         // Return a promise
         return new Promise((resolve, reject) => {
             // Ensure attachments exists
@@ -321,7 +321,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     }
 
     // Method to save the attachments
-    let saveAttachments = (info: Helper.IListFormResult) => {
+    let saveAttachments = (info: Helper.IListFormResult): PromiseLike<void> => {
         // Return a promise
         return new Promise((resolve, reject) => {
             // Ensure attachments exists
