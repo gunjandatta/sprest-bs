@@ -93,7 +93,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
         if (_filterText.length > 2) {
             // Search for the user
             Search().clientPeoplePickerSearchUser({
-                MaximumEntitySuggestions: 15,
+                MaximumEntitySuggestions: props.maxResults || 25,
                 PrincipalSource: searchAll ? SPTypes.PrincipalSources.All : SPTypes.PrincipalSources.UserInfoList,
                 PrincipalType: props.allowGroups ? SPTypes.PrincipalTypes.All : SPTypes.PrincipalTypes.User,
                 QueryString: _filterText
@@ -325,7 +325,9 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
             className: props.className,
             el: ctrl.el,
             label: props.label,
+            maxResults: props.maxResults,
             multi: props.multi,
+            placeholder: props.placeholder,
             readOnly: props.isReadonly,
             searchLocal: props.searchLocal,
             value: props.value

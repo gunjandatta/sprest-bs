@@ -430,8 +430,8 @@ export const Field = (props: IFieldProps): IField => {
                 // Set the type
                 numberProps.type = Components.FormControlTypes.Range;
 
-                // Set the max value
-                numberProps.max = numberField.MaximumValue == Number.MAX_VALUE ? 100 : numberField.MaximumValue;
+                // Default the max
+                numberProps.max = numberField.MaximumValue == 1 || numberField.MaximumValue == Number.MAX_VALUE ? 100 : numberField.MaximumValue;
 
                 // Set the min value
                 numberProps.min = numberField.MinimumValue == -1.7976931348623157e+308 ? 0 : numberField.MinimumValue;

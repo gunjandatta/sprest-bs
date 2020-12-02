@@ -434,6 +434,9 @@ declare module 'gd-sprest-bs/components/peoplePicker' {
             /** The label. */
             label?: string;
     
+            /** Limits the results to a maximum number. */
+            maxResults?: number;
+    
             /** True to allow multiple users to be selected. */
             multi?: boolean;
     
@@ -455,7 +458,9 @@ declare module 'gd-sprest-bs/components/peoplePicker' {
         */
     export interface IFormControlPropsPeoplePicker extends IFormControlProps {
             allowGroups?: boolean;
+            maxResults?: number;
             multi?: boolean;
+            placeholder?: string;
             searchLocal?: boolean;
             value?: string | number | Types.IPeoplePickerUser | Array<string | number | Types.IPeoplePickerUser>;
     }
