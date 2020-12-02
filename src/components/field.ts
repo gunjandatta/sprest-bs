@@ -272,6 +272,9 @@ export const Field = (props: IFieldProps): IField => {
 
         // Lookup
         case SPTypes.FieldType.Lookup:
+            // Default the lookup field props will determine the default type
+            controlProps.type = (props.field as Types.SP.FieldLookup).AllowMultipleValues ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
+
             // See if this field is readonly and a value exists
             if (isReadonly) {
                 // Update the value
@@ -324,9 +327,6 @@ export const Field = (props: IFieldProps): IField => {
                                 Helper.ListFormField.loadLookupData(lookupFieldInfo, 500).then(
                                     // Success
                                     items => {
-                                        // Set the type
-                                        controlProps.type = lookupFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
-
                                         // Get the dropdown items
                                         let ddlItems = getLookupItems(props.field as any, items, props.value);
 
