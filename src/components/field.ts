@@ -3,6 +3,7 @@ import { Helper, SPTypes, Types } from "gd-sprest";
 import { IField, IFieldProps, IFieldValue, IFormControlPropsDateTime, IFormControlPropsPeoplePicker } from "../../@types/components";
 import { DateTimeControlType } from "./datetime";
 import { PeoplePickerControlType } from "./peoplePicker";
+import { FormControlTypes } from "gd-bs/@types/components";
 
 /**
  * Field
@@ -323,8 +324,8 @@ export const Field = (props: IFieldProps): IField => {
                                 Helper.ListFormField.loadLookupData(lookupFieldInfo, 500).then(
                                     // Success
                                     items => {
-                                        // Ensure a type is set
-                                        controlProps.type = controlProps.type > 0 ? controlProps.type : lookupFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
+                                        // Set the type
+                                        controlProps.type = lookupFieldInfo.multi ? Components.FormControlTypes.MultiDropdown : Components.FormControlTypes.Dropdown;
 
                                         // Get the dropdown items
                                         let ddlItems = getLookupItems(props.field as any, items, props.value);
