@@ -105,6 +105,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     for (let i = 0; i < fieldNames.length; i++) {
         let fieldName = fieldNames[i];
         let field = props.info.fields[fieldName];
+        let value = props.info.fieldValuesAsText[fieldName] || "";
         let html: string = props.info.fieldValuesAsHtml[fieldName] || props.info.fieldValuesAsHtml[fieldName.replace(/\_/g, "_x005f_")] || "";
 
         // Ensure the field exists
@@ -126,6 +127,11 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         else if (field.FieldTypeKind == SPTypes.FieldType.User) {
             // Set the flag
             hasUserField = true;
+        }
+        // Else, see if this is a choice field
+        else if (field.FieldTypeKind == SPTypes.FieldType.Choice || field.FieldTypeKind == SPTypes.FieldType.MultiChoice) {
+            // Update the html
+            html = value;
         }
 
         // Set the control
