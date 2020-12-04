@@ -3,7 +3,6 @@ import { Helper, SPTypes, Types } from "gd-sprest";
 import { IField, IFieldProps, IFieldValue, IFormControlPropsDateTime, IFormControlPropsPeoplePicker } from "../../@types/components";
 import { DateTimeControlType } from "./datetime";
 import { PeoplePickerControlType } from "./peoplePicker";
-import { FormControlTypes } from "gd-bs/@types/components";
 
 /**
  * Field
