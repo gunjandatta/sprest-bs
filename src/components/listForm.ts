@@ -552,6 +552,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         // See if this is a new form and we are hiding this field
         if (controlMode == SPTypes.ControlMode.New && field.SchemaXml.indexOf('ShowInNewForm="FALSE"') > 0) { continue; }
 
+        // See if thi sis a new form and this is an associated lookup field
+        if (controlMode == SPTypes.ControlMode.New && (field as Types.SP.FieldLookup).IsDependentLookup) { continue; }
+
         // See if this is a display form and we are hiding this field
         if (controlMode == SPTypes.ControlMode.Display && field.SchemaXml.indexOf('ShowInDisplayForm="FALSE"') > 0) { continue; }
 
