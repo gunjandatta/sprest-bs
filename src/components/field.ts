@@ -425,6 +425,9 @@ export const Field = (props: IFieldProps): IField => {
             let numberField = props.field as Types.SP.FieldNumber;
             let numberProps = controlProps as Components.IFormControlPropsNumberField;
 
+            // Set the default value
+            numberProps.value = numberField.DefaultValue;
+
             // See if this is a percentage
             if (numberField.ShowAsPercentage) {
                 // Set the type
@@ -441,7 +444,7 @@ export const Field = (props: IFieldProps): IField => {
                 numberProps.value = numberProps.value * (numberProps.max == 100 && numberProps.value < 1 ? 100 : 1);
             }
             // Else, see if the min/max values are defined
-            else if (typeof (numberField.MaximumValue) == "number" && typeof (numberField.MinimumValue) == "number") {
+            else if ((typeof (numberField.MaximumValue) == "number" && numberField.MaximumValue != Number.MAX_VALUE) && (typeof (numberField.MinimumValue) == "number" && numberField.MinimumValue != Number.MIN_VALUE)) {
                 // Update the properties to display a range
                 numberProps.type = Components.FormControlTypes.Range;
                 numberProps.max = numberField.MaximumValue;
