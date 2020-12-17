@@ -426,7 +426,7 @@ export const Field = (props: IFieldProps): IField => {
             let numberProps = controlProps as Components.IFormControlPropsNumberField;
 
             // Set the default value
-            numberProps.value = numberField.DefaultValue;
+            numberProps.value = numberProps.value == null ? numberField.DefaultValue : numberProps.value;
 
             // See if this is a percentage
             if (numberField.ShowAsPercentage) {
