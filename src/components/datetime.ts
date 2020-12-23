@@ -1,6 +1,7 @@
-import * as flatpickr from "flatpickr";
+import "flatpickr/dist/flatpickr.min.js";
 import { Components } from "gd-bs";
 import { IDateTime, IDateTimeProps, IFormControlPropsDateTime } from "../../@types/components";
+declare var flatpickr;
 
 /**
  * Date/Time
@@ -29,7 +30,7 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
     options.dateFormat = options.dateFormat || ("m-d-Y" + (props.showTime ? " H:i K" : ""));
 
     // Apply the plugin
-    let datetime = (flatpickr as any)(textbox.el.querySelector("input"), options);
+    let datetime = flatpickr(textbox.el.querySelector("input"), options);
 
     // Create the element
     let el = document.createElement("div");
