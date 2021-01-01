@@ -1,3 +1,4 @@
 build
+dist/*.txt
 node_modules
 *.yaml

@@ -29,15 +29,15 @@
   },
   "homepage": "https://dattabase.com/extras/bs",
   "dependencies": {
-    "flatpickr": "^4.6.6",
-    "gd-bs": "3.8.8",
+    "flatpickr": "^4.6.9",
+    "gd-bs": "^3.8.9",
     "gd-sprest": "^6.2.5",
     "gd-sprest-def": "^0.9.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
-    "babel-loader": "^8.2.1",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
     "dts-bundle": "^0.7.3",
     "node-sass": "^5.0.0",
