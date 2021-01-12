@@ -791,6 +791,12 @@ export const Field = (props: IFieldProps): IField => {
                 value: control ? control.getValue() : null
             };
 
+            // See if this is the file leaf ref
+            if (props.field.InternalName == "FileLeafRef") {
+                // Update the name
+                fieldValue.name = "Title";
+            }
+
             // Update the field name/value, based on the type
             switch (props.field.FieldTypeKind) {
                 // Boolean

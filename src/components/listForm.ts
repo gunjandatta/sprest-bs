@@ -541,6 +541,12 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 // Update the value
                 value[fieldName] = value[fieldName + "Id"] || (value[fieldName] ? value[fieldName].Id : null) || value[fieldName];
             }
+
+            // See if this is the file leaf ref
+            if (field.InternalName == "FileLeafRef") {
+                // Update the value
+                value[fieldName] = value[fieldName] || props.info.item["Title"];
+            }
         }
 
         // Determine the control mode
@@ -579,7 +585,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             // Do not render in the new/edit forms
             if (props.controlMode != SPTypes.ControlMode.Display) { continue; }
         }
-
 
         // See if this is a lookup field
         let lookupFilter = null;
