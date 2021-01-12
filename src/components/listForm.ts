@@ -541,12 +541,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 // Update the value
                 value[fieldName] = value[fieldName + "Id"] || (value[fieldName] ? value[fieldName].Id : null) || value[fieldName];
             }
-
-            // See if this is the file leaf ref
-            if (field.InternalName == "FileLeafRef") {
-                // Update the value
-                value[fieldName] = value[fieldName] || props.info.item["Title"];
-            }
         }
 
         // Determine the control mode
@@ -783,24 +777,47 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 });
             }
 
+            let updateDocSetFolder = (info: Helper.IListFormResult, values) => {
+                // Return a promise
+                return new Promise((resolve) => {
+                    // See if the file leaf ref is set
+                    if (info.itemFolder && info.fields.FileLeafRef) {
+                        // See if an update is needed
+                        if (values.FileLeafRef && values.FileLeafRef != info.itemFolder.Name) {
+                            // Update the folder name
+                            info.itemFolder.update({ Name: values.FileLeafRef }).execute(resolve, resolve);
+                        } else {
+                            // Resolve the request
+                            resolve();
+                        }
+                    } else {
+                        // Resolve the request
+                        resolve();
+                    }
+                });
+            }
+
             // Return a promise
             return new Promise((resolve, reject) => {
                 // Call the saving event
                 onSaving(getValues()).then(values => {
-                    // Update the item
-                    ListForm.saveItem(props.info, values).then(info => {
-                        // Remove the attachments
-                        removeAttachments(info).then(() => {
-                            // Save the attachments
-                            saveAttachments(info).then(() => {
-                                // Update the info
-                                props.info = info;
+                    // Update the doc set folder
+                    updateDocSetFolder(props.info, values).then(() => {
+                        // Update the item
+                        ListForm.saveItem(props.info, values).then(info => {
+                            // Remove the attachments
+                            removeAttachments(info).then(() => {
+                                // Save the attachments
+                                saveAttachments(info).then(() => {
+                                    // Update the info
+                                    props.info = info;
 
-                                // Resolve the promise
-                                resolve(props.info.item as any);
+                                    // Resolve the promise
+                                    resolve(props.info.item as any);
+                                });
                             });
-                        });
-                    }, reject);
+                        }, reject);
+                    });
                 });
             });
         }
