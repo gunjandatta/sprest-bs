@@ -541,6 +541,12 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 // Update the value
                 value[fieldName] = value[fieldName + "Id"] || (value[fieldName] ? value[fieldName].Id : null) || value[fieldName];
             }
+
+            // See if this is a file leaf ref
+            if (fieldName == "FileLeafRef") {
+                // Update the value
+                value[fieldName] = value[fieldName] || props.info.item.Title;
+            }
         }
 
         // Determine the control mode
