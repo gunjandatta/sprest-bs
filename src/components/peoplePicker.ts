@@ -351,6 +351,6 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
     // Register a people picker
     props.onGetValue = () => {
         // Return the value
-        return picker.getValue();
+        return picker ? picker.getValue() : null;
     };
 });
