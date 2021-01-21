@@ -621,18 +621,19 @@ export const Field = (props: IFieldProps): IField => {
     if (props.field.InternalName == "FileLeafRef") {
         // Set base validation
         baseValidation = (control, result) => {
-            // Ensure the value doesn't contain invalid characters
             let value = result.value;
-            if (value) {
+
+            // Ensure the value exists
+            result.isValid = value ? true : false;
+            if (result.isValid) {
                 // See if it ends w/ a .
                 if (value[value.length - 1] == '.') {
                     // Update the validation
                     result.isValid = false;
                     result.invalidMessage = "The value cannot end with a '.' character.";
                 }
-
-                // See if it contains invalid characters
-                if (/["\#\%\*\:\<\>\?\/\\"]/.test(value) || value.indexOf('\\') >= 0) {
+                // Else, see if it contains invalid characters
+                else if (/["\#\%\*\:\<\>\?\/\\"]/.test(value) || value.indexOf('\\') >= 0) {
                     // Update the validation
                     result.isValid = false;
                     result.invalidMessage = "The value cannot contain the following characters: \" % * : <, > ? / \\ |";
