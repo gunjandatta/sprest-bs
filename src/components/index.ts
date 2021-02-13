@@ -13,4 +13,4 @@ Components["ListFormDialog"] = ListFormDialog;
 Components["PeoplePicker"] = PeoplePicker;
 
 // Export the components
-export default Core;
+export default Components;
