@@ -15,7 +15,7 @@ module.exports = (env, argv) => {
             filename: "gd-sprest-bs" + (isDev ? "" : ".min") + ".js"
         },
         externals: {
-            "gd-bs": "$REST",
+            "gd-bs": "GD",
             "gd-sprest": "$REST"
         },
         module: {
