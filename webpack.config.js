@@ -5,10 +5,18 @@ module.exports = (env, argv) => {
 
     // Return the configuration
     var cfg = {
-        entry: "./build/index.js",
+        entry: [
+            "./node_modules/gd-bs/dist/gd-bs-icons" + (isDev ? "" : ".min") + ".js",
+            "./node_modules/gd-sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
+            "./build/index.js"
+        ],
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: "gd-sprest-bs" + (isDev ? "" : ".min") + ".js"
+        },
+        externals: {
+            "gd-bs": "$REST",
+            "gd-sprest": "$REST"
         },
         module: {
             rules: [
