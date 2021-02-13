@@ -1,6 +1,6 @@
-import { Components } from "gd-bs";
 import { SPTypes } from "gd-sprest";
 import { IListFormEdit, IListFormDialog, IListFormDialogProps } from "../../@types/components";
+import { Components } from "./core";
 import { ListForm } from "./listForm";
 
 /**

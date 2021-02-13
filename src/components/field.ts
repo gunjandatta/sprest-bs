@@ -1,6 +1,6 @@
-import { Components } from "gd-bs";
 import { Helper, SPTypes, Types } from "gd-sprest";
 import { IField, IFieldProps, IFieldValue, IFormControlPropsDateTime, IFormControlPropsPeoplePicker } from "../../@types/components";
+import { Components } from "./core";
 import { DateTimeControlType } from "./datetime";
 import { PeoplePickerControlType } from "./peoplePicker";
 
