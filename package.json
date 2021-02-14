@@ -1,8 +1,8 @@
 {
   "name": "gd-sprest-bs",
-  "version": "6.9.4",
+  "version": "6.9.5",
   "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
-  "main": "dist/gd-sprest-bs.min.js",
+  "main": "build/index.js",
   "typings": "@types/index.d.ts",
   "scripts": {
     "all": "npm run clean && npm run build && npm run prod && npm run typings",
@@ -29,6 +29,8 @@
   },
   "homepage": "https://dattabase.com/extras/bs",
   "dependencies": {
+    "gd-bs": "^4.1.2",
+    "gd-sprest": "^6.3.5",
     "gd-sprest-def": "^0.9.7"
   },
   "devDependencies": {
@@ -38,8 +40,6 @@
     "css-loader": "^5.0.1",
     "dts-bundle": "^0.7.3",
     "flatpickr": "^4.6.9",
-    "gd-bs": "^4.1.1",
-    "gd-sprest": "^6.3.4",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
