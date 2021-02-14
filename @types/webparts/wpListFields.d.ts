@@ -1,4 +1,4 @@
-import { Types } from "gd-sprest";
+import { Types } from "../gd-sprest";
 import { IWPList, IWPListCfg, IWPListEditForm, IWPListInfo, IWPListProps } from "./wpList";
 
 /**

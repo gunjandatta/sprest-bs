@@ -1,5 +1,5 @@
-import { Helper, Types } from "gd-sprest";
-import { IFormControl, IFormControlProps, IFormControlValidationResult } from "gd-bs/@types/components/formControl";
+import { Helper, Types } from "../gd-sprest";
+import { IFormControl, IFormControlProps, IFormControlValidationResult } from "../gd-bs/components/formControl";
 
 /**
  * Field

@@ -1,4 +1,4 @@
-import { IFormControlProps } from "gd-bs/@types/components/formControl";
+import { IFormControlProps } from "../gd-bs/components/formControl";
 
 /**
  * Date/Time

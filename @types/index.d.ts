@@ -1,6 +1,6 @@
 /* Core Libraries */
-export * from "gd-bs";
-export * from "gd-sprest";
+export * from "./gd-bs";
+export * from "./gd-sprest";
 
 /* BootStrap Components */
 import * as Components from "./components";

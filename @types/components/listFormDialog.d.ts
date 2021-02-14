@@ -1,8 +1,8 @@
-import { IFormRow } from "gd-bs/@types/components/form";
-import { IFormControl, IFormControlProps } from "gd-bs/@types/components/formControl";
-import { IModal, IModalProps } from "gd-bs/@types/components/modal";
-import { IToolbarProps } from "gd-bs/@types/components/toolbar";
-import { Helper, Types } from "gd-sprest";
+import { IFormRow } from "../gd-bs/components/form";
+import { IFormControl, IFormControlProps } from "../gd-bs/components/formControl";
+import { IModal, IModalProps } from "../gd-bs/components/modal";
+import { IToolbarProps } from "../gd-bs/components/toolbar";
+import { Helper, Types } from "../gd-sprest";
 
 /**
  * List Form Dialog

@@ -1,5 +1,5 @@
-import { IFormControlProps } from "gd-bs/@types/components/formControl";
-import { Types } from "gd-sprest";
+import { IFormControlProps } from "../gd-bs/components/formControl";
+import { Types } from "../gd-sprest";
 import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "./wp";
 
 /**
