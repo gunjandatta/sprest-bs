@@ -100,15 +100,18 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
                         isDisabled: disableSaveButton,
                         text: "Save",
                         onClick: ev => {
-                            // Call the save event and set the configuration
-                            let cfg = _editForm.onSave ? _editForm.onSave(wp.cfg, form) : null;
-                            cfg = cfg ? cfg : wp.cfg;
+                            // Validate the form
+                            if (form.isValid()) {
+                                // Call the save event and set the configuration
+                                let cfg = _editForm.onSave ? _editForm.onSave(wp.cfg, form) : null;
+                                cfg = cfg ? cfg : wp.cfg;
 
-                            // Save the configuration
-                            Helper.saveConfiguration(wp.wpId, props.cfgElementId, cfg).then(() => {
-                                // Close the modal
-                                modal.toggle();
-                            });
+                                // Save the configuration
+                                Helper.saveConfiguration(wp.wpId, props.cfgElementId, cfg).then(() => {
+                                    // Close the modal
+                                    modal.toggle();
+                                });
+                            }
                         }
                     });
                 }
