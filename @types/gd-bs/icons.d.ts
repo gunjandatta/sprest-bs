@@ -852,26 +852,90 @@ export const IconTypes: {
 	CloudDownloadFill: number;
 	// cloud-download.svg
 	CloudDownload: number;
+	// cloud-drizzle-fill.svg
+	CloudDrizzleFill: number;
+	// cloud-drizzle.svg
+	CloudDrizzle: number;
 	// cloud-fill.svg
 	CloudFill: number;
+	// cloud-fog-fill.svg
+	CloudFogFill: number;
+	// cloud-fog.svg
+	CloudFog: number;
+	// cloud-fog2-fill.svg
+	CloudFog2Fill: number;
+	// cloud-fog2.svg
+	CloudFog2: number;
+	// cloud-hail-fill.svg
+	CloudHailFill: number;
+	// cloud-hail.svg
+	CloudHail: number;
+	// cloud-haze-1.svg
+	CloudHaze1: number;
+	// cloud-haze-fill.svg
+	CloudHazeFill: number;
+	// cloud-haze.svg
+	CloudHaze: number;
+	// cloud-haze2-fill.svg
+	CloudHaze2Fill: number;
+	// cloud-lightning-fill.svg
+	CloudLightningFill: number;
+	// cloud-lightning-rain-fill.svg
+	CloudLightningRainFill: number;
+	// cloud-lightning-rain.svg
+	CloudLightningRain: number;
+	// cloud-lightning.svg
+	CloudLightning: number;
 	// cloud-minus-fill.svg
 	CloudMinusFill: number;
 	// cloud-minus.svg
 	CloudMinus: number;
+	// cloud-moon-fill.svg
+	CloudMoonFill: number;
+	// cloud-moon.svg
+	CloudMoon: number;
 	// cloud-plus-fill.svg
 	CloudPlusFill: number;
 	// cloud-plus.svg
 	CloudPlus: number;
+	// cloud-rain-fill.svg
+	CloudRainFill: number;
+	// cloud-rain-heavy-fill.svg
+	CloudRainHeavyFill: number;
+	// cloud-rain-heavy.svg
+	CloudRainHeavy: number;
+	// cloud-rain.svg
+	CloudRain: number;
 	// cloud-slash-fill.svg
 	CloudSlashFill: number;
 	// cloud-slash.svg
 	CloudSlash: number;
+	// cloud-sleet-fill.svg
+	CloudSleetFill: number;
+	// cloud-sleet.svg
+	CloudSleet: number;
+	// cloud-snow-fill.svg
+	CloudSnowFill: number;
+	// cloud-snow.svg
+	CloudSnow: number;
+	// cloud-sun-fill.svg
+	CloudSunFill: number;
+	// cloud-sun.svg
+	CloudSun: number;
 	// cloud-upload-fill.svg
 	CloudUploadFill: number;
 	// cloud-upload.svg
 	CloudUpload: number;
 	// cloud.svg
 	Cloud: number;
+	// clouds-fill.svg
+	CloudsFill: number;
+	// clouds.svg
+	Clouds: number;
+	// cloudy-fill.svg
+	CloudyFill: number;
+	// cloudy.svg
+	Cloudy: number;
 	// code-slash.svg
 	CodeSlash: number;
 	// code-square.svg
@@ -1578,6 +1642,8 @@ export const IconTypes: {
 	House: number;
 	// hr.svg
 	Hr: number;
+	// hurricane.svg
+	Hurricane: number;
 	// image-alt.svg
 	ImageAlt: number;
 	// image-fill.svg
@@ -1714,6 +1780,10 @@ export const IconTypes: {
 	LightbulbOff: number;
 	// lightbulb.svg
 	Lightbulb: number;
+	// lightning-charge-fill.svg
+	LightningChargeFill: number;
+	// lightning-charge.svg
+	LightningCharge: number;
 	// lightning-fill.svg
 	LightningFill: number;
 	// lightning.svg
@@ -1788,6 +1858,14 @@ export const IconTypes: {
 	MinecartLoaded: number;
 	// minecart.svg
 	Minecart: number;
+	// moisture.svg
+	Moisture: number;
+	// moon-fill.svg
+	MoonFill: number;
+	// moon-stars-fill.svg
+	MoonStarsFill: number;
+	// moon-stars.svg
+	MoonStars: number;
 	// moon.svg
 	Moon: number;
 	// mouse-fill.svg
@@ -2024,6 +2102,8 @@ export const IconTypes: {
 	QuestionSquare: number;
 	// question.svg
 	Question: number;
+	// rainbow.svg
+	Rainbow: number;
 	// receipt-cutoff.svg
 	ReceiptCutoff: number;
 	// receipt.svg
@@ -2214,6 +2294,12 @@ export const IconTypes: {
 	Sliders: number;
 	// smartwatch.svg
 	Smartwatch: number;
+	// snow.svg
+	Snow: number;
+	// snow2.svg
+	Snow2: number;
+	// snow3.svg
+	Snow3: number;
 	// sort-alpha-down-alt.svg
 	SortAlphaDownAlt: number;
 	// sort-alpha-down.svg
@@ -2264,6 +2350,8 @@ export const IconTypes: {
 	StarHalf: number;
 	// star.svg
 	Star: number;
+	// stars.svg
+	Stars: number;
 	// stickies-fill.svg
 	StickiesFill: number;
 	// stickies.svg
@@ -2310,10 +2398,20 @@ export const IconTypes: {
 	SuitSpadeFill: number;
 	// suit-spade.svg
 	SuitSpade: number;
+	// sun-fill.svg
+	SunFill: number;
 	// sun.svg
 	Sun: number;
 	// sunglasses.svg
 	Sunglasses: number;
+	// sunrise-fill.svg
+	SunriseFill: number;
+	// sunrise.svg
+	Sunrise: number;
+	// sunset-fill.svg
+	SunsetFill: number;
+	// sunset.svg
+	Sunset: number;
 	// symmetry-horizontal.svg
 	SymmetryHorizontal: number;
 	// symmetry-vertical.svg
@@ -2390,6 +2488,14 @@ export const IconTypes: {
 	Textarea: number;
 	// thermometer-half.svg
 	ThermometerHalf: number;
+	// thermometer-high.svg
+	ThermometerHigh: number;
+	// thermometer-low.svg
+	ThermometerLow: number;
+	// thermometer-snow.svg
+	ThermometerSnow: number;
+	// thermometer-sun.svg
+	ThermometerSun: number;
 	// thermometer.svg
 	Thermometer: number;
 	// three-dots-vertical.svg
@@ -2410,6 +2516,8 @@ export const IconTypes: {
 	Toggles2: number;
 	// tools.svg
 	Tools: number;
+	// tornado.svg
+	Tornado: number;
 	// trash-fill.svg
 	TrashFill: number;
 	// trash.svg
@@ -2432,10 +2540,14 @@ export const IconTypes: {
 	TrophyFill: number;
 	// trophy.svg
 	Trophy: number;
+	// tropical-storm.svg
+	TropicalStorm: number;
 	// truck-flatbed.svg
 	TruckFlatbed: number;
 	// truck.svg
 	Truck: number;
+	// tsunami.svg
+	Tsunami: number;
 	// tv-fill.svg
 	TvFill: number;
 	// tv.svg
@@ -2468,6 +2580,10 @@ export const IconTypes: {
 	UiRadiosGrid: number;
 	// ui-radios.svg
 	UiRadios: number;
+	// umbrella-fill.svg
+	UmbrellaFill: number;
+	// umbrella.svg
+	Umbrella: number;
 	// union.svg
 	Union: number;
 	// unlock-fill.svg
@@ -2518,6 +2634,8 @@ export const IconTypes: {
 	Wallet2: number;
 	// watch.svg
 	Watch: number;
+	// water.svg
+	Water: number;
 	// whatsapp.svg
 	Whatsapp: number;
 	// wifi-1.svg
@@ -2528,6 +2646,8 @@ export const IconTypes: {
 	WifiOff: number;
 	// wifi.svg
 	Wifi: number;
+	// wind.svg
+	Wind: number;
 	// window-dock.svg
 	WindowDock: number;
 	// window-sidebar.svg
