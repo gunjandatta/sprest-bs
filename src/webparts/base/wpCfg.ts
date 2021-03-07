@@ -74,6 +74,9 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
                 }
                 // Else, render the edit form
                 else { form = Helper.renderEditForm(wp, formControls); }
+
+                // Call the render form event
+                props.onRenderForm ? props.onRenderForm(form, wp) : null;
             },
             onRenderFooter: el => {
                 let actionButtons: Array<Components.IButtonProps> = [];

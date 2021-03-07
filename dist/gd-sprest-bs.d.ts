@@ -3980,6 +3980,9 @@ declare module 'gd-sprest-bs/webparts/wp' {
             /** The render event triggered when the page is in 'Edit' mode */
             onRenderEdit?: (wp: IWPInfo) => any;
     
+            /** The render form event triggered when the form is created */
+            onRenderForm?: (form: IForm, wp?: IWPInfo) => any;
+    
             /** The webpart class name */
             wpClassName?: string;
     }
