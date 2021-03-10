@@ -228,8 +228,11 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         onControlRendered: control => {
             // See if all of the controls have been rendered
             if (++ctrlCounter == rows.length) {
-                // Execute the form rendered event
-                props.onFormRendered ? props.onFormRendered(form) : null;
+                // See if an event exists
+                if (props.onFormRendered) {
+                    // Execute the form rendered event in another thread
+                    setTimeout(() => { props.onFormRendered(form); }, 10);
+                }
             }
 
             // Return the control rendered event
@@ -686,8 +689,11 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         onControlRendered: control => {
             // See if all of the controls have been rendered
             if (++ctrlCounter == rows.length) {
-                // Execute the form rendered event
-                props.onFormRendered ? props.onFormRendered(form) : null;
+                // See if an event exists
+                if (props.onFormRendered) {
+                    // Execute the form rendered event in another thread
+                    setTimeout(() => { props.onFormRendered(form); }, 10);
+                }
             }
 
             // Return the event
