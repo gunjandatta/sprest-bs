@@ -216,13 +216,25 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     // Remove the progress bar
     progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
 
+    // Counter for each control
+    let ctrlCounter = 0;
+
     // Render the form
     form = Components.Form({
         el: props.el,
         className: props.className,
         groupClassName: props.groupClassName,
         rowClassName: props.rowClassName,
-        onControlRendered: control => { return props.onControlRendered ? props.onControlRendered(control, props.info.fields[control.props.name]) : null; },
+        onControlRendered: control => {
+            // See if all of the controls have been rendered
+            if (++ctrlCounter == rows.length) {
+                // Execute the form rendered event
+                props.onFormRendered ? props.onFormRendered(form) : null;
+            }
+
+            // Return the control rendered event
+            return props.onControlRendered ? props.onControlRendered(control, props.info.fields[control.props.name]) : null;
+        },
         onControlRendering: control => { return props.onControlRendering ? props.onControlRendering(control, props.info.fields[control.name]) : null; },
         rows: props.template || rows
     });
@@ -235,9 +247,6 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
 
     // Execute the assign to event
     props.assignTo ? props.assignTo(form) : null;
-
-    // Execute the form rendered event
-    props.onFormRendered ? props.onFormRendered(form) : null;
 
     // Return the form informaiton
     return {
@@ -665,13 +674,25 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     // Remove the progress bar
     progress.el.parentElement ? progress.el.parentElement.removeChild(progress.el) : null;
 
+    // Counter for each control
+    let ctrlCounter = 0;
+
     // Render the form
     let form = Components.Form({
         el: props.el,
         className: props.className,
         groupClassName: props.groupClassName,
         rowClassName: props.rowClassName,
-        onControlRendered: control => { return props.onControlRendered ? props.onControlRendered(control, props.info.fields[control.props.name]) : null },
+        onControlRendered: control => {
+            // See if all of the controls have been rendered
+            if (++ctrlCounter == rows.length) {
+                // Execute the form rendered event
+                props.onFormRendered ? props.onFormRendered(form) : null;
+            }
+
+            // Return the event
+            return props.onControlRendered ? props.onControlRendered(control, props.info.fields[control.props.name]) : null;
+        },
         onControlRendering: control => {
             let updateReadOnly = (control: Components.IFormControlProps) => {
                 // See if this control is readonly
@@ -817,9 +838,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
     // Execute the assign to event
     props.assignTo ? props.assignTo(formObj) : null;
-
-    // Execute the form rendered event
-    props.onFormRendered ? props.onFormRendered(form) : null;
 
     // Return the form
     return formObj;
