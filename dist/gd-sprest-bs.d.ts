@@ -3294,7 +3294,7 @@ declare module 'gd-sprest-bs/components/field' {
 
 declare module 'gd-sprest-bs/components/listForm' {
     import { Helper, Types } from "gd-sprest-bs/gd-sprest";
-    import { IFormRow } from "gd-sprest-bs/gd-bs/components/form";
+    import { IForm, IFormRow } from "gd-sprest-bs/gd-bs/components/form";
     import { IFormControl, IFormControlProps } from "gd-sprest-bs/gd-bs/components/formControl";
     
     /**
@@ -3362,6 +3362,9 @@ declare module 'gd-sprest-bs/components/listForm' {
     
             /** The control rendering event. */
             onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;
+    
+            /** The form rendered event. */
+            onFormRendered?: (form: IForm) => void;
     
             /** The error event. */
             onError?: (msg?: string) => void;

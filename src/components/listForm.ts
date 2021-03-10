@@ -236,6 +236,9 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     // Execute the assign to event
     props.assignTo ? props.assignTo(form) : null;
 
+    // Execute the form rendered event
+    props.onFormRendered ? props.onFormRendered(form) : null;
+
     // Return the form informaiton
     return {
         get el() { return form ? form.el as HTMLFormElement : null; }
@@ -814,6 +817,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
     // Execute the assign to event
     props.assignTo ? props.assignTo(formObj) : null;
+
+    // Execute the form rendered event
+    props.onFormRendered ? props.onFormRendered(form) : null;
 
     // Return the form
     return formObj;

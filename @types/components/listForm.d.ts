@@ -1,5 +1,5 @@
 import { Helper, Types } from "../gd-sprest";
-import { IFormRow } from "../gd-bs/components/form";
+import { IForm, IFormRow } from "../gd-bs/components/form";
 import { IFormControl, IFormControlProps } from "../gd-bs/components/formControl";
 
 /**
@@ -67,6 +67,9 @@ export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
 
     /** The control rendering event. */
     onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;
+
+    /** The form rendered event. */
+    onFormRendered?: (form: IForm) => void;
 
     /** The error event. */
     onError?: (msg?: string) => void;
