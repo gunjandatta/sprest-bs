@@ -103,6 +103,7 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
                                 // Set the target information
                                 targetInfo = {
                                     cfg: {
+                                        ...(cfg || {}),
                                         WebPartId: wpId
                                     },
                                     el: elWebPart,
