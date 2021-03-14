@@ -17,6 +17,7 @@
 //   ../gd-sprest-def/base
 //   ../gd-sprest-def/lib/SP/Taxonomy/entitytypes
 //   ../gd-sprest-def/lib/SP/UI/ApplicationPages/complextypes
+//   ../gd-sprest-def/lib/Microsoft/SharePoint/Utilities
 //   ../gd-sprest-def/lib/SP
 
 declare module 'gd-sprest-bs' {
@@ -2859,6 +2860,7 @@ declare module 'gd-sprest-bs/gd-sprest/lib' {
     export * from "gd-sprest-bs/gd-sprest/lib/userProfile";
     export * from "gd-sprest-bs/gd-sprest/lib/utility";
     export * from "gd-sprest-bs/gd-sprest/lib/web";
+    export * from "gd-sprest-bs/gd-sprest/lib/webTemplateExtensions";
     export * from "gd-sprest-bs/gd-sprest/lib/wfInstanceService";
     export * from "gd-sprest-bs/gd-sprest/lib/wfSubscriptionService";
 }
@@ -3109,6 +3111,11 @@ declare module 'gd-sprest-bs/gd-sprest/rest' {
             Web: LibTypes.IWeb;
     
             /**
+                * Use this api to interact with a SharePoint web template extensions.
+                */
+            WebTemplateExtensions: LibTypes.IWebTemplateExtensions;
+    
+            /**
                 * User this api to interact with the SharePoint 2013 workflow instance service.
                 */
             WorkflowInstanceService: LibTypes.IWorkflowInstanceService;
@@ -3173,6 +3180,7 @@ declare module 'gd-sprest-bs/gd-sprest/intellisense' {
     export * from "gd-sprest-def";
     export * from "gd-sprest-bs/gd-sprest/intellisense/peoplePicker";
     export * from "gd-sprest-bs/gd-sprest/intellisense/utility";
+    export * from "gd-sprest-bs/gd-sprest/intellisense/webTemplateExtensions";
 }
 
 declare module 'gd-sprest-bs/components/datetime' {
@@ -8046,6 +8054,30 @@ declare module 'gd-sprest-bs/gd-sprest/lib/web' {
     }
 }
 
+declare module 'gd-sprest-bs/gd-sprest/lib/webTemplateExtensions' {
+    import * as SP from "gd-sprest-bs/gd-sprest/intellisense/webTemplateExtensions";
+    import { ITargetInfoProps } from "gd-sprest-bs/gd-sprest/utils";
+    
+    /**
+        * #### REST API
+        * _api/Microsoft.SharePoint.Utilities.WebTemplateExtensions
+        */
+    export const WebTemplateExtensions: IWebTemplateExtensions;
+    
+    /**
+        * Web Template Extensions
+        * @category WebTemplateExtensions
+        */
+    export interface IWebTemplateExtensions {
+            /**
+                * Creates an instance of the utility library.
+                * @param url - (Optional) The web url.
+                * @param targetInfo - (Optional) The target information.
+                */
+            (url?: string, targetInfo?: ITargetInfoProps): SP.IWebTemplateExtensions;
+    }
+}
+
 declare module 'gd-sprest-bs/gd-sprest/lib/wfInstanceService' {
     import { IBaseExecution } from "gd-sprest-def/lib/base";
     import * as SP from "gd-sprest-def/lib/SP/WorkflowServices/entitytypes";
@@ -11890,6 +11922,47 @@ declare module 'gd-sprest-bs/gd-sprest/intellisense/utility' {
                 */
             sendEmail(email: IEmail): IBaseExecution<IBaseExecution, ISendEmailResult>;
     }
+}
+
+declare module 'gd-sprest-bs/gd-sprest/intellisense/webTemplateExtensions' {
+    import {
+    
+    } from "gd-sprest-def/lib/Microsoft/SharePoint/Utilities/WebTemplateExtensions";
+    import { IBaseExecution } from "gd-sprest-def/lib/base";
+    import { WebTemplateExtensions } from "gd-sprest-def/lib/Microsoft/SharePoint/Utilities";
+    
+    /**
+        * Web Template Extensions Results
+        */
+    export interface IResult extends IBaseExecution { }
+    
+    /**
+        * Web Template Extensions Methods
+        */
+    export interface IWebTemplateExtensionsMethods {
+            applySiteDesign(siteDesignId: string, webUrl: string): IBaseExecution;
+            addSiteDesignTaskToCurrentWeb(siteDesignId: string): IBaseExecution;
+            createSiteDesign(info: WebTemplateExtensions.SiteDesignCreationInfo)
+            createSiteScript(title: string, content: any): IBaseExecution;
+            deleteSiteDesign(id: string): IBaseExecution;
+            deleteSiteScript(id: string): IBaseExecution;
+            getSiteDesigns(): IBaseExecution;
+            getSiteDesignMetadata(id: string): IBaseExecution;
+            getSiteScripts(): IBaseExecution;
+            getSiteScriptFromWeb(webUrl: string, info: WebTemplateExtensions.SiteScriptSerializationInfo): IBaseExecution;
+            getSiteScriptFromList(listUrl: string): IBaseExecution;
+            getSiteScriptMetadata(id: string): IBaseExecution;
+            getSiteDesignRights(id: string): IBaseExecution;
+            grantSiteDesignRights(id: string, principalNames: string[], grantedRights: number): IBaseExecution;
+            revokeSiteDesignRights(id: string, principalNames: string[]): IBaseExecution;
+            updateSiteDesign(updateInfo: WebTemplateExtensions.SiteDesignCreationInfo & WebTemplateExtensions.SiteDesignMetadata): IBaseExecution;
+            updateSiteScript(updateInfo: WebTemplateExtensions.SiteScriptCreationInfo & WebTemplateExtensions.SiteScriptMetadata): IBaseExecution;
+    }
+    
+    /**
+        * Web Template Extensions
+        */
+    export interface IWebTemplateExtensions extends IWebTemplateExtensionsMethods, IBaseExecution<IWebTemplateExtensions> { }
 }
 
 declare module 'gd-sprest-bs/gd-bs/base' {
