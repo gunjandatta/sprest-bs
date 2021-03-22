@@ -88,6 +88,7 @@ export const Field = (props: IFieldProps): IField => {
 
             // Add the item
             items.push({
+                data: item,
                 isSelected,
                 text: item[field.LookupField],
                 value: item.Id.toString()
@@ -123,6 +124,7 @@ export const Field = (props: IFieldProps): IField => {
 
             // Add the heading
             items.push({
+                data: term,
                 isHeader: true,
                 isSelected,
                 text: term.info.name,
