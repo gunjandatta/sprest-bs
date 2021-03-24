@@ -6228,9 +6228,9 @@ declare module 'gd-sprest-bs/gd-bs/components/offcanvas' {
             id?: string;
             onRenderBody?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
             onRenderHeader?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
+            options?: IOffcanvasOptions;
             title?: string | T;
             type?: number;
-            options: IOffcanvasOptions;
     }
     
     /**
