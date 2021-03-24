@@ -96,6 +96,7 @@ export interface IListGroupProps<T=Element> extends IBaseProps<IListGroup> {
     fadeTabs?: boolean;
     isFlush?: boolean;
     isHorizontal?: boolean;
+    isNumbered?: boolean;
     isTabs?: boolean;
     items?: Array<IListGroupItem<T>>;
 }

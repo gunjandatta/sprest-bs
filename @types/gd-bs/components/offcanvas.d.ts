@@ -3,6 +3,11 @@
  */
 export const Offcanvas: (props: IOffcanvasProps, template?: string) => IOffcanvas;
 
+/**
+ * Offcanvas Types
+ */
+export const OffcanvasTypes: IOffcanvasTypes;
+
 import { IBaseProps } from "../base";
 
 /**
@@ -28,12 +33,21 @@ export interface IOffcanvas {
 export interface IOffcanvasProps<T = Element> extends IBaseProps<IOffcanvas> {
     body?: string | T;
     data?: any;
-    enableBackdrop?: boolean;
-    enableScroll?: boolean;
     id?: string;
     onRenderBody?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
     onRenderHeader?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
     title?: string | T;
+    type?: number;
+    options: IOffcanvasOptions;
+}
+
+/**
+ * Offcanvas Options
+ */
+export interface IOffcanvasOptions {
+    backdrop?: boolean;
+    keyboard?: boolean;
+    scroll?: boolean;
 }
 
 /**

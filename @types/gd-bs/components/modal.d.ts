@@ -54,7 +54,6 @@ export const Modal: (props: IModalProps, template?: string) => IModal;
 export const ModalTypes: IModalTypes;
 
 import { IBaseProps } from "../base";
-import { IButtonProps } from "./button";
 
 /**
  * Modal
@@ -134,8 +133,4 @@ export type IModalTypes = {
     FullMedium: number;
     FullLarge: number;
     FullXLarge: number;
-    PanelSmall: number;
-    PanelMedium: number;
-    PanelLarge: number;
-    PanelXLarge: number;
 }
