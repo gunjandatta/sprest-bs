@@ -40,6 +40,9 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                         onClick: () => {
                             // Remove the button
                             elSelectedUsers.removeChild(btn.el);
+
+                            // Call the event
+                            props.onChange ? props.onChange(obj.getValue()) : null;
                         }
                     }
                 });
