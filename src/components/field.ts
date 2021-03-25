@@ -434,7 +434,7 @@ export const Field = (props: IFieldProps): IField => {
             let isPercent = numberField.ShowAsPercentage;
             if (isPercent == null) {
                 // Set the value from the schema (2013 environments)
-                isPercent = numberField.SchemaXml.indexOf('Percentage="True"') > 0;
+                isPercent = numberField.SchemaXml.toLowerCase().indexOf('percentage="true"') > 0;
             }
             if (isPercent) {
                 // Set the type
