@@ -431,7 +431,12 @@ export const Field = (props: IFieldProps): IField => {
             numberProps.value = numberProps.value == null ? numberField.DefaultValue : numberProps.value;
 
             // See if this is a percentage
-            if (numberField.ShowAsPercentage) {
+            let isPercent = numberField.ShowAsPercentage;
+            if (isPercent == null) {
+                // Set the value from the schema (2013 environments)
+                isPercent = numberField.SchemaXml.indexOf('Percentage="True"') > 0;
+            }
+            if (isPercent) {
                 // Set the type
                 numberProps.type = Components.FormControlTypes.Range;
 
