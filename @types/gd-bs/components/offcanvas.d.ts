@@ -55,6 +55,6 @@ export interface IOffcanvasOptions {
  */
 export type IOffcanvasTypes = {
     Bottom: number;
-    Left: number;
-    Right: number;
+    End: number;
+    Start: number;
 }

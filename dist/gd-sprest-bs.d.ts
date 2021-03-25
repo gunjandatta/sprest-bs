@@ -6247,8 +6247,8 @@ declare module 'gd-sprest-bs/gd-bs/components/offcanvas' {
         */
     export type IOffcanvasTypes = {
             Bottom: number;
-            Left: number;
-            Right: number;
+            End: number;
+            Start: number;
     }
 }
 
