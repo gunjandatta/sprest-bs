@@ -47,6 +47,9 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 // Set the data attribute
                 btn.el.setAttribute("data-user", JSON.stringify(userInfo.stringify()));
             }
+
+            // Call the event
+            props.onChange ? props.onChange(obj.getValue()) : null;
         }
 
         // See if we are allowing multiple users

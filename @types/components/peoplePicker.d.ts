@@ -72,6 +72,9 @@ export interface IPeoplePickerProps {
     /** True to allow multiple users to be selected. */
     multi?: boolean;
 
+    /** The change event. */
+    onChange?: (obj: Types.IPeoplePickerUser | Array<Types.IPeoplePickerUser>) => void;
+
     /** The placeholder text. (Default value is "Search") */
     placeholder?: string;
 
