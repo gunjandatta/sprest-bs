@@ -38,13 +38,12 @@ declare module 'gd-sprest-bs' {
 declare module 'gd-sprest-bs/gd-bs' {
     import * as Components from "gd-sprest-bs/gd-bs/components";
     import { Icons, IconTypes } from "gd-sprest-bs/gd-bs/icons";
-    var bootstrap, popper: any;
+    var bootstrap: any;
     
     export {
         bootstrap,
         Components,
-        Icons, IconTypes,
-        popper
+        Icons, IconTypes
     }
 }
 

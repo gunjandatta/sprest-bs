@@ -11,6 +11,7 @@ module.exports = (env, argv) => {
         resolve: {
             extensions: [".scss"]
         },
+        target: ["web", "es5"],
         module: {
             rules: [
                 {

@@ -16,6 +16,7 @@ module.exports = (env, argv) => {
             path: path.resolve(__dirname, "dist"),
             filename: "gd-sprest-bs" + (isDev ? "" : ".min") + ".js"
         },
+        target: ["web", "es5"],
         module: {
             rules: [
                 {
