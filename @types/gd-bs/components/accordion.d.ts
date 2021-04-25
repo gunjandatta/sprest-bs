@@ -57,7 +57,6 @@
 export const Accordion: (props: IAccordionProps, template?: string, itemTemplate?: string) => IAccordion;
 
 import { IBase, IBaseProps } from "../base";
-import { IButtonProps } from "./button";
 import { ICollapseOptions } from "./collapse";
 
 /**
@@ -86,6 +85,7 @@ export interface IAccordionOptions extends ICollapseOptions { }
  * Accordion Properties
  */
 export interface IAccordionProps<T=Element> extends IBaseProps<IAccordion> {
+    autoCollapse?: boolean;
     id?: string;
     items?: Array<IAccordionItem<T>>;
     options?: IAccordionOptions;
