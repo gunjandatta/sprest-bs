@@ -1,2 +1,1 @@
-import { Components } from "gd-bs";
-export { Components };
+export * from "gd-bs";

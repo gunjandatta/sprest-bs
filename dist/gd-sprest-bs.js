@@ -16,7 +16,7 @@
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports.Components = void 0;\n\nvar gd_bs_1 = __webpack_require__(/*! gd-bs */ \"./node_modules/.pnpm/gd-bs@4.3.0-beta.1/node_modules/gd-bs/dist/gd-bs-icons.min.js\");\n\nObject.defineProperty(exports, \"Components\", ({\n  enumerable: true,\n  get: function get() {\n    return gd_bs_1.Components;\n  }\n}));\n\n//# sourceURL=webpack://gd-sprest-bs/./build/components/core.js?");
+eval("\n\nvar __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {\n  if (k2 === undefined) k2 = k;\n  Object.defineProperty(o, k2, {\n    enumerable: true,\n    get: function get() {\n      return m[k];\n    }\n  });\n} : function (o, m, k, k2) {\n  if (k2 === undefined) k2 = k;\n  o[k2] = m[k];\n});\n\nvar __exportStar = this && this.__exportStar || function (m, exports) {\n  for (var p in m) {\n    if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\n  }\n};\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\n\n__exportStar(__webpack_require__(/*! gd-bs */ \"./node_modules/.pnpm/gd-bs@4.3.0-beta.1/node_modules/gd-bs/dist/gd-bs-icons.min.js\"), exports);\n\n//# sourceURL=webpack://gd-sprest-bs/./build/components/core.js?");
 
 /***/ }),
 
