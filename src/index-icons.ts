@@ -1,8 +1,8 @@
-// Export the library
+// Export the core library
 export * from ".";
 
 // SharePoint bootstrap components/webparts
-import { IconTypes, Icons } from "../icons";
+import { IconTypes, Icons } from "./icons";
 export { Icons, IconTypes }
 
 // Ensure the global variable exists

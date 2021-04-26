@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
         entry: [
             "./node_modules/gd-sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
             "./node_modules/gd-bs/dist/gd-bs" + (isDev ? "" : ".min") + ".js",
-            "./build/src/index-icons.js"
+            "./build/index-icons.js"
         ],
         externals: {
             "gd-bs": "GD",

@@ -62,9 +62,10 @@ function deleteDirectory(src) {
 // Log
 console.log("Cleaning the files...");
 
-// Delete the folder
+// Delete the folders
 deleteDirectory("./build");
 deleteDirectory("./dist");
+deleteDirectory("./src/icons");
 
 // Copy the typings
 copyDirectory("./node_modules/gd-bs/@types", "./@types/gd-bs");
