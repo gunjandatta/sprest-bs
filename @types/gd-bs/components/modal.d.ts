@@ -59,14 +59,8 @@ import { IBaseProps } from "../base";
  * Modal
  */
 export interface IModal {
-    /** Disposes the modal. */
-    dispose: () => void;
-
     /** The element. */
     el: Element,
-
-    /** Manually readjust the modal’s position if the height of a modal changes while it is open (i.e. in case a scrollbar appears). */
-    handleUpdate: () => void;
 
     /** Manually hides a modal. */
     hide: () => void;
@@ -91,14 +85,20 @@ export interface IModal {
  * Modal Options
  */
 export interface IModalOptions {
-    /** Includes a modal-backdrop element. Alternatively, specify static for a backdrop which doesn't close the modal on click. */
-    backdrop?: boolean | string;
+    /** True to automatically close the offcanvas when clicking outside of it. */
+    autoClose?: boolean;
+
+    /** True to enable the backdrop when the modal is visible. */
+    backdrop?: boolean;
 
     /** Puts the focus on the modal when initialized. */
     focus?: boolean;
 
     /** Closes the modal when escape key is pressed. */
     keyboard?: boolean;
+
+    /** True to toggle the modal on creation. */
+    visible?: boolean;
 }
 
 /**
@@ -111,7 +111,6 @@ export interface IModalProps<T = Element> extends IBaseProps<IModal> {
     hideCloseButton?: boolean;
     id?: string;
     isCentered?: boolean;
-    isStatic?: boolean;
     onClose?: (el: HTMLDivElement) => void;
     onRenderBody?: (el: HTMLDivElement) => void;
     onRenderFooter?: (el: HTMLDivElement) => void;

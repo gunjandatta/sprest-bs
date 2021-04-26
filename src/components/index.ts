@@ -1,4 +1,4 @@
-import { Components } from "./core";
+import { Components } from "gd-bs";
 import { DateTime } from "./datetime";
 import { Field } from "./field";
 import { ListForm } from "./listForm";
@@ -13,4 +13,4 @@ Components["ListFormDialog"] = ListFormDialog;
 Components["PeoplePicker"] = PeoplePicker;
 
 // Export the components
-export default Components;
+export { Components };

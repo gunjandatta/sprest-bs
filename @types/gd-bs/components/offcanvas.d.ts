@@ -45,9 +45,23 @@ export interface IOffcanvasProps<T = Element> extends IBaseProps<IOffcanvas> {
  * Offcanvas Options
  */
 export interface IOffcanvasOptions {
+    /** True to automatically close the offcanvas when clicking outside of it. */
+    autoClose?: boolean;
+
+    /** True to enable the backdrop when the offcanvas is visible. */
     backdrop?: boolean;
+
+    /** Puts the focus on the offcanvas when initialized. */
+    focus?: boolean;
+
+    /** Closes the offcanvas when escape key is pressed. */
     keyboard?: boolean;
+
+    /** True to enable scrolling of the background. */
     scroll?: boolean;
+
+    /** True to toggle the offcanvas on creation. */
+    visible?: boolean;
 }
 
 /**

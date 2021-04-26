@@ -83,9 +83,6 @@ export interface ICarousel {
      */
     cycle: () => void;
 
-    /** Disposes the carousel. */
-    dispose: () => void;
-
     /** The element. */
     el: Element;
 
@@ -112,6 +109,9 @@ export interface ICarousel {
 
     /** Shows the carousel. */
     show: () => void;
+
+    /** Unpauses the carousel. */
+    unpause: () => void;
 }
 
 /**
@@ -130,11 +130,10 @@ export interface ICarouselItem<T = Element> {
  * Carousel Options
  */
 export interface ICarouselOptions {
-    interval?: number | boolean;
+    interval?: number;
     keyboard?: boolean;
-    pause?: string | boolean;
-    slide?: string | boolean;
-    touch?: boolean;
+    pause?: boolean;
+    slide?: number;
     wrap?: boolean;
 }
 

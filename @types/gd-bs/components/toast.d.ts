@@ -60,7 +60,6 @@ export interface IToastProps<T = Element> extends IBaseProps<IToast> {
     headerImgClass?: string;
     headerImgSrc?: string;
     headerText?: string;
-    hideCloseButton?: boolean;
     mutedText?: string;
     options?: IToastOptions;
     onClick?: (el?: HTMLElement, data?: any) => void;

@@ -6,7 +6,7 @@ export * from "gd-sprest";
 
 // SharePoint bootstrap components/webparts
 import { Icons, IconTypes } from "gd-bs";
-import Components from "./components";
+import { Components } from "./components";
 import * as WebParts from "./webparts";
 export { Components, Icons, IconTypes, WebParts }
 
