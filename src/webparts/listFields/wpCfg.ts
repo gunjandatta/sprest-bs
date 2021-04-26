@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import { x as CloseIcon } from "../../../icons/svgs/x";
+import { x as CloseIcon } from "../../icons/svgs/x";
 import { Types } from "gd-sprest";
 import { IWPListField, IWPListFieldsCfg, IWPListFieldsEditForm, IWPListFieldsInfo } from "../../../@types/webparts";
 
