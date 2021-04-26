@@ -12,6 +12,7 @@
         "node_modules"
     ],
     "include": [
+        "icons/**/*",
         "src/**/*.ts"
     ]
 }

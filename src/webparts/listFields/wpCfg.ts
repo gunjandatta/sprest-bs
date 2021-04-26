@@ -1,4 +1,5 @@
-import { Components, Icons, IconTypes } from "gd-bs";
+import { Components } from "gd-bs";
+import { x as CloseIcon } from "../../../icons/svgs/x";
 import { Types } from "gd-sprest";
 import { IWPListField, IWPListFieldsCfg, IWPListFieldsEditForm, IWPListFieldsInfo } from "../../../@types/webparts";
 
@@ -24,8 +25,7 @@ export const WPListFieldsEditForm = (props: IWPListFieldsEditForm = {}): IWPList
                 el.classList.add("justify-content-between");
 
                 // Append an icon to remove the field
-                let closeIcon = Icons(IconTypes.X, 16, 16);
-                el.appendChild(closeIcon);
+                el.appendChild(CloseIcon(16, 16));
 
                 // Set the click event
                 el.addEventListener("click", () => {

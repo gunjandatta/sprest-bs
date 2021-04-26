@@ -5,7 +5,7 @@ module.exports = (env, argv) => {
     return {
         entry: "./src/styles/index.scss",
         output: {
-            path: path.resolve(__dirname, "build"),
+            path: path.resolve(__dirname, "build/src/"),
             filename: "styles.js"
         },
         resolve: {
