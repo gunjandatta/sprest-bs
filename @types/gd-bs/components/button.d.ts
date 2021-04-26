@@ -51,6 +51,9 @@ export interface IButton {
     /** Disables the button. */
     disable: () => void;
 
+    /** Disposes the button. */
+    dispose: () => void;
+
     /** Enables the button. */
     enable: () => void;
 
@@ -95,7 +98,6 @@ export interface IButtonProps extends IBaseProps<IButton> {
     text?: string;
     title?: string;
     toggle?: string;
-    toggleObj?: any;
     trigger?: string;
     type?: number;
 }

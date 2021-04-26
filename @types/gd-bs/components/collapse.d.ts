@@ -53,6 +53,9 @@ import { IButtonProps } from "./button";
  * Collapse
  */
 export interface ICollapse {
+    /** Disposes the collapse. */
+    dispose: () => void;
+
     /** The element. */
     el: Element;
 
@@ -60,7 +63,7 @@ export interface ICollapse {
     hide: () => void;
 
     /** True if the collapse is visible. */
-    isExpanded: boolean;
+    isVisible: boolean;
 
     /** Shows a collapsible element. */
     show: () => void;
@@ -73,6 +76,7 @@ export interface ICollapse {
  * Collapse Options
  */
 export interface ICollapseOptions {
+    parent?: string | Element;
     toggle?: boolean;
 }
 

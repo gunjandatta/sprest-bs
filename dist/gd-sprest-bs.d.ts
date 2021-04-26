@@ -4475,6 +4475,7 @@ declare module 'gd-sprest-bs/gd-bs/components/accordion' {
     export const Accordion: (props: IAccordionProps, template?: string, itemTemplate?: string) => IAccordion;
     
     import { IBase, IBaseProps } from "gd-sprest-bs/gd-bs/base";
+    import { IButtonProps } from "gd-sprest-bs/gd-bs/components/button";
     import { ICollapseOptions } from "gd-sprest-bs/gd-bs/components/collapse";
     
     /**
@@ -4503,7 +4504,6 @@ declare module 'gd-sprest-bs/gd-bs/components/accordion' {
         * Accordion Properties
         */
     export interface IAccordionProps<T=Element> extends IBaseProps<IAccordion> {
-            autoCollapse?: boolean;
             id?: string;
             items?: Array<IAccordionItem<T>>;
             options?: IAccordionOptions;
@@ -4541,6 +4541,9 @@ declare module 'gd-sprest-bs/gd-bs/components/alert' {
     export interface IAlert extends IBase<IAlertProps> {
             /** Closes an alert by removing it from the DOM. */
             close: () => void;
+    
+            /** Disposes the alert. */
+            dispose: () => void;
     
             /** Updates the alert text. */
             setText: (alertText?: string) => void;
@@ -4744,6 +4747,9 @@ declare module 'gd-sprest-bs/gd-bs/components/button' {
             /** Disables the button. */
             disable: () => void;
     
+            /** Disposes the button. */
+            dispose: () => void;
+    
             /** Enables the button. */
             enable: () => void;
     
@@ -4788,7 +4794,6 @@ declare module 'gd-sprest-bs/gd-bs/components/button' {
             text?: string;
             title?: string;
             toggle?: string;
-            toggleObj?: any;
             trigger?: string;
             type?: number;
     }
@@ -5104,6 +5109,9 @@ declare module 'gd-sprest-bs/gd-bs/components/carousel' {
                 */
             cycle: () => void;
     
+            /** Disposes the carousel. */
+            dispose: () => void;
+    
             /** The element. */
             el: Element;
     
@@ -5130,9 +5138,6 @@ declare module 'gd-sprest-bs/gd-bs/components/carousel' {
     
             /** Shows the carousel. */
             show: () => void;
-    
-            /** Unpauses the carousel. */
-            unpause: () => void;
     }
     
     /**
@@ -5151,10 +5156,11 @@ declare module 'gd-sprest-bs/gd-bs/components/carousel' {
         * Carousel Options
         */
     export interface ICarouselOptions {
-            interval?: number;
+            interval?: number | boolean;
             keyboard?: boolean;
-            pause?: boolean;
-            slide?: number;
+            pause?: string | boolean;
+            slide?: string | boolean;
+            touch?: boolean;
             wrap?: boolean;
     }
     
@@ -5297,6 +5303,9 @@ declare module 'gd-sprest-bs/gd-bs/components/collapse' {
         * Collapse
         */
     export interface ICollapse {
+            /** Disposes the collapse. */
+            dispose: () => void;
+    
             /** The element. */
             el: Element;
     
@@ -5304,7 +5313,7 @@ declare module 'gd-sprest-bs/gd-bs/components/collapse' {
             hide: () => void;
     
             /** True if the collapse is visible. */
-            isExpanded: boolean;
+            isVisible: boolean;
     
             /** Shows a collapsible element. */
             show: () => void;
@@ -5317,6 +5326,7 @@ declare module 'gd-sprest-bs/gd-bs/components/collapse' {
         * Collapse Options
         */
     export interface ICollapseOptions {
+            parent?: string | Element;
             toggle?: boolean;
     }
     
@@ -5376,6 +5386,9 @@ declare module 'gd-sprest-bs/gd-bs/components/dropdown' {
             /** Disables the dropdown. */
             disable: () => void;
     
+            /** Disposes the dropdown. */
+            dispose: () => void;
+    
             /** Enables the dropdown. */
             enable: () => void;
     
@@ -5408,6 +5421,9 @@ declare module 'gd-sprest-bs/gd-bs/components/dropdown' {
     
             /** Toggles the dropdown menu of a given navbar or tabbed navigation. */
             toggle: () => void;
+    
+            /** Updates the position of an element’s dropdown. */
+            update: () => void;
     }
     
     /**
@@ -5901,8 +5917,14 @@ declare module 'gd-sprest-bs/gd-bs/components/modal' {
         * Modal
         */
     export interface IModal {
+            /** Disposes the modal. */
+            dispose: () => void;
+    
             /** The element. */
             el: Element,
+    
+            /** Manually readjust the modal’s position if the height of a modal changes while it is open (i.e. in case a scrollbar appears). */
+            handleUpdate: () => void;
     
             /** Manually hides a modal. */
             hide: () => void;
@@ -5927,20 +5949,14 @@ declare module 'gd-sprest-bs/gd-bs/components/modal' {
         * Modal Options
         */
     export interface IModalOptions {
-            /** True to automatically close the offcanvas when clicking outside of it. */
-            autoClose?: boolean;
-    
-            /** True to enable the backdrop when the modal is visible. */
-            backdrop?: boolean;
+            /** Includes a modal-backdrop element. Alternatively, specify static for a backdrop which doesn't close the modal on click. */
+            backdrop?: boolean | string;
     
             /** Puts the focus on the modal when initialized. */
             focus?: boolean;
     
             /** Closes the modal when escape key is pressed. */
             keyboard?: boolean;
-    
-            /** True to toggle the modal on creation. */
-            visible?: boolean;
     }
     
     /**
@@ -5953,6 +5969,7 @@ declare module 'gd-sprest-bs/gd-bs/components/modal' {
             hideCloseButton?: boolean;
             id?: string;
             isCentered?: boolean;
+            isStatic?: boolean;
             onClose?: (el: HTMLDivElement) => void;
             onRenderBody?: (el: HTMLDivElement) => void;
             onRenderFooter?: (el: HTMLDivElement) => void;
@@ -6228,23 +6245,9 @@ declare module 'gd-sprest-bs/gd-bs/components/offcanvas' {
         * Offcanvas Options
         */
     export interface IOffcanvasOptions {
-            /** True to automatically close the offcanvas when clicking outside of it. */
-            autoClose?: boolean;
-    
-            /** True to enable the backdrop when the offcanvas is visible. */
             backdrop?: boolean;
-    
-            /** Puts the focus on the offcanvas when initialized. */
-            focus?: boolean;
-    
-            /** Closes the offcanvas when escape key is pressed. */
             keyboard?: boolean;
-    
-            /** True to enable scrolling of the background. */
             scroll?: boolean;
-    
-            /** True to toggle the offcanvas on creation. */
-            visible?: boolean;
     }
     
     /**
@@ -6361,11 +6364,14 @@ declare module 'gd-sprest-bs/gd-bs/components/popover' {
         * Popover
         */
     export interface IPopover {
+            /** Disables the popover. */
+            disable: () => void;
+    
+            /** Disposes the popover. */
+            dispose: () => void;
+    
             /** The element. */
             el: Element;
-    
-            /** The popper instance. */
-            popper: any;
     
             /** Enables the popover. */
             enable: () => void;
@@ -6376,8 +6382,14 @@ declare module 'gd-sprest-bs/gd-bs/components/popover' {
             /** Toggles an element's popover. */
             toggle: () => void;
     
+            /** Toggles the ability for an element’s popover to be shown or hidden. */
+            toggleEnabled: () => void;
+    
             /** Reveals an element’s popover. */
             show: () => void;
+    
+            /** Updates the position of an element’s popover. */
+            update: () => void;
     }
     
     /**
@@ -6724,6 +6736,7 @@ declare module 'gd-sprest-bs/gd-bs/components/toast' {
             headerImgClass?: string;
             headerImgSrc?: string;
             headerText?: string;
+            hideCloseButton?: boolean;
             mutedText?: string;
             options?: IToastOptions;
             onClick?: (el?: HTMLElement, data?: any) => void;
@@ -6839,6 +6852,9 @@ declare module 'gd-sprest-bs/gd-bs/components/tooltip' {
             /** Reference to the button. */
             button: IButton;
     
+            /** Disposes the tooltip. */
+            dispose: () => void;
+    
             /** The element. */
             el: HTMLButtonElement;
     
@@ -6848,14 +6864,17 @@ declare module 'gd-sprest-bs/gd-bs/components/tooltip' {
             /** Hides an element’s tooltip. */
             hide: () => void;
     
-            /** The popper instance. */
-            popper: any;
-    
             /** Toggles an element's tooltip. */
             toggle: () => void;
     
+            /** Toggles the ability for an element’s tooltip to be shown or hidden. */
+            toggleEnabled: () => void;
+    
             /** Reveals an element’s tooltip. */
             show: () => void;
+    
+            /** Updates the position of an element’s tooltip. */
+            update: () => void;
     }
     
     /**
@@ -11969,6 +11988,9 @@ declare module 'gd-sprest-bs/gd-bs/base' {
         * Base
         */
     export interface IBase<IProps = IBaseProps> {
+            /** The bootstrap object */
+            _bootstrapObj?: any;
+    
             /** Internal method to configure the parent element. */
             configureParent(): Element;
     
