@@ -72,7 +72,7 @@ copyDirectory("./node_modules/gd-bs/@types", "./@types/gd-bs");
 copyDirectory("./node_modules/gd-sprest/@types", "./@types/gd-sprest");
 
 // Copy the icons
-copyDirectory("./node_modules/gd-bs/icons", "./src/icons");
+copyDirectory("./node_modules/gd-bs/src/icons", "./src/icons");
 
 // Log
 console.log("Successfully cleaned the library");
