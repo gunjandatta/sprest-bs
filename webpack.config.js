@@ -6,14 +6,8 @@ module.exports = (env, argv) => {
     // Return the configuration
     var cfg = {
         entry: [
-            "./node_modules/gd-sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
-            "./node_modules/gd-bs/dist/gd-bs" + (isDev ? "" : ".min") + ".js",
             "./build/index.js"
         ],
-        externals: {
-            "gd-bs": "GD",
-            "gd-sprest": "$REST"
-        },
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: "gd-sprest-bs" + (isDev ? "" : ".min") + ".js"
