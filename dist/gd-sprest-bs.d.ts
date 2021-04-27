@@ -37,9 +37,10 @@ declare module 'gd-sprest-bs' {
 
 declare module 'gd-sprest-bs/gd-bs' {
     import * as Components from "gd-sprest-bs/gd-bs/components";
+    var createPopper: Function;
     
     export {
-        Components
+        Components, createPopper
     }
 }
 

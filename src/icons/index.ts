@@ -1,6 +1,4 @@
 export * from "./iconTypes";
-import { generateIcon } from "./generate";
-
 // Icons to import
 import * as SVGIcons from "./svgs";
 
