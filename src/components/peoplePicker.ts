@@ -1,4 +1,4 @@
-import { Components } from "gd-bs";
+import { Components } from "./core";
 import { IFormControlPropsPeoplePicker, IPeoplePicker, IPeoplePickerProps } from "../../@types/components";
 import { Helper, PeoplePicker as Search, SPTypes, Types, Web } from "gd-sprest";
 
@@ -316,7 +316,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     return obj;
 }
 
-// Customize the form control
+// Extend the form controls
 export const PeoplePickerControlType = 101;
 Components.FormControlTypes["PeoplePicker"] = PeoplePickerControlType;
 Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormControlPropsPeoplePicker) => {

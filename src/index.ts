@@ -1,13 +1,13 @@
-// The bootstrap library
-export * from "gd-bs";
-
 // The SharePoint library
 export * from "gd-sprest";
 
 // SharePoint bootstrap components/webparts
 import { Components } from "./components";
+export * from "./components";
+
+// WebParts
 import * as WebParts from "./webparts";
-export { Components, WebParts }
+export { WebParts }
 
 // Styling
 import "./styles";

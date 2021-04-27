@@ -1,4 +1,4 @@
-import { Components } from "gd-bs";
+import { Components } from "./core";
 import { Helper, SPTypes, Types } from "gd-sprest";
 import { IField, IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "../../@types/components";
 import { DateTimeControlType } from "./datetime";
