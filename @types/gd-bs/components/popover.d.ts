@@ -84,14 +84,12 @@ export interface IPopover {
 export interface IPopoverOptions {
     animation?: boolean;
     boundary?: string | Element;
-    container?: string | Element | Function;
+    container?: Element;
     content?: string | Element | Function;
-    delay?: number | object;
     fallbackPlacement?: string | Array<string>;
-    html?: boolean;
     offset?: number | string;
+    onChange?: Function;
     placement?: string | Function;
-    selector?: string;
     template?: string;
     title?: string | Element | Function;
     trigger?: string;

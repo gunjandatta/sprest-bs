@@ -438,7 +438,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                                     text: fileInfo.name
                                                 },
                                                 options: {
-                                                    html: true,
                                                     content: Components.Button({
                                                         data: fileInfo,
                                                         isSmall: true,
@@ -470,7 +469,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                                                 }
                                                             }
                                                         }
-                                                    }).el as any
+                                                    }).el
                                                 }
                                             }).el);
                                         });
@@ -496,7 +495,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                         text: attachment.FileName,
                                     },
                                     options: {
-                                        html: true,
                                         content: Components.Button({
                                             data: attachment,
                                             isSmall: true,
@@ -521,7 +519,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                                     }
                                                 }
                                             }
-                                        }).el as any
+                                        }).el
                                     }
                                 }).el);
                             }

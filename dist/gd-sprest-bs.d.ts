@@ -3709,14 +3709,12 @@ declare module 'gd-sprest-bs/gd-bs/components/popover' {
     export interface IPopoverOptions {
             animation?: boolean;
             boundary?: string | Element;
-            container?: string | Element | Function;
+            container?: Element;
             content?: string | Element | Function;
-            delay?: number | object;
             fallbackPlacement?: string | Array<string>;
-            html?: boolean;
             offset?: number | string;
+            onChange?: Function;
             placement?: string | Function;
-            selector?: string;
             template?: string;
             title?: string | Element | Function;
             trigger?: string;
@@ -4187,14 +4185,12 @@ declare module 'gd-sprest-bs/gd-bs/components/tooltip' {
     export interface ITooltipOptions {
             animation?: boolean;
             boundary?: string | Element;
-            container?: string | Element | Function;
-            delay?: number | object;
+            container?: Element;
+            delay?: number;
             fallbackPlacement?: string | Array<string>;
-            html?: boolean;
-            offset?: number | string | Function;
+            offset?: number | string;
+            onChange?: Function;
             placement?: string | Function;
-            popperConfig?: object;
-            selector?: string;
             template?: string;
             title?: string | Element | Function;
             trigger?: string;

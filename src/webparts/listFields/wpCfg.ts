@@ -164,8 +164,7 @@ export const WPListFieldsEditForm = (props: IWPListFieldsEditForm = {}): IWPList
             target: _tbFilter.el,
             type: Components.PopoverTypes.Auto,
             options: {
-                html: true,
-                trigger: "manual",
+                trigger: "click",
                 content: () => {
                     // Return the dropdown menu
                     return _ddlFields.el;
