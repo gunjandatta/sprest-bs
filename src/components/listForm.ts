@@ -127,6 +127,12 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         else if (field.FieldTypeKind == SPTypes.FieldType.User) {
             // Set the flag
             hasUserField = true;
+
+            // See if this is a classic page
+            if (window["ProcessImn"] == null) {
+                // Update the html
+                html = value;
+            }
         }
         // Else, see if this is a choice field
         else if (field.FieldTypeKind == SPTypes.FieldType.Choice || field.FieldTypeKind == SPTypes.FieldType.MultiChoice) {
