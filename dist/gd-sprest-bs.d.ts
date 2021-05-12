@@ -3468,8 +3468,8 @@ declare module 'gd-sprest-bs/gd-bs/components/navbar' {
     /**
         * Navbar Properties
         */
-    export interface INavbarProps extends IBaseProps<INavbar> {
-            brand?: string;
+    export interface INavbarProps<T=Element> extends IBaseProps<INavbar> {
+            brand?: string | T;
             brandUrl?: string;
             enableScrolling?: boolean;
             enableSearch?: boolean;
