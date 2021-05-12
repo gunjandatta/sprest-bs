@@ -245,7 +245,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     // See if we are displaying a user field
     if (hasUserField) {
         // Enable the persona
-        window["ProcessImn"]();
+        window["ProcessImn"] ? window["ProcessImn"]() : null;
     }
 
     // Execute the assign to event
@@ -723,9 +723,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     }
 
                     // See if this is a user field
-                    if (field.FieldTypeKind == SPTypes.FieldType.User && window["ProcessImn"]) {
+                    if (field.FieldTypeKind == SPTypes.FieldType.User) {
                         // Enable the persona
-                        window["ProcessImn"]();
+                        window["ProcessImn"] ? window["ProcessImn"]() : null;
                     }
                 }
             }
