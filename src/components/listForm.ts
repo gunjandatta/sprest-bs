@@ -130,8 +130,10 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
 
             // See if this is a classic page
             if (window["ProcessImn"] == null) {
-                // Update the html
-                html = value;
+                // Extract the text only
+                let elUser = document.createElement("div");
+                elUser.innerHTML = html;
+                html = elUser.innerText;
             }
         }
         // Else, see if this is a choice field
