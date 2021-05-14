@@ -272,6 +272,10 @@ export const IconTypes: {
 	BagX: number;
 	// bag.svg
 	Bag: number;
+	// bank.svg
+	Bank: number;
+	// bank2.svg
+	Bank2: number;
 	// bar-chart-fill.svg
 	BarChartFill: number;
 	// bar-chart-line-fill.svg
@@ -304,6 +308,10 @@ export const IconTypes: {
 	Battery: number;
 	// bell-fill.svg
 	BellFill: number;
+	// bell-slash-fill.svg
+	BellSlashFill: number;
+	// bell-slash.svg
+	BellSlash: number;
 	// bell.svg
 	Bell: number;
 	// bezier.svg
@@ -680,6 +688,8 @@ export const IconTypes: {
 	Cart3: number;
 	// cart4.svg
 	Cart4: number;
+	// cash-coin.svg
+	CashCoin: number;
 	// cash-stack.svg
 	CashStack: number;
 	// cash.svg
@@ -756,6 +766,8 @@ export const IconTypes: {
 	CheckCircleFill: number;
 	// check-circle.svg
 	CheckCircle: number;
+	// check-lg.svg
+	CheckLg: number;
 	// check-square-fill.svg
 	CheckSquareFill: number;
 	// check-square.svg
@@ -942,6 +954,8 @@ export const IconTypes: {
 	CodeSquare: number;
 	// code.svg
 	Code: number;
+	// coin.svg
+	Coin: number;
 	// collection-fill.svg
 	CollectionFill: number;
 	// collection-play-fill.svg
@@ -990,6 +1004,18 @@ export const IconTypes: {
 	CupStraw: number;
 	// cup.svg
 	Cup: number;
+	// currency-bitcoin.svg
+	CurrencyBitcoin: number;
+	// currency-dollar.svg
+	CurrencyDollar: number;
+	// currency-euro.svg
+	CurrencyEuro: number;
+	// currency-exchange.svg
+	CurrencyExchange: number;
+	// currency-pound.svg
+	CurrencyPound: number;
+	// currency-yen.svg
+	CurrencyYen: number;
 	// cursor-fill.svg
 	CursorFill: number;
 	// cursor-text.svg
@@ -1002,6 +1028,8 @@ export const IconTypes: {
 	DashCircleFill: number;
 	// dash-circle.svg
 	DashCircle: number;
+	// dash-lg.svg
+	DashLg: number;
 	// dash-square-dotted.svg
 	DashSquareDotted: number;
 	// dash-square-fill.svg
@@ -1160,6 +1188,8 @@ export const IconTypes: {
 	ExclamationDiamondFill: number;
 	// exclamation-diamond.svg
 	ExclamationDiamond: number;
+	// exclamation-lg.svg
+	ExclamationLg: number;
 	// exclamation-octagon-fill.svg
 	ExclamationOctagonFill: number;
 	// exclamation-octagon.svg
@@ -1292,6 +1322,10 @@ export const IconTypes: {
 	FileEarmarkMusicFill: number;
 	// file-earmark-music.svg
 	FileEarmarkMusic: number;
+	// file-earmark-pdf-fill.svg
+	FileEarmarkPdfFill: number;
+	// file-earmark-pdf.svg
+	FileEarmarkPdf: number;
 	// file-earmark-person-fill.svg
 	FileEarmarkPersonFill: number;
 	// file-earmark-person.svg
@@ -1384,6 +1418,10 @@ export const IconTypes: {
 	FileMusicFill: number;
 	// file-music.svg
 	FileMusic: number;
+	// file-pdf-fill.svg
+	FilePdfFill: number;
+	// file-pdf.svg
+	FilePdf: number;
 	// file-person-fill.svg
 	FilePersonFill: number;
 	// file-person.svg
@@ -1514,6 +1552,14 @@ export const IconTypes: {
 	Gear: number;
 	// gem.svg
 	Gem: number;
+	// gender-ambiguous.svg
+	GenderAmbiguous: number;
+	// gender-female.svg
+	GenderFemale: number;
+	// gender-male.svg
+	GenderMale: number;
+	// gender-trans.svg
+	GenderTrans: number;
 	// geo-alt-fill.svg
 	GeoAltFill: number;
 	// geo-alt.svg
@@ -1604,6 +1650,8 @@ export const IconTypes: {
 	Hdd: number;
 	// headphones.svg
 	Headphones: number;
+	// headset-vr.svg
+	HeadsetVr: number;
 	// headset.svg
 	Headset: number;
 	// heart-fill.svg
@@ -1664,6 +1712,8 @@ export const IconTypes: {
 	InfoCircleFill: number;
 	// info-circle.svg
 	InfoCircle: number;
+	// info-lg.svg
+	InfoLg: number;
 	// info-square-fill.svg
 	InfoSquareFill: number;
 	// info-square.svg
@@ -1826,6 +1876,8 @@ export const IconTypes: {
 	Markdown: number;
 	// mask.svg
 	Mask: number;
+	// mastodon.svg
+	Mastodon: number;
 	// megaphone-fill.svg
 	MegaphoneFill: number;
 	// megaphone.svg
@@ -1846,6 +1898,8 @@ export const IconTypes: {
 	MenuDown: number;
 	// menu-up.svg
 	MenuUp: number;
+	// messenger.svg
+	Messenger: number;
 	// mic-fill.svg
 	MicFill: number;
 	// mic-mute-fill.svg
@@ -2032,12 +2086,20 @@ export const IconTypes: {
 	PieChartFill: number;
 	// pie-chart.svg
 	PieChart: number;
+	// piggy-bank-fill.svg
+	PiggyBankFill: number;
+	// piggy-bank.svg
+	PiggyBank: number;
 	// pin-angle-fill.svg
 	PinAngleFill: number;
 	// pin-angle.svg
 	PinAngle: number;
 	// pin-fill.svg
 	PinFill: number;
+	// pin-map-fill.svg
+	PinMapFill: number;
+	// pin-map.svg
+	PinMap: number;
 	// pin.svg
 	Pin: number;
 	// pip-fill.svg
@@ -2066,6 +2128,8 @@ export const IconTypes: {
 	PlusCircleFill: number;
 	// plus-circle.svg
 	PlusCircle: number;
+	// plus-lg.svg
+	PlusLg: number;
 	// plus-square-dotted.svg
 	PlusSquareDotted: number;
 	// plus-square-fill.svg
@@ -2092,6 +2156,8 @@ export const IconTypes: {
 	QuestionDiamondFill: number;
 	// question-diamond.svg
 	QuestionDiamond: number;
+	// question-lg.svg
+	QuestionLg: number;
 	// question-octagon-fill.svg
 	QuestionOctagonFill: number;
 	// question-octagon.svg
@@ -2134,6 +2200,10 @@ export const IconTypes: {
 	Record2Fill: number;
 	// record2.svg
 	Record2: number;
+	// recycle.svg
+	Recycle: number;
+	// reddit.svg
+	Reddit: number;
 	// reply-all-fill.svg
 	ReplyAllFill: number;
 	// reply-all.svg
@@ -2148,6 +2218,14 @@ export const IconTypes: {
 	Rss: number;
 	// rulers.svg
 	Rulers: number;
+	// safe-fill.svg
+	SafeFill: number;
+	// safe.svg
+	Safe: number;
+	// safe2-fill.svg
+	Safe2Fill: number;
+	// safe2.svg
+	Safe2: number;
 	// save-fill.svg
 	SaveFill: number;
 	// save.svg
@@ -2160,6 +2238,10 @@ export const IconTypes: {
 	Scissors: number;
 	// screwdriver.svg
 	Screwdriver: number;
+	// sd-card-fill.svg
+	SdCardFill: number;
+	// sd-card.svg
+	SdCard: number;
 	// search.svg
 	Search: number;
 	// segmented-nav.svg
@@ -2278,12 +2360,16 @@ export const IconTypes: {
 	SkipStartFill: number;
 	// skip-start.svg
 	SkipStart: number;
+	// skype.svg
+	Skype: number;
 	// slack.svg
 	Slack: number;
 	// slash-circle-fill.svg
 	SlashCircleFill: number;
 	// slash-circle.svg
 	SlashCircle: number;
+	// slash-lg.svg
+	SlashLg: number;
 	// slash-square-fill.svg
 	SlashSquareFill: number;
 	// slash-square.svg
@@ -2518,6 +2604,8 @@ export const IconTypes: {
 	Tools: number;
 	// tornado.svg
 	Tornado: number;
+	// translate.svg
+	Translate: number;
 	// trash-fill.svg
 	TrashFill: number;
 	// trash.svg
@@ -2664,6 +2752,8 @@ export const IconTypes: {
 	XDiamondFill: number;
 	// x-diamond.svg
 	XDiamond: number;
+	// x-lg.svg
+	XLg: number;
 	// x-octagon-fill.svg
 	XOctagonFill: number;
 	// x-octagon.svg

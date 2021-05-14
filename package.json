@@ -1,15 +1,16 @@
 {
   "name": "gd-sprest-bs",
-  "version": "7.5.1",
+  "version": "7.5.2",
   "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
   "main": "build/index.js",
   "typings": "@types/index.d.ts",
   "scripts": {
     "all": "npm run clean && npm run build && npm run prod && npm run typings",
-    "build": "tsc && npm run build-sass && webpack --mode=development && npm run build-icons",
+    "build": "tsc && npm run build-sass && webpack --mode=development && npm run build-icons && npm run post-build",
     "build-icons": "webpack --config webpack.icons.js --mode=development",
     "build-sass": "webpack --config webpack.sass.js --mode=production",
-    "clean": "node clean.js",
+    "post-build": "node ./post-build.js",
+    "clean": "node ./clean.js",
     "prod": "webpack --mode=production && npm run prod-icons",
     "prod-icons": "webpack --config webpack.icons.js --mode=production",
     "typings": "dts-bundle --configJson dts-bundle.json"
@@ -32,18 +33,18 @@
   "homepage": "https://dattabase.com/extras/bs",
   "dependencies": {
     "flatpickr": "^4.6.9",
-    "gd-bs": "4.4.2",
+    "gd-bs": "4.4.3",
     "gd-sprest": "^6.4.7",
     "gd-sprest-def": "^1.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.0",
-    "@babel/preset-env": "^7.14.1",
+    "@babel/core": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
     "dts-bundle": "^0.7.3",
     "node-sass": "^6.0.0",
-    "sass-loader": "^11.1.0",
+    "sass-loader": "^11.1.1",
     "style-loader": "^2.0.0",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0"
