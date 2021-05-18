@@ -1,6 +1,6 @@
 {
   "name": "gd-sprest-bs",
-  "version": "7.5.2",
+  "version": "7.5.3",
   "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
   "main": "build/index.js",
   "typings": "@types/index.d.ts",
@@ -38,7 +38,7 @@
     "gd-sprest-def": "^1.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.2",
+    "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.2",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
