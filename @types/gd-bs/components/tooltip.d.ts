@@ -43,6 +43,7 @@ export const Tooltip: (props: ITooltipProps, template?: string) => ITooltip;
 export const TooltipTypes: ITooltipTypes;
 
 import { IBaseProps } from "../base";
+import { ITippyProps } from "../libs";
 import { IButtonProps, IButton } from "./button";
 
 /**
@@ -61,8 +62,8 @@ export interface ITooltip {
     /** Hides an element’s tooltip. */
     hide: () => void;
 
-    /** The popper instance. */
-    popper: any;
+    /** The tippy instance. */
+    tippy: any;
 
     /** Toggles an element's tooltip. */
     toggle: () => void;
@@ -72,28 +73,11 @@ export interface ITooltip {
 }
 
 /**
- * Tooltip Options
- */
-export interface ITooltipOptions {
-    animation?: boolean;
-    boundary?: string | Element;
-    container?: Element;
-    delay?: number;
-    fallbackPlacement?: string | Array<string>;
-    offset?: number | string;
-    onChange?: Function;
-    placement?: string | Function;
-    template?: string;
-    title?: string | Element | Function;
-    trigger?: string;
-}
-
-/**
  * Tooltip Properties
  */
 export interface ITooltipProps extends IBaseProps<ITooltip> {
     btnProps?: IButtonProps;
-    options?: ITooltipOptions;
+    options?: ITippyProps;
     type?: number;
 }
 

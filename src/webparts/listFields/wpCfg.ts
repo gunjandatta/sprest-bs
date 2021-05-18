@@ -165,10 +165,7 @@ export const WPListFieldsEditForm = (props: IWPListFieldsEditForm = {}): IWPList
             type: Components.PopoverTypes.Auto,
             options: {
                 trigger: "click",
-                content: () => {
-                    // Return the dropdown menu
-                    return _ddlFields.el;
-                }
+                content: _ddlFields.el
             }
         });
     }

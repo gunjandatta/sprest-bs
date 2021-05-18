@@ -1,6 +1,6 @@
 import * as Components from "./components";
-declare var createPopper: Function;
+declare var tippy: Function;
 
 export {
-    Components, createPopper
+    Components, tippy
 }

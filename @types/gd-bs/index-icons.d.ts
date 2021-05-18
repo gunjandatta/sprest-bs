@@ -1,8 +1,9 @@
 import * as Components from "./components";
 import { Icons, IconTypes } from "./icons";
-declare var createPopper: Function;
+declare var tippy: Function;
 
 export {
-    Components, createPopper,
-    Icons, IconTypes
+    Components,
+    Icons, IconTypes,
+    tippy
 }

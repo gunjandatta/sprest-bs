@@ -37,10 +37,10 @@ declare module 'gd-sprest-bs' {
 
 declare module 'gd-sprest-bs/gd-bs' {
     import * as Components from "gd-sprest-bs/gd-bs/components";
-    var createPopper: Function;
+    var tippy: Function;
     
     export {
-        Components, createPopper
+        Components, tippy
     }
 }
 
@@ -3678,6 +3678,7 @@ declare module 'gd-sprest-bs/gd-bs/components/popover' {
     export const PopoverTypes: IPopoverTypes;
     
     import { IBaseProps } from "gd-sprest-bs/gd-bs/base";
+    import { ITippyProps } from "gd-sprest-bs/gd-bs/libs";
     import { IButtonProps } from "gd-sprest-bs/gd-bs/components/button";
     
     /**
@@ -3687,8 +3688,8 @@ declare module 'gd-sprest-bs/gd-bs/components/popover' {
             /** The element. */
             el: Element;
     
-            /** The popper instance. */
-            popper: any;
+            /** The tippy instance. */
+            tippy: any;
     
             /** Enables the popover. */
             enable: () => void;
@@ -3704,30 +3705,14 @@ declare module 'gd-sprest-bs/gd-bs/components/popover' {
     }
     
     /**
-        * Popover Options
-        */
-    export interface IPopoverOptions {
-            animation?: boolean;
-            boundary?: string | Element;
-            container?: Element;
-            content?: string | Element | Function;
-            fallbackPlacement?: string | Array<string>;
-            offset?: number | string;
-            onChange?: Function;
-            placement?: string | Function;
-            template?: string;
-            title?: string | Element | Function;
-            trigger?: string;
-    }
-    
-    /**
         * Popover Properties
         */
     export interface IPopoverProps extends IBaseProps<IPopover> {
             btnProps?: IButtonProps;
             isDismissible?: boolean;
-            options?: IPopoverOptions;
+            options?: ITippyProps;
             target?: Element,
+            title?: string;
             type?: number;
     }
     
@@ -4151,6 +4136,7 @@ declare module 'gd-sprest-bs/gd-bs/components/tooltip' {
     export const TooltipTypes: ITooltipTypes;
     
     import { IBaseProps } from "gd-sprest-bs/gd-bs/base";
+    import { ITippyProps } from "gd-sprest-bs/gd-bs/libs";
     import { IButtonProps, IButton } from "gd-sprest-bs/gd-bs/components/button";
     
     /**
@@ -4169,8 +4155,8 @@ declare module 'gd-sprest-bs/gd-bs/components/tooltip' {
             /** Hides an element’s tooltip. */
             hide: () => void;
     
-            /** The popper instance. */
-            popper: any;
+            /** The tippy instance. */
+            tippy: any;
     
             /** Toggles an element's tooltip. */
             toggle: () => void;
@@ -4180,28 +4166,11 @@ declare module 'gd-sprest-bs/gd-bs/components/tooltip' {
     }
     
     /**
-        * Tooltip Options
-        */
-    export interface ITooltipOptions {
-            animation?: boolean;
-            boundary?: string | Element;
-            container?: Element;
-            delay?: number;
-            fallbackPlacement?: string | Array<string>;
-            offset?: number | string;
-            onChange?: Function;
-            placement?: string | Function;
-            template?: string;
-            title?: string | Element | Function;
-            trigger?: string;
-    }
-    
-    /**
         * Tooltip Properties
         */
     export interface ITooltipProps extends IBaseProps<ITooltip> {
             btnProps?: IButtonProps;
-            options?: ITooltipOptions;
+            options?: ITippyProps;
             type?: number;
     }
     
@@ -9316,6 +9285,31 @@ declare module 'gd-sprest-bs/gd-bs/base' {
     
             /** The element to render the component to. */
             el?: Element | HTMLElement;
+    }
+}
+
+declare module 'gd-sprest-bs/gd-bs/libs' {
+    export interface ITippyProps {
+        allowHTML?: boolean;
+        animateFill?: boolean;
+        animation?: string | boolean;
+        arrow?: boolean | string | SVGElement | DocumentFragment;
+        content?: string | Element;
+        delay?: number | [number | null, number | null];
+        duration?: number | [number | null, number | null];
+        followCursor?: boolean | 'horizontal' | 'vertical' | 'initial';
+        hideOnClick?: boolean | 'toggle';
+        inertia?: boolean;
+        maxWidth?: number | string;
+        placement?: string;
+        role?: string;
+        showOnCreate?: boolean;
+        sticky?: boolean | 'reference' | 'popper';
+        theme?: string;
+        touch?: boolean | 'hold' | ['hold', number];
+        trigger?: string;
+        triggerTarget?: Element | Element[] | null;
+        zIndex?: number;
     }
 }
 
