@@ -113,6 +113,7 @@ export interface IModalProps<T = Element> extends IBaseProps<IModal> {
     isCentered?: boolean;
     onClose?: (el: HTMLDivElement) => void;
     onRenderBody?: (el: HTMLDivElement) => void;
+    onRenderHeader?: (el: HTMLDivElement) => void;
     onRenderFooter?: (el: HTMLDivElement) => void;
     options?: IModalOptions;
     title?: string;
