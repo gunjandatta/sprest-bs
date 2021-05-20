@@ -87,6 +87,7 @@ export interface INavProps<T = Element> extends IBaseProps<INav> {
 export interface INavLink<T = Element> {
     isActive?: boolean;
     isDisabled?: boolean;
+    className?: string;
     data?: any;
     href?: string;
     onClick?: (item?: INavLink, ev?: Event) => void;
