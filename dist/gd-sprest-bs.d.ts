@@ -3479,6 +3479,7 @@ declare module 'gd-sprest-bs/gd-bs/components/navbar' {
             enableSearch?: boolean;
             id?: string;
             items?: Array<INavbarItem>;
+            itemsEnd?: Array<INavbarItem>;
             onClick?: (item?: INavbarItem, ev?: Event) => void;
             searchBox?: INavbarSearchBox;
             type?: number;
