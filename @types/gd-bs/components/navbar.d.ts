@@ -115,6 +115,7 @@ export interface INavbar {
  */
 export interface INavbarItem {
     className?: string;
+    classNameItem?: string;
     data?: any;
     href?: string;
     isActive?: boolean;
