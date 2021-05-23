@@ -1,0 +1,1 @@
+export const infoSquareFill: (height?:number, width?:number) => HTMLElement;

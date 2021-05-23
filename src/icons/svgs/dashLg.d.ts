@@ -1,0 +1,1 @@
+export const dashLg: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const link: (height?:number, width?:number) => HTMLElement;

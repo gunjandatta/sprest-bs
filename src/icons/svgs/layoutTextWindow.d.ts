@@ -1,0 +1,1 @@
+export const layoutTextWindow: (height?:number, width?:number) => HTMLElement;

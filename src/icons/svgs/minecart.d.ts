@@ -1,0 +1,1 @@
+export const minecart: (height?:number, width?:number) => HTMLElement;

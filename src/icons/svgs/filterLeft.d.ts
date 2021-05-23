@@ -1,0 +1,1 @@
+export const filterLeft: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const lock: (height?:number, width?:number) => HTMLElement;

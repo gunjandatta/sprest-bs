@@ -1,0 +1,1 @@
+export const chevronBarExpand: (height?:number, width?:number) => HTMLElement;

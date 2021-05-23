@@ -1,0 +1,1 @@
+export const bugFill: (height?:number, width?:number) => HTMLElement;

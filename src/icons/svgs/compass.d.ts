@@ -1,0 +1,1 @@
+export const compass: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const skipStartBtnFill: (height?:number, width?:number) => HTMLElement;

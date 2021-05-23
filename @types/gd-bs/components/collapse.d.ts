@@ -47,7 +47,6 @@
 export const Collapse: (props: ICollapseProps, template?: string) => ICollapse;
 
 import { IBaseProps } from "../base";
-import { IButtonProps } from "./button";
 
 /**
  * Collapse

@@ -1,0 +1,1 @@
+export const cloudMoon: (height?:number, width?:number) => HTMLElement;

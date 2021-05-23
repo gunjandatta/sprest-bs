@@ -1,0 +1,1 @@
+export const barChartLine: (height?:number, width?:number) => HTMLElement;

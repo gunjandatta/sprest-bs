@@ -1,0 +1,1 @@
+export const fileEarmarkEasel: (height?:number, width?:number) => HTMLElement;

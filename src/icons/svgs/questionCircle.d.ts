@@ -1,0 +1,1 @@
+export const questionCircle: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const lampFill: (height?:number, width?:number) => HTMLElement;

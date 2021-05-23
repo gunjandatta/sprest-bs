@@ -1,0 +1,1 @@
+export const lightbulbOff: (height?:number, width?:number) => HTMLElement;

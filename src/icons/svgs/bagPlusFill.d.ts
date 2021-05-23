@@ -1,0 +1,1 @@
+export const bagPlusFill: (height?:number, width?:number) => HTMLElement;

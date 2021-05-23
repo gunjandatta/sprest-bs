@@ -1,0 +1,1 @@
+export const arrowRight: (height?:number, width?:number) => HTMLElement;

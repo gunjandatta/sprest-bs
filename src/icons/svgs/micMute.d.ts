@@ -1,0 +1,1 @@
+export const micMute: (height?:number, width?:number) => HTMLElement;

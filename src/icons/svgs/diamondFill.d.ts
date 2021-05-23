@@ -1,0 +1,1 @@
+export const diamondFill: (height?:number, width?:number) => HTMLElement;

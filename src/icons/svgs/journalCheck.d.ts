@@ -1,0 +1,1 @@
+export const journalCheck: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const questionSquare: (height?:number, width?:number) => HTMLElement;

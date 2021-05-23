@@ -1,0 +1,1 @@
+export const kanbanFill: (height?:number, width?:number) => HTMLElement;

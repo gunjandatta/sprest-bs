@@ -1,0 +1,1 @@
+export const typeH2: (height?:number, width?:number) => HTMLElement;

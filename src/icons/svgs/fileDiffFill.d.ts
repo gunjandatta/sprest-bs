@@ -1,0 +1,1 @@
+export const fileDiffFill: (height?:number, width?:number) => HTMLElement;

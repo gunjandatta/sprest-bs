@@ -1,0 +1,1 @@
+export const threeDots: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const handThumbsUpFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const cash: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const fileEarmarkPostFill: (height?:number, width?:number) => HTMLElement;

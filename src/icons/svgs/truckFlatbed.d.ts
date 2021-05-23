@@ -1,0 +1,1 @@
+export const truckFlatbed: (height?:number, width?:number) => HTMLElement;

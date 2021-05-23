@@ -1,0 +1,1 @@
+export const pause: (height?:number, width?:number) => HTMLElement;

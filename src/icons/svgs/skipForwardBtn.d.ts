@@ -1,0 +1,1 @@
+export const skipForwardBtn: (height?:number, width?:number) => HTMLElement;

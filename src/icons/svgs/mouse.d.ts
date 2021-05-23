@@ -1,0 +1,1 @@
+export const mouse: (height?:number, width?:number) => HTMLElement;

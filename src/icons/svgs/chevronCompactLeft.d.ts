@@ -1,0 +1,1 @@
+export const chevronCompactLeft: (height?:number, width?:number) => HTMLElement;

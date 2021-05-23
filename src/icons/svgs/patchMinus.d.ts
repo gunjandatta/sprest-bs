@@ -1,0 +1,1 @@
+export const patchMinus: (height?:number, width?:number) => HTMLElement;

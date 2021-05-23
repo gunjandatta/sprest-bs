@@ -1,0 +1,1 @@
+export const paletteFill: (height?:number, width?:number) => HTMLElement;

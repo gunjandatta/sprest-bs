@@ -1,0 +1,1 @@
+export const fileEarmarkSpreadsheet: (height?:number, width?:number) => HTMLElement;

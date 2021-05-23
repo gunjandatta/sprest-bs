@@ -1,0 +1,1 @@
+export const collectionPlay: (height?:number, width?:number) => HTMLElement;

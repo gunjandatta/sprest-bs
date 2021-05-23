@@ -1,0 +1,1 @@
+export const filterSquareFill: (height?:number, width?:number) => HTMLElement;

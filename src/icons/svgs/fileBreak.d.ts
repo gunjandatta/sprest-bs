@@ -1,0 +1,1 @@
+export const fileBreak: (height?:number, width?:number) => HTMLElement;

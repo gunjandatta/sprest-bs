@@ -1,0 +1,1 @@
+export const discFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const folderMinus: (height?:number, width?:number) => HTMLElement;

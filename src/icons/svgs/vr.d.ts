@@ -1,0 +1,1 @@
+export const vr: (height?:number, width?:number) => HTMLElement;

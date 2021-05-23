@@ -1,0 +1,1 @@
+export const fileEarmarkRichtext: (height?:number, width?:number) => HTMLElement;

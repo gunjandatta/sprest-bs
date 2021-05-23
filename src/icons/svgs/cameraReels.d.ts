@@ -1,0 +1,1 @@
+export const cameraReels: (height?:number, width?:number) => HTMLElement;

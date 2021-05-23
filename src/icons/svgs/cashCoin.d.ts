@@ -1,0 +1,1 @@
+export const cashCoin: (height?:number, width?:number) => HTMLElement;

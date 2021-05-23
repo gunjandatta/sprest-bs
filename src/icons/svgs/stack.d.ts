@@ -1,0 +1,1 @@
+export const stack: (height?:number, width?:number) => HTMLElement;

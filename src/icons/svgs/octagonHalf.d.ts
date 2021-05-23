@@ -1,0 +1,1 @@
+export const octagonHalf: (height?:number, width?:number) => HTMLElement;

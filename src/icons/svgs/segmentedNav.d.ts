@@ -1,0 +1,1 @@
+export const segmentedNav: (height?:number, width?:number) => HTMLElement;

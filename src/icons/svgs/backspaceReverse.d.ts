@@ -1,0 +1,1 @@
+export const backspaceReverse: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const triangleFill: (height?:number, width?:number) => HTMLElement;

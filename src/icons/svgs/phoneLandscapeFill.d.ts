@@ -1,0 +1,1 @@
+export const phoneLandscapeFill: (height?:number, width?:number) => HTMLElement;

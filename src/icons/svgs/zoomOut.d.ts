@@ -1,0 +1,1 @@
+export const zoomOut: (height?:number, width?:number) => HTMLElement;

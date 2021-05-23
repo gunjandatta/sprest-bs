@@ -1,0 +1,1 @@
+export const skipBackwardBtnFill: (height?:number, width?:number) => HTMLElement;

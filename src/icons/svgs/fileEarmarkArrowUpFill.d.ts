@@ -1,0 +1,1 @@
+export const fileEarmarkArrowUpFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const doorClosed: (height?:number, width?:number) => HTMLElement;

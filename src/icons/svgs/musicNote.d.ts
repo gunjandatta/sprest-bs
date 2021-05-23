@@ -1,0 +1,1 @@
+export const musicNote: (height?:number, width?:number) => HTMLElement;

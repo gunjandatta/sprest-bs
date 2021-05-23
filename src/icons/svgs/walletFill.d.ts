@@ -1,0 +1,1 @@
+export const walletFill: (height?:number, width?:number) => HTMLElement;

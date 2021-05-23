@@ -1,0 +1,1 @@
+export const binocularsFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const bookmarkPlusFill: (height?:number, width?:number) => HTMLElement;

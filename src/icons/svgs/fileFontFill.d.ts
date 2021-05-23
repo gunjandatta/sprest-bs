@@ -1,0 +1,1 @@
+export const fileFontFill: (height?:number, width?:number) => HTMLElement;

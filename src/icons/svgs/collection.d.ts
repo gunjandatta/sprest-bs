@@ -1,0 +1,1 @@
+export const collection: (height?:number, width?:number) => HTMLElement;

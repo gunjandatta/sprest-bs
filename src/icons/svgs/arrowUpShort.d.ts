@@ -1,0 +1,1 @@
+export const arrowUpShort: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const fileEarmarkRuledFill: (height?:number, width?:number) => HTMLElement;

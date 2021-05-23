@@ -1,0 +1,1 @@
+export const speedometer: (height?:number, width?:number) => HTMLElement;

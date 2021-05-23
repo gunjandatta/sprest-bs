@@ -1,0 +1,1 @@
+export const currencyEuro: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const justify: (height?:number, width?:number) => HTMLElement;

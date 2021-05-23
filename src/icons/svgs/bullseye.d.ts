@@ -1,0 +1,1 @@
+export const bullseye: (height?:number, width?:number) => HTMLElement;

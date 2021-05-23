@@ -1,0 +1,1 @@
+export const caretDownSquareFill: (height?:number, width?:number) => HTMLElement;

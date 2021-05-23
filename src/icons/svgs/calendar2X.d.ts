@@ -1,0 +1,1 @@
+export const calendar2X: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const scissors: (height?:number, width?:number) => HTMLElement;

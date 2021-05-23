@@ -1,0 +1,1 @@
+export const boundingBoxCircles: (height?:number, width?:number) => HTMLElement;

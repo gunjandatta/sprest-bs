@@ -1,0 +1,1 @@
+export const fileEarmarkDiffFill: (height?:number, width?:number) => HTMLElement;

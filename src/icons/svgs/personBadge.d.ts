@@ -1,0 +1,1 @@
+export const personBadge: (height?:number, width?:number) => HTMLElement;

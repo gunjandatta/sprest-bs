@@ -1,0 +1,1 @@
+export const cardHeading: (height?:number, width?:number) => HTMLElement;

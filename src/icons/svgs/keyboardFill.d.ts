@@ -1,0 +1,1 @@
+export const keyboardFill: (height?:number, width?:number) => HTMLElement;

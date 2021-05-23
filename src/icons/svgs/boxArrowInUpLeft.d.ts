@@ -1,0 +1,1 @@
+export const boxArrowInUpLeft: (height?:number, width?:number) => HTMLElement;

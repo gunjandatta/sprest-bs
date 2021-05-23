@@ -1,0 +1,1 @@
+export const filePost: (height?:number, width?:number) => HTMLElement;

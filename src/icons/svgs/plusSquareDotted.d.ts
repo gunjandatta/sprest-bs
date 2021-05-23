@@ -1,0 +1,1 @@
+export const plusSquareDotted: (height?:number, width?:number) => HTMLElement;

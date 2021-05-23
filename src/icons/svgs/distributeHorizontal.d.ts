@@ -1,0 +1,1 @@
+export const distributeHorizontal: (height?:number, width?:number) => HTMLElement;

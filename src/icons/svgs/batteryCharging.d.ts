@@ -1,0 +1,1 @@
+export const batteryCharging: (height?:number, width?:number) => HTMLElement;

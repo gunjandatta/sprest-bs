@@ -1,0 +1,1 @@
+export const eggFried: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const exclamationDiamond: (height?:number, width?:number) => HTMLElement;

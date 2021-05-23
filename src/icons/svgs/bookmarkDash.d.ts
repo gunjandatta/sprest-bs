@@ -1,0 +1,1 @@
+export const bookmarkDash: (height?:number, width?:number) => HTMLElement;

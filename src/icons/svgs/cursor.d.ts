@@ -1,0 +1,1 @@
+export const cursor: (height?:number, width?:number) => HTMLElement;

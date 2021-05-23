@@ -1,0 +1,1 @@
+export const table: (height?:number, width?:number) => HTMLElement;

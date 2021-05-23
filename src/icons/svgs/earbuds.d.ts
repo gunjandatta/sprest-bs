@@ -1,0 +1,1 @@
+export const earbuds: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const badgeAr: (height?:number, width?:number) => HTMLElement;

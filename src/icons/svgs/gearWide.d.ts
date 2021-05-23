@@ -1,0 +1,1 @@
+export const gearWide: (height?:number, width?:number) => HTMLElement;

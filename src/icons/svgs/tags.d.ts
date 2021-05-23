@@ -1,0 +1,1 @@
+export const tags: (height?:number, width?:number) => HTMLElement;

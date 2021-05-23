@@ -1,0 +1,1 @@
+export const treeFill: (height?:number, width?:number) => HTMLElement;

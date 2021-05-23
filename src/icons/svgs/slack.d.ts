@@ -1,0 +1,1 @@
+export const slack: (height?:number, width?:number) => HTMLElement;

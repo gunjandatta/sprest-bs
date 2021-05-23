@@ -1,0 +1,1 @@
+export const server: (height?:number, width?:number) => HTMLElement;

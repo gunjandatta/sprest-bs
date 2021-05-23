@@ -1,0 +1,1 @@
+export const fileSlidesFill: (height?:number, width?:number) => HTMLElement;

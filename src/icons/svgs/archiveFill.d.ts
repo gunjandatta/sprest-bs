@@ -1,0 +1,1 @@
+export const archiveFill: (height?:number, width?:number) => HTMLElement;

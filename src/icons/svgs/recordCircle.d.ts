@@ -1,0 +1,1 @@
+export const recordCircle: (height?:number, width?:number) => HTMLElement;

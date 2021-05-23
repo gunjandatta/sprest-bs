@@ -1,0 +1,1 @@
+export const fileFill: (height?:number, width?:number) => HTMLElement;

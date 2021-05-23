@@ -1,0 +1,1 @@
+export const cloudHazeFill: (height?:number, width?:number) => HTMLElement;

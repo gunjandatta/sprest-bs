@@ -1,0 +1,1 @@
+export const tv: (height?:number, width?:number) => HTMLElement;

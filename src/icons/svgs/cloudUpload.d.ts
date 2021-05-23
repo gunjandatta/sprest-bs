@@ -1,0 +1,1 @@
+export const cloudUpload: (height?:number, width?:number) => HTMLElement;

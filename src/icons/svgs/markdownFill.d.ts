@@ -1,0 +1,1 @@
+export const markdownFill: (height?:number, width?:number) => HTMLElement;

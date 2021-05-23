@@ -1,0 +1,1 @@
+export const megaphone: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const emojiDizzy: (height?:number, width?:number) => HTMLElement;

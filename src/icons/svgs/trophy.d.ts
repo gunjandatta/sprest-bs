@@ -1,0 +1,1 @@
+export const trophy: (height?:number, width?:number) => HTMLElement;

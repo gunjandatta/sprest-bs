@@ -1,0 +1,1 @@
+export const basket2: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const calendar3: (height?:number, width?:number) => HTMLElement;

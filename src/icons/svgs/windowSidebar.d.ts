@@ -1,0 +1,1 @@
+export const windowSidebar: (height?:number, width?:number) => HTMLElement;

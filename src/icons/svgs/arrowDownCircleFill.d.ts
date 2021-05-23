@@ -1,0 +1,1 @@
+export const arrowDownCircleFill: (height?:number, width?:number) => HTMLElement;

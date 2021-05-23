@@ -1,0 +1,1 @@
+export const emojiFrown: (height?:number, width?:number) => HTMLElement;

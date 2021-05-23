@@ -1,0 +1,1 @@
+export const clipboard: (height?:number, width?:number) => HTMLElement;

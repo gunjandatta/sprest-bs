@@ -1,0 +1,1 @@
+export const bookmarkCheck: (height?:number, width?:number) => HTMLElement;

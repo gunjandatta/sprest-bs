@@ -1,0 +1,1 @@
+export const fileEarmarkCheckFill: (height?:number, width?:number) => HTMLElement;

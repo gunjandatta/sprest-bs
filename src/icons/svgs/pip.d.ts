@@ -1,0 +1,1 @@
+export const pip: (height?:number, width?:number) => HTMLElement;

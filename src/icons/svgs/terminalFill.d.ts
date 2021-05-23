@@ -1,0 +1,1 @@
+export const terminalFill: (height?:number, width?:number) => HTMLElement;

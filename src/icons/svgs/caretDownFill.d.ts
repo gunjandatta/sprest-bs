@@ -1,0 +1,1 @@
+export const caretDownFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const alarm: (height?:number, width?:number) => HTMLElement;

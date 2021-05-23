@@ -1,0 +1,1 @@
+export const cpuFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const trophyFill: (height?:number, width?:number) => HTMLElement;

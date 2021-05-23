@@ -1,0 +1,1 @@
+export const cast: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const xDiamondFill: (height?:number, width?:number) => HTMLElement;

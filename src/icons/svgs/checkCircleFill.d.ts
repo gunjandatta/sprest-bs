@@ -1,0 +1,1 @@
+export const checkCircleFill: (height?:number, width?:number) => HTMLElement;

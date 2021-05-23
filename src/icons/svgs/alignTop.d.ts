@@ -1,0 +1,1 @@
+export const alignTop: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const geoFill: (height?:number, width?:number) => HTMLElement;

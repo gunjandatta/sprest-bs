@@ -1,0 +1,1 @@
+export const filePptFill: (height?:number, width?:number) => HTMLElement;

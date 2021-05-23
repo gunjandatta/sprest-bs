@@ -1,0 +1,1 @@
+export const briefcase: (height?:number, width?:number) => HTMLElement;

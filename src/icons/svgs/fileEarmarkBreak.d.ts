@@ -1,0 +1,1 @@
+export const fileEarmarkBreak: (height?:number, width?:number) => HTMLElement;

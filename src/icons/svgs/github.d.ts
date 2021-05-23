@@ -1,0 +1,1 @@
+export const github: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const cartDash: (height?:number, width?:number) => HTMLElement;

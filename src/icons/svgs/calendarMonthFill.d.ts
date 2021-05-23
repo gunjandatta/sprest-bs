@@ -1,0 +1,1 @@
+export const calendarMonthFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const palette: (height?:number, width?:number) => HTMLElement;

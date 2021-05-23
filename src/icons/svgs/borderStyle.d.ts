@@ -1,0 +1,1 @@
+export const borderStyle: (height?:number, width?:number) => HTMLElement;

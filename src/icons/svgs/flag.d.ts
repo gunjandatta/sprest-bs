@@ -1,0 +1,1 @@
+export const flag: (height?:number, width?:number) => HTMLElement;

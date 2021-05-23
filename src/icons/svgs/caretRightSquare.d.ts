@@ -1,0 +1,1 @@
+export const caretRightSquare: (height?:number, width?:number) => HTMLElement;

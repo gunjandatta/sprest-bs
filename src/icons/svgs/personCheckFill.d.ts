@@ -1,0 +1,1 @@
+export const personCheckFill: (height?:number, width?:number) => HTMLElement;

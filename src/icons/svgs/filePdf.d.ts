@@ -1,0 +1,1 @@
+export const filePdf: (height?:number, width?:number) => HTMLElement;

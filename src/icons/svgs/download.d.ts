@@ -1,0 +1,1 @@
+export const download: (height?:number, width?:number) => HTMLElement;

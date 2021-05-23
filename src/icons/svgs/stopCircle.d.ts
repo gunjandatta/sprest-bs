@@ -1,0 +1,1 @@
+export const stopCircle: (height?:number, width?:number) => HTMLElement;

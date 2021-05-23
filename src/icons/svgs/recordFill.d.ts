@@ -1,0 +1,1 @@
+export const recordFill: (height?:number, width?:number) => HTMLElement;

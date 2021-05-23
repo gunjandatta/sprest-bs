@@ -1,0 +1,1 @@
+export const key: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const menuUp: (height?:number, width?:number) => HTMLElement;

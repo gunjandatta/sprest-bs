@@ -1,0 +1,1 @@
+export const shop: (height?:number, width?:number) => HTMLElement;

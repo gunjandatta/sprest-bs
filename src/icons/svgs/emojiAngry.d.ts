@@ -1,0 +1,1 @@
+export const emojiAngry: (height?:number, width?:number) => HTMLElement;

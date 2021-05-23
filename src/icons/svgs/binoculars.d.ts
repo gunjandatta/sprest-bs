@@ -1,0 +1,1 @@
+export const binoculars: (height?:number, width?:number) => HTMLElement;

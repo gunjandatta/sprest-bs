@@ -1,0 +1,1 @@
+export const check: (height?:number, width?:number) => HTMLElement;

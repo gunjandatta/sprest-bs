@@ -1,0 +1,1 @@
+export const thermometerSun: (height?:number, width?:number) => HTMLElement;

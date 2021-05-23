@@ -1,0 +1,1 @@
+export const clockFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const image: (height?:number, width?:number) => HTMLElement;

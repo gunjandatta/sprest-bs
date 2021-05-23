@@ -1,0 +1,1 @@
+export const voicemail: (height?:number, width?:number) => HTMLElement;

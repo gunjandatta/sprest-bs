@@ -1,0 +1,1 @@
+export const disc: (height?:number, width?:number) => HTMLElement;

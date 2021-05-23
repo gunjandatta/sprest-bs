@@ -1,0 +1,1 @@
+export const stickiesFill: (height?:number, width?:number) => HTMLElement;

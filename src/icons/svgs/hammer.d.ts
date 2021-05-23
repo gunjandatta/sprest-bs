@@ -1,0 +1,1 @@
+export const hammer: (height?:number, width?:number) => HTMLElement;

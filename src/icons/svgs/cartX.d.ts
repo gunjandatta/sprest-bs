@@ -1,0 +1,1 @@
+export const cartX: (height?:number, width?:number) => HTMLElement;

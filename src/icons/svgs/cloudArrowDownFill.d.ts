@@ -1,0 +1,1 @@
+export const cloudArrowDownFill: (height?:number, width?:number) => HTMLElement;

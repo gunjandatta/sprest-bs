@@ -1,0 +1,1 @@
+export const plugFill: (height?:number, width?:number) => HTMLElement;

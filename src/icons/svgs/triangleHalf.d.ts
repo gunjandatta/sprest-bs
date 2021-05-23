@@ -1,0 +1,1 @@
+export const triangleHalf: (height?:number, width?:number) => HTMLElement;

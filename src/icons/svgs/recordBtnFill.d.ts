@@ -1,0 +1,1 @@
+export const recordBtnFill: (height?:number, width?:number) => HTMLElement;

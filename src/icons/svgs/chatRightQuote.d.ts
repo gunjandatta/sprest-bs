@@ -1,0 +1,1 @@
+export const chatRightQuote: (height?:number, width?:number) => HTMLElement;

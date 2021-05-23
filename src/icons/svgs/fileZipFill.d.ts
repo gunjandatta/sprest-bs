@@ -1,0 +1,1 @@
+export const fileZipFill: (height?:number, width?:number) => HTMLElement;

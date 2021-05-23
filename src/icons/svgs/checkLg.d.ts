@@ -1,0 +1,1 @@
+export const checkLg: (height?:number, width?:number) => HTMLElement;

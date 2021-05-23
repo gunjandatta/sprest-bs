@@ -1,0 +1,1 @@
+export const piggyBank: (height?:number, width?:number) => HTMLElement;

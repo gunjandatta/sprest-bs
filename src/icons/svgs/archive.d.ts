@@ -1,0 +1,1 @@
+export const archive: (height?:number, width?:number) => HTMLElement;

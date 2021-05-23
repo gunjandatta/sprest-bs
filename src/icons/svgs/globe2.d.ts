@@ -1,0 +1,1 @@
+export const globe2: (height?:number, width?:number) => HTMLElement;

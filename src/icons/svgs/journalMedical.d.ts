@@ -1,0 +1,1 @@
+export const journalMedical: (height?:number, width?:number) => HTMLElement;

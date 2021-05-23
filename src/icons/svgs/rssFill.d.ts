@@ -1,0 +1,1 @@
+export const rssFill: (height?:number, width?:number) => HTMLElement;

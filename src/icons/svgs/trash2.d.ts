@@ -1,0 +1,1 @@
+export const trash2: (height?:number, width?:number) => HTMLElement;

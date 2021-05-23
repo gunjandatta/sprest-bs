@@ -1,0 +1,1 @@
+export const genderTrans: (height?:number, width?:number) => HTMLElement;

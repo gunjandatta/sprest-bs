@@ -46,10 +46,10 @@ export const FormControlTypes: IFormControlTypes;
  * Form Control
  */
 export interface IFormControl {
-    el: HTMLElement;
     checkbox: ICheckboxGroup;
     control: ICheckboxGroup | IDropdown | IInputGroup | IListBox;
     dropdown: IDropdown;
+    el: HTMLElement;
     getValue: () => any;
     isLoaded: () => PromiseLike<void>;
     isRendered: boolean;

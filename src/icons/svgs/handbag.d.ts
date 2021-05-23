@@ -1,0 +1,1 @@
+export const handbag: (height?:number, width?:number) => HTMLElement;

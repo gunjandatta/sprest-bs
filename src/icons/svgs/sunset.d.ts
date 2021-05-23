@@ -1,0 +1,1 @@
+export const sunset: (height?:number, width?:number) => HTMLElement;

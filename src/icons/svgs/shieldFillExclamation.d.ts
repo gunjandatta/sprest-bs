@@ -1,0 +1,1 @@
+export const shieldFillExclamation: (height?:number, width?:number) => HTMLElement;

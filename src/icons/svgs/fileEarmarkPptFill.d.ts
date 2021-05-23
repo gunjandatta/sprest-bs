@@ -1,0 +1,1 @@
+export const fileEarmarkPptFill: (height?:number, width?:number) => HTMLElement;

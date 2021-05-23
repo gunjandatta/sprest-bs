@@ -1,0 +1,1 @@
+export const fileEarmarkSlides: (height?:number, width?:number) => HTMLElement;

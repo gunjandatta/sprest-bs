@@ -1,0 +1,1 @@
+export const moisture: (height?:number, width?:number) => HTMLElement;

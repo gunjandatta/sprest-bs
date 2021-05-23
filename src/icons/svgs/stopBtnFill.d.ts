@@ -1,0 +1,1 @@
+export const stopBtnFill: (height?:number, width?:number) => HTMLElement;

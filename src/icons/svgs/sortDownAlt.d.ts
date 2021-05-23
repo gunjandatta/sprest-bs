@@ -1,0 +1,1 @@
+export const sortDownAlt: (height?:number, width?:number) => HTMLElement;

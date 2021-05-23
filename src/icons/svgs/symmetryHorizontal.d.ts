@@ -1,0 +1,1 @@
+export const symmetryHorizontal: (height?:number, width?:number) => HTMLElement;

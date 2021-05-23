@@ -1,0 +1,1 @@
+export const filePlus: (height?:number, width?:number) => HTMLElement;

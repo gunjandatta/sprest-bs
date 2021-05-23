@@ -1,0 +1,1 @@
+export const eyeFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const broadcast: (height?:number, width?:number) => HTMLElement;

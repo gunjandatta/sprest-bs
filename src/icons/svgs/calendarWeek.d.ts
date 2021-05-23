@@ -1,0 +1,1 @@
+export const calendarWeek: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const textIndentRight: (height?:number, width?:number) => HTMLElement;

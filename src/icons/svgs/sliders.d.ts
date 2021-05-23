@@ -1,0 +1,1 @@
+export const sliders: (height?:number, width?:number) => HTMLElement;

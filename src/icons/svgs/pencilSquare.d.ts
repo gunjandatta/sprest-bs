@@ -1,0 +1,1 @@
+export const pencilSquare: (height?:number, width?:number) => HTMLElement;

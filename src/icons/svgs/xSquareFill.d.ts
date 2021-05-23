@@ -1,0 +1,1 @@
+export const xSquareFill: (height?:number, width?:number) => HTMLElement;

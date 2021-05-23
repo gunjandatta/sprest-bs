@@ -1,0 +1,1 @@
+export const outlet: (height?:number, width?:number) => HTMLElement;

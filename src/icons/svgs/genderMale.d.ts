@@ -1,0 +1,1 @@
+export const genderMale: (height?:number, width?:number) => HTMLElement;

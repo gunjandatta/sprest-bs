@@ -1,0 +1,1 @@
+export const cameraVideoOff: (height?:number, width?:number) => HTMLElement;

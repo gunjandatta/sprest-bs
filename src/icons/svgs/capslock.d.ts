@@ -1,0 +1,1 @@
+export const capslock: (height?:number, width?:number) => HTMLElement;

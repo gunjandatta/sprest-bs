@@ -1,0 +1,1 @@
+export const blockquoteLeft: (height?:number, width?:number) => HTMLElement;

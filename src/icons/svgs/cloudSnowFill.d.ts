@@ -1,0 +1,1 @@
+export const cloudSnowFill: (height?:number, width?:number) => HTMLElement;

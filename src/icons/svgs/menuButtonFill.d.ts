@@ -1,0 +1,1 @@
+export const menuButtonFill: (height?:number, width?:number) => HTMLElement;

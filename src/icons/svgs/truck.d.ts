@@ -1,0 +1,1 @@
+export const truck: (height?:number, width?:number) => HTMLElement;

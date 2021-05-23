@@ -1,0 +1,1 @@
+export const water: (height?:number, width?:number) => HTMLElement;

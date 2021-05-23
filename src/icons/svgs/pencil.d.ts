@@ -1,0 +1,1 @@
+export const pencil: (height?:number, width?:number) => HTMLElement;

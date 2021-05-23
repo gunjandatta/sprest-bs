@@ -1,0 +1,1 @@
+export const twitch: (height?:number, width?:number) => HTMLElement;

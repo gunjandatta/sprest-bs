@@ -1,0 +1,1 @@
+export const cloudLightningFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const fileMinus: (height?:number, width?:number) => HTMLElement;

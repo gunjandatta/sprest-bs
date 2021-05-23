@@ -1,0 +1,1 @@
+export const emojiExpressionlessFill: (height?:number, width?:number) => HTMLElement;

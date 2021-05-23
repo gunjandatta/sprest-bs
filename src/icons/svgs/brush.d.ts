@@ -1,0 +1,1 @@
+export const brush: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const tornado: (height?:number, width?:number) => HTMLElement;

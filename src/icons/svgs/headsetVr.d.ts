@@ -1,0 +1,1 @@
+export const headsetVr: (height?:number, width?:number) => HTMLElement;

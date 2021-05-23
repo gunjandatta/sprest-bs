@@ -1,0 +1,1 @@
+export const textRight: (height?:number, width?:number) => HTMLElement;

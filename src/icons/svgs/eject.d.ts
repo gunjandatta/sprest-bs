@@ -1,0 +1,1 @@
+export const eject: (height?:number, width?:number) => HTMLElement;

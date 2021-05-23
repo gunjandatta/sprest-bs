@@ -1,0 +1,1 @@
+export const shieldX: (height?:number, width?:number) => HTMLElement;

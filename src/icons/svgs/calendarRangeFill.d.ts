@@ -1,0 +1,1 @@
+export const calendarRangeFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const creditCard2FrontFill: (height?:number, width?:number) => HTMLElement;

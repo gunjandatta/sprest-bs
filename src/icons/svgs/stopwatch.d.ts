@@ -1,0 +1,1 @@
+export const stopwatch: (height?:number, width?:number) => HTMLElement;

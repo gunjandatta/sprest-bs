@@ -1,0 +1,1 @@
+export const arrowsFullscreen: (height?:number, width?:number) => HTMLElement;

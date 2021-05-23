@@ -1,0 +1,1 @@
+export const alt: (height?:number, width?:number) => HTMLElement;

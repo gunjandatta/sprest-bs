@@ -1,0 +1,1 @@
+export const bookmarkStar: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const bookmarks: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const phoneVibrateFill: (height?:number, width?:number) => HTMLElement;

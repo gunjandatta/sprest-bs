@@ -1,0 +1,1 @@
+export const hddStack: (height?:number, width?:number) => HTMLElement;

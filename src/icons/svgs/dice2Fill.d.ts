@@ -1,0 +1,1 @@
+export const dice2Fill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const boundingBox: (height?:number, width?:number) => HTMLElement;

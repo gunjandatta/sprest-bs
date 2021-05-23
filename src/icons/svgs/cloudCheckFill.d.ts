@@ -1,0 +1,1 @@
+export const cloudCheckFill: (height?:number, width?:number) => HTMLElement;

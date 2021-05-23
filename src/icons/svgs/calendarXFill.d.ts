@@ -1,0 +1,1 @@
+export const calendarXFill: (height?:number, width?:number) => HTMLElement;

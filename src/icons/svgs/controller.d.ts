@@ -1,0 +1,1 @@
+export const controller: (height?:number, width?:number) => HTMLElement;

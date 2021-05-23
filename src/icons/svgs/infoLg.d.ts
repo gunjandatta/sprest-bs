@@ -1,0 +1,1 @@
+export const infoLg: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const plug: (height?:number, width?:number) => HTMLElement;

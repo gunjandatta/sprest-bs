@@ -1,0 +1,1 @@
+export const bagDashFill: (height?:number, width?:number) => HTMLElement;

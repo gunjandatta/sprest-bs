@@ -1,0 +1,1 @@
+export const safeFill: (height?:number, width?:number) => HTMLElement;

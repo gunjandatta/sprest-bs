@@ -1,0 +1,1 @@
+export const telegram: (height?:number, width?:number) => HTMLElement;

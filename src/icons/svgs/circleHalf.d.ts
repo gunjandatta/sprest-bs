@@ -1,0 +1,1 @@
+export const circleHalf: (height?:number, width?:number) => HTMLElement;

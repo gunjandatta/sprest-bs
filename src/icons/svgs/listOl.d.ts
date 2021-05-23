@@ -1,0 +1,1 @@
+export const listOl: (height?:number, width?:number) => HTMLElement;

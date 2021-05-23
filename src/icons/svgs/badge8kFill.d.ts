@@ -1,0 +1,1 @@
+export const badge8kFill: (height?:number, width?:number) => HTMLElement;

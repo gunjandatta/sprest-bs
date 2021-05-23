@@ -1,0 +1,1 @@
+export const play: (height?:number, width?:number) => HTMLElement;

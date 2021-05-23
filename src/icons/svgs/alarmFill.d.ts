@@ -1,0 +1,1 @@
+export const alarmFill: (height?:number, width?:number) => HTMLElement;

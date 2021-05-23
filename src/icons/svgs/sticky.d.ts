@@ -1,0 +1,1 @@
+export const sticky: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const cloudSleet: (height?:number, width?:number) => HTMLElement;

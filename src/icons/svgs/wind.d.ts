@@ -1,0 +1,1 @@
+export const wind: (height?:number, width?:number) => HTMLElement;

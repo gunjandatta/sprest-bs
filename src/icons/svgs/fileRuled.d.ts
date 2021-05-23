@@ -1,0 +1,1 @@
+export const fileRuled: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const emojiHeartEyes: (height?:number, width?:number) => HTMLElement;

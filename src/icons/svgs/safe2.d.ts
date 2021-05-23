@@ -1,0 +1,1 @@
+export const safe2: (height?:number, width?:number) => HTMLElement;

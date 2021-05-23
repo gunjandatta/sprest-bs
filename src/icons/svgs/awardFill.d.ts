@@ -1,0 +1,1 @@
+export const awardFill: (height?:number, width?:number) => HTMLElement;

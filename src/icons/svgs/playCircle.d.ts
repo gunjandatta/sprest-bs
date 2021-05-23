@@ -1,0 +1,1 @@
+export const playCircle: (height?:number, width?:number) => HTMLElement;

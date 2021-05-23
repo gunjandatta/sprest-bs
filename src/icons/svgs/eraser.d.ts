@@ -1,0 +1,1 @@
+export const eraser: (height?:number, width?:number) => HTMLElement;

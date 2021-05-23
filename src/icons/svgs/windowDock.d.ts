@@ -1,0 +1,1 @@
+export const windowDock: (height?:number, width?:number) => HTMLElement;

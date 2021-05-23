@@ -1,0 +1,1 @@
+export const grid3x2GapFill: (height?:number, width?:number) => HTMLElement;

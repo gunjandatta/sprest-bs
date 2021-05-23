@@ -1,0 +1,1 @@
+export const textCenter: (height?:number, width?:number) => HTMLElement;

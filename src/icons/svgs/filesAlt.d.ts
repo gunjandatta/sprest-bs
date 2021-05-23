@@ -1,0 +1,1 @@
+export const filesAlt: (height?:number, width?:number) => HTMLElement;

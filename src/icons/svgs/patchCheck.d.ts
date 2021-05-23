@@ -1,0 +1,1 @@
+export const patchCheck: (height?:number, width?:number) => HTMLElement;

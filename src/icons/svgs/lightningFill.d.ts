@@ -1,0 +1,1 @@
+export const lightningFill: (height?:number, width?:number) => HTMLElement;

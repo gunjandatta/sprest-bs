@@ -1,0 +1,1 @@
+export const gem: (height?:number, width?:number) => HTMLElement;

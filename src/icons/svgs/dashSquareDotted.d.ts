@@ -1,0 +1,1 @@
+export const dashSquareDotted: (height?:number, width?:number) => HTMLElement;

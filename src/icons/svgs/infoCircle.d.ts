@@ -1,0 +1,1 @@
+export const infoCircle: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const forward: (height?:number, width?:number) => HTMLElement;

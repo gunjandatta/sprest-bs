@@ -1,0 +1,1 @@
+export const stars: (height?:number, width?:number) => HTMLElement;

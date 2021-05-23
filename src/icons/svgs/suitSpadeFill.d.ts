@@ -1,0 +1,1 @@
+export const suitSpadeFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const hr: (height?:number, width?:number) => HTMLElement;

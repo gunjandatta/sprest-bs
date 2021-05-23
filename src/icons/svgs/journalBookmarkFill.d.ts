@@ -1,0 +1,1 @@
+export const journalBookmarkFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const emojiNeutral: (height?:number, width?:number) => HTMLElement;

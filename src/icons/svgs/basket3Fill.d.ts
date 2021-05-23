@@ -1,0 +1,1 @@
+export const basket3Fill: (height?:number, width?:number) => HTMLElement;

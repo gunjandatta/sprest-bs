@@ -1,0 +1,1 @@
+export const fileZip: (height?:number, width?:number) => HTMLElement;

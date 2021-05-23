@@ -1,0 +1,1 @@
+export const layersHalf: (height?:number, width?:number) => HTMLElement;

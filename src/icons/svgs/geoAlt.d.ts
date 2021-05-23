@@ -1,0 +1,1 @@
+export const geoAlt: (height?:number, width?:number) => HTMLElement;

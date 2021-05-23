@@ -1,0 +1,1 @@
+export const link45deg: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const dashCircleFill: (height?:number, width?:number) => HTMLElement;

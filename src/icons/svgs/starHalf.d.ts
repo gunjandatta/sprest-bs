@@ -1,0 +1,1 @@
+export const starHalf: (height?:number, width?:number) => HTMLElement;

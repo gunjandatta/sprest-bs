@@ -1,0 +1,1 @@
+export const stoplights: (height?:number, width?:number) => HTMLElement;

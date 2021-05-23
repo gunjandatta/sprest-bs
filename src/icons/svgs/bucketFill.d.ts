@@ -1,0 +1,1 @@
+export const bucketFill: (height?:number, width?:number) => HTMLElement;

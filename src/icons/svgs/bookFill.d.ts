@@ -1,0 +1,1 @@
+export const bookFill: (height?:number, width?:number) => HTMLElement;

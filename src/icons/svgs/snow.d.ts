@@ -1,0 +1,1 @@
+export const snow: (height?:number, width?:number) => HTMLElement;

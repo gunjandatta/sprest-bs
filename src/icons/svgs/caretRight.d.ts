@@ -1,0 +1,1 @@
+export const caretRight: (height?:number, width?:number) => HTMLElement;

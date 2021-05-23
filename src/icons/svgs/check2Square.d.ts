@@ -1,0 +1,1 @@
+export const check2Square: (height?:number, width?:number) => HTMLElement;

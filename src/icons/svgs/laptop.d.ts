@@ -1,0 +1,1 @@
+export const laptop: (height?:number, width?:number) => HTMLElement;

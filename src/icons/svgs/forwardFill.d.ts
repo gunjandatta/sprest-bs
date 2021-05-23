@@ -1,0 +1,1 @@
+export const forwardFill: (height?:number, width?:number) => HTMLElement;

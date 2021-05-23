@@ -1,0 +1,1 @@
+export const pen: (height?:number, width?:number) => HTMLElement;

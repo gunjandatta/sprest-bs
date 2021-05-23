@@ -1,0 +1,1 @@
+export const typeItalic: (height?:number, width?:number) => HTMLElement;

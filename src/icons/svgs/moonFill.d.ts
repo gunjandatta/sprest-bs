@@ -1,0 +1,1 @@
+export const moonFill: (height?:number, width?:number) => HTMLElement;

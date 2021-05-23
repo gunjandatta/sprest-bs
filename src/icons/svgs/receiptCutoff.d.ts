@@ -1,0 +1,1 @@
+export const receiptCutoff: (height?:number, width?:number) => HTMLElement;

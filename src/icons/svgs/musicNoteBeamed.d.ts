@@ -1,0 +1,1 @@
+export const musicNoteBeamed: (height?:number, width?:number) => HTMLElement;

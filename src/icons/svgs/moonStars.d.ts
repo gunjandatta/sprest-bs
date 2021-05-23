@@ -1,0 +1,1 @@
+export const moonStars: (height?:number, width?:number) => HTMLElement;

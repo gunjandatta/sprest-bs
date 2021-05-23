@@ -1,0 +1,1 @@
+export const eggFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const toggleOn: (height?:number, width?:number) => HTMLElement;

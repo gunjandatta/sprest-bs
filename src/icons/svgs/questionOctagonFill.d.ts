@@ -1,0 +1,1 @@
+export const questionOctagonFill: (height?:number, width?:number) => HTMLElement;

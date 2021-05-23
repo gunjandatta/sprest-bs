@@ -1,0 +1,1 @@
+export const emojiLaughing: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const cursorFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const sortNumericUp: (height?:number, width?:number) => HTMLElement;

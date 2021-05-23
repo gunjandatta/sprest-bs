@@ -1,0 +1,1 @@
+export const chevronDown: (height?:number, width?:number) => HTMLElement;

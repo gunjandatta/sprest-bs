@@ -1,0 +1,1 @@
+export const cupStraw: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const badgeCcFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const typeStrikethrough: (height?:number, width?:number) => HTMLElement;

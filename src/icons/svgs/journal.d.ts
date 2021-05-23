@@ -1,0 +1,1 @@
+export const journal: (height?:number, width?:number) => HTMLElement;

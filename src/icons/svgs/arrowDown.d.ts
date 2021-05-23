@@ -1,0 +1,1 @@
+export const arrowDown: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const cloudSun: (height?:number, width?:number) => HTMLElement;

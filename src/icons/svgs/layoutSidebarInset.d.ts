@@ -1,0 +1,1 @@
+export const layoutSidebarInset: (height?:number, width?:number) => HTMLElement;

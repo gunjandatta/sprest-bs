@@ -1,0 +1,1 @@
+export const speaker: (height?:number, width?:number) => HTMLElement;

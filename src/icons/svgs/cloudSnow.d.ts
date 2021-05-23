@@ -1,0 +1,1 @@
+export const cloudSnow: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const filePerson: (height?:number, width?:number) => HTMLElement;

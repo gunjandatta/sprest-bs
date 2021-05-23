@@ -1,0 +1,1 @@
+export const cartXFill: (height?:number, width?:number) => HTMLElement;

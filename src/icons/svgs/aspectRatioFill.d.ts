@@ -1,0 +1,1 @@
+export const aspectRatioFill: (height?:number, width?:number) => HTMLElement;

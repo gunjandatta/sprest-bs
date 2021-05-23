@@ -1,0 +1,1 @@
+export const houseFill: (height?:number, width?:number) => HTMLElement;

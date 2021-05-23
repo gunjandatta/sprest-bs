@@ -1,0 +1,1 @@
+export const chatSquareQuote: (height?:number, width?:number) => HTMLElement;

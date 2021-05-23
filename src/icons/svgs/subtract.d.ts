@@ -1,0 +1,1 @@
+export const subtract: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const funnelFill: (height?:number, width?:number) => HTMLElement;

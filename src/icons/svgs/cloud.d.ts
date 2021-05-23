@@ -1,0 +1,1 @@
+export const cloud: (height?:number, width?:number) => HTMLElement;

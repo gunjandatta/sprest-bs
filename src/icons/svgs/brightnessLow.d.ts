@@ -1,0 +1,1 @@
+export const brightnessLow: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const vinyl: (height?:number, width?:number) => HTMLElement;

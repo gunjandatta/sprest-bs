@@ -1,0 +1,1 @@
+export const pentagon: (height?:number, width?:number) => HTMLElement;

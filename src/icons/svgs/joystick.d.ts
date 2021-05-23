@@ -1,0 +1,1 @@
+export const joystick: (height?:number, width?:number) => HTMLElement;

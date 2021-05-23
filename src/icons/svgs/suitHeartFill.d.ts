@@ -1,0 +1,1 @@
+export const suitHeartFill: (height?:number, width?:number) => HTMLElement;

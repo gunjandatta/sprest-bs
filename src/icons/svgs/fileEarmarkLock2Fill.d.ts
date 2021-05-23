@@ -1,0 +1,1 @@
+export const fileEarmarkLock2Fill: (height?:number, width?:number) => HTMLElement;

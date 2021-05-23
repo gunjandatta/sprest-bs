@@ -1,0 +1,1 @@
+export const heptagonFill: (height?:number, width?:number) => HTMLElement;

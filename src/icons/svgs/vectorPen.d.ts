@@ -1,0 +1,1 @@
+export const vectorPen: (height?:number, width?:number) => HTMLElement;

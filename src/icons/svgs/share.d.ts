@@ -1,0 +1,1 @@
+export const share: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const fileEarmarkLock2: (height?:number, width?:number) => HTMLElement;

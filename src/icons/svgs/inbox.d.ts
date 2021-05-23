@@ -1,0 +1,1 @@
+export const inbox: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const thermometer: (height?:number, width?:number) => HTMLElement;

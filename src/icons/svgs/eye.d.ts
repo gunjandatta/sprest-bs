@@ -1,0 +1,1 @@
+export const eye: (height?:number, width?:number) => HTMLElement;

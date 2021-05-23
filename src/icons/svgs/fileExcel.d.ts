@@ -1,0 +1,1 @@
+export const fileExcel: (height?:number, width?:number) => HTMLElement;

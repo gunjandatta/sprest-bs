@@ -1,0 +1,1 @@
+export const diagram3: (height?:number, width?:number) => HTMLElement;

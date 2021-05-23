@@ -1,0 +1,1 @@
+export const exclamationTriangleFill: (height?:number, width?:number) => HTMLElement;

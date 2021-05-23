@@ -1,0 +1,1 @@
+export const flagFill: (height?:number, width?:number) => HTMLElement;

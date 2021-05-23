@@ -1,0 +1,1 @@
+export const arrowUpCircleFill: (height?:number, width?:number) => HTMLElement;

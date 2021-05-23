@@ -1,0 +1,1 @@
+export const musicPlayerFill: (height?:number, width?:number) => HTMLElement;

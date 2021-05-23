@@ -1,0 +1,1 @@
+export const fileArrowUpFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const brightnessHighFill: (height?:number, width?:number) => HTMLElement;

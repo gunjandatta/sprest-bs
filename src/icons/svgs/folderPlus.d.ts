@@ -1,0 +1,1 @@
+export const folderPlus: (height?:number, width?:number) => HTMLElement;

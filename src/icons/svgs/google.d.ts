@@ -1,0 +1,1 @@
+export const google: (height?:number, width?:number) => HTMLElement;

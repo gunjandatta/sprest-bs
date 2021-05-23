@@ -1,0 +1,1 @@
+export const mask: (height?:number, width?:number) => HTMLElement;

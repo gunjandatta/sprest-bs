@@ -1,0 +1,1 @@
+export const fileBarGraphFill: (height?:number, width?:number) => HTMLElement;

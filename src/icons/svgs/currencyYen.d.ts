@@ -1,0 +1,1 @@
+export const currencyYen: (height?:number, width?:number) => HTMLElement;

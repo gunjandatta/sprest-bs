@@ -1,0 +1,1 @@
+export const inputCursorText: (height?:number, width?:number) => HTMLElement;

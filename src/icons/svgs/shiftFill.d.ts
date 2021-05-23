@@ -1,0 +1,1 @@
+export const shiftFill: (height?:number, width?:number) => HTMLElement;

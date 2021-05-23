@@ -1,0 +1,1 @@
+export const calendarMinus: (height?:number, width?:number) => HTMLElement;

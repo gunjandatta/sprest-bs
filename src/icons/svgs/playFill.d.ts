@@ -1,0 +1,1 @@
+export const playFill: (height?:number, width?:number) => HTMLElement;

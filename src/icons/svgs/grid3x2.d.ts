@@ -1,0 +1,1 @@
+export const grid3x2: (height?:number, width?:number) => HTMLElement;

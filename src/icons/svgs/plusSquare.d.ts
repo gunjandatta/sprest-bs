@@ -1,0 +1,1 @@
+export const plusSquare: (height?:number, width?:number) => HTMLElement;

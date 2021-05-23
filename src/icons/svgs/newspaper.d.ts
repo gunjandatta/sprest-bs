@@ -1,0 +1,1 @@
+export const newspaper: (height?:number, width?:number) => HTMLElement;

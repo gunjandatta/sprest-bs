@@ -1,0 +1,1 @@
+export const telephoneOutboundFill: (height?:number, width?:number) => HTMLElement;

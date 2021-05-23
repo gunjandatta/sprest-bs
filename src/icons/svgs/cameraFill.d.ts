@@ -1,0 +1,1 @@
+export const cameraFill: (height?:number, width?:number) => HTMLElement;

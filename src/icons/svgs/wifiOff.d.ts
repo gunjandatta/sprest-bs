@@ -1,0 +1,1 @@
+export const wifiOff: (height?:number, width?:number) => HTMLElement;

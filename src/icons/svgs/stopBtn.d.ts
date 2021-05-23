@@ -1,0 +1,1 @@
+export const stopBtn: (height?:number, width?:number) => HTMLElement;

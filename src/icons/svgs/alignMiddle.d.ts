@@ -1,0 +1,1 @@
+export const alignMiddle: (height?:number, width?:number) => HTMLElement;

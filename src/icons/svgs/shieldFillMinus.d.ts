@@ -1,0 +1,1 @@
+export const shieldFillMinus: (height?:number, width?:number) => HTMLElement;

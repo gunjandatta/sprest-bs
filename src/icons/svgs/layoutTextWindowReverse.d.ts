@@ -1,0 +1,1 @@
+export const layoutTextWindowReverse: (height?:number, width?:number) => HTMLElement;

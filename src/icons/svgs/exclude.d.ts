@@ -1,0 +1,1 @@
+export const exclude: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const suitClubFill: (height?:number, width?:number) => HTMLElement;

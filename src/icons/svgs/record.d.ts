@@ -1,0 +1,1 @@
+export const record: (height?:number, width?:number) => HTMLElement;

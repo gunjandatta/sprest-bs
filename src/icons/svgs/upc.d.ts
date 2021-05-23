@@ -1,0 +1,1 @@
+export const upc: (height?:number, width?:number) => HTMLElement;

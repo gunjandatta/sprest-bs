@@ -1,0 +1,1 @@
+export const cloudRainHeavyFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const facebook: (height?:number, width?:number) => HTMLElement;

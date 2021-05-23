@@ -1,0 +1,1 @@
+export const arrowRepeat: (height?:number, width?:number) => HTMLElement;

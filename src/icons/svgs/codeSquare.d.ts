@@ -1,0 +1,1 @@
+export const codeSquare: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const displayFill: (height?:number, width?:number) => HTMLElement;

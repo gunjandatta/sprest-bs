@@ -1,0 +1,1 @@
+export const fileCheckFill: (height?:number, width?:number) => HTMLElement;

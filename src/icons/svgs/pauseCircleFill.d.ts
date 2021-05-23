@@ -1,0 +1,1 @@
+export const pauseCircleFill: (height?:number, width?:number) => HTMLElement;

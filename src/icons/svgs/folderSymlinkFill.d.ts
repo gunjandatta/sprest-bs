@@ -1,0 +1,1 @@
+export const folderSymlinkFill: (height?:number, width?:number) => HTMLElement;

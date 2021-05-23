@@ -1,0 +1,1 @@
+export const arrowCounterclockwise: (height?:number, width?:number) => HTMLElement;

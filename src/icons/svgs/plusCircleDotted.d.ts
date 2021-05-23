@@ -1,0 +1,1 @@
+export const plusCircleDotted: (height?:number, width?:number) => HTMLElement;

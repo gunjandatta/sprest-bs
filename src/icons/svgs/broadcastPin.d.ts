@@ -1,0 +1,1 @@
+export const broadcastPin: (height?:number, width?:number) => HTMLElement;

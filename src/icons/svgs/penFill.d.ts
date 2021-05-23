@@ -1,0 +1,1 @@
+export const penFill: (height?:number, width?:number) => HTMLElement;

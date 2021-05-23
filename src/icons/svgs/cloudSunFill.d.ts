@@ -1,0 +1,1 @@
+export const cloudSunFill: (height?:number, width?:number) => HTMLElement;

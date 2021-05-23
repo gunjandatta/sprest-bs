@@ -1,0 +1,1 @@
+export const gridFill: (height?:number, width?:number) => HTMLElement;

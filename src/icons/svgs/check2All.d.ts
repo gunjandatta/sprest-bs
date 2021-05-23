@@ -1,0 +1,1 @@
+export const check2All: (height?:number, width?:number) => HTMLElement;

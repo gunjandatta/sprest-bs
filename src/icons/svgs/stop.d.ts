@@ -1,0 +1,1 @@
+export const stop: (height?:number, width?:number) => HTMLElement;

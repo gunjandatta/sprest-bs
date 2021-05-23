@@ -1,0 +1,1 @@
+export const envelopeFill: (height?:number, width?:number) => HTMLElement;

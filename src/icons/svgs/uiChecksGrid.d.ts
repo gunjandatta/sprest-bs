@@ -1,0 +1,1 @@
+export const uiChecksGrid: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const fileWordFill: (height?:number, width?:number) => HTMLElement;

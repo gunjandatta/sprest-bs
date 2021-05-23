@@ -1,0 +1,1 @@
+export const pinFill: (height?:number, width?:number) => HTMLElement;

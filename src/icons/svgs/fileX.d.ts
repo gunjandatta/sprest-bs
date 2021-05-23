@@ -1,0 +1,1 @@
+export const fileX: (height?:number, width?:number) => HTMLElement;

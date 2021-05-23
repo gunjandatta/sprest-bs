@@ -1,0 +1,1 @@
+export const shieldSlash: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const watch: (height?:number, width?:number) => HTMLElement;

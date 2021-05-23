@@ -1,0 +1,1 @@
+export const chatSquare: (height?:number, width?:number) => HTMLElement;

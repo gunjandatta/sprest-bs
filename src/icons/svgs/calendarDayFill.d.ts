@@ -1,0 +1,1 @@
+export const calendarDayFill: (height?:number, width?:number) => HTMLElement;

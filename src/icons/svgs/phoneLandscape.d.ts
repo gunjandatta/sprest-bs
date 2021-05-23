@@ -1,0 +1,1 @@
+export const phoneLandscape: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const journalArrowDown: (height?:number, width?:number) => HTMLElement;

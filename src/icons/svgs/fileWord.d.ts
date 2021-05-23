@@ -1,0 +1,1 @@
+export const fileWord: (height?:number, width?:number) => HTMLElement;

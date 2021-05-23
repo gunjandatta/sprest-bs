@@ -1,0 +1,1 @@
+export const cloudsFill: (height?:number, width?:number) => HTMLElement;

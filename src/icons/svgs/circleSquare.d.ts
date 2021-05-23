@@ -1,0 +1,1 @@
+export const circleSquare: (height?:number, width?:number) => HTMLElement;

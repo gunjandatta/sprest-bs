@@ -1,0 +1,1 @@
+export const front: (height?:number, width?:number) => HTMLElement;

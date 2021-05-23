@@ -1,0 +1,1 @@
+export const journalRichtext: (height?:number, width?:number) => HTMLElement;

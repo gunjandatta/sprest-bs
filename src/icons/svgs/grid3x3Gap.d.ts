@@ -1,0 +1,1 @@
+export const grid3x3Gap: (height?:number, width?:number) => HTMLElement;

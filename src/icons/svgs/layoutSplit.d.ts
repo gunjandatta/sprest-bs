@@ -1,0 +1,1 @@
+export const layoutSplit: (height?:number, width?:number) => HTMLElement;

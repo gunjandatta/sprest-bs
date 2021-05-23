@@ -1,0 +1,1 @@
+export const cloudDrizzleFill: (height?:number, width?:number) => HTMLElement;

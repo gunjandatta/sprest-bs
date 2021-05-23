@@ -1,0 +1,1 @@
+export const heart: (height?:number, width?:number) => HTMLElement;

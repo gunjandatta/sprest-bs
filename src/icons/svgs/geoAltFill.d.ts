@@ -1,0 +1,1 @@
+export const geoAltFill: (height?:number, width?:number) => HTMLElement;

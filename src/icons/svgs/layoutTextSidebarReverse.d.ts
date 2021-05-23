@@ -1,0 +1,1 @@
+export const layoutTextSidebarReverse: (height?:number, width?:number) => HTMLElement;

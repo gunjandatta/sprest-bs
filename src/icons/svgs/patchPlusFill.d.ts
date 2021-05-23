@@ -1,0 +1,1 @@
+export const patchPlusFill: (height?:number, width?:number) => HTMLElement;

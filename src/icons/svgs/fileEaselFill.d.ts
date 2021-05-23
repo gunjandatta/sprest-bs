@@ -1,0 +1,1 @@
+export const fileEaselFill: (height?:number, width?:number) => HTMLElement;

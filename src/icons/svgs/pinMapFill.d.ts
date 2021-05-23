@@ -1,0 +1,1 @@
+export const pinMapFill: (height?:number, width?:number) => HTMLElement;

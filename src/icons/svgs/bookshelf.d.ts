@@ -1,0 +1,1 @@
+export const bookshelf: (height?:number, width?:number) => HTMLElement;

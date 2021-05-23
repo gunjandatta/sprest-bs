@@ -1,0 +1,1 @@
+export const peace: (height?:number, width?:number) => HTMLElement;

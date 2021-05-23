@@ -1,0 +1,1 @@
+export const bagX: (height?:number, width?:number) => HTMLElement;

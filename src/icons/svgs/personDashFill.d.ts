@@ -1,0 +1,1 @@
+export const personDashFill: (height?:number, width?:number) => HTMLElement;

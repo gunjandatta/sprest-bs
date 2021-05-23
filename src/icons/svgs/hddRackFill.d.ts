@@ -1,0 +1,1 @@
+export const hddRackFill: (height?:number, width?:number) => HTMLElement;

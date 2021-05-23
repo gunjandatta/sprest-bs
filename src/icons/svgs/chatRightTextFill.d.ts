@@ -1,0 +1,1 @@
+export const chatRightTextFill: (height?:number, width?:number) => HTMLElement;

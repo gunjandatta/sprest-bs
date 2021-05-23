@@ -1,0 +1,1 @@
+export const caretDown: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const rainbow: (height?:number, width?:number) => HTMLElement;

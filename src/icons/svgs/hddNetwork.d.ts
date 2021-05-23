@@ -1,0 +1,1 @@
+export const hddNetwork: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const fileBinaryFill: (height?:number, width?:number) => HTMLElement;

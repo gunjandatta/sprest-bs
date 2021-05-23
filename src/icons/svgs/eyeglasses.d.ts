@@ -1,0 +1,1 @@
+export const eyeglasses: (height?:number, width?:number) => HTMLElement;

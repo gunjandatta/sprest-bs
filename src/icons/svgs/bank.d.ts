@@ -1,0 +1,1 @@
+export const bank: (height?:number, width?:number) => HTMLElement;

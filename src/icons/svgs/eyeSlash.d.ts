@@ -1,0 +1,1 @@
+export const eyeSlash: (height?:number, width?:number) => HTMLElement;

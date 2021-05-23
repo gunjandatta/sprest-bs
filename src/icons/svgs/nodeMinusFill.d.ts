@@ -1,0 +1,1 @@
+export const nodeMinusFill: (height?:number, width?:number) => HTMLElement;

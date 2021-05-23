@@ -1,0 +1,1 @@
+export const alignCenter: (height?:number, width?:number) => HTMLElement;

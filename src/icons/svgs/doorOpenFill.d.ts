@@ -1,0 +1,1 @@
+export const doorOpenFill: (height?:number, width?:number) => HTMLElement;

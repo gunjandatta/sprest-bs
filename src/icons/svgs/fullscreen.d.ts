@@ -1,0 +1,1 @@
+export const fullscreen: (height?:number, width?:number) => HTMLElement;

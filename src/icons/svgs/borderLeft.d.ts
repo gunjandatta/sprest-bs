@@ -1,0 +1,1 @@
+export const borderLeft: (height?:number, width?:number) => HTMLElement;

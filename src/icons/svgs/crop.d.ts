@@ -1,0 +1,1 @@
+export const crop: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const questionLg: (height?:number, width?:number) => HTMLElement;

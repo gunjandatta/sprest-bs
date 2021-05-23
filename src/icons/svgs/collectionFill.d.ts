@@ -1,0 +1,1 @@
+export const collectionFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const telephonePlusFill: (height?:number, width?:number) => HTMLElement;

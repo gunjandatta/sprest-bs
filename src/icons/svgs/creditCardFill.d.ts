@@ -1,0 +1,1 @@
+export const creditCardFill: (height?:number, width?:number) => HTMLElement;
