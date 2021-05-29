@@ -119,12 +119,14 @@ export interface INavbarItem {
     data?: any;
     href?: string;
     isActive?: boolean;
+    isButton?: boolean;
     isDisabled?: boolean;
     items?: Array<IDropdownItem>;
     onClick?: (item?: INavbarItem, ev?: Event) => void;
     target?: string;
     text?: string;
     toggle?: string;
+    toggleObj?: any;
 }
 
 /**
