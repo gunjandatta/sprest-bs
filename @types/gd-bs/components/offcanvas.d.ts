@@ -20,6 +20,12 @@ export interface IOffcanvas {
     /** Hides a collapsible element. */
     hide: () => void;
 
+    /** Returns true if the modal is visible. */
+    isVisible: boolean;
+
+    /** Updates the type. */
+    setType: (canvasType: number) => void;
+
     /** Shows a collapsible element. */
     show: () => void;
 
