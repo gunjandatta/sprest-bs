@@ -9312,6 +9312,7 @@ declare module 'gd-sprest-bs/gd-bs/libs' {
         followCursor?: boolean | 'horizontal' | 'vertical' | 'initial';
         hideOnClick?: boolean | 'toggle';
         inertia?: boolean;
+        interactive?: boolean;
         maxWidth?: number | string;
         placement?: string;
         role?: string;
