@@ -102,6 +102,8 @@ export interface IDropdownItem {
     className?: string;
     data?: any;
     href?: string;
+    iconSize?: number;
+    iconType?: Function;
     isDisabled?: boolean;
     isDivider?: boolean;
     isHeader?: boolean;
