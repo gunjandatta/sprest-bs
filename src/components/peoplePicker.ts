@@ -94,7 +94,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     }
 
     // Method to search for the users
-    let searchUsers = (el: HTMLElement, searchText: string, searchAll: boolean = true) => {
+    let searchUsers = (el: HTMLElement, searchText: string, searchAll: boolean = true, spGroupId?: number) => {
         // Ensure 3 characters exist
         if (_filterText.length > 2) {
             // Search for the user
@@ -102,7 +102,8 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 MaximumEntitySuggestions: props.maxResults || 25,
                 PrincipalSource: searchAll ? SPTypes.PrincipalSources.All : SPTypes.PrincipalSources.UserInfoList,
                 PrincipalType: props.allowGroups ? SPTypes.PrincipalTypes.All : SPTypes.PrincipalTypes.User,
-                QueryString: _filterText
+                QueryString: _filterText,
+                SharePointGroupID: spGroupId
             }).execute((search) => {
                 // Ensure the search text matches
                 if (_filterText != searchText) { return; }
@@ -215,7 +216,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                     // Ensure the filters match
                     if (searchText == _filterText) {
                         // Search for the users
-                        searchUsers(elMenu, searchText, props.searchLocal ? false : true);
+                        searchUsers(elMenu, searchText, props.searchLocal ? false : true, props.groupId);
                     }
                 }, 500);
             } else {

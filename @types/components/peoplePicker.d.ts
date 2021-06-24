@@ -63,6 +63,9 @@ export interface IPeoplePickerProps {
     /** The element to render the form to. */
     el?: Element;
 
+    /** The specific SharePoint group id to search within. */
+    groupId?: number;
+
     /** The label. */
     label?: string;
 
