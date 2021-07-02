@@ -96,6 +96,7 @@ export interface IPeoplePickerProps {
  */
 export interface IFormControlPropsPeoplePicker extends IFormControlProps {
     allowGroups?: boolean;
+    groupId?: number;
     maxResults?: number;
     multi?: boolean;
     placeholder?: string;

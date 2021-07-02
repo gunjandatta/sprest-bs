@@ -331,6 +331,7 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
             allowGroups: props.allowGroups,
             className: props.className,
             el: ctrl.el,
+            groupId: props.groupId,
             label: props.label,
             maxResults: props.maxResults,
             multi: props.multi,

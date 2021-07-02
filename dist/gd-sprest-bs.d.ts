@@ -905,6 +905,7 @@ declare module 'gd-sprest-bs/components/peoplePicker' {
         */
     export interface IFormControlPropsPeoplePicker extends IFormControlProps {
             allowGroups?: boolean;
+            groupId?: number;
             maxResults?: number;
             multi?: boolean;
             placeholder?: string;
