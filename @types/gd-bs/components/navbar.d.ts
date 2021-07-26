@@ -125,6 +125,7 @@ export interface INavbarItem {
     isDisabled?: boolean;
     items?: Array<IDropdownItem>;
     onClick?: (item?: INavbarItem, ev?: Event) => void;
+    onRender?: (el?: HTMLElement, item?: INavbarItem) => void;
     target?: string;
     text?: string;
     toggle?: string;
@@ -134,7 +135,7 @@ export interface INavbarItem {
 /**
  * Navbar Properties
  */
-export interface INavbarProps<T=Element> extends IBaseProps<INavbar> {
+export interface INavbarProps<T = Element> extends IBaseProps<INavbar> {
     brand?: string | T;
     brandUrl?: string;
     enableScrolling?: boolean;
@@ -143,6 +144,7 @@ export interface INavbarProps<T=Element> extends IBaseProps<INavbar> {
     items?: Array<INavbarItem>;
     itemsEnd?: Array<INavbarItem>;
     onClick?: (item?: INavbarItem, ev?: Event) => void;
+    onItemRendered?: (el?: HTMLElement, item?: INavbarItem) => void;
     searchBox?: INavbarSearchBox;
     type?: number;
 }
