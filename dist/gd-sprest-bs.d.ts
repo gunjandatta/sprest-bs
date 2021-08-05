@@ -1812,8 +1812,9 @@ declare module 'gd-sprest-bs/gd-bs/components/accordion' {
     /**
         * Accordion Item
         */
-    export interface IAccordionItem<T=Element> {
+    export interface IAccordionItem<T = Element> {
             data?: any;
+            className?: string;
             content?: string | T;
             header?: string;
             onClick?: (el?: HTMLElement, item?: IAccordionItem<T>) => void;
@@ -1829,7 +1830,7 @@ declare module 'gd-sprest-bs/gd-bs/components/accordion' {
     /**
         * Accordion Properties
         */
-    export interface IAccordionProps<T=Element> extends IBaseProps<IAccordion> {
+    export interface IAccordionProps<T = Element> extends IBaseProps<IAccordion> {
             autoCollapse?: boolean;
             id?: string;
             items?: Array<IAccordionItem<T>>;
