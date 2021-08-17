@@ -69,11 +69,11 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
                     // Wait for the promise to be resolved
                     formControls.then(formControls => {
                         // Render the edit form
-                        form = Helper.renderEditForm(wp, formControls);
+                        form = Helper.renderEditForm(el, wp.cfg, formControls);
                     });
                 }
                 // Else, render the edit form
-                else { form = Helper.renderEditForm(wp, formControls); }
+                else { form = Helper.renderEditForm(el, wp.cfg, formControls); }
 
                 // Call the render form event
                 props.onRenderForm ? props.onRenderForm(form, wp) : null;
