@@ -269,7 +269,7 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
                 className: props.className,
                 el: wpInfo.el,
                 isPills: props.type == WPTabTypes.Pillars,
-                isTabs: props.type != WPTabTypes.Pillars,
+                isTabs: true,
                 items
             });
 
