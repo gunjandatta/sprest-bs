@@ -58,7 +58,6 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         size: 100
     });
 
-    let hasUserField = false;
     let mapper: { [key: string]: Components.IFormControlProps } = {};
     let rows: Array<Components.IFormRow> = [];
 
@@ -125,16 +124,10 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         }
         // Else, see if this is a user field
         else if (field.FieldTypeKind == SPTypes.FieldType.User) {
-            // Set the flag
-            hasUserField = true;
-
-            // See if this is a classic page
-            if (window["ProcessImn"] == null) {
-                // Extract the text only
-                let elUser = document.createElement("div");
-                elUser.innerHTML = html;
-                html = elUser.innerText;
-            }
+            // Extract the text only
+            let elUser = document.createElement("div");
+            elUser.innerHTML = html;
+            html = elUser.innerText;
         }
         // Else, see if this is a choice field
         else if (field.FieldTypeKind == SPTypes.FieldType.Choice || field.FieldTypeKind == SPTypes.FieldType.MultiChoice) {
@@ -249,12 +242,6 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         onControlRendering: control => { return props.onControlRendering ? props.onControlRendering(control, props.info.fields[control.name]) : null; },
         rows: props.template || rows
     });
-
-    // See if we are displaying a user field
-    if (hasUserField) {
-        // Enable the persona
-        window["ProcessImn"] ? window["ProcessImn"]() : null;
-    }
 
     // Execute the assign to event
     props.assignTo ? props.assignTo(form) : null;
