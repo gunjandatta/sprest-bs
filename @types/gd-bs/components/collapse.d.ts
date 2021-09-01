@@ -84,6 +84,6 @@ export interface ICollapseProps<T = Element> extends IBaseProps<ICollapse> {
     id?: string;
     isHorizontal?: boolean;
     isMulti?: boolean;
-    onRender?: (props?: ICollapseProps, el?: HTMLElement) => void;
+    onRender?: (el?: HTMLElement, props?: ICollapseProps) => void;
     options?: ICollapseOptions;
 }

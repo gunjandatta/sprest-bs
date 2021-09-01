@@ -2657,7 +2657,7 @@ declare module 'gd-sprest-bs/gd-bs/components/collapse' {
             id?: string;
             isHorizontal?: boolean;
             isMulti?: boolean;
-            onRender?: (props?: ICollapseProps, el?: HTMLElement) => void;
+            onRender?: (el?: HTMLElement, props?: ICollapseProps) => void;
             options?: ICollapseOptions;
     }
 }
