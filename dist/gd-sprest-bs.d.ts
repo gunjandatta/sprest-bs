@@ -3354,6 +3354,11 @@ declare module 'gd-sprest-bs/gd-bs/components/nav' {
                 * @prop selector - The query selector.
                 */
             show: (selector?: string) => void;
+    
+            /**
+                * Shows a tab by it's id or index.
+                */
+            showTab: (tabId?: string | number) => void;
     }
     
     /**
