@@ -23,6 +23,9 @@ export interface IOffcanvas {
     /** Returns true if the modal is visible. */
     isVisible: boolean;
 
+    /** Updates the auto close flag. */
+    setAutoClose: (value: boolean) => void;
+
     /** Updates the type. */
     setType: (canvasType: number) => void;
 

@@ -3241,6 +3241,9 @@ declare module 'gd-sprest-bs/gd-bs/components/modal' {
             /** Returns true if the modal is visible. */
             isVisible: boolean;
     
+            /** Updates the auto close flag. */
+            setAutoClose: (value: boolean) => void;
+    
             /** Updates the title. */
             setTitle: (title: string) => void;
     
@@ -3258,7 +3261,7 @@ declare module 'gd-sprest-bs/gd-bs/components/modal' {
         * Modal Options
         */
     export interface IModalOptions {
-            /** True to automatically close the offcanvas when clicking outside of it. */
+            /** True to automatically close the modal when clicking outside of it. */
             autoClose?: boolean;
     
             /** True to enable the backdrop when the modal is visible. */
@@ -3550,6 +3553,9 @@ declare module 'gd-sprest-bs/gd-bs/components/offcanvas' {
     
             /** Returns true if the modal is visible. */
             isVisible: boolean;
+    
+            /** Updates the auto close flag. */
+            setAutoClose: (value: boolean) => void;
     
             /** Updates the type. */
             setType: (canvasType: number) => void;
