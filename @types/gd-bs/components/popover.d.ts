@@ -48,6 +48,11 @@
 export const Popover: (props: IPopoverProps, template?: string) => IPopover;
 
 /**
+ * Popover Placements
+ */
+ export const PopoverPlacements: IPopoverPlacements;
+
+/**
  * Popover Types
  */
 export const PopoverTypes: IPopoverTypes;
@@ -86,6 +91,7 @@ export interface IPopoverProps extends IBaseProps<IPopover> {
     btnProps?: IButtonProps;
     isDismissible?: boolean;
     options?: ITippyProps;
+    placement?: number;
     target?: Element,
     title?: string;
     type?: number;
@@ -94,10 +100,32 @@ export interface IPopoverProps extends IBaseProps<IPopover> {
 /**
  * Popover Types
  */
-export type IPopoverTypes = {
+ export type IPopoverTypes = {
+    Light: number;
+    LightBorder: number;
+    Material: number;
+    Primary: number;
+    Secondary: number;
+    Translucent: number;
+}
+
+/**
+ * Popover Placements
+ */
+ export type IPopoverPlacements = {
     Auto: number;
+    AutoStart: number;
+    AutoEnd: number;
     Bottom: number;
+    BottomStart: number;
+    BottomEnd: number;
     Left: number;
+    LeftStart: number;
+    LeftEnd: number;
     Right: number;
+    RightStart: number;
+    RightEnd: number;
     Top: number;
+    TopStart: number;
+    TopEnd: number;
 }

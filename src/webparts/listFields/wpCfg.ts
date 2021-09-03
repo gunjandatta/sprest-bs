@@ -162,7 +162,7 @@ export const WPListFieldsEditForm = (props: IWPListFieldsEditForm = {}): IWPList
         let popover = Components.Popover({
             el,
             target: _tbFilter.el,
-            type: Components.PopoverTypes.Auto,
+            type: Components.PopoverPlacements.Auto,
             options: {
                 trigger: "click",
                 content: _ddlFields.el

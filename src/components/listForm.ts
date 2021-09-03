@@ -426,7 +426,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                             // Append the attachment
                                             elUpload.parentElement.appendChild(Components.Popover({
                                                 isDismissible: true,
-                                                type: Components.PopoverTypes.Bottom,
+                                                type: Components.PopoverPlacements.Bottom,
                                                 btnProps: {
                                                     className: "mr-1",
                                                     isSmall: true,
@@ -483,7 +483,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                 // Add the attachment
                                 btnGroup.appendChild(Components.Popover({
                                     isDismissible: true,
-                                    type: Components.PopoverTypes.Bottom,
+                                    type: Components.PopoverPlacements.Bottom,
                                     btnProps: {
                                         className: "mr-1",
                                         isSmall: true,
