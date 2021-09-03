@@ -82,6 +82,7 @@ export interface ITooltip {
  */
 export interface ITooltipProps extends IBaseProps<ITooltip> {
     btnProps?: IButtonProps;
+    content?: string | Element;
     options?: ITippyProps;
     placement?: number;
     type?: number;
