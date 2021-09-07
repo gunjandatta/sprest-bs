@@ -1353,7 +1353,7 @@ export * from "./wifi";
 export * from "./wind";
 export * from "./windowDock";
 export * from "./windowSidebar";
-export * from "./window";
+export * from "./appWindow";
 export * from "./wrench";
 export * from "./xCircleFill";
 export * from "./xCircle";

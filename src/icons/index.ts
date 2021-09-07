@@ -4073,7 +4073,7 @@ export const Icons = (iconType:number, height?:number, width?:number) => {
 			return SVGIcons.windowSidebar(height, width);
 		// window.svg
 		case 1356:
-			return SVGIcons.window(height, width);
+			return SVGIcons.appWindow(height, width);
 		// wrench.svg
 		case 1357:
 			return SVGIcons.wrench(height, width);

@@ -2741,7 +2741,7 @@ export const IconTypes: {
 	// window-sidebar.svg
 	WindowSidebar: number;
 	// window.svg
-	Window: number;
+	AppWindow: number;
 	// wrench.svg
 	Wrench: number;
 	// x-circle-fill.svg

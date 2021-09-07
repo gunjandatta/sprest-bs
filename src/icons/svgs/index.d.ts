@@ -2709,7 +2709,7 @@ export const windowDock: (height?:number, width?:number) => HTMLElement;
 // window-sidebar.svg
 export const windowSidebar: (height?:number, width?:number) => HTMLElement;
 // window.svg
-export const window: (height?:number, width?:number) => HTMLElement;
+export const appWindow: (height?:number, width?:number) => HTMLElement;
 // wrench.svg
 export const wrench: (height?:number, width?:number) => HTMLElement;
 // x-circle-fill.svg

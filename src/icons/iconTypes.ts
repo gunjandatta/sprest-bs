@@ -1355,7 +1355,7 @@ export enum IconTypes {
 	Wind = 1353,
 	WindowDock = 1354,
 	WindowSidebar = 1355,
-	Window = 1356,
+	AppWindow = 1356,
 	Wrench = 1357,
 	XCircleFill = 1358,
 	XCircle = 1359,
