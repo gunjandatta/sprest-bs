@@ -125,6 +125,9 @@ export interface IDropdownItem {
  */
 export interface IDropdownProps extends IBaseProps<IDropdown> {
     btnClassName?: string;
+    dropLeft?: boolean;
+    dropRight?: boolean;
+    dropUp?: boolean;
     formFl?: boolean;
     id?: string;
     isDark?: boolean;
