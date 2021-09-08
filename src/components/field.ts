@@ -646,10 +646,10 @@ export const Field = (props: IFieldProps): IField => {
                     result.invalidMessage = "The value cannot end with a '.' character.";
                 }
                 // Else, see if it contains invalid characters
-                else if (/["\#\%\*\:\<\>\?\/\\"]/.test(value) || value.indexOf('\\') >= 0) {
+                else if (/[~"\#\%\&\*\:\<\>\?\/\\\{\|\}"]/.test(value) || value.indexOf('\\') >= 0) {
                     // Update the validation
                     result.isValid = false;
-                    result.invalidMessage = "The value cannot contain the following characters: \" % * : <, > ? / \\ |";
+                    result.invalidMessage = "The value cannot contain the following characters: ~ \" # % & * : < > ? / \\ { | }";
                 }
                 // Else, see if we are changing the extension
                 else if (control.value) {
@@ -658,7 +658,7 @@ export const Field = (props: IFieldProps): IField => {
                     let newExtension = getFileExtension(value);
 
                     // Update the validation
-                    result.isValid = origExtension != newExtension;
+                    result.isValid = origExtension == newExtension;
                     result.invalidMessage = "The file extension cannot be changed. It must end with '." + origExtension + "'";
                 }
             }
