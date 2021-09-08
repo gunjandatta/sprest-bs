@@ -62,6 +62,12 @@ export const Field = (props: IFieldProps): IField => {
         return items;
     }
 
+    // Method to get the file extension
+    let getFileExtension = (fileName: string = "") => {
+        let extension = fileName.split('.');
+        return extension[extension.length - 1].toLowerCase();
+    }
+
     // Method to generate the lookup dropdown items
     let getLookupItems = (field: Types.SP.FieldLookup, lookupItems: Array<Types.SP.IListItemQuery>, selectedValues) => {
         let items: Array<Components.IDropdownItem> = [];
@@ -644,6 +650,16 @@ export const Field = (props: IFieldProps): IField => {
                     // Update the validation
                     result.isValid = false;
                     result.invalidMessage = "The value cannot contain the following characters: \" % * : <, > ? / \\ |";
+                }
+                // Else, see if we are changing the extension
+                else if (control.value) {
+                    // Get the file extensions
+                    let origExtension = getFileExtension(control.value);
+                    let newExtension = getFileExtension(value);
+
+                    // Update the validation
+                    result.isValid = origExtension != newExtension;
+                    result.invalidMessage = "The file extension cannot be changed. It must end with '." + origExtension + "'";
                 }
             }
 
