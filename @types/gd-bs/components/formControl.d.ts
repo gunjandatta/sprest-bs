@@ -109,8 +109,8 @@ export interface IFormControlPropsDropdown extends IFormControlProps {
     items?: Array<IDropdownItem>;
     onChange?: (item: IDropdownItem, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
-    onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
     onGetValue?: (control: IFormControlPropsDropdown) => any;
+    onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
     onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
 }
 
@@ -147,8 +147,8 @@ export interface IFormControlPropsMultiDropdown extends IFormControlProps {
     items?: Array<IDropdownItem>;
     onChange?: (item: Array<IDropdownItem>, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
-    onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
     onGetValue?: (control: IFormControlPropsDropdown) => any;
+    onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
     onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
 }
 
