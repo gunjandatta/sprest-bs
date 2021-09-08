@@ -92,6 +92,7 @@ export const NavbarTypes: INavbarTypes;
 
 import { IBaseProps } from "../base";
 import { IDropdownItem } from "./dropdown";
+import { IPopoverProps } from "./popover";
 
 /**
  * Navbar
@@ -145,6 +146,7 @@ export interface INavbarProps<T = Element> extends IBaseProps<INavbar> {
     itemsEnd?: Array<INavbarItem>;
     onClick?: (item?: INavbarItem, ev?: Event) => void;
     onItemRendered?: (el?: HTMLElement, item?: INavbarItem) => void;
+    onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
     searchBox?: INavbarSearchBox;
     type?: number;
 }

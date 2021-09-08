@@ -25,6 +25,7 @@ import { ICheckboxGroup, ICheckboxGroupItem } from "./checkboxGroup";
 import { IDropdown, IDropdownItem } from "./dropdown";
 import { IInputGroup } from "./inputGroup";
 import { IListBox } from "./listBox";
+import { IPopoverProps } from "./popover";
 
 /**
  * Custom Controls
@@ -108,6 +109,7 @@ export interface IFormControlPropsDropdown extends IFormControlProps {
     items?: Array<IDropdownItem>;
     onChange?: (item: IDropdownItem, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
+    onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
     onGetValue?: (control: IFormControlPropsDropdown) => any;
     onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
 }
@@ -145,6 +147,7 @@ export interface IFormControlPropsMultiDropdown extends IFormControlProps {
     items?: Array<IDropdownItem>;
     onChange?: (item: Array<IDropdownItem>, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
+    onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
     onGetValue?: (control: IFormControlPropsDropdown) => any;
     onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
 }
