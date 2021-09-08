@@ -48,6 +48,7 @@ export const Dropdown: (props: IDropdownProps, template?: string) => IDropdown;
 
 import { IBaseProps } from "../base";
 import { IButtonTypes } from "./button";
+import { IPopover, IPopoverProps } from "./popover";
 
 /**
  * Dropdown Types
@@ -75,6 +76,9 @@ export interface IDropdown {
 
     /** True if the dropdown is a multi-select. */
     isMulti: boolean;
+
+    /** The popover menu. */
+    popover: IPopover;
 
     /** Updates the dropdown items. */
     setItems: (items: Array<IDropdownItem>) => void;
@@ -121,9 +125,6 @@ export interface IDropdownItem {
  */
 export interface IDropdownProps extends IBaseProps<IDropdown> {
     btnClassName?: string;
-    dropLeft?: boolean;
-    dropRight?: boolean;
-    dropUp?: boolean;
     formFl?: boolean;
     id?: string;
     isDark?: boolean;
@@ -136,6 +137,7 @@ export interface IDropdownProps extends IBaseProps<IDropdown> {
     multi?: boolean;
     navFl?: boolean;
     onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
+    onRenderPopover?: (props: IPopoverProps) => IPopoverProps;
     setLabelToValue?: boolean;
     title?: string;
     type?: number;
