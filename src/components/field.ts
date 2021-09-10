@@ -352,6 +352,9 @@ export const Field = (props: IFieldProps): IField => {
                                         // Clear the element
                                         controlProps.el ? controlProps.el.innerHTML = "" : null;
 
+                                        // Clear the value, since the getLookupItems method takes care of this for us
+                                        controlProps.value = null;
+
                                         // Call the event
                                         let returnVal = onControlRendering ? onControlRendering(controlProps) : null;
                                         if (returnVal && returnVal.then) {
