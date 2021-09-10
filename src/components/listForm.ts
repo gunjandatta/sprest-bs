@@ -737,8 +737,25 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
                     // See if this is a user field
                     if (field.FieldTypeKind == SPTypes.FieldType.User) {
-                        // Enable the persona
-                        window["ProcessImn"] ? window["ProcessImn"]() : null;
+                        // See if this is a multi-user selection
+                        if ((field as Types.SP.FieldLookup).AllowMultipleValues) {
+                            let userNames = [];
+
+                            // Parse the users
+                            let users: Types.SP.User[] = (props.info.item[field.InternalName] ? props.info.item[field.InternalName].results : null) || [];
+                            for (let j = 0; j < users.length; j++) {
+                                // Append the user name
+                                userNames.push(users[j].Title);
+                            }
+
+                            // Set the html value
+                            html = userNames.join('<br />\n');
+                        } else {
+                            // Extract the text only for single selections
+                            let elUser = document.createElement("div");
+                            elUser.innerHTML = html;
+                            html = elUser.innerText;
+                        }
                     }
                 }
             }
