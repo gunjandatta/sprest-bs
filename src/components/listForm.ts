@@ -154,6 +154,9 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
             case SPTypes.FieldType.Note:
                 mapper[fieldName].type = Components.FormControlTypes.TextArea;
                 break;
+            case SPTypes.FieldType.User:
+                mapper[fieldName].type = Components.FormControlTypes.TextArea;
+                break;
         }
 
         // Detect html
