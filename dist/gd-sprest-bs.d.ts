@@ -4255,6 +4255,7 @@ declare module 'gd-sprest-bs/gd-bs/components/tooltip' {
             content?: string | Element;
             options?: ITippyProps;
             placement?: number;
+            target?: Element,
             type?: number;
     }
     
