@@ -1,6 +1,6 @@
 import { Helper } from "gd-sprest";
-import { IWPTaxonomyInfo, IWPTaxonomyProps } from "../../../@types/webparts";
 import { WebPart } from "../base/wp";
+import { IWPTaxonomyInfo, IWPTaxonomyProps } from "./types";
 import { WPTaxonomyEditForm } from "./wpCfg";
 
 /**

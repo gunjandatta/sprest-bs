@@ -1,5 +1,5 @@
-import { IWPListFields, IWPListFieldsProps } from "../../../@types/webparts";
 import { WPList } from "../list";
+import { IWPListFields, IWPListFieldsProps } from "./types";
 import { WPListFieldsEditForm } from "./wpCfg";
 
 /**

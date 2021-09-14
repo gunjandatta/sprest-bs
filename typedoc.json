@@ -1,0 +1,5 @@
+{
+    "entryPoints": ["./src/components", "./src/icons/webparts"],
+    "entryPointStrategy": "expand",
+    "out": "docs"
+}

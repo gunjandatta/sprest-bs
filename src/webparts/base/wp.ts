@@ -1,5 +1,5 @@
-import { IWebPart, IWebPartCfg, IWebPartInfo, IWebPartProps } from "../../../@types/webparts";
 import { Helper } from "gd-sprest";
+import { IWebPart, IWebPartCfg, IWebPartInfo, IWebPartProps } from "./types";
 import { WPCfg } from "./wpCfg";
 
 /**

@@ -14,7 +14,7 @@ function copyDirectory(src, target, appendFl) {
     // Ensure the directory exists
     if (fs.existsSync(src) && fs.lstatSync(src).isDirectory()) {
         // Get each item in the directory
-        fs.readdirSync(src).forEach(function (item) {
+        fs.readdirSync(src).forEach(function(item) {
             var srcPath = src + "/" + item;
             var targetPath = target + "/" + item;
 
@@ -41,7 +41,7 @@ function deleteDirectory(src) {
     // Ensure the directory exists
     if (fs.existsSync(src) && fs.lstatSync(src).isDirectory()) {
         // Get each item in the directory
-        fs.readdirSync(src).forEach(function (item) {
+        fs.readdirSync(src).forEach(function(item) {
             var srcPath = src + "/" + item;
 
             // See if this is a directory
@@ -65,11 +65,8 @@ console.log("Cleaning the files...");
 // Delete the folders
 deleteDirectory("./build");
 deleteDirectory("./dist");
+deleteDirectory("./docs");
 deleteDirectory("./src/icons");
-
-// Copy the typings
-copyDirectory("./node_modules/gd-bs/@types", "./@types/gd-bs");
-copyDirectory("./node_modules/gd-sprest/@types", "./@types/gd-sprest");
 
 // Copy the icons
 copyDirectory("./node_modules/gd-bs/src/icons", "./src/icons");

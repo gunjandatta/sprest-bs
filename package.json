@@ -1,16 +1,16 @@
 {
     "name": "gd-sprest-bs",
-    "version": "8.2.6",
+    "version": "8.2.7",
     "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
     "main": "build/index.js",
-    "typings": "@types/index.d.ts",
+    "typings": "src/index.d.ts",
     "scripts": {
-        "all": "npm run clean && npm run build && npm run prod && npm run typings",
-        "build": "tsc && npm run build-sass && webpack --mode=development && npm run build-icons && npm run post-build",
+        "all": "npm run clean && npm run build && npm run prod && npm run typings && npm run docs",
+        "build": "tsc && npm run build-sass && webpack --mode=development && npm run build-icons",
         "build-icons": "webpack --config webpack.icons.js --mode=development",
         "build-sass": "webpack --config webpack.sass.js --mode=production",
-        "post-build": "node ./post-build.js",
         "clean": "node ./clean.js",
+        "docs": "typedoc",
         "prod": "webpack --mode=production && npm run prod-icons",
         "prod-icons": "webpack --config webpack.icons.js --mode=production",
         "typings": "dts-bundle --configJson dts-bundle.json"
@@ -33,20 +33,21 @@
     "homepage": "https://dattabase.com/extras/bs",
     "dependencies": {
         "flatpickr": "^4.6.9",
-        "gd-bs": "^5.0.2",
+        "gd-bs": "^5.0.5",
         "gd-sprest": "^6.5.8",
         "gd-sprest-def": "^1.0.4"
     },
     "devDependencies": {
-        "@babel/core": "^7.14.3",
-        "@babel/preset-env": "^7.14.4",
+        "@babel/core": "^7.15.5",
+        "@babel/preset-env": "^7.15.6",
         "babel-loader": "^8.2.2",
-        "css-loader": "^5.2.6",
+        "css-loader": "^6.2.0",
         "dts-bundle": "^0.7.3",
-        "node-sass": "^6.0.0",
-        "sass-loader": "^11.1.1",
-        "style-loader": "^2.0.0",
-        "webpack": "^5.38.1",
-        "webpack-cli": "^4.7.0"
+        "node-sass": "^6.0.1",
+        "sass-loader": "^12.1.0",
+        "style-loader": "^3.2.1",
+        "typedoc": "^0.22.3",
+        "webpack": "^5.52.1",
+        "webpack-cli": "^4.8.0"
     }
 }

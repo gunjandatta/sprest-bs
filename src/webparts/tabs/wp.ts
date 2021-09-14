@@ -1,6 +1,7 @@
 import { Components } from "gd-bs";
-import { IWebPartInfo, IWPTabs, IWPTabsProps } from "../../../@types/webparts";
 import { WebPart } from "../base";
+import { IWebPartInfo } from "../base/types";
+import { IWPTabs, IWPTabsProps } from "./types";
 
 /**
  * Web Part Tab Types
@@ -159,7 +160,7 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
     }
 
     // Method to update the visibility of the webparts
-    let updateWebParts = (tab?: Components.INavLink, ev?: Event) => {
+    let updateWebParts = (tab?: Components.INavLinkProps, ev?: Event) => {
         let selectedTabId = 0;
 
         // See if the tab exists
@@ -250,7 +251,7 @@ export const WPTabs = (props: IWPTabsProps): IWPTabs => {
             _webparts = getWebParts(wpInfo);
 
             // Parse the webparts
-            let items: Array<Components.INavLink> = [];
+            let items: Array<Components.INavLinkProps> = [];
             for (let i = 0; i < _webparts.length; i++) {
                 // Ensure a title exists
                 let wpTitle = _webparts[i].querySelector(".ms-webpart-titleText") as HTMLDivElement;

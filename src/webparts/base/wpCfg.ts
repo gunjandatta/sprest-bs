@@ -1,6 +1,6 @@
 import { Components } from "gd-bs";
-import { IWebPartCfg, IWebPartEditForm, IWebPartInfo, IWebPartProps } from "../../../@types/webparts";
 import { Helper } from "./helper";
+import { IWebPartCfg, IWebPartEditForm, IWebPartInfo, IWebPartProps } from "./types";
 declare var MSOWebPartPageFormName;
 
 /**
