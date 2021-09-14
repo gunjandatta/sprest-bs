@@ -2,20 +2,20 @@
 // Dependencies for this module:
 //   ../gd-bs
 //   ../gd-sprest
-//   ../gd-bs/src/components/types
 //   ../gd-bs/src/components/form/controlTypes
+//   ../gd-bs/src/components/components
 //   ../gd-bs/src/components/form/formTypes
-//   ../gd-bs/src/components/modal/types
-//   ../gd-bs/src/components/toolbar/types
 //   ../gd-bs/src/components/button/types
 //   ../gd-bs/src/components/nav/types
+//   ../gd-bs/src/components/modal/types
+//   ../gd-bs/src/components/toolbar/types
 
 declare module 'gd-sprest-bs' {
     export * from "gd-bs";
     export * from "gd-sprest";
     
-    import { Components } from "gd-sprest-bs/components";
-    import * as WebParts from "gd-sprest-bs/webparts";
+    import { Components } from "gd-sprest-bs/components/types";
+    import * as WebParts from "gd-sprest-bs/webparts/types";
     export {
         Components,
         WebParts
@@ -25,13 +25,8 @@ declare module 'gd-sprest-bs' {
     export const $REST: IRESTBS;
 }
 
-declare module 'gd-sprest-bs/components' {
-    export * from "gd-bs/src/components/types";
-    export * from "gd-sprest-bs/components/datetime/types";
-    export * from "gd-sprest-bs/components/field/types";
-    export * from "gd-sprest-bs/components/listForm/types";
-    export * from "gd-sprest-bs/components/listFormDialog/types";
-    export * from "gd-sprest-bs/components/peoplePicker/types";
+declare module 'gd-sprest-bs/components/types' {
+    export * as Components from "gd-sprest-bs/components/components";
     
     import { IFormControlTypes as Parent } from "gd-bs/src/components/form/controlTypes";
     export interface IFormControlTypes extends Parent {
@@ -41,7 +36,7 @@ declare module 'gd-sprest-bs/components' {
     export const FormControlTypes: IFormControlTypes;
 }
 
-declare module 'gd-sprest-bs/webparts' {
+declare module 'gd-sprest-bs/webparts/types' {
     export * from "gd-sprest-bs/webparts/base/helperTypes";
     export * from "gd-sprest-bs/webparts/base/types";
     export * from "gd-sprest-bs/webparts/list/types";
@@ -54,8 +49,8 @@ declare module 'gd-sprest-bs/webparts' {
 declare module 'gd-sprest-bs/rest' {
     import { IconTypes, Icons } from "gd-bs";
     import { IREST } from "gd-sprest";
-    import * as Components from "gd-sprest-bs/components";
-    import * as WebParts from "gd-sprest-bs/webparts";
+    import * as Components from "gd-sprest-bs/components/types";
+    import * as WebParts from "gd-sprest-bs/webparts/types";
     
     /**
       * $REST Bootstrap Library
@@ -67,413 +62,13 @@ declare module 'gd-sprest-bs/rest' {
     }
 }
 
-declare module 'gd-sprest-bs/components/datetime/types' {
-    import { IFormControlProps } from "gd-bs/src/components/form/controlTypes";
-    
-    /**
-        * Date/Time
-        */
-    export const DateTime: (props: IDateTimeProps) => IDateTime
-    
-    /**
-        * Date/Time
-        */
-    export interface IDateTime {
-            /** The date/time picker element. */
-            el: HTMLDivElement;
-    
-            /** The flatpickr object. */
-            flatpickrObj: any;
-    
-            /** Returns the date as a Date/Time object. */
-            getDate: () => Date;
-    
-            /** Method to get the value. */
-            getValue: () => string;
-    
-            /** Method to set the value. */
-            setValue: (dt: string | Date, dtFormat?: string) => void;
-    }
-    
-    /**
-        * Date/Time Props
-        */
-    export interface IDateTimeProps {
-            /** Assigns the object to the input parameter. */
-            assignTo?: (obj: IDateTime) => void;
-    
-            /** The class name to apply to the element. */
-            className?: string;
-    
-            /** The element to render the form to. */
-            el?: Element;
-    
-            /** True to disable the date/time plugin */
-            disabled?: boolean;
-    
-            /** The date/time label. */
-            label?: string;
-    
-            /** The flatpickr options. */
-            options?: any;
-    
-            /** Flag to display the time. */
-            showTime?: boolean;
-    
-            /** The date/time value. */
-            value?: string;
-    }
-    
-    /**
-        * Form Control Properties - DateTime
-        */
-    export interface IFormControlPropsDateTime extends IFormControlProps {
-            /** The flatpickr options. */
-            options?: any;
-    
-            /** Flag to display the time. */
-            showTime?: boolean;
-    
-            /** The date/time value. */
-            value?: string;
-    }
-}
-
-declare module 'gd-sprest-bs/components/field/types' {
-    import { Helper, Types } from "gd-sprest";
-    import { IFormControl, IFormControlProps, IFormControlValidationResult } from "gd-bs/src/components/form/controlTypes";
-    
-    /**
-        * Field
-        */
-    export const Field: (props: IFieldProps) => IField;
-    
-    /**
-        * Field
-        */
-    export interface IField {
-            control: IFormControl;
-            controlProps: IFormControlProps;
-            getValue: () => IFieldValue;
-            isValid: () => boolean;
-    }
-    
-    /**
-        * Field Properties
-        */
-    export interface IFieldProps {
-            assignTo?: (obj: IField) => void;
-            controlMode?: number;
-            errorMessage?: string;
-            field: Types.SP.Field;
-            listInfo: Helper.IListFormResult;
-            lookupFilter?: string;
-            onError?: (msg: string) => void;
-            onControlRendered?: (control: IFormControl, field: Types.SP.Field) => void | Promise<IFormControl>;
-            onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;
-            onValidate?: (field: Types.SP.Field, control: IFormControl, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
-            value?: any;
-    }
-    
-    /**
-        * Field Value
-        */
-    export interface IFieldValue {
-            name: string;
-            value: any;
-    }
-}
-
-declare module 'gd-sprest-bs/components/listForm/types' {
-    import { IFormControl, IFormControlProps } from "gd-bs/src/components/form/controlTypes";
-    import { IForm, IFormRow } from "gd-bs/src/components/form/formTypes";
-    import { Helper, Types } from "gd-sprest";
-    
-    /**
-        * List Form
-        */
-    export const ListForm: IListForm;
-    
-    /**
-        * List Form
-        */
-    export interface IListForm extends Helper.IListForm {
-            /**
-                * Method to render the display form template.
-                * @param props - The display form properties.
-                */
-            renderDisplayForm(props: IListFormDisplayProps): IListFormDisplay;
-    
-            /**
-                * Method to render the edit/new form.
-                * @param props - The edit/new form properties.
-                */
-            renderEditForm(props: IListFormEditProps): IListFormEdit;
-    }
-    
-    /**
-        * List Form Attachments Properties
-        */
-    export interface IListFormAttachmentsProps {
-            /** The element to render the form to. */
-            el: Element;
-    
-            /** The list form information. */
-            info: Helper.IListFormResult;
-    
-            /** The item attachment saved event. */
-            onSave?: (info: Helper.IListFormResult) => void;
-    }
-    
-    /**
-        * List Form Display
-        */
-    export interface IListFormDisplay {
-            /** The form element. */
-            el: HTMLFormElement;
-    }
-    
-    /**
-        * List Form Display Properties
-        */
-    export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
-            /** Assigns the object to the input parameter. */
-            assignTo?: (obj: IListFormDisplay) => void;
-    
-            /** The form component class name. */
-            className?: string;
-    
-            /** The form component group class name. */
-            groupClassName?: string;
-    
-            /** The form component row class name. */
-            rowClassName?: string;
-    
-            /** The control rendered event. */
-            onControlRendered?: (control: IFormControl, field: Types.SP.Field) => void | Promise<IFormControl>;
-    
-            /** The control rendering event. */
-            onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;
-    
-            /** The form rendered event. */
-            onFormRendered?: (form: IForm) => void;
-    
-            /** The error event. */
-            onError?: (msg?: string) => void;
-    
-            /** The list form rows. */
-            template?: Array<IFormRow>;
-    }
-    
-    /**
-        * List Form Edit
-        */
-    export interface IListFormEdit {
-            /** Appends controls to the form */
-            appendControls(controls: Array<IFormControlProps>);
-    
-            /** Appends rows to the form */
-            appendRows(rows: Array<IFormRow>);
-    
-            /** The form element. */
-            el: HTMLFormElement;
-    
-            /** Method to get a control by field name */
-            getControl(fieldName: string): IFormControl;
-    
-            /** Method to get the form values */
-            getValues(): { [key: string]: any }
-    
-            /** Method to determine if the field is valid */
-            isValid(): boolean;
-    
-            /** Method to save the form. */
-            save(): PromiseLike<Types.SP.ListItem>;
-    }
-    
-    /**
-        * List Form Edit Properties
-        */
-    export interface IListFormEditProps extends IListFormDisplayProps, Helper.IListFormEditProps {
-            /** Assigns the object to the input parameter. */
-            assignTo?: (obj: IListFormEdit) => void;
-    
-            /** Use this event to filter a lookup field by OData query. */
-            onFilterLookupField?: (field: Types.SP.Field) => string | Types.IODataQuery;
-    
-            /** The form saving event. */
-            onSaving?: (item: any) => void | PromiseLike<any>;
-    
-            /** The form validating event. */
-            onValidate?: (field: Types.SP.Field, control: IFormControl) => boolean;
-    }
-}
-
-declare module 'gd-sprest-bs/components/listFormDialog/types' {
-    import { IFormControl, IFormControlProps } from "gd-bs/src/components/form/controlTypes";
-    import { IFormRow } from "gd-bs/src/components/form/formTypes";
-    import { IModal, IModalProps } from "gd-bs/src/components/modal/types";
-    import { IToolbarProps } from "gd-bs/src/components/toolbar/types";
-    import { Helper, Types } from "gd-sprest";
-    
-    /**
-        * List Form Dialog
-        */
-    export const ListFormDialog: (props: IListFormDialogProps) => IListFormDialog;
-    
-    /**
-        * List Form Dialog
-        */
-    export interface IListFormDialog extends IModal {
-            /** Method to save the form. */
-            saveForm: () => PromiseLike<Types.SP.ListItem>;
-    }
-    
-    /**
-        * List Form Dialog Properties
-        */
-    export interface IListFormDialogProps extends Helper.IListFormProps {
-            /** The form actions. */
-            actions?: IToolbarProps;
-    
-            /** Assigns the object to the input parameter. */
-            assignTo?: (obj: IListFormDialog) => void;
-    
-            /** The form control mode. */
-            controlMode?: number;
-    
-            /** The element to render the field to. */
-            el: Element | HTMLElement;
-    
-            /** The item. */
-            item?: any;
-    
-            /** The modal dialog properties. */
-            modalProps?: IModalProps;
-    
-            /** The control rendered event. */
-            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
-    
-            /** The control rendering event. */
-            onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
-    
-            /** The form saving event. */
-            onSaving?: (item: any) => void | PromiseLike<any>;
-    
-            /** The form saved event. */
-            onSaved?: (item?: Types.SP.ListItem) => void;
-    
-            /** The list form rows. */
-            template?: Array<IFormRow>;
-    
-            /** True to display the modal by default. */
-            visible?: boolean;
-    }
-}
-
-declare module 'gd-sprest-bs/components/peoplePicker/types' {
-    
-    /**
-        * ### People Picker
-        * 
-        * ```ts
-        * import { ContextInfo, Components } from "gd-sprest-bs";
-        * 
-        * // Create the panel
-        * let el = document.querySelector("#people-picker");
-        * let form = Components.Form({
-        *     el: el,
-        *     rows: [
-        *         // Other controls go here
-        *         {
-        *             control: {
-        *                 allowGroups: false,
-        *                 label: "Select User:",
-        *                 multi: true,
-        *                 name: "User",
-        *                 type: Components.FormControlTypes.PeoplePicker
-        *                 value: ContextInfo.userId // Default to the current user
-        *             } as Components.IFormControlPropsPeoplePicker
-        *         }
-        *     ]
-        * });
-        * ```
-        */
-    export const PeoplePicker: (props: IPeoplePickerProps) => IPeoplePicker;
-    
-    import { IFormControlProps } from "gd-bs/src/components/form/controlTypes";
-    import { Types } from "gd-sprest";
-    
-    /**
-        * People Picker
-        */
-    export interface IPeoplePicker {
-            /** The people picker element. */
-            el: HTMLElement;
-    
-            /** Returns the selected users. */
-            getValue: () => Array<Types.SP.User | Types.SP.Group>;
-    
-            /** Sets the selected users by id or people picker user object. */
-            setValue: (selectedUsers: Array<string | number | Types.IPeoplePickerUser>) => void;
-    }
-    
-    /**
-        * People Picker Properties
-        */
-    export interface IPeoplePickerProps {
-            /** True, to include groups in the results. */
-            allowGroups?: boolean;
-    
-            /** Assigns the object to the input parameter. */
-            assignTo?: (obj: IPeoplePicker) => void;
-    
-            /** The class name to apply to the element. */
-            className?: string;
-    
-            /** The element to render the form to. */
-            el?: Element;
-    
-            /** The specific SharePoint group id to search within. */
-            groupId?: number;
-    
-            /** The label. */
-            label?: string;
-    
-            /** Limits the results to a maximum number. */
-            maxResults?: number;
-    
-            /** True to allow multiple users to be selected. */
-            multi?: boolean;
-    
-            /** The change event. */
-            onChange?: (obj: Types.IPeoplePickerUser | Array<Types.IPeoplePickerUser>) => void;
-    
-            /** The placeholder text. (Default value is "Search") */
-            placeholder?: string;
-    
-            /** True to allow multiple users to be selected. */
-            readOnly?: boolean;
-    
-            /** True to search the local users first. */
-            searchLocal?: boolean;
-    
-            /** The selected users. */
-            value?: string | number | Types.IPeoplePickerUser | Array<string | number | Types.IPeoplePickerUser>;
-    }
-    
-    /**
-        * Form Control Properties - People Picker
-        */
-    export interface IFormControlPropsPeoplePicker extends IFormControlProps {
-            allowGroups?: boolean;
-            groupId?: number;
-            maxResults?: number;
-            multi?: boolean;
-            placeholder?: string;
-            searchLocal?: boolean;
-            value?: string | number | Types.IPeoplePickerUser | Array<string | number | Types.IPeoplePickerUser>;
-    }
+declare module 'gd-sprest-bs/components/components' {
+    export * from "gd-bs/src/components/components";
+    export * from "gd-sprest-bs/components/datetime/types";
+    export * from "gd-sprest-bs/components/field/types";
+    export * from "gd-sprest-bs/components/listForm/types";
+    export * from "gd-sprest-bs/components/listFormDialog/types";
+    export * from "gd-sprest-bs/components/peoplePicker/types";
 }
 
 declare module 'gd-sprest-bs/webparts/base/helperTypes' {
@@ -1102,6 +697,415 @@ declare module 'gd-sprest-bs/webparts/taxonomy/types' {
     interface ITermInfo {
             id: string;
             name: string;
+    }
+}
+
+declare module 'gd-sprest-bs/components/datetime/types' {
+    import { IFormControlProps } from "gd-bs/src/components/form/controlTypes";
+    
+    /**
+        * Date/Time
+        */
+    export const DateTime: (props: IDateTimeProps) => IDateTime
+    
+    /**
+        * Date/Time
+        */
+    export interface IDateTime {
+            /** The date/time picker element. */
+            el: HTMLDivElement;
+    
+            /** The flatpickr object. */
+            flatpickrObj: any;
+    
+            /** Returns the date as a Date/Time object. */
+            getDate: () => Date;
+    
+            /** Method to get the value. */
+            getValue: () => string;
+    
+            /** Method to set the value. */
+            setValue: (dt: string | Date, dtFormat?: string) => void;
+    }
+    
+    /**
+        * Date/Time Props
+        */
+    export interface IDateTimeProps {
+            /** Assigns the object to the input parameter. */
+            assignTo?: (obj: IDateTime) => void;
+    
+            /** The class name to apply to the element. */
+            className?: string;
+    
+            /** The element to render the form to. */
+            el?: Element;
+    
+            /** True to disable the date/time plugin */
+            disabled?: boolean;
+    
+            /** The date/time label. */
+            label?: string;
+    
+            /** The flatpickr options. */
+            options?: any;
+    
+            /** Flag to display the time. */
+            showTime?: boolean;
+    
+            /** The date/time value. */
+            value?: string;
+    }
+    
+    /**
+        * Form Control Properties - DateTime
+        */
+    export interface IFormControlPropsDateTime extends IFormControlProps {
+            /** The flatpickr options. */
+            options?: any;
+    
+            /** Flag to display the time. */
+            showTime?: boolean;
+    
+            /** The date/time value. */
+            value?: string;
+    }
+}
+
+declare module 'gd-sprest-bs/components/field/types' {
+    import { Helper, Types } from "gd-sprest";
+    import { IFormControl, IFormControlProps, IFormControlValidationResult } from "gd-bs/src/components/form/controlTypes";
+    
+    /**
+        * Field
+        */
+    export const Field: (props: IFieldProps) => IField;
+    
+    /**
+        * Field
+        */
+    export interface IField {
+            control: IFormControl;
+            controlProps: IFormControlProps;
+            getValue: () => IFieldValue;
+            isValid: () => boolean;
+    }
+    
+    /**
+        * Field Properties
+        */
+    export interface IFieldProps {
+            assignTo?: (obj: IField) => void;
+            controlMode?: number;
+            errorMessage?: string;
+            field: Types.SP.Field;
+            listInfo: Helper.IListFormResult;
+            lookupFilter?: string;
+            onError?: (msg: string) => void;
+            onControlRendered?: (control: IFormControl, field: Types.SP.Field) => void | Promise<IFormControl>;
+            onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;
+            onValidate?: (field: Types.SP.Field, control: IFormControl, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+            value?: any;
+    }
+    
+    /**
+        * Field Value
+        */
+    export interface IFieldValue {
+            name: string;
+            value: any;
+    }
+}
+
+declare module 'gd-sprest-bs/components/listForm/types' {
+    import { IFormControl, IFormControlProps } from "gd-bs/src/components/form/controlTypes";
+    import { IForm, IFormRow } from "gd-bs/src/components/form/formTypes";
+    import { Helper, Types } from "gd-sprest";
+    
+    /**
+        * List Form
+        */
+    export const ListForm: IListForm;
+    
+    /**
+        * List Form
+        */
+    export interface IListForm extends Helper.IListForm {
+            /**
+                * Method to render the display form template.
+                * @param props - The display form properties.
+                */
+            renderDisplayForm(props: IListFormDisplayProps): IListFormDisplay;
+    
+            /**
+                * Method to render the edit/new form.
+                * @param props - The edit/new form properties.
+                */
+            renderEditForm(props: IListFormEditProps): IListFormEdit;
+    }
+    
+    /**
+        * List Form Attachments Properties
+        */
+    export interface IListFormAttachmentsProps {
+            /** The element to render the form to. */
+            el: Element;
+    
+            /** The list form information. */
+            info: Helper.IListFormResult;
+    
+            /** The item attachment saved event. */
+            onSave?: (info: Helper.IListFormResult) => void;
+    }
+    
+    /**
+        * List Form Display
+        */
+    export interface IListFormDisplay {
+            /** The form element. */
+            el: HTMLFormElement;
+    }
+    
+    /**
+        * List Form Display Properties
+        */
+    export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
+            /** Assigns the object to the input parameter. */
+            assignTo?: (obj: IListFormDisplay) => void;
+    
+            /** The form component class name. */
+            className?: string;
+    
+            /** The form component group class name. */
+            groupClassName?: string;
+    
+            /** The form component row class name. */
+            rowClassName?: string;
+    
+            /** The control rendered event. */
+            onControlRendered?: (control: IFormControl, field: Types.SP.Field) => void | Promise<IFormControl>;
+    
+            /** The control rendering event. */
+            onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;
+    
+            /** The form rendered event. */
+            onFormRendered?: (form: IForm) => void;
+    
+            /** The error event. */
+            onError?: (msg?: string) => void;
+    
+            /** The list form rows. */
+            template?: Array<IFormRow>;
+    }
+    
+    /**
+        * List Form Edit
+        */
+    export interface IListFormEdit {
+            /** Appends controls to the form */
+            appendControls(controls: Array<IFormControlProps>);
+    
+            /** Appends rows to the form */
+            appendRows(rows: Array<IFormRow>);
+    
+            /** The form element. */
+            el: HTMLFormElement;
+    
+            /** Method to get a control by field name */
+            getControl(fieldName: string): IFormControl;
+    
+            /** Method to get the form values */
+            getValues(): { [key: string]: any }
+    
+            /** Method to determine if the field is valid */
+            isValid(): boolean;
+    
+            /** Method to save the form. */
+            save(): PromiseLike<Types.SP.ListItem>;
+    }
+    
+    /**
+        * List Form Edit Properties
+        */
+    export interface IListFormEditProps extends IListFormDisplayProps, Helper.IListFormEditProps {
+            /** Assigns the object to the input parameter. */
+            assignTo?: (obj: IListFormEdit) => void;
+    
+            /** Use this event to filter a lookup field by OData query. */
+            onFilterLookupField?: (field: Types.SP.Field) => string | Types.IODataQuery;
+    
+            /** The form saving event. */
+            onSaving?: (item: any) => void | PromiseLike<any>;
+    
+            /** The form validating event. */
+            onValidate?: (field: Types.SP.Field, control: IFormControl) => boolean;
+    }
+}
+
+declare module 'gd-sprest-bs/components/listFormDialog/types' {
+    import { IFormControl, IFormControlProps } from "gd-bs/src/components/form/controlTypes";
+    import { IFormRow } from "gd-bs/src/components/form/formTypes";
+    import { IModal, IModalProps } from "gd-bs/src/components/modal/types";
+    import { IToolbarProps } from "gd-bs/src/components/toolbar/types";
+    import { Helper, Types } from "gd-sprest";
+    
+    /**
+        * List Form Dialog
+        */
+    export const ListFormDialog: (props: IListFormDialogProps) => IListFormDialog;
+    
+    /**
+        * List Form Dialog
+        */
+    export interface IListFormDialog extends IModal {
+            /** Method to save the form. */
+            saveForm: () => PromiseLike<Types.SP.ListItem>;
+    }
+    
+    /**
+        * List Form Dialog Properties
+        */
+    export interface IListFormDialogProps extends Helper.IListFormProps {
+            /** The form actions. */
+            actions?: IToolbarProps;
+    
+            /** Assigns the object to the input parameter. */
+            assignTo?: (obj: IListFormDialog) => void;
+    
+            /** The form control mode. */
+            controlMode?: number;
+    
+            /** The element to render the field to. */
+            el: Element | HTMLElement;
+    
+            /** The item. */
+            item?: any;
+    
+            /** The modal dialog properties. */
+            modalProps?: IModalProps;
+    
+            /** The control rendered event. */
+            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
+    
+            /** The control rendering event. */
+            onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
+    
+            /** The form saving event. */
+            onSaving?: (item: any) => void | PromiseLike<any>;
+    
+            /** The form saved event. */
+            onSaved?: (item?: Types.SP.ListItem) => void;
+    
+            /** The list form rows. */
+            template?: Array<IFormRow>;
+    
+            /** True to display the modal by default. */
+            visible?: boolean;
+    }
+}
+
+declare module 'gd-sprest-bs/components/peoplePicker/types' {
+    
+    /**
+        * ### People Picker
+        * 
+        * ```ts
+        * import { ContextInfo, Components } from "gd-sprest-bs";
+        * 
+        * // Create the panel
+        * let el = document.querySelector("#people-picker");
+        * let form = Components.Form({
+        *     el: el,
+        *     rows: [
+        *         // Other controls go here
+        *         {
+        *             control: {
+        *                 allowGroups: false,
+        *                 label: "Select User:",
+        *                 multi: true,
+        *                 name: "User",
+        *                 type: Components.FormControlTypes.PeoplePicker
+        *                 value: ContextInfo.userId // Default to the current user
+        *             } as Components.IFormControlPropsPeoplePicker
+        *         }
+        *     ]
+        * });
+        * ```
+        */
+    export const PeoplePicker: (props: IPeoplePickerProps) => IPeoplePicker;
+    
+    import { IFormControlProps } from "gd-bs/src/components/form/controlTypes";
+    import { Types } from "gd-sprest";
+    
+    /**
+        * People Picker
+        */
+    export interface IPeoplePicker {
+            /** The people picker element. */
+            el: HTMLElement;
+    
+            /** Returns the selected users. */
+            getValue: () => Array<Types.SP.User | Types.SP.Group>;
+    
+            /** Sets the selected users by id or people picker user object. */
+            setValue: (selectedUsers: Array<string | number | Types.IPeoplePickerUser>) => void;
+    }
+    
+    /**
+        * People Picker Properties
+        */
+    export interface IPeoplePickerProps {
+            /** True, to include groups in the results. */
+            allowGroups?: boolean;
+    
+            /** Assigns the object to the input parameter. */
+            assignTo?: (obj: IPeoplePicker) => void;
+    
+            /** The class name to apply to the element. */
+            className?: string;
+    
+            /** The element to render the form to. */
+            el?: Element;
+    
+            /** The specific SharePoint group id to search within. */
+            groupId?: number;
+    
+            /** The label. */
+            label?: string;
+    
+            /** Limits the results to a maximum number. */
+            maxResults?: number;
+    
+            /** True to allow multiple users to be selected. */
+            multi?: boolean;
+    
+            /** The change event. */
+            onChange?: (obj: Types.IPeoplePickerUser | Array<Types.IPeoplePickerUser>) => void;
+    
+            /** The placeholder text. (Default value is "Search") */
+            placeholder?: string;
+    
+            /** True to allow multiple users to be selected. */
+            readOnly?: boolean;
+    
+            /** True to search the local users first. */
+            searchLocal?: boolean;
+    
+            /** The selected users. */
+            value?: string | number | Types.IPeoplePickerUser | Array<string | number | Types.IPeoplePickerUser>;
+    }
+    
+    /**
+        * Form Control Properties - People Picker
+        */
+    export interface IFormControlPropsPeoplePicker extends IFormControlProps {
+            allowGroups?: boolean;
+            groupId?: number;
+            maxResults?: number;
+            multi?: boolean;
+            placeholder?: string;
+            searchLocal?: boolean;
+            value?: string | number | Types.IPeoplePickerUser | Array<string | number | Types.IPeoplePickerUser>;
     }
 }
 
