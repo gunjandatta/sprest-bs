@@ -1,4 +1,4 @@
-export * from "gd-bs/src/components";
+export * from "gd-bs/src/components/types";
 export * from "./datetime/types";
 export * from "./field/types";
 export * from "./listForm/types";

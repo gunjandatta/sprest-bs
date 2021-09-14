@@ -2,7 +2,7 @@
 // Dependencies for this module:
 //   ../gd-bs
 //   ../gd-sprest
-//   ../gd-bs/src/components
+//   ../gd-bs/src/components/types
 //   ../gd-bs/src/components/form/controlTypes
 //   ../gd-bs/src/components/form/formTypes
 //   ../gd-bs/src/components/modal/types
@@ -14,7 +14,7 @@ declare module 'gd-sprest-bs' {
     export * from "gd-bs";
     export * from "gd-sprest";
     
-    import * as Components from "gd-sprest-bs/components";
+    import { Components } from "gd-sprest-bs/components";
     import * as WebParts from "gd-sprest-bs/webparts";
     export {
         Components,
@@ -26,7 +26,7 @@ declare module 'gd-sprest-bs' {
 }
 
 declare module 'gd-sprest-bs/components' {
-    export * from "gd-bs/src/components";
+    export * from "gd-bs/src/components/types";
     export * from "gd-sprest-bs/components/datetime/types";
     export * from "gd-sprest-bs/components/field/types";
     export * from "gd-sprest-bs/components/listForm/types";

@@ -3,7 +3,7 @@ export * from "gd-bs";
 export * from "gd-sprest";
 
 /* BootStrap Components */
-import * as Components from "./components";
+import { Components } from "./components";
 import * as WebParts from "./webparts";
 export {
     Components,
