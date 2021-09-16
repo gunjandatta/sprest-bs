@@ -18,6 +18,7 @@ jobs:
       run: |
         # Build the project
         npm install
+        npm link typescript
         npm run all
         npm run test --if-present
     - name: Build Artifacts
