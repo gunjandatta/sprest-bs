@@ -84,7 +84,7 @@ export const Field = (props: IFieldProps): IField => {
 
             // Determine if this lookup is selected
             for (let j = 0; j < selectedValues.length; j++) {
-                let id = selectedValues[j] ? selectedValues[j].Id : null;
+                let id = selectedValues[j] && selectedValues[j].Id ? selectedValues[j].Id : selectedValues[j];
 
                 // See if this choice is selected
                 if (item.Id == id) {
