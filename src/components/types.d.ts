@@ -1,5 +1,5 @@
 // Components
-export * as Components from "./components";
+export * from "./components";
 
 // Customize the form control types
 import { IFormControlTypes as Parent } from "gd-bs/src/components/form/controlTypes";
