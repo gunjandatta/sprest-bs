@@ -14,7 +14,7 @@ declare module 'gd-sprest-bs' {
     export * from "gd-bs";
     export * from "gd-sprest";
     
-    import { Components } from "gd-sprest-bs/components/types";
+    import * as Components from "gd-sprest-bs/components/types";
     import * as WebParts from "gd-sprest-bs/webparts/types";
     export {
         Components,
@@ -26,7 +26,7 @@ declare module 'gd-sprest-bs' {
 }
 
 declare module 'gd-sprest-bs/components/types' {
-    export * as Components from "gd-sprest-bs/components/components";
+    export * from "gd-sprest-bs/components/components";
     
     import { IFormControlTypes as Parent } from "gd-bs/src/components/form/controlTypes";
     export interface IFormControlTypes extends Parent {
@@ -69,6 +69,13 @@ declare module 'gd-sprest-bs/components/components' {
     export * from "gd-sprest-bs/components/listForm/types";
     export * from "gd-sprest-bs/components/listFormDialog/types";
     export * from "gd-sprest-bs/components/peoplePicker/types";
+    
+    import { IFormControlTypes as Parent } from "gd-bs/src/components/form/controlTypes";
+    export interface IFormControlTypes extends Parent {
+        DateTime: number;
+        PeoplePicker: number;
+    }
+    export const FormControlTypes: IFormControlTypes;
 }
 
 declare module 'gd-sprest-bs/webparts/base/helperTypes' {
