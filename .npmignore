@@ -2,5 +2,6 @@
 *.log*
 *-lock.json
 .gitignore
+docs
 tsconfig.json
 webpack.*.js
