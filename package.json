@@ -1,6 +1,6 @@
 {
     "name": "gd-sprest-bs",
-    "version": "8.4.2",
+    "version": "8.4.3",
     "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
     "main": "build/index.js",
     "typings": "src/index.d.ts",
@@ -34,7 +34,7 @@
     "dependencies": {
         "flatpickr": "^4.6.9",
         "gd-bs": "^5.0.7",
-        "gd-sprest": "^6.5.8",
+        "gd-sprest": "^6.5.9",
         "gd-sprest-def": "^1.0.4"
     },
     "devDependencies": {
