@@ -23,38 +23,18 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
         textbox.el.querySelector("input").disabled = true;
     }
 
-    // Get the value
-    let value: any = props.value ? props.value.toLowerCase() : null;
-    if (value) {
-        let idx = value.indexOf("[today]");
-        let dtNow = new Date(Date.now());
-
-        // See if the date is a formula
-        if (idx >= 0) {
-            // See if we are adding days
-            let daysIdx = value.indexOf("+", idx);
-            if (daysIdx > 0) {
-                // Get the number of days to add
-                let days = parseInt(value.substr(idx));
-                if (days > 0) {
-                    // Add the days
-                    dtNow.setDate(dtNow.getDate() + days);
-                }
-            }
-
-            // Set the value
-            value = dtNow;
-        } else {
-            // Set the value
-            value = new Date(value);
-        }
-    }
-
     // Get the options and default the values
     let options = props.options || {};
     options.enableTime = props.showTime;
-    options.defaultDate = value;
     options.dateFormat = options.dateFormat || ("m-d-Y" + (props.showTime ? " H:i K" : ""));
+
+    // See if the value is a string
+    if (typeof (props.value) === "string") {
+        options.defaultDate = new Date(props.value);
+    } else {
+        // Set the value
+        options.defaultDate = props.value;
+    }
 
     // Apply the plugin
     let datetime = flatpickr(textbox.el.querySelector("input"), options);

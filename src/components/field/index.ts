@@ -277,6 +277,45 @@ export const Field = (props: IFieldProps): IField => {
 
             // Set the type
             controlProps.type = DateTimeControlType;
+
+            // See if there is a formula and this is a new form
+            let dtValue = props.field.DefaultFormula || props.field.DefaultValue;
+            if (dtValue && props.controlMode == SPTypes.ControlMode.New) {
+                let idx = dtValue.indexOf("today");
+
+                // See if the date is a formula
+                if (idx >= 0) {
+                    let dtNow = new Date(Date.now());
+
+                    // See if we are adding days
+                    let daysIdx = dtValue.indexOf("+", idx);
+                    if (daysIdx > 0) {
+                        // Get the number of days to add
+                        let days = parseInt(dtValue.substr(idx));
+                        if (days > 0) {
+                            // Add the days
+                            dtNow.setDate(dtNow.getDate() + days);
+                        }
+                    }
+
+                    // See if we are subtracting days
+                    daysIdx = dtValue.indexOf("-", idx);
+                    if (daysIdx > 0) {
+                        // Get the number of days to add
+                        let days = parseInt(dtValue.substr(idx));
+                        if (days > 0) {
+                            // Add the days
+                            dtNow.setDate(dtNow.getDate() - days);
+                        }
+                    }
+
+                    // Set the value
+                    props.value = dtNow;
+                } else {
+                    // Set the value
+                    props.value = new Date(dtValue);
+                }
+            }
             break;
 
         // Lookup
