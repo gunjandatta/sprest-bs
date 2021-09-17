@@ -310,10 +310,10 @@ export const Field = (props: IFieldProps): IField => {
                     }
 
                     // Set the value
-                    props.value = dtNow;
+                    controlProps.value = dtNow;
                 } else {
                     // Set the value
-                    props.value = new Date(dtValue);
+                    controlProps.value = new Date(dtValue);
                 }
             }
             break;
