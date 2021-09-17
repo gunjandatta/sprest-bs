@@ -101,7 +101,7 @@ export const Helper: IHelper = {
                     el.innerHTML = content;
 
                     // Get the configuration element and update it
-                    let elCfg = el.querySelector("#" + cfgId) as HTMLDivElement;
+                    let elCfg = el.querySelector("#" + cfgId + "[data-webpart-id='" + wpId + "']") as HTMLDivElement;
                     elCfg ? elCfg.innerText = JSON.stringify(wpCfg) : null;
 
                     // Update the webpart

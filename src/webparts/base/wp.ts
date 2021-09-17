@@ -87,6 +87,9 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
                             let data = elCfg.innerText.trim();
                             let cfg: IWebPartCfg = data.length > 0 ? JSON.parse(data) : null;
 
+                            // Set the webpart id
+                            elCfg.setAttribute("data-webpart-id", wpId);
+
                             // See if the webaprt id exists
                             if (cfg && cfg.WebPartId) {
                                 // See if it's for this webpart
