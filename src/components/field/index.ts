@@ -291,7 +291,7 @@ export const Field = (props: IFieldProps): IField => {
                     let daysIdx = dtValue.indexOf("+", idx);
                     if (daysIdx > 0) {
                         // Get the number of days to add
-                        let days = parseInt(dtValue.substr(idx));
+                        let days = parseInt(dtValue.substr(daysIdx + 1));
                         if (days > 0) {
                             // Add the days
                             dtNow.setDate(dtNow.getDate() + days);
@@ -302,7 +302,7 @@ export const Field = (props: IFieldProps): IField => {
                     daysIdx = dtValue.indexOf("-", idx);
                     if (daysIdx > 0) {
                         // Get the number of days to add
-                        let days = parseInt(dtValue.substr(idx));
+                        let days = parseInt(dtValue.substr(daysIdx + 1));
                         if (days > 0) {
                             // Add the days
                             dtNow.setDate(dtNow.getDate() - days);
