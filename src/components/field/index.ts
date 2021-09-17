@@ -279,7 +279,7 @@ export const Field = (props: IFieldProps): IField => {
             controlProps.type = DateTimeControlType;
 
             // See if there is a formula and this is a new form
-            let dtValue = props.field.DefaultFormula || props.field.DefaultValue;
+            let dtValue = (props.field.DefaultFormula || props.field.DefaultValue || "").toLowerCase();
             if (dtValue && props.controlMode == SPTypes.ControlMode.New) {
                 let idx = dtValue.indexOf("today");
 
