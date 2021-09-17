@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./src/components", "./src/icons/webparts"],
+    "entryPoints": ["./src/components", "./src/icons/svgs", "./src/webparts"],
     "entryPointStrategy": "expand",
     "out": "docs"
 }

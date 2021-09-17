@@ -49,7 +49,7 @@ declare module 'gd-sprest-bs/webparts/types' {
 declare module 'gd-sprest-bs/rest' {
     import { IconTypes, Icons } from "gd-bs";
     import { IREST } from "gd-sprest";
-    import * as Components from "gd-sprest-bs/components/types";
+    import { Components } from "gd-sprest-bs/components/types";
     import * as WebParts from "gd-sprest-bs/webparts/types";
     
     /**
