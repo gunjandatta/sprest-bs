@@ -186,7 +186,6 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     // Create the menu
     let elMenu = document.createElement("div");
     elMenu.className = "dropdown-menu";
-    elMenu.style.position = "relative";
 
     // Add the selected users
     let elSelectedUsers = document.createElement("div");
@@ -208,9 +207,6 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                     '</h6>'
                 ].join('\n');
 
-                // Show the dropdown
-                if (!elMenu.classList.contains("show")) { elMenu.classList.add("show"); }
-
                 // Wait 500ms before searching
                 setTimeout(() => {
                     // Ensure the filters match
@@ -220,16 +216,23 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                     }
                 }, 500);
             } else {
-                // Hide the dropdown
-                if (elMenu.classList.contains("show")) { elMenu.classList.remove("show"); }
+                // Set the header
+                elMenu.innerHTML = '<h6 class="dropdown-header">Search requires 3+ characters</h6>';
             }
         }
     }).el;
     props.readOnly ? elTextbox.classList.add("d-none") : null;
     elPeoplePicker.appendChild(elTextbox);
 
-    // Add the dropdown menu
-    elPeoplePicker.appendChild(elMenu);
+    // Create the popover menu
+    Components.Popover({
+        target: elTextbox,
+        placement: Components.PopoverPlacements.BottomStart,
+        options: {
+            content: elMenu,
+            trigger: "focus"
+        }
+    });
 
     // Set the value and ensure it's a 
     let value: any = props.value || [];
