@@ -7,6 +7,7 @@ import { IFormControlPropsPeoplePicker, IPeoplePicker, IPeoplePickerProps } from
  */
 export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     let _filterText: string = null;
+    let _menu: Components.IPopover = null;
     let _users = [];
 
     // Method to add a user
@@ -157,7 +158,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                         addUser(userInfo)
 
                         // Hide the menu
-                        elMenu.classList.remove("show");
+                        _menu.hide();
 
                         // Clear the search text
                         elTextbox.querySelector("input").value = "";
@@ -186,6 +187,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     // Create the menu
     let elMenu = document.createElement("div");
     elMenu.className = "dropdown-menu";
+    elMenu.innerHTML = '<h6 class="dropdown-header">Search requires 3+ characters</h6>';
 
     // Add the selected users
     let elSelectedUsers = document.createElement("div");
@@ -225,8 +227,8 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     elPeoplePicker.appendChild(elTextbox);
 
     // Create the popover menu
-    Components.Popover({
-        target: elTextbox,
+    _menu = Components.Popover({
+        target: elTextbox.querySelector("input"),
         placement: Components.PopoverPlacements.BottomStart,
         options: {
             content: elMenu,
