@@ -133,7 +133,6 @@ export const Field = (props: IFieldProps): IField => {
             // Add the heading
             items.push({
                 data: term,
-                isHeader: true,
                 isSelected,
                 text: term.info.name,
                 value: term.info.id
