@@ -199,7 +199,7 @@ export const Field = (props: IFieldProps): IField => {
     };
 
     // Define a base validation method
-    let baseValidation: (control: Components.IFormControlProps, result: Components.IFormControlValidationResult) => Components.IFormControlValidationResult = null;
+    let baseValidation: (control: Components.IFormControl, result: Components.IFormControlValidationResult) => Components.IFormControlValidationResult = null;
 
     // See if this is a new form, a default value exists and no value has been defined
     if (props.controlMode == SPTypes.ControlMode.New && props.field.DefaultValue && props.value == null) {
@@ -616,7 +616,7 @@ export const Field = (props: IFieldProps): IField => {
                     elDesc.classList.remove("is-valid");
 
                     // Set the flag
-                    descValid = control.required ? (desc.getValue() ? true : false) : true;
+                    descValid = control.props.required ? (desc.getValue() ? true : false) : true;
 
                     // Set the class
                     elDesc.classList.add(descValid ? "is-valid" : "is-invalid");
@@ -629,7 +629,7 @@ export const Field = (props: IFieldProps): IField => {
                     elUrl.classList.remove("is-valid");
 
                     // Set the flag
-                    urlValid = control.required ? (url.getValue() ? true : false) : true;
+                    urlValid = control.props.required ? (url.getValue() ? true : false) : true;
 
                     // Set the class
                     elUrl.classList.add(urlValid ? "is-valid" : "is-invalid");
@@ -695,9 +695,9 @@ export const Field = (props: IFieldProps): IField => {
                     result.invalidMessage = "The value cannot contain the following characters: ~ \" # % & * : < > ? / \\ { | }";
                 }
                 // Else, see if we are changing the extension
-                else if (control.value) {
+                else if (control.props.value) {
                     // Get the file extensions
-                    let origExtension = getFileExtension(control.value);
+                    let origExtension = getFileExtension(control.props.value);
                     let newExtension = getFileExtension(value);
 
                     // Update the validation
@@ -1081,7 +1081,7 @@ export const Field = (props: IFieldProps): IField => {
             // See if there is base validation
             if (baseValidation) {
                 // Validate the field
-                let baseResult = baseValidation(controlProps, { isValid: false, value: control.getValue() });
+                let baseResult = baseValidation(control, { isValid: false, value: control.getValue() });
 
                 // Validate the current control
                 let result = controlProps.onValidate ? controlProps.onValidate(controlProps, baseResult) : baseResult;
