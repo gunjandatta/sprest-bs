@@ -1003,7 +1003,7 @@ export const Field = (props: IFieldProps): IField => {
 
                         // Add the metadata
                         fieldValue.value = {
-                            __metadata: { type: "Types.SP.FieldUrlValue" },
+                            __metadata: { type: "SP.FieldUrlValue" },
                             Description: fieldValue.value.Description || "",
                             Url: url
                         };
@@ -1064,7 +1064,7 @@ export const Field = (props: IFieldProps): IField => {
                         } else {
                             // Update the value
                             fieldValue.value = fieldValue.value && fieldValue.value.value ? {
-                                __metadata: { type: "Types.SP.Taxonomy.TaxonomyFieldValue" },
+                                __metadata: { type: "SP.Taxonomy.TaxonomyFieldValue" },
                                 Label: fieldValue.value.text,
                                 TermGuid: fieldValue.value.value,
                                 WssId: -1
