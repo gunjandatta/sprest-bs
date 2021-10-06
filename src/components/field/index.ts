@@ -1063,7 +1063,7 @@ export const Field = (props: IFieldProps): IField => {
                             fieldValue.value = fieldValue.value.join(";#");
                         } else {
                             // Set the value
-                            fieldValue.value = fieldValue.value ? -1 + ";#" + fieldValue.value.text + "|" + fieldValue.value.value : "";
+                            fieldValue.value = fieldValue.value && fieldValue.value.value ? -1 + ";#" + fieldValue.value.text + "|" + fieldValue.value.value : "";
                         }
                     }
                     break;
