@@ -114,11 +114,11 @@ export const Field = (props: IFieldProps): IField => {
     }
 
     // Method to get the mms dropdown items
-    let getMMSItems = (term: Helper.ITerm, selectedValues = []) => {
+    let getMMSItems = (term: Helper.ITerm, selectedValues = [], isRoot = true) => {
         let items: Array<Components.IDropdownItem> = [];
 
         // See if information exists
-        if (term.info) {
+        if (term.info && !isRoot) {
             let isSelected = false;
 
             // Parse the selected values
@@ -147,7 +147,7 @@ export const Field = (props: IFieldProps): IField => {
             if (termName == "info" || termName == "parent") { continue; }
 
             // Get the child items
-            let childItems = getMMSItems(child, selectedValues);
+            let childItems = getMMSItems(child, selectedValues, false);
 
             // Add the item
             items = items.concat(childItems);
