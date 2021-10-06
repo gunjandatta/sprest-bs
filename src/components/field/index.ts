@@ -1044,11 +1044,11 @@ export const Field = (props: IFieldProps): IField => {
                 default:
                     // See if this is a MMS field
                     if (mmsFieldInfo) {
+                        // Update the field name to the value field
+                        fieldValue.name = mmsFieldInfo ? mmsFieldInfo.valueField.InternalName : fieldValue.name + "_0";
+
                         // See if this is a multi field
                         if (mmsFieldInfo.multi) {
-                            // Update the field name to the value field
-                            fieldValue.name = mmsFieldInfo ? mmsFieldInfo.valueField.InternalName : fieldValue.name + "_0";
-
                             // Parse the field values
                             let fieldValues: Array<Components.IDropdownItem> = fieldValue.value || [];
                             fieldValue.value = [];
@@ -1062,13 +1062,8 @@ export const Field = (props: IFieldProps): IField => {
                             // Set the field value
                             fieldValue.value = fieldValue.value.join(";#");
                         } else {
-                            // Update the value
-                            fieldValue.value = fieldValue.value && fieldValue.value.value ? {
-                                __metadata: { type: "SP.Taxonomy.TaxonomyFieldValue" },
-                                Label: fieldValue.value.text,
-                                TermGuid: fieldValue.value.value,
-                                WssId: -1
-                            } : null;
+                            // Set the value
+                            fieldValue.value = fieldValue.value ? -1 + ";#" + fieldValue.value.text + "|" + fieldValue.value.value : "";
                         }
                     }
                     break;
