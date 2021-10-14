@@ -1,0 +1,1 @@
+export const easel2Fill: (height?:number, width?:number) => HTMLElement;

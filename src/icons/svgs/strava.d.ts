@@ -1,0 +1,1 @@
+export const strava: (height?:number, width?:number) => HTMLElement;

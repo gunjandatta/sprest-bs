@@ -1,0 +1,1 @@
+export const pinterest: (height?:number, width?:number) => HTMLElement;

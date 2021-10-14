@@ -1,0 +1,1 @@
+export const apple: (height?:number, width?:number) => HTMLElement;

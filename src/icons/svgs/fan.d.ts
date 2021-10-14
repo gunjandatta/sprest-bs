@@ -1,0 +1,1 @@
+export const fan: (height?:number, width?:number) => HTMLElement;

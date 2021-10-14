@@ -1,0 +1,1 @@
+export const wordpress: (height?:number, width?:number) => HTMLElement;

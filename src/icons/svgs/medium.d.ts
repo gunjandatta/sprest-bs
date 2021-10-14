@@ -1,0 +1,1 @@
+export const medium: (height?:number, width?:number) => HTMLElement;

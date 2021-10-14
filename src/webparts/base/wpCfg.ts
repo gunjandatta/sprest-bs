@@ -49,7 +49,7 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
         let modal = Components.Modal({
             el: wp.el.children[1],
             id: (wp.cfg.WebPartId || "") + "_modal",
-            isCentered: true,
+            options: { centered: true },
             title: "Configuration Panel",
             type: Components.ModalTypes.Large,
             onRenderBody: el => {
