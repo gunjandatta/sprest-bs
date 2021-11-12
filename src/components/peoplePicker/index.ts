@@ -120,50 +120,53 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 if (search.ClientPeoplePickerSearchUser.length == 0) {
                     // Add a message
                     el.innerHTML += '<h6 class="dropdown-header">No results were found...</h6>';
-                    return;
-                }
+                } else {
+                    // Parse the users
+                    for (let i = 0; i < search.ClientPeoplePickerSearchUser.length; i++) {
+                        let exists = false;
+                        let user = search.ClientPeoplePickerSearchUser[i];
 
-                // Parse the users
-                for (let i = 0; i < search.ClientPeoplePickerSearchUser.length; i++) {
-                    let exists = false;
-                    let user = search.ClientPeoplePickerSearchUser[i];
+                        // Save the user
+                        _users.push(user);
 
-                    // Save the user
-                    _users.push(user);
+                        // Parse the selected users
+                        for (let j = 0; j < elSelectedUsers.children.length; j++) {
+                            let userInfo = JSON.parse(elSelectedUsers.children[j].getAttribute("data-user")) as Types.IPeoplePickerUser;
 
-                    // Parse the selected users
-                    for (let j = 0; j < elSelectedUsers.children.length; j++) {
-                        let userInfo = JSON.parse(elSelectedUsers.children[j].getAttribute("data-user")) as Types.IPeoplePickerUser;
+                            // See if this user is already selected
+                            if (exists = user.Key == userInfo.Key) { break; }
+                        }
 
-                        // See if this user is already selected
-                        if (exists = user.Key == userInfo.Key) { break; }
+                        // Ensure the user isn't already selected
+                        if (exists) { continue; }
+
+                        // Create the item
+                        let elItem = document.createElement("a");
+                        elItem.className = "dropdown-item";
+                        elItem.href = "#";
+                        elItem.innerHTML = user.DisplayText;
+                        elItem.setAttribute("data-user", JSON.stringify(user));
+                        el.appendChild(elItem);
+
+                        // Set the click event
+                        elItem.addEventListener("click", ev => {
+                            let userInfo = (ev.currentTarget as HTMLAnchorElement).getAttribute("data-user");
+
+                            // Add the user
+                            addUser(userInfo)
+
+                            // Hide the menu
+                            _menu.hide();
+
+                            // Clear the search text
+                            elTextbox.querySelector("input").value = "";
+                        });
                     }
-
-                    // Ensure the user isn't already selected
-                    if (exists) { continue; }
-
-                    // Create the item
-                    let elItem = document.createElement("a");
-                    elItem.className = "dropdown-item";
-                    elItem.href = "#";
-                    elItem.innerHTML = user.DisplayText;
-                    elItem.setAttribute("data-user", JSON.stringify(user));
-                    el.appendChild(elItem);
-
-                    // Set the click event
-                    elItem.addEventListener("click", ev => {
-                        let userInfo = (ev.currentTarget as HTMLAnchorElement).getAttribute("data-user");
-
-                        // Add the user
-                        addUser(userInfo)
-
-                        // Hide the menu
-                        _menu.hide();
-
-                        // Clear the search text
-                        elTextbox.querySelector("input").value = "";
-                    });
                 }
+
+                // Refresh the popover
+                _menu.hide();
+                _menu.show();
             });
         }
     }
@@ -188,6 +191,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     let elMenu = document.createElement("div");
     elMenu.className = "dropdown-menu";
     elMenu.innerHTML = '<h6 class="dropdown-header">Search requires 3+ characters</h6>';
+    elMenu.style.border = "0";
 
     // Add the selected users
     let elSelectedUsers = document.createElement("div");
