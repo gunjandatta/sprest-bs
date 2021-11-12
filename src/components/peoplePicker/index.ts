@@ -232,7 +232,8 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
         placement: Components.PopoverPlacements.BottomStart,
         options: {
             content: elMenu,
-            trigger: "focus click"
+            hideOnClick: false,
+            trigger: "focus"
         }
     });
 
