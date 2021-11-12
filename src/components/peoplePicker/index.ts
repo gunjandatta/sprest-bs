@@ -168,6 +168,10 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 _menu.hide();
                 _menu.show();
             });
+        } else {
+            // Refresh the popover
+            _menu.hide();
+            _menu.show();
         }
     }
 
