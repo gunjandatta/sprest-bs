@@ -1,0 +1,1 @@
+export const envelopeDash: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const opticalAudioFill: (height?:number, width?:number) => HTMLElement;

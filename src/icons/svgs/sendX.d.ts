@@ -1,0 +1,1 @@
+export const sendX: (height?:number, width?:number) => HTMLElement;

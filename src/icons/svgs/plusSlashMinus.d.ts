@@ -1,0 +1,1 @@
+export const plusSlashMinus: (height?:number, width?:number) => HTMLElement;

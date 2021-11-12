@@ -1,0 +1,1 @@
+export const sendSlash: (height?:number, width?:number) => HTMLElement;

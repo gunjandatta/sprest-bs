@@ -1,0 +1,1 @@
+export const usbDriveFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const sendCheck: (height?:number, width?:number) => HTMLElement;

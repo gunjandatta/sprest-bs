@@ -1,0 +1,1 @@
+export const usbPlug: (height?:number, width?:number) => HTMLElement;

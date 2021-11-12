@@ -1,0 +1,1 @@
+export const explicitFill: (height?:number, width?:number) => HTMLElement;

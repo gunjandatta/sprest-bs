@@ -1,0 +1,1 @@
+export const sendDash: (height?:number, width?:number) => HTMLElement;

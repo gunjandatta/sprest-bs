@@ -1,0 +1,1 @@
+export const pcDisplayHorizontal: (height?:number, width?:number) => HTMLElement;

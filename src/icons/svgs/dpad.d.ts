@@ -1,0 +1,1 @@
+export const dpad: (height?:number, width?:number) => HTMLElement;

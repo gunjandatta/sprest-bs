@@ -1,0 +1,1 @@
+export const ticket: (height?:number, width?:number) => HTMLElement;

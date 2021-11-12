@@ -1,0 +1,1 @@
+export const gpuCard: (height?:number, width?:number) => HTMLElement;

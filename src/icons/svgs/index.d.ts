@@ -1,3 +1,5 @@
+// 123.svg
+export const _123: (height?:number, width?:number) => HTMLElement;
 // activity.svg
 export const activity: (height?:number, width?:number) => HTMLElement;
 // alarm-fill.svg
@@ -244,6 +246,10 @@ export const bagXFill: (height?:number, width?:number) => HTMLElement;
 export const bagX: (height?:number, width?:number) => HTMLElement;
 // bag.svg
 export const bag: (height?:number, width?:number) => HTMLElement;
+// bandaid-fill.svg
+export const bandaidFill: (height?:number, width?:number) => HTMLElement;
+// bandaid.svg
+export const bandaid: (height?:number, width?:number) => HTMLElement;
 // bank.svg
 export const bank: (height?:number, width?:number) => HTMLElement;
 // bank2.svg
@@ -302,6 +308,10 @@ export const binoculars: (height?:number, width?:number) => HTMLElement;
 export const blockquoteLeft: (height?:number, width?:number) => HTMLElement;
 // blockquote-right.svg
 export const blockquoteRight: (height?:number, width?:number) => HTMLElement;
+// bluetooth.svg
+export const bluetooth: (height?:number, width?:number) => HTMLElement;
+// body-text.svg
+export const bodyText: (height?:number, width?:number) => HTMLElement;
 // book-fill.svg
 export const bookFill: (height?:number, width?:number) => HTMLElement;
 // book-half.svg
@@ -342,6 +352,10 @@ export const bookmarksFill: (height?:number, width?:number) => HTMLElement;
 export const bookmarks: (height?:number, width?:number) => HTMLElement;
 // bookshelf.svg
 export const bookshelf: (height?:number, width?:number) => HTMLElement;
+// boombox-fill.svg
+export const boomboxFill: (height?:number, width?:number) => HTMLElement;
+// boombox.svg
+export const boombox: (height?:number, width?:number) => HTMLElement;
 // bootstrap-fill.svg
 export const bootstrapFill: (height?:number, width?:number) => HTMLElement;
 // bootstrap-reboot.svg
@@ -412,6 +426,8 @@ export const boxArrowUp: (height?:number, width?:number) => HTMLElement;
 export const boxSeam: (height?:number, width?:number) => HTMLElement;
 // box.svg
 export const box: (height?:number, width?:number) => HTMLElement;
+// boxes.svg
+export const boxes: (height?:number, width?:number) => HTMLElement;
 // braces.svg
 export const braces: (height?:number, width?:number) => HTMLElement;
 // bricks.svg
@@ -856,14 +872,14 @@ export const cloudFog2: (height?:number, width?:number) => HTMLElement;
 export const cloudHailFill: (height?:number, width?:number) => HTMLElement;
 // cloud-hail.svg
 export const cloudHail: (height?:number, width?:number) => HTMLElement;
-// cloud-haze-1.svg
-export const cloudHaze1: (height?:number, width?:number) => HTMLElement;
 // cloud-haze-fill.svg
 export const cloudHazeFill: (height?:number, width?:number) => HTMLElement;
 // cloud-haze.svg
 export const cloudHaze: (height?:number, width?:number) => HTMLElement;
 // cloud-haze2-fill.svg
 export const cloudHaze2Fill: (height?:number, width?:number) => HTMLElement;
+// cloud-haze2.svg
+export const cloudHaze2: (height?:number, width?:number) => HTMLElement;
 // cloud-lightning-fill.svg
 export const cloudLightningFill: (height?:number, width?:number) => HTMLElement;
 // cloud-lightning-rain-fill.svg
@@ -1012,6 +1028,14 @@ export const dashSquareFill: (height?:number, width?:number) => HTMLElement;
 export const dashSquare: (height?:number, width?:number) => HTMLElement;
 // dash.svg
 export const dash: (height?:number, width?:number) => HTMLElement;
+// device-hdd-fill.svg
+export const deviceHddFill: (height?:number, width?:number) => HTMLElement;
+// device-hdd.svg
+export const deviceHdd: (height?:number, width?:number) => HTMLElement;
+// device-ssd-fill.svg
+export const deviceSsdFill: (height?:number, width?:number) => HTMLElement;
+// device-ssd.svg
+export const deviceSsd: (height?:number, width?:number) => HTMLElement;
 // diagram-2-fill.svg
 export const diagram2Fill: (height?:number, width?:number) => HTMLElement;
 // diagram-2.svg
@@ -1060,6 +1084,10 @@ export const discord: (height?:number, width?:number) => HTMLElement;
 export const displayFill: (height?:number, width?:number) => HTMLElement;
 // display.svg
 export const display: (height?:number, width?:number) => HTMLElement;
+// displayport-fill.svg
+export const displayportFill: (height?:number, width?:number) => HTMLElement;
+// displayport.svg
+export const displayport: (height?:number, width?:number) => HTMLElement;
 // distribute-horizontal.svg
 export const distributeHorizontal: (height?:number, width?:number) => HTMLElement;
 // distribute-vertical.svg
@@ -1076,6 +1104,10 @@ export const doorOpen: (height?:number, width?:number) => HTMLElement;
 export const dot: (height?:number, width?:number) => HTMLElement;
 // download.svg
 export const download: (height?:number, width?:number) => HTMLElement;
+// dpad-fill.svg
+export const dpadFill: (height?:number, width?:number) => HTMLElement;
+// dpad.svg
+export const dpad: (height?:number, width?:number) => HTMLElement;
 // dribbble.svg
 export const dribbble: (height?:number, width?:number) => HTMLElement;
 // droplet-fill.svg
@@ -1084,6 +1116,10 @@ export const dropletFill: (height?:number, width?:number) => HTMLElement;
 export const dropletHalf: (height?:number, width?:number) => HTMLElement;
 // droplet.svg
 export const droplet: (height?:number, width?:number) => HTMLElement;
+// ear-fill.svg
+export const earFill: (height?:number, width?:number) => HTMLElement;
+// ear.svg
+export const ear: (height?:number, width?:number) => HTMLElement;
 // earbuds.svg
 export const earbuds: (height?:number, width?:number) => HTMLElement;
 // easel-fill.svg
@@ -1152,18 +1188,44 @@ export const emojiSunglasses: (height?:number, width?:number) => HTMLElement;
 export const emojiWinkFill: (height?:number, width?:number) => HTMLElement;
 // emoji-wink.svg
 export const emojiWink: (height?:number, width?:number) => HTMLElement;
+// envelope-check-fill.svg
+export const envelopeCheckFill: (height?:number, width?:number) => HTMLElement;
+// envelope-check.svg
+export const envelopeCheck: (height?:number, width?:number) => HTMLElement;
+// envelope-dash-fill.svg
+export const envelopeDashFill: (height?:number, width?:number) => HTMLElement;
+// envelope-dash.svg
+export const envelopeDash: (height?:number, width?:number) => HTMLElement;
+// envelope-exclamation-fill.svg
+export const envelopeExclamationFill: (height?:number, width?:number) => HTMLElement;
+// envelope-exclamation.svg
+export const envelopeExclamation: (height?:number, width?:number) => HTMLElement;
 // envelope-fill.svg
 export const envelopeFill: (height?:number, width?:number) => HTMLElement;
 // envelope-open-fill.svg
 export const envelopeOpenFill: (height?:number, width?:number) => HTMLElement;
 // envelope-open.svg
 export const envelopeOpen: (height?:number, width?:number) => HTMLElement;
+// envelope-plus-fill.svg
+export const envelopePlusFill: (height?:number, width?:number) => HTMLElement;
+// envelope-plus.svg
+export const envelopePlus: (height?:number, width?:number) => HTMLElement;
+// envelope-slash-fill.svg
+export const envelopeSlashFill: (height?:number, width?:number) => HTMLElement;
+// envelope-slash.svg
+export const envelopeSlash: (height?:number, width?:number) => HTMLElement;
+// envelope-x-fill.svg
+export const envelopeXFill: (height?:number, width?:number) => HTMLElement;
+// envelope-x.svg
+export const envelopeX: (height?:number, width?:number) => HTMLElement;
 // envelope.svg
 export const envelope: (height?:number, width?:number) => HTMLElement;
 // eraser-fill.svg
 export const eraserFill: (height?:number, width?:number) => HTMLElement;
 // eraser.svg
 export const eraser: (height?:number, width?:number) => HTMLElement;
+// ethernet.svg
+export const ethernet: (height?:number, width?:number) => HTMLElement;
 // exclamation-circle-fill.svg
 export const exclamationCircleFill: (height?:number, width?:number) => HTMLElement;
 // exclamation-circle.svg
@@ -1190,6 +1252,10 @@ export const exclamationTriangle: (height?:number, width?:number) => HTMLElement
 export const exclamation: (height?:number, width?:number) => HTMLElement;
 // exclude.svg
 export const exclude: (height?:number, width?:number) => HTMLElement;
+// explicit-fill.svg
+export const explicitFill: (height?:number, width?:number) => HTMLElement;
+// explicit.svg
+export const explicit: (height?:number, width?:number) => HTMLElement;
 // eye-fill.svg
 export const eyeFill: (height?:number, width?:number) => HTMLElement;
 // eye-slash-fill.svg
@@ -1560,6 +1626,8 @@ export const geo: (height?:number, width?:number) => HTMLElement;
 export const giftFill: (height?:number, width?:number) => HTMLElement;
 // gift.svg
 export const gift: (height?:number, width?:number) => HTMLElement;
+// git.svg
+export const git: (height?:number, width?:number) => HTMLElement;
 // github.svg
 export const github: (height?:number, width?:number) => HTMLElement;
 // globe.svg
@@ -1568,6 +1636,8 @@ export const globe: (height?:number, width?:number) => HTMLElement;
 export const globe2: (height?:number, width?:number) => HTMLElement;
 // google.svg
 export const google: (height?:number, width?:number) => HTMLElement;
+// gpu-card.svg
+export const gpuCard: (height?:number, width?:number) => HTMLElement;
 // graph-down-arrow.svg
 export const graphDownArrow: (height?:number, width?:number) => HTMLElement;
 // graph-down.svg
@@ -1640,6 +1710,10 @@ export const hddStackFill: (height?:number, width?:number) => HTMLElement;
 export const hddStack: (height?:number, width?:number) => HTMLElement;
 // hdd.svg
 export const hdd: (height?:number, width?:number) => HTMLElement;
+// hdmi-fill.svg
+export const hdmiFill: (height?:number, width?:number) => HTMLElement;
+// hdmi.svg
+export const hdmi: (height?:number, width?:number) => HTMLElement;
 // headphones.svg
 export const headphones: (height?:number, width?:number) => HTMLElement;
 // headset-vr.svg
@@ -1702,6 +1776,8 @@ export const inbox: (height?:number, width?:number) => HTMLElement;
 export const inboxesFill: (height?:number, width?:number) => HTMLElement;
 // inboxes.svg
 export const inboxes: (height?:number, width?:number) => HTMLElement;
+// infinity.svg
+export const infinity: (height?:number, width?:number) => HTMLElement;
 // info-circle-fill.svg
 export const infoCircleFill: (height?:number, width?:number) => HTMLElement;
 // info-circle.svg
@@ -1842,6 +1918,10 @@ export const link: (height?:number, width?:number) => HTMLElement;
 export const linkedin: (height?:number, width?:number) => HTMLElement;
 // list-check.svg
 export const listCheck: (height?:number, width?:number) => HTMLElement;
+// list-columns-reverse.svg
+export const listColumnsReverse: (height?:number, width?:number) => HTMLElement;
+// list-columns.svg
+export const listColumns: (height?:number, width?:number) => HTMLElement;
 // list-nested.svg
 export const listNested: (height?:number, width?:number) => HTMLElement;
 // list-ol.svg
@@ -1882,6 +1962,8 @@ export const medium: (height?:number, width?:number) => HTMLElement;
 export const megaphoneFill: (height?:number, width?:number) => HTMLElement;
 // megaphone.svg
 export const megaphone: (height?:number, width?:number) => HTMLElement;
+// memory.svg
+export const memory: (height?:number, width?:number) => HTMLElement;
 // menu-app-fill.svg
 export const menuAppFill: (height?:number, width?:number) => HTMLElement;
 // menu-app.svg
@@ -1900,6 +1982,8 @@ export const menuDown: (height?:number, width?:number) => HTMLElement;
 export const menuUp: (height?:number, width?:number) => HTMLElement;
 // messenger.svg
 export const messenger: (height?:number, width?:number) => HTMLElement;
+// meta.svg
+export const meta: (height?:number, width?:number) => HTMLElement;
 // mic-fill.svg
 export const micFill: (height?:number, width?:number) => HTMLElement;
 // mic-mute-fill.svg
@@ -1914,6 +1998,10 @@ export const microsoft: (height?:number, width?:number) => HTMLElement;
 export const minecartLoaded: (height?:number, width?:number) => HTMLElement;
 // minecart.svg
 export const minecart: (height?:number, width?:number) => HTMLElement;
+// modem-fill.svg
+export const modemFill: (height?:number, width?:number) => HTMLElement;
+// modem.svg
+export const modem: (height?:number, width?:number) => HTMLElement;
 // moisture.svg
 export const moisture: (height?:number, width?:number) => HTMLElement;
 // moon-fill.svg
@@ -1924,6 +2012,14 @@ export const moonStarsFill: (height?:number, width?:number) => HTMLElement;
 export const moonStars: (height?:number, width?:number) => HTMLElement;
 // moon.svg
 export const moon: (height?:number, width?:number) => HTMLElement;
+// mortarboard-fill.svg
+export const mortarboardFill: (height?:number, width?:number) => HTMLElement;
+// mortarboard.svg
+export const mortarboard: (height?:number, width?:number) => HTMLElement;
+// motherboard-fill.svg
+export const motherboardFill: (height?:number, width?:number) => HTMLElement;
+// motherboard.svg
+export const motherboard: (height?:number, width?:number) => HTMLElement;
 // mouse-fill.svg
 export const mouseFill: (height?:number, width?:number) => HTMLElement;
 // mouse.svg
@@ -1948,6 +2044,8 @@ export const musicPlayerFill: (height?:number, width?:number) => HTMLElement;
 export const musicPlayer: (height?:number, width?:number) => HTMLElement;
 // newspaper.svg
 export const newspaper: (height?:number, width?:number) => HTMLElement;
+// nintendo-switch.svg
+export const nintendoSwitch: (height?:number, width?:number) => HTMLElement;
 // node-minus-fill.svg
 export const nodeMinusFill: (height?:number, width?:number) => HTMLElement;
 // node-minus.svg
@@ -1966,6 +2064,10 @@ export const octagonFill: (height?:number, width?:number) => HTMLElement;
 export const octagonHalf: (height?:number, width?:number) => HTMLElement;
 // octagon.svg
 export const octagon: (height?:number, width?:number) => HTMLElement;
+// optical-audio-fill.svg
+export const opticalAudioFill: (height?:number, width?:number) => HTMLElement;
+// optical-audio.svg
+export const opticalAudio: (height?:number, width?:number) => HTMLElement;
 // option.svg
 export const option: (height?:number, width?:number) => HTMLElement;
 // outlet.svg
@@ -2016,6 +2118,16 @@ export const pauseFill: (height?:number, width?:number) => HTMLElement;
 export const pause: (height?:number, width?:number) => HTMLElement;
 // paypal.svg
 export const paypal: (height?:number, width?:number) => HTMLElement;
+// pc-display-horizontal.svg
+export const pcDisplayHorizontal: (height?:number, width?:number) => HTMLElement;
+// pc-display.svg
+export const pcDisplay: (height?:number, width?:number) => HTMLElement;
+// pc-horizontal.svg
+export const pcHorizontal: (height?:number, width?:number) => HTMLElement;
+// pc.svg
+export const pc: (height?:number, width?:number) => HTMLElement;
+// pci-card.svg
+export const pciCard: (height?:number, width?:number) => HTMLElement;
 // peace-fill.svg
 export const peaceFill: (height?:number, width?:number) => HTMLElement;
 // peace.svg
@@ -2134,6 +2246,8 @@ export const playCircle: (height?:number, width?:number) => HTMLElement;
 export const playFill: (height?:number, width?:number) => HTMLElement;
 // play.svg
 export const play: (height?:number, width?:number) => HTMLElement;
+// playstation.svg
+export const playstation: (height?:number, width?:number) => HTMLElement;
 // plug-fill.svg
 export const plugFill: (height?:number, width?:number) => HTMLElement;
 // plug.svg
@@ -2146,6 +2260,8 @@ export const plusCircleFill: (height?:number, width?:number) => HTMLElement;
 export const plusCircle: (height?:number, width?:number) => HTMLElement;
 // plus-lg.svg
 export const plusLg: (height?:number, width?:number) => HTMLElement;
+// plus-slash-minus.svg
+export const plusSlashMinus: (height?:number, width?:number) => HTMLElement;
 // plus-square-dotted.svg
 export const plusSquareDotted: (height?:number, width?:number) => HTMLElement;
 // plus-square-fill.svg
@@ -2160,10 +2276,18 @@ export const power: (height?:number, width?:number) => HTMLElement;
 export const printerFill: (height?:number, width?:number) => HTMLElement;
 // printer.svg
 export const printer: (height?:number, width?:number) => HTMLElement;
+// projector-fill.svg
+export const projectorFill: (height?:number, width?:number) => HTMLElement;
+// projector.svg
+export const projector: (height?:number, width?:number) => HTMLElement;
 // puzzle-fill.svg
 export const puzzleFill: (height?:number, width?:number) => HTMLElement;
 // puzzle.svg
 export const puzzle: (height?:number, width?:number) => HTMLElement;
+// qr-code-scan.svg
+export const qrCodeScan: (height?:number, width?:number) => HTMLElement;
+// qr-code.svg
+export const qrCode: (height?:number, width?:number) => HTMLElement;
 // question-circle-fill.svg
 export const questionCircleFill: (height?:number, width?:number) => HTMLElement;
 // question-circle.svg
@@ -2184,6 +2308,10 @@ export const questionSquareFill: (height?:number, width?:number) => HTMLElement;
 export const questionSquare: (height?:number, width?:number) => HTMLElement;
 // question.svg
 export const question: (height?:number, width?:number) => HTMLElement;
+// quora.svg
+export const quora: (height?:number, width?:number) => HTMLElement;
+// quote.svg
+export const quote: (height?:number, width?:number) => HTMLElement;
 // radioactive.svg
 export const radioactive: (height?:number, width?:number) => HTMLElement;
 // rainbow.svg
@@ -2230,6 +2358,12 @@ export const replyAll: (height?:number, width?:number) => HTMLElement;
 export const replyFill: (height?:number, width?:number) => HTMLElement;
 // reply.svg
 export const reply: (height?:number, width?:number) => HTMLElement;
+// robot.svg
+export const robot: (height?:number, width?:number) => HTMLElement;
+// router-fill.svg
+export const routerFill: (height?:number, width?:number) => HTMLElement;
+// router.svg
+export const router: (height?:number, width?:number) => HTMLElement;
 // rss-fill.svg
 export const rssFill: (height?:number, width?:number) => HTMLElement;
 // rss.svg
@@ -2264,6 +2398,34 @@ export const sdCard: (height?:number, width?:number) => HTMLElement;
 export const search: (height?:number, width?:number) => HTMLElement;
 // segmented-nav.svg
 export const segmentedNav: (height?:number, width?:number) => HTMLElement;
+// send-check-fill.svg
+export const sendCheckFill: (height?:number, width?:number) => HTMLElement;
+// send-check.svg
+export const sendCheck: (height?:number, width?:number) => HTMLElement;
+// send-dash-fill.svg
+export const sendDashFill: (height?:number, width?:number) => HTMLElement;
+// send-dash.svg
+export const sendDash: (height?:number, width?:number) => HTMLElement;
+// send-exclamation-fill.svg
+export const sendExclamationFill: (height?:number, width?:number) => HTMLElement;
+// send-exclamation.svg
+export const sendExclamation: (height?:number, width?:number) => HTMLElement;
+// send-fill.svg
+export const sendFill: (height?:number, width?:number) => HTMLElement;
+// send-plus-fill.svg
+export const sendPlusFill: (height?:number, width?:number) => HTMLElement;
+// send-plus.svg
+export const sendPlus: (height?:number, width?:number) => HTMLElement;
+// send-slash-fill.svg
+export const sendSlashFill: (height?:number, width?:number) => HTMLElement;
+// send-slash.svg
+export const sendSlash: (height?:number, width?:number) => HTMLElement;
+// send-x-fill.svg
+export const sendXFill: (height?:number, width?:number) => HTMLElement;
+// send-x.svg
+export const sendX: (height?:number, width?:number) => HTMLElement;
+// send.svg
+export const send: (height?:number, width?:number) => HTMLElement;
 // server.svg
 export const server: (height?:number, width?:number) => HTMLElement;
 // share-fill.svg
@@ -2464,6 +2626,8 @@ export const starHalf: (height?:number, width?:number) => HTMLElement;
 export const star: (height?:number, width?:number) => HTMLElement;
 // stars.svg
 export const stars: (height?:number, width?:number) => HTMLElement;
+// steam.svg
+export const steam: (height?:number, width?:number) => HTMLElement;
 // stickies-fill.svg
 export const stickiesFill: (height?:number, width?:number) => HTMLElement;
 // stickies.svg
@@ -2578,8 +2742,14 @@ export const telephoneXFill: (height?:number, width?:number) => HTMLElement;
 export const telephoneX: (height?:number, width?:number) => HTMLElement;
 // telephone.svg
 export const telephone: (height?:number, width?:number) => HTMLElement;
+// terminal-dash.svg
+export const terminalDash: (height?:number, width?:number) => HTMLElement;
 // terminal-fill.svg
 export const terminalFill: (height?:number, width?:number) => HTMLElement;
+// terminal-plus.svg
+export const terminalPlus: (height?:number, width?:number) => HTMLElement;
+// terminal-split.svg
+export const terminalSplit: (height?:number, width?:number) => HTMLElement;
 // terminal.svg
 export const terminal: (height?:number, width?:number) => HTMLElement;
 // text-center.svg
@@ -2616,6 +2786,24 @@ export const thermometer: (height?:number, width?:number) => HTMLElement;
 export const threeDotsVertical: (height?:number, width?:number) => HTMLElement;
 // three-dots.svg
 export const threeDots: (height?:number, width?:number) => HTMLElement;
+// thunderbolt-fill.svg
+export const thunderboltFill: (height?:number, width?:number) => HTMLElement;
+// thunderbolt.svg
+export const thunderbolt: (height?:number, width?:number) => HTMLElement;
+// ticket-detailed-fill.svg
+export const ticketDetailedFill: (height?:number, width?:number) => HTMLElement;
+// ticket-detailed.svg
+export const ticketDetailed: (height?:number, width?:number) => HTMLElement;
+// ticket-fill.svg
+export const ticketFill: (height?:number, width?:number) => HTMLElement;
+// ticket-perferated-fill.svg
+export const ticketPerferatedFill: (height?:number, width?:number) => HTMLElement;
+// ticket-perferated.svg
+export const ticketPerferated: (height?:number, width?:number) => HTMLElement;
+// ticket.svg
+export const ticket: (height?:number, width?:number) => HTMLElement;
+// tiktok.svg
+export const tiktok: (height?:number, width?:number) => HTMLElement;
 // toggle-off.svg
 export const toggleOff: (height?:number, width?:number) => HTMLElement;
 // toggle-on.svg
@@ -2712,6 +2900,32 @@ export const upcScan: (height?:number, width?:number) => HTMLElement;
 export const upc: (height?:number, width?:number) => HTMLElement;
 // upload.svg
 export const upload: (height?:number, width?:number) => HTMLElement;
+// usb-c-fill.svg
+export const usbCFill: (height?:number, width?:number) => HTMLElement;
+// usb-c.svg
+export const usbC: (height?:number, width?:number) => HTMLElement;
+// usb-drive-fill.svg
+export const usbDriveFill: (height?:number, width?:number) => HTMLElement;
+// usb-drive.svg
+export const usbDrive: (height?:number, width?:number) => HTMLElement;
+// usb-fill.svg
+export const usbFill: (height?:number, width?:number) => HTMLElement;
+// usb-micro-fill.svg
+export const usbMicroFill: (height?:number, width?:number) => HTMLElement;
+// usb-micro.svg
+export const usbMicro: (height?:number, width?:number) => HTMLElement;
+// usb-mini-fill.svg
+export const usbMiniFill: (height?:number, width?:number) => HTMLElement;
+// usb-mini.svg
+export const usbMini: (height?:number, width?:number) => HTMLElement;
+// usb-plug-fill.svg
+export const usbPlugFill: (height?:number, width?:number) => HTMLElement;
+// usb-plug.svg
+export const usbPlug: (height?:number, width?:number) => HTMLElement;
+// usb-symbol.svg
+export const usbSymbol: (height?:number, width?:number) => HTMLElement;
+// usb.svg
+export const usb: (height?:number, width?:number) => HTMLElement;
 // vector-pen.svg
 export const vectorPen: (height?:number, width?:number) => HTMLElement;
 // view-list.svg
@@ -2770,10 +2984,24 @@ export const wifiOff: (height?:number, width?:number) => HTMLElement;
 export const wifi: (height?:number, width?:number) => HTMLElement;
 // wind.svg
 export const wind: (height?:number, width?:number) => HTMLElement;
+// window-dash.svg
+export const windowDash: (height?:number, width?:number) => HTMLElement;
+// window-desktop.svg
+export const windowDesktop: (height?:number, width?:number) => HTMLElement;
 // window-dock.svg
 export const windowDock: (height?:number, width?:number) => HTMLElement;
+// window-fullscreen.svg
+export const windowFullscreen: (height?:number, width?:number) => HTMLElement;
+// window-plus.svg
+export const windowPlus: (height?:number, width?:number) => HTMLElement;
 // window-sidebar.svg
 export const windowSidebar: (height?:number, width?:number) => HTMLElement;
+// window-split.svg
+export const windowSplit: (height?:number, width?:number) => HTMLElement;
+// window-stack.svg
+export const windowStack: (height?:number, width?:number) => HTMLElement;
+// window-x.svg
+export const windowX: (height?:number, width?:number) => HTMLElement;
 // window.svg
 export const appWindow: (height?:number, width?:number) => HTMLElement;
 // windows.svg
@@ -2802,6 +3030,8 @@ export const xSquareFill: (height?:number, width?:number) => HTMLElement;
 export const xSquare: (height?:number, width?:number) => HTMLElement;
 // x.svg
 export const x: (height?:number, width?:number) => HTMLElement;
+// xbox.svg
+export const xbox: (height?:number, width?:number) => HTMLElement;
 // yin-yang.svg
 export const yinYang: (height?:number, width?:number) => HTMLElement;
 // youtube.svg

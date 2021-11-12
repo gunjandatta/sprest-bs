@@ -1,0 +1,1 @@
+export const modemFill: (height?:number, width?:number) => HTMLElement;

@@ -1,0 +1,1 @@
+export const usbMiniFill: (height?:number, width?:number) => HTMLElement;

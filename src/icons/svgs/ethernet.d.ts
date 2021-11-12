@@ -1,0 +1,1 @@
+export const ethernet: (height?:number, width?:number) => HTMLElement;
