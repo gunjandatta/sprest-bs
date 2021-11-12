@@ -168,10 +168,6 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 _menu.hide();
                 _menu.show();
             });
-        } else {
-            // Refresh the popover
-            _menu.hide();
-            _menu.show();
         }
     }
 
@@ -229,6 +225,10 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 // Set the header
                 elMenu.innerHTML = '<h6 class="dropdown-header">Search requires 3+ characters</h6>';
             }
+
+            // Refresh the popover
+            _menu.hide();
+            _menu.show();
         }
     }).el;
     props.readOnly ? elTextbox.classList.add("d-none") : null;
