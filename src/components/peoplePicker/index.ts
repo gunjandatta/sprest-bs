@@ -189,9 +189,8 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
     // Create the menu
     let elMenu = document.createElement("div");
-    elMenu.className = "dropdown-menu";
+    elMenu.className = "dropdown-menu border-0 mw-fit";
     elMenu.innerHTML = '<h6 class="dropdown-header">Search requires 3+ characters</h6>';
-    elMenu.style.border = "0";
 
     // Add the selected users
     let elSelectedUsers = document.createElement("div");
@@ -246,6 +245,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
         options: {
             content: elMenu,
             hideOnClick: false,
+            maxWidth: "none",
             trigger: "focus"
         }
     });
