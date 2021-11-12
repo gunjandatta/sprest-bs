@@ -202,6 +202,8 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     let elTextbox = Components.InputGroup({
         placeholder: props.placeholder == null ? "Search" : props.placeholder,
         onChange: searchText => {
+            let currentHTML = elMenu.innerHTML;
+
             // See if a value exists
             if (searchText) {
                 // Set the filter text
@@ -226,9 +228,12 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 elMenu.innerHTML = '<h6 class="dropdown-header">Search requires 3+ characters</h6>';
             }
 
-            // Refresh the popover
-            _menu.hide();
-            _menu.show();
+            // See if a refresh is required
+            if (currentHTML != elMenu.innerHTML) {
+                // Refresh the popover
+                _menu.hide();
+                _menu.show();
+            }
         }
     }).el;
     props.readOnly ? elTextbox.classList.add("d-none") : null;
