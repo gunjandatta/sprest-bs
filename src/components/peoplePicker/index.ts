@@ -232,7 +232,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
         placement: Components.PopoverPlacements.BottomStart,
         options: {
             content: elMenu,
-            trigger: "focus"
+            trigger: "focus click"
         }
     });
 
