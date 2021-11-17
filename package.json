@@ -1,6 +1,6 @@
 {
     "name": "gd-sprest-bs",
-    "version": "8.7.8",
+    "version": "8.7.9",
     "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
     "main": "build/index.js",
     "typings": "src/index.d.ts",
@@ -35,20 +35,20 @@
     "dependencies": {
         "flatpickr": "^4.6.9",
         "gd-bs": "^5.2.0",
-        "gd-sprest": "^6.7.0",
+        "gd-sprest": "^6.7.1",
         "gd-sprest-def": "^1.0.7"
     },
     "devDependencies": {
         "@babel/core": "^7.16.0",
-        "@babel/preset-env": "^7.16.0",
+        "@babel/preset-env": "^7.16.4",
         "babel-loader": "^8.2.3",
         "css-loader": "^6.5.1",
         "dts-bundle": "^0.7.3",
         "node-sass": "^6.0.1",
         "sass-loader": "^12.3.0",
         "style-loader": "^3.3.1",
-        "typedoc": "^0.22.8",
-        "webpack": "^5.64.0",
+        "typedoc": "^0.22.9",
+        "webpack": "^5.64.1",
         "webpack-cli": "^4.9.1"
     }
 }
