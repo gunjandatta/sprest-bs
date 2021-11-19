@@ -2782,6 +2782,8 @@ export const IconTypes: {
 	TerminalPlus: number;
 	// terminal-split.svg
 	TerminalSplit: number;
+	// terminal-x.svg
+	TerminalX: number;
 	// terminal.svg
 	Terminal: number;
 	// text-center.svg

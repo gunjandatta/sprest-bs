@@ -4134,440 +4134,443 @@ export const Icons = (iconType:number, height?:number, width?:number) => {
 		// terminal-split.svg
 		case 1376:
 			return SVGIcons.terminalSplit(height, width);
-		// terminal.svg
+		// terminal-x.svg
 		case 1377:
+			return SVGIcons.terminalX(height, width);
+		// terminal.svg
+		case 1378:
 			return SVGIcons.terminal(height, width);
 		// text-center.svg
-		case 1378:
+		case 1379:
 			return SVGIcons.textCenter(height, width);
 		// text-indent-left.svg
-		case 1379:
+		case 1380:
 			return SVGIcons.textIndentLeft(height, width);
 		// text-indent-right.svg
-		case 1380:
+		case 1381:
 			return SVGIcons.textIndentRight(height, width);
 		// text-left.svg
-		case 1381:
+		case 1382:
 			return SVGIcons.textLeft(height, width);
 		// text-paragraph.svg
-		case 1382:
+		case 1383:
 			return SVGIcons.textParagraph(height, width);
 		// text-right.svg
-		case 1383:
+		case 1384:
 			return SVGIcons.textRight(height, width);
 		// textarea-resize.svg
-		case 1384:
+		case 1385:
 			return SVGIcons.textareaResize(height, width);
 		// textarea-t.svg
-		case 1385:
+		case 1386:
 			return SVGIcons.textareaT(height, width);
 		// textarea.svg
-		case 1386:
+		case 1387:
 			return SVGIcons.textarea(height, width);
 		// thermometer-half.svg
-		case 1387:
+		case 1388:
 			return SVGIcons.thermometerHalf(height, width);
 		// thermometer-high.svg
-		case 1388:
+		case 1389:
 			return SVGIcons.thermometerHigh(height, width);
 		// thermometer-low.svg
-		case 1389:
+		case 1390:
 			return SVGIcons.thermometerLow(height, width);
 		// thermometer-snow.svg
-		case 1390:
+		case 1391:
 			return SVGIcons.thermometerSnow(height, width);
 		// thermometer-sun.svg
-		case 1391:
+		case 1392:
 			return SVGIcons.thermometerSun(height, width);
 		// thermometer.svg
-		case 1392:
+		case 1393:
 			return SVGIcons.thermometer(height, width);
 		// three-dots-vertical.svg
-		case 1393:
+		case 1394:
 			return SVGIcons.threeDotsVertical(height, width);
 		// three-dots.svg
-		case 1394:
+		case 1395:
 			return SVGIcons.threeDots(height, width);
 		// thunderbolt-fill.svg
-		case 1395:
+		case 1396:
 			return SVGIcons.thunderboltFill(height, width);
 		// thunderbolt.svg
-		case 1396:
+		case 1397:
 			return SVGIcons.thunderbolt(height, width);
 		// ticket-detailed-fill.svg
-		case 1397:
+		case 1398:
 			return SVGIcons.ticketDetailedFill(height, width);
 		// ticket-detailed.svg
-		case 1398:
+		case 1399:
 			return SVGIcons.ticketDetailed(height, width);
 		// ticket-fill.svg
-		case 1399:
+		case 1400:
 			return SVGIcons.ticketFill(height, width);
 		// ticket-perferated-fill.svg
-		case 1400:
+		case 1401:
 			return SVGIcons.ticketPerferatedFill(height, width);
 		// ticket-perferated.svg
-		case 1401:
+		case 1402:
 			return SVGIcons.ticketPerferated(height, width);
 		// ticket.svg
-		case 1402:
+		case 1403:
 			return SVGIcons.ticket(height, width);
 		// tiktok.svg
-		case 1403:
+		case 1404:
 			return SVGIcons.tiktok(height, width);
 		// toggle-off.svg
-		case 1404:
+		case 1405:
 			return SVGIcons.toggleOff(height, width);
 		// toggle-on.svg
-		case 1405:
+		case 1406:
 			return SVGIcons.toggleOn(height, width);
 		// toggle2-off.svg
-		case 1406:
+		case 1407:
 			return SVGIcons.toggle2Off(height, width);
 		// toggle2-on.svg
-		case 1407:
+		case 1408:
 			return SVGIcons.toggle2On(height, width);
 		// toggles.svg
-		case 1408:
+		case 1409:
 			return SVGIcons.toggles(height, width);
 		// toggles2.svg
-		case 1409:
+		case 1410:
 			return SVGIcons.toggles2(height, width);
 		// tools.svg
-		case 1410:
+		case 1411:
 			return SVGIcons.tools(height, width);
 		// tornado.svg
-		case 1411:
+		case 1412:
 			return SVGIcons.tornado(height, width);
 		// translate.svg
-		case 1412:
+		case 1413:
 			return SVGIcons.translate(height, width);
 		// trash-fill.svg
-		case 1413:
+		case 1414:
 			return SVGIcons.trashFill(height, width);
 		// trash.svg
-		case 1414:
+		case 1415:
 			return SVGIcons.trash(height, width);
 		// trash2-fill.svg
-		case 1415:
+		case 1416:
 			return SVGIcons.trash2Fill(height, width);
 		// trash2.svg
-		case 1416:
+		case 1417:
 			return SVGIcons.trash2(height, width);
 		// tree-fill.svg
-		case 1417:
+		case 1418:
 			return SVGIcons.treeFill(height, width);
 		// tree.svg
-		case 1418:
+		case 1419:
 			return SVGIcons.tree(height, width);
 		// triangle-fill.svg
-		case 1419:
+		case 1420:
 			return SVGIcons.triangleFill(height, width);
 		// triangle-half.svg
-		case 1420:
+		case 1421:
 			return SVGIcons.triangleHalf(height, width);
 		// triangle.svg
-		case 1421:
+		case 1422:
 			return SVGIcons.triangle(height, width);
 		// trophy-fill.svg
-		case 1422:
+		case 1423:
 			return SVGIcons.trophyFill(height, width);
 		// trophy.svg
-		case 1423:
+		case 1424:
 			return SVGIcons.trophy(height, width);
 		// tropical-storm.svg
-		case 1424:
+		case 1425:
 			return SVGIcons.tropicalStorm(height, width);
 		// truck-flatbed.svg
-		case 1425:
+		case 1426:
 			return SVGIcons.truckFlatbed(height, width);
 		// truck.svg
-		case 1426:
+		case 1427:
 			return SVGIcons.truck(height, width);
 		// tsunami.svg
-		case 1427:
+		case 1428:
 			return SVGIcons.tsunami(height, width);
 		// tv-fill.svg
-		case 1428:
+		case 1429:
 			return SVGIcons.tvFill(height, width);
 		// tv.svg
-		case 1429:
+		case 1430:
 			return SVGIcons.tv(height, width);
 		// twitch.svg
-		case 1430:
+		case 1431:
 			return SVGIcons.twitch(height, width);
 		// twitter.svg
-		case 1431:
+		case 1432:
 			return SVGIcons.twitter(height, width);
 		// type-bold.svg
-		case 1432:
+		case 1433:
 			return SVGIcons.typeBold(height, width);
 		// type-h1.svg
-		case 1433:
+		case 1434:
 			return SVGIcons.typeH1(height, width);
 		// type-h2.svg
-		case 1434:
+		case 1435:
 			return SVGIcons.typeH2(height, width);
 		// type-h3.svg
-		case 1435:
+		case 1436:
 			return SVGIcons.typeH3(height, width);
 		// type-italic.svg
-		case 1436:
+		case 1437:
 			return SVGIcons.typeItalic(height, width);
 		// type-strikethrough.svg
-		case 1437:
+		case 1438:
 			return SVGIcons.typeStrikethrough(height, width);
 		// type-underline.svg
-		case 1438:
+		case 1439:
 			return SVGIcons.typeUnderline(height, width);
 		// type.svg
-		case 1439:
+		case 1440:
 			return SVGIcons.type(height, width);
 		// ui-checks-grid.svg
-		case 1440:
+		case 1441:
 			return SVGIcons.uiChecksGrid(height, width);
 		// ui-checks.svg
-		case 1441:
+		case 1442:
 			return SVGIcons.uiChecks(height, width);
 		// ui-radios-grid.svg
-		case 1442:
+		case 1443:
 			return SVGIcons.uiRadiosGrid(height, width);
 		// ui-radios.svg
-		case 1443:
+		case 1444:
 			return SVGIcons.uiRadios(height, width);
 		// umbrella-fill.svg
-		case 1444:
+		case 1445:
 			return SVGIcons.umbrellaFill(height, width);
 		// umbrella.svg
-		case 1445:
+		case 1446:
 			return SVGIcons.umbrella(height, width);
 		// union.svg
-		case 1446:
+		case 1447:
 			return SVGIcons.union(height, width);
 		// unlock-fill.svg
-		case 1447:
+		case 1448:
 			return SVGIcons.unlockFill(height, width);
 		// unlock.svg
-		case 1448:
+		case 1449:
 			return SVGIcons.unlock(height, width);
 		// upc-scan.svg
-		case 1449:
+		case 1450:
 			return SVGIcons.upcScan(height, width);
 		// upc.svg
-		case 1450:
+		case 1451:
 			return SVGIcons.upc(height, width);
 		// upload.svg
-		case 1451:
+		case 1452:
 			return SVGIcons.upload(height, width);
 		// usb-c-fill.svg
-		case 1452:
+		case 1453:
 			return SVGIcons.usbCFill(height, width);
 		// usb-c.svg
-		case 1453:
+		case 1454:
 			return SVGIcons.usbC(height, width);
 		// usb-drive-fill.svg
-		case 1454:
+		case 1455:
 			return SVGIcons.usbDriveFill(height, width);
 		// usb-drive.svg
-		case 1455:
+		case 1456:
 			return SVGIcons.usbDrive(height, width);
 		// usb-fill.svg
-		case 1456:
+		case 1457:
 			return SVGIcons.usbFill(height, width);
 		// usb-micro-fill.svg
-		case 1457:
+		case 1458:
 			return SVGIcons.usbMicroFill(height, width);
 		// usb-micro.svg
-		case 1458:
+		case 1459:
 			return SVGIcons.usbMicro(height, width);
 		// usb-mini-fill.svg
-		case 1459:
+		case 1460:
 			return SVGIcons.usbMiniFill(height, width);
 		// usb-mini.svg
-		case 1460:
+		case 1461:
 			return SVGIcons.usbMini(height, width);
 		// usb-plug-fill.svg
-		case 1461:
+		case 1462:
 			return SVGIcons.usbPlugFill(height, width);
 		// usb-plug.svg
-		case 1462:
+		case 1463:
 			return SVGIcons.usbPlug(height, width);
 		// usb-symbol.svg
-		case 1463:
+		case 1464:
 			return SVGIcons.usbSymbol(height, width);
 		// usb.svg
-		case 1464:
+		case 1465:
 			return SVGIcons.usb(height, width);
 		// vector-pen.svg
-		case 1465:
+		case 1466:
 			return SVGIcons.vectorPen(height, width);
 		// view-list.svg
-		case 1466:
+		case 1467:
 			return SVGIcons.viewList(height, width);
 		// view-stacked.svg
-		case 1467:
+		case 1468:
 			return SVGIcons.viewStacked(height, width);
 		// vimeo.svg
-		case 1468:
+		case 1469:
 			return SVGIcons.vimeo(height, width);
 		// vinyl-fill.svg
-		case 1469:
+		case 1470:
 			return SVGIcons.vinylFill(height, width);
 		// vinyl.svg
-		case 1470:
+		case 1471:
 			return SVGIcons.vinyl(height, width);
 		// voicemail.svg
-		case 1471:
+		case 1472:
 			return SVGIcons.voicemail(height, width);
 		// volume-down-fill.svg
-		case 1472:
+		case 1473:
 			return SVGIcons.volumeDownFill(height, width);
 		// volume-down.svg
-		case 1473:
+		case 1474:
 			return SVGIcons.volumeDown(height, width);
 		// volume-mute-fill.svg
-		case 1474:
+		case 1475:
 			return SVGIcons.volumeMuteFill(height, width);
 		// volume-mute.svg
-		case 1475:
+		case 1476:
 			return SVGIcons.volumeMute(height, width);
 		// volume-off-fill.svg
-		case 1476:
+		case 1477:
 			return SVGIcons.volumeOffFill(height, width);
 		// volume-off.svg
-		case 1477:
+		case 1478:
 			return SVGIcons.volumeOff(height, width);
 		// volume-up-fill.svg
-		case 1478:
+		case 1479:
 			return SVGIcons.volumeUpFill(height, width);
 		// volume-up.svg
-		case 1479:
+		case 1480:
 			return SVGIcons.volumeUp(height, width);
 		// vr.svg
-		case 1480:
+		case 1481:
 			return SVGIcons.vr(height, width);
 		// wallet-fill.svg
-		case 1481:
+		case 1482:
 			return SVGIcons.walletFill(height, width);
 		// wallet.svg
-		case 1482:
+		case 1483:
 			return SVGIcons.wallet(height, width);
 		// wallet2.svg
-		case 1483:
+		case 1484:
 			return SVGIcons.wallet2(height, width);
 		// watch.svg
-		case 1484:
+		case 1485:
 			return SVGIcons.watch(height, width);
 		// water.svg
-		case 1485:
+		case 1486:
 			return SVGIcons.water(height, width);
 		// webcam-fill.svg
-		case 1486:
+		case 1487:
 			return SVGIcons.webcamFill(height, width);
 		// webcam.svg
-		case 1487:
+		case 1488:
 			return SVGIcons.webcam(height, width);
 		// whatsapp.svg
-		case 1488:
+		case 1489:
 			return SVGIcons.whatsapp(height, width);
 		// wifi-1.svg
-		case 1489:
+		case 1490:
 			return SVGIcons.wifi1(height, width);
 		// wifi-2.svg
-		case 1490:
+		case 1491:
 			return SVGIcons.wifi2(height, width);
 		// wifi-off.svg
-		case 1491:
+		case 1492:
 			return SVGIcons.wifiOff(height, width);
 		// wifi.svg
-		case 1492:
+		case 1493:
 			return SVGIcons.wifi(height, width);
 		// wind.svg
-		case 1493:
+		case 1494:
 			return SVGIcons.wind(height, width);
 		// window-dash.svg
-		case 1494:
+		case 1495:
 			return SVGIcons.windowDash(height, width);
 		// window-desktop.svg
-		case 1495:
+		case 1496:
 			return SVGIcons.windowDesktop(height, width);
 		// window-dock.svg
-		case 1496:
+		case 1497:
 			return SVGIcons.windowDock(height, width);
 		// window-fullscreen.svg
-		case 1497:
+		case 1498:
 			return SVGIcons.windowFullscreen(height, width);
 		// window-plus.svg
-		case 1498:
+		case 1499:
 			return SVGIcons.windowPlus(height, width);
 		// window-sidebar.svg
-		case 1499:
+		case 1500:
 			return SVGIcons.windowSidebar(height, width);
 		// window-split.svg
-		case 1500:
+		case 1501:
 			return SVGIcons.windowSplit(height, width);
 		// window-stack.svg
-		case 1501:
+		case 1502:
 			return SVGIcons.windowStack(height, width);
 		// window-x.svg
-		case 1502:
+		case 1503:
 			return SVGIcons.windowX(height, width);
 		// window.svg
-		case 1503:
+		case 1504:
 			return SVGIcons.appWindow(height, width);
 		// windows.svg
-		case 1504:
+		case 1505:
 			return SVGIcons.windows(height, width);
 		// wordpress.svg
-		case 1505:
+		case 1506:
 			return SVGIcons.wordpress(height, width);
 		// wrench.svg
-		case 1506:
+		case 1507:
 			return SVGIcons.wrench(height, width);
 		// x-circle-fill.svg
-		case 1507:
+		case 1508:
 			return SVGIcons.xCircleFill(height, width);
 		// x-circle.svg
-		case 1508:
+		case 1509:
 			return SVGIcons.xCircle(height, width);
 		// x-diamond-fill.svg
-		case 1509:
+		case 1510:
 			return SVGIcons.xDiamondFill(height, width);
 		// x-diamond.svg
-		case 1510:
+		case 1511:
 			return SVGIcons.xDiamond(height, width);
 		// x-lg.svg
-		case 1511:
+		case 1512:
 			return SVGIcons.xLg(height, width);
 		// x-octagon-fill.svg
-		case 1512:
+		case 1513:
 			return SVGIcons.xOctagonFill(height, width);
 		// x-octagon.svg
-		case 1513:
+		case 1514:
 			return SVGIcons.xOctagon(height, width);
 		// x-square-fill.svg
-		case 1514:
+		case 1515:
 			return SVGIcons.xSquareFill(height, width);
 		// x-square.svg
-		case 1515:
+		case 1516:
 			return SVGIcons.xSquare(height, width);
 		// x.svg
-		case 1516:
+		case 1517:
 			return SVGIcons.x(height, width);
 		// xbox.svg
-		case 1517:
+		case 1518:
 			return SVGIcons.xbox(height, width);
 		// yin-yang.svg
-		case 1518:
+		case 1519:
 			return SVGIcons.yinYang(height, width);
 		// youtube.svg
-		case 1519:
+		case 1520:
 			return SVGIcons.youtube(height, width);
 		// zoom-in.svg
-		case 1520:
+		case 1521:
 			return SVGIcons.zoomIn(height, width);
 		// zoom-out.svg
-		case 1521:
+		case 1522:
 			return SVGIcons.zoomOut(height, width);
 	}
 }

@@ -2750,6 +2750,8 @@ export const terminalFill: (height?:number, width?:number) => HTMLElement;
 export const terminalPlus: (height?:number, width?:number) => HTMLElement;
 // terminal-split.svg
 export const terminalSplit: (height?:number, width?:number) => HTMLElement;
+// terminal-x.svg
+export const terminalX: (height?:number, width?:number) => HTMLElement;
 // terminal.svg
 export const terminal: (height?:number, width?:number) => HTMLElement;
 // text-center.svg

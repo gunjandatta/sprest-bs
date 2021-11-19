@@ -1374,6 +1374,7 @@ export * from "./terminalDash";
 export * from "./terminalFill";
 export * from "./terminalPlus";
 export * from "./terminalSplit";
+export * from "./terminalX";
 export * from "./terminal";
 export * from "./textCenter";
 export * from "./textIndentLeft";
