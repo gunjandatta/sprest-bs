@@ -21,8 +21,9 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 // Render a tooltip
                 let tooltip = Components.Tooltip({
                     el: elSelectedUsers,
-                    content: '<small class="text-muted">' + userInfo.LoginName + '</small>',
+                    content: '<small class="text-white">' + userInfo.LoginName + '</small>',
                     placement: Components.TooltipPlacements.Left,
+                    type: Components.TooltipTypes.Primary,
                     options: {
                         maxWidth: "none"
                     },
@@ -37,8 +38,9 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 // Render a tooltip
                 let tooltip = Components.Tooltip({
                     el: elSelectedUsers,
-                    content: '<small class="text-muted">' + userInfo.LoginName + '</small>',
+                    content: '<small class="text-white">' + userInfo.LoginName + '</small>',
                     placement: Components.TooltipPlacements.Left,
+                    type: Components.TooltipTypes.Primary,
                     options: {
                         maxWidth: "none"
                     },
@@ -167,8 +169,9 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                         // Create a tooltip for this item
                         Components.Tooltip({
                             target: elItem,
-                            content: '<small class="text-muted">' + user.Key + '</small>',
+                            content: '<small class="text-white">' + user.Key + '</small>',
                             placement: Components.TooltipPlacements.Left,
+                            type: Components.TooltipTypes.Primary,
                             options: {
                                 maxWidth: "none"
                             }
