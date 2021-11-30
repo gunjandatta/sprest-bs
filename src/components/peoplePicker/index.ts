@@ -21,33 +21,35 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 // Render a tooltip
                 let tooltip = Components.Tooltip({
                     el: elSelectedUsers,
-                    content: userInfo.LoginName,
+                    content: '<small class="text-muted">' + userInfo.LoginName + '</small>',
                     placement: Components.TooltipPlacements.Left,
                     options: {
                         maxWidth: "none"
                     },
                     btnProps: {
-                        className: "mr-1 mb-1",
+                        className: "me-1 mb-1",
                         isSmall: true,
-                        text: userInfo.Title
+                        text: userInfo.Title,
+                        type: Components.ButtonTypes.Primary
                     }
                 });
             } else {
                 // Render a tooltip
                 let tooltip = Components.Tooltip({
                     el: elSelectedUsers,
-                    content: userInfo.LoginName,
+                    content: '<small class="text-muted">' + userInfo.LoginName + '</small>',
                     placement: Components.TooltipPlacements.Left,
                     options: {
                         maxWidth: "none"
                     },
                     btnProps: {
                         data: userInfo,
-                        className: "mr-1 mb-1",
+                        className: "me-1 mb-1",
                         isSmall: true,
                         text: userInfo.Title,
+                        type: Components.ButtonTypes.Primary,
                         badge: {
-                            className: "ml-2",
+                            className: "ms-2",
                             content: "&times;",
                             isPill: true,
                             type: Components.BadgeTypes.Light,
@@ -165,7 +167,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                         // Create a tooltip for this item
                         Components.Tooltip({
                             target: elItem,
-                            content: user.Key,
+                            content: '<small class="text-muted">' + user.Key + '</small>',
                             placement: Components.TooltipPlacements.Left,
                             options: {
                                 maxWidth: "none"

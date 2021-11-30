@@ -81,7 +81,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                             // Add the item
                             items.push({
                                 buttons: [{
-                                    className: "mr-1",
+                                    className: "me-1",
                                     href: attachment.ServerRelativeUrl,
                                     isSmall: true,
                                     text: attachment.FileName
@@ -413,7 +413,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                             el: control.el,
                             items: [{
                                 buttons: [{
-                                    className: "upload-btn mr-1",
+                                    className: "upload-btn me-1",
                                     isSmall: true,
                                     text: "Upload",
                                     type: Components.ButtonTypes.Secondary,
@@ -447,7 +447,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                                 isDismissible: true,
                                                 type: Components.PopoverPlacements.Bottom,
                                                 btnProps: {
-                                                    className: "mr-1",
+                                                    className: "me-1",
                                                     isSmall: true,
                                                     text: fileInfo.name
                                                 },
@@ -504,7 +504,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                     isDismissible: true,
                                     type: Components.PopoverPlacements.Bottom,
                                     btnProps: {
-                                        className: "mr-1",
+                                        className: "me-1",
                                         isSmall: true,
                                         text: attachment.FileName,
                                     },
