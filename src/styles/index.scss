@@ -30,8 +30,10 @@
     position: relative;
 }
 
-/** User */
-.people-picker .btn > .badge {
+/** People Picker */
+.badge.people-picker-x {
     color: black;
+    margin-bottom: 0.15rem;
+    padding-top: 0.1rem;
     text-decoration: none;
 }

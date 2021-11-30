@@ -51,7 +51,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                         text: userInfo.Title,
                         type: Components.ButtonTypes.Primary,
                         badge: {
-                            className: "ms-2",
+                            className: "people-picker-x ms-2",
                             content: "&times;",
                             isPill: true,
                             type: Components.BadgeTypes.Light,
