@@ -19,11 +19,13 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
             // See if the picker is read only
             if (props.readOnly) {
                 // Render a tooltip
-                // Render a tooltip
                 let tooltip = Components.Tooltip({
                     el: elSelectedUsers,
                     content: userInfo.LoginName,
                     placement: Components.TooltipPlacements.Left,
+                    options: {
+                        maxWidth: "none"
+                    },
                     btnProps: {
                         className: "mr-1 mb-1",
                         isSmall: true,
@@ -36,6 +38,9 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                     el: elSelectedUsers,
                     content: userInfo.LoginName,
                     placement: Components.TooltipPlacements.Left,
+                    options: {
+                        maxWidth: "none"
+                    },
                     btnProps: {
                         data: userInfo,
                         className: "mr-1 mb-1",
@@ -161,7 +166,10 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                         Components.Tooltip({
                             target: elItem,
                             content: user.Key,
-                            placement: Components.TooltipPlacements.Left
+                            placement: Components.TooltipPlacements.Left,
+                            options: {
+                                maxWidth: "none"
+                            }
                         });
 
                         // Set the click event
