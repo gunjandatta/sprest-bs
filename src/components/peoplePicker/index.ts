@@ -22,7 +22,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 let tooltip = Components.Tooltip({
                     el: elSelectedUsers,
                     content: '<small class="text-white">' + userInfo.LoginName + '</small>',
-                    placement: Components.TooltipPlacements.Left,
+                    placement: Components.TooltipPlacements.Top,
                     type: Components.TooltipTypes.Primary,
                     options: {
                         maxWidth: "none"
@@ -39,7 +39,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 let tooltip = Components.Tooltip({
                     el: elSelectedUsers,
                     content: '<small class="text-white">' + userInfo.LoginName + '</small>',
-                    placement: Components.TooltipPlacements.Left,
+                    placement: Components.TooltipPlacements.Top,
                     type: Components.TooltipTypes.Primary,
                     options: {
                         maxWidth: "none"
