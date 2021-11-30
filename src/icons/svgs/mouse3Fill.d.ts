@@ -1,1 +1,1 @@
-export const mouse3Fill: (height?:number, width?:number) => HTMLElement;
+export const mouse3Fill: (height?:number, width?:number, className?:string) => HTMLElement;

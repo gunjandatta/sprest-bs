@@ -1,1 +1,1 @@
-export const google: (height?:number, width?:number) => HTMLElement;
+export const google: (height?:number, width?:number, className?:string) => HTMLElement;

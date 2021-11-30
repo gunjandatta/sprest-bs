@@ -1,1 +1,1 @@
-export const sendCheckFill: (height?:number, width?:number) => HTMLElement;
+export const sendCheckFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const personFill: (height?:number, width?:number) => HTMLElement;
+export const personFill: (height?:number, width?:number, className?:string) => HTMLElement;

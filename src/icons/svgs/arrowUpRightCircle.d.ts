@@ -1,1 +1,1 @@
-export const arrowUpRightCircle: (height?:number, width?:number) => HTMLElement;
+export const arrowUpRightCircle: (height?:number, width?:number, className?:string) => HTMLElement;

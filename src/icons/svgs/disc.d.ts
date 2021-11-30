@@ -1,1 +1,1 @@
-export const disc: (height?:number, width?:number) => HTMLElement;
+export const disc: (height?:number, width?:number, className?:string) => HTMLElement;

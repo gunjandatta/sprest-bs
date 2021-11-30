@@ -1,1 +1,1 @@
-export const spellcheck: (height?:number, width?:number) => HTMLElement;
+export const spellcheck: (height?:number, width?:number, className?:string) => HTMLElement;

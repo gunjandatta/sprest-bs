@@ -1,1 +1,1 @@
-export const exclamationDiamond: (height?:number, width?:number) => HTMLElement;
+export const exclamationDiamond: (height?:number, width?:number, className?:string) => HTMLElement;

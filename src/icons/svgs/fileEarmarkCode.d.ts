@@ -1,1 +1,1 @@
-export const fileEarmarkCode: (height?:number, width?:number) => HTMLElement;
+export const fileEarmarkCode: (height?:number, width?:number, className?:string) => HTMLElement;

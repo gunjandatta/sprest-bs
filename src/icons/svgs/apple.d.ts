@@ -1,1 +1,1 @@
-export const apple: (height?:number, width?:number) => HTMLElement;
+export const apple: (height?:number, width?:number, className?:string) => HTMLElement;

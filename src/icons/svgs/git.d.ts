@@ -1,1 +1,1 @@
-export const git: (height?:number, width?:number) => HTMLElement;
+export const git: (height?:number, width?:number, className?:string) => HTMLElement;

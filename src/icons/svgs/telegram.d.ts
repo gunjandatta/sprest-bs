@@ -1,1 +1,1 @@
-export const telegram: (height?:number, width?:number) => HTMLElement;
+export const telegram: (height?:number, width?:number, className?:string) => HTMLElement;

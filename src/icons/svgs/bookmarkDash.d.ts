@@ -1,1 +1,1 @@
-export const bookmarkDash: (height?:number, width?:number) => HTMLElement;
+export const bookmarkDash: (height?:number, width?:number, className?:string) => HTMLElement;

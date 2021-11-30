@@ -1,1 +1,1 @@
-export const sendPlus: (height?:number, width?:number) => HTMLElement;
+export const sendPlus: (height?:number, width?:number, className?:string) => HTMLElement;

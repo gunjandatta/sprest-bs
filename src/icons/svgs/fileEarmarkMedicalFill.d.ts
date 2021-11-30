@@ -1,1 +1,1 @@
-export const fileEarmarkMedicalFill: (height?:number, width?:number) => HTMLElement;
+export const fileEarmarkMedicalFill: (height?:number, width?:number, className?:string) => HTMLElement;

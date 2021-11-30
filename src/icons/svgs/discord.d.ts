@@ -1,1 +1,1 @@
-export const discord: (height?:number, width?:number) => HTMLElement;
+export const discord: (height?:number, width?:number, className?:string) => HTMLElement;

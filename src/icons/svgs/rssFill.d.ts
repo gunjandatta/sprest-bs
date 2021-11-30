@@ -1,1 +1,1 @@
-export const rssFill: (height?:number, width?:number) => HTMLElement;
+export const rssFill: (height?:number, width?:number, className?:string) => HTMLElement;

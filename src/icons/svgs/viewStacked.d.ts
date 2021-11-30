@@ -1,1 +1,1 @@
-export const viewStacked: (height?:number, width?:number) => HTMLElement;
+export const viewStacked: (height?:number, width?:number, className?:string) => HTMLElement;

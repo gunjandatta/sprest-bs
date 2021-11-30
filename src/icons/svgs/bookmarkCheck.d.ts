@@ -1,1 +1,1 @@
-export const bookmarkCheck: (height?:number, width?:number) => HTMLElement;
+export const bookmarkCheck: (height?:number, width?:number, className?:string) => HTMLElement;

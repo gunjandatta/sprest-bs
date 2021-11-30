@@ -1,1 +1,1 @@
-export const personWorkspace: (height?:number, width?:number) => HTMLElement;
+export const personWorkspace: (height?:number, width?:number, className?:string) => HTMLElement;

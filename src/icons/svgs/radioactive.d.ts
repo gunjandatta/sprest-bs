@@ -1,1 +1,1 @@
-export const radioactive: (height?:number, width?:number) => HTMLElement;
+export const radioactive: (height?:number, width?:number, className?:string) => HTMLElement;

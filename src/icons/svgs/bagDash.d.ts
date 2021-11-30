@@ -1,1 +1,1 @@
-export const bagDash: (height?:number, width?:number) => HTMLElement;
+export const bagDash: (height?:number, width?:number, className?:string) => HTMLElement;

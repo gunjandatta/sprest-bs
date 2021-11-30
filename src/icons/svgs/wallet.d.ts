@@ -1,1 +1,1 @@
-export const wallet: (height?:number, width?:number) => HTMLElement;
+export const wallet: (height?:number, width?:number, className?:string) => HTMLElement;

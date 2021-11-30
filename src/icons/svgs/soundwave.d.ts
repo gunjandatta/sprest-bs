@@ -1,1 +1,1 @@
-export const soundwave: (height?:number, width?:number) => HTMLElement;
+export const soundwave: (height?:number, width?:number, className?:string) => HTMLElement;

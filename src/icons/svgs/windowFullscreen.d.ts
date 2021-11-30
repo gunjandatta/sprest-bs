@@ -1,1 +1,1 @@
-export const windowFullscreen: (height?:number, width?:number) => HTMLElement;
+export const windowFullscreen: (height?:number, width?:number, className?:string) => HTMLElement;

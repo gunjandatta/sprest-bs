@@ -1,1 +1,1 @@
-export const caretRightFill: (height?:number, width?:number) => HTMLElement;
+export const caretRightFill: (height?:number, width?:number, className?:string) => HTMLElement;

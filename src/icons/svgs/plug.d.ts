@@ -1,1 +1,1 @@
-export const plug: (height?:number, width?:number) => HTMLElement;
+export const plug: (height?:number, width?:number, className?:string) => HTMLElement;

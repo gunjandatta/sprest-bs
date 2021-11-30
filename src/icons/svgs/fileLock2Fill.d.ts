@@ -1,1 +1,1 @@
-export const fileLock2Fill: (height?:number, width?:number) => HTMLElement;
+export const fileLock2Fill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const lampFill: (height?:number, width?:number) => HTMLElement;
+export const lampFill: (height?:number, width?:number, className?:string) => HTMLElement;

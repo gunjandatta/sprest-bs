@@ -1,1 +1,1 @@
-export const fileBarGraphFill: (height?:number, width?:number) => HTMLElement;
+export const fileBarGraphFill: (height?:number, width?:number, className?:string) => HTMLElement;

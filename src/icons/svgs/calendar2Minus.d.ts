@@ -1,1 +1,1 @@
-export const calendar2Minus: (height?:number, width?:number) => HTMLElement;
+export const calendar2Minus: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const hash: (height?:number, width?:number) => HTMLElement;
+export const hash: (height?:number, width?:number, className?:string) => HTMLElement;

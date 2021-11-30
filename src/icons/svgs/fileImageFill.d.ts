@@ -1,1 +1,1 @@
-export const fileImageFill: (height?:number, width?:number) => HTMLElement;
+export const fileImageFill: (height?:number, width?:number, className?:string) => HTMLElement;

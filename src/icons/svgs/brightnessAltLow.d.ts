@@ -1,1 +1,1 @@
-export const brightnessAltLow: (height?:number, width?:number) => HTMLElement;
+export const brightnessAltLow: (height?:number, width?:number, className?:string) => HTMLElement;

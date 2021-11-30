@@ -1,1 +1,1 @@
-export const brush: (height?:number, width?:number) => HTMLElement;
+export const brush: (height?:number, width?:number, className?:string) => HTMLElement;

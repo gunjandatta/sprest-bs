@@ -1,1 +1,1 @@
-export const fileEarmarkMinusFill: (height?:number, width?:number) => HTMLElement;
+export const fileEarmarkMinusFill: (height?:number, width?:number, className?:string) => HTMLElement;

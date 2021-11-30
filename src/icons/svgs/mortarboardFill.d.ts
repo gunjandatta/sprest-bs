@@ -1,1 +1,1 @@
-export const mortarboardFill: (height?:number, width?:number) => HTMLElement;
+export const mortarboardFill: (height?:number, width?:number, className?:string) => HTMLElement;

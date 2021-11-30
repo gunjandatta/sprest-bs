@@ -1,1 +1,1 @@
-export const stickies: (height?:number, width?:number) => HTMLElement;
+export const stickies: (height?:number, width?:number, className?:string) => HTMLElement;

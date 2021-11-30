@@ -1,1 +1,1 @@
-export const nodeMinus: (height?:number, width?:number) => HTMLElement;
+export const nodeMinus: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const voicemail: (height?:number, width?:number) => HTMLElement;
+export const voicemail: (height?:number, width?:number, className?:string) => HTMLElement;

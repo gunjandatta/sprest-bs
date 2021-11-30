@@ -1,1 +1,1 @@
-export const badgeVo: (height?:number, width?:number) => HTMLElement;
+export const badgeVo: (height?:number, width?:number, className?:string) => HTMLElement;

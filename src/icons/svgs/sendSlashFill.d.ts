@@ -1,1 +1,1 @@
-export const sendSlashFill: (height?:number, width?:number) => HTMLElement;
+export const sendSlashFill: (height?:number, width?:number, className?:string) => HTMLElement;

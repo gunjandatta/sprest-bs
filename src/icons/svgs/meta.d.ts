@@ -1,1 +1,1 @@
-export const meta: (height?:number, width?:number) => HTMLElement;
+export const meta: (height?:number, width?:number, className?:string) => HTMLElement;

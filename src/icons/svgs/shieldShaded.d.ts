@@ -1,1 +1,1 @@
-export const shieldShaded: (height?:number, width?:number) => HTMLElement;
+export const shieldShaded: (height?:number, width?:number, className?:string) => HTMLElement;

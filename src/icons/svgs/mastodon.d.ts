@@ -1,1 +1,1 @@
-export const mastodon: (height?:number, width?:number) => HTMLElement;
+export const mastodon: (height?:number, width?:number, className?:string) => HTMLElement;

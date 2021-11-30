@@ -1,1 +1,1 @@
-export const fonts: (height?:number, width?:number) => HTMLElement;
+export const fonts: (height?:number, width?:number, className?:string) => HTMLElement;

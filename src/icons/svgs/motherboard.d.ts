@@ -1,1 +1,1 @@
-export const motherboard: (height?:number, width?:number) => HTMLElement;
+export const motherboard: (height?:number, width?:number, className?:string) => HTMLElement;

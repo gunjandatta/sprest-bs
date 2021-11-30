@@ -1,1 +1,1 @@
-export const cloudDownloadFill: (height?:number, width?:number) => HTMLElement;
+export const cloudDownloadFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const fileExcelFill: (height?:number, width?:number) => HTMLElement;
+export const fileExcelFill: (height?:number, width?:number, className?:string) => HTMLElement;

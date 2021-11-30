@@ -1,1 +1,1 @@
-export const dribbble: (height?:number, width?:number) => HTMLElement;
+export const dribbble: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const infoSquare: (height?:number, width?:number) => HTMLElement;
+export const infoSquare: (height?:number, width?:number, className?:string) => HTMLElement;

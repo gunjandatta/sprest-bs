@@ -1,1 +1,1 @@
-export const pauseCircleFill: (height?:number, width?:number) => HTMLElement;
+export const pauseCircleFill: (height?:number, width?:number, className?:string) => HTMLElement;

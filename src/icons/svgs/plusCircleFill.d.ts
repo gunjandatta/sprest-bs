@@ -1,1 +1,1 @@
-export const plusCircleFill: (height?:number, width?:number) => HTMLElement;
+export const plusCircleFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const emojiLaughingFill: (height?:number, width?:number) => HTMLElement;
+export const emojiLaughingFill: (height?:number, width?:number, className?:string) => HTMLElement;

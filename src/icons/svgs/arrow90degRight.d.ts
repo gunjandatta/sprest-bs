@@ -1,1 +1,1 @@
-export const arrow90degRight: (height?:number, width?:number) => HTMLElement;
+export const arrow90degRight: (height?:number, width?:number, className?:string) => HTMLElement;

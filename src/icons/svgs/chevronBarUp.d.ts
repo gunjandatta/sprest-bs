@@ -1,1 +1,1 @@
-export const chevronBarUp: (height?:number, width?:number) => HTMLElement;
+export const chevronBarUp: (height?:number, width?:number, className?:string) => HTMLElement;

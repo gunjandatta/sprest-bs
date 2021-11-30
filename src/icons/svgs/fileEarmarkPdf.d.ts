@@ -1,1 +1,1 @@
-export const fileEarmarkPdf: (height?:number, width?:number) => HTMLElement;
+export const fileEarmarkPdf: (height?:number, width?:number, className?:string) => HTMLElement;

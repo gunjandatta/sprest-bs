@@ -1,1 +1,1 @@
-export const eject: (height?:number, width?:number) => HTMLElement;
+export const eject: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const caretLeftSquare: (height?:number, width?:number) => HTMLElement;
+export const caretLeftSquare: (height?:number, width?:number, className?:string) => HTMLElement;

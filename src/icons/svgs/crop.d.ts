@@ -1,1 +1,1 @@
-export const crop: (height?:number, width?:number) => HTMLElement;
+export const crop: (height?:number, width?:number, className?:string) => HTMLElement;

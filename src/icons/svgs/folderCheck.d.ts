@@ -1,1 +1,1 @@
-export const folderCheck: (height?:number, width?:number) => HTMLElement;
+export const folderCheck: (height?:number, width?:number, className?:string) => HTMLElement;

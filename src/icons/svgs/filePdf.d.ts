@@ -1,1 +1,1 @@
-export const filePdf: (height?:number, width?:number) => HTMLElement;
+export const filePdf: (height?:number, width?:number, className?:string) => HTMLElement;

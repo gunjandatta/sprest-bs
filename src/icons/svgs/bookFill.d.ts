@@ -1,1 +1,1 @@
-export const bookFill: (height?:number, width?:number) => HTMLElement;
+export const bookFill: (height?:number, width?:number, className?:string) => HTMLElement;

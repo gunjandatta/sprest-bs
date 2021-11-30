@@ -1,1 +1,1 @@
-export const key: (height?:number, width?:number) => HTMLElement;
+export const key: (height?:number, width?:number, className?:string) => HTMLElement;

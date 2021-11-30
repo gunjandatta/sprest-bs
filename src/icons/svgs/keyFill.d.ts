@@ -1,1 +1,1 @@
-export const keyFill: (height?:number, width?:number) => HTMLElement;
+export const keyFill: (height?:number, width?:number, className?:string) => HTMLElement;

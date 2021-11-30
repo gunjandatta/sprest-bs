@@ -1,1 +1,1 @@
-export const shieldFillCheck: (height?:number, width?:number) => HTMLElement;
+export const shieldFillCheck: (height?:number, width?:number, className?:string) => HTMLElement;

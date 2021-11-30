@@ -1,1 +1,1 @@
-export const genderFemale: (height?:number, width?:number) => HTMLElement;
+export const genderFemale: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const hdmi: (height?:number, width?:number) => HTMLElement;
+export const hdmi: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const markdown: (height?:number, width?:number) => HTMLElement;
+export const markdown: (height?:number, width?:number, className?:string) => HTMLElement;

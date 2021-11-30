@@ -1,1 +1,1 @@
-export const pipFill: (height?:number, width?:number) => HTMLElement;
+export const pipFill: (height?:number, width?:number, className?:string) => HTMLElement;

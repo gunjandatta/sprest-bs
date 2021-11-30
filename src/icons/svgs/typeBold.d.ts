@@ -1,1 +1,1 @@
-export const typeBold: (height?:number, width?:number) => HTMLElement;
+export const typeBold: (height?:number, width?:number, className?:string) => HTMLElement;

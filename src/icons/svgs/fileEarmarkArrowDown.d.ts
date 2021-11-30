@@ -1,1 +1,1 @@
-export const fileEarmarkArrowDown: (height?:number, width?:number) => HTMLElement;
+export const fileEarmarkArrowDown: (height?:number, width?:number, className?:string) => HTMLElement;

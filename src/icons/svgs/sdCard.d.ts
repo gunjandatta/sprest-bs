@@ -1,1 +1,1 @@
-export const sdCard: (height?:number, width?:number) => HTMLElement;
+export const sdCard: (height?:number, width?:number, className?:string) => HTMLElement;

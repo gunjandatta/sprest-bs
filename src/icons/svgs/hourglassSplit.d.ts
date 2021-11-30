@@ -1,1 +1,1 @@
-export const hourglassSplit: (height?:number, width?:number) => HTMLElement;
+export const hourglassSplit: (height?:number, width?:number, className?:string) => HTMLElement;

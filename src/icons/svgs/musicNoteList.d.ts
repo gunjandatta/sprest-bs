@@ -1,1 +1,1 @@
-export const musicNoteList: (height?:number, width?:number) => HTMLElement;
+export const musicNoteList: (height?:number, width?:number, className?:string) => HTMLElement;

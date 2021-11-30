@@ -1,1 +1,1 @@
-export const clipboardMinus: (height?:number, width?:number) => HTMLElement;
+export const clipboardMinus: (height?:number, width?:number, className?:string) => HTMLElement;

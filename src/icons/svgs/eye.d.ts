@@ -1,1 +1,1 @@
-export const eye: (height?:number, width?:number) => HTMLElement;
+export const eye: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const fileBinary: (height?:number, width?:number) => HTMLElement;
+export const fileBinary: (height?:number, width?:number, className?:string) => HTMLElement;

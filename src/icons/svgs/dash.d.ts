@@ -1,1 +1,1 @@
-export const dash: (height?:number, width?:number) => HTMLElement;
+export const dash: (height?:number, width?:number, className?:string) => HTMLElement;

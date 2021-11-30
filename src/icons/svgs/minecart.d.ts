@@ -1,1 +1,1 @@
-export const minecart: (height?:number, width?:number) => HTMLElement;
+export const minecart: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const textarea: (height?:number, width?:number) => HTMLElement;
+export const textarea: (height?:number, width?:number, className?:string) => HTMLElement;

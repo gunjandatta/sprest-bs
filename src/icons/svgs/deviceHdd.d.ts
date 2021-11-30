@@ -1,1 +1,1 @@
-export const deviceHdd: (height?:number, width?:number) => HTMLElement;
+export const deviceHdd: (height?:number, width?:number, className?:string) => HTMLElement;

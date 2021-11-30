@@ -1,1 +1,1 @@
-export const coin: (height?:number, width?:number) => HTMLElement;
+export const coin: (height?:number, width?:number, className?:string) => HTMLElement;

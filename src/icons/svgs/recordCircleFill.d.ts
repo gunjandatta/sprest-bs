@@ -1,1 +1,1 @@
-export const recordCircleFill: (height?:number, width?:number) => HTMLElement;
+export const recordCircleFill: (height?:number, width?:number, className?:string) => HTMLElement;

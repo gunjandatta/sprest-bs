@@ -1,1 +1,1 @@
-export const ticketDetailedFill: (height?:number, width?:number) => HTMLElement;
+export const ticketDetailedFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const kanban: (height?:number, width?:number) => HTMLElement;
+export const kanban: (height?:number, width?:number, className?:string) => HTMLElement;

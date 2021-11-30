@@ -1,1 +1,1 @@
-export const power: (height?:number, width?:number) => HTMLElement;
+export const power: (height?:number, width?:number, className?:string) => HTMLElement;

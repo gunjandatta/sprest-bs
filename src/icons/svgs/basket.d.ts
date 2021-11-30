@@ -1,1 +1,1 @@
-export const basket: (height?:number, width?:number) => HTMLElement;
+export const basket: (height?:number, width?:number, className?:string) => HTMLElement;

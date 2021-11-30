@@ -1,1 +1,1 @@
-export const lockFill: (height?:number, width?:number) => HTMLElement;
+export const lockFill: (height?:number, width?:number, className?:string) => HTMLElement;

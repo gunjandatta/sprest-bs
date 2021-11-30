@@ -1,1 +1,1 @@
-export const arrowsFullscreen: (height?:number, width?:number) => HTMLElement;
+export const arrowsFullscreen: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const checkSquare: (height?:number, width?:number) => HTMLElement;
+export const checkSquare: (height?:number, width?:number, className?:string) => HTMLElement;

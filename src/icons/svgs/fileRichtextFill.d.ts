@@ -1,1 +1,1 @@
-export const fileRichtextFill: (height?:number, width?:number) => HTMLElement;
+export const fileRichtextFill: (height?:number, width?:number, className?:string) => HTMLElement;

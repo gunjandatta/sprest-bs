@@ -1,1 +1,1 @@
-export const save: (height?:number, width?:number) => HTMLElement;
+export const save: (height?:number, width?:number, className?:string) => HTMLElement;

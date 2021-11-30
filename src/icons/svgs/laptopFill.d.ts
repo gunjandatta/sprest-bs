@@ -1,1 +1,1 @@
-export const laptopFill: (height?:number, width?:number) => HTMLElement;
+export const laptopFill: (height?:number, width?:number, className?:string) => HTMLElement;

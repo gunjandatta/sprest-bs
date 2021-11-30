@@ -1,1 +1,1 @@
-export const fileEarmarkBreakFill: (height?:number, width?:number) => HTMLElement;
+export const fileEarmarkBreakFill: (height?:number, width?:number, className?:string) => HTMLElement;

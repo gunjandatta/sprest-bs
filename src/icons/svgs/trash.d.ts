@@ -1,1 +1,1 @@
-export const trash: (height?:number, width?:number) => HTMLElement;
+export const trash: (height?:number, width?:number, className?:string) => HTMLElement;

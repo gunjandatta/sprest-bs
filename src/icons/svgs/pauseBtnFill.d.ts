@@ -1,1 +1,1 @@
-export const pauseBtnFill: (height?:number, width?:number) => HTMLElement;
+export const pauseBtnFill: (height?:number, width?:number, className?:string) => HTMLElement;

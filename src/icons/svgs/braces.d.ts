@@ -1,1 +1,1 @@
-export const braces: (height?:number, width?:number) => HTMLElement;
+export const braces: (height?:number, width?:number, className?:string) => HTMLElement;

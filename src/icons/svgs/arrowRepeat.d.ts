@@ -1,1 +1,1 @@
-export const arrowRepeat: (height?:number, width?:number) => HTMLElement;
+export const arrowRepeat: (height?:number, width?:number, className?:string) => HTMLElement;

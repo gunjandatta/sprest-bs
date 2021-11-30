@@ -1,1 +1,1 @@
-export const badge8k: (height?:number, width?:number) => HTMLElement;
+export const badge8k: (height?:number, width?:number, className?:string) => HTMLElement;

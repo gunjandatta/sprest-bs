@@ -1,1 +1,1 @@
-export const pinAngle: (height?:number, width?:number) => HTMLElement;
+export const pinAngle: (height?:number, width?:number, className?:string) => HTMLElement;

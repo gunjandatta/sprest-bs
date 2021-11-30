@@ -1,1 +1,1 @@
-export const pentagonHalf: (height?:number, width?:number) => HTMLElement;
+export const pentagonHalf: (height?:number, width?:number, className?:string) => HTMLElement;

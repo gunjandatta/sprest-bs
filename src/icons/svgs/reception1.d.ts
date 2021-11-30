@@ -1,1 +1,1 @@
-export const reception1: (height?:number, width?:number) => HTMLElement;
+export const reception1: (height?:number, width?:number, className?:string) => HTMLElement;

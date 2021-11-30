@@ -1,1 +1,1 @@
-export const stopCircle: (height?:number, width?:number) => HTMLElement;
+export const stopCircle: (height?:number, width?:number, className?:string) => HTMLElement;

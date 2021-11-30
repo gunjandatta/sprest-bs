@@ -1,1 +1,1 @@
-export const shuffle: (height?:number, width?:number) => HTMLElement;
+export const shuffle: (height?:number, width?:number, className?:string) => HTMLElement;

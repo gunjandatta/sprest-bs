@@ -1,1 +1,1 @@
-export const back: (height?:number, width?:number) => HTMLElement;
+export const back: (height?:number, width?:number, className?:string) => HTMLElement;

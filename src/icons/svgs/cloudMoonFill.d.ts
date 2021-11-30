@@ -1,1 +1,1 @@
-export const cloudMoonFill: (height?:number, width?:number) => HTMLElement;
+export const cloudMoonFill: (height?:number, width?:number, className?:string) => HTMLElement;

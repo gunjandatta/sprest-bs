@@ -1,1 +1,1 @@
-export const hddFill: (height?:number, width?:number) => HTMLElement;
+export const hddFill: (height?:number, width?:number, className?:string) => HTMLElement;

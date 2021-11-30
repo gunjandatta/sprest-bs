@@ -1,1 +1,1 @@
-export const arrowUpRightSquare: (height?:number, width?:number) => HTMLElement;
+export const arrowUpRightSquare: (height?:number, width?:number, className?:string) => HTMLElement;

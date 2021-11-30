@@ -1,1 +1,1 @@
-export const layoutTextSidebar: (height?:number, width?:number) => HTMLElement;
+export const layoutTextSidebar: (height?:number, width?:number, className?:string) => HTMLElement;

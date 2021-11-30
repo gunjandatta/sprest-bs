@@ -1,1 +1,1 @@
-export const trashFill: (height?:number, width?:number) => HTMLElement;
+export const trashFill: (height?:number, width?:number, className?:string) => HTMLElement;

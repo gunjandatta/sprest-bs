@@ -1,1 +1,1 @@
-export const projectorFill: (height?:number, width?:number) => HTMLElement;
+export const projectorFill: (height?:number, width?:number, className?:string) => HTMLElement;

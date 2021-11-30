@@ -1,1 +1,1 @@
-export const arrowBarRight: (height?:number, width?:number) => HTMLElement;
+export const arrowBarRight: (height?:number, width?:number, className?:string) => HTMLElement;

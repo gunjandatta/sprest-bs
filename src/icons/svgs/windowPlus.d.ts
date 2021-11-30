@@ -1,1 +1,1 @@
-export const windowPlus: (height?:number, width?:number) => HTMLElement;
+export const windowPlus: (height?:number, width?:number, className?:string) => HTMLElement;

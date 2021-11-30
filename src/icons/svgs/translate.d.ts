@@ -1,1 +1,1 @@
-export const translate: (height?:number, width?:number) => HTMLElement;
+export const translate: (height?:number, width?:number, className?:string) => HTMLElement;

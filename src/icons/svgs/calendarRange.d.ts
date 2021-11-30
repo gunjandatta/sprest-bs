@@ -1,1 +1,1 @@
-export const calendarRange: (height?:number, width?:number) => HTMLElement;
+export const calendarRange: (height?:number, width?:number, className?:string) => HTMLElement;

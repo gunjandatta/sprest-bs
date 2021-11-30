@@ -1,1 +1,1 @@
-export const fileSlides: (height?:number, width?:number) => HTMLElement;
+export const fileSlides: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const houseDoor: (height?:number, width?:number) => HTMLElement;
+export const houseDoor: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const personVideo3: (height?:number, width?:number) => HTMLElement;
+export const personVideo3: (height?:number, width?:number, className?:string) => HTMLElement;

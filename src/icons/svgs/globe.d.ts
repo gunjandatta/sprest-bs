@@ -1,1 +1,1 @@
-export const globe: (height?:number, width?:number) => HTMLElement;
+export const globe: (height?:number, width?:number, className?:string) => HTMLElement;

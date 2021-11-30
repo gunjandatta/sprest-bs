@@ -1,1 +1,1 @@
-export const triangle: (height?:number, width?:number) => HTMLElement;
+export const triangle: (height?:number, width?:number, className?:string) => HTMLElement;

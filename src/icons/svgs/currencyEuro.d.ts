@@ -1,1 +1,1 @@
-export const currencyEuro: (height?:number, width?:number) => HTMLElement;
+export const currencyEuro: (height?:number, width?:number, className?:string) => HTMLElement;

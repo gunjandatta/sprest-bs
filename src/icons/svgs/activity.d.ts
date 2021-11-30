@@ -1,1 +1,1 @@
-export const activity: (height?:number, width?:number) => HTMLElement;
+export const activity: (height?:number, width?:number, className?:string) => HTMLElement;

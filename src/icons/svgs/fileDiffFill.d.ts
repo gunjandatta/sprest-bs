@@ -1,1 +1,1 @@
-export const fileDiffFill: (height?:number, width?:number) => HTMLElement;
+export const fileDiffFill: (height?:number, width?:number, className?:string) => HTMLElement;

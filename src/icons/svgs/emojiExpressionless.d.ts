@@ -1,1 +1,1 @@
-export const emojiExpressionless: (height?:number, width?:number) => HTMLElement;
+export const emojiExpressionless: (height?:number, width?:number, className?:string) => HTMLElement;

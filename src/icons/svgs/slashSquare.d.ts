@@ -1,1 +1,1 @@
-export const slashSquare: (height?:number, width?:number) => HTMLElement;
+export const slashSquare: (height?:number, width?:number, className?:string) => HTMLElement;

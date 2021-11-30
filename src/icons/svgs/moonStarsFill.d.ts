@@ -1,1 +1,1 @@
-export const moonStarsFill: (height?:number, width?:number) => HTMLElement;
+export const moonStarsFill: (height?:number, width?:number, className?:string) => HTMLElement;

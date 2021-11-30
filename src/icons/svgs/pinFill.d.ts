@@ -1,1 +1,1 @@
-export const pinFill: (height?:number, width?:number) => HTMLElement;
+export const pinFill: (height?:number, width?:number, className?:string) => HTMLElement;

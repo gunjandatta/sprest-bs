@@ -1,1 +1,1 @@
-export const cardImage: (height?:number, width?:number) => HTMLElement;
+export const cardImage: (height?:number, width?:number, className?:string) => HTMLElement;

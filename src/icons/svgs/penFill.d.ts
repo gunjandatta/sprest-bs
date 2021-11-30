@@ -1,1 +1,1 @@
-export const penFill: (height?:number, width?:number) => HTMLElement;
+export const penFill: (height?:number, width?:number, className?:string) => HTMLElement;

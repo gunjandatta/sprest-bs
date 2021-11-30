@@ -1,1 +1,1 @@
-export const sim: (height?:number, width?:number) => HTMLElement;
+export const sim: (height?:number, width?:number, className?:string) => HTMLElement;

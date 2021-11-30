@@ -1,1 +1,1 @@
-export const pcDisplay: (height?:number, width?:number) => HTMLElement;
+export const pcDisplay: (height?:number, width?:number, className?:string) => HTMLElement;

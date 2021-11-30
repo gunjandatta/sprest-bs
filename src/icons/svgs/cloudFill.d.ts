@@ -1,1 +1,1 @@
-export const cloudFill: (height?:number, width?:number) => HTMLElement;
+export const cloudFill: (height?:number, width?:number, className?:string) => HTMLElement;

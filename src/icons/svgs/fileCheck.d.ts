@@ -1,1 +1,1 @@
-export const fileCheck: (height?:number, width?:number) => HTMLElement;
+export const fileCheck: (height?:number, width?:number, className?:string) => HTMLElement;

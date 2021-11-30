@@ -1,1 +1,1 @@
-export const stop: (height?:number, width?:number) => HTMLElement;
+export const stop: (height?:number, width?:number, className?:string) => HTMLElement;

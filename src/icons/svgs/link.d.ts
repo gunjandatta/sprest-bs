@@ -1,1 +1,1 @@
-export const link: (height?:number, width?:number) => HTMLElement;
+export const link: (height?:number, width?:number, className?:string) => HTMLElement;

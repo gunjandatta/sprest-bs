@@ -1,1 +1,1 @@
-export const compass: (height?:number, width?:number) => HTMLElement;
+export const compass: (height?:number, width?:number, className?:string) => HTMLElement;

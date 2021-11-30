@@ -1,1 +1,1 @@
-export const windowDash: (height?:number, width?:number) => HTMLElement;
+export const windowDash: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const exclamationOctagon: (height?:number, width?:number) => HTMLElement;
+export const exclamationOctagon: (height?:number, width?:number, className?:string) => HTMLElement;

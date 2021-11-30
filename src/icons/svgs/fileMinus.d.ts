@@ -1,1 +1,1 @@
-export const fileMinus: (height?:number, width?:number) => HTMLElement;
+export const fileMinus: (height?:number, width?:number, className?:string) => HTMLElement;

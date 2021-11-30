@@ -1,1 +1,1 @@
-export const sendExclamation: (height?:number, width?:number) => HTMLElement;
+export const sendExclamation: (height?:number, width?:number, className?:string) => HTMLElement;

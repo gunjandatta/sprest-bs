@@ -1,1 +1,1 @@
-export const filter: (height?:number, width?:number) => HTMLElement;
+export const filter: (height?:number, width?:number, className?:string) => HTMLElement;

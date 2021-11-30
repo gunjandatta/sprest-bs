@@ -1,1 +1,1 @@
-export const pentagonFill: (height?:number, width?:number) => HTMLElement;
+export const pentagonFill: (height?:number, width?:number, className?:string) => HTMLElement;

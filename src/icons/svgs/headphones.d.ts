@@ -1,1 +1,1 @@
-export const headphones: (height?:number, width?:number) => HTMLElement;
+export const headphones: (height?:number, width?:number, className?:string) => HTMLElement;

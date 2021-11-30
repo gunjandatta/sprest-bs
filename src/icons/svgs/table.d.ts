@@ -1,1 +1,1 @@
-export const table: (height?:number, width?:number) => HTMLElement;
+export const table: (height?:number, width?:number, className?:string) => HTMLElement;

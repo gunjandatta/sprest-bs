@@ -1,1 +1,1 @@
-export const chatLeft: (height?:number, width?:number) => HTMLElement;
+export const chatLeft: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const textRight: (height?:number, width?:number) => HTMLElement;
+export const textRight: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const boombox: (height?:number, width?:number) => HTMLElement;
+export const boombox: (height?:number, width?:number, className?:string) => HTMLElement;

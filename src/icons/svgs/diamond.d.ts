@@ -1,1 +1,1 @@
-export const diamond: (height?:number, width?:number) => HTMLElement;
+export const diamond: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const windowDock: (height?:number, width?:number) => HTMLElement;
+export const windowDock: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const journalBookmark: (height?:number, width?:number) => HTMLElement;
+export const journalBookmark: (height?:number, width?:number, className?:string) => HTMLElement;

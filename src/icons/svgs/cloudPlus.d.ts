@@ -1,1 +1,1 @@
-export const cloudPlus: (height?:number, width?:number) => HTMLElement;
+export const cloudPlus: (height?:number, width?:number, className?:string) => HTMLElement;

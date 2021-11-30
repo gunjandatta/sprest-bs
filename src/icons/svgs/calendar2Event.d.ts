@@ -1,1 +1,1 @@
-export const calendar2Event: (height?:number, width?:number) => HTMLElement;
+export const calendar2Event: (height?:number, width?:number, className?:string) => HTMLElement;

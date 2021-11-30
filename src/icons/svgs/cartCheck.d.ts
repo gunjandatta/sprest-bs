@@ -1,1 +1,1 @@
-export const cartCheck: (height?:number, width?:number) => HTMLElement;
+export const cartCheck: (height?:number, width?:number, className?:string) => HTMLElement;

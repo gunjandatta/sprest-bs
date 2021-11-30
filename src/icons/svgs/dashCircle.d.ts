@@ -1,1 +1,1 @@
-export const dashCircle: (height?:number, width?:number) => HTMLElement;
+export const dashCircle: (height?:number, width?:number, className?:string) => HTMLElement;

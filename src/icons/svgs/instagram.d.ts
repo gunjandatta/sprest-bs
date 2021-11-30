@@ -1,1 +1,1 @@
-export const instagram: (height?:number, width?:number) => HTMLElement;
+export const instagram: (height?:number, width?:number, className?:string) => HTMLElement;

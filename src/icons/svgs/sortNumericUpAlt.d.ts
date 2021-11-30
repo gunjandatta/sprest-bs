@@ -1,1 +1,1 @@
-export const sortNumericUpAlt: (height?:number, width?:number) => HTMLElement;
+export const sortNumericUpAlt: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const threeDotsVertical: (height?:number, width?:number) => HTMLElement;
+export const threeDotsVertical: (height?:number, width?:number, className?:string) => HTMLElement;

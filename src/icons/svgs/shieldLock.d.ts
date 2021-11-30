@@ -1,1 +1,1 @@
-export const shieldLock: (height?:number, width?:number) => HTMLElement;
+export const shieldLock: (height?:number, width?:number, className?:string) => HTMLElement;

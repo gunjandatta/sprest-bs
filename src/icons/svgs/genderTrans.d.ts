@@ -1,1 +1,1 @@
-export const genderTrans: (height?:number, width?:number) => HTMLElement;
+export const genderTrans: (height?:number, width?:number, className?:string) => HTMLElement;

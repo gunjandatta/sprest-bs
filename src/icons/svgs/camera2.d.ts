@@ -1,1 +1,1 @@
-export const camera2: (height?:number, width?:number) => HTMLElement;
+export const camera2: (height?:number, width?:number, className?:string) => HTMLElement;

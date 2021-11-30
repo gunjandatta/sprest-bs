@@ -1,1 +1,1 @@
-export const bootstrap: (height?:number, width?:number) => HTMLElement;
+export const bootstrap: (height?:number, width?:number, className?:string) => HTMLElement;

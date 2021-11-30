@@ -1,1 +1,1 @@
-export const modem: (height?:number, width?:number) => HTMLElement;
+export const modem: (height?:number, width?:number, className?:string) => HTMLElement;

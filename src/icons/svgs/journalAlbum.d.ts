@@ -1,1 +1,1 @@
-export const journalAlbum: (height?:number, width?:number) => HTMLElement;
+export const journalAlbum: (height?:number, width?:number, className?:string) => HTMLElement;

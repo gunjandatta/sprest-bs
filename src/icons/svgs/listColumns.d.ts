@@ -1,1 +1,1 @@
-export const listColumns: (height?:number, width?:number) => HTMLElement;
+export const listColumns: (height?:number, width?:number, className?:string) => HTMLElement;

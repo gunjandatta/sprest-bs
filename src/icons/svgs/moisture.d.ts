@@ -1,1 +1,1 @@
-export const moisture: (height?:number, width?:number) => HTMLElement;
+export const moisture: (height?:number, width?:number, className?:string) => HTMLElement;

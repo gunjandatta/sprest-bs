@@ -1,1 +1,1 @@
-export const joystick: (height?:number, width?:number) => HTMLElement;
+export const joystick: (height?:number, width?:number, className?:string) => HTMLElement;

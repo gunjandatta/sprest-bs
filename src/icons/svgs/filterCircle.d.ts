@@ -1,1 +1,1 @@
-export const filterCircle: (height?:number, width?:number) => HTMLElement;
+export const filterCircle: (height?:number, width?:number, className?:string) => HTMLElement;

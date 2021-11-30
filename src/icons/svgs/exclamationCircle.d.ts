@@ -1,1 +1,1 @@
-export const exclamationCircle: (height?:number, width?:number) => HTMLElement;
+export const exclamationCircle: (height?:number, width?:number, className?:string) => HTMLElement;

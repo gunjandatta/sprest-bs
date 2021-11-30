@@ -1,1 +1,1 @@
-export const dice1Fill: (height?:number, width?:number) => HTMLElement;
+export const dice1Fill: (height?:number, width?:number, className?:string) => HTMLElement;

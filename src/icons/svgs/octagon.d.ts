@@ -1,1 +1,1 @@
-export const octagon: (height?:number, width?:number) => HTMLElement;
+export const octagon: (height?:number, width?:number, className?:string) => HTMLElement;

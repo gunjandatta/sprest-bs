@@ -1,1 +1,1 @@
-export const fileEarmarkBarGraph: (height?:number, width?:number) => HTMLElement;
+export const fileEarmarkBarGraph: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const graphUp: (height?:number, width?:number) => HTMLElement;
+export const graphUp: (height?:number, width?:number, className?:string) => HTMLElement;

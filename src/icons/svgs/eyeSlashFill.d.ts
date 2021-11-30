@@ -1,1 +1,1 @@
-export const eyeSlashFill: (height?:number, width?:number) => HTMLElement;
+export const eyeSlashFill: (height?:number, width?:number, className?:string) => HTMLElement;

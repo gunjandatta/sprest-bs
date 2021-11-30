@@ -1,1 +1,1 @@
-export const fileArrowUp: (height?:number, width?:number) => HTMLElement;
+export const fileArrowUp: (height?:number, width?:number, className?:string) => HTMLElement;

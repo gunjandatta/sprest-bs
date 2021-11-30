@@ -1,1 +1,1 @@
-export const playFill: (height?:number, width?:number) => HTMLElement;
+export const playFill: (height?:number, width?:number, className?:string) => HTMLElement;

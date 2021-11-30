@@ -1,1 +1,1 @@
-export const bookmarkHeartFill: (height?:number, width?:number) => HTMLElement;
+export const bookmarkHeartFill: (height?:number, width?:number, className?:string) => HTMLElement;

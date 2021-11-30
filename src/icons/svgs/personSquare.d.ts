@@ -1,1 +1,1 @@
-export const personSquare: (height?:number, width?:number) => HTMLElement;
+export const personSquare: (height?:number, width?:number, className?:string) => HTMLElement;

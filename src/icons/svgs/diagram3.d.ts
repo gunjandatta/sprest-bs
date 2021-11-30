@@ -1,1 +1,1 @@
-export const diagram3: (height?:number, width?:number) => HTMLElement;
+export const diagram3: (height?:number, width?:number, className?:string) => HTMLElement;

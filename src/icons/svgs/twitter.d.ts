@@ -1,1 +1,1 @@
-export const twitter: (height?:number, width?:number) => HTMLElement;
+export const twitter: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const hammer: (height?:number, width?:number) => HTMLElement;
+export const hammer: (height?:number, width?:number, className?:string) => HTMLElement;

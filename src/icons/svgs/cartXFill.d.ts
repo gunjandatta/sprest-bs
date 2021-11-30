@@ -1,1 +1,1 @@
-export const cartXFill: (height?:number, width?:number) => HTMLElement;
+export const cartXFill: (height?:number, width?:number, className?:string) => HTMLElement;

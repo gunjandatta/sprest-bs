@@ -1,1 +1,1 @@
-export const magic: (height?:number, width?:number) => HTMLElement;
+export const magic: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const images: (height?:number, width?:number) => HTMLElement;
+export const images: (height?:number, width?:number, className?:string) => HTMLElement;

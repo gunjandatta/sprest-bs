@@ -1,1 +1,1 @@
-export const listCheck: (height?:number, width?:number) => HTMLElement;
+export const listCheck: (height?:number, width?:number, className?:string) => HTMLElement;

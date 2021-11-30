@@ -1,1 +1,1 @@
-export const stopwatchFill: (height?:number, width?:number) => HTMLElement;
+export const stopwatchFill: (height?:number, width?:number, className?:string) => HTMLElement;

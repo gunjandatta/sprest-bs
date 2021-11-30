@@ -1,1 +1,1 @@
-export const infoCircleFill: (height?:number, width?:number) => HTMLElement;
+export const infoCircleFill: (height?:number, width?:number, className?:string) => HTMLElement;

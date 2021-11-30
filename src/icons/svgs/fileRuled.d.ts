@@ -1,1 +1,1 @@
-export const fileRuled: (height?:number, width?:number) => HTMLElement;
+export const fileRuled: (height?:number, width?:number, className?:string) => HTMLElement;

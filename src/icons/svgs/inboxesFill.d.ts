@@ -1,1 +1,1 @@
-export const inboxesFill: (height?:number, width?:number) => HTMLElement;
+export const inboxesFill: (height?:number, width?:number, className?:string) => HTMLElement;

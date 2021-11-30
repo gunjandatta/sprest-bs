@@ -1,1 +1,1 @@
-export const filePlay: (height?:number, width?:number) => HTMLElement;
+export const filePlay: (height?:number, width?:number, className?:string) => HTMLElement;

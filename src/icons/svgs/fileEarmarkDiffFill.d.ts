@@ -1,1 +1,1 @@
-export const fileEarmarkDiffFill: (height?:number, width?:number) => HTMLElement;
+export const fileEarmarkDiffFill: (height?:number, width?:number, className?:string) => HTMLElement;

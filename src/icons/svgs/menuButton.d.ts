@@ -1,1 +1,1 @@
-export const menuButton: (height?:number, width?:number) => HTMLElement;
+export const menuButton: (height?:number, width?:number, className?:string) => HTMLElement;

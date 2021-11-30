@@ -1,1 +1,1 @@
-export const fileEarmarkRichtext: (height?:number, width?:number) => HTMLElement;
+export const fileEarmarkRichtext: (height?:number, width?:number, className?:string) => HTMLElement;

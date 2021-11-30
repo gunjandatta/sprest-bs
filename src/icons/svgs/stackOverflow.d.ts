@@ -1,1 +1,1 @@
-export const stackOverflow: (height?:number, width?:number) => HTMLElement;
+export const stackOverflow: (height?:number, width?:number, className?:string) => HTMLElement;

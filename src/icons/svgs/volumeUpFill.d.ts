@@ -1,1 +1,1 @@
-export const volumeUpFill: (height?:number, width?:number) => HTMLElement;
+export const volumeUpFill: (height?:number, width?:number, className?:string) => HTMLElement;

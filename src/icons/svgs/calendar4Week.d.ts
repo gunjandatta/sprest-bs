@@ -1,1 +1,1 @@
-export const calendar4Week: (height?:number, width?:number) => HTMLElement;
+export const calendar4Week: (height?:number, width?:number, className?:string) => HTMLElement;

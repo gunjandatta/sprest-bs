@@ -1,1 +1,1 @@
-export const cloudMinusFill: (height?:number, width?:number) => HTMLElement;
+export const cloudMinusFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const graphUpArrow: (height?:number, width?:number) => HTMLElement;
+export const graphUpArrow: (height?:number, width?:number, className?:string) => HTMLElement;

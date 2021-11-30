@@ -1,1 +1,1 @@
-export const ticket: (height?:number, width?:number) => HTMLElement;
+export const ticket: (height?:number, width?:number, className?:string) => HTMLElement;

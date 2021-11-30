@@ -1,1 +1,1 @@
-export const emojiSmileUpsideDownFill: (height?:number, width?:number) => HTMLElement;
+export const emojiSmileUpsideDownFill: (height?:number, width?:number, className?:string) => HTMLElement;

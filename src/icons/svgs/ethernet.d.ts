@@ -1,1 +1,1 @@
-export const ethernet: (height?:number, width?:number) => HTMLElement;
+export const ethernet: (height?:number, width?:number, className?:string) => HTMLElement;

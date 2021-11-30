@@ -1,1 +1,1 @@
-export const telephoneForward: (height?:number, width?:number) => HTMLElement;
+export const telephoneForward: (height?:number, width?:number, className?:string) => HTMLElement;

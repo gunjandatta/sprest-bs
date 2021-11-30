@@ -1,1 +1,1 @@
-export const archiveFill: (height?:number, width?:number) => HTMLElement;
+export const archiveFill: (height?:number, width?:number, className?:string) => HTMLElement;

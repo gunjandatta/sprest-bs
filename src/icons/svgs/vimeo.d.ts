@@ -1,1 +1,1 @@
-export const vimeo: (height?:number, width?:number) => HTMLElement;
+export const vimeo: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const infoLg: (height?:number, width?:number) => HTMLElement;
+export const infoLg: (height?:number, width?:number, className?:string) => HTMLElement;

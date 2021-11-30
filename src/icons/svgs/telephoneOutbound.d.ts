@@ -1,1 +1,1 @@
-export const telephoneOutbound: (height?:number, width?:number) => HTMLElement;
+export const telephoneOutbound: (height?:number, width?:number, className?:string) => HTMLElement;

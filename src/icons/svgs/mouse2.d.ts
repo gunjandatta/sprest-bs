@@ -1,1 +1,1 @@
-export const mouse2: (height?:number, width?:number) => HTMLElement;
+export const mouse2: (height?:number, width?:number, className?:string) => HTMLElement;

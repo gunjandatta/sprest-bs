@@ -1,1 +1,1 @@
-export const thunderbolt: (height?:number, width?:number) => HTMLElement;
+export const thunderbolt: (height?:number, width?:number, className?:string) => HTMLElement;

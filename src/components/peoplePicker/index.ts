@@ -18,38 +18,47 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
         let addButton = (userInfo?: Types.SP.User | Types.SP.Group) => {
             // See if the picker is read only
             if (props.readOnly) {
-                // Render a button
-                Components.Button({
+                // Render a tooltip
+                // Render a tooltip
+                let tooltip = Components.Tooltip({
                     el: elSelectedUsers,
-                    className: "mr-1 mb-1",
-                    isSmall: true,
-                    text: userInfo.Title
+                    content: userInfo.LoginName,
+                    placement: Components.TooltipPlacements.Left,
+                    btnProps: {
+                        className: "mr-1 mb-1",
+                        isSmall: true,
+                        text: userInfo.Title
+                    }
                 });
             } else {
-                // Render a button
-                let btn = Components.Button({
-                    data: userInfo,
+                // Render a tooltip
+                let tooltip = Components.Tooltip({
                     el: elSelectedUsers,
-                    className: "mr-1 mb-1",
-                    isSmall: true,
-                    text: userInfo.Title,
-                    badge: {
-                        className: "ml-2",
-                        content: "&times;",
-                        isPill: true,
-                        type: Components.BadgeTypes.Light,
-                        onClick: () => {
-                            // Remove the button
-                            elSelectedUsers.removeChild(btn.el);
+                    content: userInfo.LoginName,
+                    placement: Components.TooltipPlacements.Left,
+                    btnProps: {
+                        data: userInfo,
+                        className: "mr-1 mb-1",
+                        isSmall: true,
+                        text: userInfo.Title,
+                        badge: {
+                            className: "ml-2",
+                            content: "&times;",
+                            isPill: true,
+                            type: Components.BadgeTypes.Light,
+                            onClick: () => {
+                                // Remove the button
+                                elSelectedUsers.removeChild(tooltip.button.el);
 
-                            // Call the event
-                            props.onChange ? props.onChange(obj.getValue()) : null;
+                                // Call the event
+                                props.onChange ? props.onChange(obj.getValue()) : null;
+                            }
                         }
                     }
                 });
 
                 // Set the data attribute
-                btn.el.setAttribute("data-user", JSON.stringify(userInfo.stringify()));
+                tooltip.button.el.setAttribute("data-user", JSON.stringify(userInfo.stringify()));
             }
 
             // Call the event
@@ -147,6 +156,13 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                         elItem.innerHTML = user.DisplayText;
                         elItem.setAttribute("data-user", JSON.stringify(user));
                         el.appendChild(elItem);
+
+                        // Create a tooltip for this item
+                        Components.Tooltip({
+                            target: elItem,
+                            content: user.Key,
+                            placement: Components.TooltipPlacements.Left
+                        });
 
                         // Set the click event
                         elItem.addEventListener("click", ev => {

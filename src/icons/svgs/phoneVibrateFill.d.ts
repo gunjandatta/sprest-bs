@@ -1,1 +1,1 @@
-export const phoneVibrateFill: (height?:number, width?:number) => HTMLElement;
+export const phoneVibrateFill: (height?:number, width?:number, className?:string) => HTMLElement;

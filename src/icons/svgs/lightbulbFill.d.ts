@@ -1,1 +1,1 @@
-export const lightbulbFill: (height?:number, width?:number) => HTMLElement;
+export const lightbulbFill: (height?:number, width?:number, className?:string) => HTMLElement;

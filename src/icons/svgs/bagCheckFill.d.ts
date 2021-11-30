@@ -1,1 +1,1 @@
-export const bagCheckFill: (height?:number, width?:number) => HTMLElement;
+export const bagCheckFill: (height?:number, width?:number, className?:string) => HTMLElement;

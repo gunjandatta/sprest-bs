@@ -1,1 +1,1 @@
-export const usbMicro: (height?:number, width?:number) => HTMLElement;
+export const usbMicro: (height?:number, width?:number, className?:string) => HTMLElement;

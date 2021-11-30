@@ -1,1 +1,1 @@
-export const thermometerHigh: (height?:number, width?:number) => HTMLElement;
+export const thermometerHigh: (height?:number, width?:number, className?:string) => HTMLElement;

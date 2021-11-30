@@ -1,1 +1,1 @@
-export const umbrella: (height?:number, width?:number) => HTMLElement;
+export const umbrella: (height?:number, width?:number, className?:string) => HTMLElement;

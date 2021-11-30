@@ -1,1 +1,1 @@
-export const clipboardCheck: (height?:number, width?:number) => HTMLElement;
+export const clipboardCheck: (height?:number, width?:number, className?:string) => HTMLElement;

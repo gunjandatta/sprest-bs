@@ -1,1 +1,1 @@
-export const plus: (height?:number, width?:number) => HTMLElement;
+export const plus: (height?:number, width?:number, className?:string) => HTMLElement;

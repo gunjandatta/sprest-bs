@@ -1,1 +1,1 @@
-export const sortUp: (height?:number, width?:number) => HTMLElement;
+export const sortUp: (height?:number, width?:number, className?:string) => HTMLElement;

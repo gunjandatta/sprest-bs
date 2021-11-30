@@ -1,1 +1,1 @@
-export const replyFill: (height?:number, width?:number) => HTMLElement;
+export const replyFill: (height?:number, width?:number, className?:string) => HTMLElement;

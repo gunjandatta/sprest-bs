@@ -1,1 +1,1 @@
-export const handThumbsUp: (height?:number, width?:number) => HTMLElement;
+export const handThumbsUp: (height?:number, width?:number, className?:string) => HTMLElement;

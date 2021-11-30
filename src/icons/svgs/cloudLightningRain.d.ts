@@ -1,1 +1,1 @@
-export const cloudLightningRain: (height?:number, width?:number) => HTMLElement;
+export const cloudLightningRain: (height?:number, width?:number, className?:string) => HTMLElement;

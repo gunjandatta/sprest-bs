@@ -1,1 +1,1 @@
-export const borderCenter: (height?:number, width?:number) => HTMLElement;
+export const borderCenter: (height?:number, width?:number, className?:string) => HTMLElement;

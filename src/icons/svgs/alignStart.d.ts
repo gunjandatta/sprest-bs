@@ -1,1 +1,1 @@
-export const alignStart: (height?:number, width?:number) => HTMLElement;
+export const alignStart: (height?:number, width?:number, className?:string) => HTMLElement;

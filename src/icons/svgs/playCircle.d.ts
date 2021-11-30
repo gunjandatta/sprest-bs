@@ -1,1 +1,1 @@
-export const playCircle: (height?:number, width?:number) => HTMLElement;
+export const playCircle: (height?:number, width?:number, className?:string) => HTMLElement;

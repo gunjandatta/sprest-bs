@@ -1,1 +1,1 @@
-export const viewList: (height?:number, width?:number) => HTMLElement;
+export const viewList: (height?:number, width?:number, className?:string) => HTMLElement;

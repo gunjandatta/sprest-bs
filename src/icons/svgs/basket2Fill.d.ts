@@ -1,1 +1,1 @@
-export const basket2Fill: (height?:number, width?:number) => HTMLElement;
+export const basket2Fill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const signpostFill: (height?:number, width?:number) => HTMLElement;
+export const signpostFill: (height?:number, width?:number, className?:string) => HTMLElement;

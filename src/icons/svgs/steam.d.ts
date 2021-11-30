@@ -1,1 +1,1 @@
-export const steam: (height?:number, width?:number) => HTMLElement;
+export const steam: (height?:number, width?:number, className?:string) => HTMLElement;

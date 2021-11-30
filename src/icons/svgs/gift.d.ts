@@ -1,1 +1,1 @@
-export const gift: (height?:number, width?:number) => HTMLElement;
+export const gift: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const quora: (height?:number, width?:number) => HTMLElement;
+export const quora: (height?:number, width?:number, className?:string) => HTMLElement;

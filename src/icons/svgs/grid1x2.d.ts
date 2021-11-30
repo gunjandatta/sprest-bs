@@ -1,1 +1,1 @@
-export const grid1x2: (height?:number, width?:number) => HTMLElement;
+export const grid1x2: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const cloudy: (height?:number, width?:number) => HTMLElement;
+export const cloudy: (height?:number, width?:number, className?:string) => HTMLElement;

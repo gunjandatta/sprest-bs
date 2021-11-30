@@ -1,1 +1,1 @@
-export const qrCodeScan: (height?:number, width?:number) => HTMLElement;
+export const qrCodeScan: (height?:number, width?:number, className?:string) => HTMLElement;

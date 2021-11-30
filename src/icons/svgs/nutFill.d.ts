@@ -1,1 +1,1 @@
-export const nutFill: (height?:number, width?:number) => HTMLElement;
+export const nutFill: (height?:number, width?:number, className?:string) => HTMLElement;

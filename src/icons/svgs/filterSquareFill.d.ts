@@ -1,1 +1,1 @@
-export const filterSquareFill: (height?:number, width?:number) => HTMLElement;
+export const filterSquareFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const bandaidFill: (height?:number, width?:number) => HTMLElement;
+export const bandaidFill: (height?:number, width?:number, className?:string) => HTMLElement;

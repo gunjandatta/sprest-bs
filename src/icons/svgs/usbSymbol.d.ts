@@ -1,1 +1,1 @@
-export const usbSymbol: (height?:number, width?:number) => HTMLElement;
+export const usbSymbol: (height?:number, width?:number, className?:string) => HTMLElement;

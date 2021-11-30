@@ -1,1 +1,1 @@
-export const justifyLeft: (height?:number, width?:number) => HTMLElement;
+export const justifyLeft: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const cloudCheck: (height?:number, width?:number) => HTMLElement;
+export const cloudCheck: (height?:number, width?:number, className?:string) => HTMLElement;

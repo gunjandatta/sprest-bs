@@ -1,1 +1,1 @@
-export const shop: (height?:number, width?:number) => HTMLElement;
+export const shop: (height?:number, width?:number, className?:string) => HTMLElement;

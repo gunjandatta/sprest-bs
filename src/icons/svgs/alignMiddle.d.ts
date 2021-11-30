@@ -1,1 +1,1 @@
-export const alignMiddle: (height?:number, width?:number) => HTMLElement;
+export const alignMiddle: (height?:number, width?:number, className?:string) => HTMLElement;

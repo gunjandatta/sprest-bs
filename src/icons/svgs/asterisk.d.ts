@@ -1,1 +1,1 @@
-export const asterisk: (height?:number, width?:number) => HTMLElement;
+export const asterisk: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const eyeFill: (height?:number, width?:number) => HTMLElement;
+export const eyeFill: (height?:number, width?:number, className?:string) => HTMLElement;

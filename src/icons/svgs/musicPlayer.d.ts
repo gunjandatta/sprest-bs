@@ -1,1 +1,1 @@
-export const musicPlayer: (height?:number, width?:number) => HTMLElement;
+export const musicPlayer: (height?:number, width?:number, className?:string) => HTMLElement;

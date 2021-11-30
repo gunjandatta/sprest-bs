@@ -1,1 +1,1 @@
-export const displayFill: (height?:number, width?:number) => HTMLElement;
+export const displayFill: (height?:number, width?:number, className?:string) => HTMLElement;

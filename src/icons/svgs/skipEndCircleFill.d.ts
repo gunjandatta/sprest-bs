@@ -1,1 +1,1 @@
-export const skipEndCircleFill: (height?:number, width?:number) => HTMLElement;
+export const skipEndCircleFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const inboxes: (height?:number, width?:number) => HTMLElement;
+export const inboxes: (height?:number, width?:number, className?:string) => HTMLElement;

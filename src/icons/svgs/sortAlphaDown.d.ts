@@ -1,1 +1,1 @@
-export const sortAlphaDown: (height?:number, width?:number) => HTMLElement;
+export const sortAlphaDown: (height?:number, width?:number, className?:string) => HTMLElement;

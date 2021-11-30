@@ -1,1 +1,1 @@
-export const bezier2: (height?:number, width?:number) => HTMLElement;
+export const bezier2: (height?:number, width?:number, className?:string) => HTMLElement;

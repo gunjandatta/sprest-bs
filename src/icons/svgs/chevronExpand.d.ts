@@ -1,1 +1,1 @@
-export const chevronExpand: (height?:number, width?:number) => HTMLElement;
+export const chevronExpand: (height?:number, width?:number, className?:string) => HTMLElement;

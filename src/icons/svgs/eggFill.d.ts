@@ -1,1 +1,1 @@
-export const eggFill: (height?:number, width?:number) => HTMLElement;
+export const eggFill: (height?:number, width?:number, className?:string) => HTMLElement;

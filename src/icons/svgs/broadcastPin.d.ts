@@ -1,1 +1,1 @@
-export const broadcastPin: (height?:number, width?:number) => HTMLElement;
+export const broadcastPin: (height?:number, width?:number, className?:string) => HTMLElement;

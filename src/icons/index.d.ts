@@ -24,7 +24,7 @@
  * document.querySelector("#icon").appendChild(elIcon);
  * ```
  */
-export const Icons: (iconType:number, height?:number, width?:number) => HTMLElement;
+export const Icons: (iconType:number, height?:number, width?:number, className?:string) => HTMLElement;
 
 /**
  * Icon Types

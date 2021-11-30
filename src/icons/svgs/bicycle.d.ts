@@ -1,1 +1,1 @@
-export const bicycle: (height?:number, width?:number) => HTMLElement;
+export const bicycle: (height?:number, width?:number, className?:string) => HTMLElement;

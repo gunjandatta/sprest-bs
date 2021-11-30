@@ -1,1 +1,1 @@
-export const facebook: (height?:number, width?:number) => HTMLElement;
+export const facebook: (height?:number, width?:number, className?:string) => HTMLElement;

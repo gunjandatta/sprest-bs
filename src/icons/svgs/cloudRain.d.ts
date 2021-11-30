@@ -1,1 +1,1 @@
-export const cloudRain: (height?:number, width?:number) => HTMLElement;
+export const cloudRain: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,1 @@
-export const bucket: (height?:number, width?:number) => HTMLElement;
+export const bucket: (height?:number, width?:number, className?:string) => HTMLElement;

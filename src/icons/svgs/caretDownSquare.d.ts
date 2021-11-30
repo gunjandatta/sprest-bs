@@ -1,1 +1,1 @@
-export const caretDownSquare: (height?:number, width?:number) => HTMLElement;
+export const caretDownSquare: (height?:number, width?:number, className?:string) => HTMLElement;

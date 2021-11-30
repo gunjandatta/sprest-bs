@@ -1,1 +1,1 @@
-export const emojiSunglassesFill: (height?:number, width?:number) => HTMLElement;
+export const emojiSunglassesFill: (height?:number, width?:number, className?:string) => HTMLElement;

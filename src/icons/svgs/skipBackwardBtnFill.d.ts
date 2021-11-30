@@ -1,1 +1,1 @@
-export const skipBackwardBtnFill: (height?:number, width?:number) => HTMLElement;
+export const skipBackwardBtnFill: (height?:number, width?:number, className?:string) => HTMLElement;

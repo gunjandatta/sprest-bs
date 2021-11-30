@@ -1,1 +1,1 @@
-export const slashCircleFill: (height?:number, width?:number) => HTMLElement;
+export const slashCircleFill: (height?:number, width?:number, className?:string) => HTMLElement;

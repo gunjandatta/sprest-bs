@@ -1,1 +1,1 @@
-export const usbCFill: (height?:number, width?:number) => HTMLElement;
+export const usbCFill: (height?:number, width?:number, className?:string) => HTMLElement;

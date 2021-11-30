@@ -1,1 +1,1 @@
-export const nut: (height?:number, width?:number) => HTMLElement;
+export const nut: (height?:number, width?:number, className?:string) => HTMLElement;

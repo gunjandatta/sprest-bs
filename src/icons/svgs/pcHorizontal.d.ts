@@ -1,1 +1,1 @@
-export const pcHorizontal: (height?:number, width?:number) => HTMLElement;
+export const pcHorizontal: (height?:number, width?:number, className?:string) => HTMLElement;

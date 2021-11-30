@@ -1,1 +1,1 @@
-export const building: (height?:number, width?:number) => HTMLElement;
+export const building: (height?:number, width?:number, className?:string) => HTMLElement;

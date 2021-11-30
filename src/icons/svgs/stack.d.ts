@@ -1,1 +1,1 @@
-export const stack: (height?:number, width?:number) => HTMLElement;
+export const stack: (height?:number, width?:number, className?:string) => HTMLElement;

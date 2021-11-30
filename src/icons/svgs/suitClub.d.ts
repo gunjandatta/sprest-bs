@@ -1,1 +1,1 @@
-export const suitClub: (height?:number, width?:number) => HTMLElement;
+export const suitClub: (height?:number, width?:number, className?:string) => HTMLElement;

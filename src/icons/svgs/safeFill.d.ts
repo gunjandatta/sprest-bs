@@ -1,1 +1,1 @@
-export const safeFill: (height?:number, width?:number) => HTMLElement;
+export const safeFill: (height?:number, width?:number, className?:string) => HTMLElement;

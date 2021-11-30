@@ -1,1 +1,1 @@
-export const upload: (height?:number, width?:number) => HTMLElement;
+export const upload: (height?:number, width?:number, className?:string) => HTMLElement;

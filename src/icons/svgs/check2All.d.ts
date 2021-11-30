@@ -1,1 +1,1 @@
-export const check2All: (height?:number, width?:number) => HTMLElement;
+export const check2All: (height?:number, width?:number, className?:string) => HTMLElement;
