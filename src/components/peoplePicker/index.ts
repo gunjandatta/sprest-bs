@@ -21,12 +21,15 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 // Render a tooltip
                 let tooltip = Components.Tooltip({
                     el: elSelectedUsers,
-                    content: '<small class="text-white">' + userInfo.LoginName + '</small>',
+                    content: [
+                        '<div class="text-white text-wrap text-break">',
+                        '<small>' + user.EntityData.Email + '</small>',
+                        '<br />',
+                        '<small>' + user.Key + '</small>',
+                        '</div>'
+                    ].join('\n'),
                     placement: Components.TooltipPlacements.Top,
                     type: Components.TooltipTypes.Primary,
-                    options: {
-                        maxWidth: "none"
-                    },
                     btnProps: {
                         className: "me-1 mb-1",
                         isSmall: true,
@@ -38,12 +41,15 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 // Render a tooltip
                 let tooltip = Components.Tooltip({
                     el: elSelectedUsers,
-                    content: '<small class="text-white">' + userInfo.LoginName + '</small>',
+                    content: [
+                        '<div class="text-white text-wrap text-break">',
+                        '<small>' + user.EntityData.Email + '</small>',
+                        '<br />',
+                        '<small>' + user.Key + '</small>',
+                        '</div>'
+                    ].join('\n'),
                     placement: Components.TooltipPlacements.Top,
                     type: Components.TooltipTypes.Primary,
-                    options: {
-                        maxWidth: "none"
-                    },
                     btnProps: {
                         data: userInfo,
                         className: "me-1 mb-1",
@@ -169,12 +175,15 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                         // Create a tooltip for this item
                         Components.Tooltip({
                             target: elItem,
-                            content: '<small class="text-white">' + user.Key + '</small>',
+                            content: [
+                                '<div class="text-white text-wrap text-break">',
+                                '<small>' + user.EntityData.Email + '</small>',
+                                '<br />',
+                                '<small>' + user.Key + '</small>',
+                                '</div>'
+                            ].join('\n'),
                             placement: Components.TooltipPlacements.Left,
-                            type: Components.TooltipTypes.Primary,
-                            options: {
-                                maxWidth: "none"
-                            }
+                            type: Components.TooltipTypes.Primary
                         });
 
                         // Set the click event
