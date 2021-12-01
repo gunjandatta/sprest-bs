@@ -23,9 +23,9 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                     el: elSelectedUsers,
                     content: [
                         '<div class="text-white text-wrap text-break">',
-                        '<small>' + user.EntityData.Email + '</small>',
+                        '<small>' + (userInfo["Email"] || userInfo["UserPrincipalName"]) + '</small>',
                         '<br />',
-                        '<small>' + user.Key + '</small>',
+                        '<small>' + userInfo.LoginName + '</small>',
                         '</div>'
                     ].join('\n'),
                     placement: Components.TooltipPlacements.Top,
@@ -43,9 +43,9 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                     el: elSelectedUsers,
                     content: [
                         '<div class="text-white text-wrap text-break">',
-                        '<small>' + user.EntityData.Email + '</small>',
+                        '<small>' + (userInfo["Email"] || userInfo["UserPrincipalName"]) + '</small>',
                         '<br />',
-                        '<small>' + user.Key + '</small>',
+                        '<small>' + userInfo.LoginName + '</small>',
                         '</div>'
                     ].join('\n'),
                     placement: Components.TooltipPlacements.Top,
