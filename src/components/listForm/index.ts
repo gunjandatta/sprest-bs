@@ -1,6 +1,7 @@
 import { Helper, SPTypes, Types } from "gd-sprest";
 import { Components } from "../core";
 import { DateTimeControlType } from "../datetime";
+import { IFormControlPropsDateTime } from "../datetime/types";
 import { Field } from "../field";
 import { IField } from "../field/types";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types";
@@ -165,12 +166,18 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         // Update the type, based on the field
         switch (field.FieldTypeKind) {
             case SPTypes.FieldType.DateTime:
+                // Set the time flag
+                (mapper[fieldName] as IFormControlPropsDateTime).showTime = (field as Types.SP.FieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime ? true : false;
+
+                // Set the type
                 mapper[fieldName].type = DateTimeControlType;
                 break;
             case SPTypes.FieldType.Note:
+                // Set the type
                 mapper[fieldName].type = Components.FormControlTypes.TextArea;
                 break;
             case SPTypes.FieldType.User:
+                // Set the type
                 mapper[fieldName].type = (field as Types.SP.FieldLookup).AllowMultipleValues ? Components.FormControlTypes.TextArea : mapper[fieldName].type;
                 break;
         }
