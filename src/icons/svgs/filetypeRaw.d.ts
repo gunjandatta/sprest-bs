@@ -1,0 +1,1 @@
+export const filetypeRaw: (height?:number, width?:number, className?:string) => HTMLElement;

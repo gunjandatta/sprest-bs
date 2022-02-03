@@ -1,0 +1,1 @@
+export const balloonHeartFill: (height?:number, width?:number, className?:string) => HTMLElement;

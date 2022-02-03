@@ -1,0 +1,1 @@
+export const ticketPerforated: (height?:number, width?:number, className?:string) => HTMLElement;

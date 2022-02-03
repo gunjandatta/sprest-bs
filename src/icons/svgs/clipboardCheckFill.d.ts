@@ -1,0 +1,1 @@
+export const clipboardCheckFill: (height?:number, width?:number, className?:string) => HTMLElement;

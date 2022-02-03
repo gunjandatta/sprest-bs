@@ -1,0 +1,1 @@
+export const clipboard2Pulse: (height?:number, width?:number, className?:string) => HTMLElement;

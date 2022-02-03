@@ -1,0 +1,1 @@
+export const clipboard2Heart: (height?:number, width?:number, className?:string) => HTMLElement;

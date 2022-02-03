@@ -1,0 +1,1 @@
+export const postageHeartFill: (height?:number, width?:number, className?:string) => HTMLElement;

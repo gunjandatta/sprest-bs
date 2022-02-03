@@ -1,0 +1,1 @@
+export const magnet: (height?:number, width?:number, className?:string) => HTMLElement;

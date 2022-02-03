@@ -1,0 +1,1 @@
+export const filetypeYml: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const heartPulse: (height?:number, width?:number, className?:string) => HTMLElement;

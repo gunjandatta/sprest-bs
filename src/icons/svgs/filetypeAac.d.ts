@@ -1,0 +1,1 @@
+export const filetypeAac: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const filetypeMdx: (height?:number, width?:number, className?:string) => HTMLElement;

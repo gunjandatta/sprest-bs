@@ -1,0 +1,1 @@
+export const heartbreak: (height?:number, width?:number, className?:string) => HTMLElement;

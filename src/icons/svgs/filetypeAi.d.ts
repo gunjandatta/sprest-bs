@@ -1,0 +1,1 @@
+export const filetypeAi: (height?:number, width?:number, className?:string) => HTMLElement;

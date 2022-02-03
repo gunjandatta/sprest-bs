@@ -1,0 +1,1 @@
+export const plugin: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const filetypeCsv: (height?:number, width?:number, className?:string) => HTMLElement;

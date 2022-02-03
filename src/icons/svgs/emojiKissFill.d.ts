@@ -1,0 +1,1 @@
+export const emojiKissFill: (height?:number, width?:number, className?:string) => HTMLElement;

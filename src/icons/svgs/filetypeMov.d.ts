@@ -1,0 +1,1 @@
+export const filetypeMov: (height?:number, width?:number, className?:string) => HTMLElement;

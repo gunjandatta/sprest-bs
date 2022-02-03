@@ -1,0 +1,1 @@
+export const clipboardMinusFill: (height?:number, width?:number, className?:string) => HTMLElement;

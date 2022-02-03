@@ -1,0 +1,1 @@
+export const filetypeGif: (height?:number, width?:number, className?:string) => HTMLElement;

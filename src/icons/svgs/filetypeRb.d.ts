@@ -1,0 +1,1 @@
+export const filetypeRb: (height?:number, width?:number, className?:string) => HTMLElement;
