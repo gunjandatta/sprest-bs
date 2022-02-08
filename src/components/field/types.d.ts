@@ -25,12 +25,27 @@ export interface IFieldProps {
     errorMessage?: string;
     field: Types.SP.Field;
     listInfo: Helper.IListFormResult;
-    lookupFilter?: string;
     onError?: (msg: string) => void;
     onControlRendered?: (control: IFormControl, field: Types.SP.Field) => void | Promise<IFormControl>;
     onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;
     onValidate?: (field: Types.SP.Field, control: IFormControl, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
     value?: any;
+}
+
+/**
+ * Lookup Field Properties
+ */
+export interface IFieldLookupProps extends IFieldProps {
+    lookupFilter?: string;
+    onControlRendering?: (control: IFieldLookupProps, field: Types.SP.Field) => void | Promise<IFieldLookupProps>;
+}
+
+/**
+ * Url Field Properties
+ */
+export interface IFieldUrlProps extends IFieldProps {
+    showDescription?: boolean;
+    onControlRendering?: (control: IFieldUrlProps, field: Types.SP.Field) => void | Promise<IFieldUrlProps>;
 }
 
 /**

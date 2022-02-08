@@ -3,7 +3,7 @@ import { Components } from "../core";
 import { DateTimeControlType } from "../datetime";
 import { IFormControlPropsDateTime } from "../datetime/types";
 import { Field } from "../field";
-import { IField } from "../field/types";
+import { IField, IFieldLookupProps } from "../field/types";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types";
 
 // Extend the list form
@@ -646,7 +646,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 // Call the event
                 props.onError ? props.onError(msg) : null;
             }
-        });
+        } as IFieldLookupProps as any);
 
         // Update the mapper
         mapper[fieldName] = fieldControl;

@@ -1,6 +1,6 @@
 import { Helper, SPTypes, Types } from "gd-sprest";
 import { Components } from "../core";
-import { IField, IFieldProps, IFieldValue } from "./types";
+import { IField, IFieldProps, IFieldLookupProps, IFieldUrlProps, IFieldValue } from "./types";
 import { DateTimeControlType } from "../datetime";
 import { IFormControlPropsDateTime } from "../datetime/types";
 import { PeoplePickerControlType } from "../peoplePicker";
@@ -365,7 +365,7 @@ export const Field = (props: IFieldProps): IField => {
                                 lookupFieldInfo = fieldInfo;
 
                                 // Set the lookup filter
-                                lookupFieldInfo.lookupFilter = props.lookupFilter;
+                                lookupFieldInfo.lookupFilter = (props as any as IFieldLookupProps).lookupFilter;
 
                                 // Update the multi property
                                 (controlProps as Helper.IListFormLookupFieldInfo).multi = lookupFieldInfo.multi;
@@ -570,14 +570,19 @@ export const Field = (props: IFieldProps): IField => {
                 // Clear the element
                 control.el.innerHTML = "";
 
-                // Render the description
-                desc = Components.FormControl({
-                    className: "mb-1",
-                    el: control.el,
-                    placeholder: "Description",
-                    type: Components.FormControlTypes.TextField,
-                    value: value ? value.Description : null
-                } as Components.IFormControlPropsTextField);
+                // See if we are rendering the description
+                let showDesc = (props as any as IFieldUrlProps).showDescription;
+                showDesc = typeof (showDesc) === "boolean" ? showDesc : true;
+                if (showDesc) {
+                    // Render the description
+                    desc = Components.FormControl({
+                        className: "mb-1",
+                        el: control.el,
+                        placeholder: "Description",
+                        type: Components.FormControlTypes.TextField,
+                        value: value ? value.Description : null
+                    } as Components.IFormControlPropsTextField);
+                }
 
                 // Render the url
                 url = Components.FormControl({
@@ -588,10 +593,10 @@ export const Field = (props: IFieldProps): IField => {
                 } as Components.IFormControlPropsTextField);
 
                 // Set the get value event
-                control.props.onGetValue = (controlProps) => {
+                control.props.onGetValue = () => {
                     // Return the value
                     return {
-                        Description: desc.getValue(),
+                        Description: desc ? desc.getValue() : url.getValue(),
                         Url: url.getValue()
                     }
                 }
