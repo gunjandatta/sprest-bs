@@ -815,27 +815,27 @@ declare module 'gd-sprest-bs/components/field/types' {
     }
     
     /**
-        * Lookup Field Properties
-        */
-    export interface IFieldLookupProps extends IFieldProps {
-            lookupFilter?: string;
-            onControlRendering?: (control: IFieldLookupProps, field: Types.SP.Field) => void | Promise<IFieldLookupProps>;
-    }
-    
-    /**
-        * Url Field Properties
-        */
-    export interface IFieldUrlProps extends IFieldProps {
-            showDescription?: boolean;
-            onControlRendering?: (control: IFieldUrlProps, field: Types.SP.Field) => void | Promise<IFieldUrlProps>;
-    }
-    
-    /**
         * Field Value
         */
     export interface IFieldValue {
             name: string;
             value: any;
+    }
+    
+    /**
+        * Form Control Lookup Properties
+        */
+     export interface IFormControlLookupProps extends IFormControlProps {
+            lookupFilter?: string;
+            onControlRendering?: (control: IFieldLookupProps, field: Types.SP.Field) => void | Promise<IFieldLookupProps>;
+    }
+    
+    /**
+        * Form Control Url Properties
+        */
+    export interface IFormControlUrlProps extends IFormControlProps {
+            showDescription?: boolean;
+            onControlRendering?: (control: IFieldUrlProps, field: Types.SP.Field) => void | Promise<IFieldUrlProps>;
     }
 }
 

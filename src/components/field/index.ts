@@ -1,6 +1,6 @@
 import { Helper, SPTypes, Types } from "gd-sprest";
 import { Components } from "../core";
-import { IField, IFieldProps, IFieldLookupProps, IFieldUrlProps, IFieldValue } from "./types";
+import { IField, IFieldProps, IFieldValue, IFormControlLookupProps, IFormControlUrlProps } from "./types";
 import { DateTimeControlType } from "../datetime";
 import { IFormControlPropsDateTime } from "../datetime/types";
 import { PeoplePickerControlType } from "../peoplePicker";
@@ -365,7 +365,7 @@ export const Field = (props: IFieldProps): IField => {
                                 lookupFieldInfo = fieldInfo;
 
                                 // Set the lookup filter
-                                lookupFieldInfo.lookupFilter = (props as any as IFieldLookupProps).lookupFilter;
+                                lookupFieldInfo.lookupFilter = (controlProps as IFormControlLookupProps).lookupFilter;
 
                                 // Update the multi property
                                 (controlProps as Helper.IListFormLookupFieldInfo).multi = lookupFieldInfo.multi;
@@ -571,7 +571,7 @@ export const Field = (props: IFieldProps): IField => {
                 control.el.innerHTML = "";
 
                 // See if we are rendering the description
-                let showDesc = (props as any as IFieldUrlProps).showDescription;
+                let showDesc = (controlProps as IFormControlUrlProps).showDescription;
                 showDesc = typeof (showDesc) === "boolean" ? showDesc : true;
                 if (showDesc) {
                     // Render the description
