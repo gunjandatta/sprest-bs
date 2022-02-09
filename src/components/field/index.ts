@@ -611,8 +611,21 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Get the form control elements
                 let elFormControl = control.el.querySelectorAll(".form-control");
-                let elDesc = elFormControl[0];
-                let elUrl = elFormControl[1];
+
+                // See if both the description and url are displayed
+                let elDesc = null;
+                let elUrl = null;
+                if (elFormControl.length > 1) {
+                    // Set the elements
+                    elDesc = elFormControl[0];
+                    elUrl = elFormControl[1];
+                } else {
+                    // Set the elements
+                    elUrl = elFormControl[0];
+
+                    // Set the flag
+                    descValid = true;
+                }
 
                 // See if the description exists
                 if (elDesc) {
