@@ -936,6 +936,9 @@ declare module 'gd-sprest-bs/components/listForm/types' {
             /** Method to get a control by field name */
             getControl(fieldName: string): IFormControl;
     
+            /** Method to get the list item associated with the item */
+            getItem(): any;
+    
             /** Method to get the form values */
             getValues(): { [key: string]: any }
     

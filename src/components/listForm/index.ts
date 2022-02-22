@@ -822,6 +822,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         appendRows: rows => { form.appendRows(rows); },
         el: form.el as HTMLFormElement,
         getControl: (fieldName: string) => { return mapper[fieldName] ? mapper[fieldName].control : null; },
+        getItem: () => { return props.info.item; },
         getValues,
         isValid: () => {
             let isValid = true;
