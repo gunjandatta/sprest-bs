@@ -793,6 +793,12 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     let getValues = () => {
         let values = {};
 
+        // See if the content type was set
+        if (props.info.contentType) {
+            // Set the content type id
+            values["ContentTypeId"] = props.info.contentType.Id.StringValue;
+        }
+
         // Parse the fields
         for (let fieldName in props.info.fields) {
             // Get the form field and skip readonly fields
