@@ -216,11 +216,14 @@ export const Field = (props: IFieldProps): IField => {
             // Set the type
             controlProps.type = Components.FormControlTypes.Checkbox;
 
-            // Create the item
-            (controlProps as Components.IFormControlPropsCheckbox).items = [{ label: controlProps.label }]
+            // Ensure the item is not read-only
+            if (controlProps.isReadonly != true) {
+                // Create the item
+                (controlProps as Components.IFormControlPropsCheckbox).items = [{ label: controlProps.label }]
 
-            // Clear the label
-            controlProps.label = "";
+                // Clear the label
+                controlProps.label = "";
+            }
             break;
 
         // Choice
