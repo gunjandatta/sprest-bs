@@ -727,6 +727,13 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 if (control.isReadonly) {
                     let html = (props.info.fieldValuesAsHtml && props.info.fieldValuesAsHtml[field.InternalName]) || "";
 
+                    // See if this is a checkbox and the label is not set
+                    if (control.type == Components.FormControlTypes.Checkbox && (control.label || "").length == 0) {
+                        // Update the label
+                        let item = (control as Components.IFormControlPropsCheckbox).items[0];
+                        control.label = item ? item.label : control.label;
+                    }
+
                     // Update the control properties
                     control.type = Components.FormControlTypes.Readonly;
 
