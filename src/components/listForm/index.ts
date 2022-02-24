@@ -197,6 +197,14 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                 control.el.innerHTML = control.props.data;
             }
         }
+        // Else, detect xml
+        else if (/&lt;/g.test(html)) {
+            // Update the value
+            mapper[fieldName].value = html.replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&')
+                .replace(/&quot;/g, '"');
+        }
 
         // Add the row
         rows.push({
