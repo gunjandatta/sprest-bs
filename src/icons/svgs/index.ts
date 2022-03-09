@@ -1648,7 +1648,7 @@ export * from "./appWindow";
 export * from "./windows";
 export * from "./wordpress";
 export * from "./wrenchAdjustableCircleFill";
-export * from "./wrenchAdjustableCricle";
+export * from "./wrenchAdjustableCircle";
 export * from "./wrenchAdjustable";
 export * from "./wrench";
 export * from "./xCircleFill";

@@ -3330,8 +3330,8 @@ export const IconTypes: {
 	Wordpress: number;
 	// wrench-adjustable-circle-fill.svg
 	WrenchAdjustableCircleFill: number;
-	// wrench-adjustable-cricle.svg
-	WrenchAdjustableCricle: number;
+	// wrench-adjustable-circle.svg
+	WrenchAdjustableCircle: number;
 	// wrench-adjustable.svg
 	WrenchAdjustable: number;
 	// wrench.svg

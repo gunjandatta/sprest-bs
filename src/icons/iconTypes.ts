@@ -1650,7 +1650,7 @@ export enum IconTypes {
 	Windows = 1648,
 	Wordpress = 1649,
 	WrenchAdjustableCircleFill = 1650,
-	WrenchAdjustableCricle = 1651,
+	WrenchAdjustableCircle = 1651,
 	WrenchAdjustable = 1652,
 	Wrench = 1653,
 	XCircleFill = 1654,

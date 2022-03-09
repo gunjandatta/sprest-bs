@@ -1,1 +1,0 @@
-export const wrenchAdjustableCricle: (height?:number, width?:number, className?:string) => HTMLElement;

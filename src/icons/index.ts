@@ -4956,9 +4956,9 @@ export const Icons = (iconType:number, height?:number, width?:number, className?
 		// wrench-adjustable-circle-fill.svg
 		case 1650:
 			return SVGIcons.wrenchAdjustableCircleFill(height, width, className);
-		// wrench-adjustable-cricle.svg
+		// wrench-adjustable-circle.svg
 		case 1651:
-			return SVGIcons.wrenchAdjustableCricle(height, width, className);
+			return SVGIcons.wrenchAdjustableCircle(height, width, className);
 		// wrench-adjustable.svg
 		case 1652:
 			return SVGIcons.wrenchAdjustable(height, width, className);

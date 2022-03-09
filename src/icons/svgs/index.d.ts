@@ -3298,8 +3298,8 @@ export const windows: (height?:number, width?:number, className?:string) => HTML
 export const wordpress: (height?:number, width?:number, className?:string) => HTMLElement;
 // wrench-adjustable-circle-fill.svg
 export const wrenchAdjustableCircleFill: (height?:number, width?:number, className?:string) => HTMLElement;
-// wrench-adjustable-cricle.svg
-export const wrenchAdjustableCricle: (height?:number, width?:number, className?:string) => HTMLElement;
+// wrench-adjustable-circle.svg
+export const wrenchAdjustableCircle: (height?:number, width?:number, className?:string) => HTMLElement;
 // wrench-adjustable.svg
 export const wrenchAdjustable: (height?:number, width?:number, className?:string) => HTMLElement;
 // wrench.svg
