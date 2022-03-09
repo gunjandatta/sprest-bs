@@ -666,7 +666,9 @@ export const Field = (props: IFieldProps): IField => {
             // Set the type
             controlProps.type = isReadonly ? Components.FormControlTypes.Readonly : PeoplePickerControlType;
 
-            // Set the flag to allow multiple selections
+            // Update the properties, based on the field settings
+            (controlProps as IFormControlPropsPeoplePicker).allowGroups = (props.field as Types.SP.FieldUser).SelectionGroup == SPTypes.FieldUserSelectionType.PeopleAndGroups;
+            (controlProps as IFormControlPropsPeoplePicker).groupId = (props.field as Types.SP.FieldUser).SelectionGroup;
             (controlProps as IFormControlPropsPeoplePicker).multi = (props.field as Types.SP.FieldUser).AllowMultipleValues;
 
             // Set the rendered event
