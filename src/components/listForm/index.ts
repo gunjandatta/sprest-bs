@@ -47,6 +47,111 @@ let getFieldsToRender = (props: IListFormDisplayProps | IListFormEditProps): Arr
     return fieldNames;
 }
 
+// Method to render the display control
+let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Components.IFormControlProps => {
+    let control: Components.IFormControlProps = null;
+    let field = props.info.fields[fieldName];
+    let value = props.info.fieldValuesAsText[fieldName] || "";
+    let html: string = props.info.fieldValuesAsHtml[fieldName] || props.info.fieldValuesAsHtml[fieldName.replace(/\_/g, "_x005f_")] || "";
+
+    // Ensure the field exists
+    if (field == null) {
+        // Log
+        console.error("[List Form] Field '" + fieldName + "' does not exist. Check the list or query.");
+        return control;
+    }
+
+    // See if we are hiding the field
+    if (field.SchemaXml.indexOf('ShowInDisplayForm="FALSE"') > 0) { return control; }
+
+    // See if this is a note field
+    if (field.FieldTypeKind == SPTypes.FieldType.Note) {
+        // Update the html
+        html = html.replace(/\r?\n/g, '<br />');
+    }
+    // Else, see if this is a user field
+    else if (field.FieldTypeKind == SPTypes.FieldType.User) {
+        // See if this is a multi-user selection
+        if ((field as Types.SP.FieldUser).AllowMultipleValues) {
+            let userNames = [];
+
+            // Parse the users
+            let users: Types.SP.User[] = (props.info.item[fieldName] ? props.info.item[fieldName].results : null) || [];
+            for (let j = 0; j < users.length; j++) {
+                // Append the user name
+                userNames.push(users[j].Title);
+            }
+
+            // Set the html value
+            html = userNames.join('<br />\n');
+        } else {
+            // Extract the text only for single selections
+            let elUser = document.createElement("div");
+            elUser.innerHTML = html;
+            html = elUser.innerText;
+        }
+    }
+    // Else, see if this is a choice field
+    else if (field.FieldTypeKind == SPTypes.FieldType.Choice || field.FieldTypeKind == SPTypes.FieldType.MultiChoice) {
+        // Update the html
+        html = value;
+    }
+
+    // Set the control
+    control = {
+        data: html,
+        description: field.Description,
+        isReadonly: true,
+        label: field.Title,
+        name: field.InternalName,
+        type: Components.FormControlTypes.TextField,
+        value: html
+    };
+
+    // Update the type, based on the field
+    switch (field.FieldTypeKind) {
+        case SPTypes.FieldType.DateTime:
+            // Set the time flag
+            (control as IFormControlPropsDateTime).showTime = (field as Types.SP.FieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime ? true : false;
+
+            // Set the type
+            control.type = DateTimeControlType;
+            break;
+        case SPTypes.FieldType.Note:
+            // Set the type
+            control.type = Components.FormControlTypes.TextArea;
+            break;
+        case SPTypes.FieldType.User:
+            // Set the type
+            control.type = (field as Types.SP.FieldLookup).AllowMultipleValues ? Components.FormControlTypes.TextArea : control.type;
+            break;
+    }
+
+    // Detect html
+    if (/<*>/g.test(html)) {
+        // Update the control to be read-only
+        control.type = Components.FormControlTypes.Readonly;
+
+        // Set the rendered event
+        control.onControlRendered = control => {
+            // Set the class name
+            control.el.classList.add("form-control");
+            control.el.style.backgroundColor = "#e9ecef";
+
+            // Override the html rendered
+            control.el.innerHTML = control.props.data;
+        }
+    }
+    // Else, detect xml
+    else if (/&lt;/g.test(html)) {
+        // Update the value
+        control.value = html.replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&')
+            .replace(/&quot;/g, '"');
+    }
+}
+
 // Method to render a display form for an item
 ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     let form: Components.IForm = null;
@@ -105,113 +210,18 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     let fieldNames = getFieldsToRender(props);
     for (let i = 0; i < fieldNames.length; i++) {
         let fieldName = fieldNames[i];
-        let field = props.info.fields[fieldName];
-        let value = props.info.fieldValuesAsText[fieldName] || "";
-        let html: string = props.info.fieldValuesAsHtml[fieldName] || props.info.fieldValuesAsHtml[fieldName.replace(/\_/g, "_x005f_")] || "";
 
-        // Ensure the field exists
-        if (field == null) {
-            // Log
-            console.error("[List Form] Field '" + fieldName + "' does not exist. Check the list or query.");
-            continue;
+        // Generate the control
+        let control = renderDisplay(fieldName, props);
+        if (control) {
+            // Update the mapper
+            mapper[fieldName] = control;
+
+            // Add the row
+            rows.push({
+                columns: [{ control }]
+            });
         }
-
-        // See if we are hiding the field
-        if (field.SchemaXml.indexOf('ShowInDisplayForm="FALSE"') > 0) { continue; }
-
-        // See if this is a note field
-        if (field.FieldTypeKind == SPTypes.FieldType.Note) {
-            // Update the html
-            html = html.replace(/\r?\n/g, '<br />');
-        }
-        // Else, see if this is a user field
-        else if (field.FieldTypeKind == SPTypes.FieldType.User) {
-            // See if this is a multi-user selection
-            if ((field as Types.SP.FieldLookup).AllowMultipleValues) {
-                let userNames = [];
-
-                // Parse the users
-                let users: Types.SP.User[] = (props.info.item[fieldName] ? props.info.item[fieldName].results : null) || [];
-                for (let j = 0; j < users.length; j++) {
-                    // Append the user name
-                    userNames.push(users[j].Title);
-                }
-
-                // Set the html value
-                html = userNames.join('<br />\n');
-            } else {
-                // Extract the text only for single selections
-                let elUser = document.createElement("div");
-                elUser.innerHTML = html;
-                html = elUser.innerText;
-            }
-        }
-        // Else, see if this is a choice field
-        else if (field.FieldTypeKind == SPTypes.FieldType.Choice || field.FieldTypeKind == SPTypes.FieldType.MultiChoice) {
-            // Update the html
-            html = value;
-        }
-
-        // Set the control
-        mapper[fieldName] = {
-            data: html,
-            description: field.Description,
-            isReadonly: true,
-            label: field.Title,
-            name: field.InternalName,
-            type: Components.FormControlTypes.TextField,
-            value: html
-        };
-
-        // Update the type, based on the field
-        switch (field.FieldTypeKind) {
-            case SPTypes.FieldType.DateTime:
-                // Set the time flag
-                (mapper[fieldName] as IFormControlPropsDateTime).showTime = (field as Types.SP.FieldDateTime).DisplayFormat == SPTypes.DateFormat.DateTime ? true : false;
-
-                // Set the type
-                mapper[fieldName].type = DateTimeControlType;
-                break;
-            case SPTypes.FieldType.Note:
-                // Set the type
-                mapper[fieldName].type = Components.FormControlTypes.TextArea;
-                break;
-            case SPTypes.FieldType.User:
-                // Set the type
-                mapper[fieldName].type = (field as Types.SP.FieldLookup).AllowMultipleValues ? Components.FormControlTypes.TextArea : mapper[fieldName].type;
-                break;
-        }
-
-        // Detect html
-        if (/<*>/g.test(html)) {
-            // Update the control to be read-only
-            mapper[fieldName].type = Components.FormControlTypes.Readonly;
-
-            // Set the rendered event
-            mapper[fieldName].onControlRendered = control => {
-                // Set the class name
-                control.el.classList.add("form-control");
-                control.el.style.backgroundColor = "#e9ecef";
-
-                // Override the html rendered
-                control.el.innerHTML = control.props.data;
-            }
-        }
-        // Else, detect xml
-        else if (/&lt;/g.test(html)) {
-            // Update the value
-            mapper[fieldName].value = html.replace(/&lt;/g, '<')
-                .replace(/&gt;/g, '>')
-                .replace(/&amp;/g, '&')
-                .replace(/&quot;/g, '"');
-        }
-
-        // Add the row
-        rows.push({
-            columns: [{
-                control: mapper[fieldName]
-            }]
-        });
     }
 
     // See if there is a template
@@ -733,56 +743,14 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             let updateReadOnly = (control: Components.IFormControlProps) => {
                 // See if this control is readonly
                 if (control.isReadonly) {
-                    let html = (props.info.fieldValuesAsHtml && props.info.fieldValuesAsHtml[field.InternalName]) || "";
+                    // Get the control display properties
+                    let dispControl = renderDisplay(control.name, props);
 
-                    // See if this is a checkbox and the label is not set
-                    if (control.type == Components.FormControlTypes.Checkbox && (control.label || "").length == 0) {
-                        // Update the label
-                        let item = (control as Components.IFormControlPropsCheckbox).items[0];
-                        control.label = item ? item.label : control.label;
-                    }
-
-                    // Update the control properties
-                    control.type = Components.FormControlTypes.Readonly;
-
-                    // Detect html
-                    if (/<*>/g.test(html)) {
-                        // Update the control properties
-                        control.data = html;
-                    }
-
-                    // Set the rendered event
-                    control.onControlRendered = control => {
-                        // Set the class name
-                        control.el.classList.add("form-control");
-                        control.el.style.backgroundColor = "#e9ecef";
-
-                        // Override the html rendered
-                        control.el.innerHTML = html || control.props.value;
-                    }
-
-                    // See if this is a user field
-                    if (field.FieldTypeKind == SPTypes.FieldType.User) {
-                        // See if this is a multi-user selection
-                        if ((field as Types.SP.FieldLookup).AllowMultipleValues) {
-                            let userNames = [];
-
-                            // Parse the users
-                            let users: Types.SP.User[] = (props.info.item[field.InternalName] ? props.info.item[field.InternalName].results : null) || [];
-                            for (let j = 0; j < users.length; j++) {
-                                // Append the user name
-                                userNames.push(users[j].Title);
-                            }
-
-                            // Set the html value
-                            html = userNames.join('<br />\n');
-                        } else {
-                            // Extract the text only for single selections
-                            let elUser = document.createElement("div");
-                            elUser.innerHTML = html;
-                            html = elUser.innerText;
-                        }
-                    }
+                    // Update the properties
+                    control.data = dispControl.data;
+                    control.label = dispControl.label;
+                    control.type = dispControl.type;
+                    control.value = dispControl.value;
                 }
             }
 
