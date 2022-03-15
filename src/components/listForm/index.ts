@@ -150,6 +150,9 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
             .replace(/&amp;/g, '&')
             .replace(/&quot;/g, '"');
     }
+
+    // Return the control
+    return control;
 }
 
 // Method to render a display form for an item
