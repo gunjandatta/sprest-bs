@@ -134,12 +134,11 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
 
         // Set the rendered event
         control.onControlRendered = control => {
-            // Set the class name
-            control.el.classList.add("form-control");
-            control.el.style.backgroundColor = "#e9ecef";
+            // Get the target element
+            let elTarget = control.el.querySelector("input") || control.el;
 
             // Override the html rendered
-            control.el.innerHTML = control.props.data;
+            elTarget.innerHTML = control.props.data;
         }
     }
     // Else, detect xml
