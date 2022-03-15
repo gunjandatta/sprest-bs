@@ -749,6 +749,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     // Update the properties
                     control.data = dispControl.data;
                     control.label = dispControl.label;
+                    (control as IFormControlPropsDateTime).showTime = (dispControl as IFormControlPropsDateTime).showTime;
                     control.type = dispControl.type;
                     control.value = dispControl.value;
                 }
