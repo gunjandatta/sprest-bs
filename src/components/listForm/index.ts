@@ -121,6 +121,12 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
             // Set the type
             control.type = Components.FormControlTypes.TextArea;
             break;
+        case SPTypes.FieldType.URL:
+            // Set the value
+            let urlValue = html as Types.SP.FieldUrlValue;
+            html = urlValue ? urlValue.Url : html;
+            control.value = html;
+            break;
         case SPTypes.FieldType.User:
             // Set the type
             control.type = (field as Types.SP.FieldLookup).AllowMultipleValues ? Components.FormControlTypes.TextArea : control.type;
