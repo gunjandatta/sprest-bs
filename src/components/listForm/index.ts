@@ -123,7 +123,7 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
             break;
         case SPTypes.FieldType.URL:
             // Set the value
-            let urlValue = html as Types.SP.FieldUrlValue;
+            let urlValue = props.info.item[fieldName] as Types.SP.FieldUrlValue;
             html = urlValue ? urlValue.Url : html;
             control.value = html;
             break;
