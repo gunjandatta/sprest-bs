@@ -22,7 +22,12 @@ module.exports = (env, argv) => {
                         // Translate CSS to CommonJS
                         { loader: "css-loader" },
                         // Compile SASS to CSS
-                        { loader: "sass-loader" }
+                        {
+                            loader: "sass-loader",
+                            options: {
+                                implementation: require("sass")
+                            }
+                        }
                     ]
                 }
             ]
