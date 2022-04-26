@@ -594,6 +594,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             continue;
         }
 
+        // Skip the attachment field
+        if (fieldName == "Attachment") { continue; }
+
         // See if the item exists
         value[fieldName] = null;
         if (props.info.item) {
