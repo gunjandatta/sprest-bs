@@ -508,7 +508,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                                             }
 
                                                             // Get the files
-                                                            let files = btnGroup.querySelectorAll(".btn.file-attachment]");
+                                                            let files = btnGroup.querySelectorAll(".btn.file-attachment");
                                                             for (let i = 0; i < files.length; i++) {
                                                                 let file = files[i] as HTMLAnchorElement;
 
