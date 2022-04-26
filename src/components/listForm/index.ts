@@ -484,7 +484,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                                 isDismissible: true,
                                                 type: Components.PopoverPlacements.Bottom,
                                                 btnProps: {
-                                                    className: "me-1",
+                                                    className: "me-1 file-attachment",
                                                     isSmall: true,
                                                     text: fileInfo.name
                                                 },
@@ -508,7 +508,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                                             }
 
                                                             // Get the files
-                                                            let files = btnGroup.querySelectorAll(".btn[data-toggle='popover']");
+                                                            let files = btnGroup.querySelectorAll(".btn.file-attachment]");
                                                             for (let i = 0; i < files.length; i++) {
                                                                 let file = files[i] as HTMLAnchorElement;
 
@@ -541,7 +541,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                     isDismissible: true,
                                     type: Components.PopoverPlacements.Bottom,
                                     btnProps: {
-                                        className: "me-1",
+                                        className: "me-1 file-attachment",
                                         isSmall: true,
                                         text: attachment.FileName,
                                     },
@@ -558,7 +558,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                                 attachments.delete.push(attachment);
 
                                                 // Get the files
-                                                let files = btnGroup.querySelectorAll(".btn[data-toggle='popover']");
+                                                let files = btnGroup.querySelectorAll(".btn.file-attachment");
                                                 for (let i = 0; i < files.length; i++) {
                                                     let file = files[i] as HTMLAnchorElement;
 
@@ -595,7 +595,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         }
 
         // Skip the attachment field
-        if (fieldName == "Attachment") { continue; }
+        if (fieldName == "Attachments") { continue; }
 
         // See if the item exists
         value[fieldName] = null;
