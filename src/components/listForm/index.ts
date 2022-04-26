@@ -433,6 +433,10 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
     // See if we are rendering attachments
     if (props.info.attachments) {
+        // Set a default field
+        // This will help w/ the onControlRendering/ed events to not have a null value for this parameter
+        props.info.fields["Attachments"] = {} as any;
+
         // Render the attachments
         rows.push({
             columns: [{
