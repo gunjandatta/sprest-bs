@@ -104,7 +104,7 @@ export interface IListFormEdit {
     isValid(): boolean;
 
     /** Method to save the form. */
-    save(): PromiseLike<Types.SP.ListItem>;
+    save(customValues?: any): PromiseLike<Types.SP.ListItem>;
 }
 
 /**

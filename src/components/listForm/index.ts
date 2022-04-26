@@ -846,7 +846,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             // Return the flag
             return isValid;
         },
-        save: () => {
+        save: (customValues: any = {}) => {
             let onSaving = (values) => {
                 return new Promise((resolve) => {
                     // See if a save event exists
@@ -867,7 +867,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             // Return a promise
             return new Promise((resolve, reject) => {
                 // Call the saving event
-                onSaving(getValues()).then(values => {
+                onSaving({ ...getValues(), ...customValues }).then(values => {
                     // Update the item
                     ListForm.saveItem(props.info, values).then(info => {
                         // Remove the attachments
