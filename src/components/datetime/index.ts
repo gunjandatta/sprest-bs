@@ -29,7 +29,7 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
     options.dateFormat = options.dateFormat || ("m-d-Y" + (props.showTime ? " H:i K" : ""));
 
     // See if the value is a string
-    if (typeof (props.value) === "string") {
+    if (props.value && typeof (props.value) === "string") {
         options.defaultDate = new Date(props.value);
     } else {
         // Set the value
