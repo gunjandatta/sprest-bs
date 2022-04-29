@@ -306,6 +306,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
 
 // Render the edit form
 ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
+    let customControls: Components.IFormControl[] = [];
     let mapper: { [key: string]: IField } = {};
     let rows: Array<Components.IFormRow> = [];
     let value = {};
@@ -823,10 +824,38 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
     // Create the form object
     let formObj: any = {
-        appendControls: controls => { form.appendControls(controls); },
-        appendRows: rows => { form.appendRows(rows); },
+        appendControls: controls => {
+            // Append the controls and return them
+            customControls = customControls.concat(form.appendControls(controls));
+            return customControls;
+        },
+        appendRows: rows => {
+            // Append the controls and return them
+            customControls = customControls.concat(form.appendRows(rows));
+            return customControls;
+        },
         el: form.el as HTMLFormElement,
-        getControl: (fieldName: string) => { return mapper[fieldName] ? mapper[fieldName].control : null; },
+        getControl: (fieldName: string) => {
+            // See if it's in the mapper
+            if (mapper[fieldName]) {
+                // Return the control
+                return mapper[fieldName].control;
+            }
+
+            // Parse the custom controls
+            for (let i = 0; i < customControls.length; i++) {
+                let control = customControls[i];
+
+                // See if this is the target control
+                if (control.props.name == fieldName) {
+                    // Return the control
+                    return control;
+                }
+            }
+
+            // Not found
+            return null;
+        },
         getItem: () => { return props.info.item; },
         getValues,
         isValid: () => {
@@ -840,6 +869,13 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
                 // Validate the form field and update the status flag
                 let controlIsValid = formField.isValid();
+                isValid = isValid && controlIsValid;
+            }
+
+            // Parse the custom controls
+            for (let i = 0; i < customControls.length; i++) {
+                // Validate the form field and update the status flag
+                let controlIsValid = customControls[i].isValid;
                 isValid = isValid && controlIsValid;
             }
 
