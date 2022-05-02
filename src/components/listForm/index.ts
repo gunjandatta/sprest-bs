@@ -824,15 +824,43 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
     // Create the form object
     let formObj: any = {
-        appendControls: controls => {
-            // Append the controls and return them
-            customControls = customControls.concat(form.appendControls(controls));
-            return customControls;
+        appendControls: (controls: Components.IFormControlProps[]) => {
+            // Append the controls
+            form.appendControls(controls);
+
+            // Wait for the controls to be loaded
+            setTimeout(() => {
+                // Parse the new controls
+                for (let i = 0; i < controls.length; i++) {
+                    let control = controls[i].name ? form.getControl(controls[i].name) : null;
+                    if (control) {
+                        // Append the control
+                        customControls.push(control);
+                    }
+                }
+
+            }, 10);
         },
-        appendRows: rows => {
-            // Append the controls and return them
-            customControls = customControls.concat(form.appendRows(rows));
-            return customControls;
+        appendRows: (rows: Components.IFormRow[]) => {
+            // Append the controls
+            form.appendRows(rows);
+
+            // Wait for the controls to be loaded
+            setTimeout(() => {
+                // Parse the rows
+                for (let i = 0; i < rows.length; i++) {
+                    // Parse the columns
+                    let columns = rows[i].columns;
+                    for (let j = 0; j < columns.length; j++) {
+                        // Get the control
+                        let control = columns[j].control && columns[j].control.name ? form.getControl(columns[j].control.name) : null;
+                        if (control) {
+                            // Append the control
+                            customControls.push(control);
+                        }
+                    }
+                }
+            }, 10);
         },
         el: form.el as HTMLFormElement,
         getControl: (fieldName: string) => {
