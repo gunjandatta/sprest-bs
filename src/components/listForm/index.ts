@@ -772,7 +772,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             }
 
             // Execute the rendering event
-            let field = props.info.fields[control.name];
+            let field = props.info.fields[control.name] || {} as any;
             let returnVal = props.onControlRendering ? props.onControlRendering(control, field) : null;
             if (returnVal && returnVal.then) {
                 // Wait for the event to complete
