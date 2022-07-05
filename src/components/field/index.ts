@@ -240,7 +240,7 @@ export const Field = (props: IFieldProps): IField => {
             let items = getChoiceItems(displayRadioButtons, props.field as any, props.value);
 
             // See if this is not a required field
-            if (!isRequired) {
+            if (!isRequired && !displayRadioButtons) {
                 // Add a blank entry
                 items = [{
                     text: "",
