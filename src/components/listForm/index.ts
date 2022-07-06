@@ -838,7 +838,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                         customControls.push(control);
                     }
                 }
-
             }, 10);
         },
         appendRows: (rows: Components.IFormRow[]) => {
@@ -886,6 +885,20 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         },
         getItem: () => { return props.info.item; },
         getValues,
+        insertControl: (idx: number, control: Components.IFormControlProps) => {
+            // Append the controls
+            form.insertControl(idx, control);
+
+            // Wait for the controls to be loaded
+            setTimeout(() => {
+                let newControl = control.name ? form.getControl(control.name) : null;
+                if (newControl) {
+                    // Append the control
+                    customControls.push(newControl);
+                }
+
+            }, 10);
+        },
         isValid: () => {
             let isValid = true;
 

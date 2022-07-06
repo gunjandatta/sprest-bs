@@ -83,10 +83,10 @@ export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
  */
 export interface IListFormEdit {
     /** Appends controls to the form */
-    appendControls(controls: Array<IFormControlProps>): Array<IFormControl>;
+    appendControls(controls: Array<IFormControlProps>);
 
     /** Appends rows to the form */
-    appendRows(rows: Array<IFormRow>): Array<IFormControl>;
+    appendRows(rows: Array<IFormRow>);
 
     /** The form element. */
     el: HTMLFormElement;
@@ -99,6 +99,9 @@ export interface IListFormEdit {
 
     /** Method to get the form values */
     getValues(): { [key: string]: any }
+
+    /** Inserts a control into the form. */
+    insertControl(idx: number, control: IFormControlProps);
 
     /** Method to determine if the field is valid */
     isValid(): boolean;

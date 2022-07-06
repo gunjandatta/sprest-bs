@@ -925,10 +925,10 @@ declare module 'gd-sprest-bs/components/listForm/types' {
         */
     export interface IListFormEdit {
             /** Appends controls to the form */
-            appendControls(controls: Array<IFormControlProps>): Array<IFormControl>;
+            appendControls(controls: Array<IFormControlProps>);
     
             /** Appends rows to the form */
-            appendRows(rows: Array<IFormRow>): Array<IFormControl>;
+            appendRows(rows: Array<IFormRow>);
     
             /** The form element. */
             el: HTMLFormElement;
@@ -941,6 +941,9 @@ declare module 'gd-sprest-bs/components/listForm/types' {
     
             /** Method to get the form values */
             getValues(): { [key: string]: any }
+    
+            /** Inserts a control into the form. */
+            insertControl(idx: number, control: IFormControlProps);
     
             /** Method to determine if the field is valid */
             isValid(): boolean;
