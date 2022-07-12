@@ -14,14 +14,9 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
     // Create the textbox
     let textbox = Components.InputGroup({
         el: elDateTime,
-        label: props.label
+        label: props.label,
+        isReadonly: props.disabled
     });
-
-    // See if we are disabling the textbox
-    if (props.disabled) {
-        // Disable the input element
-        textbox.el.querySelector("input").disabled = true;
-    }
 
     // Get the options and default the values
     let options = props.options || {};
