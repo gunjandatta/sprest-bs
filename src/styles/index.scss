@@ -2,8 +2,9 @@
 @import "./wp-tabs";
 
 /** Date/Time */
-.date-time .form-control.input:read-only {
-    color: #495057;
+.date-time .form-control.flatpickr-input {
+    background-color: #e9ecef !important;
+    color: #495057 !important;
 }
 
 /** List Form Dialog */
