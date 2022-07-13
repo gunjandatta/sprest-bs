@@ -1,10 +1,19 @@
 @import "../../node_modules/flatpickr/dist/flatpickr.min.css";
 @import "./wp-tabs";
 
-/** Date/Time */
-.date-time .form-control.flatpickr-input {
-    background-color: #e9ecef !important;
-    color: #495057 !important;
+.date-time {
+    /* Color match the selected flatpickr calendar control */
+    .flatpickr-day.selected {
+        background-color: #0078d4;
+        border-color: #0078d4;
+    }
+
+    /* Fix styling for the flatpickr calendar control */
+    .flatpickr-input[readonly] {
+        color: #212529;
+        background-color: #fff;
+        border-color: #6c757d;
+    }
 }
 
 /** List Form Dialog */
