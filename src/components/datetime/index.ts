@@ -15,7 +15,7 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
     let textbox = Components.InputGroup({
         el: elDateTime,
         label: props.label,
-        isReadonly: props.disabled
+        isDisabled: props.disabled
     });
 
     // Get the options and default the values

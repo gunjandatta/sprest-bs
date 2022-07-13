@@ -101,7 +101,7 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
     control = {
         data: html,
         description: field.Description,
-        isReadonly: true,
+        isDisabled: true,
         label: field.Title,
         name: field.InternalName,
         type: Components.FormControlTypes.TextField,
