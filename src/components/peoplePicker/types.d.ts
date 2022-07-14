@@ -60,6 +60,9 @@ export interface IPeoplePickerProps {
     /** The class name to apply to the element. */
     className?: string;
 
+    /** True to disable the component. */
+    disabled?: boolean;
+
     /** The element to render the form to. */
     el?: Element;
 
@@ -81,7 +84,7 @@ export interface IPeoplePickerProps {
     /** The placeholder text. (Default value is "Search") */
     placeholder?: string;
 
-    /** True to allow multiple users to be selected. */
+    /** True to make the component read-only. */
     readOnly?: boolean;
 
     /** True to search the local users first. */

@@ -16,8 +16,8 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
         // Adds the button
         let addButton = (userInfo?: Types.SP.User | Types.SP.Group) => {
-            // See if the picker is read only
-            if (props.readOnly) {
+            // See if the picker is disabled or read only
+            if (props.disabled || props.readOnly) {
                 // Render a tooltip
                 let tooltip = Components.Tooltip({
                     el: elSelectedUsers,
@@ -273,7 +273,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
             }
         }
     }).el;
-    props.readOnly ? elTextbox.classList.add("d-none") : null;
+    props.disabled || props.readOnly ? elTextbox.classList.add("d-none") : null;
     elPeoplePicker.appendChild(elTextbox);
 
     // Create the popover menu
@@ -387,6 +387,7 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
         picker = PeoplePicker({
             allowGroups: props.allowGroups,
             className: props.className,
+            disabled: props.isDisabled,
             el: ctrl.el,
             groupId: props.groupId,
             label: props.label,
