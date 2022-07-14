@@ -34,6 +34,12 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
     // Apply the plugin
     let datetime = flatpickr(textbox.el.querySelector("input"), options);
 
+    // See if we are disabling the component
+    if (props.disabled) {
+        // Remove the read-only setting set by the flatpickr
+        textbox.textbox.readOnly = false;
+    }
+
     // Create the element
     let el = document.createElement("div");
     el.appendChild(elDateTime);
