@@ -225,6 +225,7 @@ export const Field = (props: IFieldProps): IField => {
 
         // Choice
         case SPTypes.FieldType.Choice:
+            let allowFillIn = (props.field as Types.SP.FieldChoice).FillInChoice;
             let displayRadioButtons = props.field.SchemaXml.indexOf('Format="RadioButtons"') > 0 ? true : false;
 
             // See if we are displaying radio buttons
@@ -239,13 +240,53 @@ export const Field = (props: IFieldProps): IField => {
             // Get the items
             let items = getChoiceItems(displayRadioButtons, props.field as any, props.value);
 
-            // See if this is not a required field
-            if (!isRequired && !displayRadioButtons) {
+            // See if this is not a required field, or if the allow fill in option is set
+            if ((!isRequired && !displayRadioButtons) || allowFillIn) {
                 // Add a blank entry
                 items = [{
                     text: "",
                     value: null
                 } as any].concat(items);
+            }
+
+            // See if we are allowing custom values
+            if (allowFillIn) {
+                // Set the base validation
+                baseValidation = (ctrl, result) => {
+                    // Update the value
+                    result.value = result.value && typeof (result.value.text) === "string" ? result.value.value : result.value;
+
+                    // See if a fill-in choice exists
+                    let fillInChoice = tbFillIn.getValue();
+                    if (fillInChoice) {
+                        // Override the value
+                        result.value = fillInChoice;
+                    }
+
+                    // See if this control is required
+                    if (ctrl.props.required) {
+                        // Update the flag
+                        result.isValid = result.value ? true : false;
+                    }
+
+                    // Return the result
+                    return result;
+                }
+
+                // Set the rendered event
+                let tbFillIn: Components.IInputGroup = null;
+                onControlRendered = controlProps.onControlRendered;
+                controlProps.onControlRendered = (formControl) => {
+                    // Append a textbox
+                    tbFillIn = Components.InputGroup({
+                        el: formControl.el,
+                        className: "choice-fill-in",
+                        placeholder: "Fill In Choice"
+                    });
+
+                    // Call the event
+                    onControlRendered ? onControlRendered(formControl) : null;
+                }
             }
 
             // Set the items
@@ -930,6 +971,13 @@ export const Field = (props: IFieldProps): IField => {
                             // Update the field value
                             fieldValue.value = cbValue.label;
                         }
+                    }
+
+                    // Get the fill-in option
+                    let elFillIn = control.el.querySelector(".choice-fill-in input") as HTMLInputElement;
+                    if (elFillIn && elFillIn.value) {
+                        // Set the value
+                        fieldValue.value = elFillIn.value;
                     }
                     break;
 
