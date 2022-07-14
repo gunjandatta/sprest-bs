@@ -1087,7 +1087,7 @@ export const Field = (props: IFieldProps): IField => {
                     let elFillInMulti = control.el.querySelector(".choice-fill-in input") as HTMLInputElement;
                     if (elFillInMulti && elFillInMulti.value) {
                         // Append the value
-                        fieldValue.value.results.push(elFillIn.value);
+                        fieldValue.value.results.push(elFillInMulti.value);
                     }
                     break;
 
