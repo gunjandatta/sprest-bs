@@ -1,6 +1,6 @@
 {
     "name": "gd-sprest-bs",
-    "version": "9.8.6",
+    "version": "9.8.7",
     "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
     "main": "build/index.js",
     "typings": "src/index.d.ts",

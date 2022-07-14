@@ -493,6 +493,7 @@ export const Field = (props: IFieldProps): IField => {
 
         // Multi-Choice
         case SPTypes.FieldType.MultiChoice:
+            let allowFillInMulti = (props.field as Types.SP.FieldChoice).FillInChoice;
             let isChoice = props.field.SchemaXml.indexOf('Format="RadioButtons"') > 0 ? true : false;
 
             // Set the type
@@ -503,6 +504,48 @@ export const Field = (props: IFieldProps): IField => {
 
             // Set the items
             (controlProps as Components.IFormControlPropsDropdown).items = getChoiceItems(isChoice, props.field as any, props.value);
+
+            // See if we are allowing custom values
+            if (allowFillInMulti) {
+                // Set the base validation
+                baseValidation = (ctrl, result) => {
+                    // See if a fill-in choice exists
+                    let fillInChoice = tbFillIn.getValue();
+                    if (fillInChoice) {
+                        // Append the value
+                        result.value.push({
+                            isSelected: true,
+                            label: fillInChoice,
+                            text: fillInChoice,
+                            value: fillInChoice
+                        });
+                    }
+
+                    // See if this control is required
+                    if (ctrl.props.required) {
+                        // Update the flag
+                        result.isValid = result.value.length ? true : false;
+                    }
+
+                    // Return the result
+                    return result;
+                }
+
+                // Set the rendered event
+                let tbFillIn: Components.IInputGroup = null;
+                onControlRendered = controlProps.onControlRendered;
+                controlProps.onControlRendered = (formControl) => {
+                    // Append a textbox
+                    tbFillIn = Components.InputGroup({
+                        el: formControl.el,
+                        className: "choice-fill-in",
+                        placeholder: "Fill In Choice"
+                    });
+
+                    // Call the event
+                    onControlRendered ? onControlRendered(formControl) : null;
+                }
+            }
             break;
 
         // Note
@@ -1038,6 +1081,13 @@ export const Field = (props: IFieldProps): IField => {
                             // Add the values
                             fieldValue.value.results.push(cbValue.label);
                         }
+                    }
+
+                    // Get the fill-in option
+                    let elFillInMulti = control.el.querySelector(".choice-fill-in input") as HTMLInputElement;
+                    if (elFillInMulti && elFillInMulti.value) {
+                        // Append the value
+                        fieldValue.value.results.push(elFillIn.value);
                     }
                     break;
 
