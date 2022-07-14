@@ -117,6 +117,17 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
             // Set the type
             control.type = DateTimeControlType;
             break;
+        case SPTypes.FieldType.Lookup:
+            // Ensure a value exists
+            if (html) {
+                // Create an element to store the html
+                let elLookup = document.createElement("div");
+                elLookup.innerHTML = html;
+
+                // Update the value to be text
+                html = elLookup.innerText;
+            }
+            break;
         case SPTypes.FieldType.Note:
             // Set the type
             control.type = Components.FormControlTypes.TextArea;
