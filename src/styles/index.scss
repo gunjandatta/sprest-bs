@@ -2,12 +2,6 @@
 @import "./wp-tabs";
 
 .date-time {
-    /* Color match the selected flatpickr calendar control */
-    .flatpickr-day.selected {
-        background-color: #0078d4;
-        border-color: #0078d4;
-    }
-
     /* Add calendar icon styling for the flatpickr control */
     .flatpickr-input:not([disabled]) {
         background: #fff url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%271em%27 height=%271em%27 fill=%27%236c757d%27 class=%27bi bi-calendar%27 viewBox=%270 0 16 16%27><path d=%27M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z%27/></svg>") no-repeat right .75rem center/18px 18px;
@@ -19,6 +13,13 @@
         background-color: #fff;
         border-color: #6c757d;
     }
+}
+
+/* Cannot live inside the date-time div */
+/* Color match the selected flatpickr calendar control */
+.flatpickr-day.selected {
+    background-color: #0078d4;
+    border-color: #0078d4;
 }
 
 /** List Form Dialog */
