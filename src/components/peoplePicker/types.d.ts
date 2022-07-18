@@ -79,7 +79,7 @@ export interface IPeoplePickerProps {
     multi?: boolean;
 
     /** The change event. */
-    onChange?: (obj: Types.IPeoplePickerUser | Array<Types.IPeoplePickerUser>) => void;
+    onChange?: (obj: Array<Types.IPeoplePickerUser>) => void;
 
     /** The placeholder text. (Default value is "Search") */
     placeholder?: string;
@@ -102,7 +102,7 @@ export interface IFormControlPropsPeoplePicker extends IFormControlProps {
     groupId?: number;
     maxResults?: number;
     multi?: boolean;
-    onChange?: (obj: Types.IPeoplePickerUser | Array<Types.IPeoplePickerUser>) => void;
+    onChange?: (obj: Array<Types.IPeoplePickerUser>) => void;
     placeholder?: string;
     searchLocal?: boolean;
     value?: string | number | Types.IPeoplePickerUser | Array<string | number | Types.IPeoplePickerUser>;
