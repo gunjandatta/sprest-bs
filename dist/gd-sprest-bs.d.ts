@@ -1134,6 +1134,7 @@ declare module 'gd-sprest-bs/components/peoplePicker/types' {
             groupId?: number;
             maxResults?: number;
             multi?: boolean;
+            onChange?: (obj: Types.IPeoplePickerUser | Array<Types.IPeoplePickerUser>) => void;
             placeholder?: string;
             searchLocal?: boolean;
             value?: string | number | Types.IPeoplePickerUser | Array<string | number | Types.IPeoplePickerUser>;

@@ -386,6 +386,7 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
         // Render a people picker
         picker = PeoplePicker({
             allowGroups: props.allowGroups,
+            assignTo: props.assignTo,
             className: props.className,
             disabled: props.isDisabled,
             el: ctrl.el,
@@ -393,6 +394,7 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
             label: props.label,
             maxResults: props.maxResults,
             multi: props.multi,
+            onChange: props.onChange,
             placeholder: props.placeholder,
             readOnly: props.isReadonly,
             searchLocal: props.searchLocal,
