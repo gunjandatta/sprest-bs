@@ -57,7 +57,7 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
     // Ensure the field exists
     if (field == null) {
         // Log
-        console.error("[List Form] Field '" + fieldName + "' does not exist. Check the list or query.");
+        console.warn("[List Form] Field '" + fieldName + "' does not exist. Check the list or query.");
         return control;
     }
 

@@ -98,7 +98,7 @@ Components.CustomControls.registerType(DateTimeControlType, (props: IFormControl
         // Render a date/time
         dt = DateTime({
             className: props.className,
-            disabled: props.isDisabled,
+            disabled: props.isDisabled || props.isReadonly,
             el: ctrl.el,
             options: props.options,
             showTime: props.showTime,
