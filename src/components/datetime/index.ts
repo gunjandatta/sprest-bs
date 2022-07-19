@@ -37,7 +37,7 @@ export const DateTime = (props: IDateTimeProps): IDateTime => {
     // See if we are disabling the component
     if (props.disabled) {
         // Remove the read-only setting set by the flatpickr
-        textbox.textbox.readOnly = false;
+        textbox.elTextbox.readOnly = false;
     }
 
     // Create the element

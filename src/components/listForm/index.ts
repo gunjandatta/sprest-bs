@@ -773,13 +773,14 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 if (control.isReadonly) {
                     // Get the control display properties
                     let dispControl = renderDisplay(control.name, props);
-
-                    // Update the properties
-                    control.data = dispControl.data;
-                    control.label = dispControl.label;
-                    (control as IFormControlPropsDateTime).showTime = (dispControl as IFormControlPropsDateTime).showTime;
-                    control.type = dispControl.type;
-                    control.value = dispControl.value;
+                    if (dispControl) {
+                        // Update the properties
+                        control.data = dispControl.data;
+                        control.label = dispControl.label;
+                        (control as IFormControlPropsDateTime).showTime = (dispControl as IFormControlPropsDateTime).showTime;
+                        control.type = dispControl.type;
+                        control.value = dispControl.value;
+                    }
                 }
             }
 
