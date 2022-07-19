@@ -127,6 +127,7 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
                 // Update the value to be text
                 html = elLookup.innerText
                 control.data = html;
+                control.value = html;
             }
             break;
         case SPTypes.FieldType.Note:
