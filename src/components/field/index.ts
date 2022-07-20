@@ -1194,7 +1194,7 @@ export const Field = (props: IFieldProps): IField => {
             // See if there is base validation
             if (baseValidation) {
                 // Validate the field
-                let baseResult = baseValidation(control, { isValid: false, value: control.getValue() });
+                let baseResult = baseValidation(control, { isValid: control.isValid, value: control.getValue() });
 
                 // Validate the current control
                 let result = controlProps.onValidate ? controlProps.onValidate(controlProps, baseResult) : baseResult;
