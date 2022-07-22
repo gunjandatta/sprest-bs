@@ -109,9 +109,15 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                     addButton(userInfo);
                 }, addButton);
             }
-        } else {
+        } else if (parseInt(user as any) > 0) {
             // Find the user by id
             Web().getUserById(user as any).execute(userInfo => {
+                // Add the button
+                addButton(userInfo);
+            });
+        } else if (user) {
+            // Find the user by email
+            Web().ensureUser(user as any).execute(userInfo => {
                 // Add the button
                 addButton(userInfo);
             });
