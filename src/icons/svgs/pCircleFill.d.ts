@@ -1,0 +1,1 @@
+export const pCircleFill: (height?:number, width?:number, className?:string) => HTMLElement;

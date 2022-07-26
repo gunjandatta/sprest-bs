@@ -1,0 +1,1 @@
+export const android: (height?:number, width?:number, className?:string) => HTMLElement;

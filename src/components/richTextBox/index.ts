@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import * as Quill from "quill/dist/quill.min.js";
+import * as Quill from "quill";
 import { DefaultToolbar } from "./toolbar";
 import { IRichTextBox, IRichTextBoxProps, IFormControlPropsRichTextBox } from "./types";
 

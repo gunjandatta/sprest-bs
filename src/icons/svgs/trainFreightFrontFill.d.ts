@@ -1,0 +1,1 @@
+export const trainFreightFrontFill: (height?:number, width?:number, className?:string) => HTMLElement;

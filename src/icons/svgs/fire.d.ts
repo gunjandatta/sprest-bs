@@ -1,0 +1,1 @@
+export const fire: (height?:number, width?:number, className?:string) => HTMLElement;

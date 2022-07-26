@@ -5,13 +5,13 @@
     "main": "build/index.js",
     "typings": "src/index.d.ts",
     "scripts": {
-        "all": "npm run package && npm run docs",
+        "all": "npm run clean && npm run build && npm run prod && npm run typings",
         "build": "tsc && npm run build-sass && webpack --mode=development && npm run build-icons",
         "build-icons": "webpack --config webpack.icons.js --mode=development",
         "build-sass": "webpack --config webpack.sass.js --mode=production",
         "clean": "node ./clean.js",
         "docs": "typedoc",
-        "package": "npm run clean && npm run build && npm run prod && npm run typings",
+        "package": "npm run all && npm run docs",
         "prod": "webpack --mode=production && npm run prod-icons",
         "prod-icons": "webpack --config webpack.icons.js --mode=production",
         "typings": "dts-bundle --configJson dts-bundle.json"
@@ -34,7 +34,7 @@
     "homepage": "https://dattabase.com/extras/bs",
     "dependencies": {
         "flatpickr": "^4.6.13",
-        "gd-bs": "^5.6.7",
+        "gd-bs": "^5.7.6",
         "gd-sprest": "^7.0.8",
         "gd-sprest-def": "^1.1.5",
         "quill": "^1.3.7"

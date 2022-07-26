@@ -1,0 +1,1 @@
+export const lungsFill: (height?:number, width?:number, className?:string) => HTMLElement;

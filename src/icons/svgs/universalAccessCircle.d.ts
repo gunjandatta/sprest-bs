@@ -1,0 +1,1 @@
+export const universalAccessCircle: (height?:number, width?:number, className?:string) => HTMLElement;

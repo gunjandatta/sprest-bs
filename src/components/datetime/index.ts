@@ -1,4 +1,4 @@
-import "flatpickr/dist/flatpickr.min.js";
+import "flatpickr";
 import { Components } from "gd-bs";
 import { IDateTime, IDateTimeProps, IFormControlPropsDateTime } from "./types";
 declare var flatpickr;

@@ -4,10 +4,10 @@ module.exports = (env, argv) => {
     var isDev = argv.mode === "development";
 
     // Return the configuration
-    var cfg = {
+    var config = {
         entry: [
             "./node_modules/gd-sprest/dist/gd-sprest" + (isDev ? "" : ".min") + ".js",
-            "./build/index.js"
+            "./build/index.js",
         ],
         externals: {
             "gd-sprest": "$REST"
@@ -17,6 +17,13 @@ module.exports = (env, argv) => {
             filename: "gd-sprest-bs" + (isDev ? "" : ".min") + ".js"
         },
         target: ["web", "es5"],
+        resolve: {
+            extensions: [".js", ".ts"],
+            alias: {
+                "flatpickr": "flatpickr/dist/flatpickr.min.js",
+                "quill": "quill/dist/quill.min.js"
+            }
+        },
         module: {
             rules: [
                 {
@@ -36,5 +43,5 @@ module.exports = (env, argv) => {
     };
 
     // Return the configuration
-    return cfg;
+    return config;
 }

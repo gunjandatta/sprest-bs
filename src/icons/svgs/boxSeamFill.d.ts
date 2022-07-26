@@ -1,0 +1,1 @@
+export const boxSeamFill: (height?:number, width?:number, className?:string) => HTMLElement;

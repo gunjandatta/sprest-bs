@@ -1,0 +1,1 @@
+export const pSquareFill: (height?:number, width?:number, className?:string) => HTMLElement;

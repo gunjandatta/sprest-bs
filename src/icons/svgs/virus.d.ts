@@ -1,0 +1,1 @@
+export const virus: (height?:number, width?:number, className?:string) => HTMLElement;

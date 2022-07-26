@@ -1,0 +1,1 @@
+export const hCircleFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const _9CircleFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const _5Square: (height?:number, width?:number, className?:string) => HTMLElement;

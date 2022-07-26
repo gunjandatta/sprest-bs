@@ -1,0 +1,1 @@
+export const signStopLightsFill: (height?:number, width?:number, className?:string) => HTMLElement;
