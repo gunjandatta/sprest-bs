@@ -6,5 +6,6 @@ import { IFormControlTypes as Parent } from "gd-bs/src/components/form/controlTy
 export interface IFormControlTypes extends Parent {
     DateTime: number;
     PeoplePicker: number;
+    RichTextBox: number;
 }
 export const FormControlTypes: IFormControlTypes;

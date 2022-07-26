@@ -1,4 +1,7 @@
 @import "../../node_modules/flatpickr/dist/flatpickr.min.css";
+@import "../../node_modules/quill/dist/quill.core.css";
+@import "../../node_modules/quill/dist/quill.bubble.css";
+@import "../../node_modules/quill/dist/quill.snow.css";
 @import "./wp-tabs";
 
 .date-time {
@@ -64,4 +67,11 @@
     margin-bottom: 0.15rem;
     padding-top: 0.1rem;
     text-decoration: none;
+}
+
+/** Rich Text Editor */
+.rich-textbox {
+    .ql-formats > button {
+        min-width: auto;
+    }
 }

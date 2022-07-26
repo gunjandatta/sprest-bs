@@ -5,6 +5,8 @@ import { DateTimeControlType } from "../datetime";
 import { IFormControlPropsDateTime } from "../datetime/types";
 import { PeoplePickerControlType } from "../peoplePicker";
 import { IFormControlPropsPeoplePicker } from "../peoplePicker/types";
+import { RichTextBoxControlType } from "../richTextBox";
+import { IFormControlPropsRichTextBox } from "../richTextBox/types";
 
 /**
  * Field
@@ -550,9 +552,17 @@ export const Field = (props: IFieldProps): IField => {
 
         // Note
         case SPTypes.FieldType.Note:
-            // Set the properties
-            controlProps.type = Components.FormControlTypes.TextArea;
-            (controlProps as Components.IFormControlPropsTextField).rows = (props.field as Types.SP.FieldMultiLineText).NumberOfLines;
+            let noteField = props.field as Types.SP.FieldMultiLineText;
+
+            // See if this is plain text
+            if (noteField.RichText) {
+                // Set the properties
+                controlProps.type = RichTextBoxControlType;
+            } else {
+                // Set the properties
+                controlProps.type = Components.FormControlTypes.TextArea;
+                (controlProps as Components.IFormControlPropsTextField).rows = (props.field as Types.SP.FieldMultiLineText).NumberOfLines;
+            }
             break;
 
         // Number Field
