@@ -30,17 +30,7 @@ module.exports = (env, argv) => {
                             }
                         }
                     ]
-                },
-                {
-                    test: /\.svg$/,
-                    use: [{
-                        loader: 'html-loader',
-                        options: {
-                            minimize: true
-                        }
-                    }]
                 }
-
             ]
         }
     };
