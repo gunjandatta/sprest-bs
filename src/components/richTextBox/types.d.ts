@@ -25,7 +25,7 @@ export interface IRichTextBox {
     getText: () => string;
 
     /** Method to set the content's html. */
-    setValue: (string) => void;
+    setHtml: (string) => void;
 }
 
 /**

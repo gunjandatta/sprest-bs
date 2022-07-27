@@ -82,11 +82,11 @@ export const RichTextBox = (props: IRichTextBoxProps): IRichTextBox => {
         quillObj,
         getHtml: () => { return quillObj.root.innerHTML; },
         getText: () => { return quillObj.getText(); },
-        setValue: (value: string) => {
-            // Set the value
-            quillObj.setText(value);
-        }
+        setHtml: (value: string) => { quillObj.root.innerHTML = value || ""; }
     };
+
+    // Set the value
+    props.value ? obj.setHtml(props.value) : null;
 
     // Execute the assign to event
     props.assignTo ? props.assignTo(obj) : null;
