@@ -35,6 +35,7 @@ export const RichTextBox = (props: IRichTextBoxProps): IRichTextBox => {
     options.modules = options.modules || {};
     options.placeholder ? options.placeholder = props.placeholder : null;
     options.readOnly == null && typeof (props.disabled) === "boolean" ? options.readOnly = props.disabled : null;
+    options.theme = options.theme == null ? "snow" : options.theme;
 
     // See if are setting the default toolbar options
     let showToolbar = true;
