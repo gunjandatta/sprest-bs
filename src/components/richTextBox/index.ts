@@ -35,12 +35,10 @@ export const RichTextBox = (props: IRichTextBoxProps): IRichTextBox => {
     options.modules = options.modules || {};
     options.placeholder ? options.placeholder = props.placeholder : null;
     options.readOnly == null && typeof (props.disabled) === "boolean" ? options.readOnly = props.disabled : null;
-    typeof (options.theme) === "undefined" ? options.theme = "snow" : null;
 
     // See if are setting the default toolbar options
+    let showToolbar = true;
     if (options.modules.toolbar == null) {
-        let showToolbar = true;
-
         // Set the toolbar options
         switch (props.toolbarType) {
             // None
@@ -60,10 +58,10 @@ export const RichTextBox = (props: IRichTextBoxProps): IRichTextBox => {
                 break;
         }
 
-        // Set the container if we are showing the toolbar
-        showToolbar ? options.modules.toolbar = elToolbar : null;
+        // Set the toolbar
+        options.modules.toolbar = elToolbar;
     } else {
-        // Set the container
+        // Set the toolbar container
         options.modules.toolbar.container = elToolbar;
     }
 
@@ -93,6 +91,12 @@ export const RichTextBox = (props: IRichTextBoxProps): IRichTextBox => {
 
     // Apply the plugin
     let quillObj = new Quill(elEditor, options);
+
+    // See if we are hiding the toolbar
+    if (!showToolbar) {
+        // Remove the snow class
+        elToolbar.classList.remove("ql-snow");
+    }
 
     // Create the object
     let obj = {
