@@ -7,6 +7,7 @@ import { IRichTextBox, IRichTextBoxProps, IFormControlPropsRichTextBox } from ".
  * Toolbar Types
  */
 export enum RichTextBoxTypes {
+    None = 0,
     Basic = 1,
     Full = 2
 }
@@ -33,16 +34,34 @@ export const RichTextBox = (props: IRichTextBoxProps): IRichTextBox => {
     let options = props.options || {};
     options.modules = options.modules || {};
     options.placeholder ? options.placeholder = props.placeholder : null;
-    typeof (options.readOnly) === "boolean" ? options.readOnly = props.disabled : null;
+    options.readOnly == null && typeof (props.disabled) === "boolean" ? options.readOnly = props.disabled : null;
     typeof (options.theme) === "undefined" ? options.theme = "snow" : null;
 
     // See if are setting the default toolbar options
     if (options.modules.toolbar == null) {
-        // Set the toolbar options
-        elToolbar.innerHTML = props.toolbarType == RichTextBoxTypes.Basic ? Toolbars.BasicToolbar : Toolbars.FullToolbar;
+        let showToolbar = true;
 
-        // Set the container
-        options.modules.toolbar = elToolbar;
+        // Set the toolbar options
+        switch (props.toolbarType) {
+            // None
+            case RichTextBoxTypes.None:
+                elToolbar.innerHTML = "";
+                showToolbar = false;
+                break;
+
+            // Basic
+            case RichTextBoxTypes.Basic:
+                elToolbar.innerHTML = Toolbars.BasicToolbar;
+                break;
+
+            // Default - Full
+            default:
+                elToolbar.innerHTML = Toolbars.FullToolbar;
+                break;
+        }
+
+        // Set the container if we are showing the toolbar
+        showToolbar ? options.modules.toolbar = elToolbar : null;
     } else {
         // Set the container
         options.modules.toolbar.container = elToolbar;

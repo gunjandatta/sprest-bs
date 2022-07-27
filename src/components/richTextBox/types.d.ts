@@ -102,6 +102,7 @@ export interface IFormControlPropsRichTextBox extends IFormControlProps {
  * Rich TextBox Types
  */
 export type IRichTextBoxTypes = {
+    None: number;
     Basic: number;
     Full: number;
 }

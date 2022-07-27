@@ -4,6 +4,8 @@ import { DateTimeControlType } from "../datetime";
 import { IFormControlPropsDateTime } from "../datetime/types";
 import { Field } from "../field";
 import { IField, IFormControlLookupProps } from "../field/types";
+import { RichTextBoxControlType, RichTextBoxTypes } from "../richTextBox"
+import { IFormControlPropsRichTextBox } from "../richTextBox/types";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types";
 
 // Extend the list form
@@ -51,6 +53,7 @@ let getFieldsToRender = (props: IListFormDisplayProps | IListFormEditProps): Arr
 let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Components.IFormControlProps => {
     let control: Components.IFormControlProps = null;
     let field = props.info.fields[fieldName];
+    let isRichText = (field as Types.SP.FieldMultiLineText).RichText;
     let value = props.info.fieldValuesAsText[fieldName] || "";
     let html: string = props.info.fieldValuesAsHtml[fieldName] || props.info.fieldValuesAsHtml[fieldName.replace(/\_/g, "_x005f_")] || "";
 
@@ -131,8 +134,15 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
             }
             break;
         case SPTypes.FieldType.Note:
-            // Set the type
-            control.type = Components.FormControlTypes.TextArea;
+            // See if this is a rich text field
+            if (isRichText) {
+                // Set the properties
+                (control as IFormControlPropsRichTextBox).toolbarType = RichTextBoxTypes.None;
+                control.type = RichTextBoxControlType;
+            } else {
+                // Set the type
+                control.type = Components.FormControlTypes.TextArea;
+            }
             break;
         case SPTypes.FieldType.URL:
             // Set the value
@@ -148,16 +158,19 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
 
     // Detect html
     if (/<*>/g.test(html)) {
-        // Update the control to be read-only
-        control.type = Components.FormControlTypes.Readonly;
+        // Ensure this isn't a rich text field
+        if (!isRichText) {
+            // Update the control to be read-only
+            control.type = Components.FormControlTypes.Readonly;
 
-        // Set the rendered event
-        control.onControlRendered = control => {
-            // Get the target element
-            let elTarget = control.el.querySelector("input") || control.el;
+            // Set the rendered event
+            control.onControlRendered = isRichText ? null : control => {
+                // Get the target element
+                let elTarget = control.el.querySelector("input") || control.el;
 
-            // Override the html rendered
-            elTarget.innerHTML = control.props.data;
+                // Override the html rendered
+                elTarget.innerHTML = control.props.data;
+            }
         }
     }
     // Else, detect xml

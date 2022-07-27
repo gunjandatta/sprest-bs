@@ -1172,7 +1172,7 @@ declare module 'gd-sprest-bs/components/richTextBox/types' {
             getText: () => string;
     
             /** Method to set the content's html. */
-            setValue: (string) => void;
+            setHtml: (string) => void;
     }
     
     /**
@@ -1249,6 +1249,7 @@ declare module 'gd-sprest-bs/components/richTextBox/types' {
         * Rich TextBox Types
         */
     export type IRichTextBoxTypes = {
+            None: number;
             Basic: number;
             Full: number;
     }
