@@ -5,7 +5,7 @@ import { DateTimeControlType } from "../datetime";
 import { IFormControlPropsDateTime } from "../datetime/types";
 import { PeoplePickerControlType } from "../peoplePicker";
 import { IFormControlPropsPeoplePicker } from "../peoplePicker/types";
-import { RichTextBoxControlType } from "../richTextBox";
+import { RichTextBoxControlType, RichTextBoxTypes } from "../richTextBox";
 import { IFormControlPropsRichTextBox } from "../richTextBox/types";
 
 /**
@@ -556,8 +556,12 @@ export const Field = (props: IFieldProps): IField => {
 
             // See if this is plain text
             if (noteField.RichText) {
+                let rtbProps = controlProps as IFormControlPropsRichTextBox;
+                let fullToolbar = noteField.SchemaXml.match(/RichTextMode="FullHtml"/i) ? true : false;
+
                 // Set the properties
-                controlProps.type = RichTextBoxControlType;
+                rtbProps.type = RichTextBoxControlType;
+                rtbProps.toolbarType = fullToolbar ? RichTextBoxTypes.Full : RichTextBoxTypes.Basic;
             } else {
                 // Set the properties
                 controlProps.type = Components.FormControlTypes.TextArea;

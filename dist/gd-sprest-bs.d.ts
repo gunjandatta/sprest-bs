@@ -1156,16 +1156,22 @@ declare module 'gd-sprest-bs/components/richTextBox/types' {
         * Rich TextBox
         */
     export interface IRichTextBox {
-            /** The textbox element. */
+            /** The quill root element. */
             el: HTMLDivElement;
+    
+            /** The div element containing the textbox content. */
+            elContents: HTMLDivElement;
     
             /** The quill object. */
             quillObj: any;
     
-            /** Method to get the value. */
-            getValue: () => string;
+            /** Method to get the contents as html. */
+            getHtml: () => string;
     
-            /** Method to set the value. */
+            /** Method to get the contents as text. */
+            getText: () => string;
+    
+            /** Method to set the content's html. */
             setValue: (string) => void;
     }
     
@@ -1209,6 +1215,12 @@ declare module 'gd-sprest-bs/components/richTextBox/types' {
             /** The placeholder text. */
             placeholder?: string;
     
+            /** The # of rows to display. */
+            rows?: number;
+    
+            /** The type of toolbar to display. */
+            toolbarType?: number;
+    
             /** The date/time value. */
             value?: string;
     }
@@ -1223,8 +1235,22 @@ declare module 'gd-sprest-bs/components/richTextBox/types' {
             /** The placeholder text. */
             placeholder?: string;
     
+            /** The # of rows to display. */
+            rows?: number;
+    
+            /** The type of toolbar to display. */
+            toolbarType?: number;
+    
             /** The date/time value. */
             value?: string;
+    }
+    
+    /**
+        * Rich TextBox Types
+        */
+    export type IRichTextBoxTypes = {
+            Basic: number;
+            Full: number;
     }
 }
 

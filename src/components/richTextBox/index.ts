@@ -1,7 +1,15 @@
 import { Components } from "gd-bs";
 import * as Quill from "quill";
-import { DefaultToolbar } from "./toolbar";
+import * as Toolbars from "./toolbar";
 import { IRichTextBox, IRichTextBoxProps, IFormControlPropsRichTextBox } from "./types";
+
+/**
+ * Toolbar Types
+ */
+export enum RichTextBoxTypes {
+    Basic = 1,
+    Full = 2
+}
 
 /**
  * Rich TextBox
@@ -30,8 +38,8 @@ export const RichTextBox = (props: IRichTextBoxProps): IRichTextBox => {
 
     // See if are setting the default toolbar options
     if (options.modules.toolbar == null) {
-        // Set the default toolbar options
-        elToolbar.innerHTML = DefaultToolbar;
+        // Set the toolbar options
+        elToolbar.innerHTML = props.toolbarType == RichTextBoxTypes.Basic ? Toolbars.BasicToolbar : Toolbars.FullToolbar;
 
         // Set the container
         options.modules.toolbar = elToolbar;
@@ -70,8 +78,10 @@ export const RichTextBox = (props: IRichTextBoxProps): IRichTextBox => {
     // Create the object
     let obj = {
         el: elRichTextBox,
+        elContents: quillObj.root,
         quillObj,
-        getValue: () => { return quillObj.getText(); },
+        getHtml: () => { return quillObj.root.innerHTML; },
+        getText: () => { return quillObj.getText(); },
         setValue: (value: string) => {
             // Set the value
             quillObj.setText(value);
@@ -122,6 +132,6 @@ Components.CustomControls.registerType(RichTextBoxControlType, (props: IFormCont
     // Register a people picker
     props.onGetValue = (ctrl) => {
         // Return the value
-        return rtb ? rtb.getValue() : ctrl.value;
+        return rtb ? rtb.getHtml() : ctrl.value;
     };
 });
