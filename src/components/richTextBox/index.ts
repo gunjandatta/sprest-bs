@@ -110,6 +110,8 @@ Components.CustomControls.registerType(RichTextBoxControlType, (props: IFormCont
             disabled: props.isDisabled || props.isReadonly,
             el: ctrl.el,
             options: props.options,
+            rows: props.rows,
+            toolbarType: props.toolbarType,
             placeholder: props.placeholder,
             value: props.value
         });
