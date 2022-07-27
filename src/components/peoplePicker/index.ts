@@ -115,9 +115,9 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                 // Add the button
                 addButton(userInfo);
             });
-        } else if (user) {
+        } else if (typeof (user) === "string") {
             // Find the user by email
-            Web().ensureUser(user as any).execute(userInfo => {
+            Web().ensureUser(user).execute(userInfo => {
                 // Add the button
                 addButton(userInfo);
             });
