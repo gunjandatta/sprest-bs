@@ -1,4 +1,5 @@
 const path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env, argv) => {
     var isDev = argv.mode === "development";
@@ -23,6 +24,10 @@ module.exports = (env, argv) => {
                 "flatpickr": "flatpickr/dist/flatpickr.min.js",
                 "quill": "quill/dist/quill.min.js"
             }
+        },
+        optimization: {
+            minimize: true,
+            minimizer: [new TerserPlugin()]
         },
         module: {
             rules: [

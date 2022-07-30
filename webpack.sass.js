@@ -1,4 +1,5 @@
 const path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env, argv) => {
     // Return the configuration
@@ -8,10 +9,14 @@ module.exports = (env, argv) => {
             path: path.resolve(__dirname, "build"),
             filename: "styles.js"
         },
+        target: ["web", "es5"],
         resolve: {
             extensions: [".scss"]
         },
-        target: ["web", "es5"],
+        optimization: {
+            minimize: true,
+            minimizer: [new TerserPlugin()]
+        },
         module: {
             rules: [
                 {
