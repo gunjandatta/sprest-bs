@@ -161,7 +161,7 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
         let isMultiLine = html.indexOf("<br />") >= 0 ? true : false;
 
         // Ensure this isn't a rich text field or multi-line
-        if (!isRichText || !isMultiLine) {
+        if (!isRichText && !isMultiLine) {
             // Update the control to be read-only
             control.type = Components.FormControlTypes.Readonly;
 
@@ -173,6 +173,11 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
                 // Override the html rendered
                 elTarget.innerHTML = control.props.data;
             }
+        } else {
+            // Update the html break line
+            html = html.replace(/<br \/>/g, '\n');
+            control.data = html;
+            control.value = html;
         }
     }
     // Else, detect xml
