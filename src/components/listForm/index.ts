@@ -158,13 +158,15 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
 
     // Detect html
     if (/<*>/g.test(html)) {
-        // Ensure this isn't a rich text field
-        if (!isRichText) {
+        let isMultiLine = html.indexOf("<br />") >= 0 ? true : false;
+
+        // Ensure this isn't a rich text field or multi-line
+        if (!isRichText || !isMultiLine) {
             // Update the control to be read-only
             control.type = Components.FormControlTypes.Readonly;
 
             // Set the rendered event
-            control.onControlRendered = isRichText ? null : control => {
+            control.onControlRendered = control => {
                 // Get the target element
                 let elTarget = control.el.querySelector("input") || control.el;
 
