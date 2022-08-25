@@ -636,17 +636,17 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         let fieldName = fieldNames[i];
         let field = props.info.fields[fieldName];
 
-        // Ensure the field exists
-        if (field == null) {
-            // Log
-            console.error("[List Form] Field '" + fieldName + "' does not exist. Check the list or query.");
-            continue;
-        }
-
         // See if this is the attachment field
         if (fieldName == "Attachments") {
             // Generate the attachments row
             generateAttachmentsRow();
+            continue;
+        }
+
+        // Ensure the field exists
+        if (field == null) {
+            // Log
+            console.error("[List Form] Field '" + fieldName + "' does not exist. Check the list or query.");
             continue;
         }
 
