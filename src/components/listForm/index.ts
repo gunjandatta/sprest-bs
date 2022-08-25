@@ -53,7 +53,7 @@ let getFieldsToRender = (props: IListFormDisplayProps | IListFormEditProps): Arr
 let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Components.IFormControlProps => {
     let control: Components.IFormControlProps = null;
     let field = props.info.fields[fieldName];
-    let isRichText = (field as Types.SP.FieldMultiLineText).RichText;
+    let isRichText = field ? (field as Types.SP.FieldMultiLineText).RichText : false;
     let value = props.info.fieldValuesAsText[fieldName] || "";
     let html: string = props.info.fieldValuesAsHtml[fieldName] || props.info.fieldValuesAsHtml[fieldName.replace(/\_/g, "_x005f_")] || "";
 
