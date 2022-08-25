@@ -209,49 +209,59 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     let mapper: { [key: string]: Components.IFormControlProps } = {};
     let rows: Array<Components.IFormRow> = [];
 
-    // See if we are rendering attachments
-    let displayAttachments = typeof (props.displayAttachments) === "boolean" ? props.displayAttachments : true;
-    if (props.info.attachments && displayAttachments) {
-        // Render the attachments
-        rows.push({
-            columns: [{
-                control: {
-                    id: "ListFormAttachments",
-                    label: "Attachments",
-                    name: "Attachments",
-                    onControlRendered: control => {
-                        let items: Array<Components.IToolbarItem> = [];
+    // Method to generate the attachments row
+    let generateAttachmentsRow = () => {
+        // See if we are rendering attachments
+        let displayAttachments = typeof (props.displayAttachments) === "boolean" ? props.displayAttachments : true;
+        if (props.info.attachments && displayAttachments) {
+            // Render the attachments
+            rows.push({
+                columns: [{
+                    control: {
+                        id: "ListFormAttachments",
+                        label: "Attachments",
+                        name: "Attachments",
+                        onControlRendered: control => {
+                            let items: Array<Components.IToolbarItem> = [];
 
-                        // Parse the attachments
-                        for (let i = 0; i < props.info.attachments.length; i++) {
-                            let attachment = props.info.attachments[i];
+                            // Parse the attachments
+                            for (let i = 0; i < props.info.attachments.length; i++) {
+                                let attachment = props.info.attachments[i];
 
-                            // Add the item
-                            items.push({
-                                buttons: [{
-                                    className: "me-1",
-                                    href: attachment.ServerRelativeUrl,
-                                    isSmall: true,
-                                    text: attachment.FileName
-                                }]
+                                // Add the item
+                                items.push({
+                                    buttons: [{
+                                        className: "me-1",
+                                        href: attachment.ServerRelativeUrl,
+                                        isSmall: true,
+                                        text: attachment.FileName
+                                    }]
+                                });
+                            }
+
+                            // Render a toolbar
+                            Components.Toolbar({
+                                el: control.el,
+                                items
                             });
                         }
-
-                        // Render a toolbar
-                        Components.Toolbar({
-                            el: control.el,
-                            items
-                        });
                     }
-                }
-            }]
-        });
+                }]
+            });
+        }
     }
 
     // Parse the fields to render
     let fieldNames = getFieldsToRender(props);
     for (let i = 0; i < fieldNames.length; i++) {
         let fieldName = fieldNames[i];
+
+        // See if this is the attachment field
+        if (fieldName == "Attachments") {
+            // Generate the attachments row
+            generateAttachmentsRow();
+            continue;
+        }
 
         // Generate the control
         let control = renderDisplay(fieldName, props);
@@ -466,155 +476,158 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         size: 100
     });
 
-    // See if we are rendering attachments
-    let displayAttachments = typeof (props.displayAttachments) === "boolean" ? props.displayAttachments : true;
-    if (props.info.attachments && displayAttachments) {
-        // Set a default field
-        // This will help w/ the onControlRendering/ed events to not have a null value for this parameter
-        props.info.fields["Attachments"] = {} as any;
+    // Generates the attachments row
+    let generateAttachmentsRow = () => {
+        // See if we are rendering attachments
+        let displayAttachments = typeof (props.displayAttachments) === "boolean" ? props.displayAttachments : true;
+        if (props.info.attachments && displayAttachments) {
+            // Set a default field
+            // This will help w/ the onControlRendering/ed events to not have a null value for this parameter
+            props.info.fields["Attachments"] = {} as any;
 
-        // Render the attachments
-        rows.push({
-            columns: [{
-                control: {
-                    id: "ListFormAttachments",
-                    label: "Attachments",
-                    name: "Attachments",
-                    onControlRendered: control => {
-                        // Render a toolbar
-                        let toolbar = Components.Toolbar({
-                            el: control.el,
-                            items: [{
-                                buttons: [{
-                                    className: "upload-btn me-1",
-                                    isSmall: true,
-                                    text: "Upload",
-                                    type: Components.ButtonTypes.Secondary,
-                                    onClick: (btn, ev) => {
-                                        let elUpload = ev.currentTarget as HTMLButtonElement;
-
-                                        // Display an upload dialog
-                                        Helper.ListForm.showFileDialog().then(fileInfo => {
-                                            // Get the buttons and remove any duplicates
-                                            let buttons = elUpload.parentElement.querySelectorAll(".btn");
-                                            for (let i = 0; i < buttons.length; i++) {
-                                                let button = buttons[i] as HTMLButtonElement;
-
-                                                // See if this is the associated button
-                                                if (button.innerText.replace(/X$/, '') == fileInfo.name) {
-                                                    // Get the badge
-                                                    let badge = button.querySelector(".badge") as HTMLSpanElement;
-                                                    if (badge) {
-                                                        // Remove the button
-                                                        badge.click();
-                                                    }
-                                                    break;
-                                                }
-                                            }
-
-                                            // Save the file information
-                                            attachments.new.push(fileInfo);
-
-                                            // Append the attachment
-                                            elUpload.parentElement.appendChild(Components.Popover({
-                                                isDismissible: true,
-                                                type: Components.PopoverPlacements.Bottom,
-                                                btnProps: {
-                                                    className: "me-1 file-attachment",
-                                                    isSmall: true,
-                                                    text: fileInfo.name
-                                                },
-                                                options: {
-                                                    content: Components.Button({
-                                                        data: fileInfo,
-                                                        isSmall: true,
-                                                        text: "Remove",
-                                                        type: Components.ButtonTypes.Danger,
-                                                        onClick: (btn, ev) => {
-                                                            let fileName = (btn.data as Helper.IListFormAttachmentInfo).name;
-
-                                                            // Parse the array
-                                                            for (let i = 0; i < attachments.new.length; i++) {
-                                                                // See if this is the target attachment
-                                                                if (attachments.new[i].name == fileName) {
-                                                                    // Remove this attachment
-                                                                    attachments.new.splice(i, 1);
-                                                                    break;
-                                                                }
-                                                            }
-
-                                                            // Get the files
-                                                            let files = btnGroup.querySelectorAll(".btn.file-attachment");
-                                                            for (let i = 0; i < files.length; i++) {
-                                                                let file = files[i] as HTMLAnchorElement;
-
-                                                                // See if this is the target button
-                                                                if (file.innerText == fileName) {
-                                                                    // Remove this popover
-                                                                    file.parentElement.removeChild(file);
-                                                                    break;
-                                                                }
-                                                            }
-                                                        }
-                                                    }).el
-                                                }
-                                            }).el);
-                                        });
-                                    }
-                                }]
-                            }]
-                        });
-
-                        // Get the button group
-                        let btnGroup = toolbar.el.querySelector(".btn-group");
-                        if (btnGroup) {
-                            // Parse the attachments
-                            for (let i = 0; i < props.info.attachments.length; i++) {
-                                let attachment = props.info.attachments[i];
-
-                                // Add the attachment
-                                btnGroup.appendChild(Components.Popover({
-                                    isDismissible: true,
-                                    type: Components.PopoverPlacements.Bottom,
-                                    btnProps: {
-                                        className: "me-1 file-attachment",
+            // Render the attachments
+            rows.push({
+                columns: [{
+                    control: {
+                        id: "ListFormAttachments",
+                        label: "Attachments",
+                        name: "Attachments",
+                        onControlRendered: control => {
+                            // Render a toolbar
+                            let toolbar = Components.Toolbar({
+                                el: control.el,
+                                items: [{
+                                    buttons: [{
+                                        className: "upload-btn me-1",
                                         isSmall: true,
-                                        text: attachment.FileName,
-                                    },
-                                    options: {
-                                        content: Components.Button({
-                                            data: attachment,
-                                            isSmall: true,
-                                            text: "Remove",
-                                            type: Components.ButtonTypes.Danger,
-                                            onClick: (btn, ev) => {
-                                                let attachment = btn.data as Types.SP.Attachment;
+                                        text: "Upload",
+                                        type: Components.ButtonTypes.Secondary,
+                                        onClick: (btn, ev) => {
+                                            let elUpload = ev.currentTarget as HTMLButtonElement;
 
-                                                // Add this file for deletion
-                                                attachments.delete.push(attachment);
+                                            // Display an upload dialog
+                                            Helper.ListForm.showFileDialog().then(fileInfo => {
+                                                // Get the buttons and remove any duplicates
+                                                let buttons = elUpload.parentElement.querySelectorAll(".btn");
+                                                for (let i = 0; i < buttons.length; i++) {
+                                                    let button = buttons[i] as HTMLButtonElement;
 
-                                                // Get the files
-                                                let files = btnGroup.querySelectorAll(".btn.file-attachment");
-                                                for (let i = 0; i < files.length; i++) {
-                                                    let file = files[i] as HTMLAnchorElement;
-
-                                                    // See if this is the target button
-                                                    if (file.innerText == attachment.FileName) {
-                                                        // Remove this popover
-                                                        file.parentElement.removeChild(file);
+                                                    // See if this is the associated button
+                                                    if (button.innerText.replace(/X$/, '') == fileInfo.name) {
+                                                        // Get the badge
+                                                        let badge = button.querySelector(".badge") as HTMLSpanElement;
+                                                        if (badge) {
+                                                            // Remove the button
+                                                            badge.click();
+                                                        }
                                                         break;
                                                     }
                                                 }
-                                            }
-                                        }).el
-                                    }
-                                }).el);
+
+                                                // Save the file information
+                                                attachments.new.push(fileInfo);
+
+                                                // Append the attachment
+                                                elUpload.parentElement.appendChild(Components.Popover({
+                                                    isDismissible: true,
+                                                    type: Components.PopoverPlacements.Bottom,
+                                                    btnProps: {
+                                                        className: "me-1 file-attachment",
+                                                        isSmall: true,
+                                                        text: fileInfo.name
+                                                    },
+                                                    options: {
+                                                        content: Components.Button({
+                                                            data: fileInfo,
+                                                            isSmall: true,
+                                                            text: "Remove",
+                                                            type: Components.ButtonTypes.Danger,
+                                                            onClick: (btn, ev) => {
+                                                                let fileName = (btn.data as Helper.IListFormAttachmentInfo).name;
+
+                                                                // Parse the array
+                                                                for (let i = 0; i < attachments.new.length; i++) {
+                                                                    // See if this is the target attachment
+                                                                    if (attachments.new[i].name == fileName) {
+                                                                        // Remove this attachment
+                                                                        attachments.new.splice(i, 1);
+                                                                        break;
+                                                                    }
+                                                                }
+
+                                                                // Get the files
+                                                                let files = btnGroup.querySelectorAll(".btn.file-attachment");
+                                                                for (let i = 0; i < files.length; i++) {
+                                                                    let file = files[i] as HTMLAnchorElement;
+
+                                                                    // See if this is the target button
+                                                                    if (file.innerText == fileName) {
+                                                                        // Remove this popover
+                                                                        file.parentElement.removeChild(file);
+                                                                        break;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }).el
+                                                    }
+                                                }).el);
+                                            });
+                                        }
+                                    }]
+                                }]
+                            });
+
+                            // Get the button group
+                            let btnGroup = toolbar.el.querySelector(".btn-group");
+                            if (btnGroup) {
+                                // Parse the attachments
+                                for (let i = 0; i < props.info.attachments.length; i++) {
+                                    let attachment = props.info.attachments[i];
+
+                                    // Add the attachment
+                                    btnGroup.appendChild(Components.Popover({
+                                        isDismissible: true,
+                                        type: Components.PopoverPlacements.Bottom,
+                                        btnProps: {
+                                            className: "me-1 file-attachment",
+                                            isSmall: true,
+                                            text: attachment.FileName,
+                                        },
+                                        options: {
+                                            content: Components.Button({
+                                                data: attachment,
+                                                isSmall: true,
+                                                text: "Remove",
+                                                type: Components.ButtonTypes.Danger,
+                                                onClick: (btn, ev) => {
+                                                    let attachment = btn.data as Types.SP.Attachment;
+
+                                                    // Add this file for deletion
+                                                    attachments.delete.push(attachment);
+
+                                                    // Get the files
+                                                    let files = btnGroup.querySelectorAll(".btn.file-attachment");
+                                                    for (let i = 0; i < files.length; i++) {
+                                                        let file = files[i] as HTMLAnchorElement;
+
+                                                        // See if this is the target button
+                                                        if (file.innerText == attachment.FileName) {
+                                                            // Remove this popover
+                                                            file.parentElement.removeChild(file);
+                                                            break;
+                                                        }
+                                                    }
+                                                }
+                                            }).el
+                                        }
+                                    }).el);
+                                }
                             }
                         }
                     }
-                }
-            }]
-        });
+                }]
+            });
+        }
     }
 
     // Parse the fields to render
@@ -630,8 +643,12 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             continue;
         }
 
-        // Skip the attachment field
-        if (fieldName == "Attachments") { continue; }
+        // See if this is the attachment field
+        if (fieldName == "Attachments") {
+            // Generate the attachments row
+            generateAttachmentsRow();
+            continue;
+        }
 
         // See if the item exists
         value[fieldName] = null;
