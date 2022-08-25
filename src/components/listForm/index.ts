@@ -210,7 +210,8 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     let rows: Array<Components.IFormRow> = [];
 
     // See if we are rendering attachments
-    if (props.info.attachments) {
+    let displayAttachments = typeof (props.displayAttachments) === "boolean" ? props.displayAttachments : true;
+    if (props.info.attachments && displayAttachments) {
         // Render the attachments
         rows.push({
             columns: [{
@@ -466,7 +467,8 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     });
 
     // See if we are rendering attachments
-    if (props.info.attachments) {
+    let displayAttachments = typeof (props.displayAttachments) === "boolean" ? props.displayAttachments : true;
+    if (props.info.attachments && displayAttachments) {
         // Set a default field
         // This will help w/ the onControlRendering/ed events to not have a null value for this parameter
         props.info.fields["Attachments"] = {} as any;

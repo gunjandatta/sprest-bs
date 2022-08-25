@@ -901,6 +901,9 @@ declare module 'gd-sprest-bs/components/listForm/types' {
             /** The form component class name. */
             className?: string;
     
+            /** Flag to display the attachments, if they are loaded. */
+            displayAttachments?: boolean;
+    
             /** The form component group class name. */
             groupClassName?: string;
     
