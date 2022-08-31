@@ -60,7 +60,16 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
     // Ensure the field exists
     if (field == null) {
         // See if a value was found
-        if(value) {
+        if (value || html) {
+            // Return a read-only control
+            return {
+                data: value || html,
+                isDisabled: true,
+                label: fieldName,
+                name: fieldName,
+                type: Components.FormControlTypes.Readonly,
+                value: value || html
+            };
         }
 
         // Log
@@ -1036,4 +1045,8 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     };
 
     // Execute the assign to event
-    props.assignTo ? props.assig
+    props.assignTo ? props.assignTo(formObj) : null;
+
+    // Return the form
+    return formObj;
+};
