@@ -67,7 +67,7 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
                 isDisabled: true,
                 label: fieldName,
                 name: fieldName,
-                type: Components.FormControlTypes.Readonly,
+                type: Components.FormControlTypes.TextField,
                 value: value || html
             };
         }
