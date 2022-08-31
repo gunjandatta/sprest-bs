@@ -59,6 +59,10 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
 
     // Ensure the field exists
     if (field == null) {
+        // See if a value was found
+        if(value) {
+        }
+
         // Log
         console.warn("[List Form] Field '" + fieldName + "' does not exist. Check the list or query.");
         return control;
@@ -861,6 +865,12 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             // Get the field value
             let fieldValue = formField.getValue();
 
+            // See if an event exists
+            if (formField.controlProps.onGetValue) {
+                // Update the value
+                fieldValue.value = formField.controlProps.onGetValue(formField.controlProps);
+            }
+
             // Set the item value
             values[fieldValue.name] = fieldValue.value;
 
@@ -963,6 +973,14 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
                 // Validate the form field and update the status flag
                 let controlIsValid = formField.isValid();
+
+                // See if there is a custom method
+                if (formField.controlProps.onValidate) {
+                    // Call the event
+                    controlIsValid = formField.controlProps.onValidate(formField.controlProps, formField.getValue()) as boolean;
+                }
+
+                // Update the flag
                 isValid = isValid && controlIsValid;
             }
 
@@ -1018,8 +1036,4 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     };
 
     // Execute the assign to event
-    props.assignTo ? props.assignTo(formObj) : null;
-
-    // Return the form
-    return formObj;
-};
+    props.assignTo ? props.assig
