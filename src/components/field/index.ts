@@ -242,14 +242,11 @@ export const Field = (props: IFieldProps): IField => {
             // Get the items
             let items = getChoiceItems(displayRadioButtons, props.field as any, props.value);
 
-            // See if this is not a required field, or if the allow fill in option is set
-            if ((!isRequired && !displayRadioButtons) || allowFillIn) {
-                // Add a blank entry
-                items = [{
-                    text: "",
-                    value: null
-                } as any].concat(items);
-            }
+            // Add a blank entry
+            items = [{
+                text: "",
+                value: null
+            } as any].concat(items);
 
             // See if we are allowing custom values
             if (allowFillIn) {
