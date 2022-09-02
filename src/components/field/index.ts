@@ -1143,7 +1143,8 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Image
                 case SPTypes.FieldType.Image:
-
+                    // Do nothing, there is a custom method in the list form component
+                    // to set this value
                     break;
 
                 // Lookup
@@ -1249,6 +1250,9 @@ export const Field = (props: IFieldProps): IField => {
                     // See if this is a multi-value field
                     if ((props.field as Types.SP.FieldUser).AllowMultipleValues) {
                         let values: Array<Components.IDropdownItem> = fieldValue.value || [];
+
+                        // Default the value
+                        fieldValue.value = { results: [] };
 
                         // Parse the options
                         for (let j = 0; j < values.length; j++) {
