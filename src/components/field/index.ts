@@ -1,6 +1,6 @@
 import { Helper, SPTypes, Types } from "gd-sprest";
 import { Components } from "../core";
-import { IField, IFieldProps, IFieldValue, IFormControlLookupProps, IFormControlUrlProps } from "./types";
+import { IField, IFieldProps, IFieldValue, IFormControlLookupProps, IFormControlUrlProps, IFieldImageInfo, IFieldImageValue } from "./types";
 import { DateTimeControlType } from "../datetime";
 import { IFormControlPropsDateTime } from "../datetime/types";
 import { PeoplePickerControlType } from "../peoplePicker";
@@ -354,6 +354,94 @@ export const Field = (props: IFieldProps): IField => {
                     // Set the value
                     controlProps.value = new Date(dtValue);
                 }
+            }
+            break;
+
+        // Image
+        case SPTypes.FieldType.Image:
+            let fileInfo: Helper.IListFormAttachmentInfo = null;
+            let imageValue = controlProps.value;
+
+            // Set the type
+            controlProps.type = Components.FormControlTypes.TextField;
+            (controlProps as Components.IFormControlPropsTextField).placeholder = "Add an image";
+            (controlProps as Components.IFormControlPropsTextField).isDisabled = true;
+
+            // Update the value
+            if (controlProps.value) {
+                // Update the value to only display the file name
+                try {
+                    let imageProps: IFieldImageValue = JSON.parse(controlProps.value);
+                    controlProps.value = imageProps.fileName;
+                } catch { }
+            }
+
+            // Validate the extension
+            baseValidation = (ctrl, results) => {
+                // See if we are uploading a new file
+                if (fileInfo) {
+                    // Ensure it's an image
+                    let info = fileInfo.name.split('.');
+                    let fileExt = info[info.length - 1].toLowerCase();
+                    if (["tiff", "pjp", "jfif", "bmp", "gif", "svg", "png", "xbm", "dib", "jxl",
+                        "jpeg", "svgz", "jpg", "webp", "ico", "tif", "pjpeg", "avif"].indexOf(fileExt) < 0) {
+                        // Set the flag
+                        results.isValid = false;
+                        results.invalidMessage = "The file must be an image.";
+                    }
+                }
+                // Else, see if a value doesn't exist
+                else if (results.value == null) {
+                    // Set the flag based on if it's required
+                    results.isValid = ctrl.props.required ? false : results.isValid;
+                }
+
+                // Return the results
+                return results;
+            }
+
+            onControlRendered = controlProps.onControlRendered;
+            controlProps.onControlRendered = (ctrl) => {
+                // Append the edit button
+                Components.Button({
+                    el: ctrl.textbox.el,
+                    type: Components.ButtonTypes.OutlineSecondary,
+                    text: "Edit",
+                    onClick: () => {
+                        // Show a file loader
+                        Helper.ListForm.showFileDialog().then(file => {
+                            // Save the file info
+                            fileInfo = file;
+                            (fileInfo as IFieldImageInfo).fieldId = props.field.Id;
+                            (fileInfo as IFieldImageInfo).fieldName = props.field.InternalName;
+
+                            // Set the value to the file name
+                            ctrl.textbox.setValue(file.name);
+                        });
+                    }
+                });
+
+                // Append the clear button
+                Components.Button({
+                    el: ctrl.textbox.el,
+                    type: Components.ButtonTypes.OutlineSecondary,
+                    text: "Clear",
+                    onClick: () => {
+                        // Clear the value
+                        ctrl.textbox.setValue("");
+                        fileInfo = null;
+                        imageValue = null;
+                    }
+                });
+
+                // Call the rendered event
+                onControlRendered ? onControlRendered(ctrl) : null;
+            }
+
+            // Set the get value event
+            controlProps.onGetValue = () => {
+                // Return the file information
+                return fileInfo || imageValue;
             }
             break;
 
@@ -1000,6 +1088,12 @@ export const Field = (props: IFieldProps): IField => {
                 value: control ? control.getValue() : null
             };
 
+            // See if there is a custom value
+            if (control.props.onGetValue) {
+                // Update the value
+                fieldValue.value = control.props.onGetValue(control.props);
+            }
+
             // Update the field name/value, based on the type
             switch (props.field.FieldTypeKind) {
                 // Boolean
@@ -1045,6 +1139,11 @@ export const Field = (props: IFieldProps): IField => {
                 case SPTypes.FieldType.DateTime:
                     // Ensure a value exists, otherwise null
                     fieldValue.value = fieldValue.value ? (fieldValue.value as Date).toISOString() : null;
+                    break;
+
+                // Image
+                case SPTypes.FieldType.Image:
+
                     break;
 
                 // Lookup
@@ -1151,9 +1250,6 @@ export const Field = (props: IFieldProps): IField => {
                     if ((props.field as Types.SP.FieldUser).AllowMultipleValues) {
                         let values: Array<Components.IDropdownItem> = fieldValue.value || [];
 
-                        // Default the value
-                        fieldValue.value = { results: [] };
-
                         // Parse the options
                         for (let j = 0; j < values.length; j++) {
                             let userValue = values[j] as Types.SP.User | Types.SP.Group;
@@ -1161,6 +1257,9 @@ export const Field = (props: IFieldProps): IField => {
                             // Add the field value
                             userValue.Id ? fieldValue.value.results.push(userValue.Id) : null;
                         }
+
+                        // Clear the value if no values exist
+                        if (fieldValue.value.results.length == 0) { fieldValue.value = null; }
                     } else {
                         let userValue: Types.SP.User | Types.SP.Group = fieldValue.value ? fieldValue.value[0] : null;
 
@@ -1209,6 +1308,12 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Validate the current control
                 let result = controlProps.onValidate ? controlProps.onValidate(controlProps, baseResult) : baseResult;
+
+                // See if a custom validation method exists
+                if (controlProps.onValidate) {
+                    // Call the custom validation method
+                    result = controlProps.onValidate(controlProps, baseResult);
+                }
 
                 // Return the flag
                 if (typeof (result) === "boolean") {

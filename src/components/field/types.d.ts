@@ -33,6 +33,28 @@ export interface IFieldProps {
 }
 
 /**
+ * Field Image Information
+ */
+export interface IFieldImageInfo extends Helper.IListFormAttachmentInfo {
+    fieldId: string;
+    fieldName: string;
+}
+
+/**
+ * Field Image Value
+ */
+export interface IFieldImageValue {
+    fieldId: string;
+    fieldName: string;
+    fileName: string;
+    id: string;
+    nativeFile?: any;
+    serverRelativeUrl: string;
+    serverUrl: string;
+    type: string;
+}
+
+/**
  * Field Value
  */
 export interface IFieldValue {
@@ -43,7 +65,7 @@ export interface IFieldValue {
 /**
  * Form Control Lookup Properties
  */
- export interface IFormControlLookupProps extends IFormControlProps {
+export interface IFormControlLookupProps extends IFormControlProps {
     lookupFilter?: string;
     onControlRendering?: (control: IFieldLookupProps, field: Types.SP.Field) => void | Promise<IFieldLookupProps>;
 }

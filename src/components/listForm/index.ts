@@ -3,7 +3,7 @@ import { Components } from "../core";
 import { DateTimeControlType } from "../datetime";
 import { IFormControlPropsDateTime } from "../datetime/types";
 import { Field } from "../field";
-import { IField, IFormControlLookupProps } from "../field/types";
+import { IField, IFormControlLookupProps, IFieldImageInfo, IFieldImageValue } from "../field/types";
 import { RichTextBoxControlType, RichTextBoxTypes } from "../richTextBox"
 import { IFormControlPropsRichTextBox } from "../richTextBox/types";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types";
@@ -80,8 +80,19 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
     // See if we are hiding the field
     if (field.SchemaXml.indexOf('ShowInDisplayForm="FALSE"') > 0) { return control; }
 
-    // See if this is a note field
-    if (field.FieldTypeKind == SPTypes.FieldType.Note) {
+    // See if this is an image field
+    if (field.FieldTypeKind == SPTypes.FieldType.Image) {
+        // Ensure a value exists
+        if (value) {
+            // Update the html
+            try {
+                let imgInfo: IFieldImageValue = JSON.parse(value);
+                html = "<img style='height: 64px; width: 64px;' src='" + imgInfo.serverRelativeUrl + "' alt='" + imgInfo.fileName + "' />";
+            } catch { }
+        }
+    }
+    // Else, see if this is a note field
+    else if (field.FieldTypeKind == SPTypes.FieldType.Note) {
         // Update the html
         html = html.replace(/\r?\n/g, '<br />');
     }
@@ -173,8 +184,16 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
     if (/<*>/g.test(html)) {
         let isMultiLine = html.indexOf("<br />") >= 0 ? true : false;
 
-        // Ensure this isn't a rich text field or multi-line
-        if (!isRichText && !isMultiLine) {
+        // See if it's an image
+        if (field.FieldTypeKind == SPTypes.FieldType.Image) {
+            // Set the rendered event
+            control.onControlRendered = control => {
+                // Override the html rendered
+                control.el.innerHTML = html;
+            }
+        }
+        // Else, ensure this isn't a rich text field or multi-line
+        else if (!isRichText && !isMultiLine) {
             // Update the control to be read-only
             control.type = Components.FormControlTypes.Readonly;
 
@@ -475,6 +494,146 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
                     // Resolve the promise
                     resolve();
+                });
+            });
+        });
+    }
+
+    // Method to upload the images
+    let images: IFieldImageInfo[] = [];
+    let uploadImages = (info: Helper.IListFormResult): PromiseLike<any> => {
+        // Return a promise
+        return new Promise((resolve) => {
+            let values = {};
+
+            // Ensure we have images
+            if (images.length == 0) {
+                // Do nothing
+                resolve(values);
+                return;
+            }
+
+            // Get the list folder
+            Helper.ListFormField.getOrCreateImageFolder(info).then(fld => {
+                // Removes the existing image
+                let removeExisting = (value: string) => {
+                    // Return a promise
+                    return new Promise(resolve => {
+                        // Try to get the image info
+                        let imageInfo: IFieldImageValue = null;
+                        try { imageInfo = JSON.parse(value); }
+                        catch { }
+
+                        // Ensure the info exists
+                        if (imageInfo) {
+                            // See if the file exists
+                            fld.Files(imageInfo.fileName).execute(
+                                // Exists
+                                file => {
+                                    // Delete the file
+                                    file.delete().execute(() => {
+                                        // Resolve the request
+                                        resolve(null);
+                                    });
+                                },
+
+                                // Doesn't exist
+                                () => {
+                                    // Resolve the request
+                                    resolve(null);
+                                }
+                            );
+                        } else {
+                            // Resolve the request
+                            resolve(null);
+                        }
+                    });
+                }
+
+                // Validates the list name
+                let validateFileName = (fileName: string): PromiseLike<string> => {
+                    // Return a promise
+                    return new Promise(resolve => {
+                        // Get the file name w/out the extension
+                        let info = fileName.toLowerCase().split('.');
+                        let fileExt = info[info.length - 1];
+                        let fileNameNoExt = "";
+                        for (let i = 0; i < info.length - 1; i++) { fileNameNoExt += info[i]; }
+
+                        // Get the files with a similar name
+                        fld.Files().query({
+                            Filter: "startswith(Name, '" + fileNameNoExt + "')",
+                            Top: 5000
+                        }).execute(files => {
+                            let isValid = true;
+                            let counter = -1;
+                            let validFileName = null;
+
+                            // See if no files were found
+                            if (files.results.length == 0) {
+                                // Resolve the request
+                                resolve(fileName);
+                                return;
+                            }
+
+                            // Loop until it's valid
+                            do {
+                                // Reset the flag and file name
+                                validFileName = fileNameNoExt + (++counter == 0 ? "" : counter) + "." + fileExt;
+                                isValid = true;
+
+                                // Parse the files
+                                for (let i = 0; i < files.results.length; i++) {
+                                    let file = files.results[i];
+
+                                    // See if there is a match
+                                    if (file.Name.toLowerCase() == validFileName) {
+                                        // Set the flag
+                                        isValid = false;
+                                        break;
+                                    }
+                                }
+                            } while (!isValid)
+
+                            // Resolve the request
+                            resolve(validFileName);
+                        });
+                    });
+                }
+
+                // Parse the images
+                Helper.Executor(images, imageInfo => {
+                    // See if this is a file that needs to be uploaded
+                    if (imageInfo.name && imageInfo.data && imageInfo.fieldName) {
+                        // Return a promise
+                        return new Promise(resolve => {
+                            // Remove the existing image
+                            removeExisting(info.item ? info.item[imageInfo.fieldName] : null).then(() => {
+                                // Validate the name
+                                validateFileName(imageInfo.name).then(fileName => {
+                                    // Upload the file
+                                    fld.Files().add(fileName, true, imageInfo.data).execute(file => {
+                                        // Update the field value
+                                        values[imageInfo.fieldName] = JSON.stringify({
+                                            fieldId: imageInfo.fieldId,
+                                            fieldName: imageInfo.fieldName,
+                                            fileName: file.Name,
+                                            id: file.UniqueId,
+                                            nativeFile: {},
+                                            serverRelativeUrl: file.ServerRelativeUrl,
+                                            type: "thumbnail"
+                                        } as IFieldImageValue);
+
+                                        // Resolve the request
+                                        resolve(null);
+                                    });
+                                })
+                            });
+                        });
+                    }
+                }).then(() => {
+                    // Resolve the request
+                    resolve(values);
                 });
             });
         });
@@ -865,6 +1024,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             values["ContentTypeId"] = props.info.contentType.Id.StringValue;
         }
 
+        // Clear the image values
+        images = [];
+
         // Parse the fields
         for (let fieldName in props.info.fields) {
             // Get the form field and skip readonly fields
@@ -874,12 +1036,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             // Get the field value
             let fieldValue = formField.getValue();
 
-            // See if an event exists
-            if (formField.controlProps.onGetValue) {
-                // Update the value
-                fieldValue.value = formField.controlProps.onGetValue(formField.controlProps);
-            }
-
             // Set the item value
             values[fieldValue.name] = fieldValue.value;
 
@@ -887,6 +1043,13 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             if (fieldValue.name == "FileLeafRef") {
                 // Update the 'Title'
                 values["Title"] = values["Title"] || values[fieldValue.name];
+            }
+
+            // See if this is an image field
+            let field = props.info.fields[fieldName];
+            if (field && field.FieldTypeKind == SPTypes.FieldType.Image) {
+                // Add the value if it exists
+                fieldValue.value ? images.push(fieldValue.value) : null;
             }
         }
 
@@ -983,12 +1146,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 // Validate the form field and update the status flag
                 let controlIsValid = formField.isValid();
 
-                // See if there is a custom method
-                if (formField.controlProps.onValidate) {
-                    // Call the event
-                    controlIsValid = formField.controlProps.onValidate(formField.controlProps, formField.getValue()) as boolean;
-                }
-
                 // Update the flag
                 isValid = isValid && controlIsValid;
             }
@@ -1023,22 +1180,27 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
             // Return a promise
             return new Promise((resolve, reject) => {
-                // Call the saving event
-                onSaving({ ...getValues(), ...customValues }).then(values => {
-                    // Update the item
-                    ListForm.saveItem(props.info, values).then(info => {
-                        // Remove the attachments
-                        removeAttachments(info).then(() => {
-                            // Save the attachments
-                            saveAttachments(info).then(() => {
-                                // Update the info
-                                props.info = info;
+                let formValues = getValues();
 
-                                // Resolve the promise
-                                resolve(props.info.item as any);
+                // Upload the images
+                uploadImages(props.info).then((imageValues) => {
+                    // Call the saving event
+                    onSaving({ ...formValues, ...imageValues, ...customValues }).then(values => {
+                        // Update the item
+                        ListForm.saveItem(props.info, values).then(info => {
+                            // Remove the attachments
+                            removeAttachments(info).then(() => {
+                                // Save the attachments
+                                saveAttachments(info).then(() => {
+                                    // Update the info
+                                    props.info = info;
+
+                                    // Resolve the promise
+                                    resolve(props.info.item as any);
+                                });
                             });
-                        });
-                    }, reject);
+                        }, reject);
+                    });
                 });
             });
         }
