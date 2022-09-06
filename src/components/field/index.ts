@@ -1089,9 +1089,9 @@ export const Field = (props: IFieldProps): IField => {
             };
 
             // See if there is a custom value
-            if (control.props && control.props.onGetValue) {
+            if (controlProps && controlProps.onGetValue) {
                 // Update the value
-                fieldValue.value = control.props.onGetValue(control.props);
+                fieldValue.value = controlProps.onGetValue(controlProps);
             }
 
             // Update the field name/value, based on the type
