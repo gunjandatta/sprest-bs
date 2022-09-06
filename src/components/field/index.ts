@@ -1108,9 +1108,14 @@ export const Field = (props: IFieldProps): IField => {
                     if (controlProps.type == Components.FormControlTypes.Dropdown) {
                         // See if there is a value
                         let ddlValue: Components.IDropdownItem = fieldValue.value;
-                        if (ddlValue && (ddlValue.value || ddlValue.text)) {
-                            // Update the field value
-                            fieldValue.value = ddlValue.value || ddlValue.text;
+                        if (ddlValue) {
+                            if (ddlValue.value || ddlValue.text) {
+                                // Update the field value
+                                fieldValue.value = ddlValue.value || ddlValue.text;
+                            } else {
+                                // Blank entry, clear the value
+                                fieldValue.value = null;
+                            }
                         }
                     } else {
                         // See if there is a value
@@ -1182,15 +1187,16 @@ export const Field = (props: IFieldProps): IField => {
                         if (controlProps.type == Components.FormControlTypes.MultiDropdown) {
                             // See if there is a value
                             let ddlValue: Components.IDropdownItem = values[j];
-
-                            // Add the values
-                            fieldValue.value.results.push(ddlValue.value || ddlValue.text);
+                            if (ddlValue && (ddlValue.value || ddlValue.text)) {
+                                // Add the values
+                                fieldValue.value.results.push(ddlValue.value || ddlValue.text);
+                            }
                         } else {
                             // See if there is a value
                             let cbValue: Components.ICheckboxGroupItem = values[j];
 
                             // Add the values
-                            fieldValue.value.results.push(cbValue.label);
+                            cbValue.label ? fieldValue.value.results.push(cbValue.label) : null;
                         }
                     }
 
