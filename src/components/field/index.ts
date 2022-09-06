@@ -1089,7 +1089,7 @@ export const Field = (props: IFieldProps): IField => {
             };
 
             // See if there is a custom value
-            if (control.props.onGetValue) {
+            if (control.props && control.props.onGetValue) {
                 // Update the value
                 fieldValue.value = control.props.onGetValue(control.props);
             }
@@ -1311,13 +1311,7 @@ export const Field = (props: IFieldProps): IField => {
                 let baseResult = baseValidation(control, { isValid: control.isValid, value: control.getValue() });
 
                 // Validate the current control
-                let result = controlProps.onValidate ? controlProps.onValidate(controlProps, baseResult) : baseResult;
-
-                // See if a custom validation method exists
-                if (controlProps.onValidate) {
-                    // Call the custom validation method
-                    result = controlProps.onValidate(controlProps, baseResult);
-                }
+                let result = controlProps && controlProps.onValidate ? controlProps.onValidate(controlProps, baseResult) : baseResult;
 
                 // Return the flag
                 if (typeof (result) === "boolean") {
