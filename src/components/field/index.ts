@@ -1330,14 +1330,30 @@ export const Field = (props: IFieldProps): IField => {
                 return result.isValid;
             }
 
+            // See if custom validation exists
+            if (controlProps.onValidate) {
+                // Call the custom validation event
+                let value = controlProps.onGetValue ? controlProps.onGetValue(controlProps) : control ? control.getValue() : null;
+                let result = controlProps.onValidate(controlProps, { isValid: control ? control.isValid : false, value });
+
+                // Return the flag
+                if (typeof (result) === "boolean") {
+                    // Return the result
+                    return result;
+                }
+
+                // Return the flag
+                return result ? result.isValid : false;
+            }
+
             // Validate the control
             return control ? control.isValid : false;
         }
     };
 
     // Execute the assign to event
-    props.assignTo ? props.assignTo(field) : null;
+    props.assignTo ? props.assignTo(field as any) : null;
 
     // Return the field
-    return field;
+    return field as any;
 }
