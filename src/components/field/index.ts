@@ -290,6 +290,23 @@ export const Field = (props: IFieldProps): IField => {
 
             // Set the items
             (controlProps as Components.IFormControlPropsDropdown).items = items;
+
+            // Set the base validation
+            baseValidation = (ctrl, result) => {
+                // See if a value exists
+                if (result.value) {
+                    let ddlItem: Components.IDropdownItem = result.value;
+
+                    // See if the text and value don't exist
+                    if (ddlItem.value || ddlItem.text ? false : true) {
+                        // Set the flag
+                        result.isValid = false;
+                    }
+                }
+
+                // Return the result
+                return result;
+            }
             break;
 
         // Currency Field
