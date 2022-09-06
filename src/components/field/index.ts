@@ -1108,14 +1108,14 @@ export const Field = (props: IFieldProps): IField => {
                     if (controlProps.type == Components.FormControlTypes.Dropdown) {
                         // See if there is a value
                         let ddlValue: Components.IDropdownItem = fieldValue.value;
-                        if (ddlValue) {
+                        if (ddlValue && (ddlValue.value || ddlValue.text)) {
                             // Update the field value
                             fieldValue.value = ddlValue.value || ddlValue.text;
                         }
                     } else {
                         // See if there is a value
                         let cbValue: Components.ICheckboxGroupItem = fieldValue.value;
-                        if (cbValue) {
+                        if (cbValue && cbValue.label) {
                             // Update the field value
                             fieldValue.value = cbValue.label;
                         }
