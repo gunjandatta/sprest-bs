@@ -148,3 +148,17 @@ export interface IWebPartEditForm<IWPCfg = IWebPartCfg, IWPInfo = IWebPartInfo> 
     /** True to hide the save button. */
     showSaveButton?: boolean;
 }
+
+/**
+ * SPFx WebPart Properties
+ */
+export interface ISPFxWebPartProps {
+    /** The page context, passed from the SPFx webpart. */
+    context?: any;
+
+    /** The webpart element, passed from the SPFx webpart. */
+    el?: HTMLElement;
+
+    /** Event to update the webpart's configuration. */
+    onUpdateConfiguration?: (cfg: string) => void;
+}
