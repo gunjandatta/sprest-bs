@@ -166,6 +166,11 @@ export interface ISPFxWebPart {
 }
 
 /**
+ * SPFx WebPart Configuration
+ */
+export interface ISPFxWebPartCfg { }
+
+/**
  * SPFx WebPart Properties
  */
 export interface ISPFxWebPartProps {
@@ -187,6 +192,9 @@ export interface ISPFxWebPartProps {
     /** The event called after the webpart configuration is saved. */
     onConfigSaved?: (wpCfg?: any) => void;
 
+    /** The event called when the modal is being displayed. */
+    onEditFormDisplaying?: () => void;
+
     /** The webpart configuration modal footer button properties. */
     onEditFormFooterRendering?: (props: ITooltipGroupProps) => ITooltipGroupProps;
 
@@ -201,6 +209,9 @@ export interface ISPFxWebPartProps {
 
     /** The webpart configuration modal properties. */
     onModalRendered?: (modal: IModal) => void;
+
+    /** The render event for the webpart. */
+    render?: (el: HTMLElement) => void;
 
     /** A reference to the SPFx's save method for the webpart's configuration. */
     spfxSaveConfig?: (wpCfg: string) => void;

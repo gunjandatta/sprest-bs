@@ -6,8 +6,9 @@
 //   ../gd-bs/src/components/components
 //   ../gd-bs/src/components/form/formTypes
 //   ../gd-bs/src/components/button/types
-//   ../gd-bs/src/components/nav/types
 //   ../gd-bs/src/components/modal/types
+//   ../gd-bs/src/components/tooltipGroup/types
+//   ../gd-bs/src/components/nav/types
 //   ../gd-bs/src/components/toolbar/types
 
 declare module 'gd-sprest-bs' {
@@ -155,7 +156,9 @@ declare module 'gd-sprest-bs/webparts/base/helperTypes' {
 declare module 'gd-sprest-bs/webparts/base/types' {
     import { IButtonProps } from "gd-bs/src/components/button/types";
     import { IFormControl, IFormControlProps } from "gd-bs/src/components/form/controlTypes";
-    import { IForm } from "gd-bs/src/components/form/formTypes";
+    import { IForm, IFormProps } from "gd-bs/src/components/form/formTypes";
+    import { IModal, IModalProps } from "gd-bs/src/components/modal/types";
+    import { ITooltipGroupProps } from "gd-bs/src/components/tooltipGroup/types";
     
     /**
         * ### Web Part
@@ -305,24 +308,79 @@ declare module 'gd-sprest-bs/webparts/base/types' {
     }
     
     /**
+        * SPFx WebPart
+        */
+    export interface ISPFxWebPart {
+            /** The webpart configuration form. */
+            Form: IForm;
+    
+            /** The webpart configuration modal. */
+            Modal: IModal;
+    
+            /** Shows the webpart configuration form in a modal. */
+            showEditModal: () => void;
+    }
+    
+    /**
+        * SPFx WebPart Configuration
+        */
+    export interface ISPFxWebPartCfg { }
+    
+    /**
         * SPFx WebPart Properties
         */
     export interface ISPFxWebPartProps {
             /** The page context, passed from the SPFx webpart. */
             context?: any;
     
+            /** The page display mode. */
+            displayMode?: number;
+    
             /** The webpart element, passed from the SPFx webpart. */
             el?: HTMLElement;
     
-            /** Event to update the webpart's configuration. */
-            onUpdateConfiguration?: (cfg: string) => void;
+            /** The environment type. */
+            envType?: number;
+    
+            /** The event called prior to saving the webpart configuration. */
+            onConfigSaving?: (wpCfg: any) => any;
+    
+            /** The event called after the webpart configuration is saved. */
+            onConfigSaved?: (wpCfg?: any) => void;
+    
+            /** The event called when the modal is being displayed. */
+            onEditFormDisplaying?: () => void;
+    
+            /** The webpart configuration modal footer button properties. */
+            onEditFormFooterRendering?: (props: ITooltipGroupProps) => ITooltipGroupProps;
+    
+            /** The webpart configuration modal form properties. */
+            onEditFormRendering?: (props: IFormProps) => IFormProps;
+    
+            /** The webpart configuration modal form object. */
+            onEditFormRendered?: (form: IForm) => void;
+    
+            /** The webpart configuration modal properties. */
+            onModalRendering?: (props: IModalProps) => IModalProps;
+    
+            /** The webpart configuration modal properties. */
+            onModalRendered?: (modal: IModal) => void;
+    
+            /** The render event for the webpart. */
+            render?: (el: HTMLElement) => void;
+    
+            /** A reference to the SPFx's save method for the webpart's configuration. */
+            spfxSaveConfig?: (wpCfg: string) => void;
+    
+            /** The webpart configuration property. */
+            wpCfg?: string;
     }
 }
 
 declare module 'gd-sprest-bs/webparts/list/types' {
     import { IFormControlProps } from "gd-bs/src/components/form/controlTypes";
     import { Types } from "gd-sprest";
-    import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "gd-sprest-bs/webparts/base/types";
+    import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm, ISPFxWebPart, ISPFxWebPartCfg, ISPFxWebPartProps } from "gd-sprest-bs/webparts/base/types";
     
     /**
         * ### List WebPart
@@ -366,7 +424,7 @@ declare module 'gd-sprest-bs/webparts/list/types' {
     /**
         * List WebPart Properties
         */
-    export interface IWPListProps<IListInfo=IWPListInfo, IListEditForm=IWPListEditForm> extends IWebPartProps<IListInfo, IListEditForm> {
+    export interface IWPListProps<IListInfo = IWPListInfo, IListEditForm = IWPListEditForm> extends IWebPartProps<IListInfo, IListEditForm> {
             /** The caml query. */
             camlQuery?: string;
     
@@ -410,6 +468,27 @@ declare module 'gd-sprest-bs/webparts/list/types' {
             /** The render form event. */
             onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<IFormControlProps> | PromiseLike<Array<IFormControlProps>> | void;
     }
+    
+    /**
+        * SPFx List WebPart
+        */
+    export interface ISPFxListWebPart extends ISPFxWebPart {}
+    
+    /**
+        * SPFx List WebPart Configuration
+        */
+     export interface ISPFxListWebPartCfg extends ISPFxWebPartCfg {
+            /** The list name */
+            ListName?: string;
+    
+            /** The relative web url */
+            WebUrl?: string;
+    }
+    
+    /**
+        * SPFx List WebPart Properties
+        */
+    export interface ISPFxListWebPartProps extends ISPFxWebPartProps {}
 }
 
 declare module 'gd-sprest-bs/webparts/listFields/types' {

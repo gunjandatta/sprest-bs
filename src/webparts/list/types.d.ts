@@ -1,6 +1,6 @@
 import { IFormControlProps } from "gd-bs/src/components/form/controlTypes";
 import { Types } from "gd-sprest";
-import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm } from "../base/types";
+import { IWebPart, IWebPartInfo, IWebPartProps, IWebPartCfg, IWebPartEditForm, ISPFxWebPart, ISPFxWebPartCfg, ISPFxWebPartProps } from "../base/types";
 
 /**
  * ### List WebPart
@@ -44,7 +44,7 @@ export interface IWPListInfo<IListCfg = IWPListCfg> extends IWebPartInfo<IListCf
 /**
  * List WebPart Properties
  */
-export interface IWPListProps<IListInfo=IWPListInfo, IListEditForm=IWPListEditForm> extends IWebPartProps<IListInfo, IListEditForm> {
+export interface IWPListProps<IListInfo = IWPListInfo, IListEditForm = IWPListEditForm> extends IWebPartProps<IListInfo, IListEditForm> {
     /** The caml query. */
     camlQuery?: string;
 
@@ -88,3 +88,24 @@ export interface IWPListEditForm<IListCfg = IWPListCfg, IListInfo = IWPListInfo>
     /** The render form event. */
     onRenderForm?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<IFormControlProps> | PromiseLike<Array<IFormControlProps>> | void;
 }
+
+/**
+ * SPFx List WebPart
+ */
+export interface ISPFxListWebPart extends ISPFxWebPart {}
+
+/**
+ * SPFx List WebPart Configuration
+ */
+ export interface ISPFxListWebPartCfg extends ISPFxWebPartCfg {
+    /** The list name */
+    ListName?: string;
+
+    /** The relative web url */
+    WebUrl?: string;
+}
+
+/**
+ * SPFx List WebPart Properties
+ */
+export interface ISPFxListWebPartProps extends ISPFxWebPartProps {}

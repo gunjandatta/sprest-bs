@@ -8,7 +8,7 @@ declare var SP;
 /**
  * SPFx WebPart Base Class
  */
-export class SPFxWebPart implements ISPFxWebPart {
+class _SPFxWebPart implements ISPFxWebPart {
     private _cfg: any = null;
     private _props: ISPFxWebPartProps = null;
 
@@ -51,11 +51,16 @@ export class SPFxWebPart implements ISPFxWebPart {
         if (isEdit) {
             // Render the configuration button
             this.renderEdit();
+        } else {
+            // Render the webpart
+            this.render();
         }
     }
 
     // Method to render the webpart
     private render() {
+        // Call the render event
+        this._props.render ? this._props.render(this._props.el) : null;
     }
 
     // Method to render the edit interface
@@ -94,6 +99,7 @@ export class SPFxWebPart implements ISPFxWebPart {
                             content: "Click to save the webpart configuration.",
                             btnProps: {
                                 text: "Save",
+                                type: Components.ButtonTypes.OutlineSuccess,
                                 onClick: () => {
                                     // Ensure the form is valid
                                     if (this._form.isValid()) {
@@ -118,6 +124,12 @@ export class SPFxWebPart implements ISPFxWebPart {
                         }
                     ]
                 }
+
+                // Call the event
+                footerProps = this._props.onEditFormFooterRendering ? this._props.onEditFormFooterRendering(footerProps) : footerProps;
+
+                // Render the footer
+                Components.TooltipGroup(footerProps);
             }
         };
 
@@ -137,5 +149,9 @@ export class SPFxWebPart implements ISPFxWebPart {
     showEditModal() {
         // Show the modal
         this._modal ? this._modal.show() : null;
+
+        // Call the event
+        this._props.onEditFormDisplaying ? this._props.onEditFormDisplaying() : null;
     }
 }
+export const SPFxWebPart = (props: ISPFxWebPartProps) => { return new _SPFxWebPart(props); }
