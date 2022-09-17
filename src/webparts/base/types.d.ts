@@ -1,6 +1,8 @@
 import { IButtonProps } from "gd-bs/src/components/button/types";
 import { IFormControl, IFormControlProps } from "gd-bs/src/components/form/controlTypes";
-import { IForm } from "gd-bs/src/components/form/formTypes";
+import { IForm, IFormProps } from "gd-bs/src/components/form/formTypes";
+import { IModal, IModalProps } from "gd-bs/src/components/modal/types";
+import { ITooltipGroupProps } from "gd-bs/src/components/tooltipGroup/types";
 
 /**
  * ### Web Part
@@ -150,15 +152,59 @@ export interface IWebPartEditForm<IWPCfg = IWebPartCfg, IWPInfo = IWebPartInfo> 
 }
 
 /**
+ * SPFx WebPart
+ */
+export interface ISPFxWebPart {
+    /** The webpart configuration form. */
+    Form: IForm;
+
+    /** The webpart configuration modal. */
+    Modal: IModal;
+
+    /** Shows the webpart configuration form in a modal. */
+    showEditModal: () => void;
+}
+
+/**
  * SPFx WebPart Properties
  */
 export interface ISPFxWebPartProps {
     /** The page context, passed from the SPFx webpart. */
     context?: any;
 
+    /** The page display mode. */
+    displayMode?: number;
+
     /** The webpart element, passed from the SPFx webpart. */
     el?: HTMLElement;
 
-    /** Event to update the webpart's configuration. */
-    onUpdateConfiguration?: (cfg: string) => void;
+    /** The environment type. */
+    envType?: number;
+
+    /** The event called prior to saving the webpart configuration. */
+    onConfigSaving?: (wpCfg: any) => any;
+
+    /** The event called after the webpart configuration is saved. */
+    onConfigSaved?: (wpCfg?: any) => void;
+
+    /** The webpart configuration modal footer button properties. */
+    onEditFormFooterRendering?: (props: ITooltipGroupProps) => ITooltipGroupProps;
+
+    /** The webpart configuration modal form properties. */
+    onEditFormRendering?: (props: IFormProps) => IFormProps;
+
+    /** The webpart configuration modal form object. */
+    onEditFormRendered?: (form: IForm) => void;
+
+    /** The webpart configuration modal properties. */
+    onModalRendering?: (props: IModalProps) => IModalProps;
+
+    /** The webpart configuration modal properties. */
+    onModalRendered?: (modal: IModal) => void;
+
+    /** A reference to the SPFx's save method for the webpart's configuration. */
+    spfxSaveConfig?: (wpCfg: string) => void;
+
+    /** The webpart configuration property. */
+    wpCfg?: string;
 }

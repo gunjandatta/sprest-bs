@@ -1,18 +1,141 @@
-import { ContextInfo } from "gd-sprest";
-import { ISPFxWebPartProps } from "./types";
+import { Components } from "gd-bs";
+import { ContextInfo, Helper, SPTypes } from "gd-sprest";
+import { ISPFxWebPart, ISPFxWebPartProps } from "./types";
+
+// SP global variable
+declare var SP;
 
 /**
  * SPFx WebPart Base Class
  */
-export class SPFxWebPart {
+export class SPFxWebPart implements ISPFxWebPart {
+    private _cfg: any = null;
     private _props: ISPFxWebPartProps = null;
+
+    /** The configuration form. */
+    private _form: Components.IForm = null;
+    get Form(): Components.IForm { return this._form; }
+
+    /** The configuration modal. */
+    private _modal: Components.IModal = null;
+    get Modal(): Components.IModal { return this._modal; }
+
+    /** The configuration modal. */
 
     // Constructor
     constructor(props: ISPFxWebPartProps) {
+        let isEdit = false;
+
         // Save the properties
         this._props = props;
 
         // Set the context
         this._props.context ? ContextInfo.setPageContext(this._props.context) : null;
+
+        // Try to parse the configuration
+        if (this._props.wpCfg) {
+            try { this._cfg = JSON.parse(this._props.wpCfg); }
+            catch { }
+        }
+
+        // See if this is a classic page
+        if (SP && SP.Ribbon && SP.Ribbon.PageState) {
+            // Set the flag
+            isEdit = Helper.WebPart.isEditMode();
+        } else {
+            // Set the flag
+            isEdit = this._props.displayMode == SPTypes.FormDisplayMode.Edit;
+        }
+
+        // Ensure we are in edit mode
+        if (isEdit) {
+            // Render the configuration button
+            this.renderEdit();
+        }
+    }
+
+    // Method to render the webpart
+    private render() {
+    }
+
+    // Method to render the edit interface
+    private renderEdit() {
+        // Render the edit button
+        Components.Button({
+            el: this._props.el,
+            text: "Edit",
+            onClick: () => {
+                // Display the modal
+            }
+        });
+
+        // Create the modal props
+        let modalProps: Components.IModalProps = {
+            el: this._props.el,
+            onRenderBody: el => {
+                // Create the form properties
+                let formProps: Components.IFormProps = { el, value: this._cfg };
+
+                // Call the rendering event
+                formProps = this._props.onEditFormRendering ? this._props.onEditFormRendering(formProps) : formProps;
+
+                // Render the form
+                this._form = Components.Form(formProps);
+
+                // Call the rendered event
+                this._props.onEditFormRendered ? this._props.onEditFormRendered(this._form) : null;
+            },
+            onRenderFooter: el => {
+                // Render the footer buttons
+                let footerProps: Components.ITooltipGroupProps = {
+                    el,
+                    tooltips: [
+                        {
+                            content: "Click to save the webpart configuration.",
+                            btnProps: {
+                                text: "Save",
+                                onClick: () => {
+                                    // Ensure the form is valid
+                                    if (this._form.isValid()) {
+                                        let cfg = this._form.getValues();
+
+                                        // Call the saving event
+                                        cfg = this._props.onConfigSaving ? this._props.onConfigSaving(cfg) : cfg;
+
+                                        // Try to convert the form values
+                                        let wpCfg = null;
+                                        try { wpCfg = JSON.stringify(cfg); }
+                                        catch { }
+
+                                        // Save the configuration
+                                        this._props.spfxSaveConfig ? this._props.spfxSaveConfig(wpCfg) : null;
+
+                                        // Call the saved event
+                                        this._props.onConfigSaved ? this._props.onConfigSaved(cfg) : null;
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        };
+
+        // Call the rendering event
+        let onRender = null;
+        let newProps = this._props.onModalRendering ? this._props.onModalRendering(modalProps) : null;
+        if (newProps) { onRender = newProps.onRenderBody; }
+
+        // Render the modal
+        this._modal = Components.Modal({ ...newProps, ...modalProps });
+
+        // Call the rendered event
+        this._props.onModalRendered ? this._props.onModalRendered(this._modal) : null;
+    }
+
+    // Shows the modal
+    showEditModal() {
+        // Show the modal
+        this._modal ? this._modal.show() : null;
     }
 }
