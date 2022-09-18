@@ -46,7 +46,7 @@ class _SPFxWebPart implements ISPFxWebPart {
         }
 
         // See if this is a classic page
-        if (SP && SP.Ribbon && SP.Ribbon.PageState) {
+        if (Helper.SP.Ribbon.exists) {
             // Set the flag
             isEdit = Helper.WebPart.isEditMode();
         } else {

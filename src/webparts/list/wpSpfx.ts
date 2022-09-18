@@ -6,7 +6,7 @@ import { ISPFxListWebPart, ISPFxListWebPartProps } from "./types";
 /**
  * SPFx List WebPart
  */
-export const WPSPFxList = (props: ISPFxListWebPartProps): ISPFxListWebPart => {
+export const SPFxListWebPart = (props: ISPFxListWebPartProps): ISPFxListWebPart => {
     let _ddl: Components.IDropdown = null;
     let _loadFl = false;
 
