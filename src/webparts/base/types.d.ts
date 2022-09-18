@@ -154,6 +154,11 @@ export interface IWebPartEditForm<IWPCfg = IWebPartCfg, IWPInfo = IWebPartInfo> 
 /**
  * SPFx WebPart
  */
+export const SPFxWebPart: (props: ISPFxWebPartProps) => ISPFxWebPart;
+
+/**
+ * SPFx WebPart
+ */
 export interface ISPFxWebPart {
     /** The webpart configuration form. */
     Form: IForm;
@@ -174,23 +179,14 @@ export interface ISPFxWebPartCfg { }
  * SPFx WebPart Properties
  */
 export interface ISPFxWebPartProps {
-    /** The page context, passed from the SPFx webpart. */
-    context?: any;
-
-    /** The page display mode. */
-    displayMode?: number;
-
-    /** The webpart element, passed from the SPFx webpart. */
-    el?: HTMLElement;
-
     /** The environment type. */
     envType?: number;
 
     /** The event called prior to saving the webpart configuration. */
-    onConfigSaving?: (wpCfg: any) => any;
+    onConfigSaving?: (wpCfg: ISPFxWebPartCfg) => ISPFxWebPartCfg;
 
     /** The event called after the webpart configuration is saved. */
-    onConfigSaved?: (wpCfg?: any) => void;
+    onConfigSaved?: (wpCfg?: ISPFxWebPartCfg) => void;
 
     /** The event called when the modal is being displayed. */
     onEditFormDisplaying?: () => void;
@@ -211,7 +207,36 @@ export interface ISPFxWebPartProps {
     onModalRendered?: (modal: IModal) => void;
 
     /** The render event for the webpart. */
-    render?: (el: HTMLElement) => void;
+    render?: (el?: HTMLElement, cfg?: ISPFxWebPartCfg) => void;
+
+    /** The spfx properties. */
+    spfx?: {
+        context: {
+            domElement: HTMLElement;
+            graphHttpClient: any;
+            host: any;
+            httpClient: any;
+            instanceId: string;
+            manifest: any;
+            pageContext: any;
+            propertyPane: any;
+            serviceScope: any;
+            spHttpClient: any;
+            statusRenderer: any;
+            webPartTag: string;
+        };
+        dataVersion: any;
+        description: string;
+        displayMode: number;
+        domElement: HTMLElement;
+        instanceId: string;
+        isRenderAsync: boolean;
+        previewImageUrl: string;
+        properties: any;
+        propertiesMetadata: any;
+        title: string;
+        width: number;
+    };
 
     /** A reference to the SPFx's save method for the webpart's configuration. */
     spfxSaveConfig?: (wpCfg: string) => void;

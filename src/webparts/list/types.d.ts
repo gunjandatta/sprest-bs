@@ -92,12 +92,17 @@ export interface IWPListEditForm<IListCfg = IWPListCfg, IListInfo = IWPListInfo>
 /**
  * SPFx List WebPart
  */
-export interface ISPFxListWebPart extends ISPFxWebPart {}
+export const SPFxListWebPart: (props: ISPFxListWebPartProps) => ISPFxListWebPart;
+
+/**
+ * SPFx List WebPart
+ */
+export interface ISPFxListWebPart extends ISPFxWebPart { }
 
 /**
  * SPFx List WebPart Configuration
  */
- export interface ISPFxListWebPartCfg extends ISPFxWebPartCfg {
+export interface ISPFxListWebPartCfg extends ISPFxWebPartCfg {
     /** The list name */
     ListName?: string;
 
@@ -108,4 +113,22 @@ export interface ISPFxListWebPart extends ISPFxWebPart {}
 /**
  * SPFx List WebPart Properties
  */
-export interface ISPFxListWebPartProps extends ISPFxWebPartProps {}
+export interface ISPFxListWebPartProps extends ISPFxWebPartProps {
+    /** The odata list query. */
+    listQuery?: Types.IODataQuery;
+
+    /** The event called prior to saving the webpart configuration. */
+    onConfigSaving?: (wpCfg: ISPFxListWebPartCfg) => ISPFxListWebPartCfg;
+
+    /** The event called after the webpart configuration is saved. */
+    onConfigSaved?: (wpCfg?: ISPFxListWebPartCfg) => void;
+
+    /** The list changed event. */
+    onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<IFormControlProps> | PromiseLike<Array<IFormControlProps>> | void;
+
+    /** The lists loaded event. */
+    onListsLoaded?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQuery | Types.SP.List>) => Array<Types.SP.IListQuery | Types.SP.List>;
+
+    /** The render event for the webpart. */
+    render?: (el?: HTMLElement, cfg?: ISPFxListWebPartCfg) => void;
+}

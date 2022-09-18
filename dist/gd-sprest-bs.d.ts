@@ -310,6 +310,11 @@ declare module 'gd-sprest-bs/webparts/base/types' {
     /**
         * SPFx WebPart
         */
+    export const SPFxWebPart: (props: ISPFxWebPartProps) => ISPFxWebPart;
+    
+    /**
+        * SPFx WebPart
+        */
     export interface ISPFxWebPart {
             /** The webpart configuration form. */
             Form: IForm;
@@ -330,23 +335,14 @@ declare module 'gd-sprest-bs/webparts/base/types' {
         * SPFx WebPart Properties
         */
     export interface ISPFxWebPartProps {
-            /** The page context, passed from the SPFx webpart. */
-            context?: any;
-    
-            /** The page display mode. */
-            displayMode?: number;
-    
-            /** The webpart element, passed from the SPFx webpart. */
-            el?: HTMLElement;
-    
             /** The environment type. */
             envType?: number;
     
             /** The event called prior to saving the webpart configuration. */
-            onConfigSaving?: (wpCfg: any) => any;
+            onConfigSaving?: (wpCfg: ISPFxWebPartCfg) => ISPFxWebPartCfg;
     
             /** The event called after the webpart configuration is saved. */
-            onConfigSaved?: (wpCfg?: any) => void;
+            onConfigSaved?: (wpCfg?: ISPFxWebPartCfg) => void;
     
             /** The event called when the modal is being displayed. */
             onEditFormDisplaying?: () => void;
@@ -367,7 +363,36 @@ declare module 'gd-sprest-bs/webparts/base/types' {
             onModalRendered?: (modal: IModal) => void;
     
             /** The render event for the webpart. */
-            render?: (el: HTMLElement) => void;
+            render?: (el?: HTMLElement, cfg?: ISPFxWebPartCfg) => void;
+    
+            /** The spfx properties. */
+            spfx?: {
+                    context: {
+                            domElement: HTMLElement;
+                            graphHttpClient: any;
+                            host: any;
+                            httpClient: any;
+                            instanceId: string;
+                            manifest: any;
+                            pageContext: any;
+                            propertyPane: any;
+                            serviceScope: any;
+                            spHttpClient: any;
+                            statusRenderer: any;
+                            webPartTag: string;
+                    };
+                    dataVersion: any;
+                    description: string;
+                    displayMode: number;
+                    domElement: HTMLElement;
+                    instanceId: string;
+                    isRenderAsync: boolean;
+                    previewImageUrl: string;
+                    properties: any;
+                    propertiesMetadata: any;
+                    title: string;
+                    width: number;
+            };
     
             /** A reference to the SPFx's save method for the webpart's configuration. */
             spfxSaveConfig?: (wpCfg: string) => void;
@@ -472,12 +497,17 @@ declare module 'gd-sprest-bs/webparts/list/types' {
     /**
         * SPFx List WebPart
         */
-    export interface ISPFxListWebPart extends ISPFxWebPart {}
+    export const SPFxListWebPart: (props: ISPFxListWebPartProps) => ISPFxListWebPart;
+    
+    /**
+        * SPFx List WebPart
+        */
+    export interface ISPFxListWebPart extends ISPFxWebPart { }
     
     /**
         * SPFx List WebPart Configuration
         */
-     export interface ISPFxListWebPartCfg extends ISPFxWebPartCfg {
+    export interface ISPFxListWebPartCfg extends ISPFxWebPartCfg {
             /** The list name */
             ListName?: string;
     
@@ -488,7 +518,25 @@ declare module 'gd-sprest-bs/webparts/list/types' {
     /**
         * SPFx List WebPart Properties
         */
-    export interface ISPFxListWebPartProps extends ISPFxWebPartProps {}
+    export interface ISPFxListWebPartProps extends ISPFxWebPartProps {
+            /** The odata list query. */
+            listQuery?: Types.IODataQuery;
+    
+            /** The event called prior to saving the webpart configuration. */
+            onConfigSaving?: (wpCfg: ISPFxListWebPartCfg) => ISPFxListWebPartCfg;
+    
+            /** The event called after the webpart configuration is saved. */
+            onConfigSaved?: (wpCfg?: ISPFxListWebPartCfg) => void;
+    
+            /** The list changed event. */
+            onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<IFormControlProps> | PromiseLike<Array<IFormControlProps>> | void;
+    
+            /** The lists loaded event. */
+            onListsLoaded?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQuery | Types.SP.List>) => Array<Types.SP.IListQuery | Types.SP.List>;
+    
+            /** The render event for the webpart. */
+            render?: (el?: HTMLElement, cfg?: ISPFxListWebPartCfg) => void;
+    }
 }
 
 declare module 'gd-sprest-bs/webparts/listFields/types' {

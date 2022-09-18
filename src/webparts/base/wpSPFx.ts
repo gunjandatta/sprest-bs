@@ -29,8 +29,15 @@ class _SPFxWebPart implements ISPFxWebPart {
         // Save the properties
         this._props = props;
 
-        // Set the context
-        this._props.context ? ContextInfo.setPageContext(this._props.context) : null;
+        // Ensure the spfx object was set
+        if (this._props.spfx == null) {
+            // Error
+            console.error("[gd-sprest-bs] The spfx property wasn't set.");
+            return;
+        }
+
+        // Set the page context
+        ContextInfo.setPageContext(this._props.spfx.context.pageContext);
 
         // Try to parse the configuration
         if (this._props.wpCfg) {
@@ -44,7 +51,7 @@ class _SPFxWebPart implements ISPFxWebPart {
             isEdit = Helper.WebPart.isEditMode();
         } else {
             // Set the flag
-            isEdit = this._props.displayMode == SPTypes.FormDisplayMode.Edit;
+            isEdit = this._props.spfx.displayMode == SPTypes.FormDisplayMode.Edit;
         }
 
         // Ensure we are in edit mode
@@ -60,14 +67,14 @@ class _SPFxWebPart implements ISPFxWebPart {
     // Method to render the webpart
     private render() {
         // Call the render event
-        this._props.render ? this._props.render(this._props.el) : null;
+        this._props.render ? this._props.render(this._props.spfx.domElement) : null;
     }
 
     // Method to render the edit interface
     private renderEdit() {
         // Render the edit button
         Components.Button({
-            el: this._props.el,
+            el: this._props.spfx.domElement,
             text: "Edit",
             onClick: () => {
                 // Display the modal
@@ -76,7 +83,7 @@ class _SPFxWebPart implements ISPFxWebPart {
 
         // Create the modal props
         let modalProps: Components.IModalProps = {
-            el: this._props.el,
+            el: this._props.spfx.domElement,
             onRenderBody: el => {
                 // Create the form properties
                 let formProps: Components.IFormProps = { el, value: this._cfg };
