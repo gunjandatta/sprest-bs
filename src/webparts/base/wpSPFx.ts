@@ -149,9 +149,6 @@ class _SPFxWebPart implements ISPFxWebPart {
                                 onClick: () => {
                                     // Show the modal
                                     this.showEditModal();
-
-                                    // Close the properties window
-                                    this._props.spfx.context.propertyPane.close();
                                 }
                             }
                         }]
@@ -177,7 +174,7 @@ class _SPFxWebPart implements ISPFxWebPart {
         let modalProps: Components.IModalProps = {
             el: elWPConfig,
             onClose: () => {
-                // Hide the property pane
+                // Hide the property pane to cause the webpart to re-render
                 this._props.spfx.context.propertyPane.close();
             },
             onRenderBody: el => {
@@ -223,15 +220,14 @@ class _SPFxWebPart implements ISPFxWebPart {
                                         // Call the saved event
                                         this._props.onConfigSaved ? this._props.onConfigSaved(cfg) : null;
 
+                                        // See if we are in display mode and the property pane is closed
+                                        if (this.IsDisplay && !this._props.spfx.context.propertyPane.isPropertyPaneOpen()) {
+                                            // Render the display webpart
+                                            this.render();
+                                        }
+
                                         // Close the modal
                                         this._modal.hide();
-
-                                        // See if we are in display mode
-                                        if (this.IsDisplay) {
-                                            // Render the display webpart
-                                            // Do we need to do this?
-                                            //this.render();
-                                        }
                                     }
                                 }
                             }
