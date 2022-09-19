@@ -385,6 +385,7 @@ declare module 'gd-sprest-bs/webparts/base/types' {
                     description: string;
                     displayMode: number;
                     domElement: HTMLElement;
+                    getPropertyPaneConfiguration: any;
                     instanceId: string;
                     isRenderAsync: boolean;
                     previewImageUrl: string;

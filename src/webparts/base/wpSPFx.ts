@@ -45,22 +45,62 @@ class _SPFxWebPart implements ISPFxWebPart {
             catch { }
         }
 
-        // See if this is a classic page
-        if (Helper.SP.Ribbon.exists) {
-            // Set the flag
-            isEdit = Helper.WebPart.isEditMode();
-        } else {
-            // Set the flag
-            isEdit = this._props.spfx.displayMode == SPTypes.FormDisplayMode.Edit;
+        // Set the webpart properties pane to trigger the modal from displaying
+        let propertyPageConfig = this._props.spfx.getPropertyPaneConfiguration;
+        this._props.spfx.getPropertyPaneConfiguration = () => {
+            // Get the original configuration
+            let config = propertyPageConfig ? propertyPageConfig() : null;
+
+            // Update the configuration w/ a button
+            config = config || {};
+            config.pages = config.pages || [];
+            config.pages.push({
+                header: {
+                    description: "Configuration"
+                },
+                groups: [
+                    {
+                        groupFields: [{
+                            targetProperty: "configuration",
+                            type: SPTypes.PropertyPaneType.Button,
+                            onClick: () => {
+                                // Display the modal
+                                this._modal.show();
+                            }
+                        }]
+                    }
+                ]
+            });
+
+            // Call the configuration
+            return config;
         }
 
-        // Ensure we are in edit mode
-        if (isEdit) {
+        // See if this is the workbench
+        if (window.location.pathname.indexOf("workbench.aspx") > 0) {
             // Render the configuration button
             this.renderEdit();
-        } else {
-            // Render the webpart
+
+            // Render the solution
             this.render();
+        } else {
+            // See if this is a classic page
+            if (Helper.SP.Ribbon.exists) {
+                // Set the flag
+                isEdit = Helper.WebPart.isEditMode();
+            } else {
+                // Set the flag
+                isEdit = this._props.spfx.displayMode == SPTypes.FormDisplayMode.Edit;
+            }
+
+            // Ensure we are in edit mode
+            if (isEdit) {
+                // Render the configuration button
+                this.renderEdit();
+            } else {
+                // Render the webpart
+                this.render();
+            }
         }
     }
 
@@ -78,6 +118,10 @@ class _SPFxWebPart implements ISPFxWebPart {
             text: "Edit",
             onClick: () => {
                 // Display the modal
+                this._modal.show();
+
+                // Hide the property pane
+                this._props.spfx.context.propertyPane.close();
             }
         });
 

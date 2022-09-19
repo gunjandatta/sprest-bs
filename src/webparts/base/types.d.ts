@@ -229,6 +229,7 @@ export interface ISPFxWebPartProps {
         description: string;
         displayMode: number;
         domElement: HTMLElement;
+        getPropertyPaneConfiguration: any;
         instanceId: string;
         isRenderAsync: boolean;
         previewImageUrl: string;
