@@ -160,6 +160,9 @@ export const SPFxWebPart: (props: ISPFxWebPartProps) => ISPFxWebPart;
  * SPFx WebPart
  */
 export interface ISPFxWebPart {
+    /** The webpart configuration object. */
+    Configuration: ISPFxWebPartCfg;
+
     /** The webpart configuration form. */
     Form: IForm;
 

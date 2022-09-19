@@ -1,12 +1,12 @@
 import { Components } from "gd-bs";
 import { Web } from "gd-sprest";
 import { SPFxWebPart } from "../base";
-import { ISPFxListWebPart, ISPFxListWebPartProps } from "./types";
+import { ISPFxListWebPart, ISPFxListWebPartProps, ISPFxListWebPartCfg } from "./types";
 
 /**
  * SPFx List WebPart
  */
-export const SPFxListWebPart = (props: ISPFxListWebPartProps): ISPFxListWebPart => {
+export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPart => {
     let _ddl: Components.IDropdown = null;
     let _loadFl = false;
 
@@ -35,7 +35,8 @@ export const SPFxListWebPart = (props: ISPFxListWebPartProps): ISPFxListWebPart 
                 lists.push({
                     data: list,
                     text: list.Title,
-                    value: list.Id
+                    value: list.Id,
+                    isSelected: wp.Configuration ? (wp.Configuration as ISPFxListWebPartCfg).ListId == list.Id : false
                 });
             }
 
@@ -58,13 +59,15 @@ export const SPFxListWebPart = (props: ISPFxListWebPartProps): ISPFxListWebPart 
                     name: "WebUrl",
                     label: "Web Url",
                     type: Components.FormControlTypes.TextField,
-                    description: "The relative url to the site containing the target list."
+                    description: "The relative url to the site containing the target list.",
+                    value: wp.Configuration ? (wp.Configuration as ISPFxListWebPartCfg).WebUrl : null
                 },
                 {
-                    name: "ListId",
+                    name: "List",
                     label: "List",
                     type: Components.FormControlTypes.Dropdown,
                     required: true,
+                    value: wp.Configuration ? (wp.Configuration as ISPFxListWebPartCfg).ListId : null,
                     onControlRendered: ctrl => {
                         // Set the dropdown
                         _ddl = ctrl.dropdown;
@@ -99,10 +102,25 @@ export const SPFxListWebPart = (props: ISPFxListWebPartProps): ISPFxListWebPart 
                 // Load the lists
                 loadLists();
             }
+        },
+
+        // 
+        onConfigSaving: (cfg: ISPFxListWebPartCfg) => {
+            // Get the form values
+            let values = wp.Form.getValues();
+
+            // Set the configuration
+            let listItem: Components.IDropdownItem = values["List"];
+            cfg.ListId = listItem ? listItem.value : null;
+            cfg.ListName = listItem ? listItem.text : null;
+            cfg.WebUrl = values["WebUrl"];
+
+            // Return the configuration
+            return cfg;
         }
     };
 
     // Return the webpart
-    let wp = SPFxWebPart({ ...props, ...baseProps });
+    let wp = SPFxWebPart({ ...wpProps, ...baseProps });
     return wp;
 }

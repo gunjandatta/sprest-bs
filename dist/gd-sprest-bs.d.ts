@@ -316,6 +316,9 @@ declare module 'gd-sprest-bs/webparts/base/types' {
         * SPFx WebPart
         */
     export interface ISPFxWebPart {
+            /** The webpart configuration object. */
+            Configuration: ISPFxWebPartCfg;
+    
             /** The webpart configuration form. */
             Form: IForm;
     
@@ -509,6 +512,9 @@ declare module 'gd-sprest-bs/webparts/list/types' {
         * SPFx List WebPart Configuration
         */
     export interface ISPFxListWebPartCfg extends ISPFxWebPartCfg {
+            /** The list id */
+            ListId?: string;
+    
             /** The list name */
             ListName?: string;
     

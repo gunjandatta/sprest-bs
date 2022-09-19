@@ -6,8 +6,11 @@ import { ISPFxWebPart, ISPFxWebPartProps } from "./types";
  * SPFx WebPart Base Class
  */
 class _SPFxWebPart implements ISPFxWebPart {
-    private _cfg: any = null;
     private _props: ISPFxWebPartProps = null;
+
+    /** The webpart configuration */
+    private _cfg: any = null;
+    get Configuration(): any { return this._cfg; };
 
     /** The configuration form. */
     private _form: Components.IForm = null;
@@ -195,6 +198,9 @@ class _SPFxWebPart implements ISPFxWebPart {
 
                                         // Call the saved event
                                         this._props.onConfigSaved ? this._props.onConfigSaved(cfg) : null;
+
+                                        // Close the modal
+                                        this._modal.hide();
                                     }
                                 }
                             }

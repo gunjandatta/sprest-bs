@@ -103,6 +103,9 @@ export interface ISPFxListWebPart extends ISPFxWebPart { }
  * SPFx List WebPart Configuration
  */
 export interface ISPFxListWebPartCfg extends ISPFxWebPartCfg {
+    /** The list id */
+    ListId?: string;
+
     /** The list name */
     ListName?: string;
 
