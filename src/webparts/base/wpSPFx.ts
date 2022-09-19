@@ -42,40 +42,6 @@ class _SPFxWebPart implements ISPFxWebPart {
             catch { }
         }
 
-        // Set the webpart properties pane to trigger the modal from displaying
-        let propertyPageConfig = this._props.spfx.getPropertyPaneConfiguration;
-        this._props.spfx.getPropertyPaneConfiguration = () => {
-            // Get the original configuration
-            let config = propertyPageConfig ? propertyPageConfig() : null;
-
-            // Update the configuration w/ a button
-            config = config || {};
-            config.pages = config.pages || [];
-            config.pages.push({
-                header: {
-                    description: "Configuration"
-                },
-                groups: [
-                    {
-                        groupFields: [{
-                            targetProperty: "configuration",
-                            type: SPTypes.PropertyPaneType.Button,
-                            properties: {
-                                text: "Configuration",
-                                onClick: () => {
-                                    // Show the modal
-                                    this.showEditModal();
-                                }
-                            }
-                        }]
-                    }
-                ]
-            });
-
-            // Call the configuration
-            return config;
-        }
-
         // See if this is the workbench
         if (window.location.pathname.indexOf("workbench.aspx") > 0) {
             // Render the configuration button
@@ -134,6 +100,40 @@ class _SPFxWebPart implements ISPFxWebPart {
         } else {
             // Do nothing
             return;
+        }
+
+        // Set the webpart properties pane to trigger the modal from displaying
+        let propertyPageConfig = this._props.spfx.getPropertyPaneConfiguration;
+        this._props.spfx.getPropertyPaneConfiguration = () => {
+            // Get the original configuration
+            let config = propertyPageConfig ? propertyPageConfig() : null;
+
+            // Update the configuration w/ a button
+            config = config || {};
+            config.pages = config.pages || [];
+            config.pages.push({
+                header: {
+                    description: "Configuration"
+                },
+                groups: [
+                    {
+                        groupFields: [{
+                            targetProperty: "configuration",
+                            type: SPTypes.PropertyPaneType.Button,
+                            properties: {
+                                text: "Configuration",
+                                onClick: () => {
+                                    // Show the modal
+                                    this.showEditModal();
+                                }
+                            }
+                        }]
+                    }
+                ]
+            });
+
+            // Call the configuration
+            return config;
         }
 
         // Render the edit button
