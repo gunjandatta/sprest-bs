@@ -2,15 +2,11 @@ import { Components } from "gd-bs";
 import { ContextInfo, Helper, SPTypes } from "gd-sprest";
 import { ISPFxWebPart, ISPFxWebPartProps } from "./types";
 
-// SP global variable
-declare var SP;
-
 /**
  * SPFx WebPart Base Class
  */
 class _SPFxWebPart implements ISPFxWebPart {
     private _cfg: any = null;
-    private _editButton: Components.IButton = null;
     private _props: ISPFxWebPartProps = null;
 
     /** The configuration form. */
@@ -123,7 +119,7 @@ class _SPFxWebPart implements ISPFxWebPart {
     // Method to render the edit interface
     private renderEdit() {
         // Render the edit button
-        this._editButton = Components.Button({
+        Components.Button({
             el: this._props.spfx.domElement,
             text: "Edit",
             onClick: () => {
@@ -173,6 +169,7 @@ class _SPFxWebPart implements ISPFxWebPart {
 
                                         // Save the configuration
                                         this._props.spfxSaveConfig ? this._props.spfxSaveConfig(wpCfg) : null;
+                                        this._props.spfx.properties.configuration = wpCfg;
 
                                         // Call the saved event
                                         this._props.onConfigSaved ? this._props.onConfigSaved(cfg) : null;
