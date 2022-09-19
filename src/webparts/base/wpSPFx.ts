@@ -63,8 +63,8 @@ class _SPFxWebPart implements ISPFxWebPart {
                             properties: {
                                 text: "Configuration",
                                 onClick: () => {
-                                    // Call the click event
-                                    this.editButtonClick();
+                                    // Show the modal
+                                    this.showEditModal();
                                 }
                             }
                         }]
