@@ -11,7 +11,7 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
     let _loadFl = false;
 
     // Load the lists
-    let loadLists = () => {
+    let loadLists = (listId?: string) => {
         // Disable the dropdown
         _ddl.disable();
 
@@ -36,7 +36,7 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
                     data: list,
                     text: list.Title,
                     value: list.Id,
-                    isSelected: wp.Configuration ? (wp.Configuration as ISPFxListWebPartCfg).ListId == list.Id : false
+                    isSelected: listId == list.Id
                 });
             }
 
@@ -87,7 +87,7 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
                 btnProps: {
                     text: "Load Lists",
                     type: Components.ButtonTypes.OutlinePrimary,
-                    onClick: loadLists
+                    onClick: () => { loadLists(); }
                 }
             });
 
@@ -100,7 +100,7 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
             // See if the lists haven't been loaded
             if (_loadFl == false) {
                 // Load the lists
-                loadLists();
+                loadLists(wp.Configuration ? (wp.Configuration as ISPFxListWebPartCfg).ListId : null);
             }
         },
 

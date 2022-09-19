@@ -11,6 +11,17 @@ class _SPFxWebPart implements ISPFxWebPart {
     /** The webpart configuration */
     private _cfg: any = null;
     get Configuration(): any { return this._cfg; };
+    set Configuration(value: string) {
+        // Clear the value
+        this._cfg = {};
+
+        // Ensure a value exists
+        if (value) {
+            // Try to parse the value
+            try { this._cfg = JSON.parse(value); }
+            catch { }
+        }
+    }
 
     /** The configuration form. */
     private _form: Components.IForm = null;
@@ -20,12 +31,18 @@ class _SPFxWebPart implements ISPFxWebPart {
     private _modal: Components.IModal = null;
     get Modal(): Components.IModal { return this._modal; }
 
+    /** Is in display mode */
+    private _isDisplay: boolean = null;
+    get IsDisplay(): boolean { return this._isDisplay; }
+
+    /** Is in edit mode */
+    private _isEdit: boolean = null;
+    get IsEdit(): boolean { return this._isEdit; }
+
     /** The configuration modal. */
 
     // Constructor
     constructor(props: ISPFxWebPartProps) {
-        let isEdit = false;
-
         // Save the properties
         this._props = props;
 
@@ -39,38 +56,42 @@ class _SPFxWebPart implements ISPFxWebPart {
         // Set the page context
         ContextInfo.setPageContext(this._props.spfx.context.pageContext);
 
-        // Try to parse the configuration
-        if (this._props.wpCfg) {
-            try { this._cfg = JSON.parse(this._props.wpCfg); }
-            catch { }
-        }
+        // Set the configuration
+        this.Configuration = this._props.wpCfg;
 
         // See if this is the workbench
         if (window.location.pathname.indexOf("workbench.aspx") > 0) {
-            // Render the configuration button
-            this.renderEdit();
-
-            // Render the solution
-            this.render();
+            // Set both flags to render edit/display
+            this._isDisplay = true;
+            this._isEdit = true;
         } else {
             // See if this is a classic page
             if (Helper.SP.Ribbon.exists) {
                 // Set the flag
-                isEdit = Helper.WebPart.isEditMode();
+                this._isEdit = Helper.WebPart.isEditMode();
             } else {
                 // Set the flag
-                isEdit = this._props.spfx.displayMode == SPTypes.FormDisplayMode.Edit;
+                this._isEdit = this._props.spfx.displayMode == SPTypes.FormDisplayMode.Edit;
             }
 
-            // Ensure we are in edit mode
-            if (isEdit) {
+            // Set the flag
+            this._isDisplay = !this._isEdit;
+        }
+
+        // Run the render method in another thread
+        setTimeout(() => {
+            // See if we are in edit mode
+            if (this._isEdit) {
                 // Render the configuration button
                 this.renderEdit();
-            } else {
+            }
+
+            // See if we are in display mode
+            if (this.IsDisplay) {
                 // Render the webpart
                 this.render();
             }
-        }
+        }, 10);
     }
 
     // Method to render the webpart
@@ -128,6 +149,9 @@ class _SPFxWebPart implements ISPFxWebPart {
                                 onClick: () => {
                                     // Show the modal
                                     this.showEditModal();
+
+                                    // Close the properties window
+                                    this._props.spfx.context.propertyPane.close();
                                 }
                             }
                         }]
@@ -201,6 +225,13 @@ class _SPFxWebPart implements ISPFxWebPart {
 
                                         // Close the modal
                                         this._modal.hide();
+
+                                        // See if we are in display mode
+                                        if (this.IsDisplay) {
+                                            // Render the display webpart
+                                            // Do we need to do this?
+                                            //this.render();
+                                        }
                                     }
                                 }
                             }
