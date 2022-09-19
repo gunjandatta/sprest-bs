@@ -73,7 +73,10 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
                         _ddl = ctrl.dropdown;
                     }
                 }
-            ]
+            ];
+
+            // Call the base event
+            props = wpProps.onEditFormRendering ? wpProps.onEditFormRendering(props) : props;
 
             // Return the properties
             return props;
@@ -91,6 +94,9 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
                 }
             });
 
+            // Call the base event
+            props = wpProps.onEditFormFooterRendering ? wpProps.onEditFormFooterRendering(props) : props;
+
             // Return the properties
             return props;
         },
@@ -102,6 +108,9 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
                 // Load the lists
                 loadLists(wp.Configuration ? (wp.Configuration as ISPFxListWebPartCfg).ListId : null);
             }
+
+            // Call the base event
+            wpProps.onEditFormDisplaying ? wpProps.onEditFormDisplaying() : null;
         },
 
         // The configuration saving event
@@ -111,9 +120,14 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
 
             // Set the configuration
             let listItem: Components.IDropdownItem = values["List"];
-            cfg.ListId = listItem ? listItem.value : null;
-            cfg.ListName = listItem ? listItem.text : null;
-            cfg.WebUrl = values["WebUrl"];
+            cfg = {
+                ListId: listItem ? listItem.value : null,
+                ListName: listItem ? listItem.text : null,
+                WebUrl: values["WebUrl"]
+            }
+
+            // Call the base event
+            cfg = wpProps.onConfigSaving ? wpProps.onConfigSaving(cfg) : cfg;
 
             // Return the configuration
             return cfg;
