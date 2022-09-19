@@ -33,9 +33,6 @@ class _SPFxWebPart implements ISPFxWebPart {
             return;
         }
 
-        // Clear the webpart
-        while (this._props.spfx.domElement.firstChild) { this._props.spfx.domElement.removeChild(this._props.spfx.domElement.firstChild); }
-
         // Set the page context
         ContextInfo.setPageContext(this._props.spfx.context.pageContext);
 
@@ -107,36 +104,55 @@ class _SPFxWebPart implements ISPFxWebPart {
         }
     }
 
-    // The click event for the button
-    private editButtonClick() {
-        // Display the modal
-        this._modal.show();
-
-        // Hide the property pane
-        this._props.spfx.context.propertyPane.close();
-    }
-
     // Method to render the webpart
     private render() {
+        // Get the webpart element
+        let elWP: HTMLElement = this._props.spfx.domElement.querySelector(".webpart");
+        if (elWP == null) {
+            // Create the element
+            elWP = document.createElement("div");
+            elWP.classList.add("webpart");
+            this._props.spfx.domElement.appendChild(elWP);
+        } else {
+            // Clear the element
+            while (elWP.firstChild) { elWP.removeChild(elWP.firstChild); }
+        }
+
         // Call the render event
-        this._props.render ? this._props.render(this._props.spfx.domElement) : null;
+        this._props.render ? this._props.render(elWP) : null;
     }
 
     // Method to render the edit interface
     private renderEdit() {
+        // Get the webpart element
+        let elWPConfig: HTMLElement = this._props.spfx.domElement.querySelector(".webpart-cfg");
+        if (elWPConfig == null) {
+            // Create the element
+            elWPConfig = document.createElement("div");
+            elWPConfig.classList.add("webpart-cfg");
+            this._props.spfx.domElement.appendChild(elWPConfig);
+        } else {
+            // Do nothing
+            return;
+        }
+
         // Render the edit button
         Components.Button({
-            el: this._props.spfx.domElement,
+            el: elWPConfig,
             text: "Edit",
             onClick: () => {
-                // Call the click event
-                this.editButtonClick();
+                // Show the edit modal
+                this.showEditModal();
             }
         });
 
         // Create the modal props
         let modalProps: Components.IModalProps = {
-            el: this._props.spfx.domElement,
+            el: elWPConfig,
+            onClose: () => {
+                // Hide the property pane
+                this._props.spfx.context.propertyPane.close();
+            },
             onRenderBody: el => {
                 // Create the form properties
                 let formProps: Components.IFormProps = { el, value: this._cfg };
