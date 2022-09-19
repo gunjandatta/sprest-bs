@@ -104,7 +104,7 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
             }
         },
 
-        // 
+        // The configuration saving event
         onConfigSaving: (cfg: ISPFxListWebPartCfg) => {
             // Get the form values
             let values = wp.Form.getValues();
