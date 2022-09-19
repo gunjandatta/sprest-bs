@@ -10,6 +10,7 @@ declare var SP;
  */
 class _SPFxWebPart implements ISPFxWebPart {
     private _cfg: any = null;
+    private _editButton: Components.IButton = null;
     private _props: ISPFxWebPartProps = null;
 
     /** The configuration form. */
@@ -64,8 +65,8 @@ class _SPFxWebPart implements ISPFxWebPart {
                             targetProperty: "configuration",
                             type: SPTypes.PropertyPaneType.Button,
                             onClick: () => {
-                                // Display the modal
-                                this._modal.show();
+                                // Call the click event
+                                this.editButtonClick();
                             }
                         }]
                     }
@@ -104,6 +105,15 @@ class _SPFxWebPart implements ISPFxWebPart {
         }
     }
 
+    // The click event for the button
+    private editButtonClick() {
+        // Display the modal
+        this._modal.show();
+
+        // Hide the property pane
+        this._props.spfx.context.propertyPane.close();
+    }
+
     // Method to render the webpart
     private render() {
         // Call the render event
@@ -113,15 +123,12 @@ class _SPFxWebPart implements ISPFxWebPart {
     // Method to render the edit interface
     private renderEdit() {
         // Render the edit button
-        Components.Button({
+        this._editButton = Components.Button({
             el: this._props.spfx.domElement,
             text: "Edit",
             onClick: () => {
-                // Display the modal
-                this._modal.show();
-
-                // Hide the property pane
-                this._props.spfx.context.propertyPane.close();
+                // Call the click event
+                this.editButtonClick();
             }
         });
 
