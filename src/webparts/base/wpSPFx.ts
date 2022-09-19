@@ -63,9 +63,12 @@ class _SPFxWebPart implements ISPFxWebPart {
                         groupFields: [{
                             targetProperty: "configuration",
                             type: SPTypes.PropertyPaneType.Button,
-                            onClick: () => {
-                                // Call the click event
-                                this.editButtonClick();
+                            properties: {
+                                text: "Configuration",
+                                onClick: () => {
+                                    // Call the click event
+                                    this.editButtonClick();
+                                }
                             }
                         }]
                     }
