@@ -33,6 +33,9 @@ class _SPFxWebPart implements ISPFxWebPart {
             return;
         }
 
+        // Clear the webpart
+        while (this._props.spfx.domElement.firstChild) { this._props.spfx.domElement.removeChild(this._props.spfx.domElement.firstChild); }
+
         // Set the page context
         ContextInfo.setPageContext(this._props.spfx.context.pageContext);
 
