@@ -1,0 +1,1 @@
+import { SPFxListWebPart } from "./wpSPFx";

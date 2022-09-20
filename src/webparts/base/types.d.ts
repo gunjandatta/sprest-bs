@@ -241,7 +241,4 @@ export interface ISPFxWebPartProps {
         title: string;
         width: number;
     };
-
-    /** A reference to the SPFx's save method for the webpart's configuration. */
-    spfxSaveConfig?: (wpCfg: string) => void;
 }

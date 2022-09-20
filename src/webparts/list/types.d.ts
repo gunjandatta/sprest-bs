@@ -127,7 +127,7 @@ export interface ISPFxListWebPartProps extends ISPFxWebPartProps {
     onConfigSaved?: (wpCfg?: ISPFxListWebPartCfg) => void;
 
     /** The list changed event. */
-    onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<IFormControlProps> | PromiseLike<Array<IFormControlProps>> | void;
+    onListsChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<IFormControlProps> | PromiseLike<Array<IFormControlProps>> | void;
 
     /** The lists loaded event. */
     onListsLoaded?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQuery | Types.SP.List>) => Array<Types.SP.IListQuery | Types.SP.List>;

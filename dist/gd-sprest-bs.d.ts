@@ -397,9 +397,6 @@ declare module 'gd-sprest-bs/webparts/base/types' {
                     title: string;
                     width: number;
             };
-    
-            /** A reference to the SPFx's save method for the webpart's configuration. */
-            spfxSaveConfig?: (wpCfg: string) => void;
     }
 }
 
@@ -533,7 +530,7 @@ declare module 'gd-sprest-bs/webparts/list/types' {
             onConfigSaved?: (wpCfg?: ISPFxListWebPartCfg) => void;
     
             /** The list changed event. */
-            onListChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<IFormControlProps> | PromiseLike<Array<IFormControlProps>> | void;
+            onListsChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<IFormControlProps> | PromiseLike<Array<IFormControlProps>> | void;
     
             /** The lists loaded event. */
             onListsLoaded?: (wpInfo: IListInfo, lists?: Array<Types.SP.IListQuery | Types.SP.List>) => Array<Types.SP.IListQuery | Types.SP.List>;
