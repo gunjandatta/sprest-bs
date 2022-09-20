@@ -57,7 +57,7 @@ class _SPFxWebPart implements ISPFxWebPart {
         ContextInfo.setPageContext(this._props.spfx.context.pageContext);
 
         // Set the configuration
-        this.Configuration = this._props.wpCfg;
+        this.Configuration = this._props.spfx.properties.configuration;
 
         // See if this is the workbench
         if (window.location.pathname.indexOf("workbench.aspx") > 0) {
@@ -109,7 +109,7 @@ class _SPFxWebPart implements ISPFxWebPart {
         }
 
         // Call the render event
-        this._props.render ? this._props.render(elWP) : null;
+        this._props.render ? this._props.render(elWP, this.Configuration) : null;
     }
 
     // Method to render the edit interface

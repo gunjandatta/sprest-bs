@@ -244,7 +244,4 @@ export interface ISPFxWebPartProps {
 
     /** A reference to the SPFx's save method for the webpart's configuration. */
     spfxSaveConfig?: (wpCfg: string) => void;
-
-    /** The webpart configuration property. */
-    wpCfg?: string;
 }
