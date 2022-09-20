@@ -71,7 +71,7 @@ class _SPFxWebPart implements ISPFxWebPart {
                 this._isEdit = Helper.WebPart.isEditMode();
             } else {
                 // Set the flag
-                this._isEdit = this._props.spfx.displayMode == SPTypes.FormDisplayMode.Edit;
+                this._isEdit = this._props.spfx.displayMode == SPTypes.DisplayMode.Edit;
             }
 
             // Set the flag
@@ -182,13 +182,13 @@ class _SPFxWebPart implements ISPFxWebPart {
                 let formProps: Components.IFormProps = { el, value: this._cfg };
 
                 // Call the rendering event
-                formProps = this._props.onEditFormRendering ? this._props.onEditFormRendering(formProps) : formProps;
+                formProps = this._props.onConfigFormRendering ? this._props.onConfigFormRendering(formProps) : formProps;
 
                 // Render the form
                 this._form = Components.Form(formProps);
 
                 // Call the rendered event
-                this._props.onEditFormRendered ? this._props.onEditFormRendered(this._form) : null;
+                this._props.onConfigFormRendered ? this._props.onConfigFormRendered(this._form) : null;
             },
             onRenderFooter: el => {
                 // Render the footer buttons
@@ -235,7 +235,7 @@ class _SPFxWebPart implements ISPFxWebPart {
                 }
 
                 // Call the event
-                footerProps = this._props.onEditFormFooterRendering ? this._props.onEditFormFooterRendering(footerProps) : footerProps;
+                footerProps = this._props.onConfigFormFooterRendering ? this._props.onConfigFormFooterRendering(footerProps) : footerProps;
 
                 // Render the footer
                 Components.TooltipGroup(footerProps);
@@ -252,6 +252,9 @@ class _SPFxWebPart implements ISPFxWebPart {
 
         // Call the rendered event
         this._props.onModalRendered ? this._props.onModalRendered(this._modal) : null;
+
+        // Call the renderEdit event
+        this._props.renderEdit ? this._props.renderEdit(elWPConfig, this.Configuration) : null;
     }
 
     // Shows the modal
@@ -260,7 +263,7 @@ class _SPFxWebPart implements ISPFxWebPart {
         this._modal ? this._modal.show() : null;
 
         // Call the event
-        this._props.onEditFormDisplaying ? this._props.onEditFormDisplaying() : null;
+        this._props.onConfigFormDisplaying ? this._props.onConfigFormDisplaying() : null;
     }
 }
 export const SPFxWebPart = (props: ISPFxWebPartProps) => { return new _SPFxWebPart(props); }

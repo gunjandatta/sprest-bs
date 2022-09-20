@@ -192,16 +192,16 @@ export interface ISPFxWebPartProps {
     onConfigSaved?: (wpCfg?: ISPFxWebPartCfg) => void;
 
     /** The event called when the modal is being displayed. */
-    onEditFormDisplaying?: () => void;
+    onConfigFormDisplaying?: () => void;
 
     /** The webpart configuration modal footer button properties. */
-    onEditFormFooterRendering?: (props: ITooltipGroupProps) => ITooltipGroupProps;
+    onConfigFormFooterRendering?: (props: ITooltipGroupProps) => ITooltipGroupProps;
 
     /** The webpart configuration modal form properties. */
-    onEditFormRendering?: (props: IFormProps) => IFormProps;
+    onConfigFormRendering?: (props: IFormProps) => IFormProps;
 
     /** The webpart configuration modal form object. */
-    onEditFormRendered?: (form: IForm) => void;
+    onConfigFormRendered?: (form: IForm) => void;
 
     /** The webpart configuration modal properties. */
     onModalRendering?: (props: IModalProps) => IModalProps;
@@ -212,6 +212,9 @@ export interface ISPFxWebPartProps {
     /** The render event for the webpart. */
     render?: (el?: HTMLElement, cfg?: ISPFxWebPartCfg) => void;
 
+    /** The render event for the webpart when the page is in edit mode. */
+    renderEdit?: (el?: HTMLElement, cfg?: ISPFxWebPartCfg) => void;
+
     /** The spfx properties. */
     spfx?: {
         context: {
@@ -220,7 +223,21 @@ export interface ISPFxWebPartProps {
             host: any;
             httpClient: any;
             instanceId: string;
-            manifest: any;
+            itemId?: number;
+            list?: {
+                title: string;
+            }
+            manifest: {
+                alias: string;
+                componentType: string;
+                id: string;
+                loaderConfig: any;
+                manifestVersion: number;
+                requiresCustomScript: boolean;
+                supportedHosts: string[];
+                supportsThemeVariants: boolean;
+                version: string;
+            };
             pageContext: any;
             propertyPane: any;
             serviceScope: any;
@@ -232,6 +249,8 @@ export interface ISPFxWebPartProps {
         description: string;
         displayMode: number;
         domElement: HTMLElement;
+        formClosed?: () => void;
+        formSaved?: () => void;
         getPropertyPaneConfiguration: any;
         instanceId: string;
         isRenderAsync: boolean;

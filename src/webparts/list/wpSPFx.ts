@@ -52,7 +52,7 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
     // Define the properties
     let baseProps: ISPFxListWebPartProps = {
         // Set the form properties
-        onEditFormRendering: props => {
+        onConfigFormRendering: props => {
             // Set the controls
             props.controls = [
                 {
@@ -76,14 +76,14 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
             ];
 
             // Call the base event
-            props = wpProps.onEditFormRendering ? wpProps.onEditFormRendering(props) : props;
+            props = wpProps.onConfigFormRendering ? wpProps.onConfigFormRendering(props) : props;
 
             // Return the properties
             return props;
         },
 
         // Footer rendering event
-        onEditFormFooterRendering: props => {
+        onConfigFormFooterRendering: props => {
             // Add a load lists button
             props.tooltips.push({
                 content: "Loads the lists.",
@@ -95,14 +95,14 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
             });
 
             // Call the base event
-            props = wpProps.onEditFormFooterRendering ? wpProps.onEditFormFooterRendering(props) : props;
+            props = wpProps.onConfigFormFooterRendering ? wpProps.onConfigFormFooterRendering(props) : props;
 
             // Return the properties
             return props;
         },
 
         // Modal displaying event
-        onEditFormDisplaying: () => {
+        onConfigFormDisplaying: () => {
             // See if the lists haven't been loaded
             if (_loadFl == false) {
                 // Load the lists
@@ -110,7 +110,7 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
             }
 
             // Call the base event
-            wpProps.onEditFormDisplaying ? wpProps.onEditFormDisplaying() : null;
+            wpProps.onConfigFormDisplaying ? wpProps.onConfigFormDisplaying() : null;
         },
 
         // The configuration saving event
