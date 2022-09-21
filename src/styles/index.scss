@@ -131,4 +131,10 @@
     .ql-container.ql-snow, .ql-toolbar.ql-snow {
         border-color: #6c757d;
     }
+    .ql-container.ql-disabled {
+        background-color: #e9ecef;
+        border-color: #eaeaea;
+        color: #a6a6a6;
+        opacity: 1;
+    }
 }
