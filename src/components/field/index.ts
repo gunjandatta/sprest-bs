@@ -1284,9 +1284,6 @@ export const Field = (props: IFieldProps): IField => {
                             // Add the field value
                             userValue.Id ? fieldValue.value.results.push(userValue.Id) : null;
                         }
-
-                        // Clear the value if no values exist
-                        if (fieldValue.value.results.length == 0) { fieldValue.value = null; }
                     } else {
                         let userValue: Types.SP.User | Types.SP.Group = fieldValue.value ? fieldValue.value[0] : null;
 

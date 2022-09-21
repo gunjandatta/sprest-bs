@@ -1,6 +1,8 @@
 import { IButtonProps } from "gd-bs/src/components/button/types";
 import { IFormControl, IFormControlProps } from "gd-bs/src/components/form/controlTypes";
-import { IForm } from "gd-bs/src/components/form/formTypes";
+import { IForm, IFormProps } from "gd-bs/src/components/form/formTypes";
+import { IModal, IModalProps } from "gd-bs/src/components/modal/types";
+import { ITooltipGroupProps } from "gd-bs/src/components/tooltipGroup/types";
 
 /**
  * ### Web Part
@@ -150,15 +152,112 @@ export interface IWebPartEditForm<IWPCfg = IWebPartCfg, IWPInfo = IWebPartInfo> 
 }
 
 /**
+ * SPFx WebPart
+ */
+export const SPFxWebPart: (props: ISPFxWebPartProps) => ISPFxWebPart;
+
+/**
+ * SPFx WebPart
+ */
+export interface ISPFxWebPart {
+    /** The webpart configuration object. */
+    Configuration: ISPFxWebPartCfg;
+
+    /** The webpart configuration form. */
+    Form: IForm;
+
+    /** The webpart configuration modal. */
+    Modal: IModal;
+
+    /** Shows the webpart configuration form in a modal. */
+    showEditModal: () => void;
+}
+
+/**
+ * SPFx WebPart Configuration
+ */
+export interface ISPFxWebPartCfg { }
+
+/**
  * SPFx WebPart Properties
  */
 export interface ISPFxWebPartProps {
-    /** The page context, passed from the SPFx webpart. */
-    context?: any;
+    /** The environment type. */
+    envType?: number;
 
-    /** The webpart element, passed from the SPFx webpart. */
-    el?: HTMLElement;
+    /** The event called prior to saving the webpart configuration. */
+    onConfigSaving?: (wpCfg: ISPFxWebPartCfg) => ISPFxWebPartCfg;
 
-    /** Event to update the webpart's configuration. */
-    onUpdateConfiguration?: (cfg: string) => void;
+    /** The event called after the webpart configuration is saved. */
+    onConfigSaved?: (wpCfg?: ISPFxWebPartCfg) => void;
+
+    /** The event called when the modal is being displayed. */
+    onConfigFormDisplaying?: () => void;
+
+    /** The webpart configuration modal footer button properties. */
+    onConfigFormFooterRendering?: (props: ITooltipGroupProps) => ITooltipGroupProps;
+
+    /** The webpart configuration modal form properties. */
+    onConfigFormRendering?: (props: IFormProps) => IFormProps;
+
+    /** The webpart configuration modal form object. */
+    onConfigFormRendered?: (form: IForm) => void;
+
+    /** The webpart configuration modal properties. */
+    onModalRendering?: (props: IModalProps) => IModalProps;
+
+    /** The webpart configuration modal properties. */
+    onModalRendered?: (modal: IModal) => void;
+
+    /** The render event for the webpart. */
+    render?: (el?: HTMLElement, cfg?: ISPFxWebPartCfg) => void;
+
+    /** The render event for the webpart when the page is in edit mode. */
+    renderEdit?: (el?: HTMLElement, cfg?: ISPFxWebPartCfg) => void;
+
+    /** The spfx properties. */
+    spfx?: {
+        context: {
+            domElement: HTMLElement;
+            graphHttpClient: any;
+            host: any;
+            httpClient: any;
+            instanceId: string;
+            itemId?: number;
+            list?: {
+                title: string;
+            }
+            manifest: {
+                alias: string;
+                componentType: string;
+                id: string;
+                loaderConfig: any;
+                manifestVersion: number;
+                requiresCustomScript: boolean;
+                supportedHosts: string[];
+                supportsThemeVariants: boolean;
+                version: string;
+            };
+            pageContext: any;
+            propertyPane: any;
+            serviceScope: any;
+            spHttpClient: any;
+            statusRenderer: any;
+            webPartTag: string;
+        };
+        dataVersion: any;
+        description: string;
+        displayMode: number;
+        domElement: HTMLElement;
+        formClosed?: () => void;
+        formSaved?: () => void;
+        getPropertyPaneConfiguration: any;
+        instanceId: string;
+        isRenderAsync: boolean;
+        previewImageUrl: string;
+        properties: any;
+        propertiesMetadata: any;
+        title: string;
+        width: number;
+    };
 }
