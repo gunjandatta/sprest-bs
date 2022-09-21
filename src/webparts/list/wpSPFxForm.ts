@@ -149,6 +149,10 @@ export const SPFxListFormWebPart = (wpProps: ISPFxListFormWebPartProps): ISPFxLi
 
                 // Call the rendering method
                 footerProps = wpProps.onEditFooterRendering ? wpProps.onEditFooterRendering(footerProps) : footerProps;
+                if (footerProps) {
+                    // Render the footer
+                    Components.TooltipGroup(footerProps);
+                }
             });
         },
 
@@ -253,6 +257,9 @@ export const SPFxListFormWebPart = (wpProps: ISPFxListFormWebPartProps): ISPFxLi
                                                         EditFormClientSideComponentProperties: null,
                                                         NewFormClientSideComponentId: null,
                                                         NewFormClientSideComponentProperties: null
+                                                    }).execute(() => {
+                                                        // Close the modal
+                                                        modal.hide();
                                                     });
                                                 }
                                             }
@@ -277,6 +284,9 @@ export const SPFxListFormWebPart = (wpProps: ISPFxListFormWebPartProps): ISPFxLi
                                                         EditFormClientSideComponentProperties: values["ComponentProps"],
                                                         NewFormClientSideComponentId: values["ComponentId"],
                                                         NewFormClientSideComponentProperties: values["ComponentProps"]
+                                                    }).execute(() => {
+                                                        // Close the modal
+                                                        modal.hide();
                                                     });
                                                 }
                                             }
