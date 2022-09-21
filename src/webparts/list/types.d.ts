@@ -146,7 +146,7 @@ export interface ISPFxListWebPartProps extends ISPFxWebPartProps {
 /**
  * SPFx List Form WebPart
  */
-export const SPFxListFormWebPart: (props: ISPFxListFormWebPart) => ISPFxListFormWebPart;
+export const SPFxListFormWebPart: (props: ISPFxListFormWebPartProps) => ISPFxListFormWebPart;
 
 /**
  * SPFx List Form WebPart

@@ -568,7 +568,7 @@ declare module 'gd-sprest-bs/webparts/list/types' {
     /**
         * SPFx List Form WebPart
         */
-    export const SPFxListFormWebPart: (props: ISPFxListFormWebPart) => ISPFxListFormWebPart;
+    export const SPFxListFormWebPart: (props: ISPFxListFormWebPartProps) => ISPFxListFormWebPart;
     
     /**
         * SPFx List Form WebPart
