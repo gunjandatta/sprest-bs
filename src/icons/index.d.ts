@@ -3607,7 +3607,7 @@ export const IconTypes: {
 	// window-x.svg
 	WindowX: number;
 	// window.svg
-	AppWindow: number;
+	Window_: number;
 	// windows.svg
 	Windows: number;
 	// wordpress.svg

@@ -5372,7 +5372,7 @@ export const Icons = (iconType:number, height?:number, width?:number, className?
 			return SVGIcons.windowX(height, width, className);
 		// window.svg
 		case 1789:
-			return SVGIcons.appWindow(height, width, className);
+			return SVGIcons.window_(height, width, className);
 		// windows.svg
 		case 1790:
 			return SVGIcons.windows(height, width, className);

@@ -585,6 +585,9 @@ declare module 'gd-sprest-bs/webparts/list/types' {
         * SPFx List Form WebPart Properties
         */
     export interface ISPFxListFormWebPartProps extends ISPFxListWebPartProps {
+            /** The form component id to use for the edit configuration. */
+            componentId?: string;
+    
             /** The list information properties. */
             onGetListInfo?: (props: Helper.IListFormProps) => Helper.IListFormProps;
     

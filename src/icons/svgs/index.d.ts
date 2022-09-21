@@ -3575,7 +3575,7 @@ export const windowStack: (height?:number, width?:number, className?:string) => 
 // window-x.svg
 export const windowX: (height?:number, width?:number, className?:string) => HTMLElement;
 // window.svg
-export const appWindow: (height?:number, width?:number, className?:string) => HTMLElement;
+export const window_: (height?:number, width?:number, className?:string) => HTMLElement;
 // windows.svg
 export const windows: (height?:number, width?:number, className?:string) => HTMLElement;
 // wordpress.svg

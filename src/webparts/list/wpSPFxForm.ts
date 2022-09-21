@@ -169,6 +169,12 @@ export const SPFxListFormWebPart = (wpProps: ISPFxListFormWebPartProps): ISPFxLi
                 el,
                 text: "Configure List",
                 onClick: () => {
+                    // Clear the body
+                    while (elBody.firstChild) { elBody.removeChild(elBody.firstChild); }
+
+                    // Clear the footer
+                    while (elFooter.firstChild) { elFooter.removeChild(elFooter.firstChild); }
+
                     // Ensure a list has been selected
                     if (wp.Configuration.ListId) {
                         // Show a loading message
@@ -212,12 +218,14 @@ export const SPFxListFormWebPart = (wpProps: ISPFxListFormWebPartProps): ISPFxLi
                                         name: "ComponentId",
                                         label: "Component ID",
                                         type: Components.FormControlTypes.TextField,
-                                        required: true
+                                        required: true,
+                                        value: wpProps.componentId
                                     },
                                     {
                                         name: "ComponentProps",
                                         label: "Component Properties",
-                                        type: Components.FormControlTypes.TextArea
+                                        type: Components.FormControlTypes.TextArea,
+                                        value: wpProps.componentProps
                                     }
                                 ]
                             });

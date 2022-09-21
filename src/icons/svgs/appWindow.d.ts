@@ -1,1 +1,0 @@
-export const appWindow: (height?:number, width?:number, className?:string) => HTMLElement;

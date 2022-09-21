@@ -1786,7 +1786,7 @@ export * from "./windowSidebar";
 export * from "./windowSplit";
 export * from "./windowStack";
 export * from "./windowX";
-export * from "./appWindow";
+export * from "./window_";
 export * from "./windows";
 export * from "./wordpress";
 export * from "./wrenchAdjustableCircleFill";

@@ -1788,7 +1788,7 @@ export enum IconTypes {
 	WindowSplit = 1786,
 	WindowStack = 1787,
 	WindowX = 1788,
-	AppWindow = 1789,
+	Window_ = 1789,
 	Windows = 1790,
 	Wordpress = 1791,
 	WrenchAdjustableCircleFill = 1792,
