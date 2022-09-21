@@ -30,11 +30,7 @@ export const SPFxListFormWebPart = (wpProps: ISPFxListFormWebPartProps): ISPFxLi
                     let dispProps: IListFormDisplayProps = {
                         el: wpProps.spfx.domElement,
                         info,
-                        rowClassName: "mb-3",
-                        onFormRendered: form => {
-                            // Remove the last class
-                            (form.el.lastChild as HTMLElement).classList.remove("mb-3");
-                        }
+                        rowClassName: "mb-3"
                     };
 
                     // Call the rendering event
@@ -50,12 +46,8 @@ export const SPFxListFormWebPart = (wpProps: ISPFxListFormWebPartProps): ISPFxLi
                     let editProps: IListFormEditProps = {
                         el: wpProps.spfx.domElement,
                         info,
-                        rowClassName: "mb-3",
                         controlMode: info.item ? SPTypes.ControlMode.Edit : SPTypes.ControlMode.New,
-                        onFormRendered: form => {
-                            // Remove the last class
-                            (form.el.lastChild as HTMLElement).classList.remove("mb-3");
-                        }
+                        rowClassName: "mb-3"
                     }
 
                     // Call the rendering event
@@ -251,12 +243,12 @@ export const SPFxListFormWebPart = (wpProps: ISPFxListFormWebPartProps): ISPFxLi
 
                                                     // Clear the form component properties
                                                     Web(wp.Configuration.WebUrl).Lists().getById(wp.Configuration.ListId).ContentTypes(item.value).update({
-                                                        DisplayFormClientSideComponentId: null,
-                                                        DisplayFormClientSideComponentProperties: null,
-                                                        EditFormClientSideComponentId: null,
-                                                        EditFormClientSideComponentProperties: null,
-                                                        NewFormClientSideComponentId: null,
-                                                        NewFormClientSideComponentProperties: null
+                                                        DisplayFormClientSideComponentId: "",
+                                                        DisplayFormClientSideComponentProperties: "",
+                                                        EditFormClientSideComponentId: "",
+                                                        EditFormClientSideComponentProperties: "",
+                                                        NewFormClientSideComponentId: "",
+                                                        NewFormClientSideComponentProperties: ""
                                                     }).execute(() => {
                                                         // Close the modal
                                                         modal.hide();
