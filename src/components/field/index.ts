@@ -297,12 +297,25 @@ export const Field = (props: IFieldProps): IField => {
             baseValidation = (ctrl, result) => {
                 // See if a value exists
                 if (result.value) {
-                    let ddlItem: Components.IDropdownItem = result.value;
+                    // See if this is a dropdown
+                    if (ctrl.props.type == Components.FormControlTypes.Dropdown) {
+                        let ddlItem: Components.IDropdownItem = result.value;
 
-                    // See if the text and value don't exist
-                    if (ddlItem.value || ddlItem.text ? false : true) {
-                        // Set the flag
-                        result.isValid = false;
+                        // See if the text and value don't exist
+                        if (ddlItem.value || ddlItem.text ? false : true) {
+                            // Set the flag
+                            result.isValid = false;
+                        }
+                    }
+                    // Else, it's a switch
+                    else {
+                        let cbItem: Components.ICheckboxGroupItem = result.value;
+
+                        // See if a value doesn't exist
+                        if (cbItem.label ? false : true) {
+                            // Set the flag
+                            result.isValid = false;
+                        }
                     }
                 }
 
