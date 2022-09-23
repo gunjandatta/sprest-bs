@@ -9,12 +9,12 @@ import { ISPFxListFormWebPartProps, ISPFxListFormWebPart } from "./types";
  * List Form WebPart
  */
 export const SPFxListFormWebPart = (wpProps: ISPFxListFormWebPartProps): ISPFxListFormWebPart => {
+    // See if we have already rendered the form
+    if (wpProps.spfx.domElement.querySelector("form")) { return; }
+
     // Set the base properties
     let baseProps: ISPFxListFormWebPartProps = {
         render: (el, cfg) => {
-            // See if the display or edit form already exists
-            if (wp.DisplayForm != null || wp.EditForm != null) { return; }
-
             // Set the list form properties
             let listProps: Helper.IListFormProps = {
                 itemId: wpProps.spfx.context.itemId,
