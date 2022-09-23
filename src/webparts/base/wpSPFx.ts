@@ -216,6 +216,9 @@ class _SPFxWebPart implements ISPFxWebPart {
                                         // Save the configuration
                                         this._props.spfx.properties.configuration = wpCfg;
 
+                                        // Update the configuration property
+                                        this.Configuration = wpCfg;
+
                                         // Call the saved event
                                         this._props.onConfigSaved ? this._props.onConfigSaved(cfg) : null;
 

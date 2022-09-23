@@ -12,6 +12,9 @@ export const SPFxListFormWebPart = (wpProps: ISPFxListFormWebPartProps): ISPFxLi
     // Set the base properties
     let baseProps: ISPFxListFormWebPartProps = {
         render: (el, cfg) => {
+            // See if the display or edit form already exists
+            if (wp.DisplayForm != null || wp.EditForm != null) { return; }
+
             // Set the list form properties
             let listProps: Helper.IListFormProps = {
                 itemId: wpProps.spfx.context.itemId,
