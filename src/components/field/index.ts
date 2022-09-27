@@ -295,8 +295,8 @@ export const Field = (props: IFieldProps): IField => {
 
             // Set the base validation
             baseValidation = (ctrl, result) => {
-                // See if a value exists
-                if (result.value) {
+                // See if a selected item exists and the field is required
+                if (result.value && ctrl.props.required) {
                     // See if this is a dropdown
                     if (ctrl.props.type == Components.FormControlTypes.Dropdown) {
                         let ddlItem: Components.IDropdownItem = result.value;
