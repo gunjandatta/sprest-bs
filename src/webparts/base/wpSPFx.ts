@@ -269,4 +269,4 @@ class _SPFxWebPart implements ISPFxWebPart {
         this._props.onConfigFormDisplaying ? this._props.onConfigFormDisplaying() : null;
     }
 }
-export const SPFxWebPart = (props: ISPFxWebPartProps) => { return new _SPFxWebPart(props); }
+export const SPFxWebPart = (props: ISPFxWebPartProps): ISPFxWebPart => { return new _SPFxWebPart(props); }

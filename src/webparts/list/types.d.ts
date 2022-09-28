@@ -160,6 +160,11 @@ export interface ISPFxListFormWebPart extends ISPFxListWebPart {
 }
 
 /**
+ * SPFx List WebPart Configuration
+ */
+export interface ISPFxListFormWebPartCfg extends ISPFxListWebPartCfg { }
+
+/**
  * SPFx List Form WebPart Properties
  */
 export interface ISPFxListFormWebPartProps extends ISPFxListWebPartProps {

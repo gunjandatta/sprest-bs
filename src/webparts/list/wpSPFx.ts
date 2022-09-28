@@ -48,7 +48,6 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
         });
     }
 
-
     // Define the properties
     let baseProps: ISPFxListWebPartProps = {
         // Set the form properties
