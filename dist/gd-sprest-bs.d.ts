@@ -552,6 +552,12 @@ declare module 'gd-sprest-bs/webparts/list/types' {
             /** The event called after the webpart configuration is saved. */
             onConfigSaved?: (wpCfg?: ISPFxListWebPartCfg) => void;
     
+            /** The event to customize the CAML query used for getting the list items. */
+            onListItemCAMLQuery?: (wpCfg: ISPFxListWebPartCfg, query: string) => string;
+    
+            /** The event to customize the ODATA query used for getting the list items. */
+            onListItemODataQuery?: (wpCfg: ISPFxListWebPartCfg, query: Types.IODataQuery) => Types.IODataQuery;
+    
             /** The list changed event. */
             onListsChanged?: (wpInfo: IListInfo, list?: Types.SP.IListQuery | Types.SP.List) => Array<IFormControlProps> | PromiseLike<Array<IFormControlProps>> | void;
     
@@ -563,6 +569,9 @@ declare module 'gd-sprest-bs/webparts/list/types' {
     
             /** The render event for the webpart when the page is in edit mode. */
             renderEdit?: (el?: HTMLElement, cfg?: ISPFxListWebPartCfg) => void;
+    
+            /** The render event for the webpart. */
+            renderItems?: (el?: HTMLElement, cfg?: ISPFxListWebPartCfg, items?: Array<Types.SP.IListItemQuery | Types.SP.ListItem>) => void;
     }
     
     /**
@@ -580,6 +589,11 @@ declare module 'gd-sprest-bs/webparts/list/types' {
             /** The edit/new form. */
             EditForm?: IListFormEdit;
     }
+    
+    /**
+        * SPFx List WebPart Configuration
+        */
+    export interface ISPFxListFormWebPartCfg extends ISPFxListWebPartCfg { }
     
     /**
         * SPFx List Form WebPart Properties

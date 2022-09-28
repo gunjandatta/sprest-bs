@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import { Web } from "gd-sprest";
+import { Types, Web } from "gd-sprest";
 import { SPFxWebPart } from "../base";
 import { ISPFxListWebPart, ISPFxListWebPartProps, ISPFxListWebPartCfg } from "./types";
 
@@ -71,7 +71,7 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
                         // Set the dropdown
                         _ddl = ctrl.dropdown;
                     }
-                }
+                } as Components.IFormControlPropsDropdown
             ];
 
             // Call the base event
@@ -130,6 +130,74 @@ export const SPFxListWebPart = (wpProps: ISPFxListWebPartProps): ISPFxListWebPar
 
             // Return the configuration
             return cfg;
+        },
+
+        // The render items event
+        renderItems: (el, cfg) => {
+            // See if a render event exists
+            if (wpProps.renderItems == null) { return; }
+
+            // Set the list
+            let list = Web(cfg.WebUrl).Lists().getById(cfg.ListId);
+
+            // Ensure the list exists
+            if (cfg.ListId) {
+                // See if we are doing a caml query
+                if (wpProps.onListItemCAMLQuery) {
+                    // Set the CAML query
+                    let camlQuery = wpProps.onListItemCAMLQuery(cfg, "");
+
+                    // Get the list items
+                    list.getItemsByQuery(camlQuery).execute(
+                        // Success
+                        items => {
+                            // Call the event
+                            wpProps.renderItems(el, cfg, items.results);
+                        },
+
+                        err => {
+                            // Call the event
+                            wpProps.renderItems(el, cfg, []);
+                        }
+                    )
+                } else {
+                    // Set the ODATA query
+                    let odata: Types.IODataQuery = wpProps.onListItemODataQuery ? wpProps.onListItemODataQuery(cfg, {}) : null;
+
+                    // See if we are making an ODATA query
+                    if (odata) {
+                        // Get the list items
+                        list.Items().query(odata).execute(
+                            // Success
+                            items => {
+                                // Call the event
+                                wpProps.renderItems(el, cfg, items.results);
+                            },
+
+                            // Error
+                            err => {
+                                // Call the event
+                                wpProps.renderItems(el, cfg, []);
+                            }
+                        );
+                    } else {
+                        // Get the list items
+                        list.Items().execute(
+                            // Success
+                            items => {
+                                // Call the event
+                                wpProps.renderItems(el, cfg, items.results);
+                            },
+
+                            // Error
+                            err => {
+                                // Call the event
+                                wpProps.renderItems(el, cfg, []);
+                            }
+                        )
+                    }
+                }
+            }
         }
     };
 
