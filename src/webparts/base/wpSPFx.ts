@@ -182,13 +182,13 @@ class _SPFxWebPart implements ISPFxWebPart {
                 let formProps: Components.IFormProps = { el, value: this._cfg };
 
                 // Call the rendering event
-                formProps = this._props.onConfigFormRendering ? this._props.onConfigFormRendering(formProps) : formProps;
+                formProps = this._props.onConfigFormRendering ? this._props.onConfigFormRendering(formProps, this._cfg) : formProps;
 
                 // Render the form
                 this._form = Components.Form(formProps);
 
                 // Call the rendered event
-                this._props.onConfigFormRendered ? this._props.onConfigFormRendered(this._form) : null;
+                this._props.onConfigFormRendered ? this._props.onConfigFormRendered(this._form, this._cfg) : null;
             },
             onRenderFooter: el => {
                 // Render the footer buttons
@@ -238,7 +238,7 @@ class _SPFxWebPart implements ISPFxWebPart {
                 }
 
                 // Call the event
-                footerProps = this._props.onConfigFormFooterRendering ? this._props.onConfigFormFooterRendering(footerProps) : footerProps;
+                footerProps = this._props.onConfigFormFooterRendering ? this._props.onConfigFormFooterRendering(footerProps, this._cfg) : footerProps;
 
                 // Render the footer
                 Components.TooltipGroup(footerProps);
@@ -266,7 +266,7 @@ class _SPFxWebPart implements ISPFxWebPart {
         this._modal ? this._modal.show() : null;
 
         // Call the event
-        this._props.onConfigFormDisplaying ? this._props.onConfigFormDisplaying() : null;
+        this._props.onConfigFormDisplaying ? this._props.onConfigFormDisplaying(this.Configuration) : null;
     }
 }
 export const SPFxWebPart = (props: ISPFxWebPartProps): ISPFxWebPart => { return new _SPFxWebPart(props); }

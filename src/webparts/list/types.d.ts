@@ -130,6 +130,18 @@ export interface ISPFxListWebPartProps extends ISPFxWebPartProps {
     /** The event called after the webpart configuration is saved. */
     onConfigSaved?: (wpCfg?: ISPFxListWebPartCfg) => void;
 
+    /** The event called when the modal is being displayed. */
+    onConfigFormDisplaying?: (wpCfg?: ISPFxListWebPartCfg) => void;
+
+    /** The webpart configuration modal footer button properties. */
+    onConfigFormFooterRendering?: (props: ITooltipGroupProps, wpCfg?: ISPFxListWebPartCfg) => ITooltipGroupProps;
+
+    /** The webpart configuration modal form properties. */
+    onConfigFormRendering?: (props: IFormProps, wpCfg?: ISPFxListWebPartCfg) => IFormProps;
+
+    /** The webpart configuration modal form object. */
+    onConfigFormRendered?: (form: IForm, wpCfg?: ISPFxListWebPartCfg) => void;
+
     /** The event to customize the CAML query used for getting the list items. */
     onListItemCAMLQuery?: (wpCfg: ISPFxListWebPartCfg, query: string) => string;
 

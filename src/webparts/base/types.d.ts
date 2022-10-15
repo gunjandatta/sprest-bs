@@ -192,16 +192,16 @@ export interface ISPFxWebPartProps {
     onConfigSaved?: (wpCfg?: ISPFxWebPartCfg) => void;
 
     /** The event called when the modal is being displayed. */
-    onConfigFormDisplaying?: () => void;
+    onConfigFormDisplaying?: (wpCfg?: ISPFxWebPartCfg) => void;
 
     /** The webpart configuration modal footer button properties. */
-    onConfigFormFooterRendering?: (props: ITooltipGroupProps) => ITooltipGroupProps;
+    onConfigFormFooterRendering?: (props: ITooltipGroupProps, wpCfg?: ISPFxWebPartCfg) => ITooltipGroupProps;
 
     /** The webpart configuration modal form properties. */
-    onConfigFormRendering?: (props: IFormProps) => IFormProps;
+    onConfigFormRendering?: (props: IFormProps, wpCfg?: ISPFxWebPartCfg) => IFormProps;
 
     /** The webpart configuration modal form object. */
-    onConfigFormRendered?: (form: IForm) => void;
+    onConfigFormRendered?: (form: IForm, wpCfg?: ISPFxWebPartCfg) => void;
 
     /** The webpart configuration modal properties. */
     onModalRendering?: (props: IModalProps) => IModalProps;

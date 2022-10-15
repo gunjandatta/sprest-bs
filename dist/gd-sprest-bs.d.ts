@@ -348,16 +348,16 @@ declare module 'gd-sprest-bs/webparts/base/types' {
             onConfigSaved?: (wpCfg?: ISPFxWebPartCfg) => void;
     
             /** The event called when the modal is being displayed. */
-            onConfigFormDisplaying?: () => void;
+            onConfigFormDisplaying?: (wpCfg?: ISPFxWebPartCfg) => void;
     
             /** The webpart configuration modal footer button properties. */
-            onConfigFormFooterRendering?: (props: ITooltipGroupProps) => ITooltipGroupProps;
+            onConfigFormFooterRendering?: (props: ITooltipGroupProps, wpCfg?: ISPFxWebPartCfg) => ITooltipGroupProps;
     
             /** The webpart configuration modal form properties. */
-            onConfigFormRendering?: (props: IFormProps) => IFormProps;
+            onConfigFormRendering?: (props: IFormProps, wpCfg?: ISPFxWebPartCfg) => IFormProps;
     
             /** The webpart configuration modal form object. */
-            onConfigFormRendered?: (form: IForm) => void;
+            onConfigFormRendered?: (form: IForm, wpCfg?: ISPFxWebPartCfg) => void;
     
             /** The webpart configuration modal properties. */
             onModalRendering?: (props: IModalProps) => IModalProps;
@@ -551,6 +551,18 @@ declare module 'gd-sprest-bs/webparts/list/types' {
     
             /** The event called after the webpart configuration is saved. */
             onConfigSaved?: (wpCfg?: ISPFxListWebPartCfg) => void;
+    
+            /** The event called when the modal is being displayed. */
+            onConfigFormDisplaying?: (wpCfg?: ISPFxListWebPartCfg) => void;
+    
+            /** The webpart configuration modal footer button properties. */
+            onConfigFormFooterRendering?: (props: ITooltipGroupProps, wpCfg?: ISPFxListWebPartCfg) => ITooltipGroupProps;
+    
+            /** The webpart configuration modal form properties. */
+            onConfigFormRendering?: (props: IFormProps, wpCfg?: ISPFxListWebPartCfg) => IFormProps;
+    
+            /** The webpart configuration modal form object. */
+            onConfigFormRendered?: (form: IForm, wpCfg?: ISPFxListWebPartCfg) => void;
     
             /** The event to customize the CAML query used for getting the list items. */
             onListItemCAMLQuery?: (wpCfg: ISPFxListWebPartCfg, query: string) => string;
