@@ -376,7 +376,8 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
 
     // Return the form informaiton
     return {
-        get el() { return form ? form.el as HTMLFormElement : null; }
+        get el() { return form ? form.el as HTMLFormElement : null; },
+        getControl(fieldName: string) { return form ? form.getControl(fieldName) : null; }
     };
 };
 

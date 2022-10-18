@@ -44,6 +44,9 @@ export interface IListFormAttachmentsProps {
 export interface IListFormDisplay {
     /** The form element. */
     el: HTMLFormElement;
+
+    /** Method to get a control by field name */
+    getControl(fieldName: string): IFormControl;
 }
 
 /**

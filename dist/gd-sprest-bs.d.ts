@@ -1156,6 +1156,9 @@ declare module 'gd-sprest-bs/components/listForm/types' {
     export interface IListFormDisplay {
             /** The form element. */
             el: HTMLFormElement;
+    
+            /** Method to get a control by field name */
+            getControl(fieldName: string): IFormControl;
     }
     
     /**
