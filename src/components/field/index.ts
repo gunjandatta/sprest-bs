@@ -73,8 +73,8 @@ export const Field = (props: IFieldProps): IField => {
                 }
             }
 
-            // See if the item doesn't exist
-            if (!existsFl) {
+            // Ensure a value exists and see if this was a fill-in choice
+            if (!existsFl && selectedValue) {
                 // See if this is a checkbox
                 if (isCheckbox) {
                     // Add the item
