@@ -56,6 +56,44 @@ export const Field = (props: IFieldProps): IField => {
             }
         }
 
+        // Parse the selected values
+        for (let i = 0; i < selectedValues.length; i++) {
+            let existsFl = false;
+            let selectedValue = selectedValues[i];
+
+            // Parse the items
+            for (let j = 0; j < items.length; j++) {
+                let itemValue = isCheckbox ? items[j]["label"] : items[j]["value"];
+
+                // See if the value exists
+                if (selectedValue == itemValue) {
+                    // Set the flag
+                    existsFl = true;
+                    break;
+                }
+            }
+
+            // See if the item doesn't exist
+            if (!existsFl) {
+                // See if this is a checkbox
+                if (isCheckbox) {
+                    // Add the item
+                    items.push({
+                        isSelected: true,
+                        label: selectedValue
+                    } as Components.ICheckboxGroupItem);
+                } else {
+                    // Add the item
+                    items.push({
+                        isSelected: true,
+                        label: selectedValue,
+                        text: selectedValue,
+                        value: selectedValue
+                    } as Components.IDropdownItem);
+                }
+            }
+        }
+
         // See if this is a dropdown and no selected values exists, and this is a required field
         if (!isCheckbox && items.length > 0 && selectedValues.length == 0 && field.Required) {
             // Select the first item
