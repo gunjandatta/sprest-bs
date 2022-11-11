@@ -213,12 +213,12 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
         }
     }
     // Else, detect xml
-    else if (/&lt;/g.test(html)) {
+    else if (/&lt;|&gt;|&amp;|&quot;/i.test(html)) {
         // Update the value
-        control.value = html.replace(/&lt;/g, '<')
-            .replace(/&gt;/g, '>')
-            .replace(/&amp;/g, '&')
-            .replace(/&quot;/g, '"');
+        control.value = html.replace(/&lt;/ig, '<')
+            .replace(/&gt;/ig, '>')
+            .replace(/&amp;/ig, '&')
+            .replace(/&quot;/ig, '"');
     }
 
     // Return the control
