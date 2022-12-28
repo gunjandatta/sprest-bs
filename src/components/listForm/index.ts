@@ -886,6 +886,12 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             lookupFilter = props.onFilterLookupField ? props.onFilterLookupField(field) : null;
         }
 
+        // See if there is a custom event for setting the value
+        if (props.onSetFieldDefaultValue) {
+            // Call the event to override the value
+            value[fieldName] = props.onSetFieldDefaultValue(field, value[fieldName]);
+        }
+
         // Create the control
         let fieldControl = Field({
             controlMode: props.controlMode,

@@ -1241,6 +1241,9 @@ declare module 'gd-sprest-bs/components/listForm/types' {
             /** The form saving event. */
             onSaving?: (item: any) => void | PromiseLike<any>;
     
+            /** Use this event to set a custom default value. */
+            onSetFieldDefaultValue?: (field: Types.SP.Field, value: any) => any;
+    
             /** The form validating event. */
             onValidate?: (field: Types.SP.Field, control: IFormControl) => boolean;
     }
