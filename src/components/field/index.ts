@@ -750,7 +750,7 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Set the value
                 numberProps.value = numberProps.value == null || numberProps.value == Number.MIN_VALUE ? 0 : numberProps.value;
-                numberProps.value = numberProps.value * (numberProps.max == 100 && numberProps.value < 1 ? 100 : 1);
+                numberProps.value = numberProps.value * (numberProps.max == 100 && numberProps.value <= 1 ? 100 : 1);
             }
             // Else, see if the min/max values are defined
             else if ((typeof (numberField.MaximumValue) == "number" && numberField.MaximumValue != Number.MAX_VALUE) && (typeof (numberField.MinimumValue) == "number" && numberField.MinimumValue != Number.MIN_VALUE)) {
