@@ -563,7 +563,7 @@ export const Field = (props: IFieldProps): IField => {
                                 lookupFieldInfo = fieldInfo;
 
                                 // Set the lookup filter
-                                lookupFieldInfo.lookupFilter = (controlProps as IFormControlLookupProps).lookupFilter;
+                                lookupFieldInfo.lookupFilter = props.lookupFilter;
 
                                 // Update the multi property
                                 (controlProps as Helper.IListFormLookupFieldInfo).multi = lookupFieldInfo.multi;
