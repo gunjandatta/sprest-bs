@@ -1055,6 +1055,7 @@ declare module 'gd-sprest-bs/components/field/types' {
             errorMessage?: string;
             field: Types.SP.Field;
             listInfo: Helper.IListFormResult;
+            lookupFilter?: string | Types.IODataQuery;
             onError?: (msg: string) => void;
             onControlRendered?: (control: IFormControl, field: Types.SP.Field) => void | Promise<IFormControl>;
             onControlRendering?: (control: IFormControlProps, field: Types.SP.Field) => void | Promise<IFormControlProps>;
@@ -1096,7 +1097,7 @@ declare module 'gd-sprest-bs/components/field/types' {
         * Form Control Lookup Properties
         */
     export interface IFormControlLookupProps extends IFormControlProps {
-            lookupFilter?: string;
+            lookupFilter?: string | Types.IODataQuery;
             onControlRendering?: (control: IFieldLookupProps, field: Types.SP.Field) => void | Promise<IFieldLookupProps>;
     }
     

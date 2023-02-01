@@ -897,11 +897,8 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             controlMode: props.controlMode,
             field,
             listInfo: props.info,
+            lookupFilter,
             value: value[fieldName],
-            onControlRendering: (control, field) => {
-                // Set the lookup field filter
-                lookupFilter ? (control as IFormControlLookupProps).lookupFilter = lookupFilter : null;
-            },
             onControlRendered: (control, field) => {
                 // Update the mapper
                 mapper[field.InternalName].control = control;
