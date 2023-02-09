@@ -1,0 +1,1 @@
+export const databaseFillUp: (height?:number, width?:number, className?:string) => HTMLElement;

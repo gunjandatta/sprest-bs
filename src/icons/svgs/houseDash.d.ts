@@ -1,0 +1,1 @@
+export const houseDash: (height?:number, width?:number, className?:string) => HTMLElement;

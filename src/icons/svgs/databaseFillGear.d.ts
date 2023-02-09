@@ -1,0 +1,1 @@
+export const databaseFillGear: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const stripe: (height?:number, width?:number, className?:string) => HTMLElement;

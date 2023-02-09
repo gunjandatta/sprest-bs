@@ -1,0 +1,1 @@
+export const personLock: (height?:number, width?:number, className?:string) => HTMLElement;

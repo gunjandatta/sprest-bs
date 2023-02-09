@@ -1,0 +1,1 @@
+export const personFillSlash: (height?:number, width?:number, className?:string) => HTMLElement;

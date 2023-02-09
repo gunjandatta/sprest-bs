@@ -1,0 +1,1 @@
+export const buildingSlash: (height?:number, width?:number, className?:string) => HTMLElement;

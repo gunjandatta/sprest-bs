@@ -1,0 +1,1 @@
+export const buildingAdd: (height?:number, width?:number, className?:string) => HTMLElement;

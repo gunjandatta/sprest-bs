@@ -1,0 +1,1 @@
+export const scooter: (height?:number, width?:number, className?:string) => HTMLElement;

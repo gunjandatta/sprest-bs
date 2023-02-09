@@ -1,0 +1,1 @@
+export const buildingCheck: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const taxiFront: (height?:number, width?:number, className?:string) => HTMLElement;

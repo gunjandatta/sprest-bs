@@ -1,0 +1,1 @@
+export const signMergeLeftFill: (height?:number, width?:number, className?:string) => HTMLElement;

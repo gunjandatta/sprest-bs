@@ -30,6 +30,14 @@ export const Icons: (iconType:number, height?:number, width?:number, className?:
  * Icon Types
 */
 export const IconTypes: {
+	// 0-circle-fill.svg
+	_0CircleFill: number;
+	// 0-circle.svg
+	_0Circle: number;
+	// 0-square-fill.svg
+	_0SquareFill: number;
+	// 0-square.svg
+	_0Square: number;
 	// 1-circle-fill.svg
 	_1CircleFill: number;
 	// 1-circle.svg
@@ -136,6 +144,8 @@ export const IconTypes: {
 	Alipay: number;
 	// alt.svg
 	Alt: number;
+	// amd.svg
+	Amd: number;
 	// android.svg
 	Android: number;
 	// android2.svg
@@ -630,10 +640,60 @@ export const IconTypes: {
 	BugFill: number;
 	// bug.svg
 	Bug: number;
+	// building-add.svg
+	BuildingAdd: number;
+	// building-check.svg
+	BuildingCheck: number;
+	// building-dash.svg
+	BuildingDash: number;
+	// building-down.svg
+	BuildingDown: number;
+	// building-exclamation.svg
+	BuildingExclamation: number;
+	// building-fill-add.svg
+	BuildingFillAdd: number;
+	// building-fill-check.svg
+	BuildingFillCheck: number;
+	// building-fill-dash.svg
+	BuildingFillDash: number;
+	// building-fill-down.svg
+	BuildingFillDown: number;
+	// building-fill-exclamation.svg
+	BuildingFillExclamation: number;
+	// building-fill-gear.svg
+	BuildingFillGear: number;
+	// building-fill-lock.svg
+	BuildingFillLock: number;
+	// building-fill-slash.svg
+	BuildingFillSlash: number;
+	// building-fill-up.svg
+	BuildingFillUp: number;
+	// building-fill-x.svg
+	BuildingFillX: number;
+	// building-fill.svg
+	BuildingFill: number;
+	// building-gear.svg
+	BuildingGear: number;
+	// building-lock.svg
+	BuildingLock: number;
+	// building-slash.svg
+	BuildingSlash: number;
+	// building-up.svg
+	BuildingUp: number;
+	// building-x.svg
+	BuildingX: number;
 	// building.svg
 	Building: number;
+	// buildings-fill.svg
+	BuildingsFill: number;
+	// buildings.svg
+	Buildings: number;
 	// bullseye.svg
 	Bullseye: number;
+	// bus-front-fill.svg
+	BusFrontFill: number;
+	// bus-front.svg
+	BusFront: number;
 	// c-circle-fill.svg
 	CCircleFill: number;
 	// c-circle.svg
@@ -1298,6 +1358,50 @@ export const IconTypes: {
 	DashSquare: number;
 	// dash.svg
 	Dash: number;
+	// database-add.svg
+	DatabaseAdd: number;
+	// database-check.svg
+	DatabaseCheck: number;
+	// database-dash.svg
+	DatabaseDash: number;
+	// database-down.svg
+	DatabaseDown: number;
+	// database-exclamation.svg
+	DatabaseExclamation: number;
+	// database-fill-add.svg
+	DatabaseFillAdd: number;
+	// database-fill-check.svg
+	DatabaseFillCheck: number;
+	// database-fill-dash.svg
+	DatabaseFillDash: number;
+	// database-fill-down.svg
+	DatabaseFillDown: number;
+	// database-fill-exclamation.svg
+	DatabaseFillExclamation: number;
+	// database-fill-gear.svg
+	DatabaseFillGear: number;
+	// database-fill-lock.svg
+	DatabaseFillLock: number;
+	// database-fill-slash.svg
+	DatabaseFillSlash: number;
+	// database-fill-up.svg
+	DatabaseFillUp: number;
+	// database-fill-x.svg
+	DatabaseFillX: number;
+	// database-fill.svg
+	DatabaseFill: number;
+	// database-gear.svg
+	DatabaseGear: number;
+	// database-lock.svg
+	DatabaseLock: number;
+	// database-slash.svg
+	DatabaseSlash: number;
+	// database-up.svg
+	DatabaseUp: number;
+	// database-x.svg
+	DatabaseX: number;
+	// database.svg
+	Database: number;
 	// device-hdd-fill.svg
 	DeviceHddFill: number;
 	// device-hdd.svg
@@ -1464,6 +1568,10 @@ export const IconTypes: {
 	EmojiWinkFill: number;
 	// emoji-wink.svg
 	EmojiWink: number;
+	// envelope-at-fill.svg
+	EnvelopeAtFill: number;
+	// envelope-at.svg
+	EnvelopeAt: number;
 	// envelope-check-fill.svg
 	EnvelopeCheckFill: number;
 	// envelope-check.svg
@@ -1520,6 +1628,10 @@ export const IconTypes: {
 	Escape: number;
 	// ethernet.svg
 	Ethernet: number;
+	// ev-front-fill.svg
+	EvFrontFill: number;
+	// ev-front.svg
+	EvFront: number;
 	// ev-station-fill.svg
 	EvStationFill: number;
 	// ev-station.svg
@@ -2048,6 +2160,14 @@ export const IconTypes: {
 	Git: number;
 	// github.svg
 	Github: number;
+	// globe-americas.svg
+	GlobeAmericas: number;
+	// globe-asia-australia.svg
+	GlobeAsiaAustralia: number;
+	// globe-central-south-asia.svg
+	GlobeCentralSouthAsia: number;
+	// globe-europe-africa.svg
+	GlobeEuropeAfrica: number;
 	// globe.svg
 	Globe: number;
 	// globe2.svg
@@ -2190,18 +2310,62 @@ export const IconTypes: {
 	HourglassTop: number;
 	// hourglass.svg
 	Hourglass: number;
+	// house-add-fill.svg
+	HouseAddFill: number;
+	// house-add.svg
+	HouseAdd: number;
+	// house-check-fill.svg
+	HouseCheckFill: number;
+	// house-check.svg
+	HouseCheck: number;
+	// house-dash-fill.svg
+	HouseDashFill: number;
+	// house-dash.svg
+	HouseDash: number;
 	// house-door-fill.svg
 	HouseDoorFill: number;
 	// house-door.svg
 	HouseDoor: number;
+	// house-down-fill.svg
+	HouseDownFill: number;
+	// house-down.svg
+	HouseDown: number;
+	// house-exclamation-fill.svg
+	HouseExclamationFill: number;
+	// house-exclamation.svg
+	HouseExclamation: number;
 	// house-fill.svg
 	HouseFill: number;
+	// house-gear-fill.svg
+	HouseGearFill: number;
+	// house-gear.svg
+	HouseGear: number;
 	// house-heart-fill.svg
 	HouseHeartFill: number;
 	// house-heart.svg
 	HouseHeart: number;
+	// house-lock-fill.svg
+	HouseLockFill: number;
+	// house-lock.svg
+	HouseLock: number;
+	// house-slash-fill.svg
+	HouseSlashFill: number;
+	// house-slash.svg
+	HouseSlash: number;
+	// house-up-fill.svg
+	HouseUpFill: number;
+	// house-up.svg
+	HouseUp: number;
+	// house-x-fill.svg
+	HouseXFill: number;
+	// house-x.svg
+	HouseX: number;
 	// house.svg
 	House: number;
+	// houses-fill.svg
+	HousesFill: number;
+	// houses.svg
+	Houses: number;
 	// hr.svg
 	Hr: number;
 	// hurricane.svg
@@ -2520,6 +2684,8 @@ export const IconTypes: {
 	NutFill: number;
 	// nut.svg
 	Nut: number;
+	// nvidia.svg
+	Nvidia: number;
 	// octagon-fill.svg
 	OctagonFill: number;
 	// octagon-half.svg
@@ -2628,6 +2794,8 @@ export const IconTypes: {
 	People: number;
 	// percent.svg
 	Percent: number;
+	// person-add.svg
+	PersonAdd: number;
 	// person-badge-fill.svg
 	PersonBadgeFill: number;
 	// person-badge.svg
@@ -2644,22 +2812,58 @@ export const IconTypes: {
 	PersonDashFill: number;
 	// person-dash.svg
 	PersonDash: number;
+	// person-down.svg
+	PersonDown: number;
+	// person-exclamation.svg
+	PersonExclamation: number;
+	// person-fill-add.svg
+	PersonFillAdd: number;
+	// person-fill-check.svg
+	PersonFillCheck: number;
+	// person-fill-dash.svg
+	PersonFillDash: number;
+	// person-fill-down.svg
+	PersonFillDown: number;
+	// person-fill-exclamation.svg
+	PersonFillExclamation: number;
+	// person-fill-gear.svg
+	PersonFillGear: number;
+	// person-fill-lock.svg
+	PersonFillLock: number;
+	// person-fill-slash.svg
+	PersonFillSlash: number;
+	// person-fill-up.svg
+	PersonFillUp: number;
+	// person-fill-x.svg
+	PersonFillX: number;
 	// person-fill.svg
 	PersonFill: number;
+	// person-gear.svg
+	PersonGear: number;
 	// person-heart.svg
 	PersonHeart: number;
 	// person-hearts.svg
 	PersonHearts: number;
 	// person-lines-fill.svg
 	PersonLinesFill: number;
+	// person-lock.svg
+	PersonLock: number;
 	// person-plus-fill.svg
 	PersonPlusFill: number;
 	// person-plus.svg
 	PersonPlus: number;
 	// person-rolodex.svg
 	PersonRolodex: number;
+	// person-slash.svg
+	PersonSlash: number;
 	// person-square.svg
 	PersonSquare: number;
+	// person-up.svg
+	PersonUp: number;
+	// person-vcard-fill.svg
+	PersonVcardFill: number;
+	// person-vcard.svg
+	PersonVcard: number;
 	// person-video.svg
 	PersonVideo: number;
 	// person-video2.svg
@@ -2860,6 +3064,8 @@ export const IconTypes: {
 	Recycle: number;
 	// reddit.svg
 	Reddit: number;
+	// regex.svg
+	Regex: number;
 	// repeat-1.svg
 	Repeat1: number;
 	// repeat.svg
@@ -2886,6 +3092,14 @@ export const IconTypes: {
 	Rewind: number;
 	// robot.svg
 	Robot: number;
+	// rocket-fill.svg
+	RocketFill: number;
+	// rocket-takeoff-fill.svg
+	RocketTakeoffFill: number;
+	// rocket-takeoff.svg
+	RocketTakeoff: number;
+	// rocket.svg
+	Rocket: number;
 	// router-fill.svg
 	RouterFill: number;
 	// router.svg
@@ -2914,6 +3128,8 @@ export const IconTypes: {
 	Save2: number;
 	// scissors.svg
 	Scissors: number;
+	// scooter.svg
+	Scooter: number;
 	// screwdriver.svg
 	Screwdriver: number;
 	// sd-card-fill.svg
@@ -3006,6 +3222,54 @@ export const IconTypes: {
 	Shop: number;
 	// shuffle.svg
 	Shuffle: number;
+	// sign-dead-end-fill.svg
+	SignDeadEndFill: number;
+	// sign-dead-end.svg
+	SignDeadEnd: number;
+	// sign-do-not-enter-fill.svg
+	SignDoNotEnterFill: number;
+	// sign-do-not-enter.svg
+	SignDoNotEnter: number;
+	// sign-intersection-fill.svg
+	SignIntersectionFill: number;
+	// sign-intersection-side-fill.svg
+	SignIntersectionSideFill: number;
+	// sign-intersection-side.svg
+	SignIntersectionSide: number;
+	// sign-intersection-t-fill.svg
+	SignIntersectionTFill: number;
+	// sign-intersection-t.svg
+	SignIntersectionT: number;
+	// sign-intersection-y-fill.svg
+	SignIntersectionYFill: number;
+	// sign-intersection-y.svg
+	SignIntersectionY: number;
+	// sign-intersection.svg
+	SignIntersection: number;
+	// sign-merge-left-fill.svg
+	SignMergeLeftFill: number;
+	// sign-merge-left.svg
+	SignMergeLeft: number;
+	// sign-merge-right-fill.svg
+	SignMergeRightFill: number;
+	// sign-merge-right.svg
+	SignMergeRight: number;
+	// sign-no-left-turn-fill.svg
+	SignNoLeftTurnFill: number;
+	// sign-no-left-turn.svg
+	SignNoLeftTurn: number;
+	// sign-no-parking-fill.svg
+	SignNoParkingFill: number;
+	// sign-no-parking.svg
+	SignNoParking: number;
+	// sign-no-right-turn-fill.svg
+	SignNoRightTurnFill: number;
+	// sign-no-right-turn.svg
+	SignNoRightTurn: number;
+	// sign-railroad-fill.svg
+	SignRailroadFill: number;
+	// sign-railroad.svg
+	SignRailroad: number;
 	// sign-stop-fill.svg
 	SignStopFill: number;
 	// sign-stop-lights-fill.svg
@@ -3052,6 +3316,8 @@ export const IconTypes: {
 	SimFill: number;
 	// sim.svg
 	Sim: number;
+	// sina-weibo.svg
+	SinaWeibo: number;
 	// skip-backward-btn-fill.svg
 	SkipBackwardBtnFill: number;
 	// skip-backward-btn.svg
@@ -3220,6 +3486,10 @@ export const IconTypes: {
 	Stopwatch: number;
 	// strava.svg
 	Strava: number;
+	// stripe.svg
+	Stripe: number;
+	// subscript.svg
+	Subscript: number;
 	// subtract.svg
 	Subtract: number;
 	// suit-club-fill.svg
@@ -3252,6 +3522,8 @@ export const IconTypes: {
 	SunsetFill: number;
 	// sunset.svg
 	Sunset: number;
+	// superscript.svg
+	Superscript: number;
 	// symmetry-horizontal.svg
 	SymmetryHorizontal: number;
 	// symmetry-vertical.svg
@@ -3274,6 +3546,10 @@ export const IconTypes: {
 	TagsFill: number;
 	// tags.svg
 	Tags: number;
+	// taxi-front-fill.svg
+	TaxiFrontFill: number;
+	// taxi-front.svg
+	TaxiFront: number;
 	// telegram.svg
 	Telegram: number;
 	// telephone-fill.svg
@@ -3304,6 +3580,8 @@ export const IconTypes: {
 	TelephoneX: number;
 	// telephone.svg
 	Telephone: number;
+	// tencent-qq.svg
+	TencentQq: number;
 	// terminal-dash.svg
 	TerminalDash: number;
 	// terminal-fill.svg
@@ -3328,6 +3606,8 @@ export const IconTypes: {
 	TextParagraph: number;
 	// text-right.svg
 	TextRight: number;
+	// text-wrap.svg
+	TextWrap: number;
 	// textarea-resize.svg
 	TextareaResize: number;
 	// textarea-t.svg
@@ -3414,6 +3694,8 @@ export const IconTypes: {
 	TreeFill: number;
 	// tree.svg
 	Tree: number;
+	// trello.svg
+	Trello: number;
 	// triangle-fill.svg
 	TriangleFill: number;
 	// triangle-half.svg
@@ -3586,6 +3868,8 @@ export const IconTypes: {
 	WifiOff: number;
 	// wifi.svg
 	Wifi: number;
+	// wikipedia.svg
+	Wikipedia: number;
 	// wind.svg
 	Wind: number;
 	// window-dash.svg

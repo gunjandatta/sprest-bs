@@ -1,0 +1,1 @@
+export const databaseCheck: (height?:number, width?:number, className?:string) => HTMLElement;

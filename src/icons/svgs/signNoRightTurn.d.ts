@@ -1,0 +1,1 @@
+export const signNoRightTurn: (height?:number, width?:number, className?:string) => HTMLElement;

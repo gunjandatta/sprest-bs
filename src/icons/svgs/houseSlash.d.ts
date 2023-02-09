@@ -1,0 +1,1 @@
+export const houseSlash: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const textWrap: (height?:number, width?:number, className?:string) => HTMLElement;

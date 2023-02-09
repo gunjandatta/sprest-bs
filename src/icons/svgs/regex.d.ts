@@ -1,0 +1,1 @@
+export const regex: (height?:number, width?:number, className?:string) => HTMLElement;

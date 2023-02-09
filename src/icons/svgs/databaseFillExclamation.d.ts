@@ -1,0 +1,1 @@
+export const databaseFillExclamation: (height?:number, width?:number, className?:string) => HTMLElement;
