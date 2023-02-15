@@ -44,6 +44,9 @@ export interface IDateTimeProps {
     /** The date/time label. */
     label?: string;
 
+    /** The change event. */
+    onChange?: (value: string) => void;
+
     /** The flatpickr options. */
     options?: any;
 
