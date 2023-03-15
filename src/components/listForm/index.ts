@@ -94,7 +94,8 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
     // Else, see if this is a note field
     else if (field.FieldTypeKind == SPTypes.FieldType.Note) {
         // Update the html
-        html = html.replace(/\r?\n/g, '<br />');
+        html = html.replace(/\r?\n/g, '<br />')
+            .replace(/&quot;/g, '"');
     }
     // Else, see if this is a user field
     else if (field.FieldTypeKind == SPTypes.FieldType.User) {
