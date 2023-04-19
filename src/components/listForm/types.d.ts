@@ -77,6 +77,9 @@ export interface IListFormDisplayProps extends Helper.IListFormDisplayProps {
     /** The form rendered event. */
     onFormRendered?: (form: IForm) => void;
 
+    /** The fields to render event. */
+    onGetFields?: (fieldNames?: string[]) => string[];
+
     /** The error event. */
     onError?: (msg?: string) => void;
 

@@ -45,6 +45,12 @@ let getFieldsToRender = (props: IListFormDisplayProps | IListFormEditProps): Arr
         }
     }
 
+    // See if an event exists
+    if (props.onGetFields) {
+        // Call the event
+        fieldNames = props.onGetFields(fieldNames);
+    }
+
     // Return the field names
     return fieldNames;
 }
