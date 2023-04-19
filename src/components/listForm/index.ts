@@ -287,12 +287,6 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     // Get the fields to render
     let fieldNames = getFieldsToRender(props);
 
-    // See if we are rendering the attachments
-    if (fieldNames.indexOf("Attachments") < 0 && props.displayAttachments) {
-        // Generate the attachments row
-        generateAttachmentsRow();
-    }
-
     // Parse the fields to render
     for (let i = 0; i < fieldNames.length; i++) {
         let fieldName = fieldNames[i];
@@ -814,12 +808,6 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
     // Get the fields to render
     let fieldNames = getFieldsToRender(props);
-
-    // See if we are rendering the attachments
-    if (fieldNames.indexOf("Attachments") < 0 && props.displayAttachments) {
-        // Generate the attachments row
-        generateAttachmentsRow();
-    }
 
     // Parse the fields to render
     for (let i = 0; i < fieldNames.length; i++) {
