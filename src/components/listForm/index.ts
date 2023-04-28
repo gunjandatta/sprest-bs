@@ -1135,6 +1135,10 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         },
         getItem: () => { return props.info.item; },
         getValues,
+        hasAttachments: () => {
+            // Return if attachments exist
+            return attachments && (attachments.delete.length > 0 || attachments.new.length > 0);
+        },
         insertControl: (idx: number, control: Components.IFormControlProps) => {
             // Append the controls
             form.insertControl(idx, control);

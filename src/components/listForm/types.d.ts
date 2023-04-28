@@ -109,6 +109,9 @@ export interface IListFormEdit {
     /** Method to get the form values */
     getValues(): { [key: string]: any }
 
+    /** Flag to indicate if attachments exist */
+    hasAttachments(): boolean;
+
     /** Inserts a control into the form. */
     insertControl(idx: number, control: IFormControlProps);
 
