@@ -23,13 +23,13 @@ export const RichTextBox = (props: IRichTextBoxProps): IRichTextBox => {
     // Create the toolbar element
     let elToolbar = document.createElement("div");
     elToolbar.classList.add("toolbar-container");
-    props.disabled ? null : elToolbar.classList.add("rounded-top");
+    props.disabled ? null : elToolbar.classList.add("form-control");
     elRichTextBox.appendChild(elToolbar);
 
     // Create the editor element
     let elEditor = document.createElement("div");
     elEditor.classList.add("editor-container");
-    props.disabled ? elEditor.classList.add("rounded") : elEditor.classList.add("rounded-bottom");
+    props.disabled ? elEditor.classList.add("rounded") : elEditor.classList.add("form-control");
     elRichTextBox.appendChild(elEditor);
 
     // Get the options and default the values
