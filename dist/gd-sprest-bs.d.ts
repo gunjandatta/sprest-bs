@@ -1396,6 +1396,9 @@ declare module 'gd-sprest-bs/components/peoplePicker/types' {
             /** Limits the results to a maximum number. */
             maxResults?: number;
     
+            /** The minimum number of characters to enter before search occurs. */
+            minCharSearch?: number;
+    
             /** True to allow multiple users to be selected. */
             multi?: boolean;
     

@@ -8,6 +8,7 @@ import { IFormControlPropsPeoplePicker, IPeoplePicker, IPeoplePickerProps } from
 export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     let _filterText: string = null;
     let _menu: Components.IPopover = null;
+    let _minCharSearch: number = props.minCharSearch > 0 ? props.minCharSearch : 3;
     let _users = [];
 
     // Method to add a user
@@ -127,7 +128,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
     // Method to search for the users
     let searchUsers = (el: HTMLElement, searchText: string, searchAll: boolean = true, spGroupId?: number) => {
         // Ensure 3 characters exist
-        if (_filterText.length > 2) {
+        if (_filterText.length >= _minCharSearch) {
             // Search for the user
             Search().clientPeoplePickerSearchUser({
                 MaximumEntitySuggestions: props.maxResults || 25,
@@ -254,7 +255,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
                 // Set the header
                 elMenu.innerHTML = ['<h6 class="dropdown-header">',
-                    _filterText.length > 2 ? 'Searching for "' + _filterText + '"' : 'Search requires 3+ characters',
+                    _filterText.length >= _minCharSearch ? 'Searching for "' + _filterText + '"' : `Search requires ${_minCharSearch}+ characters`,
                     '</h6>'
                 ].join('\n');
 
