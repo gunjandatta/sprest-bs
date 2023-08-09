@@ -764,8 +764,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                             let btnGroup = toolbar.el.querySelector(".btn-group");
                             if (btnGroup) {
                                 // Parse the attachments
-                                for (let i = 0; i < props.info.attachments.length; i++) {
-                                    let attachment = props.info.attachments[i];
+                                let itemAttachments = props.info.attachments || [];
+                                for (let i = 0; i < itemAttachments.length; i++) {
+                                    let attachment = itemAttachments[i];
 
                                     // Add the attachment
                                     btnGroup.appendChild(Components.Popover({
