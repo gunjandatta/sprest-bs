@@ -662,7 +662,8 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     let generateAttachmentsRow = () => {
         // See if we are rendering attachments
         let displayAttachments = typeof (props.displayAttachments) === "boolean" ? props.displayAttachments : true;
-        if (props.info.attachments && displayAttachments) {
+        let attachmentsExist = props.info.item == null ? true : (props.info.attachments ? true : false);
+        if (attachmentsExist && displayAttachments) {
             // Set a default field
             // This will help w/ the onControlRendering/ed events to not have a null value for this parameter
             props.info.fields["Attachments"] = {} as any;
