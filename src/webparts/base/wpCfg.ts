@@ -39,7 +39,7 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
 
         // Render the button to toggle the modal
         Components.Button({
-            el: wp.el.children[0],
+            el: wp.el.children[0] as HTMLElement,
             text: "Configure WebPart",
             type: Components.ButtonTypes.Secondary,
             onClick: () => { modal.show(); }
@@ -47,7 +47,7 @@ export const WPCfg = (cfg: IWebPartCfg, wp: IWebPartInfo, props: IWebPartProps) 
 
         // Render the modal
         let modal = Components.Modal({
-            el: wp.el.children[1],
+            el: wp.el.children[1] as HTMLElement,
             id: (wp.cfg.WebPartId || "") + "_modal",
             options: { centered: true },
             title: "Configuration Panel",

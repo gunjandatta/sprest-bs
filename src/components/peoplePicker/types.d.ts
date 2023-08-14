@@ -64,7 +64,7 @@ export interface IPeoplePickerProps {
     disabled?: boolean;
 
     /** The element to render the form to. */
-    el?: Element;
+    el?: HTMLElement;
 
     /** The specific SharePoint group id to search within. */
     groupId?: number;

@@ -31,7 +31,7 @@ export interface IListFormDialogProps extends Helper.IListFormProps {
     controlMode?: number;
 
     /** The element to render the field to. */
-    el: Element | HTMLElement;
+    el: HTMLElement;
 
     /** The item. */
     item?: any;

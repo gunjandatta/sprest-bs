@@ -994,7 +994,7 @@ declare module 'gd-sprest-bs/components/datetime/types' {
             className?: string;
     
             /** The element to render the form to. */
-            el?: Element;
+            el?: HTMLElement;
     
             /** True to disable the date/time plugin */
             disabled?: boolean;
@@ -1293,7 +1293,7 @@ declare module 'gd-sprest-bs/components/listFormDialog/types' {
             controlMode?: number;
     
             /** The element to render the field to. */
-            el: Element | HTMLElement;
+            el: HTMLElement;
     
             /** The item. */
             item?: any;
@@ -1385,7 +1385,7 @@ declare module 'gd-sprest-bs/components/peoplePicker/types' {
             disabled?: boolean;
     
             /** The element to render the form to. */
-            el?: Element;
+            el?: HTMLElement;
     
             /** The specific SharePoint group id to search within. */
             groupId?: number;
@@ -1490,7 +1490,7 @@ declare module 'gd-sprest-bs/components/richTextBox/types' {
             className?: string;
     
             /** The element to render the form to. */
-            el?: Element;
+            el?: HTMLElement;
     
             /** True to disable the date/time plugin */
             disabled?: boolean;
