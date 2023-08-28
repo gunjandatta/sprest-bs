@@ -15,6 +15,9 @@ export const generateIcon = (svg: string, height: number = 32, width: number = 3
 	      }
 	    }
 
+	    // Make this icon invisible to the screen reader
+	    icon.setAttribute("aria-hidden", "true");
+
 	    // Set the height/width
 	    icon.setAttribute("height", (height ? height : 32).toString());
 	    icon.setAttribute("width", (width ? width : 32).toString());
