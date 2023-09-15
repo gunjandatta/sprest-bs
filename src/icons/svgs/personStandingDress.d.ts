@@ -1,0 +1,1 @@
+export const personStandingDress: (height?:number, width?:number, className?:string) => HTMLElement;

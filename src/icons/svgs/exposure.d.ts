@@ -1,0 +1,1 @@
+export const exposure: (height?:number, width?:number, className?:string) => HTMLElement;

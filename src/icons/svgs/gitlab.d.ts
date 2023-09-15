@@ -1,0 +1,1 @@
+export const gitlab: (height?:number, width?:number, className?:string) => HTMLElement;

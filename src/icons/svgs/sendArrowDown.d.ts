@@ -1,0 +1,1 @@
+export const sendArrowDown: (height?:number, width?:number, className?:string) => HTMLElement;

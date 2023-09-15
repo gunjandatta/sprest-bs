@@ -1,0 +1,1 @@
+export const backpackFill: (height?:number, width?:number, className?:string) => HTMLElement;

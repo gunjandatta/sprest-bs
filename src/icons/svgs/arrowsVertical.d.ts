@@ -1,0 +1,1 @@
+export const arrowsVertical: (height?:number, width?:number, className?:string) => HTMLElement;

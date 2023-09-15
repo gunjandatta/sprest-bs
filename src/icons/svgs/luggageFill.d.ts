@@ -1,0 +1,1 @@
+export const luggageFill: (height?:number, width?:number, className?:string) => HTMLElement;

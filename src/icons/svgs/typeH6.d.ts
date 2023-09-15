@@ -1,0 +1,1 @@
+export const typeH6: (height?:number, width?:number, className?:string) => HTMLElement;

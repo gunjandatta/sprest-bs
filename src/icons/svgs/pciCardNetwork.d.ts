@@ -1,0 +1,1 @@
+export const pciCardNetwork: (height?:number, width?:number, className?:string) => HTMLElement;

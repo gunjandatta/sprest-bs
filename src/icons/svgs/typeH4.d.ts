@@ -1,0 +1,1 @@
+export const typeH4: (height?:number, width?:number, className?:string) => HTMLElement;

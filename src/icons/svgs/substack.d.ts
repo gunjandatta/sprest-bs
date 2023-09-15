@@ -1,0 +1,1 @@
+export const substack: (height?:number, width?:number, className?:string) => HTMLElement;

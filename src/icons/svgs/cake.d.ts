@@ -1,0 +1,1 @@
+export const cake: (height?:number, width?:number, className?:string) => HTMLElement;

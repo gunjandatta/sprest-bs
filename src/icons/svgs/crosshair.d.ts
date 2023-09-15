@@ -1,0 +1,1 @@
+export const crosshair: (height?:number, width?:number, className?:string) => HTMLElement;

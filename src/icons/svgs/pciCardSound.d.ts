@@ -1,0 +1,1 @@
+export const pciCardSound: (height?:number, width?:number, className?:string) => HTMLElement;

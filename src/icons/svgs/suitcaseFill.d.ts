@@ -1,0 +1,1 @@
+export const suitcaseFill: (height?:number, width?:number, className?:string) => HTMLElement;
