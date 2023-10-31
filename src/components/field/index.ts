@@ -376,6 +376,10 @@ export const Field = (props: IFieldProps): IField => {
                 // Call the event
                 onControlRendered ? onControlRendered(formControl) : null;
             }
+
+            // TODO - Add currently $ icon to the textbox
+            // TODO - Add validation for currency value
+            // TODO - Use format selected from field setting
             break;
 
         // Date/Time

@@ -1,0 +1,14 @@
+@import "../../node_modules/office-ui-fabric-core/src/sass/variables/Icon.Variables";
+
+/** Parse the icons and create an entry for each */
+@each $name, $content in $ms-icon-map {
+    i.ms--#{$name} {
+        font-family: "Fluent MDL2 Hybrid Icons";
+        font-size: 32px;
+        font-style: normal;
+        font-weight: normal;
+    }
+    i.ms--#{$name}::before {
+        content: $content;
+    }
+}
