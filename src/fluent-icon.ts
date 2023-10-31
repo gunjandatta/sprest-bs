@@ -6,7 +6,7 @@
 export function FluentIcon(iconName: string): HTMLElement {
     // Create the icon and set the class name
     let elIcon = document.createElement("i");
-    elIcon.classList.add("ms--" + iconName);
+    elIcon.classList.add("ms-icon--" + iconName);
 
     // Return the element
     return elIcon;

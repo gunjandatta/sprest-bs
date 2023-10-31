@@ -2,13 +2,13 @@
 
 /** Parse the icons and create an entry for each */
 @each $name, $content in $ms-icon-map {
-    i.ms--#{$name} {
+    i.ms-icon--#{$name} {
         font-family: "Fluent MDL2 Hybrid Icons";
         font-size: 32px;
         font-style: normal;
         font-weight: normal;
     }
-    i.ms--#{$name}::before {
+    i.ms-icon--#{$name}::before {
         content: $content;
     }
 }
