@@ -13,6 +13,7 @@ export { Icons, IconTypes }
 const $REST = window && window["$REST"];
 if ($REST) {
     // Update the $REST global variable
+    $REST.FluentIcon = FluentIcon;
     $REST.IconTypes = IconTypes;
     $REST.Icons = Icons;
 }
