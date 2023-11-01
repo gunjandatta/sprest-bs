@@ -1,10 +1,6 @@
 // Export the core library
 export * from ".";
 
-// Fluent UI Icon
-import { FluentIcon } from "./fluent-icon";
-export { FluentIcon }
-
 // SharePoint bootstrap components/webparts
 import { IconTypes, Icons } from "./icons";
 export { Icons, IconTypes }
@@ -13,7 +9,6 @@ export { Icons, IconTypes }
 const $REST = window && window["$REST"];
 if ($REST) {
     // Update the $REST global variable
-    $REST.FluentIcon = FluentIcon;
     $REST.IconTypes = IconTypes;
     $REST.Icons = Icons;
 }

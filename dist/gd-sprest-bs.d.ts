@@ -15,9 +15,6 @@ declare module 'gd-sprest-bs' {
     export * from "gd-bs";
     export * from "gd-sprest";
     
-    import { FluentIcon } from "gd-sprest-bs/fluent-icon";
-    export { FluentIcon }
-    
     import * as Components from "gd-sprest-bs/components/types";
     import * as WebParts from "gd-sprest-bs/webparts/types";
     export {
@@ -27,15 +24,6 @@ declare module 'gd-sprest-bs' {
     
     import { IRESTBS } from "gd-sprest-bs/rest";
     export const $REST: IRESTBS;
-}
-
-declare module 'gd-sprest-bs/fluent-icon' {
-    /**
-      * Fluent Icon
-      * This method will render the icon element for Office Fluent UI icons. This will only work on modern pages.
-      * @param iconName - The icon name to render.
-      */
-    export function FluentIcon(iconName: string): HTMLElement;
 }
 
 declare module 'gd-sprest-bs/components/types' {
@@ -61,7 +49,6 @@ declare module 'gd-sprest-bs/webparts/types' {
 }
 
 declare module 'gd-sprest-bs/rest' {
-    import { FluentIcon } from "gd-sprest-bs/fluent-icon";
     import { IconTypes, Icons } from "gd-bs";
     import { IREST } from "gd-sprest";
     import { Components } from "gd-sprest-bs/components/types";
@@ -72,7 +59,6 @@ declare module 'gd-sprest-bs/rest' {
       */
     export interface IRESTBS extends IREST {
         Components,
-        FluentIcon,
         Icons, IconTypes,
         WebParts
     }
