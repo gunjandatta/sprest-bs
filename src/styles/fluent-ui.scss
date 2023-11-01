@@ -7,6 +7,9 @@
         font-size: 32px;
         font-style: normal;
         font-weight: normal;
+        speak: none;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
     }
     i.ms-icon--#{$name}::before {
         content: $content;
