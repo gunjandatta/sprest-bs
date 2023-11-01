@@ -13,5 +13,10 @@
     }
     i.ms-icon--#{$name}::before {
         content: $content;
+        font-variant: normal;
+        text-align: center;
+        text-transform: none;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
