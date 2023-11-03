@@ -368,18 +368,33 @@ export const Field = (props: IFieldProps): IField => {
             controlProps.type = Components.FormControlTypes.TextField;
 
             // Set the rendered event
-            onControlRendered = controlProps.onControlRendered;
-            controlProps.onControlRendered = (formControl) => {
-                // Save the control
-                control = formControl;
+            onControlRendering = controlProps.onControlRendering;
+            controlProps.onControlRendering = (tbProps: Components.IFormControlPropsTextField) => {
+                // See if the currency exists in the field
+                let shortName = props.field.TypeShortDescription;
+                let matches = /\(([^)]+)\)/.exec(shortName);
+                let symbol = matches.length > 0 ? matches[1] : "$";
+
+                // Set the text
+                tbProps.prependedLabel = symbol;
 
                 // Call the event
-                onControlRendered ? onControlRendered(formControl) : null;
-            }
+                onControlRendering ? onControlRendering(tbProps) : null;
 
-            // TODO - Add currently $ icon to the textbox
-            // TODO - Add validation for currency value
-            // TODO - Use format selected from field setting
+                // Set the validation event
+                // Validate the extension
+                baseValidation = (ctrl, results) => {
+                    // Ensure a value exists
+                    if (results.value) {
+                        // Ensure it's a valid currency value
+                        results.isValid = /(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/.test(results.value)
+                        results.invalidMessage = "The currency format is not a valid.";
+                    }
+
+                    // Return the results
+                    return results;
+                }
+            }
             break;
 
         // Date/Time
