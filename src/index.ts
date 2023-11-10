@@ -5,6 +5,10 @@ export * from "gd-sprest";
 import { Components } from "./components";
 export * from "./components";
 
+// Theme Manager
+import { ThemeManager } from "./themeManager";
+export { ThemeManager }
+
 // WebParts
 import * as WebParts from "./webparts";
 export { WebParts }
@@ -17,6 +21,7 @@ const $REST = window && window["$REST"];
 if ($REST) {
     // Update the $REST global variable
     $REST.Components = Components;
+    $REST.ThemeManager = ThemeManager;
     $REST.WebParts = WebParts;
 }
 

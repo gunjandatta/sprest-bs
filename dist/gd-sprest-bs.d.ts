@@ -16,9 +16,11 @@ declare module 'gd-sprest-bs' {
     export * from "gd-sprest";
     
     import * as Components from "gd-sprest-bs/components/types";
+    import { ThemeManager } from "gd-sprest-bs/themeManager/types";
     import * as WebParts from "gd-sprest-bs/webparts/types";
     export {
         Components,
+        ThemeManager,
         WebParts
     }
     
@@ -36,6 +38,36 @@ declare module 'gd-sprest-bs/components/types' {
         RichTextBox: number;
     }
     export const FormControlTypes: IFormControlTypes;
+}
+
+declare module 'gd-sprest-bs/themeManager/types' {
+    /**
+      * Theme Manager
+      */
+    export const ThemeManager: {
+        // Current Theme
+        get CurrentTheme(): { [key: string]: string };
+    
+        // Default Classic Theme Values
+        get ClassicThemeInfo(): { [key: string]: string }
+        set ClassicThemeInfo(value: { [key: string]: string });
+    
+        // Flag to determine if the theme is currently inverted
+        get IsInverted(): boolean;
+    
+        // Default Modern Theme Values
+        get ModernThemeInfo(): { [key: string]: string }
+        set ModernThemeInfo(value: { [key: string]: string });
+    
+        // Loads the modern theme, or the classic theme if it's not found
+        load(updateTheme?: boolean): PromiseLike<void>;
+    
+        // Sets the current theme
+        setCurrentTheme: (value: any, updateTheme?: boolean) => void;
+    
+        // Updates the sass variables for this framework
+        update: (themeInfo?: any) => void;
+    }
 }
 
 declare module 'gd-sprest-bs/webparts/types' {
@@ -72,7 +104,6 @@ declare module 'gd-sprest-bs/components/components' {
     export * from "gd-sprest-bs/components/listFormDialog/types";
     export * from "gd-sprest-bs/components/peoplePicker/types";
     export * from "gd-sprest-bs/components/richTextBox/types";
-    export * from "gd-sprest-bs/components/themeManager/types";
     
     import { IFormControlTypes as Parent } from "gd-bs/src/components/form/controlTypes";
     export interface IFormControlTypes extends Parent {
@@ -1542,36 +1573,6 @@ declare module 'gd-sprest-bs/components/richTextBox/types' {
             None: number;
             Basic: number;
             Full: number;
-    }
-}
-
-declare module 'gd-sprest-bs/components/themeManager/types' {
-    /**
-      * Theme Manager
-      */
-    export const ThemeManager: {
-        // Current Theme
-        get CurrentTheme(): { [key: string]: string };
-    
-        // Default Classic Theme Values
-        get ClassicThemeInfo(): { [key: string]: string }
-        set ClassicThemeInfo(value: { [key: string]: string });
-    
-        // Flag to determine if the theme is currently inverted
-        get IsInverted(): boolean;
-    
-        // Default Modern Theme Values
-        get ModernThemeInfo(): { [key: string]: string }
-        set ModernThemeInfo(value: { [key: string]: string });
-    
-        // Loads the modern theme, or the classic theme if it's not found
-        load(updateTheme?: boolean): PromiseLike<void>;
-    
-        // Sets the current theme
-        setCurrentTheme: (value: any, updateTheme?: boolean) => void;
-    
-        // Updates the sass variables for this framework
-        update: (themeInfo?: any) => void;
     }
 }
 

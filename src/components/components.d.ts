@@ -5,7 +5,6 @@ export * from "./listForm/types";
 export * from "./listFormDialog/types";
 export * from "./peoplePicker/types";
 export * from "./richTextBox/types";
-export * from "./themeManager/types";
 
 // Customize the form control types
 import { IFormControlTypes as Parent } from "gd-bs/src/components/form/controlTypes";
