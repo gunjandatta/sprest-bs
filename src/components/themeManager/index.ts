@@ -40,6 +40,15 @@ export class ThemeManager {
         });
     }
 
+    // Sets the current theme
+    static setCurrentTheme(value: { [key: string]: string }, updateTheme: boolean = true) {
+        // Set the theme
+        this._currentTheme = value;
+
+        // Update the theme
+        updateTheme ? this.update() : null;
+    }
+
     // Updates the theme variables
     static update(themeInfo: { [key: string]: string } = {}) {
         let root = document.querySelector(':root') as HTMLElement;
@@ -47,19 +56,11 @@ export class ThemeManager {
         // Parse the modern theme values
         for (let key in this.ModernThemeInfo) {
             // Get the value
-            let value = themeInfo[this.ModernThemeInfo[key]];
+            let value = themeInfo[this.ModernThemeInfo[key]] || this.CurrentTheme[this.ModernThemeInfo[key]] ||
+                themeInfo[this.ClassicThemeInfo[key]] || this.CurrentTheme[this.ClassicThemeInfo[key]];
             if (value) {
                 // Set the variable
                 root.style.setProperty(key, value);
-            }
-            // Else, see if the current theme exists
-            else if (this.CurrentTheme) {
-                // See if a value exists
-                value = this.CurrentTheme[this.ClassicThemeInfo[key]];
-                if (value) {
-                    // Set the variable
-                    root.style.setProperty(key, value);
-                }
             }
         }
     }

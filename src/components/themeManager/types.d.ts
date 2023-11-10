@@ -16,6 +16,9 @@ export const ThemeManager: {
     // Loads the modern theme, or the classic theme if it's not found
     load(updateTheme?: boolean): PromiseLike<void>;
 
+    // Sets the current theme
+    setCurrentTheme: (value: { [key: string]: string }, updateTheme?: boolean) => void;
+
     // Updates the sass variables for this framework
     update: (themeInfo?: { [key: string]: string }) => void;
 }
