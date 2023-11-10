@@ -19,14 +19,17 @@ export class ThemeManager {
     static get ModernThemeInfo(): { [key: string]: string } { return this._modernThemeInfo; }
     static set ModernThemeInfo(value: { [key: string]: string }) { this._modernThemeInfo = value; }
 
-    // Loads the classic theme
-    static loadClassic(): PromiseLike<void> {
+    // Loads the classic theme and optionally applies it
+    static loadClassic(updateTheme: boolean = true): PromiseLike<void> {
         // Return a promise
         return new Promise((resolve, reject) => {
             // Get the current theme
             Helper.getCurrentTheme().then(themeInfo => {
                 // Set the classic theme
                 this._classicTheme = themeInfo;
+
+                // See if we are applying the classic theme
+                this.update();
 
                 // Resolve the request
                 resolve();

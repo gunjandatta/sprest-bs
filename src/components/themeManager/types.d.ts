@@ -14,8 +14,8 @@ export const ThemeManager: {
     set ModernThemeInfo(value: { [key: string]: string });
 
     // Loads the classic theme
-    loadClassic(): PromiseLike<void>;
+    loadClassic(updateTheme?: boolean): PromiseLike<void>;
 
     // Updates the sass variables for this framework
-    updateTheme: (themeInfo: { [key: string]: string }) => void;
+    updateTheme: (themeInfo?: { [key: string]: string }) => void;
 }
