@@ -54,7 +54,7 @@ export class ThemeManager {
     }
 
     // Sets the current theme
-    static setCurrentTheme(value: { [key: string]: string }, updateTheme: boolean = true) {
+    static setCurrentTheme(value: any, updateTheme: boolean = true) {
         // Set the theme
         this._currentTheme = value;
 
@@ -63,7 +63,7 @@ export class ThemeManager {
     }
 
     // Updates the theme variables
-    static update(themeInfo: { [key: string]: string } = {}) {
+    static update(themeInfo: any = {}) {
         let root = document.querySelector(':root') as HTMLElement;
 
         // Get the theme information
