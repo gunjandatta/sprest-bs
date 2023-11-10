@@ -1557,6 +1557,9 @@ declare module 'gd-sprest-bs/components/themeManager/types' {
         get ClassicThemeInfo(): { [key: string]: string }
         set ClassicThemeInfo(value: { [key: string]: string });
     
+        // Flag to determine if the theme is currently inverted
+        get IsInverted(): boolean;
+    
         // Default Modern Theme Values
         get ModernThemeInfo(): { [key: string]: string }
         set ModernThemeInfo(value: { [key: string]: string });

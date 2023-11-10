@@ -14,13 +14,26 @@ export class ThemeManager {
      * Current Theme
      * Loads the modern theme from the DOM or the classic from the site collection.
      */
-    private static _currentTheme: { [key: string]: string }
+    private static _currentTheme: { [key: string]: string } = {};
     static get CurrentTheme(): { [key: string]: string } { return this._currentTheme; }
 
     // Modern Theme Information
     private static _modernThemeInfo: { [key: string]: string } = DefaultModern;
     static get ModernThemeInfo(): { [key: string]: string } { return this._modernThemeInfo; }
     static set ModernThemeInfo(value: { [key: string]: string }) { this._modernThemeInfo = value; }
+
+    // Determines if the theme is currently inverted
+    static get IsInverted(): boolean {
+        // See if the properties exists
+        if (typeof (this.CurrentTheme.isInverted) === "boolean") { return this.CurrentTheme.isInverted; }
+
+        // Determine based on the white color
+        let whiteValue = this.CurrentTheme.palette ? this.CurrentTheme.palette["white"] : this.CurrentTheme["white"];
+        if (typeof (whiteValue) === "string") { return whiteValue.toLowerCase() == "#ffffff" ? false : true; }
+
+        // Return false by default
+        return false;
+    }
 
     // Loads the modern theme, or the classic theme if it's not found
     static load(updateTheme: boolean = true): PromiseLike<void> {
@@ -53,11 +66,18 @@ export class ThemeManager {
     static update(themeInfo: { [key: string]: string } = {}) {
         let root = document.querySelector(':root') as HTMLElement;
 
+        // Get the theme information
+        let palette = themeInfo.palette || this.CurrentTheme.palette || {};
+        let semanticColors = themeInfo.semanticColors || this.CurrentTheme.semanticColors || {}
+
         // Parse the modern theme values
         for (let key in this.ModernThemeInfo) {
-            // Get the value
-            let value = themeInfo[this.ModernThemeInfo[key]] || this.CurrentTheme[this.ModernThemeInfo[key]] ||
+            // Set the value
+            let value = palette[key] || semanticColors[key] ||
+                themeInfo[this.ModernThemeInfo[key]] || this.CurrentTheme[this.ModernThemeInfo[key]] ||
                 themeInfo[this.ClassicThemeInfo[key]] || this.CurrentTheme[this.ClassicThemeInfo[key]];
+
+            // See if a value exists
             if (value) {
                 // Set the variable
                 root.style.setProperty(key, value);
