@@ -72,6 +72,7 @@ declare module 'gd-sprest-bs/components/components' {
     export * from "gd-sprest-bs/components/listFormDialog/types";
     export * from "gd-sprest-bs/components/peoplePicker/types";
     export * from "gd-sprest-bs/components/richTextBox/types";
+    export * from "gd-sprest-bs/components/themeManager/types";
     
     import { IFormControlTypes as Parent } from "gd-bs/src/components/form/controlTypes";
     export interface IFormControlTypes extends Parent {
@@ -1541,6 +1542,30 @@ declare module 'gd-sprest-bs/components/richTextBox/types' {
             None: number;
             Basic: number;
             Full: number;
+    }
+}
+
+declare module 'gd-sprest-bs/components/themeManager/types' {
+    /**
+      * Theme Manager
+      */
+    export const ThemeManager: {
+        // Classic Theme
+        get ClassicTheme(): { [key: string]: string };
+    
+        // Default Classic Theme Values
+        get ClassicThemeInfo(): { [key: string]: string }
+        set ClassicThemeInfo(value: { [key: string]: string });
+    
+        // Default Modern Theme Values
+        get ModernThemeInfo(): { [key: string]: string }
+        set ModernThemeInfo(value: { [key: string]: string });
+    
+        // Loads the classic theme
+        loadClassic(): PromiseLike<void>;
+    
+        // Updates the sass variables for this framework
+        updateTheme: (themeInfo: { [key: string]: string }) => void;
     }
 }
 

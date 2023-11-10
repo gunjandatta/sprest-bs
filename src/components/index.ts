@@ -4,6 +4,7 @@ import { ListForm } from "./listForm";
 import { ListFormDialog } from "./listFormDialog";
 import { PeoplePicker } from "./peoplePicker";
 import { RichTextBox, RichTextBoxTypes } from "./richTextBox";
+import { ThemeManager } from "./themeManager";
 
 // Extend the core components
 import { Components } from "./core";
@@ -14,6 +15,7 @@ Components["ListFormDialog"] = ListFormDialog;
 Components["PeoplePicker"] = PeoplePicker;
 Components["RichTextBox"] = RichTextBox;
 Components["RichTextBoxTypes"] = RichTextBoxTypes;
+Components["ThemeManager"] = ThemeManager;
 
 // Export the components
 export { Components } from "./core";
