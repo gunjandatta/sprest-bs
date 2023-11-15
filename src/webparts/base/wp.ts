@@ -167,7 +167,7 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
      */
     let render = () => {
         // Get the webpart information
-        _wp = getWebPartInfo();
+        _wp = _wp || getWebPartInfo();
         if (_wp == null || _wp.el == null) {
             // Log
             console.log("[bs-webpart] The target webpart element '" + props.elementId + "' was not found.");
@@ -233,11 +233,18 @@ export const WebPart = (props: IWebPartProps): IWebPart => {
         }
     }
 
-    // Add a load event
-    window.addEventListener("load", () => {
+    // Get the webpart information
+    _wp = getWebPartInfo();
+    if (_wp) {
         // Render the component
         render();
-    });
+    } else {
+        // Add a load event
+        window.addEventListener("load", () => {
+            // Render the component
+            render();
+        });
+    }
 
     // Return the webpart
     return {
