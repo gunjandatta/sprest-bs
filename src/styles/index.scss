@@ -95,6 +95,7 @@
 
 /** People Picker */
 .badge.people-picker-x {
+    background-color: var(--sp-white, #ffffff) !important;
     color: var(--sp-black, #000000);
     margin-bottom: 0.15rem;
     padding-top: 0.1rem;

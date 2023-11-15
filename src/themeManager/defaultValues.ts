@@ -2,7 +2,11 @@
 export const DefaultModern = {
     "--sp-accent": "accent",
     "--sp-black": "black",
+    "--sp-blue": "blue",
+    "--sp-blue-light": "blueLight",
     "--sp-error-icon": "errorIcon",
+    "--sp-green": "green",
+    "--sp-magenta-light": "magentaLight",
     "--sp-neutral-dark": "neutralDark",
     "--sp-neutral-light": "neutralLight",
     "--sp-neutral-lighter": "neutralLighter",
@@ -15,10 +19,15 @@ export const DefaultModern = {
     "--sp-neutral-tertiary-alt": "neutralTertiaryAlt",
     "--sp-neutral-quaternary": "neutralQuaternary",
     "--sp-neutral-quaternary-alt": "neutralQuaternaryAlt",
+    "--sp-orange": "orange",
     "--sp-primary-button-text": "primaryButtonText",
     "--sp-primary-text": "primaryText",
+    "--sp-purple": "purple",
+    "--sp-purple-dark": "purpleDark",
+    "--sp-red": "red",
     "--sp-severe-warning-icon": "severeWarningIcon",
     "--sp-success-icon": "successIcon",
+    "--sp-teal": "teal",
     "--sp-theme-accent": "themeAccent",
     "--sp-theme-dark": "themeDark",
     "--sp-theme-darker": "themeDarker",
@@ -30,14 +39,19 @@ export const DefaultModern = {
     "--sp-theme-secondary": "themeSecondary",
     "--sp-theme-tertiary": "themeTertiary",
     "--sp-warning-highlight": "warningHighlight",
-    "--sp-white": "white"
+    "--sp-white": "white",
+    "--sp-yellow": "yellow"
 };
 
 // Default classic theme key/value (variable name/key for theme information)
 export const DefaultClassic = {
     "--sp-accent": "accentButtonBackground",
     "--sp-black": "bodyTextChecked",
+    "--sp-blue": "blue",
+    "--sp-blue-light": "blueLight",
     "--sp-error-icon": "red",
+    "--sp-green": "green",
+    "--sp-magenta-light": "magentaLight",
     "--sp-neutral-dark": "StrongBodyText",
     "--sp-neutral-light": "DisabledLines",
     "--sp-neutral-lighter": "DialogBorder",
@@ -50,10 +64,15 @@ export const DefaultClassic = {
     "--sp-neutral-tertiary-alt": "SubtleLines",
     "--sp-neutral-quaternary": "disabledSubtext",
     "--sp-neutral-quaternary-alt": "listItemBackgroundCheckedHovered",
+    "--sp-orange": "orange",
     "--sp-primary-button-text": "TileText",
     "--sp-primary-text": "BodyText",
+    "--sp-purple": "purple",
+    "--sp-purple-dark": "purpleDark",
+    "--sp-red": "red",
     "--sp-severe-warning-icon": "orange",
     "--sp-success-icon": "green",
+    "--sp-teal": "teal",
     "--sp-theme-accent": "AccentText",
     "--sp-theme-dark": "EmphasisBorder",
     "--sp-theme-darker": "EmphasisHoverBorder",
@@ -65,5 +84,6 @@ export const DefaultClassic = {
     "--sp-theme-secondary": "AccentLines",
     "--sp-theme-tertiary": "SuiteBarHoverBackground",
     "--sp-warning-highlight": "yellow",
-    "--sp-white": "EmphasisText"
+    "--sp-white": "EmphasisText",
+    "--sp-yellow": "yellow"
 }
