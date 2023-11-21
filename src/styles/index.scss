@@ -18,7 +18,7 @@
     .flatpickr-input[readonly] {
         color: var(--sp-neutral-dark, #201f1e);
         background-color: var(--sp-white, #ffffff);
-        border-color: var(--sp-neutral-secondary, #605e5c);
+        border-color: var(--sp-info-icon, #605e5c);
     }
     
     /* Fix hover styling for the flatpickr calendar control */
@@ -130,7 +130,7 @@
         min-width: auto;
     }
     .ql-container.ql-snow, .ql-toolbar.ql-snow {
-        border-color: var(--sp-neutral-secondary, #605e5c);
+        border-color: var(--sp-info-icon, #605e5c);
     }
     .ql-container.ql-disabled {
         background-color: var(--sp-theme-lighter-alt, #eff6fc);
