@@ -73,7 +73,8 @@ export class ThemeManager {
         // Parse the modern theme values
         for (let key in this.ModernThemeInfo) {
             // Set the value
-            let value = palette[key] || semanticColors[key] ||
+            let value = palette[this.ModernThemeInfo[key]] || palette[this.ClassicThemeInfo[key]] ||
+                semanticColors[this.ModernThemeInfo[key]] || semanticColors[this.ClassicThemeInfo[key]] ||
                 themeInfo[this.ModernThemeInfo[key]] || this.CurrentTheme[this.ModernThemeInfo[key]] ||
                 themeInfo[this.ClassicThemeInfo[key]] || this.CurrentTheme[this.ClassicThemeInfo[key]];
 
