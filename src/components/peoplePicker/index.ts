@@ -288,12 +288,14 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
         target: elTextbox.querySelector("input"),
         placement: Components.PopoverPlacements.BottomStart,
         options: {
-            content: elMenu,
             hideOnClick: false,
             maxWidth: "none",
             trigger: "focus"
         }
     });
+
+    // Set the content
+    _menu.setContent(elMenu);
 
     // Set the value and ensure it's a 
     let value: any = props.value || [];
