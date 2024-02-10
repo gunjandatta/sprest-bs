@@ -1,4 +1,4 @@
-import { IBasePropertyPane, IBasePropertyPaneProperties, IBasePropertyPaneProps } from "./base.d";
+import { IBasePropertyPane, IBasePropertyPaneProperties, IBasePropertyPaneProps } from "./types";
 import { Components } from "../components/core";
 
 /**
@@ -51,7 +51,8 @@ export class BasePropertyPane<IProps = IBasePropertyPaneProps> implements IBaseP
 
     // Returns the current value as a string
     get currentValue(): string | undefined {
-        return this._config?.properties[this.targetProperty];
+        let properties = this._config.properties;
+        return properties ? properties[this.targetProperty] : undefined;
     }
 
     // Returns the current value as an object
@@ -74,8 +75,8 @@ export class BasePropertyPane<IProps = IBasePropertyPaneProps> implements IBaseP
     }
 
     // Renders the component
-    protected onRender(el: HTMLElement, context: any, onChange: (targetProperty: string, newValue?: string) => void) { }
-    private render(el: HTMLElement, context: any, onChange: (targetProperty: string, newValue?: string) => void): void {
+    protected onRender(el: HTMLElement, context: any, onChange: (targetProperty: string, newValue?: string | number | boolean | undefined) => void) { }
+    private render(el: HTMLElement, context: any, onChange: (targetProperty: string, newValue?: string | number | boolean | undefined) => void): void {
         // Clear the component
         this.dispose(el, context);
     }
