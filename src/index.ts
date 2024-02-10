@@ -5,6 +5,10 @@ export * from "gd-sprest";
 import { Components } from "./components";
 export * from "./components";
 
+// SharePoint Framework property components
+import * as PropertyPane from "./propertyPane";
+export { PropertyPane }
+
 // Theme Manager
 import { ThemeManager } from "./themeManager";
 export { ThemeManager }
