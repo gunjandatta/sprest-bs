@@ -4,7 +4,7 @@ import { Components } from "../components/core";
 /**
  * Base Property Pane
  */
-export class BasePropertyPane<IProps = IBasePropertyPaneProps<object, object>> implements IBasePropertyPane {
+export class BasePropertyPane<IProps = IBasePropertyPaneProps> implements IBasePropertyPane {
     private _config: IBasePropertyPaneProps;
     get config(): IProps { return this._config as IProps; }
     properties: IBasePropertyPaneProperties;
@@ -51,7 +51,7 @@ export class BasePropertyPane<IProps = IBasePropertyPaneProps<object, object>> i
 
     // Returns the current value as a string
     get currentValue(): string | undefined {
-        return this._config?.properties?.targetProperty;
+        return this._config?.properties[this.targetProperty];
     }
 
     // Returns the current value as an object
