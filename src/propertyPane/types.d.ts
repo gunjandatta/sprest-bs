@@ -11,7 +11,7 @@ export interface IBasePropertyPaneProps<IComponent = any, IComponentProps = any>
     onRendering?: (props?: IComponentProps) => IComponentProps;
     onSave?: (value: string | number | boolean | undefined) => string | number | boolean | undefined;
     placeholder?: string;
-    properties?: { [key: string]: string }
+    properties?: object;
     tooltip?: string;
 }
 

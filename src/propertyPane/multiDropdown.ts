@@ -8,6 +8,19 @@ import { IMultiDropdownCheckbox } from "./types";
 class _MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckbox> {
     // Override the render event
     onRender(el: HTMLElement, context: any, onChange: (targetProperty: string, newValue?: string | number | boolean | undefined) => void) {
+        let currentValue = this.currentValueAsObject<string[]>();
+        if (currentValue) {
+            let values = [];
+
+            // Parse the values
+            for (let i = 0; i < currentValue.length; i++) {
+                values.push(currentValue[i]["value"] || currentValue[i]["text"]);
+            }
+
+            // Update the current value
+            currentValue = values;
+        }
+
         // Set the properties
         let props = {
             description: this.config.description,
@@ -17,7 +30,7 @@ class _MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckbox> {
             placeholder: this.config.placeholder,
             placement: this.config.placement || Components.DropdownPlacements.Left,
             type: Components.FormControlTypes.MultiDropdownCheckbox,
-            value: this.currentValueAsObject<string[]>(),
+            value: currentValue,
             onChange: (items) => {
                 // Convert the object as a string
                 let value: string | number | boolean | undefined = undefined;
