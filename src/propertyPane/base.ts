@@ -50,9 +50,8 @@ export class BasePropertyPane<IProps = IBasePropertyPaneProps<object, object>> i
     }
 
     // Returns the current value as a string
-    get currentValue(): string {
-        let properties = this._config.properties;
-        return properties ? properties[this.targetProperty] : null;
+    get currentValue(): string | undefined {
+        return this._config?.properties?.targetProperty;
     }
 
     // Returns the current value as an object
