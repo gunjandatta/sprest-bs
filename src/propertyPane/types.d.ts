@@ -74,3 +74,4 @@ export interface IMultiDropdownCheckbox extends IBasePropertyPaneProps<IDropdown
     items?: IDropdownItem[];
     placement?: number;
 }
+export class MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckbox> {}

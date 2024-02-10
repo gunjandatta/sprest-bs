@@ -120,6 +120,7 @@ declare module 'gd-sprest-bs/propertyPane/types' {
             items?: IDropdownItem[];
             placement?: number;
     }
+    export class MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckbox> {}
 }
 
 declare module 'gd-sprest-bs/themeManager/types' {
