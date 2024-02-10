@@ -85,6 +85,7 @@ declare module 'gd-sprest-bs/propertyPane/types' {
                 */
             properties: IBasePropertyPaneProperties;
     }
+    export const BasePropertyPane = (targetProperty: string, config: IProps, context?: any) => IBasePropertyPane;
     
     /**
         * Property Pane Base Properties
@@ -120,7 +121,7 @@ declare module 'gd-sprest-bs/propertyPane/types' {
             items?: IDropdownItem[];
             placement?: number;
     }
-    export class MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckbox> {}
+    export const MultiDropdownCheckbox = (targetProperty: string, config: IMultiDropdownCheckbox, context?: any) => IBasePropertyPane;
 }
 
 declare module 'gd-sprest-bs/themeManager/types' {

@@ -5,7 +5,7 @@ import { IMultiDropdownCheckbox } from "./types";
 /**
  * Multi-Dropdown Checkbox
  */
-export class MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckbox> {
+class _MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckbox> {
     // Override the render event
     onRender(el: HTMLElement, context: any, onChange: (targetProperty: string, newValue?: string | number | boolean | undefined) => void) {
         // Set the properties
@@ -45,4 +45,7 @@ export class MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckb
             }
         })
     }
+}
+export const MultiDropdownCheckbox = (targetProperty: string, config: IMultiDropdownCheckbox, context?: any) => {
+    return new _MultiDropdownCheckbox(targetProperty, config, context);
 }
