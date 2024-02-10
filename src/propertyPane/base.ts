@@ -4,8 +4,9 @@ import { Components } from "../components/core";
 /**
  * Base Property Pane
  */
-export class BasePropertyPane<IProps = IBasePropertyPaneProps<any, any>> implements IBasePropertyPane {
-    config: IProps = null;
+export class BasePropertyPane<IProps = IBasePropertyPaneProps<object, object>> implements IBasePropertyPane {
+    private _config: IBasePropertyPaneProps;
+    get config(): IProps { return this._config as IProps; }
     properties: IBasePropertyPaneProperties;
     targetProperty: string;
 
@@ -15,7 +16,7 @@ export class BasePropertyPane<IProps = IBasePropertyPaneProps<any, any>> impleme
     // Constructor
     constructor(targetProperty: string, config: IProps, context?: any) {
         // Save the configuration
-        this.config = config;
+        this._config = config;
 
         // Save the key
         this.targetProperty = targetProperty;
@@ -39,17 +40,23 @@ export class BasePropertyPane<IProps = IBasePropertyPaneProps<any, any>> impleme
     // Applies the tooltip to an element
     protected applyTooltip(el: HTMLElement) {
         // Apply the tooltip
-        Components.Tooltip({
-            target: el,
-            content: this.config["tooltip"]
-        });
+        let content = this._config.tooltip;
+        if (content) {
+            Components.Tooltip({
+                target: el,
+                content
+            });
+        }
     }
 
     // Returns the current value as a string
-    get currentValue(): string { return this.config["properties"][this.targetProperty]; }
+    get currentValue(): string {
+        let properties = this._config.properties;
+        return properties ? properties[this.targetProperty] : null;
+    }
 
     // Returns the current value as an object
-    currentValueAsObject<T>(): T {
+    currentValueAsObject<T>(): T | undefined {
         // Ensure a value exists
         if (this.currentValue) {
             try { return JSON.parse(this.currentValue) as T; }
@@ -57,19 +64,19 @@ export class BasePropertyPane<IProps = IBasePropertyPaneProps<any, any>> impleme
         }
 
         // Return nothing
-        return null;
+        return undefined;
     }
 
     // Dispose of the component
-    protected onDispose(el: HTMLElement, context?: any) { }
-    private dispose(el: HTMLElement, context?: any): void {
+    protected onDispose(el: HTMLElement, context: any) { }
+    private dispose(el: HTMLElement, context: any): void {
         // Clear the element
         while (el.firstChild) { el.removeChild(el.firstChild); }
     }
 
     // Renders the component
-    protected onRender(el: HTMLElement, context?: any, onChange?: (targetProperty: string, newValue?: string) => void) { }
-    private render(el: HTMLElement, context?: any, onChange?: (targetProperty: string, newValue?: string) => void): void {
+    protected onRender(el: HTMLElement, context: any, onChange: (targetProperty: string, newValue?: string) => void) { }
+    private render(el: HTMLElement, context: any, onChange: (targetProperty: string, newValue?: string) => void): void {
         // Clear the component
         this.dispose(el, context);
     }

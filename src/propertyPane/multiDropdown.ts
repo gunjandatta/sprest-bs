@@ -7,7 +7,7 @@ import { IMultiDropdownCheckbox } from "./multiDropdown.d";
  */
 export class MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckbox> {
     // Override the render event
-    onRender(el: HTMLElement, context?: any, onChange?: (targetProperty: string, newValue?: string) => void) {
+    onRender(el: HTMLElement, context: any, onChange: (targetProperty: string, newValue?: string) => void) {
         // Set the properties
         let props = {
             description: this.config.description,
@@ -20,7 +20,10 @@ export class MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckb
             value: this.currentValueAsObject<string[]>(),
             onChange: (items) => {
                 // Save the value as a string
-                onChange(this.targetProperty, JSON.stringify(items));
+                let value: string | undefined = undefined;
+                try { value = JSON.stringify(items); }
+                catch { }
+                onChange(this.targetProperty, value);
             }
         } as Components.IFormControlPropsMultiDropdownCheckbox;
 

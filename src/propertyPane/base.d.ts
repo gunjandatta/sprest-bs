@@ -1,7 +1,7 @@
 /**
  * Base Property Pane Properties
  */
-export interface IBasePropertyPaneProps<IComponent, IComponentProps> {
+export interface IBasePropertyPaneProps<IComponent = any, IComponentProps = any> {
     description?: string;
     label?: string;
     onRendered?: (component?: IComponent, props?: IComponentProps) => void;
@@ -43,7 +43,7 @@ export interface IBasePropertyPaneProperties {
     /**
      * This API will be called once the custom field is mounted on the host element.
      */
-    onRender: (domElement: HTMLElement, context?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void) => void;
+    onRender: (domElement: HTMLElement, context: any, changeCallback: (targetProperty: string, newValue?: string | undefined) => void) => void;
 
     /**
      * An UNIQUE key indicates the identity of this control.
@@ -53,7 +53,7 @@ export interface IBasePropertyPaneProperties {
     /**
      * This API is called when the component is unmounted from the host element.
      */
-    onDispose?: (domElement: HTMLElement, context?: any) => void;
+    onDispose?: (domElement: HTMLElement, context: any) => void;
 
     /**
      * Instance specific context. This context is passed back to the web part in the
