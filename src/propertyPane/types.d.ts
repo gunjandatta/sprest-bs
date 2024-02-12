@@ -1,5 +1,5 @@
 import { IDropdown, IDropdownItem } from "gd-bs/src/components/dropdown/types";
-import { IFormControlPropsMultiDropdownCheckbox } from "gd-bs/src/components/form/controlTypes";
+import { IFormControlPropsMultiDropdown, IFormControlPropsMultiDropdownButton, IFormControlPropsMultiDropdownCheckbox } from "gd-bs/src/components/form/controlTypes";
 
 /**
  * Base Property Pane Properties
@@ -67,6 +67,23 @@ export interface IBasePropertyPaneProperties {
      */
     context?: any;
 }
+
+/**
+ * Multi-Dropdown
+ */
+export interface IMultiDropdown extends IBasePropertyPaneProps<IDropdown, IFormControlPropsMultiDropdown> {
+    items?: IDropdownItem[];
+}
+export const MultiDropdown = (targetProperty: string, config: IMultiDropdown, context?: any) => IBasePropertyPane;
+
+/**
+ * Multi-Dropdown Button
+ */
+export interface IMultiDropdownButton extends IBasePropertyPaneProps<IDropdown, IFormControlPropsMultiDropdownButton> {
+    items?: IDropdownItem[];
+    placement?: number;
+}
+export const MultiDropdownButton = (targetProperty: string, config: IMultiDropdownButton, context?: any) => IBasePropertyPane;
 
 /**
  * Multi-Dropdown Checkbox

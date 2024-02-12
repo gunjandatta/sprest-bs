@@ -1,11 +1,14 @@
 import { Components } from "../components/core";
 import { BasePropertyPane } from "./base";
-import { IMultiDropdownCheckbox } from "./types";
+import { IMultiDropdown } from "./types";
 
 /**
- * Multi-Dropdown Checkbox
+ * Multi-Dropdown
  */
-class _MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckbox> {
+export class _MultiDropdown<T = IMultiDropdown> extends BasePropertyPane<T> {
+    // Internal rendering event
+    protected onRendering(props: Components.IFormControlPropsMultiDropdown): Components.IFormControlPropsMultiDropdown { return props; }
+
     // Override the render event
     onRender(el: HTMLElement, context: any, onChange: (targetProperty: string, newValue?: string | number | boolean | undefined) => void) {
         let currentValue = this.currentValueAsObject<string[]>();
@@ -22,13 +25,13 @@ class _MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckbox> {
         }
 
         // Set the properties
+        let config: IMultiDropdown = this.config;
         let props = {
-            description: this.config.description,
-            items: this.config.items,
-            label: this.config.label,
+            description: config.description,
+            items: config.items,
+            label: config.label,
             name: this.targetProperty,
-            placeholder: this.config.placeholder,
-            placement: this.config.placement || Components.DropdownPlacements.Left,
+            placeholder: config.placeholder,
             type: Components.FormControlTypes.MultiDropdownCheckbox,
             value: currentValue,
             onChange: (items) => {
@@ -38,15 +41,16 @@ class _MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckbox> {
                 catch { }
 
                 // Call the event
-                value = this.config.onSave ? this.config.onSave(value) : value;
+                value = config.onSave ? config.onSave(value) : value;
 
                 // Update the property
                 onChange(this.targetProperty, value);
             }
-        } as Components.IFormControlPropsMultiDropdownCheckbox;
+        } as Components.IFormControlPropsMultiDropdown;
 
-        // Call the rendering event
-        props = this.config.onRendering ? this.config.onRendering(props) : props;
+        // Call the rendering events
+        props = this.onRendering(props);
+        props = config.onRendering ? config.onRendering(props) : props;
 
         // Render the dropdown
         Components.Form({
@@ -54,11 +58,11 @@ class _MultiDropdownCheckbox extends BasePropertyPane<IMultiDropdownCheckbox> {
             controls: [props],
             onControlRendered: (ctrl) => {
                 // Call the event
-                this.config.onRendered ? this.config.onRendered(ctrl.dropdown, ctrl.props) : null;
+                config.onRendered ? config.onRendered(ctrl.dropdown, ctrl.props) : null;
             }
         })
     }
 }
-export const MultiDropdownCheckbox = (targetProperty: string, config: IMultiDropdownCheckbox, context?: any) => {
-    return new _MultiDropdownCheckbox(targetProperty, config, context);
+export const MultiDropdown = (targetProperty: string, config: IMultiDropdown, context?: any) => {
+    return new _MultiDropdown(targetProperty, config, context);
 }
