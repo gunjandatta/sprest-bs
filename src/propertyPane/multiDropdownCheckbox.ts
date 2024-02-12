@@ -9,6 +9,7 @@ class _MultiDropdownCheckbox extends _MultiDropdown<IMultiDropdownCheckbox> {
     // Override the rendering method to customize the type
     protected onRendering(props: Components.IFormControlPropsMultiDropdownCheckbox): Components.IFormControlPropsMultiDropdownCheckbox {
         // Set the type and placement
+        props.placeholder = this.config.placeholder;
         props.placement = this.config.placement || Components.DropdownPlacements.Left;
         props.type = Components.FormControlTypes.MultiDropdownCheckbox;
 

@@ -10,7 +10,6 @@ export interface IBasePropertyPaneProps<IComponent = any, IComponentProps = any>
     onRendered?: (component?: IComponent, props?: IComponentProps) => void;
     onRendering?: (props?: IComponentProps) => IComponentProps;
     onSave?: (value: string | number | boolean | undefined) => string | number | boolean | undefined;
-    placeholder?: string;
     properties?: object;
     tooltip?: string;
 }
@@ -81,6 +80,7 @@ export const MultiDropdown = (targetProperty: string, config: IMultiDropdown, co
  */
 export interface IMultiDropdownButton extends IBasePropertyPaneProps<IDropdown, IFormControlPropsMultiDropdownButton> {
     items?: IDropdownItem[];
+    placeholder?: string;
     placement?: number;
 }
 export const MultiDropdownButton = (targetProperty: string, config: IMultiDropdownButton, context?: any) => IBasePropertyPane;
@@ -90,6 +90,7 @@ export const MultiDropdownButton = (targetProperty: string, config: IMultiDropdo
  */
 export interface IMultiDropdownCheckbox extends IBasePropertyPaneProps<IDropdown, IFormControlPropsMultiDropdownCheckbox> {
     items?: IDropdownItem[];
+    placeholder?: string;
     placement?: number;
 }
 export const MultiDropdownCheckbox = (targetProperty: string, config: IMultiDropdownCheckbox, context?: any) => IBasePropertyPane;

@@ -9,6 +9,7 @@ class _MultiDropdownButton extends _MultiDropdown<IMultiDropdownButton> {
     // Override the rendering method to customize the type
     protected onRendering(props: Components.IFormControlPropsMultiDropdownButton): Components.IFormControlPropsMultiDropdownButton {
         // Set the type and placement
+        props.placeholder = this.config.placeholder;
         props.placement = this.config.placement || Components.DropdownPlacements.Left;
         props.type = Components.FormControlTypes.MultiDropdownButton;
 

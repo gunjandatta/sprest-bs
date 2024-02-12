@@ -31,8 +31,7 @@ export class _MultiDropdown<T = IMultiDropdown> extends BasePropertyPane<T> {
             items: config.items,
             label: config.label,
             name: this.targetProperty,
-            placeholder: config.placeholder,
-            type: Components.FormControlTypes.MultiDropdownCheckbox,
+            type: Components.FormControlTypes.MultiDropdown,
             value: currentValue,
             onChange: (items) => {
                 // Convert the object as a string

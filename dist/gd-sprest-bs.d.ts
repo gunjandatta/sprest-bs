@@ -56,7 +56,6 @@ declare module 'gd-sprest-bs/propertyPane/types' {
             onRendered?: (component?: IComponent, props?: IComponentProps) => void;
             onRendering?: (props?: IComponentProps) => IComponentProps;
             onSave?: (value: string | number | boolean | undefined) => string | number | boolean | undefined;
-            placeholder?: string;
             properties?: object;
             tooltip?: string;
     }
@@ -127,6 +126,7 @@ declare module 'gd-sprest-bs/propertyPane/types' {
         */
     export interface IMultiDropdownButton extends IBasePropertyPaneProps<IDropdown, IFormControlPropsMultiDropdownButton> {
             items?: IDropdownItem[];
+            placeholder?: string;
             placement?: number;
     }
     export const MultiDropdownButton = (targetProperty: string, config: IMultiDropdownButton, context?: any) => IBasePropertyPane;
@@ -136,6 +136,7 @@ declare module 'gd-sprest-bs/propertyPane/types' {
         */
     export interface IMultiDropdownCheckbox extends IBasePropertyPaneProps<IDropdown, IFormControlPropsMultiDropdownCheckbox> {
             items?: IDropdownItem[];
+            placeholder?: string;
             placement?: number;
     }
     export const MultiDropdownCheckbox = (targetProperty: string, config: IMultiDropdownCheckbox, context?: any) => IBasePropertyPane;
