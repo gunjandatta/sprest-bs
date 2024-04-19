@@ -21,8 +21,7 @@ module.exports = (env, argv) => {
         resolve: {
             extensions: [".js", ".ts"],
             alias: {
-                "flatpickr": "flatpickr/dist/flatpickr.min.js",
-                "quill": "quill/dist/quill.min.js"
+                "flatpickr": "flatpickr/dist/flatpickr.min.js"
             }
         },
         optimization: {

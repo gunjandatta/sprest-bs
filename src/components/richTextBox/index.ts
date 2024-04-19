@@ -1,5 +1,5 @@
 import { Components } from "gd-bs";
-import * as Quill from "quill";
+import Quill from "quill";
 import * as Toolbars from "./toolbar";
 import { IRichTextBox, IRichTextBoxProps, IFormControlPropsRichTextBox } from "./types";
 
@@ -93,7 +93,7 @@ export const RichTextBox = (props: IRichTextBoxProps): IRichTextBox => {
     }
 
     // Apply the plugin
-    let quillObj = new Quill(elEditor, options);
+    let quillObj = new Quill(elEditor, options as any);
 
     // See if we are hiding the toolbar
     if (!showToolbar) {
