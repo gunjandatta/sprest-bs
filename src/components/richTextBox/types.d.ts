@@ -32,15 +32,15 @@ export interface IRichTextBox {
  * Rich TextBox Quill Options
  */
 export interface IRichTextBoxOptions {
+    bounds?: HTMLElement | string | undefined;
     debug?: string | boolean | undefined;
+    formats?: string[] | undefined;
     modules?: { [key: string]: any } | undefined;
     placeholder?: string | undefined;
     readOnly?: boolean | undefined;
-    theme?: string | undefined;
-    formats?: string[] | undefined;
-    bounds?: HTMLElement | string | undefined;
     scrollingContainer?: HTMLElement | string | undefined;
     strict?: boolean | undefined;
+    theme?: string | undefined;
 }
 
 /**
