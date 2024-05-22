@@ -16,6 +16,9 @@ declare module 'gd-sprest-bs' {
     export * from "gd-bs";
     export * from "gd-sprest";
     
+    import { CustomIconTypes, CustomIcons } from "gd-sprest-bs/icons/customIcons";
+    export { CustomIconTypes, CustomIcons }
+    
     import * as Components from "gd-sprest-bs/components/types";
     import * as PropertyPane from "gd-sprest-bs/propertyPane/types";
     import { ThemeManager } from "gd-sprest-bs/themeManager/types";
@@ -29,6 +32,42 @@ declare module 'gd-sprest-bs' {
     
     import { IRESTBS } from "gd-sprest-bs/rest";
     export const $REST: IRESTBS;
+}
+
+declare module 'gd-sprest-bs/icons/customIcons' {
+    export const CustomIcons: (iconType:number, height?:number, width?:number, className?:string) => HTMLElement;
+    
+    export const CustomIconTypes: {
+        aIP: number;
+        bookings: number;
+        dataverse: number;
+        defender: number;
+        dynamics: number;
+        entra: number;
+        exchange: number;
+        forms: number;
+        intune: number;
+        keyVault: number;
+        m365: number;
+        mDM: number;
+        office: number;
+        officeOnline: number;
+        oneDrive: number;
+        planner: number;
+        powerApps: number;
+        powerAutomate: number;
+        powerBI: number;
+        powerPlatform: number;
+        project: number;
+        securityCenter: number;
+        serviceHealth: number;
+        sharePoint: number;
+        skype: number;
+        stream: number;
+        sway: number;
+        teams: number;
+        viva: number;
+    }
 }
 
 declare module 'gd-sprest-bs/components/types' {
@@ -1088,42 +1127,6 @@ declare module 'gd-sprest-bs/webparts/taxonomy/types' {
     interface ITermInfo {
             id: string;
             name: string;
-    }
-}
-
-declare module 'gd-sprest-bs/icons/customIcons' {
-    export const CustomIcons: (iconType:number, height?:number, width?:number, className?:string) => HTMLElement;
-    
-    export const CustomIconTypes: {
-        aIP: number;
-        bookings: number;
-        dataverse: number;
-        defender: number;
-        dynamics: number;
-        entra: number;
-        exchange: number;
-        forms: number;
-        intune: number;
-        keyVault: number;
-        m365: number;
-        mDM: number;
-        office: number;
-        officeOnline: number;
-        oneDrive: number;
-        planner: number;
-        powerApps: number;
-        powerAutomate: number;
-        powerBI: number;
-        powerPlatform: number;
-        project: number;
-        securityCenter: number;
-        serviceHealth: number;
-        sharePoint: number;
-        skype: number;
-        stream: number;
-        sway: number;
-        teams: number;
-        viva: number;
     }
 }
 

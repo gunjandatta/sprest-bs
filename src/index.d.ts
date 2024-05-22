@@ -2,6 +2,10 @@
 export * from "gd-bs";
 export * from "gd-sprest";
 
+// Custom icons
+import { CustomIconTypes, CustomIcons } from "./icons/customIcons";
+export { CustomIconTypes, CustomIcons }
+
 /* BootStrap Components */
 import * as Components from "./components/types";
 import * as PropertyPane from "./propertyPane/types";
