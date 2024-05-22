@@ -1,0 +1,1 @@
+export const Teams: (height?:number, width?:number, className?:string) => HTMLElement;

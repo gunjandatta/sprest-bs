@@ -1,0 +1,1 @@
+export const OneDrive: (height?:number, width?:number, className?:string) => HTMLElement;

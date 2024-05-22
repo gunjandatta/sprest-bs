@@ -1,0 +1,1 @@
+export const Dynamics: (height?:number, width?:number, className?:string) => HTMLElement;

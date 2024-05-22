@@ -1,0 +1,1 @@
+export const SharePoint: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const PowerAutomate: (height?:number, width?:number, className?:string) => HTMLElement;

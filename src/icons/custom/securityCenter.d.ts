@@ -1,0 +1,1 @@
+export const SecurityCenter: (height?:number, width?:number, className?:string) => HTMLElement;

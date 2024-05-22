@@ -1,0 +1,1 @@
+export const Defender: (height?:number, width?:number, className?:string) => HTMLElement;

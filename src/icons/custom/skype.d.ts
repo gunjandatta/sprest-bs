@@ -1,0 +1,1 @@
+export const Skype: (height?:number, width?:number, className?:string) => HTMLElement;

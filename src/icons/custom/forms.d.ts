@@ -1,0 +1,1 @@
+export const Forms: (height?:number, width?:number, className?:string) => HTMLElement;

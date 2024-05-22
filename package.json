@@ -1,6 +1,6 @@
 {
     "name": "gd-sprest-bs",
-    "version": "10.11.47",
+    "version": "10.11.48",
     "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
     "main": "build/index.js",
     "typings": "src/index.d.ts",
@@ -9,7 +9,7 @@
         "build": "tsc && npm run build-sass && webpack --mode=development && npm run build-icons",
         "build-icons": "webpack --config webpack.icons.js --mode=development",
         "build-sass": "webpack --config webpack.sass.js --mode=production",
-        "clean": "node ./clean.js",
+        "clean": "node ./clean.js && node ./customIcons.js",
         "docs": "typedoc",
         "package": "npm run all && npm run docs",
         "prod": "webpack --mode=production && npm run prod-icons",

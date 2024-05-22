@@ -1,0 +1,1 @@
+export const AIP: (height?:number, width?:number, className?:string) => HTMLElement;

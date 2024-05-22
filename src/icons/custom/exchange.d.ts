@@ -1,0 +1,1 @@
+export const Exchange: (height?:number, width?:number, className?:string) => HTMLElement;

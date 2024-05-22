@@ -186,6 +186,7 @@ declare module 'gd-sprest-bs/rest' {
     import { IconTypes, Icons } from "gd-bs";
     import { IREST } from "gd-sprest";
     import { Components } from "gd-sprest-bs/components/types";
+    import { CustomIconTypes, CustomIcons } from "gd-sprest-bs/icons/customIcons";
     import * as WebParts from "gd-sprest-bs/webparts/types";
     
     /**
@@ -193,6 +194,7 @@ declare module 'gd-sprest-bs/rest' {
       */
     export interface IRESTBS extends IREST {
         Components,
+        CustomIconTypes, CustomIcons,
         Icons, IconTypes,
         WebParts
     }
@@ -1086,6 +1088,42 @@ declare module 'gd-sprest-bs/webparts/taxonomy/types' {
     interface ITermInfo {
             id: string;
             name: string;
+    }
+}
+
+declare module 'gd-sprest-bs/icons/customIcons' {
+    export const CustomIcons: (iconType:number, height?:number, width?:number, className?:string) => HTMLElement;
+    
+    export const CustomIconTypes: {
+        aIP: number;
+        bookings: number;
+        dataverse: number;
+        defender: number;
+        dynamics: number;
+        entra: number;
+        exchange: number;
+        forms: number;
+        intune: number;
+        keyVault: number;
+        m365: number;
+        mDM: number;
+        office: number;
+        officeOnline: number;
+        oneDrive: number;
+        planner: number;
+        powerApps: number;
+        powerAutomate: number;
+        powerBI: number;
+        powerPlatform: number;
+        project: number;
+        securityCenter: number;
+        serviceHealth: number;
+        sharePoint: number;
+        skype: number;
+        stream: number;
+        sway: number;
+        teams: number;
+        viva: number;
     }
 }
 

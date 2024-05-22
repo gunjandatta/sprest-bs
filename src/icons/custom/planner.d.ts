@@ -1,0 +1,1 @@
+export const Planner: (height?:number, width?:number, className?:string) => HTMLElement;

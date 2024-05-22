@@ -1,0 +1,1 @@
+export const PowerBI: (height?:number, width?:number, className?:string) => HTMLElement;

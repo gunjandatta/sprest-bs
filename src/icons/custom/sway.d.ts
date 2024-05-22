@@ -1,0 +1,1 @@
+export const Sway: (height?:number, width?:number, className?:string) => HTMLElement;

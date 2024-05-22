@@ -1,0 +1,1 @@
+export const Project: (height?:number, width?:number, className?:string) => HTMLElement;

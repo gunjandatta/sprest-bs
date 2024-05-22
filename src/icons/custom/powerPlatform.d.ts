@@ -1,0 +1,1 @@
+export const PowerPlatform: (height?:number, width?:number, className?:string) => HTMLElement;

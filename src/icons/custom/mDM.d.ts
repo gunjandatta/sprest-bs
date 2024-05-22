@@ -1,0 +1,1 @@
+export const MDM: (height?:number, width?:number, className?:string) => HTMLElement;

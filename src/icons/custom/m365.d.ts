@@ -1,0 +1,1 @@
+export const M365: (height?:number, width?:number, className?:string) => HTMLElement;

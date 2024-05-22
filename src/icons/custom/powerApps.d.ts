@@ -1,0 +1,1 @@
+export const PowerApps: (height?:number, width?:number, className?:string) => HTMLElement;

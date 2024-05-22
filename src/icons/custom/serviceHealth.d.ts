@@ -1,0 +1,1 @@
+export const ServiceHealth: (height?:number, width?:number, className?:string) => HTMLElement;

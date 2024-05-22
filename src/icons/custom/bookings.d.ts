@@ -1,0 +1,1 @@
+export const Bookings: (height?:number, width?:number, className?:string) => HTMLElement;
