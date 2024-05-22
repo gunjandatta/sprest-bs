@@ -5,6 +5,10 @@ export * from "gd-sprest";
 import { Components } from "./components";
 export * from "./components";
 
+// Custom icons
+import { CustomIconTypes, CustomIcons } from "./icons/customIcons";
+export { CustomIconTypes, CustomIcons }
+
 // SharePoint Framework property components
 import * as PropertyPane from "./propertyPane";
 export { PropertyPane }
@@ -25,6 +29,8 @@ const $REST = window && window["$REST"];
 if ($REST) {
     // Update the $REST global variable
     $REST.Components = Components;
+    $REST.CustomIconTypes = CustomIconTypes;
+    $REST.CustomIcons = CustomIcons;
     $REST.ThemeManager = ThemeManager;
     $REST.WebParts = WebParts;
 }
