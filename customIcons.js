@@ -83,7 +83,7 @@ export function ${icon[0]}(height, width, className?) {
     iconIdxDefs.push(`export const ${icon[0]}: (height?:number, width?:number, className?:string) => HTMLElement;`);
 
     // Append the switch information
-    iconSwitch.push(`\t\tcase ${i}:`);
+    iconSwitch.push(`\t\tcase ${i+1}:`);
     iconSwitch.push(`\t\t\treturn CustomSVGIcons.${icon[0]}(height, width, className);`);
 }
 
