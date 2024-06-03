@@ -1,3 +1,4 @@
+const { log } = require('console');
 var fs = require('fs');
 
 /**
@@ -66,16 +67,38 @@ for (let i = 0; i < Icons.length; i++) {
     fs.writeFileSync(dstIconsPath + "/" + fileName + ".d.ts",
         `export const ${icon[0]}: (height?:number, width?:number, className?:string) => HTMLElement;`);
 
+    // Find the ids and add a placeholder
+    let ids = [];
+    let svg = icon[1].split("id='");
+    for (let i = 1; i < svg.length; i++) {
+        // Find the index for the id
+        let idx = svg[i].indexOf("'", 0);
+
+        // Add the placeholder
+        svg[i] = svg[i].substring(0, idx) + "-{" + ids.length + "}" + svg[i].substring(idx);
+
+        // Append the id
+        ids.push(svg[i].substring(0, idx));
+    }
+
+    // Generate the new string
+    svg = svg.join("id='");
+
+    // Parse the counter and replace the placeholders
+    for (let i = 0; i < ids.length; i++) {
+        svg = svg.replace("#" + ids[i], "#" + ids[i] + "-{" + (i) + "}")
+    }
+
     // Create the file
     fs.writeFileSync(dstIconsPath + "/" + fileName + ".ts", `
 import { generateIcon } from "../generate";
 export function ${icon[0]}(height, width, className?) {
-    return generateIcon(\`${icon[1]}\`, height, width, className);
+    return generateIcon(\`${svg}\`, height, width, className, ${ids.length});
 }
 `);
 
     // Append the enum information
-    iconTypes.push(`\t${fileName} = ${i+1}`);
+    iconTypes.push(`\t${fileName} = ${i + 1}`);
     iconDefs.push(`\t${fileName}: number;`);
 
     // Append the index information
@@ -83,7 +106,7 @@ export function ${icon[0]}(height, width, className?) {
     iconIdxDefs.push(`export const ${icon[0]}: (height?:number, width?:number, className?:string) => HTMLElement;`);
 
     // Append the switch information
-    iconSwitch.push(`\t\tcase ${i+1}:`);
+    iconSwitch.push(`\t\tcase ${i + 1}:`);
     iconSwitch.push(`\t\t\treturn CustomSVGIcons.${icon[0]}(height, width, className);`);
 }
 
