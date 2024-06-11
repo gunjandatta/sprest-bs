@@ -1,5 +1,5 @@
 
 import { generateIcon } from "../generate";
-export function OneDrive(height, width, className?) {
+export function OneDrive(height?: number, width?: number, className?: string) {
     return generateIcon(`<svg width='32' height='32' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'><path d='M36.9,33.5S48.5,27,48.7,27.1A16.9031,16.9031,0,0,0,28.2,14.9,16.63736,16.63736,0,0,0,18.3,22C18.4,22,36.9,33.5,36.9,33.5Z' fill='#0364b8'/><path d='M25.6,24h0a13.593,13.593,0,0,0-7.1-2h-.2A13.51,13.51,0,0,0,5,35.7a13.94314,13.94314,0,0,0,2.4,7.6L26,41.4,36.9,30.9Z' fill='#0f78d4'/><path d='M48.8,27.1h-.7a10.35638,10.35638,0,0,0-4.3.9h0L37,30.8,44.4,39l13.4,4.2a10.96681,10.96681,0,0,0-4.5-14.9,12.05291,12.05291,0,0,0-4.5-1.2Z' fill='#1490df'/><path d='M48.1,37.5l-2.8-1.7L38.9,32l-2-1.2L31.8,33l-9.9,4.2L17.4,39l-10,4.2A13.60738,13.60738,0,0,0,18.5,49H48a11.11487,11.11487,0,0,0,9.7-5.8Z' fill='#28a8ea'/></svg>`, height, width, className, 0);
 }

@@ -1,5 +1,5 @@
 
 import { generateIcon } from "../generate";
-export function OfficeOnline(height, width, className?) {
+export function OfficeOnline(height?: number, width?: number, className?: string) {
     return generateIcon(`<svg width='32' height='32' viewBox='0 0 136 81' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' fill='#fff' fill-rule='evenodd' stroke='#000' stroke-linecap='round' stroke-linejoin='round'><use xlink:href='#oos-a-{0}' x='.5' y='.5'/><symbol id='oos-a-{0}' overflow='visible'><path d='M124.071 40.32c.214-1.067.214-1.92.214-2.773 0-14.293-10.929-26.027-24.429-26.027-3.429 0-7.071.853-10.286 2.347C85.071 5.333 76.714 0 67.714 0c-13.5 0-24.429 11.093-25.286 25.173-1.071-.213-2.143-.213-3.214-.213-6.429 0-12.429 3.2-16.071 8.747C10.5 32.853 0 43.52 0 56.747 0 69.547 9.857 80 21.857 80h94.929l3-.64c9-2.347 15.214-10.88 15.214-20.48 0-7.893-4.286-14.933-10.929-18.56zM90 68.053h0l-13.714 3.84-24.857-9.173 24.857 3.627V33.28L60 37.12v22.4l-8.357 3.2V34.987h0l24.643-9.173L90 29.867v38.187h0 0z' fill='#de3c00' stroke='none'/></symbol></svg>`, height, width, className, 1);
 }

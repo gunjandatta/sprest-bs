@@ -92,7 +92,7 @@ for (let i = 0; i < Icons.length; i++) {
     // Create the file
     fs.writeFileSync(dstIconsPath + "/" + fileName + ".ts", `
 import { generateIcon } from "../generate";
-export function ${icon[0]}(height, width, className?) {
+export function ${icon[0]}(height?: number, width?: number, className?: string) {
     return generateIcon(\`${svg}\`, height, width, className, ${ids.length});
 }
 `);
