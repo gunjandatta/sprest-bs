@@ -1,7 +1,7 @@
 // Generates the html for an icon
 export const generateIcon = (svg: string, height: number = 32, width: number = 32, className?: string, placeholders?: number) => {
 	// See if placeholders exist
-	if (placeholders > 0) {
+	if (typeof(placeholders) === "number" && placeholders > 0) {
 		// Parse the number of placeholders
 		for (let i = 0; i < placeholders; i++) {
 			let regex = new RegExp("\\{" + i + "\\}", "g");
