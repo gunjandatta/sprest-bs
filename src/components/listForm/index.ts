@@ -720,54 +720,37 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                                         text: fileInfo.name
                                                     },
                                                     options: {
-                                                        content: Components.ButtonGroup({
-                                                            buttons: [
-                                                                {
-                                                                    data: fileInfo,
-                                                                    isSmall: true,
-                                                                    text: "Remove",
-                                                                    type: Components.ButtonTypes.Danger,
-                                                                    onClick: (btn, ev) => {
-                                                                        let fileName = (btn.data as Helper.IListFormAttachmentInfo).name;
+                                                        content: Components.Button({
+                                                            data: fileInfo,
+                                                            isSmall: true,
+                                                            text: "Remove",
+                                                            type: Components.ButtonTypes.Danger,
+                                                            onClick: (btn, ev) => {
+                                                                let fileName = (btn.data as Helper.IListFormAttachmentInfo).name;
 
-                                                                        // Parse the array
-                                                                        for (let i = 0; i < attachments.new.length; i++) {
-                                                                            // See if this is the target attachment
-                                                                            if (attachments.new[i].name == fileName) {
-                                                                                // Remove this attachment
-                                                                                attachments.new.splice(i, 1);
-                                                                                break;
-                                                                            }
-                                                                        }
-
-                                                                        // Get the files
-                                                                        let files = btnGroup.querySelectorAll(".btn.file-attachment");
-                                                                        for (let i = 0; i < files.length; i++) {
-                                                                            let file = files[i] as HTMLAnchorElement;
-
-                                                                            // See if this is the target button
-                                                                            if (file.innerText == fileName) {
-                                                                                // Remove this popover
-                                                                                file.parentElement.removeChild(file);
-                                                                                break;
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                },
-                                                                {
-                                                                    data: fileInfo,
-                                                                    isDisabled: fileInfo.src ? false : true,
-                                                                    isSmall: true,
-                                                                    text: "View",
-                                                                    type: Components.ButtonTypes.Primary,
-                                                                    onClick: (btn, ev) => {
-                                                                        let fileUrl = (btn.data as Helper.IListFormAttachmentInfo).src;
-
-                                                                        // Show the file in a new tab
-                                                                        window.open(fileUrl, "_blank");
+                                                                // Parse the array
+                                                                for (let i = 0; i < attachments.new.length; i++) {
+                                                                    // See if this is the target attachment
+                                                                    if (attachments.new[i].name == fileName) {
+                                                                        // Remove this attachment
+                                                                        attachments.new.splice(i, 1);
+                                                                        break;
                                                                     }
                                                                 }
-                                                            ]
+
+                                                                // Get the files
+                                                                let files = btnGroup.querySelectorAll(".btn.file-attachment");
+                                                                for (let i = 0; i < files.length; i++) {
+                                                                    let file = files[i] as HTMLAnchorElement;
+
+                                                                    // See if this is the target button
+                                                                    if (file.innerText == fileName) {
+                                                                        // Remove this popover
+                                                                        file.parentElement.removeChild(file);
+                                                                        break;
+                                                                    }
+                                                                }
+                                                            }
                                                         }).el
                                                     }
                                                 }).el);
@@ -795,30 +778,47 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                                             text: attachment.FileName,
                                         },
                                         options: {
-                                            content: Components.Button({
-                                                data: attachment,
-                                                isSmall: true,
-                                                text: "Remove",
-                                                type: Components.ButtonTypes.Danger,
-                                                onClick: (btn, ev) => {
-                                                    let attachment = btn.data as Types.SP.Attachment;
+                                            content: Components.ButtonGroup({
+                                                buttons: [
+                                                    {
+                                                        data: attachment,
+                                                        isSmall: true,
+                                                        text: "Remove",
+                                                        type: Components.ButtonTypes.Danger,
+                                                        onClick: (btn, ev) => {
+                                                            let attachment = btn.data as Types.SP.Attachment;
 
-                                                    // Add this file for deletion
-                                                    attachments.delete.push(attachment);
+                                                            // Add this file for deletion
+                                                            attachments.delete.push(attachment);
 
-                                                    // Get the files
-                                                    let files = btnGroup.querySelectorAll(".btn.file-attachment");
-                                                    for (let i = 0; i < files.length; i++) {
-                                                        let file = files[i] as HTMLAnchorElement;
+                                                            // Get the files
+                                                            let files = btnGroup.querySelectorAll(".btn.file-attachment");
+                                                            for (let i = 0; i < files.length; i++) {
+                                                                let file = files[i] as HTMLAnchorElement;
 
-                                                        // See if this is the target button
-                                                        if (file.innerText == attachment.FileName) {
-                                                            // Remove this popover
-                                                            file.parentElement.removeChild(file);
-                                                            break;
+                                                                // See if this is the target button
+                                                                if (file.innerText == attachment.FileName) {
+                                                                    // Remove this popover
+                                                                    file.parentElement.removeChild(file);
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        data: attachment,
+                                                        isDisabled: attachment.ServerRelativeUrl ? false : true,
+                                                        isSmall: true,
+                                                        text: "View",
+                                                        type: Components.ButtonTypes.Primary,
+                                                        onClick: (btn, ev) => {
+                                                            let fileUrl = (btn.data as Types.SP.Attachment).ServerRelativeUrl;
+
+                                                            // Show the file in a new tab
+                                                            window.open(fileUrl, "_blank");
                                                         }
                                                     }
-                                                }
+                                                ]
                                             }).el
                                         }
                                     }).el);
