@@ -3,7 +3,7 @@ import { Components } from "../core";
 import { DateTimeControlType } from "../datetime";
 import { IFormControlPropsDateTime } from "../datetime/types";
 import { Field } from "../field";
-import { IField, IFormControlLookupProps, IFieldImageInfo, IFieldImageValue } from "../field/types";
+import { IField, IFieldImageInfo, IFieldImageValue } from "../field/types";
 import { RichTextBoxControlType, RichTextBoxTypes } from "../richTextBox"
 import { IFormControlPropsRichTextBox } from "../richTextBox/types";
 import { IListForm, IListFormDisplayProps, IListFormEdit, IListFormEditProps } from "./types";
@@ -1198,6 +1198,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             // Return the flag
             return isValid;
         },
+        refreshRequestDigest: ListForm.refreshRequestDigest,
         save: (customValues: any = {}) => {
             let onSaving = (values) => {
                 return new Promise((resolve) => {

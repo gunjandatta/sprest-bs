@@ -1406,8 +1406,11 @@ declare module 'gd-sprest-bs/components/listForm/types' {
             /** Inserts a control into the form. */
             insertControl(idx: number, control: IFormControlProps);
     
-            /** Method to determine if the field is valid */
+            /** Method to determine if the field is valid. */
             isValid(): boolean;
+    
+            /** Method to refresh the request digest value. */
+            refreshRequestDigest: PromiseLike<void>;
     
             /** Method to save the form. */
             save(customValues?: any): PromiseLike<Types.SP.ListItem>;
