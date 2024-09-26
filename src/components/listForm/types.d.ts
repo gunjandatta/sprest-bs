@@ -119,7 +119,7 @@ export interface IListFormEdit {
     isValid(): boolean;
 
     /** Method to refresh the request digest value. */
-    refreshRequestDigest: PromiseLike<void>;
+    refreshRequestDigest(): PromiseLike<void>;
 
     /** Method to save the form. */
     save(customValues?: any): PromiseLike<Types.SP.ListItem>;
