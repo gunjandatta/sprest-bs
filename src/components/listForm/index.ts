@@ -1198,7 +1198,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             // Return the flag
             return isValid;
         },
-        refreshRequestDigest: ListForm.refreshRequestDigest,
+        refreshRequestDigest: () => { return ListForm.refreshRequestDigest(props.info); },
         save: (customValues: any = {}) => {
             let onSaving = (values) => {
                 return new Promise((resolve) => {
