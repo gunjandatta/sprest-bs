@@ -1177,6 +1177,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
             // Parse the fields
             for (let fieldName in props.info.fields) {
+                // See if we are showing a specific set of fields
+                if (props.includeFields && props.includeFields.indexOf(fieldName) < 0) { continue; }
+
                 // Skip readonly fields
                 let formField = mapper[fieldName];
                 if (formField == null || formField.controlProps.isReadonly) { continue; }
