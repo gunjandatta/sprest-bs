@@ -393,6 +393,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
 // Render the edit form
 ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     let customControls: Components.IFormControl[] = [];
+    let templateControls: { [key: string]: Components.IFormControlProps } = {};
     let mapper: { [key: string]: IField } = {};
     let rows: Array<Components.IFormRow> = [];
     let value = {};
@@ -932,6 +933,11 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             onControlRendered: (control, field) => {
                 // Update the mapper
                 mapper[field.InternalName].control = control;
+
+                // Call the custom event if it's defined
+                if (templateControls[field.InternalName] && templateControls[field.InternalName].onControlRendered) {
+                    templateControls[field.InternalName].onControlRendered(control);
+                }
             },
             onValidate: props.onValidate,
             onError: msg => {
@@ -962,10 +968,20 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
             // Ensure the controls exists
             if (control && refControl) {
+                // Save a reference to the control
+                templateControls[refControl.name] = refControl;
+
                 // Parse the control keys
                 for (let key in control) {
                     // Skip if a value is already defined
-                    if (refControl[key]) { continue; }
+                    if (refControl[key]) {
+                        // See if this is the control rendered event
+                        if (key == "onControlRendered") {
+                            // Override the event
+                            refControl[key] = control[key];
+                        }
+                        continue;
+                    }
 
                     // Update the property
                     refControl[key] = control[key];
