@@ -1189,13 +1189,27 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
                 // Update the flag
                 isValid = isValid && controlIsValid;
+
+                // See if the control is not valid
+                if (!controlIsValid) {
+                    // Log the information
+                    console.info("Form Control '" + fieldName + "' is not valid.", formField);
+                }
             }
 
             // Parse the custom controls
             for (let i = 0; i < customControls.length; i++) {
+                let customControl = customControls[i];
+
                 // Validate the form field and update the status flag
-                let controlIsValid = customControls[i].isValid;
+                let controlIsValid = customControl.isValid;
                 isValid = isValid && controlIsValid;
+
+                // See if the control is not valid
+                if (!controlIsValid) {
+                    // Log the information
+                    console.info("Custom Form Control '" + customControl.props.name + "' is not valid.", customControl);
+                }
             }
 
             // Return the flag
