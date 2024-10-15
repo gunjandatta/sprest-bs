@@ -956,10 +956,10 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
     // See if there is a template
     if (props.template) {
-        // Method to handle template control events
-        let processEvent = (event: string, control: Components.IFormControlProps, refControl: Components.IFormControlProps) => {
+        // Method to handle internal and custom events
+        let createEvent = (event: string, control: Components.IFormControlProps, refControl: Components.IFormControlProps) => {
             // Set the event
-            refControl[event] = (...args) => {
+            return (...args) => {
                 // Call the events
                 control[event](...args);
                 refControl[event](...args);
@@ -981,7 +981,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     // See if this is an internal event
                     if (key == "onControlRendering" || key == "onControlRendered") {
                         // Ensure both events are called
-                        processEvent(key, control, refControl);
+                        refControl[key] = createEvent(key, control, refControl);
                     } else {
                         // Update the property
                         refControl[key] = control[key];
