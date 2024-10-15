@@ -956,6 +956,17 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
     // See if there is a template
     if (props.template) {
+        // Method to handle template control events
+        let processEvent = (event: string, control: Components.IFormControlProps, refControl: Components.IFormControlProps) => {
+            // Set the event
+            refControl[event] = (...args) => {
+                // Call the events
+                control[event](...args);
+                refControl[event](...args);
+            }
+        }
+
+        // Method to update the template control
         let updateControl = (refControl: Components.IFormControlProps) => {
             // Get the control from the mapper
             let control = refControl && mapper[refControl.name] ? mapper[refControl.name].controlProps : null;
@@ -967,8 +978,14 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     // Skip if a value is already defined
                     if (refControl[key]) { continue; }
 
-                    // Update the property
-                    refControl[key] = control[key];
+                    // See if this is an internal event
+                    if (key == "onControlRendering" || key == "onControlRendered") {
+                        // Ensure both events are called
+                        processEvent(key, control, refControl);
+                    } else {
+                        // Update the property
+                        refControl[key] = control[key];
+                    }
                 }
             }
         }
