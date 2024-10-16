@@ -957,37 +957,40 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     // See if there is a template
     if (props.template) {
         // Method to handle internal and custom events
-        let createEvent = (event: string, control: Components.IFormControlProps, refControl: Components.IFormControlProps) => {
-            let refEvent = refControl[event];
+        let createEvent = (event: string, control: Components.IFormControlProps, templateControl: Components.IFormControlProps) => {
+            let templateEvent = templateControl[event];
 
             // Set the event
             return (...args) => {
                 // Call the events
                 control[event](...args);
-                refEvent ? refEvent(...args) : null;
+                templateEvent(...args);
             }
         }
 
         // Method to update the template control
-        let updateControl = (refControl: Components.IFormControlProps) => {
+        let updateControl = (templateControl: Components.IFormControlProps) => {
             // Get the control from the mapper
-            let control = refControl && mapper[refControl.name] ? mapper[refControl.name].controlProps : null;
+            let control = templateControl && mapper[templateControl.name] ? mapper[templateControl.name].controlProps : null;
 
             // Ensure the controls exists
-            if (control && refControl) {
+            if (control && templateControl) {
                 // Parse the control keys
                 for (let key in control) {
                     // Skip if a value is already defined
-                    if (refControl[key]) { continue; }
+                    if (templateControl[key]) {
+                        // See if this is an internal event
+                        if (key == "onControlRendering" || key == "onControlRendered") {
+                            // Create a new event to call both internal and custom events
+                            templateControl[key] = createEvent(key, control, templateControl);
+                        }
 
-                    // See if this is an internal event
-                    if (key == "onControlRendering" || key == "onControlRendered") {
-                        // Ensure both events are called
-                        refControl[key] = createEvent(key, control, refControl);
-                    } else {
-                        // Update the property
-                        refControl[key] = control[key];
+                        // Skip this property
+                        continue;
                     }
+
+                    // Update the property
+                    templateControl[key] = control[key];
                 }
             }
         }
