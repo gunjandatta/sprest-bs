@@ -958,11 +958,13 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     if (props.template) {
         // Method to handle internal and custom events
         let createEvent = (event: string, control: Components.IFormControlProps, refControl: Components.IFormControlProps) => {
+            let refEvent = refControl[event];
+
             // Set the event
             return (...args) => {
                 // Call the events
                 control[event](...args);
-                refControl[event](...args);
+                refEvent(...args);
             }
         }
 
