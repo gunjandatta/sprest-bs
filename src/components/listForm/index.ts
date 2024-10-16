@@ -964,7 +964,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             return (...args) => {
                 // Call the events
                 control[event](...args);
-                refEvent(...args);
+                refEvent ? refEvent(...args) : null;
             }
         }
 
