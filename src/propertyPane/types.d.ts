@@ -67,6 +67,35 @@ export interface IBasePropertyPaneProperties {
     context?: any;
 }
 
+
+/**
+ * Dropdown
+ */
+export interface IDropdown extends IBasePropertyPaneProps<IDropdown, IFormControlPropsDropdown> {
+    items?: IDropdownItem[];
+}
+export const Dropdown = (targetProperty: string, config: IDropdown, context?: any) => IBasePropertyPane;
+
+/**
+ * Dropdown Button
+ */
+export interface IDropdownButton extends IBasePropertyPaneProps<IDropdown, IFormControlPropsDropdownButton> {
+    items?: IDropdownItem[];
+    placeholder?: string;
+    placement?: number;
+}
+export const DropdownButton = (targetProperty: string, config: IDropdownButton, context?: any) => IBasePropertyPane;
+
+/**
+ * Dropdown Checkbox
+ */
+export interface IDropdownCheckbox extends IBasePropertyPaneProps<IDropdown, IFormControlPropsDropdownCheckbox> {
+    items?: IDropdownItem[];
+    placeholder?: string;
+    placement?: number;
+}
+export const DropdownCheckbox = (targetProperty: string, config: IDropdownCheckbox, context?: any) => IBasePropertyPane;
+
 /**
  * Multi-Dropdown
  */
