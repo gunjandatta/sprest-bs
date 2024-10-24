@@ -1036,18 +1036,39 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             return props.onControlRendered ? props.onControlRendered(control, props.info.fields[control.props.name]) : null;
         },
         onControlRendering: control => {
+            let findTemplateControl = (ctrlName: string) => {
+                // Parse the template
+                for (let i = 0; i < props.template.length; i++) {
+                    let row = props.template[i];
+
+                    // Parse the columns if there are columns
+                    let columns = row.columns || [];
+                    for (let j = 0; j < columns.length; j++) {
+                        let column = columns[j];
+
+                        // See if this is the control
+                        if (column.control && column.control.name == ctrlName) { return column.control; }
+                    }
+                }
+
+                // Not found
+                return null;
+            }
+
             let updateReadOnly = (control: Components.IFormControlProps) => {
                 // See if this control is readonly
                 if (control.isReadonly) {
                     // Get the control display properties
                     let dispControl = renderDisplay(control.name, props);
                     if (dispControl) {
+                        let ctrlTemplate = props.template ? findTemplateControl(control.name) : null;
+
                         // Update the properties
-                        control.data = dispControl.data;
-                        control.label = dispControl.label;
-                        (control as IFormControlPropsDateTime).showTime = (dispControl as IFormControlPropsDateTime).showTime;
-                        control.type = dispControl.type;
-                        control.value = dispControl.value;
+                        control.data = ctrlTemplate ? ctrlTemplate.data : dispControl.data;
+                        control.label = ctrlTemplate ? ctrlTemplate.label : dispControl.label;
+                        (control as IFormControlPropsDateTime).showTime = ctrlTemplate ? (ctrlTemplate as IFormControlPropsDateTime).showTime : (dispControl as IFormControlPropsDateTime).showTime;
+                        control.type = ctrlTemplate ? ctrlTemplate.type : dispControl.type;
+                        control.value = ctrlTemplate ? ctrlTemplate.value : dispControl.value;
                     }
                 }
             }
