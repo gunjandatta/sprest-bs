@@ -1259,7 +1259,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             return isValid;
         },
         refreshRequestDigest: () => { return ListForm.refreshRequestDigest(props.info); },
-        save: (customValues: any = {}) => {
+        save: (customValues: any = {}, checkItemVersion?: boolean) => {
             let onSaving = (values) => {
                 return new Promise((resolve) => {
                     // See if a save event exists
@@ -1286,7 +1286,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     // Call the saving event
                     onSaving({ ...formValues, ...imageValues, ...customValues }).then(values => {
                         // Update the item
-                        ListForm.saveItem(props.info, values).then(info => {
+                        ListForm.saveItem(props.info, values, checkItemVersion).then(info => {
                             // Remove the attachments
                             removeAttachments(info).then(() => {
                                 // Save the attachments

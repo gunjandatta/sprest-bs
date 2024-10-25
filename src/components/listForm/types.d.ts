@@ -122,7 +122,7 @@ export interface IListFormEdit {
     refreshRequestDigest(): PromiseLike<void>;
 
     /** Method to save the form. */
-    save(customValues?: any): PromiseLike<Types.SP.ListItem>;
+    save(customValues?: any, checkItemVersion?: boolean): PromiseLike<Types.SP.ListItem>;
 }
 
 /**
