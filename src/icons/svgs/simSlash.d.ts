@@ -1,1 +1,0 @@
-export const simSlash: (height?:number, width?:number, className?:string) => HTMLElement;

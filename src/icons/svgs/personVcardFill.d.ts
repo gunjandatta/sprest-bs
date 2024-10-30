@@ -1,1 +1,0 @@
-export const personVcardFill: (height?:number, width?:number, className?:string) => HTMLElement;

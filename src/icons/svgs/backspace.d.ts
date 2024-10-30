@@ -1,1 +1,0 @@
-export const backspace: (height?:number, width?:number, className?:string) => HTMLElement;

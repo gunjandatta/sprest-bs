@@ -1,1 +1,0 @@
-export const dropletFill: (height?:number, width?:number, className?:string) => HTMLElement;

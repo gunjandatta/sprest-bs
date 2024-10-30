@@ -1,1 +1,0 @@
-export const calculatorFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const genderAmbiguous: (height?:number, width?:number, className?:string) => HTMLElement;

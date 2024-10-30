@@ -1,1 +1,0 @@
-export const hddNetworkFill: (height?:number, width?:number, className?:string) => HTMLElement;

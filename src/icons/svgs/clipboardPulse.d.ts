@@ -1,1 +1,0 @@
-export const clipboardPulse: (height?:number, width?:number, className?:string) => HTMLElement;

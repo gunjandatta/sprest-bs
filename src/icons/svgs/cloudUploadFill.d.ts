@@ -1,1 +1,0 @@
-export const cloudUploadFill: (height?:number, width?:number, className?:string) => HTMLElement;

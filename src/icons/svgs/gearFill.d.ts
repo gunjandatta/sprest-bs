@@ -1,1 +1,0 @@
-export const gearFill: (height?:number, width?:number, className?:string) => HTMLElement;

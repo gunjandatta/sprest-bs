@@ -1,1 +1,0 @@
-export const handIndexThumb: (height?:number, width?:number, className?:string) => HTMLElement;

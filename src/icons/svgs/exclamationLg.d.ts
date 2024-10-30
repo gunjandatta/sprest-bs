@@ -1,1 +1,0 @@
-export const exclamationLg: (height?:number, width?:number, className?:string) => HTMLElement;

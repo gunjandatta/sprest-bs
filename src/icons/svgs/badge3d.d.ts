@@ -1,1 +1,0 @@
-export const badge3d: (height?:number, width?:number, className?:string) => HTMLElement;

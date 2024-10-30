@@ -1,1 +1,0 @@
-export const unlockFill: (height?:number, width?:number, className?:string) => HTMLElement;

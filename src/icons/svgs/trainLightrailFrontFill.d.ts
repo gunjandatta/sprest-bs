@@ -1,1 +1,0 @@
-export const trainLightrailFrontFill: (height?:number, width?:number, className?:string) => HTMLElement;

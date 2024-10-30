@@ -1,1 +1,0 @@
-export const fileEarmarkFont: (height?:number, width?:number, className?:string) => HTMLElement;

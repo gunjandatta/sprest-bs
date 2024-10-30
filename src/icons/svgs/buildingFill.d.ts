@@ -1,1 +1,0 @@
-export const buildingFill: (height?:number, width?:number, className?:string) => HTMLElement;

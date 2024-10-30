@@ -1,1 +1,0 @@
-export const hearts: (height?:number, width?:number, className?:string) => HTMLElement;

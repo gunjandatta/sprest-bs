@@ -1,1 +1,0 @@
-export const tablet: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const calendar3Range: (height?:number, width?:number, className?:string) => HTMLElement;

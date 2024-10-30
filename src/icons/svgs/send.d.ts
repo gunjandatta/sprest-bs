@@ -1,1 +1,0 @@
-export const send: (height?:number, width?:number, className?:string) => HTMLElement;

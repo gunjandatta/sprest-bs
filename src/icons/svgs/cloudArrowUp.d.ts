@@ -1,1 +1,0 @@
-export const cloudArrowUp: (height?:number, width?:number, className?:string) => HTMLElement;

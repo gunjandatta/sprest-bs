@@ -1,1 +1,0 @@
-export const xSquare: (height?:number, width?:number, className?:string) => HTMLElement;

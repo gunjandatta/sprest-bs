@@ -1,1 +1,0 @@
-export const lightningCharge: (height?:number, width?:number, className?:string) => HTMLElement;

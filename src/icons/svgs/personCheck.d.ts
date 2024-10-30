@@ -1,1 +1,0 @@
-export const personCheck: (height?:number, width?:number, className?:string) => HTMLElement;

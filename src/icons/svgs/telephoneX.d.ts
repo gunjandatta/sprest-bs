@@ -1,1 +1,0 @@
-export const telephoneX: (height?:number, width?:number, className?:string) => HTMLElement;

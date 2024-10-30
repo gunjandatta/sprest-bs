@@ -1,1 +1,0 @@
-export const plusLg: (height?:number, width?:number, className?:string) => HTMLElement;

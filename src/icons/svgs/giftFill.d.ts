@@ -1,1 +1,0 @@
-export const giftFill: (height?:number, width?:number, className?:string) => HTMLElement;

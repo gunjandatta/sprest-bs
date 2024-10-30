@@ -1,1 +1,0 @@
-export const hourglassTop: (height?:number, width?:number, className?:string) => HTMLElement;

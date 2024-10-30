@@ -1,1 +1,0 @@
-export const signYield: (height?:number, width?:number, className?:string) => HTMLElement;

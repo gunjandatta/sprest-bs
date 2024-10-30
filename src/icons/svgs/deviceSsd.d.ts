@@ -1,1 +1,0 @@
-export const deviceSsd: (height?:number, width?:number, className?:string) => HTMLElement;

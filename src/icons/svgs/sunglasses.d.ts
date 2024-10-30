@@ -1,1 +1,0 @@
-export const sunglasses: (height?:number, width?:number, className?:string) => HTMLElement;

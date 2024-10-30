@@ -1,1 +1,0 @@
-export const telephoneMinus: (height?:number, width?:number, className?:string) => HTMLElement;

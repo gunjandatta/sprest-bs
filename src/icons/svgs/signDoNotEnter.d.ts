@@ -1,1 +1,0 @@
-export const signDoNotEnter: (height?:number, width?:number, className?:string) => HTMLElement;

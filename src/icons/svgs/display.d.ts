@@ -1,1 +1,0 @@
-export const display: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const hospitalFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const graphDown: (height?:number, width?:number, className?:string) => HTMLElement;

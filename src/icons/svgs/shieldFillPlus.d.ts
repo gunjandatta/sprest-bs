@@ -1,1 +1,0 @@
-export const shieldFillPlus: (height?:number, width?:number, className?:string) => HTMLElement;

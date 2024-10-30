@@ -1,1 +1,0 @@
-export const _8Circle: (height?:number, width?:number, className?:string) => HTMLElement;

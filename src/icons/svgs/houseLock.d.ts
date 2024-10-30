@@ -1,1 +1,0 @@
-export const houseLock: (height?:number, width?:number, className?:string) => HTMLElement;

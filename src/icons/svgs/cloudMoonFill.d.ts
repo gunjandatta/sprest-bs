@@ -1,1 +1,0 @@
-export const cloudMoonFill: (height?:number, width?:number, className?:string) => HTMLElement;

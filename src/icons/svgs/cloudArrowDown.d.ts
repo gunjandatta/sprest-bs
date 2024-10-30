@@ -1,1 +1,0 @@
-export const cloudArrowDown: (height?:number, width?:number, className?:string) => HTMLElement;

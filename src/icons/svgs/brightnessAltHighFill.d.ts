@@ -1,1 +1,0 @@
-export const brightnessAltHighFill: (height?:number, width?:number, className?:string) => HTMLElement;

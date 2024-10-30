@@ -1,1 +1,0 @@
-export const volumeOffFill: (height?:number, width?:number, className?:string) => HTMLElement;

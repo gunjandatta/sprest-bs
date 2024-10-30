@@ -1,1 +1,0 @@
-export const cone: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const film: (height?:number, width?:number, className?:string) => HTMLElement;

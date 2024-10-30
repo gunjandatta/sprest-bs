@@ -1,1 +1,0 @@
-export const pCircle: (height?:number, width?:number, className?:string) => HTMLElement;

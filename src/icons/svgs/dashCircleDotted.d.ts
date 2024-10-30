@@ -1,1 +1,0 @@
-export const dashCircleDotted: (height?:number, width?:number, className?:string) => HTMLElement;

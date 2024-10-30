@@ -1,1 +1,0 @@
-export const houseXFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const mouseFill: (height?:number, width?:number, className?:string) => HTMLElement;

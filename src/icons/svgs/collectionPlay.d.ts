@@ -1,1 +1,0 @@
-export const collectionPlay: (height?:number, width?:number, className?:string) => HTMLElement;

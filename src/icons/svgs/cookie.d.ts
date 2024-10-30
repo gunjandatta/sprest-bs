@@ -1,1 +1,0 @@
-export const cookie: (height?:number, width?:number, className?:string) => HTMLElement;

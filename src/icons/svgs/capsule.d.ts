@@ -1,1 +1,0 @@
-export const capsule: (height?:number, width?:number, className?:string) => HTMLElement;

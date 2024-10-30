@@ -1,1 +1,0 @@
-export const signStop: (height?:number, width?:number, className?:string) => HTMLElement;

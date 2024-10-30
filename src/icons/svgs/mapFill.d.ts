@@ -1,1 +1,0 @@
-export const mapFill: (height?:number, width?:number, className?:string) => HTMLElement;

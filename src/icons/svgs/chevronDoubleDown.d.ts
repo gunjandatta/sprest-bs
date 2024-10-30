@@ -1,1 +1,0 @@
-export const chevronDoubleDown: (height?:number, width?:number, className?:string) => HTMLElement;

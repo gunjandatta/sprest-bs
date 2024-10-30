@@ -1,1 +1,0 @@
-export const screwdriver: (height?:number, width?:number, className?:string) => HTMLElement;

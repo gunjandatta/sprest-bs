@@ -1,1 +1,0 @@
-export const badgeAdFill: (height?:number, width?:number, className?:string) => HTMLElement;

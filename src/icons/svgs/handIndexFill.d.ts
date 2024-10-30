@@ -1,1 +1,0 @@
-export const handIndexFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const searchHeartFill: (height?:number, width?:number, className?:string) => HTMLElement;

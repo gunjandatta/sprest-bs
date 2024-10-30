@@ -1,1 +1,0 @@
-export const squareHalf: (height?:number, width?:number, className?:string) => HTMLElement;

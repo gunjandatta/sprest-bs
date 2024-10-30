@@ -1,1 +1,0 @@
-export const pause: (height?:number, width?:number, className?:string) => HTMLElement;

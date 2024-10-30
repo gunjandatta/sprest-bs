@@ -1,1 +1,0 @@
-export const cloudRainHeavyFill: (height?:number, width?:number, className?:string) => HTMLElement;

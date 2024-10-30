@@ -1,1 +1,0 @@
-export const paragraph: (height?:number, width?:number, className?:string) => HTMLElement;

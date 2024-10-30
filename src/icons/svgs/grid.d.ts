@@ -1,1 +1,0 @@
-export const grid: (height?:number, width?:number, className?:string) => HTMLElement;

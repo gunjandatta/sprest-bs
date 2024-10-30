@@ -1,1 +1,0 @@
-export const justifyLeft: (height?:number, width?:number, className?:string) => HTMLElement;

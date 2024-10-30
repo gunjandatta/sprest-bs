@@ -1,1 +1,0 @@
-export const signTurnLeftFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const slashSquareFill: (height?:number, width?:number, className?:string) => HTMLElement;

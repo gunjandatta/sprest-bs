@@ -1,1 +1,0 @@
-export const terminalPlus: (height?:number, width?:number, className?:string) => HTMLElement;

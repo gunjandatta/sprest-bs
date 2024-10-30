@@ -1,1 +1,0 @@
-export const filetypeBmp: (height?:number, width?:number, className?:string) => HTMLElement;

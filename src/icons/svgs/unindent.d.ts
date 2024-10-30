@@ -1,1 +1,0 @@
-export const unindent: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const bookmarkPlus: (height?:number, width?:number, className?:string) => HTMLElement;

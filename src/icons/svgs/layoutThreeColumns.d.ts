@@ -1,1 +1,0 @@
-export const layoutThreeColumns: (height?:number, width?:number, className?:string) => HTMLElement;

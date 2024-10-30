@@ -1,1 +1,0 @@
-export const patchQuestion: (height?:number, width?:number, className?:string) => HTMLElement;

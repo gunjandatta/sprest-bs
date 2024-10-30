@@ -1,1 +1,0 @@
-export const shadows: (height?:number, width?:number, className?:string) => HTMLElement;

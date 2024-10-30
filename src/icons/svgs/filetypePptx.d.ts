@@ -1,1 +1,0 @@
-export const filetypePptx: (height?:number, width?:number, className?:string) => HTMLElement;

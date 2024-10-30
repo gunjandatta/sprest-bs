@@ -1,1 +1,0 @@
-export const personRaisedHand: (height?:number, width?:number, className?:string) => HTMLElement;

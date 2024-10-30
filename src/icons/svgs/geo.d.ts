@@ -1,1 +1,0 @@
-export const geo: (height?:number, width?:number, className?:string) => HTMLElement;

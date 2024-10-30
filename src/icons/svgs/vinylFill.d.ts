@@ -1,1 +1,0 @@
-export const vinylFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const borderMiddle: (height?:number, width?:number, className?:string) => HTMLElement;

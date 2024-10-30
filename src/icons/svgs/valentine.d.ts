@@ -1,1 +1,0 @@
-export const valentine: (height?:number, width?:number, className?:string) => HTMLElement;

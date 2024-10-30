@@ -1,1 +1,0 @@
-export const personBoundingBox: (height?:number, width?:number, className?:string) => HTMLElement;

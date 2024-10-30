@@ -1,1 +1,0 @@
-export const evFront: (height?:number, width?:number, className?:string) => HTMLElement;

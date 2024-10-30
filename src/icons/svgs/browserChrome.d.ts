@@ -1,1 +1,0 @@
-export const browserChrome: (height?:number, width?:number, className?:string) => HTMLElement;

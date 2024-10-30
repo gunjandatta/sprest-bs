@@ -1,1 +1,0 @@
-export const calendar2Date: (height?:number, width?:number, className?:string) => HTMLElement;

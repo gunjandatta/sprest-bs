@@ -1,1 +1,0 @@
-export const chatRightHeartFill: (height?:number, width?:number, className?:string) => HTMLElement;

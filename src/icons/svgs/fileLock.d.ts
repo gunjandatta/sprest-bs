@@ -1,1 +1,0 @@
-export const fileLock: (height?:number, width?:number, className?:string) => HTMLElement;

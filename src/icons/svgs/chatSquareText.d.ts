@@ -1,1 +1,0 @@
-export const chatSquareText: (height?:number, width?:number, className?:string) => HTMLElement;

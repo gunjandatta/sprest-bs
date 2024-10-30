@@ -1,1 +1,0 @@
-export const layersHalf: (height?:number, width?:number, className?:string) => HTMLElement;

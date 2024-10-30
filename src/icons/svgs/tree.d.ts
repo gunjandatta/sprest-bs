@@ -1,1 +1,0 @@
-export const tree: (height?:number, width?:number, className?:string) => HTMLElement;

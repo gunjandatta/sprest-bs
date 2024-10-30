@@ -1,1 +1,0 @@
-export const magnetFill: (height?:number, width?:number, className?:string) => HTMLElement;

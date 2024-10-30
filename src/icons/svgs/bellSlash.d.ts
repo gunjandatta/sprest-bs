@@ -1,1 +1,0 @@
-export const bellSlash: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const brushFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const stickies: (height?:number, width?:number, className?:string) => HTMLElement;

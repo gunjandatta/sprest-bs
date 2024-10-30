@@ -1,1 +1,0 @@
-export const nvme: (height?:number, width?:number, className?:string) => HTMLElement;

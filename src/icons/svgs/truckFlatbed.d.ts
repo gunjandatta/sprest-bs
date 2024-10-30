@@ -1,1 +1,0 @@
-export const truckFlatbed: (height?:number, width?:number, className?:string) => HTMLElement;

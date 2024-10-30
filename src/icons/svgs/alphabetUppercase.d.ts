@@ -1,1 +1,0 @@
-export const alphabetUppercase: (height?:number, width?:number, className?:string) => HTMLElement;

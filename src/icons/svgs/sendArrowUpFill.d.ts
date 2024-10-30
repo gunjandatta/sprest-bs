@@ -1,1 +1,0 @@
-export const sendArrowUpFill: (height?:number, width?:number, className?:string) => HTMLElement;

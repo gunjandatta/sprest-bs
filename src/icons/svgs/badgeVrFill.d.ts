@@ -1,1 +1,0 @@
-export const badgeVrFill: (height?:number, width?:number, className?:string) => HTMLElement;

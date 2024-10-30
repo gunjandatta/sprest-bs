@@ -1,1 +1,0 @@
-export const lifePreserver: (height?:number, width?:number, className?:string) => HTMLElement;

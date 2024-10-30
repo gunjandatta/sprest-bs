@@ -1,1 +1,0 @@
-export const chatRightText: (height?:number, width?:number, className?:string) => HTMLElement;

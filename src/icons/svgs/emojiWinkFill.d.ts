@@ -1,1 +1,0 @@
-export const emojiWinkFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const ejectFill: (height?:number, width?:number, className?:string) => HTMLElement;

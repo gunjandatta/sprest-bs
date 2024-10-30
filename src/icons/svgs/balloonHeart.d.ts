@@ -1,1 +1,0 @@
-export const balloonHeart: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const wifi: (height?:number, width?:number, className?:string) => HTMLElement;

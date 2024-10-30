@@ -1,1 +1,0 @@
-export const questionOctagon: (height?:number, width?:number, className?:string) => HTMLElement;

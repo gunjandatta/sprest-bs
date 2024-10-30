@@ -1,1 +1,0 @@
-export const arrowsAngleContract: (height?:number, width?:number, className?:string) => HTMLElement;

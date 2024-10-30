@@ -1,1 +1,0 @@
-export const moonFill: (height?:number, width?:number, className?:string) => HTMLElement;

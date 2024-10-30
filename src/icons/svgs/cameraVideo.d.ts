@@ -1,1 +1,0 @@
-export const cameraVideo: (height?:number, width?:number, className?:string) => HTMLElement;

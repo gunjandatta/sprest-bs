@@ -1,1 +1,0 @@
-export const cloudHaze: (height?:number, width?:number, className?:string) => HTMLElement;

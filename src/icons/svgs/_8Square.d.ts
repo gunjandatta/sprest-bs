@@ -1,1 +1,0 @@
-export const _8Square: (height?:number, width?:number, className?:string) => HTMLElement;

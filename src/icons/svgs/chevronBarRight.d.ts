@@ -1,1 +1,0 @@
-export const chevronBarRight: (height?:number, width?:number, className?:string) => HTMLElement;

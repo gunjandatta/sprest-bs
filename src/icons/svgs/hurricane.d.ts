@@ -1,1 +1,0 @@
-export const hurricane: (height?:number, width?:number, className?:string) => HTMLElement;

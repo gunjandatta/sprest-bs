@@ -1,1 +1,0 @@
-export const shift: (height?:number, width?:number, className?:string) => HTMLElement;

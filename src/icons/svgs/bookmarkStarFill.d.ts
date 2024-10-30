@@ -1,1 +1,0 @@
-export const bookmarkStarFill: (height?:number, width?:number, className?:string) => HTMLElement;

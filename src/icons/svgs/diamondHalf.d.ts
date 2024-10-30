@@ -1,1 +1,0 @@
-export const diamondHalf: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const brilliance: (height?:number, width?:number, className?:string) => HTMLElement;

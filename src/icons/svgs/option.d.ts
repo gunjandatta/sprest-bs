@@ -1,1 +1,0 @@
-export const option: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const postage: (height?:number, width?:number, className?:string) => HTMLElement;

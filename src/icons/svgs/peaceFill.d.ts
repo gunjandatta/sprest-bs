@@ -1,1 +1,0 @@
-export const peaceFill: (height?:number, width?:number, className?:string) => HTMLElement;

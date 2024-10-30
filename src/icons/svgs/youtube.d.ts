@@ -1,1 +1,0 @@
-export const youtube: (height?:number, width?:number, className?:string) => HTMLElement;

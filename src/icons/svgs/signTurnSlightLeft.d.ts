@@ -1,1 +1,0 @@
-export const signTurnSlightLeft: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const truckFrontFill: (height?:number, width?:number, className?:string) => HTMLElement;

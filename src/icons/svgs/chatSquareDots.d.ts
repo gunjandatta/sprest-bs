@@ -1,1 +1,0 @@
-export const chatSquareDots: (height?:number, width?:number, className?:string) => HTMLElement;

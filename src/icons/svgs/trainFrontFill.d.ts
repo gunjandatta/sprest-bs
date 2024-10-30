@@ -1,1 +1,0 @@
-export const trainFrontFill: (height?:number, width?:number, className?:string) => HTMLElement;

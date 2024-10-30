@@ -1,1 +1,0 @@
-export const uiRadiosGrid: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const headset: (height?:number, width?:number, className?:string) => HTMLElement;

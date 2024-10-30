@@ -1,1 +1,0 @@
-export const book: (height?:number, width?:number, className?:string) => HTMLElement;

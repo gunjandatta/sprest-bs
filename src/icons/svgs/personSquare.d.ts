@@ -1,1 +1,0 @@
-export const personSquare: (height?:number, width?:number, className?:string) => HTMLElement;

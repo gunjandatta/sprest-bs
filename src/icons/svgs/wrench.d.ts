@@ -1,1 +1,0 @@
-export const wrench: (height?:number, width?:number, className?:string) => HTMLElement;

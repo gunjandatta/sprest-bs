@@ -1,1 +1,0 @@
-export const telephoneForwardFill: (height?:number, width?:number, className?:string) => HTMLElement;

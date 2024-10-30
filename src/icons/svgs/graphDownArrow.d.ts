@@ -1,1 +1,0 @@
-export const graphDownArrow: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const cloudDownload: (height?:number, width?:number, className?:string) => HTMLElement;

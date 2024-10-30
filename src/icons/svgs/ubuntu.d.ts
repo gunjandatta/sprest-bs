@@ -1,1 +1,0 @@
-export const ubuntu: (height?:number, width?:number, className?:string) => HTMLElement;

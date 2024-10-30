@@ -1,1 +1,0 @@
-export const creditCard2BackFill: (height?:number, width?:number, className?:string) => HTMLElement;

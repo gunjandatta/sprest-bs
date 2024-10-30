@@ -1,1 +1,0 @@
-export const ticketPerforatedFill: (height?:number, width?:number, className?:string) => HTMLElement;

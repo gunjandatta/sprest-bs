@@ -1,1 +1,0 @@
-export const arrowRightShort: (height?:number, width?:number, className?:string) => HTMLElement;

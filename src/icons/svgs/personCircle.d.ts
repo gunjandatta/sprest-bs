@@ -1,1 +1,0 @@
-export const personCircle: (height?:number, width?:number, className?:string) => HTMLElement;

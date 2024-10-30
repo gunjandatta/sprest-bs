@@ -1,1 +1,0 @@
-export const arrow90degUp: (height?:number, width?:number, className?:string) => HTMLElement;

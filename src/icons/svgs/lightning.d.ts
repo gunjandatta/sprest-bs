@@ -1,1 +1,0 @@
-export const lightning: (height?:number, width?:number, className?:string) => HTMLElement;

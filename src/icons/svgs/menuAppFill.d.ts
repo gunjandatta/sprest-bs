@@ -1,1 +1,0 @@
-export const menuAppFill: (height?:number, width?:number, className?:string) => HTMLElement;

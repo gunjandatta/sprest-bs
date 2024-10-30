@@ -1,1 +1,0 @@
-export const layerForward: (height?:number, width?:number, className?:string) => HTMLElement;

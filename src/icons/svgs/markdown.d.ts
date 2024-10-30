@@ -1,1 +1,0 @@
-export const markdown: (height?:number, width?:number, className?:string) => HTMLElement;

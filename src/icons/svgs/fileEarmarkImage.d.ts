@@ -1,1 +1,0 @@
-export const fileEarmarkImage: (height?:number, width?:number, className?:string) => HTMLElement;

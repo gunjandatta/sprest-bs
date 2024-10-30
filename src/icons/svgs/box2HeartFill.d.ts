@@ -1,1 +1,0 @@
-export const box2HeartFill: (height?:number, width?:number, className?:string) => HTMLElement;

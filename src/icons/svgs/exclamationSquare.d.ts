@@ -1,1 +1,0 @@
-export const exclamationSquare: (height?:number, width?:number, className?:string) => HTMLElement;

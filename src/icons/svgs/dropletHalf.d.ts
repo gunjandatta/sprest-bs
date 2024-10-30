@@ -1,1 +1,0 @@
-export const dropletHalf: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const windowPlus: (height?:number, width?:number, className?:string) => HTMLElement;

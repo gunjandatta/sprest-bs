@@ -1,1 +1,0 @@
-export const houseDown: (height?:number, width?:number, className?:string) => HTMLElement;

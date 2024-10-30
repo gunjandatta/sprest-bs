@@ -1,1 +1,0 @@
-export const hospital: (height?:number, width?:number, className?:string) => HTMLElement;

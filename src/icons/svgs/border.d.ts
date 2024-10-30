@@ -1,1 +1,0 @@
-export const border: (height?:number, width?:number, className?:string) => HTMLElement;

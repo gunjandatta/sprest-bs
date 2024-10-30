@@ -1,1 +1,0 @@
-export const fileArrowDown: (height?:number, width?:number, className?:string) => HTMLElement;

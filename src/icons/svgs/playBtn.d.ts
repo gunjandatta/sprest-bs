@@ -1,1 +1,0 @@
-export const playBtn: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const heartFill: (height?:number, width?:number, className?:string) => HTMLElement;

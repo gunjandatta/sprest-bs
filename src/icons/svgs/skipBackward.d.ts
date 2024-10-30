@@ -1,1 +1,0 @@
-export const skipBackward: (height?:number, width?:number, className?:string) => HTMLElement;

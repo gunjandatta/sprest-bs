@@ -1,1 +1,0 @@
-export const ear: (height?:number, width?:number, className?:string) => HTMLElement;

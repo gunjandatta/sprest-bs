@@ -1,1 +1,0 @@
-export const fileEarmarkZipFill: (height?:number, width?:number, className?:string) => HTMLElement;

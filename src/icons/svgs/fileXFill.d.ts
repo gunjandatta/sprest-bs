@@ -1,1 +1,0 @@
-export const fileXFill: (height?:number, width?:number, className?:string) => HTMLElement;

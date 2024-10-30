@@ -1,1 +1,0 @@
-export const borderBottom: (height?:number, width?:number, className?:string) => HTMLElement;

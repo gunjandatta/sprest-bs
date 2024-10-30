@@ -1,1 +1,0 @@
-export const arrowUpRight: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const emojiAstonishedFill: (height?:number, width?:number, className?:string) => HTMLElement;

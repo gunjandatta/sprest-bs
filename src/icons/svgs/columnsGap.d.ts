@@ -1,1 +1,0 @@
-export const columnsGap: (height?:number, width?:number, className?:string) => HTMLElement;

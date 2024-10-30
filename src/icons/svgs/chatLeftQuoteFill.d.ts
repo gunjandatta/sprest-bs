@@ -1,1 +1,0 @@
-export const chatLeftQuoteFill: (height?:number, width?:number, className?:string) => HTMLElement;

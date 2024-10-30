@@ -1,1 +1,0 @@
-export const eraserFill: (height?:number, width?:number, className?:string) => HTMLElement;

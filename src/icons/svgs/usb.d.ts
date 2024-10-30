@@ -1,1 +1,0 @@
-export const usb: (height?:number, width?:number, className?:string) => HTMLElement;

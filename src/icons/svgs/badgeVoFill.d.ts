@@ -1,1 +1,0 @@
-export const badgeVoFill: (height?:number, width?:number, className?:string) => HTMLElement;

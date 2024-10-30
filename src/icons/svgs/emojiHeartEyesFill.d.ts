@@ -1,1 +1,0 @@
-export const emojiHeartEyesFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const escape: (height?:number, width?:number, className?:string) => HTMLElement;

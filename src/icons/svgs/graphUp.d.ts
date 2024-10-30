@@ -1,1 +1,0 @@
-export const graphUp: (height?:number, width?:number, className?:string) => HTMLElement;

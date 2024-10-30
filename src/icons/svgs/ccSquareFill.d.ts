@@ -1,1 +1,0 @@
-export const ccSquareFill: (height?:number, width?:number, className?:string) => HTMLElement;

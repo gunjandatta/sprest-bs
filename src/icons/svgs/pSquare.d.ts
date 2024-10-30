@@ -1,1 +1,0 @@
-export const pSquare: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const triangle: (height?:number, width?:number, className?:string) => HTMLElement;

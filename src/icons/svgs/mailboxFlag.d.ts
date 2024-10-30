@@ -1,1 +1,0 @@
-export const mailboxFlag: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const filePpt: (height?:number, width?:number, className?:string) => HTMLElement;

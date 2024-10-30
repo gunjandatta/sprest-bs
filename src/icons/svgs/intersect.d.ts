@@ -1,1 +1,0 @@
-export const intersect: (height?:number, width?:number, className?:string) => HTMLElement;

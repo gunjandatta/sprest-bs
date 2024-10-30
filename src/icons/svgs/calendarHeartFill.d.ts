@@ -1,1 +1,0 @@
-export const calendarHeartFill: (height?:number, width?:number, className?:string) => HTMLElement;

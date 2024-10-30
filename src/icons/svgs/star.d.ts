@@ -1,1 +1,0 @@
-export const star: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const fileFont: (height?:number, width?:number, className?:string) => HTMLElement;

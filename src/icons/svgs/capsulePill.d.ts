@@ -1,1 +1,0 @@
-export const capsulePill: (height?:number, width?:number, className?:string) => HTMLElement;

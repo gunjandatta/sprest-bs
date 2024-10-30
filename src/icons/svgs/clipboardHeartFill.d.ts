@@ -1,1 +1,0 @@
-export const clipboardHeartFill: (height?:number, width?:number, className?:string) => HTMLElement;

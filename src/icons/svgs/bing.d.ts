@@ -1,1 +1,0 @@
-export const bing: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const fileEarmarkXFill: (height?:number, width?:number, className?:string) => HTMLElement;

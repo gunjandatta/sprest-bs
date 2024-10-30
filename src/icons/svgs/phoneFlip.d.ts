@@ -1,1 +1,0 @@
-export const phoneFlip: (height?:number, width?:number, className?:string) => HTMLElement;

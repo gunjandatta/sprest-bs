@@ -1,1 +1,0 @@
-export const map: (height?:number, width?:number, className?:string) => HTMLElement;

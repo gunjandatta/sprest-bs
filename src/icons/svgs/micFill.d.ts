@@ -1,1 +1,0 @@
-export const micFill: (height?:number, width?:number, className?:string) => HTMLElement;

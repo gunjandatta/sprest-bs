@@ -1,1 +1,0 @@
-export const zoomIn: (height?:number, width?:number, className?:string) => HTMLElement;

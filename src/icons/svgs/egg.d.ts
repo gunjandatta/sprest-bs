@@ -1,1 +1,0 @@
-export const egg: (height?:number, width?:number, className?:string) => HTMLElement;

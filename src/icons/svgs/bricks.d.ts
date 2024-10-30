@@ -1,1 +1,0 @@
-export const bricks: (height?:number, width?:number, className?:string) => HTMLElement;

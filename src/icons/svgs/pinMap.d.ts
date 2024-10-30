@@ -1,1 +1,0 @@
-export const pinMap: (height?:number, width?:number, className?:string) => HTMLElement;

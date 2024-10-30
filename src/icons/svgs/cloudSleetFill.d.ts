@@ -1,1 +1,0 @@
-export const cloudSleetFill: (height?:number, width?:number, className?:string) => HTMLElement;

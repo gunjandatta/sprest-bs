@@ -1,1 +1,0 @@
-export const signpostSplit: (height?:number, width?:number, className?:string) => HTMLElement;

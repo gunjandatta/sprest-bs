@@ -1,1 +1,0 @@
-export const browserSafari: (height?:number, width?:number, className?:string) => HTMLElement;

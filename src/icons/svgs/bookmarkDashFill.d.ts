@@ -1,1 +1,0 @@
-export const bookmarkDashFill: (height?:number, width?:number, className?:string) => HTMLElement;

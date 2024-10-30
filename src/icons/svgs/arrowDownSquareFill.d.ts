@@ -1,1 +1,0 @@
-export const arrowDownSquareFill: (height?:number, width?:number, className?:string) => HTMLElement;

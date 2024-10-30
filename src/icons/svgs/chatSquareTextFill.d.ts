@@ -1,1 +1,0 @@
-export const chatSquareTextFill: (height?:number, width?:number, className?:string) => HTMLElement;

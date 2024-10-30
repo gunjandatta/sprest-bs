@@ -1,1 +1,0 @@
-export const imageAlt: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const arrowsExpandVertical: (height?:number, width?:number, className?:string) => HTMLElement;

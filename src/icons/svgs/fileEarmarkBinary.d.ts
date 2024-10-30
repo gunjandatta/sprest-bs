@@ -1,1 +1,0 @@
-export const fileEarmarkBinary: (height?:number, width?:number, className?:string) => HTMLElement;

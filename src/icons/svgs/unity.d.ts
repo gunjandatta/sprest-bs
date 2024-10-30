@@ -1,1 +1,0 @@
-export const unity: (height?:number, width?:number, className?:string) => HTMLElement;

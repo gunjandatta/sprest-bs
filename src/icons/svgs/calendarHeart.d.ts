@@ -1,1 +1,0 @@
-export const calendarHeart: (height?:number, width?:number, className?:string) => HTMLElement;

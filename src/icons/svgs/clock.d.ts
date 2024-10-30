@@ -1,1 +1,0 @@
-export const clock: (height?:number, width?:number, className?:string) => HTMLElement;

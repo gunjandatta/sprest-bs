@@ -1,1 +1,0 @@
-export const filetypePsd: (height?:number, width?:number, className?:string) => HTMLElement;

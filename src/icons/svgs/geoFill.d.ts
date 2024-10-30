@@ -1,1 +1,0 @@
-export const geoFill: (height?:number, width?:number, className?:string) => HTMLElement;

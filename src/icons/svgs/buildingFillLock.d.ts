@@ -1,1 +1,0 @@
-export const buildingFillLock: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const _1Circle: (height?:number, width?:number, className?:string) => HTMLElement;

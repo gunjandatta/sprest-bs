@@ -1,1 +1,0 @@
-export const dice4: (height?:number, width?:number, className?:string) => HTMLElement;

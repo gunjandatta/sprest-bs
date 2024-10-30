@@ -1,1 +1,0 @@
-export const tiktok: (height?:number, width?:number, className?:string) => HTMLElement;

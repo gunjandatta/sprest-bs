@@ -1,1 +1,0 @@
-export const whatsapp: (height?:number, width?:number, className?:string) => HTMLElement;

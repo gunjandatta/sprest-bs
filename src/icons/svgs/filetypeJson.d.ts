@@ -1,1 +1,0 @@
-export const filetypeJson: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const folderFill: (height?:number, width?:number, className?:string) => HTMLElement;

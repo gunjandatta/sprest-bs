@@ -1,1 +1,0 @@
-export const currencyExchange: (height?:number, width?:number, className?:string) => HTMLElement;

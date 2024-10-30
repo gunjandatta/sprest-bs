@@ -1,1 +1,0 @@
-export const smartwatch: (height?:number, width?:number, className?:string) => HTMLElement;

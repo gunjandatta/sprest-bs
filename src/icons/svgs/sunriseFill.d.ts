@@ -1,1 +1,0 @@
-export const sunriseFill: (height?:number, width?:number, className?:string) => HTMLElement;

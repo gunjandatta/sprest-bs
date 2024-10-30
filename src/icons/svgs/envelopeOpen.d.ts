@@ -1,1 +1,0 @@
-export const envelopeOpen: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const bug: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const journalArrowUp: (height?:number, width?:number, className?:string) => HTMLElement;

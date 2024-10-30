@@ -1,1 +1,0 @@
-export const router: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const fileMedical: (height?:number, width?:number, className?:string) => HTMLElement;

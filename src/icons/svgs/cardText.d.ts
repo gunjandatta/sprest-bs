@@ -1,1 +1,0 @@
-export const cardText: (height?:number, width?:number, className?:string) => HTMLElement;

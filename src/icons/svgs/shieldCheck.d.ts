@@ -1,1 +1,0 @@
-export const shieldCheck: (height?:number, width?:number, className?:string) => HTMLElement;

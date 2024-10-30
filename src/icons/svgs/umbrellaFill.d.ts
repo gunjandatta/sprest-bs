@@ -1,1 +1,0 @@
-export const umbrellaFill: (height?:number, width?:number, className?:string) => HTMLElement;

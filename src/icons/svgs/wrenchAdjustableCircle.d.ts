@@ -1,1 +1,0 @@
-export const wrenchAdjustableCircle: (height?:number, width?:number, className?:string) => HTMLElement;

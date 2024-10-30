@@ -1,1 +1,0 @@
-export const envelopeXFill: (height?:number, width?:number, className?:string) => HTMLElement;

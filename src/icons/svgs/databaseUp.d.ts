@@ -1,1 +1,0 @@
-export const databaseUp: (height?:number, width?:number, className?:string) => HTMLElement;

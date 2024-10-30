@@ -1,1 +1,0 @@
-export const aspectRatio: (height?:number, width?:number, className?:string) => HTMLElement;

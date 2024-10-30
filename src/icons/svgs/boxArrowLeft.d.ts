@@ -1,1 +1,0 @@
-export const boxArrowLeft: (height?:number, width?:number, className?:string) => HTMLElement;

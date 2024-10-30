@@ -1,1 +1,0 @@
-export const hSquareFill: (height?:number, width?:number, className?:string) => HTMLElement;

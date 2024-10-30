@@ -1,1 +1,0 @@
-export const bicycle: (height?:number, width?:number, className?:string) => HTMLElement;

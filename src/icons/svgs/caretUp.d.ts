@@ -1,1 +1,0 @@
-export const caretUp: (height?:number, width?:number, className?:string) => HTMLElement;

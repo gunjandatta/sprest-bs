@@ -1,1 +1,0 @@
-export const rSquareFill: (height?:number, width?:number, className?:string) => HTMLElement;

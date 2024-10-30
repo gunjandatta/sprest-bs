@@ -1,1 +1,0 @@
-export const lamp: (height?:number, width?:number, className?:string) => HTMLElement;

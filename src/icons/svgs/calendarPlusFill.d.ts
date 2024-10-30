@@ -1,1 +1,0 @@
-export const calendarPlusFill: (height?:number, width?:number, className?:string) => HTMLElement;

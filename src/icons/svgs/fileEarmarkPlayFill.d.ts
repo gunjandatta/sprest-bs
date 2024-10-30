@@ -1,1 +1,0 @@
-export const fileEarmarkPlayFill: (height?:number, width?:number, className?:string) => HTMLElement;

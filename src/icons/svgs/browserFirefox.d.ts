@@ -1,1 +1,0 @@
-export const browserFirefox: (height?:number, width?:number, className?:string) => HTMLElement;

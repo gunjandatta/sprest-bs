@@ -1,1 +1,0 @@
-export const browserEdge: (height?:number, width?:number, className?:string) => HTMLElement;

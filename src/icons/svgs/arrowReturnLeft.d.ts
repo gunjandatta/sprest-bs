@@ -1,1 +1,0 @@
-export const arrowReturnLeft: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const postcardHeartFill: (height?:number, width?:number, className?:string) => HTMLElement;

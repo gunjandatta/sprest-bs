@@ -1,1 +1,0 @@
-export const currencyRupee: (height?:number, width?:number, className?:string) => HTMLElement;

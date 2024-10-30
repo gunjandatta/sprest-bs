@@ -1,1 +1,0 @@
-export const shieldLockFill: (height?:number, width?:number, className?:string) => HTMLElement;

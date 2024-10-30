@@ -1,1 +1,0 @@
-export const upcScan: (height?:number, width?:number, className?:string) => HTMLElement;

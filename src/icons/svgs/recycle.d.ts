@@ -1,1 +1,0 @@
-export const recycle: (height?:number, width?:number, className?:string) => HTMLElement;

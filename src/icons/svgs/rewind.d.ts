@@ -1,1 +1,0 @@
-export const rewind: (height?:number, width?:number, className?:string) => HTMLElement;

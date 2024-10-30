@@ -1,1 +1,0 @@
-export const puzzleFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const fastForwardCircleFill: (height?:number, width?:number, className?:string) => HTMLElement;

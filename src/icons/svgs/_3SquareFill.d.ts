@@ -1,1 +1,0 @@
-export const _3SquareFill: (height?:number, width?:number, className?:string) => HTMLElement;

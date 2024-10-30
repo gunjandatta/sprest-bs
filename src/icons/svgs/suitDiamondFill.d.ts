@@ -1,1 +1,0 @@
-export const suitDiamondFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const cartDashFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const _6CircleFill: (height?:number, width?:number, className?:string) => HTMLElement;

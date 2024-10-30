@@ -1,1 +1,0 @@
-export const cursorText: (height?:number, width?:number, className?:string) => HTMLElement;

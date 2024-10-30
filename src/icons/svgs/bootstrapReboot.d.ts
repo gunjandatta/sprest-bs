@@ -1,1 +1,0 @@
-export const bootstrapReboot: (height?:number, width?:number, className?:string) => HTMLElement;

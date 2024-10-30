@@ -1,1 +1,0 @@
-export const cassette: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const evStationFill: (height?:number, width?:number, className?:string) => HTMLElement;

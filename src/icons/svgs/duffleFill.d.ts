@@ -1,1 +1,0 @@
-export const duffleFill: (height?:number, width?:number, className?:string) => HTMLElement;

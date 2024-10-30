@@ -1,1 +1,0 @@
-export const banFill: (height?:number, width?:number, className?:string) => HTMLElement;

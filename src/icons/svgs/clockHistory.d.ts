@@ -1,1 +1,0 @@
-export const clockHistory: (height?:number, width?:number, className?:string) => HTMLElement;

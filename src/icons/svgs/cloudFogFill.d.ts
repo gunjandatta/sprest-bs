@@ -1,1 +1,0 @@
-export const cloudFogFill: (height?:number, width?:number, className?:string) => HTMLElement;

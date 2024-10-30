@@ -1,1 +1,0 @@
-export const displayport: (height?:number, width?:number, className?:string) => HTMLElement;

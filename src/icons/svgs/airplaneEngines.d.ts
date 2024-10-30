@@ -1,1 +1,0 @@
-export const airplaneEngines: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const filetypeHtml: (height?:number, width?:number, className?:string) => HTMLElement;

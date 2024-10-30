@@ -1,1 +1,0 @@
-export const fullscreenExit: (height?:number, width?:number, className?:string) => HTMLElement;

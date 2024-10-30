@@ -1,1 +1,0 @@
-export const gear: (height?:number, width?:number, className?:string) => HTMLElement;

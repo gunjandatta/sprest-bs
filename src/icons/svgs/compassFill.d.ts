@@ -1,1 +1,0 @@
-export const compassFill: (height?:number, width?:number, className?:string) => HTMLElement;

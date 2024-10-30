@@ -1,1 +1,0 @@
-export const gripVertical: (height?:number, width?:number, className?:string) => HTMLElement;

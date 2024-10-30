@@ -1,1 +1,0 @@
-export const cloudSlash: (height?:number, width?:number, className?:string) => HTMLElement;

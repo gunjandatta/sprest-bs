@@ -1,1 +1,0 @@
-export const caretLeftSquareFill: (height?:number, width?:number, className?:string) => HTMLElement;

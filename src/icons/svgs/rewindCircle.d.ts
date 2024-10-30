@@ -1,1 +1,0 @@
-export const rewindCircle: (height?:number, width?:number, className?:string) => HTMLElement;

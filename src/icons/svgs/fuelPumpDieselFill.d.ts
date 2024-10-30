@@ -1,1 +1,0 @@
-export const fuelPumpDieselFill: (height?:number, width?:number, className?:string) => HTMLElement;

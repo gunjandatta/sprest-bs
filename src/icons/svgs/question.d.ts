@@ -1,1 +1,0 @@
-export const question: (height?:number, width?:number, className?:string) => HTMLElement;

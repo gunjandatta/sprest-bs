@@ -1,1 +1,0 @@
-export const xCircle: (height?:number, width?:number, className?:string) => HTMLElement;

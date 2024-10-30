@@ -1,1 +1,0 @@
-export const filetypeM4p: (height?:number, width?:number, className?:string) => HTMLElement;

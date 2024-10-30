@@ -1,1 +1,0 @@
-export const vignette: (height?:number, width?:number, className?:string) => HTMLElement;

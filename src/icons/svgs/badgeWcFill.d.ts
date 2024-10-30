@@ -1,1 +1,0 @@
-export const badgeWcFill: (height?:number, width?:number, className?:string) => HTMLElement;

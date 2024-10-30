@@ -1,1 +1,0 @@
-export const patchExclamationFill: (height?:number, width?:number, className?:string) => HTMLElement;

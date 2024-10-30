@@ -1,1 +1,0 @@
-export const filetypeDocx: (height?:number, width?:number, className?:string) => HTMLElement;

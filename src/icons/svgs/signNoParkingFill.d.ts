@@ -1,1 +1,0 @@
-export const signNoParkingFill: (height?:number, width?:number, className?:string) => HTMLElement;

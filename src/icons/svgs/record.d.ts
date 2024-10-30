@@ -1,1 +1,0 @@
-export const record: (height?:number, width?:number, className?:string) => HTMLElement;

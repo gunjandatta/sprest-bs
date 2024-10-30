@@ -1,1 +1,0 @@
-export const skipStartCircleFill: (height?:number, width?:number, className?:string) => HTMLElement;

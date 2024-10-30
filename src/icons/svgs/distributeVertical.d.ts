@@ -1,1 +1,0 @@
-export const distributeVertical: (height?:number, width?:number, className?:string) => HTMLElement;

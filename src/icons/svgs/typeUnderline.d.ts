@@ -1,1 +1,0 @@
-export const typeUnderline: (height?:number, width?:number, className?:string) => HTMLElement;

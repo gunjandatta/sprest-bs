@@ -1,1 +1,0 @@
-export const fastForwardBtnFill: (height?:number, width?:number, className?:string) => HTMLElement;

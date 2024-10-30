@@ -1,1 +1,0 @@
-export const playstation: (height?:number, width?:number, className?:string) => HTMLElement;

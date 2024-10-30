@@ -1,1 +1,0 @@
-export const paintBucket: (height?:number, width?:number, className?:string) => HTMLElement;

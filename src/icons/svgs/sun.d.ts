@@ -1,1 +1,0 @@
-export const sun: (height?:number, width?:number, className?:string) => HTMLElement;

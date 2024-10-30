@@ -1,1 +1,0 @@
-export const window_: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,1 +1,0 @@
-export const repeat: (height?:number, width?:number, className?:string) => HTMLElement;

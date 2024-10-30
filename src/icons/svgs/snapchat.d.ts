@@ -1,1 +1,0 @@
-export const snapchat: (height?:number, width?:number, className?:string) => HTMLElement;

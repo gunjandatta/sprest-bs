@@ -1,1 +1,0 @@
-export const tabletLandscapeFill: (height?:number, width?:number, className?:string) => HTMLElement;

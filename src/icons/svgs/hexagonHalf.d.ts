@@ -1,1 +1,0 @@
-export const hexagonHalf: (height?:number, width?:number, className?:string) => HTMLElement;
