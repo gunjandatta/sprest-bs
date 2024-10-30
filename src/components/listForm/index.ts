@@ -1057,7 +1057,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
             let updateReadOnly = (control: Components.IFormControlProps) => {
                 // See if this control is readonly
-                if (control.isReadonly) {
+                if (control.isReadonly && control.name) {
                     // Get the control display properties
                     let dispControl = renderDisplay(control.name, props);
                     if (dispControl) {
