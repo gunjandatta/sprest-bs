@@ -1,0 +1,1 @@
+export const filetypeMp4: (height?:number, width?:number, className?:string) => HTMLElement;

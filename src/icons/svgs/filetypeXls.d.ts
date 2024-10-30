@@ -1,0 +1,1 @@
+export const filetypeXls: (height?:number, width?:number, className?:string) => HTMLElement;

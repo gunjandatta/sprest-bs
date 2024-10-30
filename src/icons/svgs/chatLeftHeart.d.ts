@@ -1,0 +1,1 @@
+export const chatLeftHeart: (height?:number, width?:number, className?:string) => HTMLElement;

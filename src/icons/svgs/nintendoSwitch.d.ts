@@ -1,0 +1,1 @@
+export const nintendoSwitch: (height?:number, width?:number, className?:string) => HTMLElement;

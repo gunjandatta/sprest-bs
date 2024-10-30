@@ -1,0 +1,1 @@
+export const _3Square: (height?:number, width?:number, className?:string) => HTMLElement;

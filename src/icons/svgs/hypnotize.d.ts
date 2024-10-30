@@ -1,0 +1,1 @@
+export const hypnotize: (height?:number, width?:number, className?:string) => HTMLElement;

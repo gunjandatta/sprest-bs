@@ -1,0 +1,1 @@
+export const unlock: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const emojiGrimace: (height?:number, width?:number, className?:string) => HTMLElement;

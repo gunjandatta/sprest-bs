@@ -1,0 +1,1 @@
+export const volumeUp: (height?:number, width?:number, className?:string) => HTMLElement;

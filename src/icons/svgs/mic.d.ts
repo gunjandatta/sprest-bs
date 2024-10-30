@@ -1,0 +1,1 @@
+export const mic: (height?:number, width?:number, className?:string) => HTMLElement;

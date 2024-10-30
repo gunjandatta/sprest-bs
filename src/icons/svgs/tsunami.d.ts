@@ -1,0 +1,1 @@
+export const tsunami: (height?:number, width?:number, className?:string) => HTMLElement;

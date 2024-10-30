@@ -1,0 +1,1 @@
+export const busFront: (height?:number, width?:number, className?:string) => HTMLElement;

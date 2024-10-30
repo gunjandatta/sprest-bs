@@ -1,0 +1,1 @@
+export const fileSpreadsheet: (height?:number, width?:number, className?:string) => HTMLElement;

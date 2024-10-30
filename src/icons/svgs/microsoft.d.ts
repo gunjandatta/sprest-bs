@@ -1,0 +1,1 @@
+export const microsoft: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const boomboxFill: (height?:number, width?:number, className?:string) => HTMLElement;

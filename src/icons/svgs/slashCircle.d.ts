@@ -1,0 +1,1 @@
+export const slashCircle: (height?:number, width?:number, className?:string) => HTMLElement;

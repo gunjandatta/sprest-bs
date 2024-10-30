@@ -1,0 +1,1 @@
+export const toggleOff: (height?:number, width?:number, className?:string) => HTMLElement;

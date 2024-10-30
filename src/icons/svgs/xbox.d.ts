@@ -1,0 +1,1 @@
+export const xbox: (height?:number, width?:number, className?:string) => HTMLElement;

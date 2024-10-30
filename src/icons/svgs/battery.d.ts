@@ -1,0 +1,1 @@
+export const battery: (height?:number, width?:number, className?:string) => HTMLElement;

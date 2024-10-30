@@ -1,0 +1,1 @@
+export const emojiSurpriseFill: (height?:number, width?:number, className?:string) => HTMLElement;

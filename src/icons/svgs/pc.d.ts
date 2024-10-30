@@ -1,0 +1,1 @@
+export const pc: (height?:number, width?:number, className?:string) => HTMLElement;

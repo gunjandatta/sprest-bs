@@ -1,0 +1,1 @@
+export const app: (height?:number, width?:number, className?:string) => HTMLElement;

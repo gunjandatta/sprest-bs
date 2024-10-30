@@ -1,0 +1,1 @@
+export const boxes: (height?:number, width?:number, className?:string) => HTMLElement;

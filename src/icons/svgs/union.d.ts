@@ -1,0 +1,1 @@
+export const union: (height?:number, width?:number, className?:string) => HTMLElement;

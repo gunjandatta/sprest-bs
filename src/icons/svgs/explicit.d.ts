@@ -1,0 +1,1 @@
+export const explicit: (height?:number, width?:number, className?:string) => HTMLElement;

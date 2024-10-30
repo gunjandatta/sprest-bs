@@ -1,0 +1,1 @@
+export const postageFill: (height?:number, width?:number, className?:string) => HTMLElement;

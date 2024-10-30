@@ -1,0 +1,1 @@
+export const twitter: (height?:number, width?:number, className?:string) => HTMLElement;

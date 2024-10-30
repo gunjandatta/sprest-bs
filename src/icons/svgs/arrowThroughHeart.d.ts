@@ -1,0 +1,1 @@
+export const arrowThroughHeart: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const postageHeart: (height?:number, width?:number, className?:string) => HTMLElement;

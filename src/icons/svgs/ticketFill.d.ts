@@ -1,0 +1,1 @@
+export const ticketFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const postcardFill: (height?:number, width?:number, className?:string) => HTMLElement;

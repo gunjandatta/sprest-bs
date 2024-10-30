@@ -1,0 +1,1 @@
+export const databaseAdd: (height?:number, width?:number, className?:string) => HTMLElement;

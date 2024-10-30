@@ -1,0 +1,1 @@
+export const sendExclamation: (height?:number, width?:number, className?:string) => HTMLElement;

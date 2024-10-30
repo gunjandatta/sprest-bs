@@ -1,0 +1,1 @@
+export const envelopeExclamationFill: (height?:number, width?:number, className?:string) => HTMLElement;

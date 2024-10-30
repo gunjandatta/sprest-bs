@@ -1,0 +1,1 @@
+export const memory: (height?:number, width?:number, className?:string) => HTMLElement;

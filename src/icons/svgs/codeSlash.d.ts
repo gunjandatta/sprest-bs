@@ -1,0 +1,1 @@
+export const codeSlash: (height?:number, width?:number, className?:string) => HTMLElement;

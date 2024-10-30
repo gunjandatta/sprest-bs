@@ -1,0 +1,1 @@
+export const dropbox: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const databaseLock: (height?:number, width?:number, className?:string) => HTMLElement;

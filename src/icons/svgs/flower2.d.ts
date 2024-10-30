@@ -1,0 +1,1 @@
+export const flower2: (height?:number, width?:number, className?:string) => HTMLElement;

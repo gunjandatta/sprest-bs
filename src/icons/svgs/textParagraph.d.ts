@@ -1,0 +1,1 @@
+export const textParagraph: (height?:number, width?:number, className?:string) => HTMLElement;

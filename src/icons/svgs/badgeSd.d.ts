@@ -1,0 +1,1 @@
+export const badgeSd: (height?:number, width?:number, className?:string) => HTMLElement;

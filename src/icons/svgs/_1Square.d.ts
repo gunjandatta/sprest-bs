@@ -1,0 +1,1 @@
+export const _1Square: (height?:number, width?:number, className?:string) => HTMLElement;

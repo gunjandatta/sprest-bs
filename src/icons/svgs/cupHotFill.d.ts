@@ -1,0 +1,1 @@
+export const cupHotFill: (height?:number, width?:number, className?:string) => HTMLElement;

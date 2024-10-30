@@ -1,0 +1,1 @@
+export const tagsFill: (height?:number, width?:number, className?:string) => HTMLElement;

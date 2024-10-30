@@ -1,0 +1,1 @@
+export const passport: (height?:number, width?:number, className?:string) => HTMLElement;

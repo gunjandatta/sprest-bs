@@ -1,0 +1,1 @@
+export const infinity: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const fileEarmarkWordFill: (height?:number, width?:number, className?:string) => HTMLElement;

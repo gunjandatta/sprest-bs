@@ -1,0 +1,1 @@
+export const signRailroad: (height?:number, width?:number, className?:string) => HTMLElement;

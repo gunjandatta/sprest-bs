@@ -1,0 +1,1 @@
+export const printerFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const noiseReduction: (height?:number, width?:number, className?:string) => HTMLElement;

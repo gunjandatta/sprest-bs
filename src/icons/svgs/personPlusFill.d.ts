@@ -1,0 +1,1 @@
+export const personPlusFill: (height?:number, width?:number, className?:string) => HTMLElement;

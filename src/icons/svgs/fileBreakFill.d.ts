@@ -1,0 +1,1 @@
+export const fileBreakFill: (height?:number, width?:number, className?:string) => HTMLElement;

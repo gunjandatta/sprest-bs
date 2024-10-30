@@ -1,0 +1,1 @@
+export const stopFill: (height?:number, width?:number, className?:string) => HTMLElement;

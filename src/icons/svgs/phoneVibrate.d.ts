@@ -1,0 +1,1 @@
+export const phoneVibrate: (height?:number, width?:number, className?:string) => HTMLElement;

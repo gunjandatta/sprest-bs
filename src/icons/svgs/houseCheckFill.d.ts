@@ -1,0 +1,1 @@
+export const houseCheckFill: (height?:number, width?:number, className?:string) => HTMLElement;

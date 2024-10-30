@@ -1,0 +1,1 @@
+export const floppy: (height?:number, width?:number, className?:string) => HTMLElement;

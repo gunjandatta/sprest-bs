@@ -1,0 +1,1 @@
+export const nvidia: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const textIndentLeft: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const houseExclamation: (height?:number, width?:number, className?:string) => HTMLElement;

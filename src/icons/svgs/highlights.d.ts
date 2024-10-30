@@ -1,0 +1,1 @@
+export const highlights: (height?:number, width?:number, className?:string) => HTMLElement;

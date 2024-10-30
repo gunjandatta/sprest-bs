@@ -1,0 +1,1 @@
+export const houseSlashFill: (height?:number, width?:number, className?:string) => HTMLElement;

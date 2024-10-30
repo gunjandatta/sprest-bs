@@ -1,0 +1,1 @@
+export const mailbox: (height?:number, width?:number, className?:string) => HTMLElement;

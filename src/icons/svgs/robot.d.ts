@@ -1,0 +1,1 @@
+export const robot: (height?:number, width?:number, className?:string) => HTMLElement;

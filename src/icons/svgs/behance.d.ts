@@ -1,0 +1,1 @@
+export const behance: (height?:number, width?:number, className?:string) => HTMLElement;

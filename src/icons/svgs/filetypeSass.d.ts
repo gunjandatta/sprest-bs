@@ -1,0 +1,1 @@
+export const filetypeSass: (height?:number, width?:number, className?:string) => HTMLElement;

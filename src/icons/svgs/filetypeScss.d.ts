@@ -1,0 +1,1 @@
+export const filetypeScss: (height?:number, width?:number, className?:string) => HTMLElement;

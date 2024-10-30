@@ -1,0 +1,1 @@
+export const gearWideConnected: (height?:number, width?:number, className?:string) => HTMLElement;

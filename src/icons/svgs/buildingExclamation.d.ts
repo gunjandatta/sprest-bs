@@ -1,0 +1,1 @@
+export const buildingExclamation: (height?:number, width?:number, className?:string) => HTMLElement;

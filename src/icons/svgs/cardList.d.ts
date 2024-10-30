@@ -1,0 +1,1 @@
+export const cardList: (height?:number, width?:number, className?:string) => HTMLElement;

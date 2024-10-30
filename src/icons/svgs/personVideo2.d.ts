@@ -1,0 +1,1 @@
+export const personVideo2: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const airplaneFill: (height?:number, width?:number, className?:string) => HTMLElement;

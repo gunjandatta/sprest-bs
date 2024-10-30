@@ -1,0 +1,1 @@
+export const arrowRightSquareFill: (height?:number, width?:number, className?:string) => HTMLElement;

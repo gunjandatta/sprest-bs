@@ -1,0 +1,1 @@
+export const deviceHdd: (height?:number, width?:number, className?:string) => HTMLElement;

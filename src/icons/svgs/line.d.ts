@@ -1,0 +1,1 @@
+export const line: (height?:number, width?:number, className?:string) => HTMLElement;

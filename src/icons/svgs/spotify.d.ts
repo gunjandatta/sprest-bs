@@ -1,0 +1,1 @@
+export const spotify: (height?:number, width?:number, className?:string) => HTMLElement;

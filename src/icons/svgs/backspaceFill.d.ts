@@ -1,0 +1,1 @@
+export const backspaceFill: (height?:number, width?:number, className?:string) => HTMLElement;

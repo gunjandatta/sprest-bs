@@ -1,0 +1,1 @@
+export const radar: (height?:number, width?:number, className?:string) => HTMLElement;

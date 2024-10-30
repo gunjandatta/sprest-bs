@@ -1,0 +1,1 @@
+export const houseDashFill: (height?:number, width?:number, className?:string) => HTMLElement;

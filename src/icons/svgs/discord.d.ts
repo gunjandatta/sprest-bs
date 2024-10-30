@@ -1,0 +1,1 @@
+export const discord: (height?:number, width?:number, className?:string) => HTMLElement;

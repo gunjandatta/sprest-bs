@@ -1,0 +1,1 @@
+export const rocketTakeoffFill: (height?:number, width?:number, className?:string) => HTMLElement;

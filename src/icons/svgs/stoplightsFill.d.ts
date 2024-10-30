@@ -1,0 +1,1 @@
+export const stoplightsFill: (height?:number, width?:number, className?:string) => HTMLElement;

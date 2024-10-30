@@ -1,0 +1,1 @@
+export const barChartSteps: (height?:number, width?:number, className?:string) => HTMLElement;

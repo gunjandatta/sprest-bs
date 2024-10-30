@@ -1,0 +1,1 @@
+export const emojiGrin: (height?:number, width?:number, className?:string) => HTMLElement;

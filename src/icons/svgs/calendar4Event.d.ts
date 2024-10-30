@@ -1,0 +1,1 @@
+export const calendar4Event: (height?:number, width?:number, className?:string) => HTMLElement;

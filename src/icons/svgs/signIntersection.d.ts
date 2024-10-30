@@ -1,0 +1,1 @@
+export const signIntersection: (height?:number, width?:number, className?:string) => HTMLElement;

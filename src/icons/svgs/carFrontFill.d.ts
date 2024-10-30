@@ -1,0 +1,1 @@
+export const carFrontFill: (height?:number, width?:number, className?:string) => HTMLElement;

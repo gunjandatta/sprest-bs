@@ -1,0 +1,1 @@
+export const personArmsUp: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const gripHorizontal: (height?:number, width?:number, className?:string) => HTMLElement;

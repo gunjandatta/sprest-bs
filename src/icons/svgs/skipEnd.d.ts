@@ -1,0 +1,1 @@
+export const skipEnd: (height?:number, width?:number, className?:string) => HTMLElement;

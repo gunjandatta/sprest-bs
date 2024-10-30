@@ -1,0 +1,1 @@
+export const sunsetFill: (height?:number, width?:number, className?:string) => HTMLElement;

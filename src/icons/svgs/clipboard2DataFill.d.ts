@@ -1,0 +1,1 @@
+export const clipboard2DataFill: (height?:number, width?:number, className?:string) => HTMLElement;

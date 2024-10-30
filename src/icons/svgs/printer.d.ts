@@ -1,0 +1,1 @@
+export const printer: (height?:number, width?:number, className?:string) => HTMLElement;

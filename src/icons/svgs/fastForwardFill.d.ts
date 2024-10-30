@@ -1,0 +1,1 @@
+export const fastForwardFill: (height?:number, width?:number, className?:string) => HTMLElement;

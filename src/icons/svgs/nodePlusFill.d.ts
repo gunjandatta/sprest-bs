@@ -1,0 +1,1 @@
+export const nodePlusFill: (height?:number, width?:number, className?:string) => HTMLElement;

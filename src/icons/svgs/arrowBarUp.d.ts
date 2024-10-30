@@ -1,0 +1,1 @@
+export const arrowBarUp: (height?:number, width?:number, className?:string) => HTMLElement;

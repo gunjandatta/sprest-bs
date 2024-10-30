@@ -1,0 +1,1 @@
+export const yelp: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -1,0 +1,1 @@
+export const squareFill: (height?:number, width?:number, className?:string) => HTMLElement;

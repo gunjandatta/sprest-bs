@@ -1,0 +1,1 @@
+export const filetypeJava: (height?:number, width?:number, className?:string) => HTMLElement;

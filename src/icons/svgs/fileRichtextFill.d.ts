@@ -1,0 +1,1 @@
+export const fileRichtextFill: (height?:number, width?:number, className?:string) => HTMLElement;

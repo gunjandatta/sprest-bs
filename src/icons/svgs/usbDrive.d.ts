@@ -1,0 +1,1 @@
+export const usbDrive: (height?:number, width?:number, className?:string) => HTMLElement;

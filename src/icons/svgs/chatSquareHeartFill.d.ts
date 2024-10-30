@@ -1,0 +1,1 @@
+export const chatSquareHeartFill: (height?:number, width?:number, className?:string) => HTMLElement;

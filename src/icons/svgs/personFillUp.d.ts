@@ -1,0 +1,1 @@
+export const personFillUp: (height?:number, width?:number, className?:string) => HTMLElement;

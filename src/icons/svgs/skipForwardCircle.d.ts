@@ -1,0 +1,1 @@
+export const skipForwardCircle: (height?:number, width?:number, className?:string) => HTMLElement;

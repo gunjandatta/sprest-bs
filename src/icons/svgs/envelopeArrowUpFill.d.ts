@@ -1,0 +1,1 @@
+export const envelopeArrowUpFill: (height?:number, width?:number, className?:string) => HTMLElement;

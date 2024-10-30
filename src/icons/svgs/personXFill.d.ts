@@ -1,0 +1,1 @@
+export const personXFill: (height?:number, width?:number, className?:string) => HTMLElement;

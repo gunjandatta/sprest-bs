@@ -1,0 +1,1 @@
+export const signal: (height?:number, width?:number, className?:string) => HTMLElement;

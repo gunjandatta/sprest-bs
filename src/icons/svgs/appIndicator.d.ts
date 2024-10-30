@@ -1,0 +1,1 @@
+export const appIndicator: (height?:number, width?:number, className?:string) => HTMLElement;

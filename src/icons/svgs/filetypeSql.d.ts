@@ -1,0 +1,1 @@
+export const filetypeSql: (height?:number, width?:number, className?:string) => HTMLElement;

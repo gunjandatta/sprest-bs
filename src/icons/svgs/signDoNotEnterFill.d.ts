@@ -1,0 +1,1 @@
+export const signDoNotEnterFill: (height?:number, width?:number, className?:string) => HTMLElement;

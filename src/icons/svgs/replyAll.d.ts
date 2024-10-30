@@ -1,0 +1,1 @@
+export const replyAll: (height?:number, width?:number, className?:string) => HTMLElement;

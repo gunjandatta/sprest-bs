@@ -1,0 +1,1 @@
+export const brightnessLowFill: (height?:number, width?:number, className?:string) => HTMLElement;

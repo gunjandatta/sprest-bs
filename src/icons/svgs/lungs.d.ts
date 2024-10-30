@@ -1,0 +1,1 @@
+export const lungs: (height?:number, width?:number, className?:string) => HTMLElement;

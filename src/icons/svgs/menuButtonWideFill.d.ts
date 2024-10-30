@@ -1,0 +1,1 @@
+export const menuButtonWideFill: (height?:number, width?:number, className?:string) => HTMLElement;
