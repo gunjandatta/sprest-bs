@@ -978,7 +978,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 // Parse the control keys
                 for (let key in control) {
                     // Skip if a value is already defined
-                    if (templateControl[key]) {
+                    if (typeof (templateControl[key]) !== "undefined") {
                         // See if this is an internal event
                         if (key == "onControlRendering" || key == "onControlRendered") {
                             // Create a new event to call both internal and custom events
