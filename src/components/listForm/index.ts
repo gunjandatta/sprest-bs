@@ -333,6 +333,9 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                     // Update the property
                     refControl[key] = control[key];
                 }
+
+                // Update the mapper
+                mapper[refControl.name] = refControl;
             }
         }
 
@@ -962,9 +965,14 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
             // Set the event
             return (...args) => {
+                let controlProps: Components.IFormControlProps = args[0];
+
                 // Call the events
                 control[event](...args);
                 templateEvent(...args);
+
+                // Update the mapper
+                mapper[controlProps.name].controlProps = controlProps;
             }
         }
 
@@ -992,6 +1000,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     // Update the property
                     templateControl[key] = control[key];
                 }
+
+                // Update the mapper
+                mapper[templateControl.name].controlProps = templateControl;
             }
         }
 
@@ -1106,9 +1117,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
         // Parse the fields
         for (let fieldName in props.info.fields) {
-            // Get the form field and skip readonly fields
+            // Get the form field and skip disabled/readonly fields
             let formField = mapper[fieldName];
-            if (formField == null || formField.controlProps.isReadonly) { continue; }
+            if (formField == null || formField.controlProps.isDisabled || formField.controlProps.isReadonly) { continue; }
 
             // Get the field value
             let fieldValue = formField.getValue();
