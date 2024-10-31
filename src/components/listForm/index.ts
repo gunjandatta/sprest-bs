@@ -972,7 +972,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 templateEvent(...args);
 
                 // Update the mapper
-                mapper[controlProps.name].controlProps = controlProps;
+                mapper[controlProps.name] ? mapper[controlProps.name].controlProps = controlProps : null;
             }
         }
 
