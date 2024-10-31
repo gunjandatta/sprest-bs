@@ -42,6 +42,9 @@ export interface IListFormAttachmentsProps {
  * List Form Display
  */
 export interface IListFormDisplay {
+    /** Optional data object to store custom properties for this form. */
+    data?: any;
+
     /** The form element. */
     el: HTMLFormElement;
 
@@ -96,6 +99,9 @@ export interface IListFormEdit {
 
     /** Appends rows to the form */
     appendRows(rows: Array<IFormRow>);
+
+    /** Optional data object to store custom properties for this form. */
+    data?: any;
 
     /** The form element. */
     el: HTMLFormElement;

@@ -1362,6 +1362,9 @@ declare module 'gd-sprest-bs/components/listForm/types' {
         * List Form Display
         */
     export interface IListFormDisplay {
+            /** Optional data object to store custom properties for this form. */
+            data?: any;
+    
             /** The form element. */
             el: HTMLFormElement;
     
@@ -1416,6 +1419,9 @@ declare module 'gd-sprest-bs/components/listForm/types' {
     
             /** Appends rows to the form */
             appendRows(rows: Array<IFormRow>);
+    
+            /** Optional data object to store custom properties for this form. */
+            data?: any;
     
             /** The form element. */
             el: HTMLFormElement;
