@@ -271,10 +271,13 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                                 items.push({
                                     buttons: [{
                                         className: "me-1",
-                                        href: attachment.ServerRelativeUrl,
+                                        data: attachment.ServerRelativeUrl,
                                         isSmall: true,
-                                        target: "_blank",
-                                        text: attachment.FileName
+                                        text: attachment.FileName,
+                                        onClick: (btn) => {
+                                            // Open the attachment in a new tab
+                                            window.open(btn.data, "_blank");
+                                        }
                                     }]
                                 });
                             }
