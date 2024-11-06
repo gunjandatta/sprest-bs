@@ -273,6 +273,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
                                         className: "me-1",
                                         href: attachment.ServerRelativeUrl,
                                         isSmall: true,
+                                        target: "_blank",
                                         text: attachment.FileName
                                     }]
                                 });
