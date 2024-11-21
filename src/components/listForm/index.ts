@@ -235,6 +235,7 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
 // Method to render a display form for an item
 ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     let form: Components.IForm = null;
+    let totalControls = 0;
 
     // Render a loading message
     let progress = Components.Progress({
@@ -305,6 +306,11 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         if (fieldName == "Attachments") {
             // Generate the attachments row
             generateAttachmentsRow();
+
+            // Increment the total controls
+            totalControls++;
+
+            // Continue the loop
             continue;
         }
 
@@ -318,11 +324,18 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
             rows.push({
                 columns: [{ control }]
             });
+
+            // Increment the total controls
+            totalControls++;
         }
     }
 
     // See if there is a template
     if (props.template) {
+        // Reset the total controls
+        totalControls = 0;
+
+        // Updates the control
         let updateControl = (refControl) => {
             // Get the control from the mapper
             let control = refControl ? mapper[refControl.name] : null;
@@ -354,6 +367,9 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
 
                 // Update the control
                 updateControl(column.control);
+
+                // Increment the total controls
+                totalControls++;
             }
         }
     }
@@ -372,7 +388,7 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
         rowClassName: props.rowClassName,
         onControlRendered: control => {
             // See if all of the controls have been rendered
-            if (++ctrlCounter == rows.length) {
+            if (++ctrlCounter == totalControls) {
                 // See if an event exists
                 if (props.onFormRendered) {
                     // Execute the form rendered event in another thread
@@ -402,6 +418,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     let customControls: Components.IFormControl[] = [];
     let mapper: { [key: string]: IField } = {};
     let rows: Array<Components.IFormRow> = [];
+    let totalControls = 0;
     let value = {};
     let attachments: {
         delete: Array<Types.SP.Attachment>;
@@ -850,6 +867,11 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         if (fieldName == "Attachments") {
             // Generate the attachments row
             generateAttachmentsRow();
+
+            // Increment the total controls
+            totalControls++;
+
+            // Check the next field
             continue;
         }
 
@@ -959,10 +981,16 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 control: fieldControl.controlProps
             }]
         });
+
+        // Increment the total controls
+        totalControls++;
     }
 
     // See if there is a template
     if (props.template) {
+        // Reset the total controls
+        totalControls = 0;
+
         // Method to handle internal and custom events
         let createEvent = (event: string, control: Components.IFormControlProps, templateControl: Components.IFormControlProps) => {
             let templateEvent = templateControl[event];
@@ -1021,6 +1049,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
 
                 // Update the control
                 updateControl(column.control);
+
+                // Increment the total controls
+                totalControls++;
             }
         }
     }
@@ -1039,7 +1070,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         rowClassName: props.rowClassName,
         onControlRendered: control => {
             // See if all of the controls have been rendered
-            if (++ctrlCounter == rows.length) {
+            if (++ctrlCounter == totalControls) {
                 // See if an event exists
                 if (props.onFormRendered) {
                     // Execute the form rendered event in another thread
