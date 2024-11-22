@@ -1177,6 +1177,10 @@ export const Field = (props: IFieldProps): IField => {
                 value: control ? control.getValue() : null
             };
 
+            // Get the checkbox and dropdown value(s)
+            let cbValues = control.checkbox ? control.checkbox.getValue().selectedItems : null;
+            let ddlValues = control.dropdown ? control.dropdown.getValue() : null;
+
             // See if there is a custom value
             if (controlProps && controlProps.onGetValue) {
                 // Update the value
@@ -1188,15 +1192,15 @@ export const Field = (props: IFieldProps): IField => {
                 // Boolean
                 case SPTypes.FieldType.Boolean:
                     // Update the value
-                    fieldValue.value = fieldValue.value ? true : false;
+                    fieldValue.value = cbValues ? true : false;
                     break;
 
                 // Choice
                 case SPTypes.FieldType.Choice:
                     // See if this is a dropdown
-                    if (controlProps.type == Components.FormControlTypes.Dropdown) {
+                    if (ddlValues) {
                         // See if there is a value
-                        let ddlValue: Components.IDropdownItem = fieldValue.value;
+                        let ddlValue = ddlValues as Components.IDropdownItem;
                         if (ddlValue) {
                             if (ddlValue.value || ddlValue.text) {
                                 // Update the field value
@@ -1208,10 +1212,9 @@ export const Field = (props: IFieldProps): IField => {
                         }
                     } else {
                         // See if there is a value
-                        let cbValue: Components.ICheckboxGroupItem = fieldValue.value;
-                        if (cbValue && cbValue.label) {
+                        if (cbValues) {
                             // Update the field value
-                            fieldValue.value = cbValue.label;
+                            fieldValue.value = (cbValues as Components.ICheckboxGroupItem).label;
                         }
                     }
 
@@ -1248,7 +1251,7 @@ export const Field = (props: IFieldProps): IField => {
 
                     // See if this is a multi-value field
                     if (lookupFieldInfo.multi) {
-                        let values: Array<Components.IDropdownItem> = fieldValue.value || [];
+                        let values = ddlValues as Components.IDropdownItem[] || [];
                         fieldValue.value = { results: [] };
 
                         // Parse the values
@@ -1258,7 +1261,7 @@ export const Field = (props: IFieldProps): IField => {
                         }
                     } else {
                         // Update the field value
-                        fieldValue.value = fieldValue.value ? fieldValue.value.value || fieldValue.value.text : null;
+                        fieldValue.value = fieldValue.value ? (ddlValues as Components.IDropdownItem).value || (ddlValues as Components.IDropdownItem).text : null;
 
                         // Ensure a value exists, otherwise null
                         fieldValue.value = fieldValue.value || null;
@@ -1267,7 +1270,7 @@ export const Field = (props: IFieldProps): IField => {
 
                 // Multi-Choice
                 case SPTypes.FieldType.MultiChoice:
-                    let values: Array<Components.ICheckboxGroupItem | Components.IDropdownItem> = fieldValue.value || [];
+                    let values = (cbValues ? cbValues as Components.ICheckboxGroupItem[] : ddlValues as Components.IDropdownItem[]) || [];
                     fieldValue.value = { results: [] };
 
                     // Parse the values
@@ -1374,7 +1377,7 @@ export const Field = (props: IFieldProps): IField => {
                         // See if this is a multi field
                         if (mmsFieldInfo.multi) {
                             // Parse the field values
-                            let fieldValues: Array<Components.IDropdownItem> = fieldValue.value || [];
+                            let fieldValues = ddlValues as Components.IDropdownItem[] || [];
                             fieldValue.value = [];
                             for (let j = 0; j < fieldValues.length; j++) {
                                 let termInfo = fieldValues[j];
@@ -1387,7 +1390,7 @@ export const Field = (props: IFieldProps): IField => {
                             fieldValue.value = fieldValue.value.join(";#");
                         } else {
                             // Set the value
-                            fieldValue.value = fieldValue.value && fieldValue.value.value ? -1 + ";#" + fieldValue.value.text + "|" + fieldValue.value.value : "";
+                            fieldValue.value = ddlValues && (ddlValues as Components.IDropdownItem).value ? -1 + ";#" + (ddlValues as Components.IDropdownItem).text + "|" + (ddlValues as Components.IDropdownItem).value : "";
                         }
                     }
                     break;
