@@ -35,7 +35,7 @@
     "dependencies": {
         "flatpickr": "^4.6.13",
         "gd-bs": "^6.6.72",
-        "gd-sprest": "^8.6.7",
+        "gd-sprest": "^8.6.8",
         "gd-sprest-def": "^1.7.8",
         "quill": "^2.0.2"
     },
