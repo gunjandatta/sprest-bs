@@ -1069,6 +1069,10 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
         groupClassName: props.groupClassName,
         rowClassName: props.rowClassName,
         onControlRendered: control => {
+            // Ensure the control is set
+            let field = mapper[control.props?.name];
+            if (field && field.control == null) { field.control = control; }
+
             // See if all of the controls have been rendered
             if (++ctrlCounter == totalControls) {
                 // See if an event exists
