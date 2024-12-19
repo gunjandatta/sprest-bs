@@ -13,6 +13,7 @@ export interface IField {
     control: IFormControl;
     controlProps: IFormControlProps;
     getValue: () => IFieldValue;
+    setControl: (control: IFormControl) => void;
     isValid: () => boolean;
 }
 

@@ -1250,6 +1250,7 @@ declare module 'gd-sprest-bs/components/field/types' {
             control: IFormControl;
             controlProps: IFormControlProps;
             getValue: () => IFieldValue;
+            setControl: (control: IFormControl) => void;
             isValid: () => boolean;
     }
     
