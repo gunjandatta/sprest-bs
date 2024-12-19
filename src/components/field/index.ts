@@ -1171,7 +1171,7 @@ export const Field = (props: IFieldProps): IField => {
     let field = {
         control,
         controlProps,
-        setControl: ctrl => { control = ctrl; },
+        setControl: ctrl => { control = ctrl; field.control = ctrl; },
         getValue: () => {
             let fieldValue: IFieldValue = {
                 name: props.field.InternalName,
