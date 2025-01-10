@@ -818,6 +818,13 @@ export const Field = (props: IFieldProps): IField => {
             else {
                 // Set the type
                 numberProps.type = Components.FormControlTypes.TextField;
+
+                // Set the render event
+                onControlRendered = controlProps.onControlRendered;
+                controlProps.onControlRendered = (formControl) => {
+                    // Set the type to be a number
+                    formControl.textbox.elTextbox.setAttribute("type", "number");
+                }
             }
             break;
 
