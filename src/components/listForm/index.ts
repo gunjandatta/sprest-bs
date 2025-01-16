@@ -232,6 +232,48 @@ let renderDisplay = (fieldName: string, props: IListFormDisplayProps): Component
     return control;
 }
 
+// Method to generate the attachments row
+let generateAttachmentsControl = (props: IListFormDisplayProps): Components.IFormControlProps => {
+    // See if we are rendering attachments
+    let displayAttachments = typeof (props.displayAttachments) === "boolean" ? props.displayAttachments : true;
+    if (props.info.attachments && displayAttachments) {
+        // Render the attachments
+        return {
+            id: "ListFormAttachments",
+            label: "Attachments",
+            name: "Attachments",
+            onControlRendered: control => {
+                let items: Array<Components.IToolbarItem> = [];
+
+                // Parse the attachments
+                for (let i = 0; i < props.info.attachments.length; i++) {
+                    let attachment = props.info.attachments[i];
+
+                    // Add the item
+                    items.push({
+                        buttons: [{
+                            className: "me-1",
+                            data: attachment.ServerRelativeUrl,
+                            isSmall: true,
+                            text: attachment.FileName,
+                            onClick: (btn) => {
+                                // Open the attachment in a new tab
+                                window.open(btn.data, "_blank");
+                            }
+                        }]
+                    });
+                }
+
+                // Render a toolbar
+                Components.Toolbar({
+                    el: control.el,
+                    items
+                });
+            }
+        };
+    }
+}
+
 // Method to render a display form for an item
 ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     let form: Components.IForm = null;
@@ -249,52 +291,6 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
     let mapper: { [key: string]: Components.IFormControlProps } = {};
     let rows: Array<Components.IFormRow> = [];
 
-    // Method to generate the attachments row
-    let generateAttachmentsRow = () => {
-        // See if we are rendering attachments
-        let displayAttachments = typeof (props.displayAttachments) === "boolean" ? props.displayAttachments : true;
-        if (props.info.attachments && displayAttachments) {
-            // Render the attachments
-            rows.push({
-                columns: [{
-                    control: {
-                        id: "ListFormAttachments",
-                        label: "Attachments",
-                        name: "Attachments",
-                        onControlRendered: control => {
-                            let items: Array<Components.IToolbarItem> = [];
-
-                            // Parse the attachments
-                            for (let i = 0; i < props.info.attachments.length; i++) {
-                                let attachment = props.info.attachments[i];
-
-                                // Add the item
-                                items.push({
-                                    buttons: [{
-                                        className: "me-1",
-                                        data: attachment.ServerRelativeUrl,
-                                        isSmall: true,
-                                        text: attachment.FileName,
-                                        onClick: (btn) => {
-                                            // Open the attachment in a new tab
-                                            window.open(btn.data, "_blank");
-                                        }
-                                    }]
-                                });
-                            }
-
-                            // Render a toolbar
-                            Components.Toolbar({
-                                el: control.el,
-                                items
-                            });
-                        }
-                    }
-                }]
-            });
-        }
-    }
-
     // Get the fields to render
     let fieldNames = getFieldsToRender(props);
 
@@ -304,8 +300,15 @@ ListForm.renderDisplayForm = (props: IListFormDisplayProps) => {
 
         // See if this is the attachment field
         if (fieldName == "Attachments") {
-            // Generate the attachments row
-            generateAttachmentsRow();
+            // Generate the attachments control
+            let ctrlAttachments = generateAttachmentsControl(props);
+            if (ctrlAttachments) {
+                rows.push({
+                    columns: [{
+                        control: ctrlAttachments
+                    }]
+                });
+            }
 
             // Increment the total controls
             totalControls++;
@@ -1114,7 +1117,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 // See if this control is readonly
                 if (control.isReadonly && control.name) {
                     // Get the control display properties
-                    let dispControl = renderDisplay(control.name, props);
+                    let dispControl = control.name == "Attachments" ? generateAttachmentsControl(props) : renderDisplay(control.name, props);
                     if (dispControl) {
                         let ctrlTemplate = props.template ? findTemplateControl(control.name) : null;
 
