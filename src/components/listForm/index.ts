@@ -1119,7 +1119,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 // See if this control is readonly
                 if (control.isReadonly && control.name) {
                     // Get the control display properties
-                    let dispControl = renderDisplay(control.name, props);
+                    let dispControl = control.name == "Attachments" ? generateAttachmentsControl(props) : renderDisplay(control.name, props);
                     if (dispControl) {
                         let ctrlTemplate = props.template ? findTemplateControl(control.name) : null;
 
