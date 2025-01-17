@@ -1019,7 +1019,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             let control = templateControl && mapper[templateControl.name] ? mapper[templateControl.name].controlProps : null;
 
             // See if this is a reference to the attachments
-            if (templateControl && templateControl.name == "Attachments") { control = controlAttachments; }
+            if (templateControl && templateControl.name == "Attachments") {
+                control = templateControl.isDisabled || templateControl.isReadonly ? generateAttachmentsControl(props) : controlAttachments;
+            }
 
             // Ensure the controls exists
             if (control && templateControl) {
@@ -1117,7 +1119,7 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                 // See if this control is readonly
                 if (control.isReadonly && control.name) {
                     // Get the control display properties
-                    let dispControl = control.name == "Attachments" ? generateAttachmentsControl(props) : renderDisplay(control.name, props);
+                    let dispControl = renderDisplay(control.name, props);
                     if (dispControl) {
                         let ctrlTemplate = props.template ? findTemplateControl(control.name) : null;
 
