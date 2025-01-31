@@ -108,7 +108,10 @@ export const RichTextBox = (props: IRichTextBoxProps): IRichTextBox => {
         quillObj,
         getHtml: () => { return obj.getText() ? quillObj.root.innerHTML : ""; },
         getText: () => { return quillObj.getText().trim(); },
-        setHtml: (value: string) => { quillObj.root.innerHTML = value || ""; }
+        setHtml: (value: string) => {
+            // Convert the html to allow the library to run any conversions to display it correctly
+            quillObj.setContents(quillObj.clipboard.convert({ html: value || "" }));
+        }
     };
 
     // Set the value
