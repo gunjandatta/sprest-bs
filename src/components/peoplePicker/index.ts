@@ -1,4 +1,4 @@
-import { Helper, PeoplePicker as Search, SPTypes, Types, Web } from "gd-sprest";
+import { ContextInfo, Helper, PeoplePicker as Search, SPTypes, Types, Web } from "gd-sprest";
 import { Components } from "../core";
 import { IFormControlPropsPeoplePicker, IPeoplePicker, IPeoplePickerProps } from "./types";
 
@@ -125,93 +125,117 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
         }
     }
 
+    // Method to get the context of the site to search
+    let getContext = (): PromiseLike<string> => {
+        // Return a promise
+        return new Promise(resolve => {
+            // See if a url was provided
+            if (props.searchUrl) {
+                // Get the context of the site
+                ContextInfo.getWeb(props.searchUrl).execute(context => {
+                    // Resolve the request
+                    resolve(context.GetContextWebInformation.FormDigestValue);
+                }, () => {
+                    // Do nothing on error
+                    resolve(null);
+                });
+            } else {
+                // Do nothing
+                resolve(null);
+            }
+        });
+    }
+
     // Method to search for the users
     let searchUsers = (el: HTMLElement, searchText: string, searchAll: boolean = true, spGroupId?: number) => {
         // Ensure 3 characters exist
         if (_filterText.length >= _minCharSearch) {
-            // Search for the user
-            Search().clientPeoplePickerSearchUser({
-                MaximumEntitySuggestions: props.maxResults || 25,
-                PrincipalSource: searchAll ? SPTypes.PrincipalSources.All : SPTypes.PrincipalSources.UserInfoList,
-                PrincipalType: props.allowGroups ? SPTypes.PrincipalTypes.All : SPTypes.PrincipalTypes.User,
-                QueryString: _filterText,
-                SharePointGroupID: spGroupId
-            }).execute((search) => {
-                // Ensure the search text matches
-                if (_filterText != searchText) { return; }
+            // Get the context of the target site, if we are targeting one
+            getContext().then(requestDigest => {
+                // Search for the user
+                Search({ requestDigest, url: props.searchUrl }).clientPeoplePickerSearchUser({
+                    MaximumEntitySuggestions: props.maxResults || 25,
+                    PrincipalSource: searchAll ? SPTypes.PrincipalSources.All : SPTypes.PrincipalSources.UserInfoList,
+                    PrincipalType: props.allowGroups ? SPTypes.PrincipalTypes.All : SPTypes.PrincipalTypes.User,
+                    QueryString: _filterText,
+                    SharePointGroupID: spGroupId
+                }).execute((search) => {
+                    // Ensure the search text matches
+                    if (_filterText != searchText) { return; }
 
-                // Clear the users results
-                _users = [];
+                    // Clear the users results
+                    _users = [];
 
-                // Set the menu header
-                el.innerHTML = '<h6 class="dropdown-header">Search Results for "' + searchText + '"</h6>';
-                el.innerHTML += '<div class="dropdown-divider"></div>';
+                    // Set the menu header
+                    el.innerHTML = '<h6 class="dropdown-header">Search Results for "' + searchText + '"</h6>';
+                    el.innerHTML += '<div class="dropdown-divider"></div>';
 
-                // See if no users were found
-                if (search.ClientPeoplePickerSearchUser.length == 0) {
-                    // Add a message
-                    el.innerHTML += '<h6 class="dropdown-header">No results were found...</h6>';
-                } else {
-                    // Parse the users
-                    for (let i = 0; i < search.ClientPeoplePickerSearchUser.length; i++) {
-                        let exists = false;
-                        let user = search.ClientPeoplePickerSearchUser[i];
+                    // See if no users were found
+                    if (search.ClientPeoplePickerSearchUser.length == 0) {
+                        // Add a message
+                        el.innerHTML += '<h6 class="dropdown-header">No results were found...</h6>';
+                    } else {
+                        // Parse the users
+                        for (let i = 0; i < search.ClientPeoplePickerSearchUser.length; i++) {
+                            let exists = false;
+                            let user = search.ClientPeoplePickerSearchUser[i];
 
-                        // Save the user
-                        _users.push(user);
+                            // Save the user
+                            _users.push(user);
 
-                        // Parse the selected users
-                        for (let j = 0; j < elSelectedUsers.children.length; j++) {
-                            let userInfo = JSON.parse(elSelectedUsers.children[j].getAttribute("data-user")) as Types.IPeoplePickerUser;
+                            // Parse the selected users
+                            for (let j = 0; j < elSelectedUsers.children.length; j++) {
+                                let userInfo = JSON.parse(elSelectedUsers.children[j].getAttribute("data-user")) as Types.IPeoplePickerUser;
 
-                            // See if this user is already selected
-                            if (exists = user.Key == userInfo.Key) { break; }
+                                // See if this user is already selected
+                                if (exists = user.Key == userInfo.Key) { break; }
+                            }
+
+                            // Ensure the user isn't already selected
+                            if (exists) { continue; }
+
+                            // Create the item
+                            let elItem = document.createElement("a");
+                            elItem.className = "dropdown-item";
+                            elItem.href = "#";
+                            elItem.innerHTML = user.DisplayText;
+                            elItem.setAttribute("data-user", JSON.stringify(user));
+                            el.appendChild(elItem);
+
+                            // Create a tooltip for this item
+                            Components.Tooltip({
+                                target: elItem,
+                                content: [
+                                    '<div class="text-white text-wrap text-break">',
+                                    '<small>' + user.EntityData.Email + '</small>',
+                                    '<br />',
+                                    '<small>' + user.Key + '</small>',
+                                    '</div>'
+                                ].join('\n'),
+                                placement: Components.TooltipPlacements.Left,
+                                type: Components.TooltipTypes.Primary
+                            });
+
+                            // Set the click event
+                            elItem.addEventListener("click", ev => {
+                                let userInfo = (ev.currentTarget as HTMLAnchorElement).getAttribute("data-user");
+
+                                // Add the user
+                                addUser(userInfo)
+
+                                // Hide the menu
+                                _menu.hide();
+
+                                // Clear the search text
+                                elTextbox.querySelector("input").value = "";
+                            });
                         }
-
-                        // Ensure the user isn't already selected
-                        if (exists) { continue; }
-
-                        // Create the item
-                        let elItem = document.createElement("a");
-                        elItem.className = "dropdown-item";
-                        elItem.href = "#";
-                        elItem.innerHTML = user.DisplayText;
-                        elItem.setAttribute("data-user", JSON.stringify(user));
-                        el.appendChild(elItem);
-
-                        // Create a tooltip for this item
-                        Components.Tooltip({
-                            target: elItem,
-                            content: [
-                                '<div class="text-white text-wrap text-break">',
-                                '<small>' + user.EntityData.Email + '</small>',
-                                '<br />',
-                                '<small>' + user.Key + '</small>',
-                                '</div>'
-                            ].join('\n'),
-                            placement: Components.TooltipPlacements.Left,
-                            type: Components.TooltipTypes.Primary
-                        });
-
-                        // Set the click event
-                        elItem.addEventListener("click", ev => {
-                            let userInfo = (ev.currentTarget as HTMLAnchorElement).getAttribute("data-user");
-
-                            // Add the user
-                            addUser(userInfo)
-
-                            // Hide the menu
-                            _menu.hide();
-
-                            // Clear the search text
-                            elTextbox.querySelector("input").value = "";
-                        });
                     }
-                }
 
-                // Refresh the popover
-                _menu.hide();
-                _menu.show();
+                    // Refresh the popover
+                    _menu.hide();
+                    _menu.show();
+                });
             });
         }
     }

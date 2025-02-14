@@ -1628,6 +1628,9 @@ declare module 'gd-sprest-bs/components/peoplePicker/types' {
             /** True to search the local users first. */
             searchLocal?: boolean;
     
+            /** The url to search for for users. */
+            searchUrl?: string;
+    
             /** The selected users. */
             value?: string | number | Types.IPeoplePickerUser | Array<string | number | Types.IPeoplePickerUser>;
     }
