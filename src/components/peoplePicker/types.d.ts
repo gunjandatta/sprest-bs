@@ -111,5 +111,6 @@ export interface IFormControlPropsPeoplePicker extends IFormControlProps {
     onChange?: (obj: Array<Types.IPeoplePickerUser>) => void;
     placeholder?: string;
     searchLocal?: boolean;
+    searchUrl?: string;
     value?: string | number | Types.IPeoplePickerUser | Array<string | number | Types.IPeoplePickerUser>;
 }

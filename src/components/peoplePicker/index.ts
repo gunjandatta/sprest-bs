@@ -431,6 +431,7 @@ Components.CustomControls.registerType(PeoplePickerControlType, (props: IFormCon
             placeholder: props.placeholder,
             readOnly: props.isReadonly,
             searchLocal: props.searchLocal,
+            searchUrl: props.searchUrl,
             value: props.value
         });
 
