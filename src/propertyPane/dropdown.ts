@@ -17,7 +17,7 @@ export class _Dropdown<T = IDropdown> extends BasePropertyPane<T> {
 
             // Parse the values
             for (let i = 0; i < currentValue.length; i++) {
-                values.push(currentValue[i]["value"] || currentValue[i]["text"]);
+                values.push(currentValue[i]["value"] || currentValue[i]["text"] || currentValue[i]["label"]);
             }
 
             // Update the current value
