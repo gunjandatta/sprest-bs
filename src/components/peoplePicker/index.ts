@@ -312,8 +312,6 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
         target: elTextbox.querySelector("input"),
         placement: Components.PopoverPlacements.BottomStart,
         options: {
-            hideOnClick: false,
-            maxWidth: "none",
             trigger: "focus"
         }
     });
