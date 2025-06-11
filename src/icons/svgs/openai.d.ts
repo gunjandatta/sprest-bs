@@ -1,0 +1,1 @@
+export const openai: (height?:number, width?:number, className?:string) => HTMLElement;

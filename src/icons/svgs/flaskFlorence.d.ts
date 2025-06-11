@@ -1,0 +1,1 @@
+export const flaskFlorence: (height?:number, width?:number, className?:string) => HTMLElement;

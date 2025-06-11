@@ -1,0 +1,1 @@
+export const perplexity: (height?:number, width?:number, className?:string) => HTMLElement;

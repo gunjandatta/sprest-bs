@@ -1,0 +1,1 @@
+export const javascript: (height?:number, width?:number, className?:string) => HTMLElement;

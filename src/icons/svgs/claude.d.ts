@@ -1,0 +1,1 @@
+export const claude: (height?:number, width?:number, className?:string) => HTMLElement;

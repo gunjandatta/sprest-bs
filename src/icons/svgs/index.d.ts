@@ -124,10 +124,14 @@ export const amd: (height?:number, width?:number, className?:string) => HTMLElem
 export const android: (height?:number, width?:number, className?:string) => HTMLElement;
 // android2.svg
 export const android2: (height?:number, width?:number, className?:string) => HTMLElement;
+// anthropic.svg
+export const anthropic: (height?:number, width?:number, className?:string) => HTMLElement;
 // app-indicator.svg
 export const appIndicator: (height?:number, width?:number, className?:string) => HTMLElement;
 // app.svg
 export const app: (height?:number, width?:number, className?:string) => HTMLElement;
+// apple-music.svg
+export const appleMusic: (height?:number, width?:number, className?:string) => HTMLElement;
 // apple.svg
 export const apple: (height?:number, width?:number, className?:string) => HTMLElement;
 // archive-fill.svg
@@ -434,8 +438,14 @@ export const batteryCharging: (height?:number, width?:number, className?:string)
 export const batteryFull: (height?:number, width?:number, className?:string) => HTMLElement;
 // battery-half.svg
 export const batteryHalf: (height?:number, width?:number, className?:string) => HTMLElement;
+// battery-low.svg
+export const batteryLow: (height?:number, width?:number, className?:string) => HTMLElement;
 // battery.svg
 export const battery: (height?:number, width?:number, className?:string) => HTMLElement;
+// beaker-fill.svg
+export const beakerFill: (height?:number, width?:number, className?:string) => HTMLElement;
+// beaker.svg
+export const beaker: (height?:number, width?:number, className?:string) => HTMLElement;
 // behance.svg
 export const behance: (height?:number, width?:number, className?:string) => HTMLElement;
 // bell-fill.svg
@@ -462,6 +472,8 @@ export const binoculars: (height?:number, width?:number, className?:string) => H
 export const blockquoteLeft: (height?:number, width?:number, className?:string) => HTMLElement;
 // blockquote-right.svg
 export const blockquoteRight: (height?:number, width?:number, className?:string) => HTMLElement;
+// bluesky.svg
+export const bluesky: (height?:number, width?:number, className?:string) => HTMLElement;
 // bluetooth.svg
 export const bluetooth: (height?:number, width?:number, className?:string) => HTMLElement;
 // body-text.svg
@@ -1108,6 +1120,8 @@ export const circleHalf: (height?:number, width?:number, className?:string) => H
 export const circleSquare: (height?:number, width?:number, className?:string) => HTMLElement;
 // circle.svg
 export const circle: (height?:number, width?:number, className?:string) => HTMLElement;
+// claude.svg
+export const claude: (height?:number, width?:number, className?:string) => HTMLElement;
 // clipboard-check-fill.svg
 export const clipboardCheckFill: (height?:number, width?:number, className?:string) => HTMLElement;
 // clipboard-check.svg
@@ -1334,6 +1348,8 @@ export const crop: (height?:number, width?:number, className?:string) => HTMLEle
 export const crosshair: (height?:number, width?:number, className?:string) => HTMLElement;
 // crosshair2.svg
 export const crosshair2: (height?:number, width?:number, className?:string) => HTMLElement;
+// css.svg
+export const css: (height?:number, width?:number, className?:string) => HTMLElement;
 // cup-fill.svg
 export const cupFill: (height?:number, width?:number, className?:string) => HTMLElement;
 // cup-hot-fill.svg
@@ -2136,6 +2152,14 @@ export const fire: (height?:number, width?:number, className?:string) => HTMLEle
 export const flagFill: (height?:number, width?:number, className?:string) => HTMLElement;
 // flag.svg
 export const flag: (height?:number, width?:number, className?:string) => HTMLElement;
+// flask-fill.svg
+export const flaskFill: (height?:number, width?:number, className?:string) => HTMLElement;
+// flask-florence-fill.svg
+export const flaskFlorenceFill: (height?:number, width?:number, className?:string) => HTMLElement;
+// flask-florence.svg
+export const flaskFlorence: (height?:number, width?:number, className?:string) => HTMLElement;
+// flask.svg
+export const flask: (height?:number, width?:number, className?:string) => HTMLElement;
 // floppy-fill.svg
 export const floppyFill: (height?:number, width?:number, className?:string) => HTMLElement;
 // floppy.svg
@@ -2172,6 +2196,8 @@ export const folder2Open: (height?:number, width?:number, className?:string) => 
 export const folder2: (height?:number, width?:number, className?:string) => HTMLElement;
 // fonts.svg
 export const fonts: (height?:number, width?:number, className?:string) => HTMLElement;
+// fork-knife.svg
+export const forkKnife: (height?:number, width?:number, className?:string) => HTMLElement;
 // forward-fill.svg
 export const forwardFill: (height?:number, width?:number, className?:string) => HTMLElement;
 // forward.svg
@@ -2232,12 +2258,20 @@ export const git: (height?:number, width?:number, className?:string) => HTMLElem
 export const github: (height?:number, width?:number, className?:string) => HTMLElement;
 // gitlab.svg
 export const gitlab: (height?:number, width?:number, className?:string) => HTMLElement;
+// globe-americas-fill.svg
+export const globeAmericasFill: (height?:number, width?:number, className?:string) => HTMLElement;
 // globe-americas.svg
 export const globeAmericas: (height?:number, width?:number, className?:string) => HTMLElement;
+// globe-asia-australia-fill.svg
+export const globeAsiaAustraliaFill: (height?:number, width?:number, className?:string) => HTMLElement;
 // globe-asia-australia.svg
 export const globeAsiaAustralia: (height?:number, width?:number, className?:string) => HTMLElement;
+// globe-central-south-asia-fill.svg
+export const globeCentralSouthAsiaFill: (height?:number, width?:number, className?:string) => HTMLElement;
 // globe-central-south-asia.svg
 export const globeCentralSouthAsia: (height?:number, width?:number, className?:string) => HTMLElement;
+// globe-europe-africa-fill.svg
+export const globeEuropeAfricaFill: (height?:number, width?:number, className?:string) => HTMLElement;
 // globe-europe-africa.svg
 export const globeEuropeAfrica: (height?:number, width?:number, className?:string) => HTMLElement;
 // globe.svg
@@ -2490,6 +2524,8 @@ export const inputCursor: (height?:number, width?:number, className?:string) => 
 export const instagram: (height?:number, width?:number, className?:string) => HTMLElement;
 // intersect.svg
 export const intersect: (height?:number, width?:number, className?:string) => HTMLElement;
+// javascript.svg
+export const javascript: (height?:number, width?:number, className?:string) => HTMLElement;
 // journal-album.svg
 export const journalAlbum: (height?:number, width?:number, className?:string) => HTMLElement;
 // journal-arrow-down.svg
@@ -2582,6 +2618,10 @@ export const layoutTextWindow: (height?:number, width?:number, className?:string
 export const layoutThreeColumns: (height?:number, width?:number, className?:string) => HTMLElement;
 // layout-wtf.svg
 export const layoutWtf: (height?:number, width?:number, className?:string) => HTMLElement;
+// leaf-fill.svg
+export const leafFill: (height?:number, width?:number, className?:string) => HTMLElement;
+// leaf.svg
+export const leaf: (height?:number, width?:number, className?:string) => HTMLElement;
 // life-preserver.svg
 export const lifePreserver: (height?:number, width?:number, className?:string) => HTMLElement;
 // lightbulb-fill.svg
@@ -2666,6 +2706,10 @@ export const markerTip: (height?:number, width?:number, className?:string) => HT
 export const mask: (height?:number, width?:number, className?:string) => HTMLElement;
 // mastodon.svg
 export const mastodon: (height?:number, width?:number, className?:string) => HTMLElement;
+// measuring-cup-fill.svg
+export const measuringCupFill: (height?:number, width?:number, className?:string) => HTMLElement;
+// measuring-cup.svg
+export const measuringCup: (height?:number, width?:number, className?:string) => HTMLElement;
 // medium.svg
 export const medium: (height?:number, width?:number, className?:string) => HTMLElement;
 // megaphone-fill.svg
@@ -2784,6 +2828,8 @@ export const octagonFill: (height?:number, width?:number, className?:string) => 
 export const octagonHalf: (height?:number, width?:number, className?:string) => HTMLElement;
 // octagon.svg
 export const octagon: (height?:number, width?:number, className?:string) => HTMLElement;
+// openai.svg
+export const openai: (height?:number, width?:number, className?:string) => HTMLElement;
 // opencollective.svg
 export const opencollective: (height?:number, width?:number, className?:string) => HTMLElement;
 // optical-audio-fill.svg
@@ -2896,6 +2942,8 @@ export const peopleFill: (height?:number, width?:number, className?:string) => H
 export const people: (height?:number, width?:number, className?:string) => HTMLElement;
 // percent.svg
 export const percent: (height?:number, width?:number, className?:string) => HTMLElement;
+// perplexity.svg
+export const perplexity: (height?:number, width?:number, className?:string) => HTMLElement;
 // person-add.svg
 export const personAdd: (height?:number, width?:number, className?:string) => HTMLElement;
 // person-arms-up.svg
@@ -3870,6 +3918,8 @@ export const truckFront: (height?:number, width?:number, className?:string) => H
 export const truck: (height?:number, width?:number, className?:string) => HTMLElement;
 // tsunami.svg
 export const tsunami: (height?:number, width?:number, className?:string) => HTMLElement;
+// tux.svg
+export const tux: (height?:number, width?:number, className?:string) => HTMLElement;
 // tv-fill.svg
 export const tvFill: (height?:number, width?:number, className?:string) => HTMLElement;
 // tv.svg
@@ -3902,6 +3952,8 @@ export const typeStrikethrough: (height?:number, width?:number, className?:strin
 export const typeUnderline: (height?:number, width?:number, className?:string) => HTMLElement;
 // type.svg
 export const type: (height?:number, width?:number, className?:string) => HTMLElement;
+// typescript.svg
+export const typescript: (height?:number, width?:number, className?:string) => HTMLElement;
 // ubuntu.svg
 export const ubuntu: (height?:number, width?:number, className?:string) => HTMLElement;
 // ui-checks-grid.svg
@@ -3930,6 +3982,10 @@ export const universalAccess: (height?:number, width?:number, className?:string)
 export const unlockFill: (height?:number, width?:number, className?:string) => HTMLElement;
 // unlock.svg
 export const unlock: (height?:number, width?:number, className?:string) => HTMLElement;
+// unlock2-fill.svg
+export const unlock2Fill: (height?:number, width?:number, className?:string) => HTMLElement;
+// unlock2.svg
+export const unlock2: (height?:number, width?:number, className?:string) => HTMLElement;
 // upc-scan.svg
 export const upcScan: (height?:number, width?:number, className?:string) => HTMLElement;
 // upc.svg

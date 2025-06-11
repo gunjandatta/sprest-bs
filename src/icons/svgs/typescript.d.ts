@@ -1,0 +1,1 @@
+export const typescript: (height?:number, width?:number, className?:string) => HTMLElement;

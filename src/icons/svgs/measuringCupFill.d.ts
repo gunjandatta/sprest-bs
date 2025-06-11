@@ -1,0 +1,1 @@
+export const measuringCupFill: (height?:number, width?:number, className?:string) => HTMLElement;

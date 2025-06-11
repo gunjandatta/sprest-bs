@@ -1,0 +1,1 @@
+export const leafFill: (height?:number, width?:number, className?:string) => HTMLElement;

@@ -156,10 +156,14 @@ export const IconTypes: {
 	Android: number;
 	// android2.svg
 	Android2: number;
+	// anthropic.svg
+	Anthropic: number;
 	// app-indicator.svg
 	AppIndicator: number;
 	// app.svg
 	App: number;
+	// apple-music.svg
+	AppleMusic: number;
 	// apple.svg
 	Apple: number;
 	// archive-fill.svg
@@ -466,8 +470,14 @@ export const IconTypes: {
 	BatteryFull: number;
 	// battery-half.svg
 	BatteryHalf: number;
+	// battery-low.svg
+	BatteryLow: number;
 	// battery.svg
 	Battery: number;
+	// beaker-fill.svg
+	BeakerFill: number;
+	// beaker.svg
+	Beaker: number;
 	// behance.svg
 	Behance: number;
 	// bell-fill.svg
@@ -494,6 +504,8 @@ export const IconTypes: {
 	BlockquoteLeft: number;
 	// blockquote-right.svg
 	BlockquoteRight: number;
+	// bluesky.svg
+	Bluesky: number;
 	// bluetooth.svg
 	Bluetooth: number;
 	// body-text.svg
@@ -1140,6 +1152,8 @@ export const IconTypes: {
 	CircleSquare: number;
 	// circle.svg
 	Circle: number;
+	// claude.svg
+	Claude: number;
 	// clipboard-check-fill.svg
 	ClipboardCheckFill: number;
 	// clipboard-check.svg
@@ -1366,6 +1380,8 @@ export const IconTypes: {
 	Crosshair: number;
 	// crosshair2.svg
 	Crosshair2: number;
+	// css.svg
+	Css: number;
 	// cup-fill.svg
 	CupFill: number;
 	// cup-hot-fill.svg
@@ -2168,6 +2184,14 @@ export const IconTypes: {
 	FlagFill: number;
 	// flag.svg
 	Flag: number;
+	// flask-fill.svg
+	FlaskFill: number;
+	// flask-florence-fill.svg
+	FlaskFlorenceFill: number;
+	// flask-florence.svg
+	FlaskFlorence: number;
+	// flask.svg
+	Flask: number;
 	// floppy-fill.svg
 	FloppyFill: number;
 	// floppy.svg
@@ -2204,6 +2228,8 @@ export const IconTypes: {
 	Folder2: number;
 	// fonts.svg
 	Fonts: number;
+	// fork-knife.svg
+	ForkKnife: number;
 	// forward-fill.svg
 	ForwardFill: number;
 	// forward.svg
@@ -2264,12 +2290,20 @@ export const IconTypes: {
 	Github: number;
 	// gitlab.svg
 	Gitlab: number;
+	// globe-americas-fill.svg
+	GlobeAmericasFill: number;
 	// globe-americas.svg
 	GlobeAmericas: number;
+	// globe-asia-australia-fill.svg
+	GlobeAsiaAustraliaFill: number;
 	// globe-asia-australia.svg
 	GlobeAsiaAustralia: number;
+	// globe-central-south-asia-fill.svg
+	GlobeCentralSouthAsiaFill: number;
 	// globe-central-south-asia.svg
 	GlobeCentralSouthAsia: number;
+	// globe-europe-africa-fill.svg
+	GlobeEuropeAfricaFill: number;
 	// globe-europe-africa.svg
 	GlobeEuropeAfrica: number;
 	// globe.svg
@@ -2522,6 +2556,8 @@ export const IconTypes: {
 	Instagram: number;
 	// intersect.svg
 	Intersect: number;
+	// javascript.svg
+	Javascript: number;
 	// journal-album.svg
 	JournalAlbum: number;
 	// journal-arrow-down.svg
@@ -2614,6 +2650,10 @@ export const IconTypes: {
 	LayoutThreeColumns: number;
 	// layout-wtf.svg
 	LayoutWtf: number;
+	// leaf-fill.svg
+	LeafFill: number;
+	// leaf.svg
+	Leaf: number;
 	// life-preserver.svg
 	LifePreserver: number;
 	// lightbulb-fill.svg
@@ -2698,6 +2738,10 @@ export const IconTypes: {
 	Mask: number;
 	// mastodon.svg
 	Mastodon: number;
+	// measuring-cup-fill.svg
+	MeasuringCupFill: number;
+	// measuring-cup.svg
+	MeasuringCup: number;
 	// medium.svg
 	Medium: number;
 	// megaphone-fill.svg
@@ -2816,6 +2860,8 @@ export const IconTypes: {
 	OctagonHalf: number;
 	// octagon.svg
 	Octagon: number;
+	// openai.svg
+	Openai: number;
 	// opencollective.svg
 	Opencollective: number;
 	// optical-audio-fill.svg
@@ -2928,6 +2974,8 @@ export const IconTypes: {
 	People: number;
 	// percent.svg
 	Percent: number;
+	// perplexity.svg
+	Perplexity: number;
 	// person-add.svg
 	PersonAdd: number;
 	// person-arms-up.svg
@@ -3902,6 +3950,8 @@ export const IconTypes: {
 	Truck: number;
 	// tsunami.svg
 	Tsunami: number;
+	// tux.svg
+	Tux: number;
 	// tv-fill.svg
 	TvFill: number;
 	// tv.svg
@@ -3934,6 +3984,8 @@ export const IconTypes: {
 	TypeUnderline: number;
 	// type.svg
 	Type: number;
+	// typescript.svg
+	Typescript: number;
 	// ubuntu.svg
 	Ubuntu: number;
 	// ui-checks-grid.svg
@@ -3962,6 +4014,10 @@ export const IconTypes: {
 	UnlockFill: number;
 	// unlock.svg
 	Unlock: number;
+	// unlock2-fill.svg
+	Unlock2Fill: number;
+	// unlock2.svg
+	Unlock2: number;
 	// upc-scan.svg
 	UpcScan: number;
 	// upc.svg

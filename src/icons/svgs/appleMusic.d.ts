@@ -1,0 +1,1 @@
+export const appleMusic: (height?:number, width?:number, className?:string) => HTMLElement;

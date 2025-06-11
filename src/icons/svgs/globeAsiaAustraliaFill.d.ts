@@ -1,0 +1,1 @@
+export const globeAsiaAustraliaFill: (height?:number, width?:number, className?:string) => HTMLElement;

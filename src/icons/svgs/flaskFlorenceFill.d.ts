@@ -1,0 +1,1 @@
+export const flaskFlorenceFill: (height?:number, width?:number, className?:string) => HTMLElement;
