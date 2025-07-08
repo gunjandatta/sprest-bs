@@ -66,6 +66,9 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                                 // Remove the button
                                 elSelectedUsers.removeChild(tooltip.button.el);
 
+                                // Hide the tooltip
+                                tooltip.hide();
+
                                 // Call the event
                                 props.onChange ? props.onChange(obj.getValue()) : null;
                             }
@@ -212,7 +215,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                                     '<small>' + user.Key + '</small>',
                                     '</div>'
                                 ].join('\n'),
-                                placement: Components.TooltipPlacements.Left,
+                                placement: Components.TooltipPlacements.BottomStart,
                                 type: Components.TooltipTypes.Primary
                             });
 
@@ -233,8 +236,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                     }
 
                     // Refresh the popover
-                    _menu.hide();
-                    _menu.show();
+                    _menu.floatingUI.refreshPosition();
                 });
             });
         }
@@ -299,8 +301,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
             // See if a refresh is required
             if (currentHTML != elMenu.innerHTML) {
                 // Refresh the popover
-                _menu.hide();
-                _menu.show();
+                _menu.floatingUI.refreshPosition();
             }
         }
     }).el;
@@ -312,7 +313,7 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
         target: elTextbox.querySelector("input"),
         placement: Components.PopoverPlacements.BottomStart,
         options: {
-            trigger: "focus"
+            trigger: "click"
         }
     });
 
