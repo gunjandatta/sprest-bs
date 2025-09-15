@@ -1185,6 +1185,9 @@ export const Field = (props: IFieldProps): IField => {
                 value: control ? control.getValue() : null
             };
 
+            // Ensure the control exists
+            if (control == null) { return fieldValue; }
+
             // Get the checkbox and dropdown value(s)
             let cbValues = control.checkbox ? control.checkbox.getValue().selectedItems : null;
             let ddlValues = control.dropdown ? control.dropdown.getValue() : null;
