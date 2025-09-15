@@ -992,7 +992,11 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
     }
 
     // See if there is a template
+    let templateFieldNames = null;
     if (props.template) {
+        // Clear the field names for this template
+        templateFieldNames = [];
+
         // Reset the total controls
         totalControls = 0;
 
@@ -1042,6 +1046,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
                     // Update the property
                     templateControl[key] = control[key];
                 }
+
+                // Add the template field name
+                templateFieldNames.push(templateControl.name);
 
                 // Update the mapper
                 mapper[templateControl.name] ? mapper[templateControl.name].controlProps = templateControl : null;
@@ -1282,6 +1289,9 @@ ListForm.renderEditForm = (props: IListFormEditProps): IListFormEdit => {
             for (let fieldName in props.info.fields) {
                 // See if we are showing a specific set of fields
                 if (props.includeFields && props.includeFields.indexOf(fieldName) < 0) { continue; }
+
+                // See if we are using a template, and ensure the field is in it
+                if (templateFieldNames && templateFieldNames.indexOf(fieldName) < 0) { continue; }
 
                 // Skip readonly fields
                 let formField = mapper[fieldName];
