@@ -276,6 +276,9 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
 
             // See if a value exists
             if (searchText) {
+                // Ensure the menu is visible
+                _menu.show();
+
                 // Set the filter text
                 _filterText = searchText;
 
