@@ -1,12 +1,17 @@
 {
     "compilerOptions": {
+        "esModuleInterop": false,
+        "ignoreDeprecations": "6.0",
         "lib": [
             "dom",
             "es2015"
         ],
-        "outDir": "build",
+        "moduleResolution": "node",
+        "outDir": "./build",
+        "rootDir": "./src",
         "skipLibCheck": true,
-        "target": "es5"
+        "strict": false,
+        "target": "es2015"
     },
     "exclude": [
         "node_modules"

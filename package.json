@@ -1,13 +1,13 @@
 {
     "name": "gd-sprest-bs",
-    "version": "10.15.65",
+    "version": "10.15.67",
     "description": "SharePoint JavaScript, TypeScript and Web Components designed using the Bootstrap framework.",
     "main": "build/index.js",
     "typings": "src/index.d.ts",
     "scripts": {
         "all": "npm run clean && npm run build && npm run prod && npm run typings",
         "build": "tsc && npm run build-sass && webpack --mode=development && npm run build-icons",
-        "build-icons": "webpack --config webpack.icons.js --mode=development",
+        "build-icons": "webpack --config webpack.icons.js --mode=development && node ./copyIconDefs.js",
         "build-sass": "webpack --config webpack.sass.js --mode=production",
         "clean": "node ./clean.js && node ./customIcons.js",
         "docs": "typedoc",
@@ -34,8 +34,8 @@
     "homepage": "https://dattabase.com/extras/bs",
     "dependencies": {
         "flatpickr": "^4.6.13",
-        "gd-bs": "^6.9.15",
-        "gd-sprest": "^9.7.3",
+        "gd-bs": "^6.9.16",
+        "gd-sprest": "^9.7.4",
         "gd-sprest-def": "^2.0.9",
         "quill": "^2.0.3"
     },
