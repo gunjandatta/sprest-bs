@@ -1,3 +1,4 @@
+/// <reference path="./index.d.ts" />
 export * from "./_0CircleFill";
 export * from "./_0Circle";
 export * from "./_0SquareFill";
