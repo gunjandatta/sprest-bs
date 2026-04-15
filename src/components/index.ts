@@ -1,3 +1,4 @@
+import { Components as CoreComponents } from "./core";
 import { DateTime } from "./datetime";
 import { Field } from "./field";
 import { ListForm } from "./listForm";
@@ -7,7 +8,7 @@ import { RichTextBox, RichTextBoxTypes } from "./richTextBox";
 import { SearchBox, SearchBoxControlType } from "./searchBox";
 
 // Extend the core components
-import { Components } from "./core";
+const Components = CoreComponents;
 Components["DateTime"] = DateTime;
 Components["Field"] = Field;
 Components["ListForm"] = ListForm;
@@ -19,4 +20,4 @@ Components["SearchBox"] = SearchBox;
 Components["SearchBoxControlType"] = SearchBoxControlType;
 
 // Export the components
-export { Components } from "./core";
+export { Components }
