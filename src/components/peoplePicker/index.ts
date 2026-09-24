@@ -226,11 +226,14 @@ export const PeoplePicker = (props: IPeoplePickerProps): IPeoplePicker => {
                                 // Add the user
                                 addUser(userInfo)
 
-                                // Hide the menu
-                                _menu.hide();
-
                                 // Clear the search text
                                 elTextbox.querySelector("input").value = "";
+
+                                // Hide the menu in a separate thread
+                                setTimeout(() => {
+                                    // Hide the menu
+                                    _menu.hide();
+                                }, 100);
                             });
                         }
                     }
